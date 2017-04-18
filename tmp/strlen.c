@@ -60,6 +60,7 @@ size_t cstrlen(const char *str) {
 
   /*@ loop invariant 0 <= i <= strlen(str);
       loop invariant s == str + i;
+      loop variant strlen(str) - i;
    */
   for (s = str; *s; s+=1) /*@ ghost i++;*/  ;
   return (s - str);
