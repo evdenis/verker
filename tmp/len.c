@@ -8,10 +8,10 @@
  */
 
 /*@ axiomatic StrLength {
-    logic size_t length(char *s) reads s[..];
+    logic integer length(char *s) reads s[..];
 
     axiom length_non_negative :
-      \forall char *s; is_string(s) ==> 0 <= length(s);
+      \forall char *s; is_string(s) ==> 0 <= length(s) <= SIZE_MAX;
 
     axiom length_not_zero :
       \forall char *s; is_string(s) ==> 
@@ -29,7 +29,7 @@
 /*@ requires is_string(s);
     assigns \nothing;
     ensures \result == length(s);
-    ensures s[\result] == 0; 
+    ensures s[\result] == 0;
     ensures \forall integer i; 0 <= i < \result ==> s[i] != 0;
  */
 size_t strlen(char * s) {
@@ -41,4 +41,3 @@ size_t strlen(char * s) {
   while (s[len] != 0) len++;
   return len;
 }
-

@@ -80,6 +80,7 @@ bool isupper(char c);
 //@ ensures \result <==> isxdigit(c);
 bool isxdigit(char c);
 
+//@ ensures \result <==> (0 <= c <= 127);
 bool isascii(char c);
 bool toascii(char c);
 #endif

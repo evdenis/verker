@@ -1,6 +1,16 @@
 #include <defs.h>
 #include <ctype.h>
 
+typedef unsigned long __kernel_ulong_t;
+
+typedef unsigned int u32;
+
+typedef unsigned long long u64;
+
+typedef __kernel_ulong_t __kernel_size_t;
+
+typedef __kernel_size_t size_t;
+
 /**
  * strncasecmp - Case insensitive, length-limited string comparison
  * @s1: One string
@@ -223,14 +233,60 @@ char *skip_spaces(const char *str)
 }
 EXPORT_SYMBOL(skip_spaces);
 
+#define SIZE_MAX (~((size_t)(0)))
+
+/*@ axiomatic Strings {
+    predicate is_string(char *s) =
+	    \exists integer n;
+		    0 <= n <= SIZE_MAX &&
+		    s[n] == '\0';
+    predicate is_valid_string(char *s) =
+	    \exists integer n;
+		    0 <= n <= SIZE_MAX &&
+			 s[n] == '\0' &&
+			 \valid(s+(0..n));
+	 lemma string_validity:
+	    \forall char *s; is_valid_string(s) ==> is_string(s);
+	 logic integer strlen(char *s) = //reads s[0..] =
+	    s[0] == '\0' ? 0 : 1 + strlen(++s);
+
+	 lemma strlen_diaposone_down:
+	    \forall char *s; is_valid_string(s) ==> 0 <= strlen(s);
+
+	 axiom strlen_diaposone_up:
+	    \forall char *s; is_valid_string(s) ==> strlen(s) <= SIZE_MAX;
+
+	 lemma strlen_before_null:
+       \forall char* s, integer i;
+		 is_valid_string(s) &&
+		 0 <= i < strlen(s) ==> s[i] != '\0';
+
+    lemma strlen_at_null:
+       \forall char* s; is_valid_string(s) ==> s[strlen(s)] == '\0';
+
+    lemma strlen_create:
+       \forall char* s, integer i;
+	       is_valid_string(s) &&
+          0 <= i <= SIZE_MAX &&
+	       s[i] == '\0' ==> 0 <= strlen(s) <= i;
+    }
+ */
+
 /**
  * strlen - Find the length of a string
  * @s: The string to be sized
  */
+/*@ requires is_valid_string(s);
+    assigns \nothing;
+	 ensures \result == strlen(s);
+ */
 size_t strlen(const char *s)
 {
 	const char *sc;
-
+   /*@ loop invariant s <= sc <= s + strlen(s);
+	    loop invariant \forall integer i; 0 <= i < sc - s ==> s[i] != '\0';
+	    loop variant strlen(s) - (sc - s);
+	 */
 	for (sc = s; *sc != '\0'; ++sc)
 		/* nothing */;
 	return sc - s;
