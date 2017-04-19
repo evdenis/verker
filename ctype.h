@@ -91,7 +91,6 @@ int isdigit(int c);
 //@ ensures \result == tolower(c);
 unsigned char __tolower(unsigned char c);
 
-
 //@ ensures \result == toupper(c);
 unsigned char __toupper(unsigned char c);
 
@@ -99,8 +98,10 @@ unsigned char __toupper(unsigned char c);
 #define tolower(c) __tolower(c)
 #define toupper(c) __toupper(c)
 #else
-static inline char tolower(const char c) { return __tolower(c); }
-static inline char toupper(const char c) { return __toupper(c); }
+//@ ensures \result == tolower(c);
+char tolower(const char c);
+//@ ensures \result == toupper(c);
+char toupper(const char c);
 #endif
 
 /*

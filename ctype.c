@@ -42,6 +42,13 @@ const unsigned char *_ctype = /*@ ctype_tbl = */
 //@ global invariant ctype: (char *) _ctype == ctype_tbl;
 #endif
 
+#ifdef SPEC
+//@ ensures \result == tolower(c);
+char tolower(const char c) { return __tolower(c); }
+//@ ensures \result == toupper(c);
+char toupper(const char c) { return __toupper(c); }
+#endif
+
 #define __ismask(x) (_ctype[(int)(unsigned char)(x)])
 
 bool isalnum(char c) { return ((__ismask(c)&(_U|_L|_D)) != 0); }

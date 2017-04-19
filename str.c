@@ -11,6 +11,26 @@ typedef __kernel_ulong_t __kernel_size_t;
 
 typedef __kernel_size_t size_t;
 
+/*@ axiomatic Strings {
+    predicate valid_string(char *s) =
+       \exists size_t n;
+          s[n] == '\0' && \valid(s+(0..n));
+
+    logic size_t strlen(char *s) =
+       s[0] == '\0' ? (size_t) 0 : (size_t) ((size_t)1 + strlen(s + 1));
+
+    lemma strlen_before_null:
+       \forall char* s, integer i;
+          valid_string(s) &&
+          0 <= i < strlen(s) ==> s[i] != '\0';
+
+    lemma strlen_at_null:
+       \forall char* s;
+          valid_string(s) ==> s[strlen(s)] == '\0';
+    }
+ */
+
+
 /**
  * strncasecmp - Case insensitive, length-limited string comparison
  * @s1: One string
@@ -41,7 +61,9 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 }
 EXPORT_SYMBOL(strncasecmp);
 
-/*@ requires \valid(s1);
+/* requires valid_string(s1);
+    requires valid_string(s2);
+    assigns \nothing;
  */
 int strcasecmp(const char *s1, const char *s2)
 {
@@ -60,10 +82,26 @@ EXPORT_SYMBOL(strcasecmp);
  * @dest: Where to copy the string to
  * @src: Where to copy the string from
  */
+/*@ requires valid_string(src);
+    requires \valid(dest+(0..strlen(src)));
+    requires \base_addr(dest) != \base_addr(src);
+    assigns dest[0..strlen(src)];
+    ensures valid_string(dest);
+    ensures \forall integer i; 0 <= i <= strlen(src) ==> dest[i] == src[i];
+    ensures \result == dest;
+ */
 char *strcpy(char *dest, const char *src)
 {
 	char *tmp = dest;
+   //@ ghost char *old_s = src;
 
+   /*@ loop invariant \base_addr(src) == \base_addr(src);
+       loop invariant \base_addr(dest) == \base_addr(dest);
+       loop invariant \base_addr(src) != \base_addr(dest);
+       loop invariant old_s <= src <= old_s + strlen(old_s);
+       loop invariant tmp <= dest <= tmp + strlen(old_s);
+       loop variant strlen(old_s) - (src - old_s);
+    */
 	while ((*dest++ = *src++) != '\0')
 		/* nothing */;
 	return tmp;
@@ -163,11 +201,21 @@ EXPORT_SYMBOL(strncmp);
  * @s: The string to be searched
  * @c: The character to search for
  */
+/*@ requires valid_string(s);
+    requires -128 <= c <= 127;
+    assigns \nothing;
+ */
 char *strchr(const char *s, int c)
 {
+   //@ ghost char *old_s = s;
+   /*@ loop invariant \base_addr(s) == \base_addr(old_s);
+       loop invariant old_s <= s <= old_s + strlen(old_s);
+       loop variant strlen(old_s) - (s - old_s);
+    */
 	for (; *s != (char)c; ++s)
 		if (*s == '\0')
 			return NULL;
+   //@ assert *s == '\0' || *s == c;
 	return (char *)s;
 }
 EXPORT_SYMBOL(strchr);
@@ -233,59 +281,20 @@ char *skip_spaces(const char *str)
 }
 EXPORT_SYMBOL(skip_spaces);
 
-#define SIZE_MAX (~((size_t)(0)))
-
-/*@ axiomatic Strings {
-    predicate is_string(char *s) =
-	    \exists integer n;
-		    0 <= n <= SIZE_MAX &&
-		    s[n] == '\0';
-    predicate is_valid_string(char *s) =
-	    \exists integer n;
-		    0 <= n <= SIZE_MAX &&
-			 s[n] == '\0' &&
-			 \valid(s+(0..n));
-	 lemma string_validity:
-	    \forall char *s; is_valid_string(s) ==> is_string(s);
-	 logic integer strlen(char *s) = //reads s[0..] =
-	    s[0] == '\0' ? 0 : 1 + strlen(++s);
-
-	 lemma strlen_diaposone_down:
-	    \forall char *s; is_valid_string(s) ==> 0 <= strlen(s);
-
-	 axiom strlen_diaposone_up:
-	    \forall char *s; is_valid_string(s) ==> strlen(s) <= SIZE_MAX;
-
-	 lemma strlen_before_null:
-       \forall char* s, integer i;
-		 is_valid_string(s) &&
-		 0 <= i < strlen(s) ==> s[i] != '\0';
-
-    lemma strlen_at_null:
-       \forall char* s; is_valid_string(s) ==> s[strlen(s)] == '\0';
-
-    lemma strlen_create:
-       \forall char* s, integer i;
-	       is_valid_string(s) &&
-          0 <= i <= SIZE_MAX &&
-	       s[i] == '\0' ==> 0 <= strlen(s) <= i;
-    }
- */
-
 /**
  * strlen - Find the length of a string
  * @s: The string to be sized
  */
-/*@ requires is_valid_string(s);
+/*@ requires valid_string(s);
     assigns \nothing;
-	 ensures \result == strlen(s);
+    ensures \result == strlen(s);
  */
 size_t strlen(const char *s)
 {
 	const char *sc;
-   /*@ loop invariant s <= sc <= s + strlen(s);
-	    loop invariant \forall integer i; 0 <= i < sc - s ==> s[i] != '\0';
-	    loop variant strlen(s) - (sc - s);
+   /*@ loop invariant \base_addr(s) == \base_addr(sc);
+       loop invariant s <= sc <= s + strlen(s);
+       loop variant strlen(s) - (sc - s);
 	 */
 	for (sc = s; *sc != '\0'; ++sc)
 		/* nothing */;
