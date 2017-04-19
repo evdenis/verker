@@ -37,6 +37,13 @@ typedef __kernel_size_t size_t;
  * @s2: The other string
  * @len: the maximum number of characters to compare
  */
+/*@ requires valid_string(s1);
+    requires valid_string(s1);
+	 assigns \nothing;
+	 behavior zero_len:
+	    assumes len == 0;
+		 ensures \result == 0;
+ */
 int strncasecmp(const char *s1, const char *s2, size_t len)
 {
 	/* Yes, Virginia, it had better be unsigned */
@@ -121,10 +128,16 @@ EXPORT_SYMBOL(strcpy);
  * count, the remainder of @dest will be padded with %NUL.
  *
  */
+/*@ requires valid_string(src);
+    requires \valid(dest+(0..\min(strlen(src),count)));
+ */
 char *strncpy(char *dest, const char *src, size_t count)
 {
 	char *tmp = dest;
 
+	/*@ loop invariant count >= 0;
+	    loop variant count;
+	 */
 	while (count) {
 		if ((*tmp = *src) != 0)
 			src++;
@@ -140,12 +153,17 @@ EXPORT_SYMBOL(strncpy);
  * @dest: The string to be appended to
  * @src: The string to append to it
  */
+/*@ requires valid_string(src);
+    requires valid_string(dest) && \valid(dest+(0..strlen(dest)+strlen(src)-1));
+	 assigns dest[strlen(dest)..strlen(dest)+strlen(src)-1];
+ */
 char *strcat(char *dest, const char *src)
 {
 	char *tmp = dest;
 
 	while (*dest)
 		dest++;
+	//@ assert *dest == '\0';
 	while ((*dest++ = *src++) != '\0')
 		;
 	return tmp;
@@ -156,6 +174,10 @@ EXPORT_SYMBOL(strcat);
  * strcmp - Compare two strings
  * @cs: One string
  * @ct: Another string
+ */
+/*@ requires valid_string(cs);
+    requires valid_string(ct);
+	 assigns \nothing;
  */
 int strcmp(const char *cs, const char *ct)
 {
@@ -182,7 +204,9 @@ EXPORT_SYMBOL(strcmp);
 int strncmp(const char *cs, const char *ct, size_t count)
 {
 	unsigned char c1, c2;
-
+	/*@ loop invariant count >= 0;
+	    loop variant count;
+	 */
 	while (count) {
 		c1 = *cs++;
 		c2 = *ct++;
@@ -267,14 +291,26 @@ char *strnchr(const char *s, size_t count, int c)
 }
 EXPORT_SYMBOL(strnchr);
 
+#define SIZE_MAX 32000
+
 /**
  * skip_spaces - Removes leading whitespace from @str.
  * @str: The string to be stripped.
  *
  * Returns a pointer to the first non-whitespace character in @str.
  */
+/*@ requires \forall size_t i; isspace(*(str+i)) ==> \valid(str+i);
+    assigns \nothing;
+	 ensures \base_addr(\result) == \base_addr(str);
+	 ensures !isspace(*\result);
+	 ensures \exists size_t i; str + i == \result &&
+	         (\forall size_t j; j < i ==> isspace(str[j]));
+ */
 char *skip_spaces(const char *str)
 {
+	/*@ loop invariant \forall size_t s; s < str - \at(str, Pre) ==> isspace(str[s]);
+	    loop variant SIZE_MAX - (str - \at(str,Pre));
+	 */
 	while (isspace(*str))
 		++str;
 	return (char *)str;
