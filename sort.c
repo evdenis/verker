@@ -36,6 +36,7 @@ typedef __kernel_size_t size_t;
     requires \forall integer i; 0 <= i < size ==> \typeof(b + i) <: \type(char *);
     requires \valid((char *)a + (0..size-1));
     requires \valid((char *)b + (0..size-1));
+    requires \base_addr(a) == \base_addr(b) || \base_addr(a) != \base_addr(b);
     assigns ((char *)a)[0..size-1];
     assigns ((char *)b)[0..size-1];
     ensures \forall integer i; 0 <= i < size ==> *((char *)a + i) == \old(*((char *)b + i));
@@ -47,6 +48,8 @@ static void generic_swap(void *a, void *b, int size)
 
    /*@ loop invariant size >= 0;
        loop invariant 0 <= a - \at(a, Pre) < \at(size, Pre);
+       loop invariant \base_addr(a) == \base_addr(\at(a,Pre));
+       loop invariant \base_addr(b) == \base_addr(\at(b,Pre));
        //loop invariant a - \at(a, Pre) == \at(size, Pre) - size;
        //loop invariant 0 <= b - \at(b, Pre) <= size;
        //loop invariant \forall integer i; 0 <= i <= (\at(size, Pre) - size) ==>
