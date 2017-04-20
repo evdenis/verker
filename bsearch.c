@@ -19,6 +19,11 @@
  * the same comparison function for both sort() and bsearch().
  */
 
+int cmp(const void *key, const void *elt)
+{
+   return *((char *)key) > *((char *)elt) ? 1 : *((char *)key) - *((char *)elt);
+}
+
 /*@ 
     assigns \nothing;
  */
