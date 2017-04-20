@@ -27,6 +27,12 @@ typedef __kernel_size_t size_t;
     lemma strlen_at_null:
        \forall char* s;
           valid_string(s) ==> s[strlen(s)] == '\0';
+
+    lemma strlen_shift:
+       \forall char *s, size_t i;
+          valid_string(s) &&
+          i <= strlen(s)  ==>
+          strlen(s+i) == strlen(s) + i;
     }
  */
 
@@ -38,7 +44,8 @@ typedef __kernel_size_t size_t;
  * @len: the maximum number of characters to compare
  */
 /*@ requires valid_string(s1);
-    requires valid_string(s1);
+    requires valid_string(s2);
+    requires \base_addr(s1) == \base_addr(s2) || \base_addr(s1) != \base_addr(s2);
 	 assigns \nothing;
 	 behavior zero_len:
 	    assumes len == 0;
@@ -52,6 +59,14 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 	if (!len)
 		return 0;
 
+   /*@ loop invariant 0 <= len;
+       loop invariant \base_addr(s1) == \base_addr{Pre}(s1);
+       loop invariant \base_addr(s2) == \base_addr{Pre}(s2);
+       loop invariant \forall char *s; \base_addr(s1) == \base_addr(s) && \at(s1,Pre) <= s < s1 ==> *s != '\0';
+       loop invariant \forall char *s; \base_addr(s2) == \base_addr(s) && \at(s2,Pre) <= s < s2 ==> *s != '\0';
+       loop invariant \forall size_t i; i < s1 - \at(s1,Pre) ==> tolower(*(\at(s1,Pre)+i)) == tolower(*(\at(s2,Pre)+i));
+       loop variant len;
+    */
 	do {
 		c1 = *s1++;
 		c2 = *s2++;
@@ -68,21 +83,34 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 }
 EXPORT_SYMBOL(strncasecmp);
 
-/* requires valid_string(s1);
+/*@ requires valid_string(s1);
     requires valid_string(s2);
     assigns \nothing;
+    //ensures \forall size_t i; i <= \min(strlen(s1), strlen(s2)) ==> s1[i] == s2[i];
  */
 int strcasecmp(const char *s1, const char *s2)
 {
 	int c1, c2;
 
+   /*@ loop invariant \base_addr(s1) == \base_addr(\at(s1,Pre));
+       loop invariant \base_addr(s2) == \base_addr(\at(s2,Pre));
+       loop invariant \at(s1,Pre) <= s1 <= \at(s1,Pre) + \min(strlen(\at(s1,Pre)),strlen(\at(s2,Pre)));
+       loop invariant \at(s2,Pre) <= s2 <= \at(s2,Pre) + \min(strlen(\at(s1,Pre)),strlen(\at(s2,Pre)));
+       loop invariant \forall size_t i; i < s1 - \at(s1,Pre) ==> tolower(s1[i]) == tolower(s2[i]);
+       loop variant strlen(s1);
+    */
 	do {
 		c1 = tolower(*s1++);
 		c2 = tolower(*s2++);
 	} while (c1 == c2 && c1 != 0);
+   //@ assert c1 != c2 || c1 == 0 && c2 == 0;
 	return c1 - c2;
 }
 EXPORT_SYMBOL(strcasecmp);
+
+/* predicate same_base_addr{L1,L2}(char *s) =
+       \base_addr{L1}(\at(s,L1)) == \base_addr{L2}(\at(s,L2));
+ */
 
 /**
  * strcpy - Copy a %NUL terminated string
@@ -93,21 +121,21 @@ EXPORT_SYMBOL(strcasecmp);
     requires \valid(dest+(0..strlen(src)));
     requires \base_addr(dest) != \base_addr(src);
     assigns dest[0..strlen(src)];
-    ensures valid_string(dest);
-    ensures \forall integer i; 0 <= i <= strlen(src) ==> dest[i] == src[i];
     ensures \result == dest;
+    ensures \forall integer i; 0 <= i <= strlen(src) ==> dest[i] == src[i];
+    ensures valid_string(dest);
  */
 char *strcpy(char *dest, const char *src)
 {
 	char *tmp = dest;
    //@ ghost char *old_s = src;
 
-   /*@ loop invariant \base_addr(src) == \base_addr(src);
-       loop invariant \base_addr(dest) == \base_addr(dest);
-       loop invariant \base_addr(src) != \base_addr(dest);
+   /*@ loop invariant \base_addr(src) == \base_addr(\at(src,Pre));
+       loop invariant \base_addr(dest) == \base_addr(\at(dest,Pre));
        loop invariant old_s <= src <= old_s + strlen(old_s);
        loop invariant tmp <= dest <= tmp + strlen(old_s);
-       loop variant strlen(old_s) - (src - old_s);
+       loop invariant \forall size_t i; i < src - \at(src,Pre) ==> \at(dest[i],Pre) == \at(src[i],Pre);
+       loop variant strlen(src);
     */
 	while ((*dest++ = *src++) != '\0')
 		/* nothing */;
@@ -178,19 +206,36 @@ EXPORT_SYMBOL(strcat);
 /*@ requires valid_string(cs);
     requires valid_string(ct);
 	 assigns \nothing;
+    ensures \result == -1 || \result == 0 || \result == 1;
+    behavior equal:
+       assumes \forall size_t i; i <= strlen(cs) ==> cs[i] == ct[i];
+       ensures \result == 0;
+    behavior ne:
+       assumes \exists size_t i; i <= strlen(cs) && cs[i] != ct[i];
+       ensures \result == -1 || \result == 1;
+       ensures \result == -1 ==> \exists size_t i; i <= strlen(cs) && cs[i] < ct[i];
+       ensures \result == 1 ==> \exists size_t i; i <= strlen(cs) && cs[i] >= ct[i];
  */
 int strcmp(const char *cs, const char *ct)
 {
 	unsigned char c1, c2;
 
+   /*@ loop invariant \base_addr(\at(cs,Pre)) == \base_addr(cs);
+       loop invariant \base_addr(\at(ct,Pre)) == \base_addr(ct);
+       loop invariant \at(cs,Pre) <= cs <= \at(cs,Pre) + strlen(\at(cs,Pre));
+       loop invariant \at(ct,Pre) <= ct <= \at(ct,Pre) + strlen(\at(ct,Pre));
+       loop invariant \forall size_t s; s < cs - \at(cs,Pre) ==> cs[s] == ct[s];
+       loop variant strlen(cs);
+    */
 	while (1) {
-		c1 = *cs++;
-		c2 = *ct++;
+		c1 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *cs++;
+		c2 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *ct++;
 		if (c1 != c2)
 			return c1 < c2 ? -1 : 1;
 		if (!c1)
 			break;
 	}
+   //@ assert c1 == 0 && c2 == 0;
 	return 0;
 }
 EXPORT_SYMBOL(strcmp);
@@ -346,8 +391,17 @@ EXPORT_SYMBOL(strlen);
  *
  * Returns pointer to the nul byte at the end of @s.
  */
+/*@ requires valid_string(s);
+    assigns s[0..strlen(s)];
+ */
 char *strreplace(char *s, char old, char new)
 {
+   /*@ loop invariant \base_addr(s) == \base_addr(\at(s,Pre));
+       loop invariant \at(s,Pre) <= s <= \at(s,Pre) + strlen(\at(s,Pre));
+       loop invariant \forall size_t i; i < s - \at(s,Pre) && \at(s[i],Pre) != old ==> \at(s[i],Pre) == s[i];
+       loop invariant \forall size_t i; i < s - \at(s,Pre) && \at(s[i],Pre) == old ==> s[i] == new;
+       loop variant strlen(s);
+    */
 	for (; *s; ++s)
 		if (*s == old)
 			*s = new;
