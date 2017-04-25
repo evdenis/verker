@@ -113,37 +113,6 @@ EXPORT_SYMBOL(strcasecmp);
  */
 
 /**
- * strcpy - Copy a %NUL terminated string
- * @dest: Where to copy the string to
- * @src: Where to copy the string from
- */
-/*@ requires valid_string(src);
-    requires \valid(dest+(0..strlen(src)));
-    requires \base_addr(dest) != \base_addr(src);
-    assigns dest[0..strlen(src)];
-    ensures \result == dest;
-    ensures \forall integer i; 0 <= i <= strlen(src) ==> dest[i] == src[i];
-    ensures valid_string(dest);
- */
-char *strcpy(char *dest, const char *src)
-{
-	char *tmp = dest;
-   //@ ghost char *old_s = src;
-
-   /*@ loop invariant \base_addr(src) == \base_addr(\at(src,Pre));
-       loop invariant \base_addr(dest) == \base_addr(\at(dest,Pre));
-       loop invariant old_s <= src <= old_s + strlen(old_s);
-       loop invariant tmp <= dest <= tmp + strlen(old_s);
-       loop invariant \forall size_t i; i < src - \at(src,Pre) ==> \at(dest[i],Pre) == \at(src[i],Pre);
-       loop variant strlen(src);
-    */
-	while ((*dest++ = *src++) != '\0')
-		/* nothing */;
-	return tmp;
-}
-EXPORT_SYMBOL(strcpy);
-
-/**
  * strncpy - Copy a length-limited, C-string
  * @dest: Where to copy the string to
  * @src: Where to copy the string from
@@ -197,48 +166,6 @@ char *strcat(char *dest, const char *src)
 	return tmp;
 }
 EXPORT_SYMBOL(strcat);
-
-/**
- * strcmp - Compare two strings
- * @cs: One string
- * @ct: Another string
- */
-/*@ requires valid_string(cs);
-    requires valid_string(ct);
-	 assigns \nothing;
-    ensures \result == -1 || \result == 0 || \result == 1;
-    behavior equal:
-       assumes \forall size_t i; i <= strlen(cs) ==> cs[i] == ct[i];
-       ensures \result == 0;
-    behavior ne:
-       assumes \exists size_t i; i <= strlen(cs) && cs[i] != ct[i];
-       ensures \result == -1 || \result == 1;
-       ensures \result == -1 ==> \exists size_t i; i <= strlen(cs) && cs[i] < ct[i];
-       ensures \result == 1 ==> \exists size_t i; i <= strlen(cs) && cs[i] >= ct[i];
- */
-int strcmp(const char *cs, const char *ct)
-{
-	unsigned char c1, c2;
-
-   /*@ loop invariant \base_addr(\at(cs,Pre)) == \base_addr(cs);
-       loop invariant \base_addr(\at(ct,Pre)) == \base_addr(ct);
-       loop invariant \at(cs,Pre) <= cs <= \at(cs,Pre) + strlen(\at(cs,Pre));
-       loop invariant \at(ct,Pre) <= ct <= \at(ct,Pre) + strlen(\at(ct,Pre));
-       loop invariant \forall size_t s; s < cs - \at(cs,Pre) ==> cs[s] == ct[s];
-       loop variant strlen(cs);
-    */
-	while (1) {
-		c1 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *cs++;
-		c2 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *ct++;
-		if (c1 != c2)
-			return c1 < c2 ? -1 : 1;
-		if (!c1)
-			break;
-	}
-   //@ assert c1 == 0 && c2 == 0;
-	return 0;
-}
-EXPORT_SYMBOL(strcmp);
 
 /**
  * strncmp - Compare two length-limited strings
@@ -361,27 +288,6 @@ char *skip_spaces(const char *str)
 	return (char *)str;
 }
 EXPORT_SYMBOL(skip_spaces);
-
-/**
- * strlen - Find the length of a string
- * @s: The string to be sized
- */
-/*@ requires valid_string(s);
-    assigns \nothing;
-    ensures \result == strlen(s);
- */
-size_t strlen(const char *s)
-{
-	const char *sc;
-   /*@ loop invariant \base_addr(s) == \base_addr(sc);
-       loop invariant s <= sc <= s + strlen(s);
-       loop variant strlen(s) - (sc - s);
-	 */
-	for (sc = s; *sc != '\0'; ++sc)
-		/* nothing */;
-	return sc - s;
-}
-EXPORT_SYMBOL(strlen);
 
 /**
  * strreplace - Replace all occurrences of character in string.
