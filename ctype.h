@@ -1,6 +1,8 @@
 #ifndef CTYPE_H
 #define CTYPE_H
 
+#define SPEC
+
 /*
  * NOTE! This ctype does not handle EOF like the standard C
  * library is required to.
@@ -28,7 +30,7 @@ extern const unsigned char *_ctype;
 
 #define isascii(c) (((unsigned char)(c))<=0x7f)
 #define toascii(c) (((unsigned char)(c))&0x7f)
-#else
+#else /* SPEC */
 
 /*@ axiomatic Ctype {
     predicate islower(integer c) = 'a' <= c <= 'z';
@@ -97,7 +99,7 @@ unsigned char __toupper(unsigned char c);
 #ifndef SPEC
 #define tolower(c) __tolower(c)
 #define toupper(c) __toupper(c)
-#else
+#else /* SPEC */
 //@ ensures \result == tolower(c);
 char tolower(const char c);
 //@ ensures \result == toupper(c);
@@ -114,5 +116,7 @@ char _tolower(const char c);
 /* Fast check for octal digit */
 //@ ensures \result <==> isodigit(c);
 int isodigit(const char c);
+
+#undef SPEC
 
 #endif
