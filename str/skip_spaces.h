@@ -9,14 +9,24 @@
 /*@ axiomatic SkipSpaces {
     logic char *skip_spaces(char *str) ;//=
        //isspace(*str) ? skip_spaces(str + 1) : str;
-    lemma order:
-       \forall char *str; str <= skip_spaces(str);
+    lemma defn:
+       \forall char *str, size_t i;
+       valid_str(str) && i <= strlen(str) &&
+       (\forall size_t j; j < i ==> isspace(str[j])) ==>
+          str + i == skip_spaces(str);
+    lemma range:
+       \forall char *str;
+       valid_str(str) ==>
+          str <= skip_spaces(str) <= str + strlen(str);
     lemma same:
-       \forall char *str; !isspace(*str) ==>
+       \forall char *str;
+       \valid(str) && !isspace(*str) ==>
           str == skip_spaces(str);
-    lemma shift:
-       \forall char *str, integer i;
-          0 <= i < skip_spaces(str) - str ==> isspace(str[i]);
+    lemma skipped_are_spaces:
+       \forall char *str, size_t i;
+       valid_str(str) &&
+       i < skip_spaces(str) - str ==>
+          isspace(str[i]);
     }
  */
 
