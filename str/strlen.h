@@ -3,9 +3,7 @@
 
 #include "kernel_definitions.h"
 
-#define SIZE_MAX ((size_t)18446744073709551615ULL)
-
-/*@ axiomatic Strings {
+/*@ axiomatic Strlen {
     predicate valid_str(char *s) =
        \exists size_t n;
           s[n] == '\0' && \valid(s+(0..n));
@@ -38,6 +36,11 @@
           valid_str(s) &&
           0 < i <= strlen(s) ==>
           strlen(s+i) < strlen(s);
+
+    lemma strlen_shift1:
+       \forall char *s;
+          valid_str(s) && *s != '\0' ==>
+          strlen(s) == 1 + strlen(s+1);
 
     lemma strlen_pointers:
        \forall char *s, *sc;

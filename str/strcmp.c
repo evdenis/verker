@@ -1,20 +1,43 @@
 #include "strcmp.h"
 
+/*@ axiomatic StrCmp {
+    logic integer cmp(char a, char b) =
+       a == b ? 0 : a > b ? 1 : -1;
+
+    logic integer strncmp(char *cs, char *ct, integer n) =
+       n == -1 ? 0 : (cs[n] == ct[n] ? strncmp(cs, ct, n - 1) : cmp(cs[n], ct[n]));
+    logic integer strcmp(char *cs, char *ct) = strncmp(cs, ct, strlen(cs));
+    //predicate strncmp(char *cs, char *ct, size_t n) = strncmp(cs, ct, n) == 0;
+    //predicate strcmp(char *cs, char *ct) = strcmp(cs, ct) == 0;
+
+    lemma defn1:
+       \forall char *cs, *ct, size_t n;
+       \valid(cs+(0..n)) && \valid(ct+(0..n)) &&
+       (\forall size_t i; i <= n ==> cs[i] == ct[i]) ==>
+          strncmp(cs, ct, n) == 0;
+    lemma defn2:
+       \forall char *cs, *ct, size_t n, k;
+       \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
+       (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
+       cs[k] < ct[k] ==>
+          strncmp(cs, ct, n) == -1;
+    lemma defn3:
+       \forall char *cs, *ct, size_t n, k;
+       \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
+       (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
+       cs[k] > ct[k] ==>
+          strncmp(cs, ct, n) == 1;
+    lemma range:
+       \forall char *cs, *ct, size_t n;
+       \valid(cs+(0..n)) && \valid(ct+(0..n)) ==>
+          -1 <= strncmp(cs, ct, n) <= 1;
+    }
+ */
+
 /*@ requires valid_str(cs);
     requires valid_str(ct);
     assigns \nothing;
-    ensures \result == -1 || \result == 0 || \result == 1;
-    behavior equal:
-       assumes \forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i];
-       ensures \result == 0;
-    behavior less:
-       assumes \exists integer i; 0 <= i <= strlen(cs) && cs[i] < ct[i];
-       ensures \result == -1;
-    behavior greater:
-       assumes \exists integer i; 0 <= i <= strlen(cs) && cs[i] > ct[i];
-       ensures \result == 1;
-    complete behaviors;
-    disjoint behaviors;
+    ensures \result == strcmp(cs, ct);
  */
 int strcmp(const char *cs, const char *ct)
 {
@@ -22,8 +45,7 @@ int strcmp(const char *cs, const char *ct)
 
 	/*@ loop invariant \base_addr(\at(cs,Pre)) == \base_addr(cs);
 	    loop invariant \base_addr(\at(ct,Pre)) == \base_addr(ct);
-	    loop invariant valid_str(cs);
-	    loop invariant valid_str(ct);
+	    loop invariant valid_str(cs) && valid_str(ct);
 	    loop invariant \at(cs,Pre) <= cs <= \at(cs,Pre) + strlen(\at(cs,Pre));
 	    loop invariant \at(ct,Pre) <= ct <= \at(ct,Pre) + strlen(\at(ct,Pre));
 	    loop invariant cs - \at(cs,Pre) == ct - \at(ct,Pre);
