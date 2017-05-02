@@ -1,11 +1,27 @@
 #include "strrchr.h"
 
+/*@ axiomatic Strrchr {
+    logic char *strrchr_helper(char *s, char c, char *pos) =
+       *s == c ? (*s ? strrchr_helper(s+1,c,s) : pos) : (*s ? strrchr_helper(s+1,c,pos) : pos);
+    logic char *strrchr(char *s, char c) = strrchr_helper(s, c, \null);
+
+    lemma mem:
+       \forall char *str, char c;
+       valid_str(str) ==>
+          (str <= strrchr(str, c) <= str + strlen(str) &&
+           \base_addr(str) == \base_addr(strrchr(str, c))) ^^
+          strrchr(str, c) == \null;
+    lemma defn:
+       \forall char *str, char c;
+       valid_str(str)
+    }
+ */
+
 /*@ requires valid_str(s);
     requires ((char %)c) == c;
     assigns \nothing;
     ensures \base_addr(\result) == \base_addr(s);
     ensures \result == \null || s <= \result <= s + strlen(s) && *\result == c;
-    ensures \forall integer i; 0 <= i <= strlen(s) &&;
  */
 char *strrchr(const char *s, int c)
 {
