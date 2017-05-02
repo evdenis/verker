@@ -12,7 +12,8 @@
     lemma defn:
        \forall char *str, size_t i;
        valid_str(str) && i <= strlen(str) &&
-       (\forall size_t j; j < i ==> isspace(str[j])) ==>
+       (\forall size_t j; j < i ==> isspace(str[j])) &&
+       !isspace(str[i]) ==>
           str + i == skip_spaces(str);
     lemma deref:
        \forall char *str; valid_str(str) ==>
