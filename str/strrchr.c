@@ -1,6 +1,6 @@
 #include "strrchr.h"
 
-/*@ axiomatic Strrchr {
+/* axiomatic Strrchr {
     logic char *strrchr_helper(char *s, char c, char *pos) =
        *s == c ? (*s ? strrchr_helper(s+1,c,s) : pos) : (*s ? strrchr_helper(s+1,c,pos) : pos);
     logic char *strrchr(char *s, char c) = strrchr_helper(s, c, \null);
@@ -20,8 +20,16 @@
 /*@ requires valid_str(s);
     requires ((char %)c) == c;
     assigns \nothing;
-    ensures \base_addr(\result) == \base_addr(s);
-    ensures \result == \null || s <= \result <= s + strlen(s) && *\result == c;
+    behavior found:
+       assumes \exists integer i; 0 <= i <= strlen(s); s[i] == c;
+       ensures s <= \result <= s + strlen(s);
+       ensures \forall integer i; \result < i < s + strlen(s) ==> s[i] != c;
+       ensures *\result == c;
+    behavior not_found:
+       assumes \exists integer i; 0 <= i <= strlen(s); s[i] == c;
+       ensures \result == \null;
+    complete behaviors;
+    disjoint behaviors;
  */
 char *strrchr(const char *s, int c)
 {
