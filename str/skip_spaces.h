@@ -45,6 +45,10 @@
 /*@ requires valid_str(str);
     assigns \nothing;
     ensures \result == skip_spaces(str);
+    ensures \base_addr(\result) == \base_addr(str);
+    ensures str <= \result <= str + strlen(str);
+    ensures !isspace(*\result);
+    ensures \forall char *p; str <= p < \result ==> isspace(*p);
  */
 char *skip_spaces(const char *str);
 
