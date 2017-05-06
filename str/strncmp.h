@@ -2,6 +2,7 @@
 #define __STRNCMP_H__
 
 #include "kernel_definitions.h"
+#include "strnlen.h"
 
 int strncmp(const char *cs, const char *ct, size_t count);
 

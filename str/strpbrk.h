@@ -2,6 +2,7 @@
 #define __STRPBRK_H__
 
 #include "kernel_definitions.h"
+#include "strlen.h"
 
 char *strpbrk(const char *cs, const char *ct);
 
