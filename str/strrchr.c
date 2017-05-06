@@ -18,15 +18,15 @@
  */
 
 /*@ requires valid_str(s);
-    requires ((char %)c) == c;
     assigns \nothing;
     behavior found:
-       assumes \exists integer i; 0 <= i <= strlen(s); s[i] == c;
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char %)c;
        ensures s <= \result <= s + strlen(s);
-       ensures \forall integer i; \result < i < s + strlen(s) ==> s[i] != c;
-       ensures *\result == c;
+       ensures *\result == (char %)c;
+       ensures \forall char *p; \result < p <= s + strlen(s) ==>
+               *p != (char %)c;
     behavior not_found:
-       assumes \exists integer i; 0 <= i <= strlen(s); s[i] == c;
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char %)c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;
@@ -34,14 +34,14 @@
 char *strrchr(const char *s, int c)
 {
 	const char *last = NULL;
-	/*@ loop invariant \base_addr(s) == \base_addr(\at(s,Pre));
-	    loop invariant \at(s,Pre) <= s <= \at(s,Pre) + strlen(\at(s,Pre));
+	//@ ghost char *os = s;
+	/*@ loop invariant os <= s <= os + strlen(os);
 	    loop invariant valid_str(s);
-	    loop invariant last == \null || *last == c;
-	    loop variant strlen(\at(s,Pre)) - (s - \at(s,Pre));
+	    loop invariant last == \null || *last == (char %)c;
+	    loop variant strlen(os) - (s - os);
 	 */
 	do {
-		if (*s == (char)c)
+		if (*s == (char)/*@%*/c)
 			last = s;
 	} while (*s++);
 	//@ assert s[-1] == '\0';
