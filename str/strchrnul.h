@@ -14,6 +14,7 @@
     behavior exists:
        assumes \exists integer i; 0 <= i < strlen(s) && s[i] == (char %) c;
        ensures *\result == (char %) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char %) c;
     complete behaviors;
     disjoint behaviors;
  */
