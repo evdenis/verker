@@ -1,26 +1,18 @@
 #include "strcpy.h"
 
-
-/*@ requires valid_str(src);
-    requires \valid(dest+(0..strlen(src)));
-    requires \base_addr(dest) != \base_addr(src);
-    assigns dest[0..strlen(src)];
-    ensures valid_str(dest);
-    ensures \result == dest;
-    ensures \forall size_t i; i <= strlen(src) ==> \result[i] == src[i];
- */
 char *strcpy(char *dest, const char *src)
 {
 	char *tmp = dest;
-	//@ ghost char *old_s = src;
-	//@ assert valid_str(old_s);
+	//@ ghost char *osrc = src;
+	//@ assert valid_str(osrc);
 
-	/*@ loop invariant old_s <= src <= old_s + strlen(old_s);
-	    loop invariant tmp <= dest <= tmp + strlen(old_s);
+	/*@ loop invariant osrc <= src <= osrc + strlen(osrc);
+	    loop invariant tmp <= dest <= tmp + strlen(osrc);
 	    loop invariant valid_str(src);
-	    loop invariant dest - tmp == src - old_s;
-	    loop invariant \forall size_t i; i < src - old_s ==> tmp[i] == old_s[i];
-	    loop variant strlen(old_s) - (src - old_s);
+	    loop invariant dest - tmp == src - osrc;
+	    loop invariant strlen(src) == strlen(osrc) - (src - osrc);
+	    loop invariant \forall integer i; 0 <= i < src - osrc ==> tmp[i] == osrc[i];
+	    loop variant strlen(osrc) - (src - osrc);
 	*/
 	while ((*dest++ = *src++) != '\0')
 		/* nothing */;
