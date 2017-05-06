@@ -4,17 +4,16 @@
 #include "strlen.h"
 
 /*@ requires valid_str(s);
-    requires c == ((char %) c);
     assigns \nothing;
     ensures \base_addr(\result) == \base_addr(s);
     ensures s <= \result <= s + strlen(s);
     behavior not_exists:
-       assumes \forall integer i; 0 <= i < strlen(s) ==> s[i] != c;
+       assumes \forall integer i; 0 <= i < strlen(s) ==> s[i] != (char %) c;
        ensures \result == s + strlen(s);
        ensures *\result == '\0';
     behavior exists:
-       assumes \exists integer i; 0 <= i < strlen(s) && s[i] == c;
-       ensures *\result == c;
+       assumes \exists integer i; 0 <= i < strlen(s) && s[i] == (char %) c;
+       ensures *\result == (char %) c;
     complete behaviors;
     disjoint behaviors;
  */

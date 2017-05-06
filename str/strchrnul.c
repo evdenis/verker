@@ -2,13 +2,15 @@
 
 char *strchrnul(const char *s, int c)
 {
+	//@ ghost char *os = s;
 	/*@ loop invariant valid_str(s);
-	    loop invariant \base_addr(s) == \base_addr(\at(s,Pre));
-	    loop invariant \at(s,Pre) <= s <= \at(s,Pre) + strlen(\at(s,Pre));
-	    loop invariant \forall integer i; 0 <= i < s - \at(s,Pre) ==> \at(s[i],Pre) != c;
-	    loop variant strlen(\at(s,Pre)) - (s - \at(s,Pre));
+	    loop invariant os <= s <= os + strlen(os);
+	    loop invariant \forall char *p; os <= p < s ==> *p != (char %) c;
+	    loop variant strlen(os) - (s - os);
 	 */
-	while (*s && *s != (char)c)
+	while (*s && *s != (char) /*@%*/ c)
 		s++;
+	//@ assert (char %) c == '\0' ==> *s == '\0';
+	//@ assert *s == '\0' ==> s - os == strlen(os);
 	return (char *)s;
 }
