@@ -38,9 +38,17 @@
  */
 
 /*@ requires valid_str(s);
-    requires c == ((char %) c);
     assigns \nothing;
-    ensures \result == strchr(s, (char %) c);
+    behavior not_exists:
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char %) c;
+       ensures \result == \null;
+    behavior exists:
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char %) c;
+       ensures s <= \result <= s + strlen(s);
+       ensures *\result == (char %) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char %) c;
+    complete behaviors;
+    disjoint behaviors;
  */
 char *strchr(const char *s, int c);
 
