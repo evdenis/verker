@@ -1,5 +1,4 @@
-#include <defs.h>
-#include <kstrbool.h>
+#include "kstrbool.h"
 
 int kstrtobool(const char *s, bool *res)
 {
@@ -37,4 +36,3 @@ int kstrtobool(const char *s, bool *res)
 
 	return -EINVAL;
 }
-EXPORT_SYMBOL(kstrtobool);

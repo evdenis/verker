@@ -1,6 +1,8 @@
 #ifndef KSTRBOOL_H
 #define KSTRBOOL_H
 
+#include "kernel_definitions.h"
+
 /*@ predicate kstrtobool_fmt_false(char *s) =
        s[0] == 'N' || s[0] == 'n' || s[0] == '0' ||
        ((s[0] == 'o' || s[0] == 'O') &&
