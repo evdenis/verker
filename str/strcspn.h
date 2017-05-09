@@ -4,6 +4,12 @@
 #include "kernel_definitions.h"
 #include "strlen.h"
 
+/**
+ * strcspn - Calculate the length of the initial substring of @s which does not contain letters in @reject
+ * @s: The string to be searched
+ * @reject: The string to avoid
+ */
+
 /*@ requires valid_str(s);
     requires valid_str(reject);
     assigns \nothing;

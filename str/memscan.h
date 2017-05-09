@@ -3,6 +3,16 @@
 
 #include "kernel_definitions.h"
 
+/**
+ * memscan - Find a character in an area of memory.
+ * @addr: The memory area
+ * @c: The byte to search for
+ * @size: The size of the area.
+ *
+ * returns the address of the first occurrence of @c, or 1 byte past
+ * the area if @c is not found
+ */
+
 /*@ requires \typeof(addr) <: \type(u8 *);
     requires \valid((u8 *)addr+(0..size-1));
     assigns \nothing;

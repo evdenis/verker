@@ -4,6 +4,12 @@
 #include "kernel_definitions.h"
 #include "strlen.h"
 
+/**
+ * strspn - Calculate the length of the initial substring of @s which only contain letters in @accept
+ * @s: The string to be searched
+ * @accept: The string to search for
+ */
+
 /*@ requires valid_str(s);
     requires valid_str(accept);
     assigns \nothing;

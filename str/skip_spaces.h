@@ -42,6 +42,13 @@
     }
  */
 
+/**
+ * skip_spaces - Removes leading whitespace from @str.
+ * @str: The string to be stripped.
+ *
+ * Returns a pointer to the first non-whitespace character in @str.
+ */
+
 /*@ requires valid_str(str);
     assigns \nothing;
     ensures \result == skip_spaces(str);

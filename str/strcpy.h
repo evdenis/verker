@@ -3,6 +3,12 @@
 
 #include "strlen.h"
 
+/**
+ * strcpy - Copy a %NUL terminated string
+ * @dest: Where to copy the string to
+ * @src: Where to copy the string from
+ */
+
 /*@ requires valid_str(src);
     requires \valid(dest+(0..strlen(src)));
     requires \base_addr(dest) != \base_addr(src);

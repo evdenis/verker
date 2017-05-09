@@ -60,6 +60,11 @@
     }
  */
 
+/**
+ * strlen - Find the length of a string
+ * @s: The string to be sized
+ */
+
 /*@ requires valid_str(s);
     assigns \nothing;
     ensures \result == strlen(s);

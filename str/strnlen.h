@@ -81,6 +81,12 @@
     }
  */
 
+/**
+ * strnlen - Find the length of a length-limited string
+ * @s: The string to be sized
+ * @count: The maximum number of bytes to search
+ */
+
 /*@ requires valid_strn(s, count);
     assigns \nothing;
     ensures \result == strnlen(s, count);

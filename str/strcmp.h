@@ -48,6 +48,12 @@
     }
  */
 
+/**
+ * strcmp - Compare two strings
+ * @cs: One string
+ * @ct: Another string
+ */
+
 /*@ requires valid_str(cs);
     requires valid_str(ct);
     assigns \nothing;

@@ -37,6 +37,12 @@
     }
  */
 
+/**
+ * strchr - Find the first occurrence of a character in a string
+ * @s: The string to be searched
+ * @c: The character to search for
+ */
+
 /*@ requires valid_str(s);
     assigns \nothing;
     behavior not_exists:

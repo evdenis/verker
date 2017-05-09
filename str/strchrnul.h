@@ -3,6 +3,15 @@
 
 #include "strlen.h"
 
+/**
+ * strchrnul - Find and return a character in a string, or end of string
+ * @s: The string to be searched
+ * @c: The character to search for
+ *
+ * Returns pointer to first occurrence of 'c' in s. If c is not found, then
+ * return a pointer to the null byte at the end of s.
+ */
+
 /*@ requires valid_str(s);
     assigns \nothing;
     ensures \base_addr(\result) == \base_addr(s);
