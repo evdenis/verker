@@ -2,6 +2,7 @@
 #define __STRNCPY_H__
 
 #include "kernel_definitions.h"
+#include "strnlen.h"
 
 char *strncpy(char *dest, const char *src, size_t count);
 

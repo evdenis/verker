@@ -49,6 +49,7 @@
     ensures str <= \result <= str + strlen(str);
     ensures !isspace(*\result);
     ensures \forall char *p; str <= p < \result ==> isspace(*p);
+    ensures valid_str(str);
  */
 char *skip_spaces(const char *str);
 

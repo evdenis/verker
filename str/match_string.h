@@ -4,6 +4,6 @@
 #include "kernel_definitions.h"
 #include "strcmp.h"
 
-int match_string(const char * const *array, size_t n, const char *string);
+ssize_t match_string(const char * const *array, size_t n, const char *string);
 
 #endif // __MATCH_STRING_H__

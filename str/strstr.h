@@ -2,7 +2,7 @@
 #define __STRSTR_H__
 
 #include "kernel_definitions.h"
-#include "memcmp.h"
+//#include "memcmp.h"
 #include "strlen.h"
 
 char *strstr(const char *s1, const char *s2);

@@ -2,6 +2,7 @@
 #define __SYSFS_STREQ_H__
 
 #include "kernel_definitions.h"
+#include "strlen.h"
 
 bool sysfs_streq(const char *s1, const char *s2);
 
