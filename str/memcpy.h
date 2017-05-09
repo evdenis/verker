@@ -13,6 +13,14 @@
  * or memcpy_fromio() instead.
  */
 
+/*@ requires \typeof(src) <: \type(char *);
+    requires \typeof(dest) <: \type(char *);
+    requires \valid((char *)src+(0..count-1));
+    requires \valid((char *)dest+(0..count-1));
+    assigns ((char *)dest)[0..count-1];
+    ensures \forall integer i; 0 <= i < count ==>
+            ((char *)dest)[i] == ((char *)src)[i];
+ */
 void *memcpy(void *dest, const void *src, size_t count);
 
 #endif // __MEMCPY_H__
