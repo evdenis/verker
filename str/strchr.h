@@ -11,28 +11,35 @@
     lemma mem:
        \forall char *str, c;
        valid_str(str) ==>
-          ((str <= strchr(str, c) <= str + strlen(str))  &&
-          \base_addr(str) == \base_addr(strchr(str, c))) ^^
+          (str <= strchr(str, c) <= str + strlen(str)) ^^
           strchr(str, c) == \null;
     lemma iter_one:
        \forall char *str, c;
        valid_str(str) && *str != c && *str != '\0' ==>
-       strchr(str, c) == strchr(str+1, c);
-    lemma at_end:
+          strchr(str, c) == strchr(str+1, c);
+    lemma res:
        \forall char *str, c;
        valid_str(str) ==>
           strchr(str, c) == \null ^^ *strchr(str, c) == c;
+    lemma at_end_zero:
+       \forall char *str, c;
+       *str == '\0' ==>
+          strchr(str, c) == \null;
+    lemma at_end_char:
+       \forall char *str, c;
+       *str == c ==>
+          strchr(str, c) == str;
 
     lemma defn:
-       \forall char *str, c, size_t i;
-       valid_str(str) && i <= strlen(str) &&
-       (\forall size_t j; j < i ==> str[j] != c) &&
+       \forall char *str, c, integer i;
+       valid_str(str) && 0 <= i <= strlen(str) &&
+       (\forall integer j; 0 <= j < i ==> str[j] != c) &&
        str[i] == c ==>
           str + i == strchr(str, c);
     lemma skipped:
-       \forall char *str, c, size_t i;
+       \forall char *str, c, integer i;
        valid_str(str) &&
-       i < strchr(str, c) - str <= strlen(str) ==>
+       0 <= i < strchr(str, c) - str <= strlen(str) ==>
           str[i] != c;
     }
  */
@@ -45,6 +52,7 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
+    ensures \result == strchr(s, (char %) c);
     behavior not_exists:
        assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char %) c;
        ensures \result == \null;
