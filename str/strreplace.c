@@ -9,17 +9,18 @@
  */
 char *strreplace(char *s, char old, char new)
 {
-	/*@ loop invariant \base_addr(s) == \base_addr(\at(s,Pre));
-	    loop invariant valid_str(s);
-	    loop invariant \at(s,Pre) <= s <= \at(s,Pre) + strlen(\at(s,Pre));
-	    loop invariant \forall integer i;
-	       (0 <= i < s - \at(s,Pre)) &&
-	       \at(s[\at(i,Here)],Pre) != old ==> s[i] == old;
-	    loop invariant \forall integer i;
-	       (0 <= i < s - \at(s,Pre)) &&
-	       \at(s[\at(i,Here)],Pre) == old ==> s[i] == new;
-	    loop assigns \at(s[0..strlen(s)],Pre);
-	    loop variant strlen(\at(s,Pre)) - (s - \at(s,Pre));
+	//@ ghost char *os = s;
+	/*@ loop invariant valid_str(s);
+	    loop invariant os <= s <= os + strlen(os);
+	    loop invariant s == 
+	    //loop invariant \forall char *p;
+	    //   os <= p < s &&
+	    //   \at(*p,Pre) != old ==> *p == \at(*p,Pre);
+	    loop invariant \forall char *p;
+	       os <= p < s &&
+	       \at(*p,Pre) == old ==> *p == new;
+	    loop assigns os[0..strlen(os)];
+	    loop variant strlen(os) - (s - os);
 	 */
 	for (; *s; ++s)
 		if (*s == old)
