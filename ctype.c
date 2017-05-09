@@ -1,5 +1,4 @@
-#include <defs.h>
-#include <ctype.h>
+#include "ctype.h"
 
 #define _U	0x01	/* upper */
 #define _L	0x02	/* lower */

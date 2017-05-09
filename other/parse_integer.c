@@ -1,5 +1,4 @@
-#include <defs.h>
-#include <ctype.h>
+#include "../ctype.h"
 
 #define KSTRTOX_OVERFLOW      (1U << 31)
 

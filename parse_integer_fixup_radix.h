@@ -1,4 +1,7 @@
-#pragma once
+#ifndef ___PARSE_INTEGER_FIXUP_RADIX__
+#define ___PARSE_INTEGER_FIXUP_RADIX__ 1
+
+#include "ctype.h"
 
 /*@ axiomatic IntBase {
     predicate is_hex(char *s) = s[0] == '0' && tolower(s[1]) == 'x' && isxdigit(s[2]);
@@ -23,3 +26,5 @@
        ensures \result == \old(s) + 2;
  */
 const char *_parse_integer_fixup_radix(const char *s, unsigned int *base);
+
+#endif // ___PARSE_INTEGER_FIXUP_RADIX__

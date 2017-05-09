@@ -1,6 +1,8 @@
 #ifndef CTYPE_H
 #define CTYPE_H
 
+#include "kernel_definitions.h"
+
 #define SPEC
 
 /*

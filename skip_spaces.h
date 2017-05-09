@@ -2,7 +2,7 @@
 #define __SKIP_SPACES_H__
 
 #include "kernel_definitions.h"
-#include "../ctype.h"
+#include "ctype.h"
 #include "strlen.h"
 
 

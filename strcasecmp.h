@@ -3,7 +3,7 @@
 
 #include "kernel_definitions.h"
 #include "strlen.h"
-#include "../ctype.h"
+#include "ctype.h"
 
 /*@ requires valid_str(s1);
     requires valid_str(s2);
