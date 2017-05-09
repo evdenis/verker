@@ -2,6 +2,8 @@
 #define __STRNCASECMP_H__
 
 #include "kernel_definitions.h"
+#include "strnlen.h"
+#include "../ctype.h"
 
 /**
  * strncasecmp - Case insensitive, length-limited string comparison
