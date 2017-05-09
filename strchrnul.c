@@ -6,6 +6,7 @@ char *strchrnul(const char *s, int c)
 	/*@ loop invariant valid_str(s);
 	    loop invariant os <= s <= os + strlen(os);
 	    loop invariant \forall char *p; os <= p < s ==> *p != (char %) c;
+	    loop invariant strchrnull(os, (char %)c) == strchrnull(s, (char %)c);
 	    loop variant strlen(os) - (s - os);
 	 */
 	while (*s && *s != (char) /*@%*/ c)
