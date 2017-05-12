@@ -3,8 +3,16 @@
 
 #include "kernel_definitions.h"
 
+/*@ axiomatic CheckBytes8 {
+    logic u8 *check_bytes8(u8 *start, u8 value, integer bytes) =
+       bytes == 0 ? (u8 *) \null :
+          (*start != value ? start : check_bytes8(start + 1, value, bytes - 1));
+    }
+ */
+
 /*@ requires \valid(start+(0..bytes-1));
     assigns \nothing;
+    ensures \result == check_bytes8(start, value, bytes);
     behavior found:
        assumes \exists u8 *i; start <= i < start + bytes && *i != value;
        ensures start <= (u8 *)\result <= start + bytes;
