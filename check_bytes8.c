@@ -19,5 +19,6 @@ static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 		bytes--;
 	}
 	//@ assert bytes == 0;
+	//@ assert check_bytes8(ostart, value, obytes) == \null;
 	return NULL;
 }
