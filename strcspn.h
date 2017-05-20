@@ -2,6 +2,7 @@
 #define __STRCSPN_H__
 
 #include "kernel_definitions.h"
+#include "strspn.h"
 #include "strlen.h"
 
 /**
@@ -10,9 +11,36 @@
  * @reject: The string to avoid
  */
 
+/*@ axiomatic StrCSpn {
+    logic integer strcspn(char *s, char *reject);
+
+    lemma strcspn_strend:
+       \forall char *s, *reject;
+          *s == '\0' ==>
+             strcspn(s, reject) == 0;
+
+    lemma strcspn_empty_reject:
+       \forall char *s, *reject;
+          valid_str(s) && valid_str(reject) && *reject == '\0' ==>
+             strcspn(s, reject) == strlen(s);
+
+    lemma strcspn_range:
+       \forall char *s, *reject;
+          valid_str(s) && valid_str(reject) ==>
+             0 <= strcspn(s, reject) <= strlen(s);
+
+    lemma strcspn_shift:
+       \forall char *s, *reject;
+          valid_str(s) && valid_str(reject) && *s != '\0' &&
+          !in_array(reject, *s) ==>
+             strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+    }
+ */
+
 /*@ requires valid_str(s);
     requires valid_str(reject);
     assigns \nothing;
+    ensures \result == strcspn(s, reject);
     ensures 0 <= \result <= strlen(s);
     ensures \forall char *p, *t;
             s <= p < s + \result &&
