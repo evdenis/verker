@@ -24,8 +24,8 @@ int strcasecmp(const char *s1, const char *s2)
 	    \exists integer i; 0 <= i <= strlen(os1) &&
 	            (\forall integer j; 0 <= j < i ==> tolower(os1[j]) == tolower(os2[j])) &&
 	            tolower(os1[i]) != tolower(os2[i]) &&
-               res == tolower(os1[i]) - tolower(os2[i]) &&
-               i == s1 - os1 - 1;
+	       res == tolower(os1[i]) - tolower(os2[i]) &&
+	       i == s1 - os1 - 1;
 	 */
 	return c1 - c2;
 }
