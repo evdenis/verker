@@ -35,9 +35,12 @@ char *strrchr(const char *s, int c)
 {
 	const char *last = NULL;
 	//@ ghost char *os = s;
+
 	/*@ loop invariant os <= s <= os + strlen(os);
-	    loop invariant valid_str(s);
-	    loop invariant last == \null || *last == (char %)c;
+	    loop invariant last == \null ^^ ((os <= last < s) && (*last == (char %)c));
+	    loop invariant (last != \null) <==> (\exists char *p; os <= p < s && *p == (char %) c);
+	    loop invariant (last == \null) <==> (\forall char *p; os <= p < s ==> *p != (char %)c);
+	    loop invariant last != \null ==> (\forall char *p; last < p < s ==> *p != (char %)c);
 	    loop variant strlen(os) - (s - os);
 	 */
 	do {
