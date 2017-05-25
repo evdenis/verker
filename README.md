@@ -45,8 +45,6 @@ $ make verify-check_bytes8
 
 # Статус доказательства
 
-Здесь будет табличка, где сказано на какой стадии (доказаны, доказаны с логической функцией, не доказаны, не разработаны и т.д.) сейчас спецификации для конкретной функции. Сейчас это можно попростому определить так: контракт в *.h файле - значит все доказано.
-
 | ID | Function | Status | Logic function | Comment |
 |----|----------|--------|----------------|---------|
 | 1 | check_bytes8 | proved | proved | |
@@ -56,19 +54,19 @@ $ make verify-check_bytes8
 | 5 | memscan | proved | not required | |
 | 6 | skip_spaces | proved | proved | requires too strict (remove strlen) |
 | 7 | strcasecmp | proved | | |
-| 8 | strcat | | | |
+| 8 | strcat | | not required | |
 | 9 | strchr | proved | proved | |
 | 10 | strchrnul | proved | proved | |
 | 11 | strcmp | proved | | |
 | 12 | strcpy | proved | not required | use strcmp logic function |
 | 13 | strcspn | proved | | |
-| 14 | strim | | | |
+| 14 | strim | | not required | |
 | 15 | strlen | proved | proved | |
 | 16 | strncasecmp | | | |
-| 17 | strncat | | | |
+| 17 | strncat | | not required | |
 | 18 | strnchr | proved | | |
 | 19 | strncmp | | | |
-| 20 | strncpy | | | |
+| 20 | strncpy | | not required | |
 | 21 | strnlen | proved | proved | |
 | 22 | strnstr | | | |
 | 23 | strpbrk | | | |
@@ -78,8 +76,8 @@ $ make verify-check_bytes8
 | 27 | strspn | proved | | |
 | 28 | strstr | | | |
 | 29 | sysfs_streq | | | |
-| 30 | strlcat | | | |
-| 31 | strlcpy | | | |
+| 30 | strlcat | | not required | |
+| 31 | strlcpy | | not required | |
 | 32 | memmove | proved | not required | use memcmp logic function at ensures |
 | 33 | memcpy | proved | not required | use memcmp logic function at ensures |
 | 34 | memset | proved | not required | |
