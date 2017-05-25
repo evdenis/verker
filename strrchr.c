@@ -48,5 +48,7 @@ char *strrchr(const char *s, int c)
 			last = s;
 	} while (*s++);
 	//@ assert s[-1] == '\0';
+	//@ assert s == os + strlen(os) + 1;
+	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char %) c) ==> (last != \null);
 	return (char *)last;
 }
