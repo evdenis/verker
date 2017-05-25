@@ -81,7 +81,7 @@ $ make verify-check_bytes8
 | 30 | strlcat | | | |
 | 31 | strlcpy | | | |
 | 32 | memmove | proved | not required | use memcmp logic function at ensures |
-| 33 | memcpy | proved | | not required | use memcmp logic function at ensures |
+| 33 | memcpy | proved | not required | use memcmp logic function at ensures |
 | 34 | memset | proved | not required | |
 | 35 | kstrtobool | proved | not required | |
 | 36 | parse\_int\_radix | proved | not required | |
