@@ -22,3 +22,16 @@ static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 	//@ assert check_bytes8(ostart, value, obytes) == \null;
 	return NULL;
 }
+
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 1) {
+      check_bytes8((const u8 *)data, data[size - 1], size - 1);
+   }
+   return 0;
+}
+#endif
