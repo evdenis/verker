@@ -16,6 +16,31 @@
  * Same semantics, slimmer shape. ;)
  */
 
+/*@ requires valid_str(ct);
+    requires \valid(s);
+    requires valid_str(*s) ^^ *s == \null;
+    behavior input_null:
+       assumes *s == \null;
+       assigns \nothing;
+       ensures \result == \null;
+    behavior input_strpbrk_null:
+       assumes valid_str(*s);
+       assumes strpbrk(*s, ct) == \null;
+       assigns *s;
+       ensures \result == \old(*s);
+       ensures *s == \null;
+    behavior input_strpbrk_not_null:
+       assumes valid_str(*s);
+       assumes strpbrk(*s, ct) != \null;
+       assigns *strpbrk(\old(*s), ct);
+       ensures \result == \old(*s);
+       ensures *s == strpbrk(\old(*s), ct) + 1;
+       ensures *strpbrk(\old(*s), ct) == '\0';
+       ensures valid_str(\result);
+       //ensures strlen(\result) == strpbrk(\old(*s), ct) - \old(*s);
+    complete behaviors;
+    disjoint behaviors;
+ */
 char *strsep(char **s, const char *ct);
 
 #endif // __STRSEP_H__

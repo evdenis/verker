@@ -72,7 +72,7 @@ $ make verify-check_bytes8
 | 23 | strpbrk | proved | proved | |
 | 24 | strrchr | proved | | |
 | 25 | strreplace | | | |
-| 26 | strsep | | | |
+| 26 | strsep | proved | not required | |
 | 27 | strspn | proved | proved | |
 | 28 | strstr | | | |
 | 29 | sysfs_streq | | | |
