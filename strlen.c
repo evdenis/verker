@@ -15,11 +15,12 @@ size_t strlen(const char *s)
 
 #ifdef OUT_OF_TASK
 
-int LLVMFuzzerTestOneInput(uint8_t *data,
+int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-    data[size - 1] = '\0';
-    strlen(data);
-    return 0;
+   if (size > 0 && data[size - 1] == '\0') {
+      strlen((const char *)data);
+   }
+   return 0;
 }
 #endif
