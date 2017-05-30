@@ -59,7 +59,7 @@ $ make verify-check_bytes8
 | 10 | strchrnul | proved | proved | |
 | 11 | strcmp | proved | | |
 | 12 | strcpy | proved | not required | use strcmp logic function |
-| 13 | strcspn | proved | | |
+| 13 | strcspn | proved | proved | |
 | 14 | strim | | not required | |
 | 15 | strlen | proved | proved | |
 | 16 | strncasecmp | | | |

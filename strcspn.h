@@ -29,11 +29,17 @@
           valid_str(s) && valid_str(reject) ==>
              0 <= strcspn(s, reject) <= strlen(s);
 
-    lemma strcspn_shift:
+    lemma strcspn_shift1:
        \forall char *s, *reject;
           valid_str(s) && valid_str(reject) && *s != '\0' &&
           !in_array(reject, *s) ==>
-             strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+             strcspn(s, reject) == strcspn(s + 1, reject) + 1;
+
+    lemma strcspn_stop_in_reject:
+       \forall char *s, *reject;
+          valid_str(s) && valid_str(reject) && *s != '\0' &&
+          in_array(reject, *s) ==>
+             strcspn(s, reject) == 0;
     }
  */
 

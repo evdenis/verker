@@ -20,7 +20,7 @@ size_t strcspn(const char *s, const char *reject)
 		/*@ loop invariant reject <= r <= reject + strlen(reject);
 		    loop invariant \forall char *c; reject <= c < r ==> *c != *p;
 		    loop invariant valid_str(r);
-		    loop invariant in_array(reject, *p) <==> in_array(r, *p);
+		    loop invariant in_array(reject, *p) ==> in_array(r, *p);
 		    loop variant strlen(reject) - (r - reject);
 		 */
 		for (r = reject; *r != '\0'; ++r) {
