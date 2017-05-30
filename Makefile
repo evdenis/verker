@@ -1,8 +1,11 @@
 CC               := gcc
 CFLAGS           := -Wall -Werror
+CLANG            := clang
+CLANGFLAGS       := -g -fsanitize=address -fsanitize-coverage=trace-pc-guard
 GEN_CFLAGS       := -w
 EXT_CFLAGS       := -DOUT_OF_TASK
 BINDIR           := bin
+FUZZDIR          := fzz
 GENDIR           := gen
 EACSLDIR         := $(GENDIR)/eacsl
 RTEDIR           := $(GENDIR)/rte
@@ -23,17 +26,21 @@ FRAMAC_EACSL_LIB := $(FRAMAC_ESHARE)/e_acsl.c $(FRAMAC_EMSHARE)/e_acsl_bittree.c
 
 
 CFLAGS += $(EXT_CFLAGS)
+CLANGFLAGS += $(EXT_CFLAGS)
 
 SRCFILES      := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
 BINFILES      := $(patsubst ./%.c, $(BINDIR)/%,     $(SRCFILES))
+FUZZFILES     := $(patsubst ./%.c, $(FUZZDIR)/%,    $(SRCFILES))
 EACSLFILES    := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
 RTEFILES      := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
 VALFILES      := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
 EACSLBINFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
 
-all: build ## Default target. Build each program.
+all: fuzz ## Default target
 
 build: $(BINDIR) $(BINFILES) ## Build each program.
+
+fuzz: $(FUZZDIR) $(FUZZFILES) ## Fuzz each program.
 
 eacsl: $(GENDIR) $(EACSLDIR) $(EACSLFILES) ## Generate E-ACSL programs.
 
@@ -45,6 +52,9 @@ val: $(GENDIR) $(VALDIR) $(VALFILES) ## Run value analysis.
 
 $(BINDIR):
 	@-mkdir -p $(BINDIR)
+
+$(FUZZDIR):
+	@-mkdir -p $(FUZZDIR)
 
 $(GENDIR):
 	@-mkdir -p $(GENDIR)
@@ -67,6 +77,9 @@ $(EACSLBINDIR):
 $(BINDIR)/%: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
+$(FUZZDIR)/%: %.c
+	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $< -o $@
+
 $(EACSLDIR)/%.c: %.c
 	$(FRAMAC) $(FRAMAC_EFLAGS) $< $(FRAMAC_EGEN) $@
 
@@ -78,6 +91,9 @@ $(VALDIR)/%.c: %.c
 
 $(GENBINDIR)/%: $(GENDIR)/%.c
 	$(CC) $(GEN_CFLAGS) $(FRAMAC_EACSL_LIB) $< -o $@
+
+fuzz-%: $(FUZZDIR) $(FUZZDIR)/%
+	$(FUZZDIR)/$*
 
 run: build ## Run each program. You can also type run-<target>.
 	@for i in $(BINFILES); do echo $$i; ./$$i; done
@@ -112,7 +128,7 @@ replay-%:
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR)
 
-.PHONY: all build eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly clean
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
