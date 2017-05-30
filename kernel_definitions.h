@@ -21,7 +21,7 @@
 
 #define __visible __attribute__((externally_visible))
 
-#define annotate_unreachable() 
+#define annotate_unreachable()
 
 #define barrier_data(ptr) __asm__ __volatile__("": :"r"(ptr) :"memory")
 
@@ -61,6 +61,8 @@ typedef _Bool bool;
 typedef unsigned long long u64;
 
 typedef unsigned char u8;
+
+typedef unsigned char uint8_t;
 
 struct bug_entry {
  signed int bug_addr_disp;
