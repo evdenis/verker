@@ -71,7 +71,7 @@ $ make verify-check_bytes8
 | 22 | strnstr | | | |
 | 23 | strpbrk | proved | proved | |
 | 24 | strrchr | proved | | |
-| 25 | strreplace | | | |
+| 25 | strreplace | | not required | |
 | 26 | strsep | proved | not required | |
 | 27 | strspn | proved | proved | |
 | 28 | strstr | | | |
