@@ -69,7 +69,7 @@ $ make verify-check_bytes8
 | 20 | strncpy | | not required | |
 | 21 | strnlen | proved | proved | |
 | 22 | strnstr | | | |
-| 23 | strpbrk | | | |
+| 23 | strpbrk | proved | proved | |
 | 24 | strrchr | proved | | |
 | 25 | strreplace | | | |
 | 26 | strsep | | | |
