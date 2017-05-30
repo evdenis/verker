@@ -59,41 +59,41 @@ $ make verify-check_bytes8
 
 # Статус доказательства
 
-| ID | Function | Status | Logic function | Comment |
-|----|----------|--------|----------------|---------|
-| 1 | check_bytes8 | proved | proved | |
-| 2 | match_string | | not required | |
-| 3 | memchr | proved | | |
-| 4 | memcmp | proved | | |
-| 5 | memscan | proved | not required | |
-| 6 | skip_spaces | proved | proved | requires too strict (remove strlen) |
-| 7 | strcasecmp | proved | | |
-| 8 | strcat | | not required | |
-| 9 | strchr | proved | proved | |
-| 10 | strchrnul | proved | proved | |
-| 11 | strcmp | proved | | |
-| 12 | strcpy | proved | not required | use strcmp logic function |
-| 13 | strcspn | proved | proved | |
-| 14 | strim | | not required | |
-| 15 | strlen | proved | proved | |
-| 16 | strncasecmp | | | |
-| 17 | strncat | | not required | |
-| 18 | strnchr | proved | | |
-| 19 | strncmp | | | |
-| 20 | strncpy | | not required | |
-| 21 | strnlen | proved | proved | |
-| 22 | strnstr | | | |
-| 23 | strpbrk | proved | proved | |
-| 24 | strrchr | proved | | |
-| 25 | strreplace | | not required | |
-| 26 | strsep | proved | not required | |
-| 27 | strspn | proved | proved | |
-| 28 | strstr | | | |
-| 29 | sysfs_streq | | | |
-| 30 | strlcat | | not required | |
-| 31 | strlcpy | proved | not required | use strncmp lf in in ensures |
-| 32 | memmove | proved | not required | use memcmp logic function at ensures |
-| 33 | memcpy | proved | not required | use memcmp logic function at ensures |
-| 34 | memset | proved | not required | |
-| 35 | kstrtobool | proved | not required | |
-| 36 | parse\_int\_radix | proved | not required | |
+| ID | Function | Status | Logic function | Comment | libfuzzer |
+|----|----------|--------|----------------|---------|-----------|
+| 1 | check_bytes8 | proved | proved | | yes |
+| 2 | match_string | | not required | | |
+| 3 | memchr | proved | | | |
+| 4 | memcmp | proved | | | |
+| 5 | memscan | proved | not required | | |
+| 6 | skip_spaces | proved | proved | requires too strict (remove strlen) | |
+| 7 | strcasecmp | proved | | | |
+| 8 | strcat | | not required | | |
+| 9 | strchr | proved | proved | | |
+| 10 | strchrnul | proved | proved | | |
+| 11 | strcmp | proved | | | |
+| 12 | strcpy | proved | not required | use strcmp logic function | |
+| 13 | strcspn | proved | proved | | |
+| 14 | strim | | not required | | |
+| 15 | strlen | proved | proved | | |
+| 16 | strncasecmp | | | | |
+| 17 | strncat | | not required | | |
+| 18 | strnchr | proved | | | |
+| 19 | strncmp | | | | |
+| 20 | strncpy | | not required | | |
+| 21 | strnlen | proved | proved | | |
+| 22 | strnstr | | | | |
+| 23 | strpbrk | proved | proved | | |
+| 24 | strrchr | proved | | | |
+| 25 | strreplace | | not required | | |
+| 26 | strsep | proved | not required | | |
+| 27 | strspn | proved | proved | | |
+| 28 | strstr | | | | |
+| 29 | sysfs_streq | | | | |
+| 30 | strlcat | | not required | | |
+| 31 | strlcpy | proved | not required | use strncmp lf in in ensures | |
+| 32 | memmove | proved | not required | use memcmp logic function at ensures | |
+| 33 | memcpy | proved | not required | use memcmp logic function at ensures | |
+| 34 | memset | proved | not required | | |
+| 35 | kstrtobool | proved | not required | | |
+| 36 | parse\_int\_radix | proved | not required | | |
