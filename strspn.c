@@ -19,7 +19,7 @@ size_t strspn(const char *s, const char *accept)
 		/*@ loop invariant accept <= a <= accept + strlen(accept);
 		    loop invariant \forall char *c; accept <= c < a ==> *c != *p;
 		    loop invariant valid_str(a);
-		    loop invariant in_array(accept, *p) <==> in_array(a, *p);
+		    loop invariant in_array(accept, *p) ==> in_array(a, *p);
 		    loop variant strlen(accept) - (a - accept);
 		 */
 		for (a = accept; *a != '\0'; ++a) {
