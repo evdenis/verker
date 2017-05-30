@@ -3,6 +3,18 @@
 /*@ requires valid_strn(s1, len);
     requires valid_strn(s2, len);
     assigns \nothing;
+    behavior equal:
+       assumes \forall integer i;
+               0 <= i <= strnlen(s1, len) ==>
+               tolower(s1[i]) == tolower(s2[i]);
+       ensures \result == 0;
+    behavior not_equal:
+       assumes \exists integer i;
+               0 <= i <= strnlen(s1, len) &&
+               tolower(s1[i]) != tolower(s2[i]);
+       ensures \result != 0;
+    complete behaviors;
+    disjoint behaviors;
  */
 int strncasecmp(const char *s1, const char *s2, size_t len)
 {
@@ -19,6 +31,10 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 	    loop invariant os2 <= s2 <= os2 + strnlen(os2, olen);
 	    loop invariant s1 - os1 == s2 - os2 == olen - len;
 	    loop invariant valid_strn(s1, len) && valid_strn(s2, len);
+	    loop invariant strnlen(os1, olen) == strnlen(s1, len) - (olen - len);
+	    loop invariant strnlen(os2, olen) == strnlen(s2, len) - (olen - len);
+	    loop invariant \forall integer i; 0 <= i < (olen - len) ==>
+	                   tolower(os1[i]) == tolower(os2[i]);
 	    loop variant len;
 	 */
 	do {
