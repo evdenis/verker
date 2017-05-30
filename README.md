@@ -77,7 +77,7 @@ $ make verify-check_bytes8
 | 28 | strstr | | | |
 | 29 | sysfs_streq | | | |
 | 30 | strlcat | | not required | |
-| 31 | strlcpy | | not required | |
+| 31 | strlcpy | proved | not required | use strncmp lf in in ensures |
 | 32 | memmove | proved | not required | use memcmp logic function at ensures |
 | 33 | memcpy | proved | not required | use memcmp logic function at ensures |
 | 34 | memset | proved | not required | |
