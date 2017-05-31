@@ -97,3 +97,4 @@ $ make verify-check_bytes8
 | 34 | memset | proved | not required | | non-constant input |
 | 35 | kstrtobool | proved | not required | | yes |
 | 36 | parse\_int\_radix | proved | not required | | yes |
+| 36 | \_parse\_integer | | | | yes |
