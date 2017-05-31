@@ -26,7 +26,6 @@ FRAMAC_EACSL_LIB := $(FRAMAC_ESHARE)/e_acsl.c $(FRAMAC_EMSHARE)/e_acsl_bittree.c
 
 
 CFLAGS += $(EXT_CFLAGS)
-CLANGFLAGS += $(EXT_CFLAGS)
 
 SRCFILES      := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
 BINFILES      := $(patsubst ./%.c, $(BINDIR)/%,     $(SRCFILES))
@@ -81,19 +80,25 @@ $(FUZZDIR)/%.o: %.c
 	$(CLANG) $(CLANGFLAGS) -c $< -o $@
 
 $(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o skip_spaces.c
-	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/parse_integer_fixup_radix: $(FUZZDIR)/ctype.o parse_integer_fixup_radix.c
-	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strcasecmp: $(FUZZDIR)/ctype.o strcasecmp.c
-	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strncasecmp: $(FUZZDIR)/ctype.o strncasecmp.c
-	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+
+$(FUZZDIR)/strstr: $(FUZZDIR)/memcmp.o strstr.c
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+
+$(FUZZDIR)/strnstr: $(FUZZDIR)/memcmp.o $(FUZZDIR)/strlen.o strnstr.c
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/%: %.c
-	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $< -o $@
+	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $< -o $@
 
 $(EACSLDIR)/%.c: %.c
 	$(FRAMAC) $(FRAMAC_EFLAGS) $< $(FRAMAC_EGEN) $@

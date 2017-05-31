@@ -74,7 +74,7 @@ $ make verify-check_bytes8
 | 11 | strcmp | proved | | | yes |
 | 12 | strcpy | proved | not required | use strcmp logic function | |
 | 13 | strcspn | proved | proved | | yes |
-| 14 | strim | | not required | | |
+| 14 | strim | | not required | | non-constant input |
 | 15 | strlen | proved | proved | | yes |
 | 16 | strncasecmp | | | | yes |
 | 17 | strncat | | not required | | |
@@ -82,13 +82,13 @@ $ make verify-check_bytes8
 | 19 | strncmp | | | | yes |
 | 20 | strncpy | | not required | | |
 | 21 | strnlen | proved | proved | | yes |
-| 22 | strnstr | | | | |
+| 22 | strnstr | | | | yes |
 | 23 | strpbrk | proved | proved | | yes |
 | 24 | strrchr | proved | | | yes |
-| 25 | strreplace | | not required | | |
-| 26 | strsep | proved | not required | | |
+| 25 | strreplace | | not required | | non-constant input |
+| 26 | strsep | proved | not required | | non-constant input |
 | 27 | strspn | proved | proved | | yes |
-| 28 | strstr | | | | |
+| 28 | strstr | | | | yes |
 | 29 | sysfs_streq | | | | yes |
 | 30 | strlcat | | not required | | |
 | 31 | strlcpy | proved | not required | use strncmp lf in in ensures | |
