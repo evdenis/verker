@@ -52,3 +52,15 @@ char *strrchr(const char *s, int c)
 	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char %) c) ==> (last != \null);
 	return (char *)last;
 }
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 1 && data[size-1] == '\0') {
+      strrchr((const char *)data + 1, *data);
+   }
+   return 0;
+}
+#endif

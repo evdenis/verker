@@ -12,3 +12,15 @@ char *skip_spaces(const char *str)
 		++str;
 	return (char *)str;
 }
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 0 && data[size-1] == '\0') {
+      skip_spaces((const char *)data);
+   }
+   return 0;
+}
+#endif
