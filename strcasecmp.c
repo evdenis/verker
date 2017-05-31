@@ -29,3 +29,15 @@ int strcasecmp(const char *s1, const char *s2)
 	 */
 	return c1 - c2;
 }
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 0 && size % 2 == 0 && data[(size/2) - 1] == '\0' && data[size-1] == '\0') {
+      strcasecmp((const char *)data, (const char *)(data + size / 2));
+   }
+   return 0;
+}
+#endif

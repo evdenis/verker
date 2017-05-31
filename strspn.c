@@ -34,3 +34,16 @@ size_t strspn(const char *s, const char *accept)
 	}
 	return count;
 }
+
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 0 && size % 2 == 0 && data[(size/2) - 1] == '\0' && data[size-1] == '\0') {
+      strspn((const char *)data, (const char *)(data + size / 2));
+   }
+   return 0;
+}
+#endif

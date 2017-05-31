@@ -7,6 +7,7 @@
 #include "strnlen.h"
 //#include "ctype.h"
 
+#ifdef SPEC
 /*@ axiomatic Ctype {
     predicate islower(integer c) = 'a' <= c <= 'z';
     predicate isupper(integer c) = 'A' <= c <= 'Z';
@@ -41,6 +42,7 @@
 
 //@ ensures \result == tolower(c);
 unsigned char tolower(const unsigned char c);
+#endif
 
 /**
  * strncasecmp - Case insensitive, length-limited string comparison

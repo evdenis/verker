@@ -64,32 +64,32 @@ $ make verify-check_bytes8
 | 1 | check_bytes8 | proved | proved | | yes |
 | 2 | match_string | | not required | | |
 | 3 | memchr | proved | | | yes |
-| 4 | memcmp | proved | | | |
+| 4 | memcmp | proved | | | yes |
 | 5 | memscan | proved | not required | | yes |
 | 6 | skip_spaces | proved | proved | requires too strict (remove strlen) | yes |
-| 7 | strcasecmp | proved | | | |
+| 7 | strcasecmp | proved | | | yes |
 | 8 | strcat | | not required | | |
 | 9 | strchr | proved | proved | | yes |
 | 10 | strchrnul | proved | proved | | yes |
-| 11 | strcmp | proved | | | |
+| 11 | strcmp | proved | | | yes |
 | 12 | strcpy | proved | not required | use strcmp logic function | |
-| 13 | strcspn | proved | proved | | |
+| 13 | strcspn | proved | proved | | yes |
 | 14 | strim | | not required | | |
 | 15 | strlen | proved | proved | | yes |
-| 16 | strncasecmp | | | | |
+| 16 | strncasecmp | | | | yes |
 | 17 | strncat | | not required | | |
 | 18 | strnchr | proved | | | yes |
-| 19 | strncmp | | | | |
+| 19 | strncmp | | | | yes |
 | 20 | strncpy | | not required | | |
 | 21 | strnlen | proved | proved | | yes |
 | 22 | strnstr | | | | |
-| 23 | strpbrk | proved | proved | | |
+| 23 | strpbrk | proved | proved | | yes |
 | 24 | strrchr | proved | | | yes |
 | 25 | strreplace | | not required | | |
 | 26 | strsep | proved | not required | | |
-| 27 | strspn | proved | proved | | |
+| 27 | strspn | proved | proved | | yes |
 | 28 | strstr | | | | |
-| 29 | sysfs_streq | | | | |
+| 29 | sysfs_streq | | | | yes |
 | 30 | strlcat | | not required | | |
 | 31 | strlcpy | proved | not required | use strncmp lf in in ensures | |
 | 32 | memmove | proved | not required | use memcmp logic function at ensures | |
