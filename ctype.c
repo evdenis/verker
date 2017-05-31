@@ -1,14 +1,5 @@
 #include "ctype.h"
 
-#define _U	0x01	/* upper */
-#define _L	0x02	/* lower */
-#define _D	0x04	/* digit */
-#define _C	0x08	/* cntrl */
-#define _P	0x10	/* punct */
-#define _S	0x20	/* white space (space/lf/tab) */
-#define _X	0x40	/* hex digit */
-#define _SP	0x80	/* hard space (0x20) */
-
 #ifndef SPEC
 const unsigned char _ctype[] = {
 _C,_C,_C,_C,_C,_C,_C,_C,				/* 0-7 */
@@ -46,7 +37,6 @@ const unsigned char *_ctype = /*@ ctype_tbl = */
 char tolower(const char c) { return __tolower(c); }
 //@ ensures \result == toupper(c);
 char toupper(const char c) { return __toupper(c); }
-#endif
 
 #define __ismask(x) (_ctype[(int)(unsigned char)(x)])
 
@@ -63,6 +53,7 @@ bool isxdigit(char c) { return ((__ismask(c)&(_D|_X)) != 0); }
 
 bool isascii(char c) { return (((unsigned char)(c))<=0x7f); }
 bool toascii(char c) { return (((unsigned char)(c))&0x7f); }
+#endif
 
 int isdigit(int c)
 {

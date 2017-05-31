@@ -77,6 +77,12 @@ $(EACSLBINDIR):
 $(BINDIR)/%: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
+$(FUZZDIR)/%.o: %.c
+	$(CLANG) $(CLANGFLAGS) -c $< -o $@
+
+$(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o skip_spaces.c
+	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+
 $(FUZZDIR)/%: %.c
 	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $< -o $@
 
@@ -126,7 +132,7 @@ replay-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
 
 clean: ## Remove all binary and generated files.
-	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR)
+	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR)
 
 .PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly clean
 
