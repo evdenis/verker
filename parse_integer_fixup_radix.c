@@ -16,3 +16,17 @@ const char *_parse_integer_fixup_radix(const char *s, unsigned int *base)
 	return s;
 }
 
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (size > 3) {
+      unsigned base = 0;
+      _parse_integer_fixup_radix((const char *)data, &base);
+      base = 16;
+      _parse_integer_fixup_radix((const char *)data, &base);
+   }
+   return 0;
+}
+#endif

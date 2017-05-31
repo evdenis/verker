@@ -96,4 +96,4 @@ $ make verify-check_bytes8
 | 33 | memcpy | proved | not required | use memcmp logic function at ensures | |
 | 34 | memset | proved | not required | | |
 | 35 | kstrtobool | proved | not required | | yes |
-| 36 | parse\_int\_radix | proved | not required | | |
+| 36 | parse\_int\_radix | proved | not required | | yes |

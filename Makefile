@@ -83,6 +83,9 @@ $(FUZZDIR)/%.o: %.c
 $(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o skip_spaces.c
 	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
+$(FUZZDIR)/parse_integer_fixup_radix: $(FUZZDIR)/ctype.o parse_integer_fixup_radix.c
+	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+
 $(FUZZDIR)/%: %.c
 	$(CLANG) $(CLANGFLAGS) libFuzzer.a -lstdc++ $< -o $@
 
