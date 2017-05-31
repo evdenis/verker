@@ -36,3 +36,16 @@ int kstrtobool(const char *s, bool *res)
 
 	return -EINVAL;
 }
+
+#ifdef OUT_OF_TASK
+
+int LLVMFuzzerTestOneInput(const uint8_t *data,
+                           size_t size)
+{
+   if (data == NULL || size == 3) {
+      bool res;
+      kstrtobool((const char *)data, &res);
+   }
+   return 0;
+}
+#endif

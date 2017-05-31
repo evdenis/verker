@@ -66,7 +66,7 @@ $ make verify-check_bytes8
 | 3 | memchr | proved | | | yes |
 | 4 | memcmp | proved | | | |
 | 5 | memscan | proved | not required | | yes |
-| 6 | skip_spaces | proved | proved | requires too strict (remove strlen) | |
+| 6 | skip_spaces | proved | proved | requires too strict (remove strlen) | yes |
 | 7 | strcasecmp | proved | | | |
 | 8 | strcat | | not required | | |
 | 9 | strchr | proved | proved | | yes |
@@ -75,13 +75,13 @@ $ make verify-check_bytes8
 | 12 | strcpy | proved | not required | use strcmp logic function | |
 | 13 | strcspn | proved | proved | | |
 | 14 | strim | | not required | | |
-| 15 | strlen | proved | proved | | |
+| 15 | strlen | proved | proved | | yes |
 | 16 | strncasecmp | | | | |
 | 17 | strncat | | not required | | |
 | 18 | strnchr | proved | | | yes |
 | 19 | strncmp | | | | |
 | 20 | strncpy | | not required | | |
-| 21 | strnlen | proved | proved | | |
+| 21 | strnlen | proved | proved | | yes |
 | 22 | strnstr | | | | |
 | 23 | strpbrk | proved | proved | | |
 | 24 | strrchr | proved | | | yes |
@@ -95,5 +95,5 @@ $ make verify-check_bytes8
 | 32 | memmove | proved | not required | use memcmp logic function at ensures | |
 | 33 | memcpy | proved | not required | use memcmp logic function at ensures | |
 | 34 | memset | proved | not required | | |
-| 35 | kstrtobool | proved | not required | | |
+| 35 | kstrtobool | proved | not required | | yes |
 | 36 | parse\_int\_radix | proved | not required | | |
