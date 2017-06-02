@@ -2,6 +2,7 @@
 #define __STRLCAT_H__
 
 #include "kernel_definitions.h"
+#include "memcpy.h"
 #include "strlen.h"
 
 /**
