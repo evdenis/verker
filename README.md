@@ -48,7 +48,7 @@ ACSL specifications for linux kernel functions
 # Toolchain
 
 Спецификации разрабатываются на языке ACSL. В качестве инструментов формальной верификации используются Frama-C с плагином дедуктивной верификации jessie.
-- Описание, как установить инструменты можно найти по [ссылке](https://forge.ispras.ru/projects/astraver/wiki).Инструменты работают на Linux, Windows, Mac OS X.
+- Описание, как установить инструменты можно найти по [ссылке](https://forge.ispras.ru/projects/astraver/wiki). Инструменты работают на Linux, Windows, Mac OS X.
 - По [ссылке](https://www.dropbox.com/s/45sjzvfakz2n316/verification.ova?dl=0) можно загрузить образ виртуальной машины VirtualBox в формате ova с уже с предустановленными и настроенными инструментами. Размер образа ~3.6 гигабайт. Ос - Ubuntu. Логин - user. Пароль - 1. В директории **workspace** находятся два репозитория. Один соответствует данному, второй - acsl-proved (примеры с протоколами верикации).
 
 # Repository files
