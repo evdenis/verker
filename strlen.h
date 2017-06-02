@@ -10,8 +10,14 @@
 
     lemma valid_str_shift1:
        \forall char *s;
-       *s != '\0' &&
-       valid_str(s) ==> valid_str(s+1);
+          *s != '\0' &&
+          valid_str(s) ==>
+             valid_str(s+1);
+
+    lemma valid_str_strend:
+       \forall char *s;
+          \valid(s) && *s == '\0' ==>
+             valid_str(s);
 
     logic size_t strlen(char *s) =
        s[0] == '\0' ? (size_t) 0 : (size_t) ((size_t)1 + strlen(s + 1));
@@ -57,6 +63,12 @@
        s[n] == '\0' &&
        (\forall size_t i; i < n ==> s[i] != '\0') ==>
            strlen(s) == n;
+
+    lemma valid_str_shiftn:
+       \forall char *s, integer i;
+          valid_str(s) &&
+          (0 <= i < strlen(s)) ==>
+             valid_str(s+i);
     }
  */
 

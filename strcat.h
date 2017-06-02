@@ -9,6 +9,19 @@
  * @src: The string to append to it
  */
 
+/*@ requires valid_str(src);
+    requires valid_str(dest);
+    requires strlen(dest)+strlen(src) <= SIZE_MAX;
+    requires \valid(dest+(0..strlen(dest)+strlen(src)));
+    assigns dest[strlen(dest)..strlen(dest)+strlen(src)];
+    ensures \result == dest;
+    ensures valid_str(\result);
+    ensures \forall integer i; 0 <= i < strlen{Old}(\old(dest)) ==>
+            \old(dest[i]) == \result[i];
+    ensures \forall integer i;
+            strlen{Old}(dest) <= i < strlen{Old}(dest) + strlen(src) ==>
+            src[i - strlen{Old}(dest)] == \result[i];
+ */
 char *strcat(char *dest, const char *src);
 
 #endif // __STRCAT_H__

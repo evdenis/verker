@@ -1,17 +1,5 @@
 #include "strcat.h"
 
-/*@ requires valid_str(src);
-    requires valid_str(dest);
-    requires \valid(dest+(0..strlen(dest)+strlen(src))); //-1
-    assigns dest[strlen(dest)..strlen(dest)+strlen(src)-1]; //-1
-    ensures \result == dest;
-    ensures valid_str(\result);
-    ensures \forall integer i; 0 <= i < strlen(\old(dest)) ==>
-            dest[i] == \result[i];
-    ensures \forall integer i;
-            strlen(\old(dest)) <= i < strlen(\old(dest)) + strlen(src) ==>
-            src[i - strlen(\old(dest))] == \result[i];
- */
 char *strcat(char *dest, const char *src)
 {
 	char *tmp = dest;
@@ -41,8 +29,11 @@ char *strcat(char *dest, const char *src)
 	 */
 	while ((*dest++ = *src++) != '\0')
 		;
+	//@ assert \forall integer i; 0 <= i < dest_len ==> \at(dest[i],Pre) == tmp[i];
 	//@ assert dest[-1] == '\0' && src[-1] == '\0';
 	//@ assert dest - 1 == tmp + dest_len + strlen(osrc);
-	//@ assert tmp == \at(dest,Pre);
+	//@ assert strlen(osrc) == src - osrc - 1;
+	//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (dest_len + strlen(osrc));
+	//@ assert valid_str(tmp);
 	return tmp;
 }

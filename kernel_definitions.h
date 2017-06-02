@@ -47,6 +47,8 @@
 
 #define max(x,y) __max(typeof(x), typeof(y), __UNIQUE_ID(max1_), __UNIQUE_ID(max2_), x, y)
 
+#define SIZE_MAX 18446744073709551615UL
+
 enum {
  false = 0,
  true = 1
