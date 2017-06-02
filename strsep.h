@@ -33,6 +33,7 @@
        assumes valid_str(*s);
        assumes strpbrk(*s, ct) != \null;
        assigns *strpbrk(\old(*s), ct);
+       assigns *s;
        ensures \result == \old(*s);
        ensures *s == strpbrk(\old(*s), ct) + 1;
        ensures *strpbrk(\old(*s), ct) == '\0';
