@@ -1,5 +1,9 @@
 #include "parse_integer.h"
 
+/*@ requires valid_str(s);
+    requires \valid(p);
+    requires base % 2 == 0 && base <= 16;
+ */
 unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long *p)
 {
 	unsigned long long res;
