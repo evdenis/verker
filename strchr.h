@@ -23,11 +23,11 @@
           strchr(str, c) == \null ^^ *strchr(str, c) == c;
     lemma at_end_zero:
        \forall char *str, c;
-       *str == '\0' ==>
+       \valid(str) && *str == '\0' ==>
           strchr(str, c) == \null;
     lemma at_end_char:
        \forall char *str, c;
-       *str == c ==>
+       \valid(str) && *str == c ==>
           strchr(str, c) == str;
 
     lemma defn:

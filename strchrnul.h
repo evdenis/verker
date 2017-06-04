@@ -25,7 +25,7 @@
           strlen(str) == strchrnull(str, (char)'\0') - str;
     lemma at_end:
        \forall char *str, c;
-       (*str == '\0' || *str == c) ==>
+       \valid(str) && (*str == '\0' || *str == c) ==>
           strchrnull(str, c) == str;
 
     lemma defn:
