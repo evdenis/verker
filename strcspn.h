@@ -16,7 +16,7 @@
 
     lemma strcspn_strend:
        \forall char *s, *reject;
-          *s == '\0' ==>
+          \valid(s) && *s == '\0' ==>
              strcspn(s, reject) == 0;
 
     lemma strcspn_empty_reject:

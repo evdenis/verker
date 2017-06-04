@@ -30,12 +30,12 @@
 
     lemma strspn_strend:
        \forall char *s, *accept;
-          *s == '\0' ==>
+          \valid(s) && *s == '\0' ==>
              strspn(s, accept) == 0;
 
     lemma strspn_empty_accept:
        \forall char *s, *accept;
-          *accept == '\0' ==>
+          \valid(accept) && *accept == '\0' ==>
              strspn(s, accept) == 0;
 
     lemma strspn_range:
