@@ -11,6 +11,8 @@
 
 #define REPEAT_BYTE(x) ((~0ul / 0xff) * (x))
 
+#define ULLONG_MAX (~0ULL)
+
 #define __AC(X,Y) (X ##Y)
 
 #define __BUG_C0 "2:\t.long 1b - 2b, %c0 - 2b\n"
@@ -25,7 +27,7 @@
 
 #define barrier_data(ptr) __asm__ __volatile__("": :"r"(ptr) :"memory")
 
-#define unlikely(x) ()
+#define unlikely(x) (x)
 
 #define zero_bytemask(mask) (mask)
 
@@ -59,6 +61,8 @@ typedef long __kernel_long_t;
 typedef unsigned long __kernel_ulong_t;
 
 typedef _Bool bool;
+
+typedef unsigned int u32;
 
 typedef unsigned long long u64;
 
