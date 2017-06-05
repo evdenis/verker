@@ -58,7 +58,7 @@
 */
 
 
-/*@ axiomatic SkipSpacesRight {
+/* axiomatic SkipSpacesRight {
     logic char *skip_spaces_right(char *str) ;//=
        //isspace(*str) ? skip_spaces(str + 1) : str;
     lemma defn:
@@ -101,9 +101,12 @@
        ensures \result == s;
     behavior len:
        assumes strlen(s) > 0;
+       assigns s[0..strlen(s)];
        ensures valid_str(\result);
-       ensures \forall char *p; \old(s) <= p < s ==> isspace(*p);
+       ensures \forall char *p; s <= p < \result ==> isspace(*p);
        ensures !isspace(*\result);
+       ensures \forall char *p;
+          \result + strlen(\result) <= p < s + strlen{Old}(s) ==> isspace(*p);
        ensures !isspace(\result[strlen(\result)-1]);
     complete behaviors;
     disjoint behaviors;
