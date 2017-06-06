@@ -1,4 +1,4 @@
-#include "kstrbool.h"
+#include "kstrtobool.h"
 
 int kstrtobool(const char *s, bool *res)
 {
