@@ -13,20 +13,22 @@ RTEDIR           := $(GENDIR)/rte
 VALDIR           := $(GENDIR)/val
 GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
+EACSLFUZZDIR     := $(FUZZDIR)/eacsl
 OPAM_EVAL        := eval $$(opam config env)
-FRAMAC           := $(OPAM_EVAL); frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) "
-FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) "
+FRAMAC           := $(OPAM_EVAL); frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_DFLAGS    := -jessie
 FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
-FRAMAC_EFLAGS    := -e-acsl -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
-FRAMAC_RTEFLAGS  := -rte -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
-FRAMAC_VALFLAGS  := -val -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_VALFLAGS  := -val -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_VALGEN    := -print -ocode
 FRAMAC_ESHARE    := $(shell $(FRAMAC) -print-share-path)/e-acsl
 FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model
-FRAMAC_EACSL_LIB := $(FRAMAC_ESHARE)/e_acsl.c $(FRAMAC_EMSHARE)/e_acsl_bittree.c $(FRAMAC_EMSHARE)/e_acsl_mmodel.c
+FRAMAC_LIBPATH   := $(shell $(FRAMAC) -print-lib-path)
+FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(FRAMAC_ESHARE) $(FRAMAC_ESHARE)/e_acsl_mmodel.c -lm -lpthread $(FRAMAC_LIBPATH)/../libeacsl-gmp.a $(FRAMAC_LIBPATH)/../libeacsl-jemalloc.a
 
 SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
 FZZAVAILFILES  := $(sort $(shell grep -nrPe '\|\h+\d+\h+\|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
@@ -36,6 +38,7 @@ EACSLFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
 RTEFILES       := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
 VALFILES       := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
 EACSLBINFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
+EACSLFUZZFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLFILES))
 
 all: fuzz ## Default target
 
@@ -46,6 +49,8 @@ fuzz: $(FUZZDIR) $(FUZZFILES) ## Fuzz each program.
 eacsl: $(GENDIR) $(EACSLDIR) $(EACSLFILES) ## Generate E-ACSL programs.
 
 eacsl-build: eacsl $(GENBINDIR) $(EACSLBINDIR) $(EACSLBINFILES) ## Build generated E-ACSL programs.
+
+eacsl-fuzz: eacsl $(EACSLDIR) $(FUZZDIR) $(EACSLFUZZDIR) $(EACSLFUZZFILES) ## Build generated E-ACSL programs with libfuzzer.
 
 rte: $(GENDIR) $(RTEDIR) $(RTEFILES) ## Generate RTE specifications.
 
@@ -74,6 +79,9 @@ $(GENBINDIR):
 
 $(EACSLBINDIR):
 	@-mkdir -p $(EACSLBINDIR)
+
+$(EACSLFUZZDIR):
+	@-mkdir -p $(EACSLFUZZDIR)
 
 $(BINDIR)/%: %.c
 	$(CC) $(CFLAGS) $< -o $@
@@ -114,6 +122,9 @@ $(VALDIR)/%.c: %.c
 $(GENBINDIR)/%: $(GENDIR)/%.c
 	$(CC) $(GEN_CFLAGS) $(FRAMAC_EACSL_LIB) $< -o $@
 
+$(EACSLFUZZDIR)/%: $(EACSLDIR)/%.c
+	$(CLANG) $(CLANGFLAGS) $(GEN_CFLAGS) $(FUZZ_CFLAGS) $(FRAMAC_EACSL_LIB) libFuzzer.a -lstdc++ $< -o $@
+
 fuzz-%: $(FUZZDIR) $(FUZZDIR)/%
 	$(FUZZDIR)/$*
 
@@ -128,6 +139,9 @@ eacsl-run: eacsl-build ## Run each E-ACSL program. You can also type eacsl-run-<
 
 eacsl-run-%: $(GENDIR) $(GENBINDIR) $(GENBINDIR)/%
 	$(GENBINDIR)/$*
+
+eacsl-fuzz-%: $(FUZZDIR) $(GENDIR) $(EACSLDIR) $(EACSLFUZZDIR) $(EACSLFUZZDIR)/%
+	$(EACSLFUZZDIR)/$*
 
 verify: ## Run Frama-C on all files simultaneously. You can also type verify-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(SRCFILES)
