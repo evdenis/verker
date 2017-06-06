@@ -14,14 +14,15 @@ GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
 FRAMAC           := eval $$(opam config env) frama-c
 FRAMAC_DFLAGS    := -jessie
+FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
 FRAMAC_EFLAGS    := -e-acsl -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
 FRAMAC_RTEFLAGS  := -rte -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
 FRAMAC_VALFLAGS  := -val -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
 FRAMAC_VALGEN    := -print -ocode
-FRAMAC_ESHARE    := $(shell frama-c -print-share-path)/e-acsl
-FRAMAC_EMSHARE   := $(shell frama-c -print-share-path)/e-acsl/memory_model
+FRAMAC_ESHARE    := $(shell eval $$(opam config env) frama-c -print-share-path)/e-acsl
+FRAMAC_EMSHARE   := $(shell eval $$(opam config env) frama-c -print-share-path)/e-acsl/memory_model
 FRAMAC_EACSL_LIB := $(FRAMAC_ESHARE)/e_acsl.c $(FRAMAC_EMSHARE)/e_acsl_bittree.c $(FRAMAC_EMSHARE)/e_acsl_mmodel.c
 
 
@@ -135,6 +136,9 @@ verify-separatedly: ## Run Frama-C on each file consequently.
 
 verify-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $*.c
+
+update-%:
+	@$(FRAMAC) $(FRAMAC_UFLAGS) $*.c
 
 replay: ## Replay proofs simultaiously. You can also type replay-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(SRCFILES)
