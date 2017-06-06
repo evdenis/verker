@@ -3,16 +3,11 @@
 
 #include "kernel_definitions.h"
 
-#ifndef OUT_OF_TASK
-#define SPEC
-#endif
-
 /*
  * NOTE! This ctype does not handle EOF like the standard C
  * library is required to.
  */
 
-#ifndef SPEC
 #define _U	0x01	/* upper */
 #define _L	0x02	/* lower */
 #define _D	0x04	/* digit */
@@ -21,6 +16,8 @@
 #define _S	0x20	/* white space (space/lf/tab) */
 #define _X	0x40	/* hex digit */
 #define _SP	0x80	/* hard space (0x20) */
+
+#ifndef SPEC
 extern const unsigned char _ctype[];
 #else
 extern const unsigned char *_ctype;
@@ -128,9 +125,5 @@ char _tolower(const char c);
 /* Fast check for octal digit */
 //@ ensures \result <==> isodigit(c);
 int isodigit(const char c);
-
-#ifndef OUT_OF_TASK
-#undef SPEC
-#endif
 
 #endif

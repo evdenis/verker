@@ -3,7 +3,8 @@ CFLAGS           := -Wall -Werror
 CLANG            := clang
 CLANGFLAGS       := -g -fsanitize=address -fsanitize-coverage=trace-pc-guard
 GEN_CFLAGS       := -w
-EXT_CFLAGS       := -DOUT_OF_TASK
+FUZZ_CFLAGS      := -DFUZZ_MAIN
+SPEC_CFLAGS      := -DSPEC
 BINDIR           := bin
 FUZZDIR          := fzz
 GENDIR           := gen
@@ -13,30 +14,28 @@ VALDIR           := $(GENDIR)/val
 GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
 OPAM_EVAL        := eval $$(opam config env)
-FRAMAC           := $(OPAM_EVAL); frama-c
-FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c
+FRAMAC           := $(OPAM_EVAL); frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) "
+FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) "
 FRAMAC_DFLAGS    := -jessie
 FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
-FRAMAC_EFLAGS    := -e-acsl -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
+FRAMAC_EFLAGS    := -e-acsl -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
-FRAMAC_RTEFLAGS  := -rte -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
-FRAMAC_VALFLAGS  := -val -pp-annot -cpp-extra-args " -C -E -x c $(EXT_CFLAGS) "
+FRAMAC_RTEFLAGS  := -rte -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_VALFLAGS  := -val -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_VALGEN    := -print -ocode
 FRAMAC_ESHARE    := $(shell $(FRAMAC) -print-share-path)/e-acsl
 FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model
 FRAMAC_EACSL_LIB := $(FRAMAC_ESHARE)/e_acsl.c $(FRAMAC_EMSHARE)/e_acsl_bittree.c $(FRAMAC_EMSHARE)/e_acsl_mmodel.c
 
-
-CFLAGS += $(EXT_CFLAGS)
-
-SRCFILES      := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
-BINFILES      := $(patsubst ./%.c, $(BINDIR)/%,     $(SRCFILES))
-FUZZFILES     := $(patsubst ./%.c, $(FUZZDIR)/%,    $(SRCFILES))
-EACSLFILES    := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
-RTEFILES      := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
-VALFILES      := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
-EACSLBINFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
+SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
+FZZAVAILFILES  := $(sort $(shell grep -nrPe '\|\h+\d+\h+\|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(SRCFILES))
+FUZZFILES      := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
+EACSLFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
+RTEFILES       := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
+VALFILES       := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
+EACSLBINFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
 
 all: fuzz ## Default target
 
@@ -79,29 +78,29 @@ $(EACSLBINDIR):
 $(BINDIR)/%: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
-$(FUZZDIR)/%.o: %.c
+$(FUZZDIR)/%.o: %.c %.h
 	$(CLANG) $(CLANGFLAGS) -c $< -o $@
 
 $(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o skip_spaces.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/parse_integer_fixup_radix: $(FUZZDIR)/ctype.o parse_integer_fixup_radix.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+$(FUZZDIR)/_parse_integer_fixup_radix: $(FUZZDIR)/ctype.o _parse_integer_fixup_radix.c
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strcasecmp: $(FUZZDIR)/ctype.o strcasecmp.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strncasecmp: $(FUZZDIR)/ctype.o strncasecmp.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strstr: $(FUZZDIR)/memcmp.o strstr.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
 $(FUZZDIR)/strnstr: $(FUZZDIR)/memcmp.o $(FUZZDIR)/strlen.o strnstr.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/%: %.c
-	$(CLANG) $(CLANGFLAGS) $(EXT_CFLAGS) libFuzzer.a -lstdc++ $< -o $@
+$(FUZZDIR)/%: %.c %.h
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $< -o $@
 
 $(EACSLDIR)/%.c: %.c
 	$(FRAMAC) $(FRAMAC_EFLAGS) $< $(FRAMAC_EGEN) $@

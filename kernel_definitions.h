@@ -101,4 +101,11 @@ extern void *memcpy(void *to, const void *from, size_t len);
 
 void *memset(void *s, int c, size_t n);
 
+#ifdef FUZZ_MAIN
+/*@ requires data == \null || \valid(data+(0..size-1));
+    assigns \nothing;
+ */
+int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size);
+#endif
+
 #endif // __KERNEL_DEFINITIONS_H__

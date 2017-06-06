@@ -1,11 +1,9 @@
 #ifndef __STRNCASECMP_H__
 #define __STRNCASECMP_H__
 
-#define CTYPE_H
-
 #include "kernel_definitions.h"
 #include "strnlen.h"
-//#include "ctype.h"
+#include "ctype.h"
 
 #ifdef SPEC
 /*@ axiomatic Ctype {

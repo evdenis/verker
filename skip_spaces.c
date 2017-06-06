@@ -13,7 +13,7 @@ char *skip_spaces(const char *str)
 	return (char *)str;
 }
 
-#ifdef OUT_OF_TASK
+#ifdef FUZZ_MAIN
 
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)

@@ -48,7 +48,7 @@ int strncmp(const char *cs, const char *ct, size_t count)
 	return 0;
 }
 
-#ifdef OUT_OF_TASK
+#ifdef FUZZ_MAIN
 
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)

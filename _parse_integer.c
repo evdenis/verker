@@ -39,7 +39,7 @@ unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long
 	return rv;
 }
 
-#ifdef OUT_OF_TASK
+#ifdef FUZZ_MAIN
 
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)

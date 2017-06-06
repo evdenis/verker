@@ -52,7 +52,7 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 	return (int)c1 - (int)c2;
 }
 
-#ifdef OUT_OF_TASK
+#ifdef FUZZ_MAIN
 
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
