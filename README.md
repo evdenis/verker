@@ -7,12 +7,12 @@ ACSL specifications for linux kernel functions
 
 | ID | Function | Status | Logic function | Comment | libfuzzer |
 |----|----------|--------|----------------|---------|-----------|
-| 1 | check_bytes8 | proved | proved | | yes |
-| 2 | match_string | | not required | | |
+| 1 | check\_bytes8 | proved | proved | | yes |
+| 2 | match\_string | | not required | | |
 | 3 | memchr | proved | | | yes |
 | 4 | memcmp | proved | | | yes |
 | 5 | memscan | proved | not required | | yes |
-| 6 | skip_spaces | proved | proved | requires too strict (remove strlen) | yes |
+| 6 | skip\_spaces | proved | proved | requires too strict (remove strlen) | yes |
 | 7 | strcasecmp | proved | | | yes |
 | 8 | strcat | proved | not required | usr strcmp in ensures | |
 | 9 | strchr | proved | proved | | yes |
@@ -35,7 +35,7 @@ ACSL specifications for linux kernel functions
 | 26 | strsep | proved | not required | | non-constant input |
 | 27 | strspn | proved | proved | | yes |
 | 28 | strstr | | | | yes |
-| 29 | sysfs_streq | | | | yes |
+| 29 | sysfs\_streq | | | | yes |
 | 30 | strlcat | | not required | | |
 | 31 | strlcpy | proved | not required | use strncmp lf in in ensures | |
 | 32 | memmove | proved | not required | use memcmp logic function at ensures | |
