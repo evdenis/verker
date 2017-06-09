@@ -4,6 +4,7 @@ CLANG            := clang
 CLANGFLAGS       := -g -fsanitize=address -fsanitize-coverage=trace-pc-guard
 GEN_CFLAGS       := -w
 FUZZ_CFLAGS      := -DFUZZ_MAIN
+EXT_CFLAGS       := -DDUMMY_MAIN
 SPEC_CFLAGS      := -DSPEC
 BINDIR           := bin
 FUZZDIR          := fzz
@@ -31,8 +32,9 @@ FRAMAC_LIBPATH   := $(shell $(FRAMAC) -print-lib-path)
 FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(FRAMAC_ESHARE) $(FRAMAC_ESHARE)/e_acsl_mmodel.c -lm -lpthread $(FRAMAC_LIBPATH)/../libeacsl-gmp.a $(FRAMAC_LIBPATH)/../libeacsl-jemalloc.a
 
 SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
-FZZAVAILFILES  := $(sort $(shell grep -nrPe '\|\h+\d+\h+\|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(SRCFILES))
+FZZAVAILFILES  := $(sort $(shell grep -nrPe '\|\h+\d+\h+\|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+BINAVAILFILES  := $(sort $(shell grep -nrPe '\|\h+\d+\h+\|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
 FUZZFILES      := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
 EACSLFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
 RTEFILES       := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
@@ -40,7 +42,7 @@ VALFILES       := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
 EACSLBINFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
 EACSLFUZZFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLFILES))
 
-all: fuzz ## Default target
+all: build ## Default target
 
 build: $(BINDIR) $(BINFILES) ## Build each program.
 
@@ -84,7 +86,7 @@ $(EACSLFUZZDIR):
 	@-mkdir -p $(EACSLFUZZDIR)
 
 $(BINDIR)/%: %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $< -o $@
 
 $(FUZZDIR)/%.o: %.c %.h
 	$(CLANG) $(CLANGFLAGS) -c $< -o $@
