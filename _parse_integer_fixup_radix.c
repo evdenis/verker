@@ -30,3 +30,17 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+int main(int argc, char *argv[])
+{
+	unsigned int base = 16;
+	_parse_integer_fixup_radix("0x", &base);
+	_parse_integer_fixup_radix("0", &base);
+	base = 0;
+	_parse_integer_fixup_radix("0x", &base);
+	_parse_integer_fixup_radix("0", &base);
+	_parse_integer_fixup_radix("10", &base);
+	return 0;
+}
+#endif

@@ -91,6 +91,9 @@ $(BINDIR)/skip_spaces: $(BINDIR)/ctype.o skip_spaces.c
 $(BINDIR)/strlcpy: $(BINDIR)/memcpy.o strlcpy.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
+$(BINDIR)/_parse_integer_fixup_radix: $(BINDIR)/ctype.o _parse_integer_fixup_radix.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
 $(BINDIR)/%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
