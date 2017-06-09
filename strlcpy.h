@@ -22,12 +22,12 @@
     behavior size_is_lower_src:
        assumes 0 < size <= strlen(src);
        assigns dest[0..size - 1];
-       ensures \forall integer i;  0 <= i < size - 1 ==> src[i] == dest[i];
+       ensures \forall integer i; 0 <= i < size - 1 ==> src[i] == dest[i];
        ensures valid_str(dest);
     behavior size_is_greater_src:
        assumes size > strlen(src);
        assigns dest[0..strlen(src)];
-       ensures \forall integer i;  0 <= i < strlen(src) ==> src[i] == dest[i];
+       ensures \forall integer i; 0 <= i < strlen(src) ==> src[i] == dest[i];
        ensures valid_str(dest);
     behavior zero_size:
        assumes size == 0;
