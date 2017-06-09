@@ -36,7 +36,7 @@ ACSL specifications for linux kernel functions
 | 27 | strspn        | proved | proved         | yes       | no   |         |
 | 28 | strstr        |        |                | yes       | yes  |         |
 | 29 | sysfs\_streq  |        |                | yes       | yes  |         |
-| 30 | strlcat       |        | not required   |           | no   |         |
+| 30 | strlcat       |        | not required   |           | yes  |         |
 | 31 | strlcpy       | proved | not required   |           | no   | use strncmp lf in in ensures |
 | 32 | memmove       | proved | not required   |           | no   | use memcmp logic function at ensures |
 | 33 | memcpy        | proved | not required   |           | no   | use memcmp logic function at ensures |
