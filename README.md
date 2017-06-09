@@ -15,7 +15,7 @@ ACSL specifications for linux kernel functions
 | 6  | skip\_spaces  | proved | proved         | yes       | no   | requires too strict (remove strlen) |
 | 7  | strcasecmp    | proved |                | yes       | no   |         |
 | 8  | strcat        | proved | not required   |           | no   | usr strcmp in ensures |
-| 9  | strchr        | proved | proved         | yes       | no   |         |
+| 9  | strchr        | proved | proved         | yes       | yes  |         |
 | 10 | strchrnul     | proved | proved         | yes       | no   |         |
 | 11 | strcmp        | proved |                | yes       | no   |         |
 | 12 | strcpy        | proved | not required   |           | no   | use strcmp logic function |
