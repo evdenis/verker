@@ -3,8 +3,6 @@
 char *strcat(char *dest, const char *src)
 {
 	char *tmp = dest;
-
-	//@ assert valid_str(tmp);
 	//@ ghost size_t dest_len = strlen(tmp);
 
 	/*@ loop invariant tmp <= dest <= tmp + dest_len;
