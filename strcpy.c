@@ -20,3 +20,15 @@ char *strcpy(char *dest, const char *src)
 	//@ assert valid_str(tmp);
 	return tmp;
 }
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	const char *s = "1234567890";
+	char d[strlen(s)];
+	strcpy(d, s);
+	return 0;
+}
+#endif
