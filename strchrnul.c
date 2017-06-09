@@ -28,3 +28,17 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	const char *s = "123456788889";
+	char *ptr;
+	ptr = strchrnul(s, '6');
+	ptr = strchrnul(s, '8');
+	ptr = strchrnul(s, '\0');
+	ptr = ptr;
+	return 0;
+}
+#endif
