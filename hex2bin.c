@@ -54,3 +54,15 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 	//@ assert count == ((size_t %)-1);
 	return 0;
 }
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	const char *src = "ABCDF1011FFA";
+	u8 dst[strlen(src)/2];
+	hex2bin(dst, src, strlen(src)/2);
+	return 0;
+}
+#endif
