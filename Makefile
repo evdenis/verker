@@ -85,7 +85,13 @@ $(EACSLBINDIR):
 $(EACSLFUZZDIR):
 	@-mkdir -p $(EACSLFUZZDIR)
 
-$(BINDIR)/%: %.c
+$(BINDIR)/skip_spaces: $(BINDIR)/ctype.o skip_spaces.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
+$(BINDIR)/%.o: %.c %.h
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) -c $< -o $@
+
+$(BINDIR)/%: %.c %.h
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $< -o $@
 
 $(FUZZDIR)/%.o: %.c %.h
