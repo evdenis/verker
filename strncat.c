@@ -66,3 +66,17 @@ char *strncat(char *dest, const char *src, size_t count)
 	}
 	return tmp;
 }
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	const char *s = "12345";
+	char d[strlen(s) + 4];
+	d[0] = '1'; d[1] = '1'; d[2] = '1'; d[3] = '\0';
+	strncat(d, s, strlen(s));
+	strncat(d, s, strlen(s) - 3);
+	return 0;
+}
+#endif

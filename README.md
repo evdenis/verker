@@ -23,7 +23,7 @@ ACSL specifications for linux kernel functions
 | 14 | strim         |        | not required   | !const    | no   |         |
 | 15 | strlen        | proved | proved         | yes       | yes  |         |
 | 16 | strncasecmp   |        |                | yes       | no   |         |
-| 17 | strncat       |        | not required   |           | no   |         |
+| 17 | strncat       |        | not required   |           | yes  |         |
 | 18 | strnchr       | proved |                | yes       | yes  |         |
 | 19 | strncmp       |        |                | yes       | yes  |         |
 | 20 | strncpy       |        | not required   |           | no   |         |
