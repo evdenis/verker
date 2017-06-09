@@ -35,3 +35,16 @@ char *strcat(char *dest, const char *src)
 	//@ assert valid_str(tmp);
 	return tmp;
 }
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	const char *s = "12345";
+	char d[strlen(s) + 4];
+	d[0] = '1'; d[1] = '1'; d[2] = '1'; d[3] = '\0';
+	strcat(d, s);
+	return 0;
+}
+#endif
