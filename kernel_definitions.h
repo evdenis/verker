@@ -1,6 +1,8 @@
 #ifndef __KERNEL_DEFINITIONS_H__
 #define __KERNEL_DEFINITIONS_H__
 
+#define CONFIG_64BIT 1
+
 #define E2BIG 7
 
 #define EINVAL 22
@@ -50,6 +52,13 @@
 #define max(x,y) __max(typeof(x), typeof(y), __UNIQUE_ID(max1_), __UNIQUE_ID(max2_), x, y)
 
 #define SIZE_MAX 18446744073709551615UL
+
+#ifdef CONFIG_64BIT
+#define BITS_PER_LONG 64
+#else
+#define BITS_PER_LONG 32
+#endif /* CONFIG_64BIT */
+
 
 enum {
  false = 0,
