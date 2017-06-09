@@ -59,3 +59,16 @@ char *strncpy(char *dest, const char *src, size_t count)
 	//@ assert valid_strn(tmp, ocount);
 	return dest;
 }
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	const char *s = "1234567890";
+	char d[strlen(s)];
+	strncpy(d, s, strlen(s));
+	strncpy(d, s, strlen(s) / 2);
+	return 0;
+}
+#endif

@@ -26,7 +26,7 @@ ACSL specifications for linux kernel functions
 | 17 | strncat       |        | not required   |           | yes  |         |
 | 18 | strnchr       | proved |                | yes       | yes  |         |
 | 19 | strncmp       |        |                | yes       | yes  |         |
-| 20 | strncpy       |        | not required   |           | no   |         |
+| 20 | strncpy       |        | not required   |           | yes  |         |
 | 21 | strnlen       | proved | proved         | yes       | yes  |         |
 | 22 | strnstr       |        |                | yes       | no   |         |
 | 23 | strpbrk       | proved | proved         | yes       | no   |         |
