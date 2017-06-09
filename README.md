@@ -9,7 +9,7 @@ ACSL specifications for linux kernel functions
 |----|----------|--------|----------------|---------|-----------|------|
 | 1 | check\_bytes8 | proved | proved | | yes | yes |
 | 2 | match\_string | | not required | | | no |
-| 3 | memchr | proved | | | yes | no |
+| 3 | memchr | proved | | | yes | yes |
 | 4 | memcmp | proved | | | yes | no |
 | 5 | memscan | proved | not required | | yes | no |
 | 6 | skip\_spaces | proved | proved | requires too strict (remove strlen) | yes | no |
