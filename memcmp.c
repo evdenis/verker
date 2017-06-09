@@ -75,9 +75,9 @@ __visible int memcmp(const void *cs, const void *ct, size_t count)
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size % 2 == 0) {
-      memcmp(data, data + size / 2, size / 2);
-   }
-   return 0;
+	if (size % 2 == 0) {
+		memcmp(data, data + size / 2, size / 2);
+	}
+	return 0;
 }
 #endif

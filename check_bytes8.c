@@ -29,9 +29,9 @@ static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size > 1) {
-      check_bytes8((const u8 *)data, data[size - 1], size - 1);
-   }
-   return 0;
+	if (size > 1) {
+		check_bytes8((const u8 *)data, data[size - 1], size - 1);
+	}
+	return 0;
 }
 #endif

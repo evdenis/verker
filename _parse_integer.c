@@ -44,15 +44,15 @@ unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size > 0 && data[size-1] == '\0') {
-      unsigned long long res;
-      _parse_integer((const char *)data, 1, &res);
-      _parse_integer((const char *)data, 2, &res);
-      _parse_integer((const char *)data, 4, &res);
-      _parse_integer((const char *)data, 8, &res);
-      _parse_integer((const char *)data, 10, &res);
-      _parse_integer((const char *)data, 16, &res);
-   }
-   return 0;
+	if (size > 0 && data[size-1] == '\0') {
+		unsigned long long res;
+		_parse_integer((const char *)data, 1, &res);
+		_parse_integer((const char *)data, 2, &res);
+		_parse_integer((const char *)data, 4, &res);
+		_parse_integer((const char *)data, 8, &res);
+		_parse_integer((const char *)data, 10, &res);
+		_parse_integer((const char *)data, 16, &res);
+	}
+	return 0;
 }
 #endif

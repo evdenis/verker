@@ -23,9 +23,9 @@ char *strnchr(const char *s, size_t count, int c)
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size > 1) {
-      strnchr((const char *)data, size - 1, data[size - 1]);
-   }
-   return 0;
+	if (size > 1) {
+		strnchr((const char *)data, size - 1, data[size - 1]);
+	}
+	return 0;
 }
 #endif

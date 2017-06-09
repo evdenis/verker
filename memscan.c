@@ -27,9 +27,9 @@ void *memscan(void *addr, int c, size_t size)
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size > 1) {
-      memscan((void *)data, data[size - 1], size - 1);
-   }
-   return 0;
+	if (size > 1) {
+		memscan((void *)data, data[size - 1], size - 1);
+	}
+	return 0;
 }
 #endif

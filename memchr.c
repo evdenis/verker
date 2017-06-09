@@ -24,9 +24,9 @@ void *memchr(const void *s, int c, size_t n)
 int LLVMFuzzerTestOneInput(const uint8_t *data,
                            size_t size)
 {
-   if (size > 1) {
-      memchr((const void *)data, data[size - 1], size - 1);
-   }
-   return 0;
+	if (size > 1) {
+		memchr((const void *)data, data[size - 1], size - 1);
+	}
+	return 0;
 }
 #endif
