@@ -29,3 +29,14 @@ char *strreplace(char *s, char old, char new)
 	//@ assert s == os + strlen(os);
 	return s;
 }
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	char s[] = "1234567890";
+	strreplace(s, '6', '5');
+	strreplace(s, '\0', '5');
+	return 0;
+}
+#endif
