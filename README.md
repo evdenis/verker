@@ -17,7 +17,7 @@ ACSL specifications for linux kernel functions
 | 8  | strcat        | proved | not required   |           | no   | usr strcmp in ensures |
 | 9  | strchr        | proved | proved         | yes       | yes  |         |
 | 10 | strchrnul     | proved | proved         | yes       | yes  |         |
-| 11 | strcmp        | proved |                | yes       | no   |         |
+| 11 | strcmp        | proved |                | yes       | yes  |         |
 | 12 | strcpy        | proved | not required   |           | no   | use strcmp logic function |
 | 13 | strcspn       | proved | proved         | yes       | no   |         |
 | 14 | strim         |        | not required   | !const    | no   |         |
@@ -27,7 +27,7 @@ ACSL specifications for linux kernel functions
 | 18 | strnchr       | proved |                | yes       | yes  |         |
 | 19 | strncmp       |        |                | yes       | no   |         |
 | 20 | strncpy       |        | not required   |           | no   |         |
-| 21 | strnlen       | proved | proved         | yes       | no   |         |
+| 21 | strnlen       | proved | proved         | yes       | yes  |         |
 | 22 | strnstr       |        |                | yes       | no   |         |
 | 23 | strpbrk       | proved | proved         | yes       | no   |         |
 | 24 | strrchr       | proved |                | yes       | yes  |         |
