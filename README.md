@@ -41,7 +41,7 @@ ACSL specifications for linux kernel functions
 | 32 | memmove | proved | not required | use memcmp logic function at ensures | | no |
 | 33 | memcpy | proved | not required | use memcmp logic function at ensures | | no |
 | 34 | memset | proved | not required | | non-constant input | no |
-| 35 | kstrtobool | proved | not required | | yes | no |
+| 35 | kstrtobool | proved | not required | | yes | yes |
 | 36 | \_parse\_integer\_fixup\_radix | proved | not required | | yes | no |
 | 37 | \_parse\_integer | | | | yes | no |
 

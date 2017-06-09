@@ -49,3 +49,19 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	bool res;
+	kstrtobool("y", &res);kstrtobool("Y", &res);
+	kstrtobool("n", &res);kstrtobool("N", &res);
+	kstrtobool("0", &res);kstrtobool("1", &res);
+	kstrtobool("on", &res);kstrtobool("On", &res);
+	kstrtobool("oN", &res);kstrtobool("ON", &res);
+	kstrtobool("of", &res);kstrtobool("oF", &res);
+	kstrtobool("Of", &res);kstrtobool("OF", &res);
+	return 0;
+}
+#endif
