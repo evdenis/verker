@@ -32,13 +32,14 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 #endif
 
 #ifdef DUMMY_MAIN
-#include <string.h>
 
 int main(int argc, char *argv[])
 {
 	const char *s = "1234567890";
-	memchr(s, '0', strlen(s));
-	memchr(s, 'a', strlen(s));
+	void *ptr;
+	ptr = memchr(s, '0', 11);
+	ptr = memchr(s, 'a', 11);
+	ptr = ptr;
 	return 0;
 }
 #endif
