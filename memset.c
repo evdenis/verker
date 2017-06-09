@@ -16,3 +16,13 @@ void *memset(void *s, int c, size_t count)
 	//@ assert count == (size_t %)(-1);
 	return s;
 }
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	int buf[10];
+	memset(buf, 3, 10 * sizeof(int));
+	return 0;
+}
+#endif
