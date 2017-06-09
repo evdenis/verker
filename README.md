@@ -43,7 +43,7 @@ ACSL specifications for linux kernel functions
 | 34 | memset        | proved | not required   | !const    | yes  |         |
 | 35 | kstrtobool    | proved | not required   | yes       | yes  |         |
 | 36 | \_parse\_integer\_fixup\_radix | proved | not required | yes | yes | |
-| 37 | \_parse\_integer |     |                | yes       | no   |         |
+| 37 | \_parse\_integer |     |                | yes       | yes   |         |
 
 # Toolchain
 
