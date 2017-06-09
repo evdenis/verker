@@ -136,3 +136,19 @@ char *strim(char *s)
 
 	return skip_spaces(s);
 }
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	char s1[] = "   test   ";
+	char s2[] = " ";
+	char s3[] = "";
+	char s4[] = "test   ";
+	char s5[] = "   test";
+	char s6[] = "test";
+	strim(s1); strim(s2); strim(s3);
+	strim(s4); strim(s5); strim(s6);
+	return 0;
+}
+#endif
