@@ -2,6 +2,7 @@
 #define __STRLCPY_H__
 
 #include "kernel_definitions.h"
+#include "memcpy.h"
 #include "strlen.h"
 
 /**
