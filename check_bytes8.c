@@ -35,3 +35,16 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	const u8 value = 3;
+	const unsigned int bytes = 10;
+	const u8 start[bytes] = {value};
+	check_bytes8(start, value, bytes);
+	return 0;
+}
+#endif
