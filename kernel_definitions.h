@@ -98,17 +98,10 @@ typedef __kernel_size_t size_t;
 
 typedef __kernel_ssize_t ssize_t;
 
-static inline unsigned long create_zero_mask(unsigned long bits);
-
-static inline unsigned long find_zero(unsigned long mask);
-
-static inline unsigned long has_zero(unsigned long a, unsigned long *bits, const struct word_at_a_time *c);
-
-static inline unsigned long prep_zero_mask(unsigned long a, unsigned long bits, const struct word_at_a_time *c);
-
-extern void *memcpy(void *to, const void *from, size_t len);
-
-void *memset(void *s, int c, size_t n);
+extern unsigned long create_zero_mask(unsigned long bits);
+extern unsigned long find_zero(unsigned long mask);
+extern unsigned long has_zero(unsigned long a, unsigned long *bits, const struct word_at_a_time *c);
+extern unsigned long prep_zero_mask(unsigned long a, unsigned long bits, const struct word_at_a_time *c);
 
 #ifdef FUZZ_MAIN
 /*@ requires data == \null || \valid(data+(0..size-1));
