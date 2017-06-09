@@ -19,3 +19,14 @@ void *memcpy(void *dest, const void *src, size_t count)
 	//@ assert count == (size_t %)(-1);
 	return dest;
 }
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	int src[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int dest[ARRAY_SIZE(src)];
+	memcpy(dest, src, sizeof(src));
+	return 0;
+}
+#endif

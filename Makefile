@@ -92,7 +92,7 @@ $(BINDIR)/strlcpy: $(BINDIR)/memcpy.o strlcpy.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
 $(BINDIR)/%.o: %.c %.h
-	$(CC) $(CFLAGS) $(EXT_CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BINDIR)/%: %.c %.h
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $< -o $@
