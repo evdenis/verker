@@ -33,3 +33,16 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	char *s = "123456788889";
+	memscan(s, '6', strlen(s));
+	memscan(s, '8', strlen(s));
+	memscan(s, '\0', strlen(s));
+	return 0;
+}
+#endif
