@@ -5,45 +5,45 @@ ACSL specifications for linux kernel functions
 
 # Proofs Status
 
-| ID | Function | Status | Logic function | Comment | libfuzzer | Main |
-|----|----------|--------|----------------|---------|-----------|------|
-| 1 | check\_bytes8 | proved | proved | | yes | yes |
-| 2 | match\_string | | not required | | | no |
-| 3 | memchr | proved | | | yes | yes |
-| 4 | memcmp | proved | | | yes | no |
-| 5 | memscan | proved | not required | | yes | no |
-| 6 | skip\_spaces | proved | proved | requires too strict (remove strlen) | yes | no |
-| 7 | strcasecmp | proved | | | yes | no |
-| 8 | strcat | proved | not required | usr strcmp in ensures | | no |
-| 9 | strchr | proved | proved | | yes | no |
-| 10 | strchrnul | proved | proved | | yes | no |
-| 11 | strcmp | proved | | | yes | no |
-| 12 | strcpy | proved | not required | use strcmp logic function | | no |
-| 13 | strcspn | proved | proved | | yes | no |
-| 14 | strim | | not required | | non-constant input | no |
-| 15 | strlen | proved | proved | | yes | no |
-| 16 | strncasecmp | | | | yes | no |
-| 17 | strncat | | not required | | | no |
-| 18 | strnchr | proved | | | yes | no |
-| 19 | strncmp | | | | yes | no |
-| 20 | strncpy | | not required | | | no |
-| 21 | strnlen | proved | proved | | yes | no |
-| 22 | strnstr | | | | yes | no |
-| 23 | strpbrk | proved | proved | | yes | no |
-| 24 | strrchr | proved | | | yes | no |
-| 25 | strreplace | | not required | | non-constant input | no |
-| 26 | strsep | proved | not required | | non-constant input | no |
-| 27 | strspn | proved | proved | | yes | no |
-| 28 | strstr | | | | yes | no |
-| 29 | sysfs\_streq | | | | yes | no |
-| 30 | strlcat | | not required | | | no |
-| 31 | strlcpy | proved | not required | use strncmp lf in in ensures | | no |
-| 32 | memmove | proved | not required | use memcmp logic function at ensures | | no |
-| 33 | memcpy | proved | not required | use memcmp logic function at ensures | | no |
-| 34 | memset | proved | not required | | non-constant input | no |
-| 35 | kstrtobool | proved | not required | | yes | yes |
-| 36 | \_parse\_integer\_fixup\_radix | proved | not required | | yes | no |
-| 37 | \_parse\_integer | | | | yes | no |
+| ID | Function      | Status | Logic function | libfuzzer | Main | Comment |
+|----|---------------|--------|----------------|-----------|------|---------|
+| 1  | check\_bytes8 | proved | proved         | yes       | yes  |         |
+| 2  | match\_string |        | not required   |           | no   |         |
+| 3  | memchr        | proved |                | yes       | yes  |         |
+| 4  | memcmp        | proved |                | yes       | no   |         |
+| 5  | memscan       | proved | not required   | yes       | no   |         |
+| 6  | skip\_spaces  | proved | proved         | yes       | no   | requires too strict (remove strlen) |
+| 7  | strcasecmp    | proved |                | yes       | no   |         |
+| 8  | strcat        | proved | not required   |           | no   | usr strcmp in ensures |
+| 9  | strchr        | proved | proved         | yes       | no   |         |
+| 10 | strchrnul     | proved | proved         | yes       | no   |         |
+| 11 | strcmp        | proved |                | yes       | no   |         |
+| 12 | strcpy        | proved | not required   |           | no   | use strcmp logic function |
+| 13 | strcspn       | proved | proved         | yes       | no   |         |
+| 14 | strim         |        | not required   | !const    | no   |         |
+| 15 | strlen        | proved | proved         | yes       | no   |         |
+| 16 | strncasecmp   |        |                | yes       | no   |         |
+| 17 | strncat       |        | not required   |           | no   |         |
+| 18 | strnchr       | proved |                | yes       | no   |         |
+| 19 | strncmp       |        |                | yes       | no   |         |
+| 20 | strncpy       |        | not required   |           | no   |         |
+| 21 | strnlen       | proved | proved         | yes       | no   |         |
+| 22 | strnstr       |        |                | yes       | no   |         |
+| 23 | strpbrk       | proved | proved         | yes       | no   |         |
+| 24 | strrchr       | proved |                | yes       | no   |         |
+| 25 | strreplace    |        | not required   | !const    | no   |         |
+| 26 | strsep        | proved | not required   | !const    | no   |         |
+| 27 | strspn        | proved | proved         | yes       | no   |         |
+| 28 | strstr        |        |                | yes       | no   |         |
+| 29 | sysfs\_streq  |        |                | yes       | no   |         |
+| 30 | strlcat       |        | not required   |           | no   |         |
+| 31 | strlcpy       | proved | not required   |           | no   | use strncmp lf in in ensures |
+| 32 | memmove       | proved | not required   |           | no   | use memcmp logic function at ensures |
+| 33 | memcpy        | proved | not required   |           | no   | use memcmp logic function at ensures |
+| 34 | memset        | proved | not required   | !const    | no   |         |
+| 35 | kstrtobool    | proved | not required   | yes       | yes  |         |
+| 36 | \_parse\_integer\_fixup\_radix | proved | not required | yes | no | |
+| 37 | \_parse\_integer |     |                | yes       | no   |         |
 
 # Toolchain
 
