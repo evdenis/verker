@@ -59,6 +59,7 @@
 #define BITS_PER_LONG 32
 #endif /* CONFIG_64BIT */
 
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
 enum {
  false = 0,
