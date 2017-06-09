@@ -62,3 +62,17 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+int main(int argc, char *argv[])
+{
+	const char *s1 = "asbcd\n";
+	const char *s2 = "asbcd";
+	const char *s3 = "asd";
+	sysfs_streq(s1, s2);
+	sysfs_streq(s2, s1);
+	sysfs_streq(s1, s1);
+	sysfs_streq(s1, s3);
+	return 0;
+}
+#endif
