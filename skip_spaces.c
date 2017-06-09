@@ -24,3 +24,13 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	skip_spaces("   123");
+	skip_spaces("");
+	return 0;
+}
+#endif

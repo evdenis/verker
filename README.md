@@ -12,7 +12,7 @@ ACSL specifications for linux kernel functions
 | 3  | memchr        | proved |                | yes       | yes  |         |
 | 4  | memcmp        | proved |                | yes       | no   |         |
 | 5  | memscan       | proved | not required   | yes       | no   |         |
-| 6  | skip\_spaces  | proved | proved         | yes       | no   | requires too strict (remove strlen) |
+| 6  | skip\_spaces  | proved | proved         | yes       | yes  | requires too strict (remove strlen) |
 | 7  | strcasecmp    | proved |                | yes       | no   |         |
 | 8  | strcat        | proved | not required   |           | yes  | usr strcmp in ensures |
 | 9  | strchr        | proved | proved         | yes       | yes  |         |
