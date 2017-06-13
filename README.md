@@ -29,7 +29,7 @@ ACSL specifications for linux kernel functions
 | 20 | strncpy       |        | not required   |           | yes  |         |
 | 21 | strnlen       | proved | proved         | yes       | yes  |         |
 | 22 | strnstr       |        |                | yes       | no   |         |
-| 23 | strpbrk       | proved | proved         | yes       | no   |         |
+| 23 | strpbrk       | proved | proved         | yes       | yes  |         |
 | 24 | strrchr       | proved |                | yes       | yes  |         |
 | 25 | strreplace    |        | not required   | !const    | yes  |         |
 | 26 | strsep        | proved | not required   | !const    | no   |         |

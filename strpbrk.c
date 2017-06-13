@@ -53,3 +53,18 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	char * res;
+	const char *find = "1234567890";
+	res = strpbrk("abcbcd", find);
+	res = strpbrk("123456", find);
+	res = strpbrk("abc023", find);
+	res = strpbrk("",       find);
+	res = res;
+	return 0;
+}
+#endif
