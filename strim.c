@@ -124,7 +124,10 @@ char *strim(char *s)
 
 	end = s + size - 1;
 	//@ ghost char *oend = end;
-	/*@ loop invariant s - 1 <= end <= s + strlen(s) - 1;
+	//@ assert end + 1 == s + strlen(s);
+	//@ assert oend + 1 == '\0';
+
+	/*@ loop invariant s - 1 <= end <= oend;
 	    loop invariant \forall char *p; end < p <= oend ==> isspace(*p);
 	    loop variant end - s;
 	 */
@@ -132,6 +135,10 @@ char *strim(char *s)
 		end--;
 	//@ assert !isspace(*end) || end == s - 1;
 	*(end + 1) = '\0';
+	//@ assert end + 1 == '\0';
+	//@ assert end > s ==> strlen(end) == 1;
+	//@ assert end == s - 1 ==> strlen(s) == 0;
+	//@ assert \forall char *p; end + 1 < p <= oend ==> isspace(*p);
 	//@ assert valid_str(s);
 
 	return skip_spaces(s);
