@@ -33,7 +33,7 @@ ACSL specifications for linux kernel functions
 | 24 | strrchr       | proved |                | yes       | yes  |         |
 | 25 | strreplace    |        | not required   | !const    | yes  |         |
 | 26 | strsep        | proved | not required   | !const    | no   |         |
-| 27 | strspn        | proved | proved         | yes       | no   |         |
+| 27 | strspn        | proved | proved         | yes       | yes  |         |
 | 28 | strstr        |        |                | yes       | yes  |         |
 | 29 | sysfs\_streq  |        |                | yes       | yes  |         |
 | 30 | strlcat       |        | not required   |           | yes  |         |

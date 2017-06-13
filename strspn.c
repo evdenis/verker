@@ -47,3 +47,18 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	size_t res;
+	const char *accept = "1234567890";
+	res = strspn("098765", accept);
+	res = strspn("098abc", accept);
+	res = strspn("abc",    accept);
+	res = strspn("",       accept);
+	res = res;
+	return 0;
+}
+#endif
