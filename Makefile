@@ -103,6 +103,9 @@ $(BINDIR)/strcasecmp: $(BINDIR)/ctype.o strcasecmp.c
 $(BINDIR)/strncasecmp: $(BINDIR)/ctype.o strncasecmp.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
+$(BINDIR)/strnstr: $(BINDIR)/memcmp.o $(BINDIR)/strlen.o strnstr.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
 $(BINDIR)/%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
