@@ -8,7 +8,7 @@ ACSL specifications for linux kernel functions
 | ID | Function      | Status | Logic function | libfuzzer | Main | Comment |
 |----|---------------|--------|----------------|-----------|------|---------|
 | 1  | check\_bytes8 | proved | proved         | yes       | yes  |         |
-| 2  | match\_string |        | not required   |           | no   |         |
+| 2  | match\_string |        | not required   |           | yes  |         |
 | 3  | memchr        | proved |                | yes       | yes  |         |
 | 4  | memcmp        | proved |                | yes       | yes  |         |
 | 5  | memscan       | proved | not required   | yes       | yes  |         |
