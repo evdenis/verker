@@ -13,7 +13,7 @@ ACSL specifications for linux kernel functions
 | 4  | memcmp        | proved |                | yes       | yes  |         |
 | 5  | memscan       | proved | not required   | yes       | yes  |         |
 | 6  | skip\_spaces  | proved | proved         | yes       | yes  | requires too strict (remove strlen) |
-| 7  | strcasecmp    | proved |                | yes       | no   |         |
+| 7  | strcasecmp    | proved |                | yes       | yes  |         |
 | 8  | strcat        | proved | not required   |           | yes  | usr strcmp in ensures |
 | 9  | strchr        | proved | proved         | yes       | yes  |         |
 | 10 | strchrnul     | proved | proved         | yes       | yes  |         |
@@ -22,7 +22,7 @@ ACSL specifications for linux kernel functions
 | 13 | strcspn       | proved | proved         | yes       | yes  |         |
 | 14 | strim         |        | not required   | !const    | yes  |         |
 | 15 | strlen        | proved | proved         | yes       | yes  |         |
-| 16 | strncasecmp   |        |                | yes       | no   |         |
+| 16 | strncasecmp   |        |                | yes       | yes  |         |
 | 17 | strncat       |        | not required   |           | yes  |         |
 | 18 | strnchr       | proved |                | yes       | yes  |         |
 | 19 | strncmp       |        |                | yes       | yes  |         |

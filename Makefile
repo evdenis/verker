@@ -97,6 +97,12 @@ $(BINDIR)/strim: $(BINDIR)/skip_spaces.o $(BINDIR)/ctype.o strim.c
 $(BINDIR)/_parse_integer_fixup_radix: $(BINDIR)/ctype.o _parse_integer_fixup_radix.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
+$(BINDIR)/strcasecmp: $(BINDIR)/ctype.o strcasecmp.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
+$(BINDIR)/strncasecmp: $(BINDIR)/ctype.o strncasecmp.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
 $(BINDIR)/%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 

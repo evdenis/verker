@@ -63,3 +63,24 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	int res;
+	const char *s1 = "123ABCDEFG";
+	const char *s2 = "123ABCDEF";
+	const char *s3 = "123abcdefg";
+	const char *s4 = "123abcdeff";
+	const char *s5 = "123abcdefz";
+	res = strncasecmp(s1, s1, strlen(s1));
+	res = strncasecmp(s1, s2, strlen(s1));
+	res = strncasecmp(s1, s3, strlen(s1));
+	res = strncasecmp(s1, s4, strlen(s1));
+	res = strncasecmp(s1, s5, strlen(s1));
+	res = res;
+	return 0;
+}
+#endif

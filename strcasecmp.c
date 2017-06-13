@@ -41,3 +41,23 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 	return 0;
 }
 #endif
+
+#ifdef DUMMY_MAIN
+
+int main(int argc, char *argv[])
+{
+	int res;
+	const char *s1 = "123ABCDEFG";
+	const char *s2 = "123ABCDEF";
+	const char *s3 = "123abcdefg";
+	const char *s4 = "123abcdeff";
+	const char *s5 = "123abcdefz";
+	res = strcasecmp(s1, s1);
+	res = strcasecmp(s1, s2);
+	res = strcasecmp(s1, s3);
+	res = strcasecmp(s1, s4);
+	res = strcasecmp(s1, s5);
+	res = res;
+	return 0;
+}
+#endif
