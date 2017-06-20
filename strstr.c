@@ -4,10 +4,9 @@
     logic char *strstr(char *s1, char *s2);
 
     predicate strmatch(char *s1, char *s2) =
-       (strlen(s1) == strlen(s2)) &&
-       (\forall integer i;
-          0 <= i <= strlen(s1) ==>
-             s1[i] == s2[i]);
+       \forall integer i;
+          0 <= i < strlen(s2) ==>
+             s1[i] == s2[i];
     }
  */
 
@@ -45,6 +44,7 @@ char *strstr(const char *s1, const char *s2)
 		l1--;
 		if (!memcmp(s1, s2, l2))
 			return (char *)s1;
+		//@ assert !strmatch(s1, s2);
 		s1++;
 	}
 	return NULL;
