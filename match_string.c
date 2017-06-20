@@ -3,9 +3,14 @@
 
 /*@ requires valid_str(string);
     requires n <= INT_MAX;
-    //requires \valid(array+(0..n-1));
-    //requires \forall integer i;
+    requires \valid(array + (0 .. n - 1));
+    requires \forall integer i; 0 <= i < n - 1 ==> valid_str(array[i]);
+    requires array[n - 1] == \null || valid_str(array[n - 1]);
     assigns \nothing;
+    //behavior b1:
+    //behavior b2:
+    //complete behaviors;
+    //disjoint behaviors;
  */
 int match_string(const char * const *array, size_t n, const char *string)
 {
