@@ -2,24 +2,45 @@
 
 void *memmove(void *dest, const void *src, size_t count)
 {
+	//@ ghost size_t orig_count = count;
 	char *tmp;
 	const char *s;
 
 	if (dest <= src) {
 		tmp = dest;
 		s = src;
-		while (count--)
+		/*@ loop invariant 0 <= count <= orig_count;
+		    loop invariant tmp - dest == orig_count - count == s - src;
+		    loop invariant (char *)dest <= tmp <= (char *)dest + orig_count;
+		    loop invariant (char *)src <= s <= (char *)src + orig_count;
+		    loop invariant \forall integer i; orig_count - count <= i < orig_count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
+		    loop invariant \forall integer i; 0 <= i < orig_count - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop variant count; */
+		while (count--/*@%*/) {
 			*tmp++ = *s++;
+			//@ assert ((char *)dest)[orig_count - count - 1] == ((char *)src)[orig_count - count - 1];
+		}
 	} else {
 		tmp = dest;
 		tmp += count;
 		s = src;
 		s += count;
-		while (count--)
+		/*@ loop invariant 0 <= count <= orig_count;
+		    loop invariant tmp - dest == count == s - src;
+		    loop invariant (char *)dest <= tmp <= (char *)dest + orig_count;
+		    loop invariant (char *)src <= s <= (char *)src + orig_count;
+		    loop invariant \forall integer i; 0 <= i < count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
+		    loop invariant \forall integer i; count <= i < orig_count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop variant count; */
+		while (count--/*@%*/) {
 			*--tmp = *--s;
+			//@ assert ((char *)dest)[count] == ((char *)src)[count];
+		}
 	}
+	//@ assert count == (size_t %)(-1);
 	return dest;
 }
+
 
 #ifdef DUMMY_MAIN
 

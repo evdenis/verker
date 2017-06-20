@@ -41,12 +41,14 @@ The aim of this project is formal verification of Linux kernel library functions
 | 29 | sysfs\_streq  |        |                | yes       | yes  |         |
 | 30 | strlcat       |        | not required   |           | yes  |         |
 | 31 | strlcpy       | proved | not required   |           | yes  | use strncmp lf in in ensures |
-| 32 | memmove       | proved | not required   |           | yes  | use memcmp logic function at ensures |
+| 32 | memmove       | proved\*| not required   |           | yes  | use memcmp logic function at ensures |
 | 33 | memcpy        | proved | not required   |           | yes  | use memcmp logic function at ensures |
 | 34 | memset        | proved | not required   | !const    | yes  |         |
 | 35 | kstrtobool    | proved | not required   | yes       | yes  |         |
 | 36 | \_parse\_integer\_fixup\_radix | proved | not required | yes | yes | |
 | 37 | \_parse\_integer |     |                | yes       | yes   |         |
+
+ \* memmove - except pointer difference vc fail. Model limitation.
 
 # Toolchain
 
