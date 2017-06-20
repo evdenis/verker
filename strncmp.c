@@ -7,15 +7,15 @@
     behavior equal:
        assumes \forall integer i; 0 <= i <= strnlen(cs, count) ==> (u8 %)cs[i] == (u8 %)ct[i];
        ensures \result == 0;
-    //behavior not_equal:
-    //   assumes \exists integer i; 0 <= i <= strnlen(cs) && (u8 %)cs[i] != (u8 %)ct[i];
-    //   ensures \result == -1 || \result == 1;
+    behavior not_equal:
+       assumes \exists integer i; 0 <= i <= strnlen(cs, count) && (u8 %)cs[i] != (u8 %)ct[i];
+       ensures \result == -1 || \result == 1;
     //   ensures \exists integer i; 0 <= i <= strnlen(cs) &&
     //           (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
     //           (cs[i] != ct[i]) &&
     //           ((u8 %)cs[i] < (u8 %)ct[i] ? \result == -1 : \result == 1);
-    //complete behaviors;
-    //disjoint behaviors;
+    complete behaviors;
+    disjoint behaviors;
  */
 int strncmp(const char *cs, const char *ct, size_t count)
 {

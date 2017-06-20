@@ -2,6 +2,7 @@
 #define __STRNCMP_H__
 
 #include "kernel_definitions.h"
+#include "strlen.h"
 #include "strnlen.h"
 
 /**
