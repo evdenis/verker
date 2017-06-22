@@ -4,7 +4,7 @@ To view this file in Russian, please follow the [link](README_ru.md).
 
 ACSL specifications for linux kernel functions
 
-The aim of this project is formal verification of Linux kernel library functions.
+The aim of this project is the formal verification of Linux kernel library functions.
 
 # Proofs Status
 
@@ -54,7 +54,7 @@ The aim of this project is formal verification of Linux kernel library functions
 
 Спецификации разрабатываются на языке ACSL. В качестве инструментов формальной верификации используются Frama-C с плагином дедуктивной верификации jessie.
 - Описание, как установить инструменты можно найти по [ссылке](https://forge.ispras.ru/projects/astraver/wiki). Инструменты работают на Linux, Windows, Mac OS X.
-- По [ссылке](https://www.dropbox.com/s/45sjzvfakz2n316/verification.ova?dl=0) можно загрузить образ виртуальной машины VirtualBox в формате ova с уже с предустановленными и настроенными инструментами. Размер образа ~3.6 гигабайт. Ос - Ubuntu. Логин - user. Пароль - 1. В директории **workspace** находятся два репозитория. Один соответствует данному, второй - acsl-proved (примеры с протоколами верикации).
+- По [ссылке](https://disk.llkl.org/f/be6ea14a2d/?dl=1) можно загрузить образ виртуальной машины VirtualBox в формате ova с уже с предустановленными и настроенными инструментами. Размер образа ~3.6 гигабайт. Ос - Ubuntu. Логин - user. Пароль - 1. В директории **workspace** находятся два репозитория. Один соответствует данному, второй - acsl-proved (примеры с протоколами верикации).
 
 # Repository files
 
