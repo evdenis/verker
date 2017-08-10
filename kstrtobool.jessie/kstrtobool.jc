@@ -1,0 +1,146 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+type _bool = 0..1
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+tag _BoolP = {
+  _bool _BoolM: 8;
+}
+
+type _BoolP = [_BoolP]
+
+predicate kstrtobool_fmt_false{L}(charP[..] s) =
+\at((((((s + 0).charM == (78 :> int8)) || ((s + 0).charM == (110 :> int8))) ||
+       ((s + 0).charM == (48 :> int8))) ||
+      ((((s + 0).charM == (111 :> int8)) || ((s + 0).charM == (79 :> int8))) &&
+        (((s + 1).charM == (70 :> int8)) || ((s + 1).charM == (102 :> int8))))),L)
+
+predicate kstrtobool_fmt_true{L}(charP[..] s_0) =
+\at((((((s_0 + 0).charM == (89 :> int8)) ||
+        ((s_0 + 0).charM == (121 :> int8))) ||
+       ((s_0 + 0).charM == (49 :> int8))) ||
+      ((((s_0 + 0).charM == (111 :> int8)) ||
+         ((s_0 + 0).charM == (79 :> int8))) &&
+        (((s_0 + 1).charM == (78 :> int8)) ||
+          ((s_0 + 1).charM == (110 :> int8))))),L)
+
+predicate kstrtobool_fmt{L}(charP[..] s_1) =
+\at((kstrtobool_fmt_true{L}(s_1) || kstrtobool_fmt_false{L}(s_1)),L)
+
+int32 kstrtobool(charP[..] s, _BoolP[..] res)
+  requires ((_C_51 : ((s == null) ||
+                       \at((((\offset_min(\at(s,Here)) <= \at(0,Here)) &&
+                              (\offset_max(\at(s,Here)) >= \at(1,Here))) &&
+                             (true && true)),Here))) &&
+             (_C_52 : \at((((\offset_min(\at(res,Here)) <= \at(0,Here)) &&
+                             (\offset_max(\at(res,Here)) >= \at(0,Here))) &&
+                            true),Here)));
+behavior default:
+  ensures (_C_38 : ((_C_39 : ((\result == (0 :> int32)) ||
+                               (\result == ((- 22) :> int32)))) &&
+                     (_C_40 : ((\result == ((- 22) :> int32)) ==>
+                                (\at(res,Old) == \at(res,Old))))));
+behavior INVAL:
+  assumes ((s == null) || (! kstrtobool_fmt{Here}(s)));
+  assigns \nothing;
+  ensures (_C_41 : (\result == ((- 22) :> int32)));
+behavior CORRECT:
+  assumes ((s != null) && kstrtobool_fmt{Here}(s));
+  assigns res._BoolM;
+  ensures (_C_42 : ((_C_43 : (kstrtobool_fmt_true{Here}(\at(s,Old)) ==>
+                               (\at(res,Old)._BoolM == (1 :> _bool)))) &&
+                     ((_C_45 : (kstrtobool_fmt_false{Here}(\at(s,Old)) ==>
+                                 (\at(res,Old)._BoolM == (0 :> _bool)))) &&
+                       (_C_46 : (\result == (0 :> int32))))));
+{  
+   (check (disjoint_behaviors : (! (((s == null) ||
+                                      (! kstrtobool_fmt{Here}(s))) &&
+                                     ((s != null) && kstrtobool_fmt{Here}(s))))));
+   
+   (check (complete_behaviors : (((s != null) && kstrtobool_fmt{Here}(s)) ||
+                                  ((s == null) ||
+                                    (! kstrtobool_fmt{Here}(s))))));
+   
+   (var int32 __retres);
+   
+   {  (if (_C_2 : (! (s != null))) then 
+      {  (_C_1 : (__retres = (-22 :> int32)));
+         
+         (goto return_label)
+      } else ());
+      
+      switch ((_C_36 : ((_C_35 : (_C_34 : (s + (0 :> int32))).charM) :> int32))) {
+        case (_C_3 : (121 :> int32)):
+        case (_C_4 : (89 :> int32)):
+        case (_C_5 : (49 :> int32)):
+        {  (_C_8 : ((_C_7 : res._BoolM) = (_C_6 : ((1 :> int32) :> _bool))));
+           (_C_9 : (__retres = (0 :> int32)));
+           
+           (goto return_label)
+        }
+        case (_C_10 : (110 :> int32)):
+        case (_C_11 : (78 :> int32)):
+        case (_C_12 : (48 :> int32)):
+        {  (_C_15 : ((_C_14 : res._BoolM) = (_C_13 : ((0 :> int32) :> _bool))));
+           (_C_16 : (__retres = (0 :> int32)));
+           
+           (goto return_label)
+        }
+        case (_C_17 : (111 :> int32)):
+        case (_C_18 : (79 :> int32)):
+        {  ();
+           
+           switch ((_C_33 : ((_C_32 : (_C_31 : (s + (1 :> int32))).charM) :> int32))) {
+             case (_C_19 : (110 :> int32)):
+             case (_C_20 : (78 :> int32)):
+             {  (_C_23 : ((_C_22 : res._BoolM) = (_C_21 : ((1 :> int32) :> _bool))));
+                (_C_24 : (__retres = (0 :> int32)));
+                
+                (goto return_label)
+             }
+             case (_C_25 : (102 :> int32)):
+             case (_C_26 : (70 :> int32)):
+             {  (_C_29 : ((_C_28 : res._BoolM) = (_C_27 : ((0 :> int32) :> _bool))));
+                (_C_30 : (__retres = (0 :> int32)));
+                
+                (goto return_label)
+             }
+             default:
+             {  ();
+                
+                (goto switch_1_break)
+             }
+           };
+           (switch_1_break : ())
+        }
+        default:
+        {  ();
+           
+           (goto switch_0_break)
+        }
+      };
+      (switch_0_break : ());
+      (_C_37 : (__retres = (-22 :> int32)));
+      (return_label : 
+      (return __retres))
+   }
+}
