@@ -32,7 +32,7 @@ FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model
 FRAMAC_LIBPATH   := $(shell $(FRAMAC) -print-lib-path)
 FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(FRAMAC_ESHARE) $(FRAMAC_ESHARE)/e_acsl_mmodel.c -lm -lpthread $(FRAMAC_LIBPATH)/../libeacsl-gmp.a $(FRAMAC_LIBPATH)/../libeacsl-jemalloc.a
 
-SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f -name '*.c'))
+SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
 FZZAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 BINAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
