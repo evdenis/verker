@@ -21,7 +21,7 @@ FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(S
 FRAMAC_DFLAGS    := -jessie
 FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
-FRAMAC_GREMLIN   := -jessie-target why3ml -jessie-why3-opt "gremlin -S proof_juicer --clean"
+FRAMAC_SPROVE    := -jessie-target why3sprove -jessie-why3-opt " --strategy proof_juicer --theory-filter axiom"
 FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
 FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
@@ -191,19 +191,19 @@ replay-separatedly: ## Replay proofs consequently.
 replay-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
 
-gremlin: ## Replay proofs simultaiously. You can also type gremlin-<target>.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_GREMLIN) $(SRCFILES)
+sprove: ## Replay proofs simultaiously. You can also type sprove-<target>.
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(SRCFILES)
 
-gremlin-separatedly: ## Replay proofs consequently.
-	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_GREMLIN) $$i; done
+sprove-separatedly: ## Replay proofs consequently.
+	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
-gremlin-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_GREMLIN) $*.c
+sprove-%:
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SRPOVE) $*.c
 
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.pp.c
 
-.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly gremlin gremlin-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly sprove sprove-separatedly clean
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
