@@ -198,7 +198,7 @@ sprove-separatedly: ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
 sprove-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SRPOVE) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
 
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.pp.c
