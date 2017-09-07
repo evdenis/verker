@@ -35,6 +35,7 @@ FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(
 SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
 FZZAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 BINAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,7 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+PROVEDFILES    := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
 FUZZFILES      := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
 EACSLFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(SRCFILES))
@@ -176,6 +177,9 @@ verify: ## Run Frama-C on all files simultaneously. You can also type verify-<ta
 verify-separatedly: ## Run Frama-C on each file consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
 
+verify-proved: ## Run Frama-C on each file consequently.
+	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
+
 verify-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $*.c
 
@@ -203,7 +207,7 @@ sprove-%:
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.pp.c
 
-.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly replay replay-separatedly sprove sprove-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved replay replay-separatedly sprove sprove-separatedly clean
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
