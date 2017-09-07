@@ -7,15 +7,15 @@
     logic char *strchrnull(char *str, char c) =
        *str == c ? str : ((*str == '\0') ? str : strchrnull(str+1, c));
 
-    axiom mem:
+    axiom strchrnull_mem:
        \forall char *str, c;
        valid_str(str) ==>
           (str <= strchrnull(str, c) <= str + strlen(str));
-    axiom iter_one:
+    axiom strchrnull_iter_one:
        \forall char *str, c;
        valid_str(str) && *str != c && *str != '\0' ==>
           strchrnull(str, c) == strchrnull(str+1, c);
-    axiom res:
+    axiom strchrnull_res:
        \forall char *str, c;
        valid_str(str) ==>
           *strchrnull(str, c) == '\0' ^^ *strchrnull(str, c) == c;
@@ -23,18 +23,18 @@
        \forall char *str;
        valid_str(str) ==>
           strlen(str) == strchrnull(str, (char)'\0') - str;
-    axiom at_end:
+    axiom strchrnull_at_end:
        \forall char *str, c;
        \valid(str) && (*str == '\0' || *str == c) ==>
           strchrnull(str, c) == str;
 
-    axiom defn:
+    axiom strchrnull_defn:
        \forall char *str, c, integer i;
        valid_str(str) && 0 <= i <= strlen(str) &&
        (\forall integer j; 0 <= j < i ==> str[j] != c) &&
        str[i] == c ==>
           str + i == strchrnull(str, c);
-    axiom skipped:
+    axiom strchrnull_skipped:
        \forall char *str, c, integer i;
        valid_str(str) &&
        0 <= i < strchrnull(str, c) - str <= strlen(str) ==>

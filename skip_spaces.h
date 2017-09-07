@@ -9,28 +9,28 @@
 /*@ axiomatic SkipSpaces {
     logic char *skip_spaces{L}(char *str) ;//=
        //isspace(*str) ? skip_spaces(str + 1) : str;
-    axiom defn{L}:
+    axiom skip_spaces_defn{L}:
        \forall char *str, size_t i;
        valid_str(str) && i <= strlen(str) &&
        (\forall size_t j; j < i ==> isspace(str[j])) &&
        !isspace(str[i]) ==>
           str + i == skip_spaces{L}(str);
-    axiom deref{L}:
+    axiom skip_spaces_deref{L}:
        \forall char *str; valid_str(str) ==>
           !isspace(*skip_spaces(str));
-    axiom range{L}:
+    axiom skip_spaces_range{L}:
        \forall char *str;
        valid_str(str) ==>
           str <= skip_spaces(str) <= str + strlen(str);
-    axiom iter_one{L}:
+    axiom skip_spaces_iter_one{L}:
        \forall char *str;
        valid_str(str) && !isspace(*str) ==>
        skip_spaces(str) == skip_spaces(str+1);
-    axiom base_addr{L}:
+    axiom skip_spaces_base_addr{L}:
        \forall char *str;
        valid_str(str) ==>
           \base_addr(str) == \base_addr(skip_spaces(str));
-    axiom same{L}:
+    axiom skip_spaces_same{L}:
        \forall char *str;
        \valid(str) && !isspace(*str) ==>
           str == skip_spaces(str);
