@@ -1,24 +1,24 @@
 #include "memcmp.h"
 
 /*@ axiomatic Mem {
-    logic integer memcmp(char *cs, char *ct, integer count);
-    lemma eq:
+    logic integer memcmp{L}(char *cs, char *ct, integer count);
+    axiom eq{L}:
          \forall integer i, char *cs, *ct;
          0 <= i && \valid(cs+(0..i)) && \valid(ct+(0..i)) &&
          cs[i] == ct[i] <==>
             memcmp(cs, ct, i) == 0;
-    lemma lt:
+    axiom lt{L}:
          \exists integer i, char *cs, *ct;
          0 <= i && \valid(cs+(0..i)) && \valid(ct+(0..i)) &&
          (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
          cs[i] < ct[i] <==>
             memcmp(cs, ct, i) < 0;
-    lemma gt:
+    axiom gt{L}:
          \exists integer i, char *cs, *ct;
          0 <= i && \valid(cs+(0..i)) && \valid(ct+(0..i)) &&
          (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
          cs[i] > ct[i] <==>
-            memcmp(cs, ct, i) > 0;
+            memcmp{L}(cs, ct, i) > 0;
     }
  */
 

@@ -13,47 +13,47 @@
 /*@ axiomatic StrSpn {
     predicate in_array(char *s, char c) = \exists char *p; s <= p < s + strlen(s) && *p == c;
 
-    lemma in_array_shift1:
+    axiom in_array_shift1:
        \forall char *s, c;
           valid_str(s) && s != '\0' && *s != c ==>
              in_array(s, c) <==> in_array(s + 1, c);
-    lemma in_array_true:
+    axiom in_array_true:
        \forall char *s, c;
           valid_str(s) && s != '\0' && *s == c ==>
              in_array(s, c);
-    lemma in_array_false:
+    axiom in_array_false:
        \forall char *s, c;
           valid_str(s) && s == '\0' ==>
              !in_array(s, c);
 
-    logic integer strspn(char *s, char *accept);
+    logic integer strspn{L}(char *s, char *accept) reads s, accept;
 
-    lemma strspn_strend:
+    axiom strspn_strend:
        \forall char *s, *accept;
           \valid(s) && *s == '\0' ==>
              strspn(s, accept) == 0;
 
-    lemma strspn_empty_accept:
+    axiom strspn_empty_accept:
        \forall char *s, *accept;
           \valid(accept) && *accept == '\0' ==>
              strspn(s, accept) == 0;
 
-    lemma strspn_range:
+    axiom strspn_range{L}:
        \forall char* s, *accept;
-          valid_str(s) && valid_str(accept) ==>
-             0 <= strspn(s, accept) <= strlen(s);
+          valid_str{L}(s) && valid_str{L}(accept) ==>
+             0 <= strspn{L}(s, accept) <= strlen{L}(s);
 
-    lemma strspn_shift1:
+    axiom strspn_shift1:
        \forall char *s, *accept;
           valid_str(s) && valid_str(accept) && *s != '\0' &&
           in_array(accept, *s) ==>
              strspn(s, accept) == strspn(s + 1, accept) + 1;
 
-    lemma strspn_stop_not_in_accept:
+    axiom strspn_stop_not_in_accept{L}:
        \forall char *s, *accept;
-          valid_str(s) && valid_str(accept) && *s != '\0' &&
-          !in_array(accept, *s) ==>
-             strspn(s, accept) == 0;
+          valid_str{L}(s) && valid_str{L}(accept) && *s != '\0' &&
+          !in_array{L}(accept, *s) ==>
+             strspn{L}(s, accept) == 0;
     }
  */
 

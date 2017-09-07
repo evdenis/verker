@@ -7,37 +7,37 @@
 
 
 /*@ axiomatic SkipSpaces {
-    logic char *skip_spaces(char *str) ;//=
+    logic char *skip_spaces{L}(char *str) ;//=
        //isspace(*str) ? skip_spaces(str + 1) : str;
-    lemma defn:
+    axiom defn{L}:
        \forall char *str, size_t i;
        valid_str(str) && i <= strlen(str) &&
        (\forall size_t j; j < i ==> isspace(str[j])) &&
        !isspace(str[i]) ==>
-          str + i == skip_spaces(str);
-    lemma deref:
+          str + i == skip_spaces{L}(str);
+    axiom deref{L}:
        \forall char *str; valid_str(str) ==>
           !isspace(*skip_spaces(str));
-    lemma range:
+    axiom range{L}:
        \forall char *str;
        valid_str(str) ==>
           str <= skip_spaces(str) <= str + strlen(str);
-    lemma iter_one:
+    axiom iter_one{L}:
        \forall char *str;
        valid_str(str) && !isspace(*str) ==>
        skip_spaces(str) == skip_spaces(str+1);
-    lemma base_addr:
+    axiom base_addr{L}:
        \forall char *str;
        valid_str(str) ==>
           \base_addr(str) == \base_addr(skip_spaces(str));
-    lemma same:
+    axiom same{L}:
        \forall char *str;
        \valid(str) && !isspace(*str) ==>
           str == skip_spaces(str);
-    lemma skipped_are_spaces:
+    axiom skipped_are_spaces{L}:
        \forall char *str, size_t i;
-       valid_str(str) &&
-       i < skip_spaces(str) - str ==>
+       valid_str{L}(str) &&
+       i < skip_spaces{L}(str) - str ==>
           isspace(str[i]);
     }
  */

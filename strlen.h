@@ -8,13 +8,13 @@
        \exists size_t n;
           s[n] == '\0' && \valid(s+(0..n));
 
-    lemma valid_str_shift1:
+    axiom valid_str_shift1:
        \forall char *s;
           *s != '\0' &&
           valid_str(s) ==>
              valid_str(s+1);
 
-    lemma valid_str_strend:
+    axiom valid_str_strend:
        \forall char *s;
           \valid(s) && *s == '\0' ==>
              valid_str(s);
@@ -22,33 +22,33 @@
     logic size_t strlen(char *s) =
        s[0] == '\0' ? (size_t) 0 : (size_t) ((size_t)1 + strlen(s + 1));
 
-    lemma strlen_before_null:
+    axiom strlen_before_null:
        \forall char* s, integer i;
           valid_str(s) &&
           0 <= i < strlen(s) ==> s[i] != '\0';
 
-    lemma strlen_at_null:
+    axiom strlen_at_null:
        \forall char* s;
           valid_str(s) ==> s[strlen(s)] == '\0';
 
-    lemma strlen_shift:
+    axiom strlen_shift:
        \forall char *s, size_t i;
           valid_str(s) &&
           i <= strlen(s) ==>
           strlen(s+i) == strlen(s)-i;
 
-    lemma strlen_shift_ex:
+    axiom strlen_shift_ex:
        \forall char *s, size_t i;
           valid_str(s) &&
           0 < i <= strlen(s) ==>
           strlen(s+i) < strlen(s);
 
-    lemma strlen_shift1:
+    axiom strlen_shift1:
        \forall char *s;
           valid_str(s) && *s != '\0' ==>
           strlen(s) == 1 + strlen(s+1);
 
-    lemma strlen_pointers:
+    axiom strlen_pointers:
        \forall char *s, *sc;
           valid_str(s)  &&
           valid_str(sc) &&
@@ -57,14 +57,14 @@
           (\forall integer i; 0 <= i <= sc - s ==> s[i] != '\0') ==>
              strlen(sc) <= strlen(s);
 
-    lemma strlen_main:
+    axiom strlen_main:
        \forall char *s, size_t n;
        valid_str(s) &&
        s[n] == '\0' &&
        (\forall size_t i; i < n ==> s[i] != '\0') ==>
            strlen(s) == n;
 
-    lemma valid_str_shiftn:
+    axiom valid_str_shiftn:
        \forall char *s, integer i;
           valid_str(s) &&
           (0 <= i < strlen(s)) ==>

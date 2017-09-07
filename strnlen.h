@@ -2,13 +2,14 @@
 #define __STRNLEN_H__
 
 #include "kernel_definitions.h"
+#include "strlen.h"
 
 /*@ axiomatic Strnlen {
     predicate valid_strn(char *s, size_t cnt) =
        (\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ||
        \valid(s+(0..cnt));
 
-    lemma valid_strn_shift1:
+    axiom valid_strn_shift1:
        \forall char *s, size_t cnt;
        valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
           valid_strn(s+1, (size_t)(cnt-1));
@@ -18,31 +19,31 @@
           (size_t)0 :
           (size_t)((size_t)1 + strnlen(s + 1, (size_t)(cnt-(size_t)1)));
 
-    lemma strnlen_range:
+    axiom strnlen_range:
        \forall char *s, size_t cnt;
           valid_strn(s, cnt) ==>
              0 <= strnlen(s, cnt) <= cnt;
 
-    lemma strnlen_null:
+    axiom strnlen_null:
        \forall char *s, size_t cnt;
        strnlen(s, cnt) == 0 <==> (*s == '\0' || cnt == 0);
 
-    lemma strnlen_before_zero:
+    axiom strnlen_before_zero:
        \forall char* s, size_t i, cnt;
           valid_strn(s, cnt) &&
           0 <= i < strnlen(s, cnt) ==> s[i] != '\0';
 
-    lemma strnlen_at_zero:
+    axiom strnlen_at_zero:
        \forall char* s, size_t cnt;
           valid_strn(s, cnt) && strnlen(s, cnt) < cnt ==>
              s[strnlen(s, cnt)] == '\0';
 
-    lemma strnlen_at_cnt:
+    axiom strnlen_at_cnt:
        \forall char* s, size_t i, cnt;
           valid_strn(s, cnt) && i == strnlen(s, cnt) ==>
              s[i] == '\0' || i == cnt;
 
-    lemma strnlen_zero:
+    axiom strnlen_zero:
        \forall char *s, size_t cnt, n;
           valid_strn(s, cnt) &&
           n < cnt  &&
@@ -50,36 +51,36 @@
           (\forall size_t i; i < n ==> s[i] != '\0') ==>
              strnlen(s, cnt) == n;
 
-    lemma strnlen_cnt:
+    axiom strnlen_cnt:
        \forall char *s, size_t cnt;
           valid_strn(s, cnt) &&
           (\forall size_t n; n < cnt ==> s[n] != '\0') ==>
              strnlen(s, cnt) == cnt;
 
-    lemma strnlen_shift:
+    axiom strnlen_shift:
        \forall char *s, size_t i, cnt;
           valid_strn(s, cnt) &&
           i <= strnlen(s, cnt) ==>
              strnlen(s + i, cnt) == strnlen(s, cnt) - i;
 
-    lemma strnlen_shift_ex:
+    axiom strnlen_shift_ex:
        \forall char *s, size_t i, cnt;
           valid_strn(s, cnt) &&
           0 < i <= strnlen(s, cnt) ==>
              strnlen(s + i, cnt) < strnlen(s, cnt);
 
-    lemma strnlen_shift1:
+    axiom strnlen_shift1:
        \forall char *s, size_t cnt;
           valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
              strnlen(s, cnt) == strnlen(s+1, (size_t)(cnt-1)) + 1;
 
-    lemma strnlen_less:
+    axiom strnlen_less:
        \forall char *s, size_t i, cnt;
           valid_strn(s, cnt) &&
           i <= cnt ==>
              strnlen(s, i) <= strnlen(s, cnt);
 
-    lemma valid_str_strn:
+    axiom valid_str_strn:
        \forall char *s, size_t cnt;
           valid_str(s) && cnt <= strlen(s) ==>
              valid_strn(s, cnt);

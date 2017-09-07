@@ -7,34 +7,34 @@
     logic char *strchrnull(char *str, char c) =
        *str == c ? str : ((*str == '\0') ? str : strchrnull(str+1, c));
 
-    lemma mem:
+    axiom mem:
        \forall char *str, c;
        valid_str(str) ==>
           (str <= strchrnull(str, c) <= str + strlen(str));
-    lemma iter_one:
+    axiom iter_one:
        \forall char *str, c;
        valid_str(str) && *str != c && *str != '\0' ==>
           strchrnull(str, c) == strchrnull(str+1, c);
-    lemma res:
+    axiom res:
        \forall char *str, c;
        valid_str(str) ==>
           *strchrnull(str, c) == '\0' ^^ *strchrnull(str, c) == c;
-    lemma strchrnull_strlen:
+    axiom strchrnull_strlen:
        \forall char *str;
        valid_str(str) ==>
           strlen(str) == strchrnull(str, (char)'\0') - str;
-    lemma at_end:
+    axiom at_end:
        \forall char *str, c;
        \valid(str) && (*str == '\0' || *str == c) ==>
           strchrnull(str, c) == str;
 
-    lemma defn:
+    axiom defn:
        \forall char *str, c, integer i;
        valid_str(str) && 0 <= i <= strlen(str) &&
        (\forall integer j; 0 <= j < i ==> str[j] != c) &&
        str[i] == c ==>
           str + i == strchrnull(str, c);
-    lemma skipped:
+    axiom skipped:
        \forall char *str, c, integer i;
        valid_str(str) &&
        0 <= i < strchrnull(str, c) - str <= strlen(str) ==>
