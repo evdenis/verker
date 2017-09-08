@@ -5,13 +5,13 @@
        *s == c ? (*s ? strrchr_helper(s+1,c,s) : pos) : (*s ? strrchr_helper(s+1,c,pos) : pos);
     logic char *strrchr(char *s, char c) = strrchr_helper(s, c, \null);
 
-    axiom mem:
+    lemma mem:
        \forall char *str, char c;
        valid_str(str) ==>
           (str <= strrchr(str, c) <= str + strlen(str) &&
            \base_addr(str) == \base_addr(strrchr(str, c))) ^^
           strrchr(str, c) == \null;
-    axiom defn:
+    lemma defn:
        \forall char *str, char c;
        valid_str(str)
     }

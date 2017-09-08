@@ -6,35 +6,35 @@
 #include "strspn.h"
 
 /*@ axiomatic StrPBrk {
-    logic char *strpbrk{L}(char *cs, char *ct);
+    logic char *strpbrk(char *cs, char *ct);
 
-    axiom strpbrk_strend:
+    lemma strpbrk_strend:
        \forall char *cs, *ct;
           \valid(cs) && *cs == '\0' ==>
              strpbrk(cs, ct) == \null;
 
-    axiom strpbrk_empty_ct:
+    lemma strpbrk_empty_ct:
        \forall char *cs, *ct;
           valid_str(cs) && valid_str(ct) && *ct == '\0' ==>
              strpbrk(cs, ct) == \null;
 
-    axiom strpbrk_range:
+    lemma strpbrk_range:
        \forall char *cs, *ct;
           valid_str(cs) && valid_str(ct) ==>
              ((strpbrk(cs, ct) == \null) ^^
              (cs <= strpbrk(cs, ct) < cs + strlen(cs)));
 
-    axiom strpbrk_shift1:
+    lemma strpbrk_shift1:
        \forall char *cs, *ct;
           valid_str(cs) && valid_str(ct) && *cs != '\0' &&
           !in_array(ct, *cs) ==>
              strpbrk(cs, ct) == strpbrk(cs + 1, ct);
 
-    axiom strpbrk_stop_in_ct{L}:
+    lemma strpbrk_stop_in_ct:
        \forall char *cs, *ct;
-          valid_str{L}(cs) && valid_str{L}(ct) && *cs != '\0' &&
-          in_array{L}(ct, *cs) ==>
-             strpbrk{L}(cs, ct) == cs;
+          valid_str(cs) && valid_str(ct) && *cs != '\0' &&
+          in_array(ct, *cs) ==>
+             strpbrk(cs, ct) == cs;
     }
  */
 

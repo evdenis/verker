@@ -12,34 +12,34 @@
  */
 
 /*@ axiomatic StrCSpn {
-    logic integer strcspn{L}(char *s, char *reject);
+    logic integer strcspn(char *s, char *reject);
 
-    axiom strcspn_strend:
+    lemma strcspn_strend:
        \forall char *s, *reject;
           \valid(s) && *s == '\0' ==>
              strcspn(s, reject) == 0;
 
-    axiom strcspn_empty_reject:
+    lemma strcspn_empty_reject:
        \forall char *s, *reject;
           valid_str(s) && valid_str(reject) && *reject == '\0' ==>
              strcspn(s, reject) == strlen(s);
 
-    axiom strcspn_range:
+    lemma strcspn_range:
        \forall char *s, *reject;
           valid_str(s) && valid_str(reject) ==>
              0 <= strcspn(s, reject) <= strlen(s);
 
-    axiom strcspn_shift1:
+    lemma strcspn_shift1:
        \forall char *s, *reject;
           valid_str(s) && valid_str(reject) && *s != '\0' &&
           !in_array(reject, *s) ==>
              strcspn(s, reject) == strcspn(s + 1, reject) + 1;
 
-    axiom strcspn_stop_in_reject{L}:
+    lemma strcspn_stop_in_reject:
        \forall char *s, *reject;
-          valid_str{L}(s) && valid_str{L}(reject) && *s != '\0' &&
+          valid_str(s) && valid_str(reject) && *s != '\0' &&
           in_array(reject, *s) ==>
-             strcspn{L}(s, reject) == 0;
+             strcspn(s, reject) == 0;
     }
  */
 

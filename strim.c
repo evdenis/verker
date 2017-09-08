@@ -44,12 +44,12 @@
           valid_str(str) ==>
              (right_strim(str)==-1 <==> \forall integer i; 0<=i<strlen(str) ==> isspace(str[i]));
 
-    axiom right_strim_is_not_changed_by_skip_spaces:
+    lemma right_strim_is_not_changed_by_skip_spaces:
        \forall char *str;
           valid_str(str) ==>
              right_strim(str) + str == right_strim(skip_spaces(str)) + skip_spaces(str);
 
-    axiom good_string:
+    lemma good_string:
        \forall char *str;
           valid_str(str) &&
           (!isspace(str[strlen(str)-1])) ==>
@@ -61,32 +61,32 @@
 /* axiomatic SkipSpacesRight {
     logic char *skip_spaces_right(char *str) ;//=
        //isspace(*str) ? skip_spaces(str + 1) : str;
-    axiom defn:
+    lemma defn:
        \forall char *str, size_t i;
        valid_str(str) && i <= strlen(str) &&
        (\forall size_t j; j < i ==> isspace(str[j])) &&
        !isspace(str[i]) ==>
           str + i == skip_spaces(str);
-    axiom deref:
+    lemma deref:
        \forall char *str; valid_str(str) ==>
           !isspace(*skip_spaces_right(str));
-    axiom range:
+    lemma range:
        \forall char *str;
        valid_str(str) ==>
           str - 1 <= skip_spaces_right(str) < str + strlen(str);
-    axiom iter_one:
+    lemma iter_one:
        \forall char *str;
        valid_str(str) && !isspace(*str) ==>
        skip_spaces(str) == skip_spaces(str+1);
-    axiom base_addr:
+    lemma base_addr:
        \forall char *str;
        valid_str(str) ==>
           \base_addr(str) == \base_addr(skip_spaces(str));
-    axiom same:
+    lemma same:
        \forall char *str;
        \valid(str) && !isspace(*str) ==>
           str == skip_spaces(str);
-    axiom skipped_are_spaces:
+    lemma skipped_are_spaces:
        \forall char *str, size_t i;
        valid_str(str) &&
        i < skip_spaces(str) - str ==>

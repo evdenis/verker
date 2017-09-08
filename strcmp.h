@@ -13,35 +13,35 @@
     predicate equaln(char *cs, char *ct, size_t n) = strncmp(cs, ct, n) == 0;
     predicate equal(char *cs, char *ct) = strcmp(cs, ct) == 0;
 
-    axiom range:
+    lemma range:
        \forall char *cs, *ct, size_t n;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) ==>
           -1 <= strncmp(cs, ct, n) <= 1;
 
-    axiom defn_equal:
+    lemma defn_equal:
        \forall char *cs, *ct, size_t n;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) &&
        (\forall size_t i; i <= n ==> cs[i] == ct[i]) ==>
           strncmp(cs, ct, n) == 0;
-    axiom defn_less:
+    lemma defn_less:
        \forall char *cs, *ct, size_t n, k;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
        (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
        (u8 %)cs[k] < (u8 %)ct[k] ==>
           strncmp(cs, ct, n) == -1;
-    axiom defn_greater:
+    lemma defn_greater:
        \forall char *cs, *ct, size_t n, k;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
        (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
        (u8 %)cs[k] > (u8 %)ct[k] ==>
           strncmp(cs, ct, n) == 1;
 
-    axiom iter_one:
+    lemma iter_one:
        \forall char *cs, *ct, size_t n;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) &&
        n > 0 && *cs == *ct ==>
           strncmp(cs, ct, n) == strncmp(cs+1, ct+1, n-1);
-    axiom at_end:
+    lemma at_end:
        \forall char *cs, *ct;
        \valid(cs) && \valid(ct) ==>
        strncmp(cs, ct, 0) == cmp((u8 %)*cs, (u8 %)*ct);

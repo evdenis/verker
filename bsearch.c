@@ -13,7 +13,7 @@ int ccmp(const void *key, const void *elt)
    return *((char *)key) > *((char *)elt) ? 1 : *((char *)key) - *((char *)elt);
 }
 
-//@ axiom Dummy: ccmp == \null || ccmp != \null;
+//@ lemma Dummy: ccmp == \null || ccmp != \null;
 
 /*@ requires \typeof(key) <: \type(char *);
     requires \typeof(base) <: \type(char *);

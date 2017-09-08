@@ -13,47 +13,47 @@
 /*@ axiomatic StrSpn {
     predicate in_array(char *s, char c) = \exists char *p; s <= p < s + strlen(s) && *p == c;
 
-    axiom in_array_shift1:
+    lemma in_array_shift1:
        \forall char *s, c;
           valid_str(s) && s != '\0' && *s != c ==>
              in_array(s, c) <==> in_array(s + 1, c);
-    axiom in_array_true:
+    lemma in_array_true:
        \forall char *s, c;
           valid_str(s) && s != '\0' && *s == c ==>
              in_array(s, c);
-    axiom in_array_false:
+    lemma in_array_false:
        \forall char *s, c;
           valid_str(s) && s == '\0' ==>
              !in_array(s, c);
 
-    logic integer strspn{L}(char *s, char *accept) reads s, accept;
+    logic integer strspn(char *s, char *accept);
 
-    axiom strspn_strend:
+    lemma strspn_strend:
        \forall char *s, *accept;
           \valid(s) && *s == '\0' ==>
              strspn(s, accept) == 0;
 
-    axiom strspn_empty_accept:
+    lemma strspn_empty_accept:
        \forall char *s, *accept;
           \valid(accept) && *accept == '\0' ==>
              strspn(s, accept) == 0;
 
-    axiom strspn_range{L}:
+    lemma strspn_range:
        \forall char* s, *accept;
-          valid_str{L}(s) && valid_str{L}(accept) ==>
-             0 <= strspn{L}(s, accept) <= strlen{L}(s);
+          valid_str(s) && valid_str(accept) ==>
+             0 <= strspn(s, accept) <= strlen(s);
 
-    axiom strspn_shift1:
+    lemma strspn_shift1:
        \forall char *s, *accept;
           valid_str(s) && valid_str(accept) && *s != '\0' &&
           in_array(accept, *s) ==>
              strspn(s, accept) == strspn(s + 1, accept) + 1;
 
-    axiom strspn_stop_not_in_accept{L}:
+    lemma strspn_stop_not_in_accept:
        \forall char *s, *accept;
-          valid_str{L}(s) && valid_str{L}(accept) && *s != '\0' &&
-          !in_array{L}(accept, *s) ==>
-             strspn{L}(s, accept) == 0;
+          valid_str(s) && valid_str(accept) && *s != '\0' &&
+          !in_array(accept, *s) ==>
+             strspn(s, accept) == 0;
     }
  */
 

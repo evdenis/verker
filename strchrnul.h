@@ -7,34 +7,34 @@
     logic char *strchrnull(char *str, char c) =
        *str == c ? str : ((*str == '\0') ? str : strchrnull(str+1, c));
 
-    axiom strchrnull_mem:
+    lemma strchrnull_mem:
        \forall char *str, c;
        valid_str(str) ==>
           (str <= strchrnull(str, c) <= str + strlen(str));
-    axiom strchrnull_iter_one:
+    lemma strchrnull_iter_one:
        \forall char *str, c;
        valid_str(str) && *str != c && *str != '\0' ==>
           strchrnull(str, c) == strchrnull(str+1, c);
-    axiom strchrnull_res:
+    lemma strchrnull_res:
        \forall char *str, c;
        valid_str(str) ==>
           *strchrnull(str, c) == '\0' ^^ *strchrnull(str, c) == c;
-    axiom strchrnull_strlen:
+    lemma strchrnull_strlen:
        \forall char *str;
        valid_str(str) ==>
           strlen(str) == strchrnull(str, (char)'\0') - str;
-    axiom strchrnull_at_end:
+    lemma strchrnull_at_end:
        \forall char *str, c;
        \valid(str) && (*str == '\0' || *str == c) ==>
           strchrnull(str, c) == str;
 
-    axiom strchrnull_defn:
+    lemma strchrnull_defn:
        \forall char *str, c, integer i;
        valid_str(str) && 0 <= i <= strlen(str) &&
        (\forall integer j; 0 <= j < i ==> str[j] != c) &&
        str[i] == c ==>
           str + i == strchrnull(str, c);
-    axiom strchrnull_skipped:
+    lemma strchrnull_skipped:
        \forall char *str, c, integer i;
        valid_str(str) &&
        0 <= i < strchrnull(str, c) - str <= strlen(str) ==>
