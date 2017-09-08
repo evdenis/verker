@@ -1,0 +1,116 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+voidP[..] memset(voidP[..] s, int32 c, uint64 count)
+  requires ((_C_32 : (s <: charP)) &&
+             (_C_33 : \at((if (\at(0,Here) <=
+                                \at(((count :> integer) - 1),Here)) then 
+                          (((\offset_min(\at((s :> charP[..]),Here)) <=
+                              \at(0,Here)) &&
+                             (\offset_max(\at((s :> charP[..]),Here)) >=
+                               \at(((count :> integer) - 1),Here))) &&
+                            (\forall integer __framac_tmp1;
+                              (((\at(0,Here) <= __framac_tmp1) &&
+                                 (__framac_tmp1 <=
+                                   \at(((count :> integer) - 1),Here))) ==>
+                                true))) else true),Here)));
+behavior default:
+  assigns ((s :> charP[..]) + [0..((count :> integer) - 1)]).charM;
+  ensures (_C_29 : ((_C_30 : (\forall charP[..] p_0;
+                               ((((\base_block((\at(s,Old) :> charP[..])) ==
+                                    \base_block(p_0)) &&
+                                   (((\at(s,Old) :> charP[..]) - p_0) <= 0)) &&
+                                  ((\base_block(p_0) ==
+                                     \base_block(((\at(s,Old) :> charP[..]) +
+                                                   (\at(count,Old) :> integer)))) &&
+                                    ((p_0 -
+                                       ((\at(s,Old) :> charP[..]) +
+                                         (\at(count,Old) :> integer))) <
+                                      0))) ==>
+                                 (p_0.charM == (\at(c,Old) :%> int8))))) &&
+                     (_C_31 : (\result == \at(s,Old)))));
+{  
+   (var charP[..] xs);
+   
+   (var uint64 ocount);
+   
+   (var charP[..] tmp);
+   
+   (var uint64 tmp_0);
+   
+   {  (_C_2 : (xs = (_C_1 : (s :> charP[..]))));
+      (_C_3 : (ocount = count));
+      
+      loop 
+      behavior default:
+        invariant (_C_14 : ((_C_15 : ((0 :> uint64) <= count)) &&
+                             (_C_16 : (count <= ocount))));
+      behavior default:
+        invariant (_C_7 : (((_C_9 : (\base_block((s :> charP[..])) ==
+                                      \base_block(xs))) &&
+                             (_C_10 : (((s :> charP[..]) - xs) <= 0))) &&
+                            ((_C_12 : (\base_block(xs) ==
+                                        \base_block(((s :> charP[..]) +
+                                                      (ocount :> integer))))) &&
+                              (_C_13 : ((xs -
+                                          ((s :> charP[..]) +
+                                            (ocount :> integer))) <=
+                                         0)))));
+      behavior default:
+        invariant (_C_6 : ((xs - (s :> charP[..])) ==
+                            ((ocount :> integer) - (count :> integer))));
+      behavior default:
+        invariant (_C_5 : (\forall charP[..] p;
+                            ((((\base_block((s :> charP[..])) ==
+                                 \base_block(p)) &&
+                                (((s :> charP[..]) - p) <= 0)) &&
+                               ((\base_block(p) == \base_block(xs)) &&
+                                 ((p - xs) < 0))) ==>
+                              (p.charM == (c :%> int8)))));
+      variant (_C_4 : count);
+      while (true)
+      {  
+         {  
+            {  (_C_17 : (tmp_0 = count));
+               (_C_20 : (count = (_C_19 : ((_C_18 : (count -% (1 :> uint64))) :> uint64))));
+               ()
+            };
+            (if (_C_21 : ((tmp_0 :> uint64) != (0 :> uint64))) then () else 
+            (goto while_0_break));
+            
+            {  (_C_22 : (tmp = xs));
+               (_C_24 : (xs = (_C_23 : (xs + (1 :> int32)))));
+               (_C_27 : ((_C_26 : tmp.charM) = (_C_25 : (c :%> int8))))
+            }
+         }
+      };
+      (while_0_break : ());
+      
+      {  
+         (assert for default: (_C_28 : (jessie : (count ==
+                                                   ((- 1) :%> uint64)))));
+         ()
+      };
+      
+      (return s)
+   }
+}

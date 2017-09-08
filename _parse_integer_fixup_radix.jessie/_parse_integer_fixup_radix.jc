@@ -1,0 +1,378 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+type _bool = 0..1
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+tag unsigned_intP = {
+  uint32 unsigned_intM: 32;
+}
+
+type unsigned_intP = [unsigned_intP]
+
+axiomatic Ctype {
+
+  predicate islower(integer c) =
+  ((((97 :> int8) :> integer) <= c) && (c <= ((122 :> int8) :> integer)))
+   
+  predicate isupper(integer c_0) =
+  ((((65 :> int8) :> integer) <= c_0) && (c_0 <= ((90 :> int8) :> integer)))
+   
+  predicate isalpha(integer c_1) =
+  (isupper(c_1) || islower(c_1))
+   
+  predicate isdigit(integer c_2) =
+  ((((48 :> int8) :> integer) <= c_2) && (c_2 <= ((57 :> int8) :> integer)))
+   
+  predicate isodigit(integer c_3) =
+  ((((48 :> int8) :> integer) <= c_3) && (c_3 <= ((55 :> int8) :> integer)))
+   
+  predicate isalnum(integer c_4) =
+  (isdigit(c_4) || isalpha(c_4))
+   
+  predicate isspace(integer c_5) =
+  ((((((c_5 == ((32 :> int8) :> integer)) ||
+        (c_5 == ((12 :> int8) :> integer))) ||
+       (c_5 == ((10 :> int8) :> integer))) ||
+      (c_5 == ((13 :> int8) :> integer))) ||
+     (c_5 == ((9 :> int8) :> integer))) ||
+    (c_5 == ((11 :> int8) :> integer)))
+   
+  predicate isxdigit(integer c_6) =
+  ((isdigit(c_6) ||
+     ((((97 :> int8) :> integer) <= c_6) &&
+       (c_6 <= ((102 :> int8) :> integer)))) ||
+    ((((65 :> int8) :> integer) <= c_6) &&
+      (c_6 <= ((70 :> int8) :> integer))))
+   
+  logic integer tolower(integer c_7)
+   
+  logic integer toupper(integer c_8)
+   
+  axiom a :
+  (_C_1 : (tolower(((65 :> int8) :> integer)) == ((97 :> int8) :> integer)))
+   
+  axiom b :
+  (_C_2 : (tolower(((66 :> int8) :> integer)) == ((98 :> int8) :> integer)))
+   
+  axiom c :
+  (_C_3 : (tolower(((67 :> int8) :> integer)) == ((99 :> int8) :> integer)))
+   
+  axiom d :
+  (_C_4 : (tolower(((68 :> int8) :> integer)) == ((100 :> int8) :> integer)))
+   
+  axiom e :
+  (_C_5 : (tolower(((69 :> int8) :> integer)) == ((101 :> int8) :> integer)))
+   
+  axiom f :
+  (_C_6 : (tolower(((70 :> int8) :> integer)) == ((102 :> int8) :> integer)))
+   
+  axiom g :
+  (_C_7 : (tolower(((71 :> int8) :> integer)) == ((103 :> int8) :> integer)))
+   
+  axiom h :
+  (_C_8 : (tolower(((72 :> int8) :> integer)) == ((104 :> int8) :> integer)))
+   
+  axiom i :
+  (_C_9 : (tolower(((73 :> int8) :> integer)) == ((105 :> int8) :> integer)))
+   
+  axiom j :
+  (_C_10 : (tolower(((74 :> int8) :> integer)) == ((106 :> int8) :> integer)))
+   
+  axiom k :
+  (_C_11 : (tolower(((75 :> int8) :> integer)) == ((107 :> int8) :> integer)))
+   
+  axiom l :
+  (_C_12 : (tolower(((76 :> int8) :> integer)) == ((108 :> int8) :> integer)))
+   
+  axiom m :
+  (_C_13 : (tolower(((77 :> int8) :> integer)) == ((109 :> int8) :> integer)))
+   
+  axiom n :
+  (_C_14 : (tolower(((78 :> int8) :> integer)) == ((110 :> int8) :> integer)))
+   
+  axiom o :
+  (_C_15 : (tolower(((79 :> int8) :> integer)) == ((111 :> int8) :> integer)))
+   
+  axiom p :
+  (_C_16 : (tolower(((80 :> int8) :> integer)) == ((112 :> int8) :> integer)))
+   
+  axiom q :
+  (_C_17 : (tolower(((81 :> int8) :> integer)) == ((113 :> int8) :> integer)))
+   
+  axiom r :
+  (_C_18 : (tolower(((82 :> int8) :> integer)) == ((114 :> int8) :> integer)))
+   
+  axiom s :
+  (_C_19 : (tolower(((83 :> int8) :> integer)) == ((115 :> int8) :> integer)))
+   
+  axiom t :
+  (_C_20 : (tolower(((84 :> int8) :> integer)) == ((116 :> int8) :> integer)))
+   
+  axiom u :
+  (_C_21 : (tolower(((85 :> int8) :> integer)) == ((117 :> int8) :> integer)))
+   
+  axiom v :
+  (_C_22 : (tolower(((86 :> int8) :> integer)) == ((118 :> int8) :> integer)))
+   
+  axiom w :
+  (_C_23 : (tolower(((87 :> int8) :> integer)) == ((119 :> int8) :> integer)))
+   
+  axiom x :
+  (_C_24 : (tolower(((88 :> int8) :> integer)) == ((120 :> int8) :> integer)))
+   
+  axiom y :
+  (_C_25 : (tolower(((89 :> int8) :> integer)) == ((121 :> int8) :> integer)))
+   
+  axiom z :
+  (_C_26 : (tolower(((90 :> int8) :> integer)) == ((122 :> int8) :> integer)))
+   
+  axiom pl :
+  (_C_27 : (\forall integer c_9;
+             ((! isupper(c_9)) ==> (tolower(c_9) == c_9))))
+   
+  axiom pu :
+  (_C_28 : (\forall integer c_10;
+             ((! islower(c_10)) ==> (toupper(c_10) == c_10))))
+   
+  axiom tl :
+  (_C_29 : (\forall integer c_11;
+             ((! islower(c_11)) ==> (toupper(tolower(c_11)) == c_11))))
+   
+  axiom tu :
+  (_C_30 : (\forall integer c_12;
+             ((! isupper(c_12)) ==> (tolower(toupper(c_12)) == c_12))))
+  
+}
+
+_bool isalnum(int8 c_2)
+behavior default:
+  assigns \nothing;
+  ensures (_C_31 : ((\result != 0) <==> isalnum((\at(c_2,Old) :> integer))));
+;
+
+_bool isalpha(int8 c_3)
+behavior default:
+  assigns \nothing;
+  ensures (_C_32 : ((\result != 0) <==> isalpha((\at(c_3,Old) :> integer))));
+;
+
+_bool islower(int8 c_6)
+behavior default:
+  assigns \nothing;
+  ensures (_C_33 : ((\result != 0) <==> islower((\at(c_6,Old) :> integer))));
+;
+
+_bool isspace(int8 c_8)
+behavior default:
+  assigns \nothing;
+  ensures (_C_34 : ((\result != 0) <==> isspace((\at(c_8,Old) :> integer))));
+;
+
+_bool isupper(int8 c_9)
+behavior default:
+  assigns \nothing;
+  ensures (_C_35 : ((\result != 0) <==> isupper((\at(c_9,Old) :> integer))));
+;
+
+_bool isxdigit(int8 c_10)
+behavior default:
+  assigns \nothing;
+  ensures (_C_36 : ((\result != 0) <==> isxdigit((\at(c_10,Old) :> integer))));
+;
+
+_bool isascii(int8 c_4)
+behavior default:
+  assigns \nothing;
+  ensures (_C_37 : ((\result != 0) <==>
+                     (((0 :> int8) <= \at(c_4,Old)) &&
+                       (\at(c_4,Old) <= (127 :> int8)))));
+;
+
+int32 isdigit(int32 c_5)
+behavior default:
+  assigns \nothing;
+  ensures (_C_38 : ((\result != 0) <==> isdigit((\at(c_5,Old) :> integer))));
+;
+
+uint8 __tolower(uint8 c)
+behavior default:
+  assigns \nothing;
+  ensures (_C_39 : ((\result :> integer) == tolower((\at(c,Old) :> integer))));
+;
+
+uint8 __toupper(uint8 c_0)
+behavior default:
+  assigns \nothing;
+  ensures (_C_40 : ((\result :> integer) ==
+                     toupper((\at(c_0,Old) :> integer))));
+;
+
+int8 tolower(int8 c_11)
+behavior default:
+  assigns \nothing;
+  ensures (_C_41 : ((\result :> integer) ==
+                     tolower((\at(c_11,Old) :> integer))));
+;
+
+int8 toupper(int8 c_12)
+behavior default:
+  assigns \nothing;
+  ensures (_C_42 : ((\result :> integer) ==
+                     toupper((\at(c_12,Old) :> integer))));
+;
+
+int8 _tolower(int8 c_1)
+behavior default:
+  assigns \nothing;
+  ensures (_C_43 : ((\result :> integer) ==
+                     tolower((\at(c_1,Old) :> integer))));
+;
+
+int32 isodigit(int8 c_7)
+behavior default:
+  assigns \nothing;
+  ensures (_C_44 : ((\result != 0) <==> isodigit((\at(c_7,Old) :> integer))));
+;
+
+axiomatic IntBase {
+
+  predicate is_hex{L}(charP[..] s) =
+  \at(((((s + 0).charM == (48 :> int8)) &&
+         (tolower(((s + 1).charM :> integer)) == ((120 :> int8) :> integer))) &&
+        isxdigit(((s + 2).charM :> integer))),L)
+   
+  predicate is_oct{L}(charP[..] s_0) =
+  \at((((s_0 + 0).charM == (48 :> int8)) && (! is_hex{L}(s_0))),L)
+   
+  predicate is_dec{L}(charP[..] s_1) =
+  \at(((! is_hex{L}(s_1)) && (! is_oct{L}(s_1))),L)
+  
+}
+
+charP[..] _parse_integer_fixup_radix(charP[..] s, unsigned_intP[..] base)
+  requires ((_C_107 : \at((((\offset_min(\at(s,Here)) <= \at(0,Here)) &&
+                             (\offset_max(\at(s,Here)) >= \at(2,Here))) &&
+                            (true && (true && true))),Here)) &&
+             (_C_108 : \at((((\offset_min(\at(base,Here)) <= \at(0,Here)) &&
+                              (\offset_max(\at(base,Here)) >= \at(0,Here))) &&
+                             true),Here)));
+behavior default:
+  assigns base.unsigned_intM;
+  ensures (_C_90 : ((\result == \at(s,Old)) || (\result == (\at(s,Old) + 2))));
+behavior guess:
+  assumes (base.unsigned_intM == (0 :> uint32));
+  ensures (_C_91 : ((_C_92 : (is_hex{Here}(\at(s,Old)) ==>
+                               (\at(base,Old).unsigned_intM ==
+                                 (16 :> uint32)))) &&
+                     ((_C_94 : (is_oct{Here}(\at(s,Old)) ==>
+                                 (\at(base,Old).unsigned_intM ==
+                                   (8 :> uint32)))) &&
+                       ((_C_96 : (is_dec{Here}(\at(s,Old)) ==>
+                                   (\at(base,Old).unsigned_intM ==
+                                     (10 :> uint32)))) &&
+                         ((_C_98 : (is_hex{Here}(\at(s,Old)) ==>
+                                     (\result == (\at(s,Old) + 2)))) &&
+                           (_C_99 : ((is_oct{Here}(\at(s,Old)) ||
+                                       is_dec{Here}(\at(s,Old))) ==>
+                                      (\result == \at(s,Old)))))))));
+behavior shift:
+  assumes (((base.unsigned_intM == (16 :> uint32)) &&
+             ((s + 0).charM == (48 :> int8))) &&
+            (tolower(((s + 1).charM :> integer)) ==
+              ((120 :> int8) :> integer)));
+  ensures (_C_100 : (\result == (\at(s,Old) + 2)));
+{  
+   (var int8 tmp);
+   
+   (var _bool tmp_0);
+   
+   (var int8 tmp_1);
+   
+   {  (if (_C_74 : ((_C_73 : base.unsigned_intM) ==
+                     (_C_72 : ((0 :> int32) :> uint32)))) then (if (_C_71 : 
+                                                                   ((_C_70 : (
+                                                                    (_C_69 : 
+                                                                    (_C_68 : 
+                                                                    (s +
+                                                                    (0 :> int32))).charM) :> int32)) ==
+                                                                    (48 :> int32))) then 
+                                                               {  (_C_51 : (tmp = 
+                                                                  (_C_50 : _tolower(
+                                                                  (_C_49 : 
+                                                                  (_C_48 : 
+                                                                  (s +
+                                                                    (1 :> int32))).charM)))));
+                                                                  (if 
+                                                                  (_C_67 : 
+                                                                  ((_C_66 : (tmp :> int32)) ==
+                                                                    (120 :> int32))) then 
+                                                                  {  (_C_58 : (tmp_0 = 
+                                                                    (_C_57 : isxdigit(
+                                                                    (_C_56 : 
+                                                                    (_C_55 : 
+                                                                    (s +
+                                                                    (2 :> int32))).charM)))));
+                                                                    (if 
+                                                                    (_C_65 : 
+                                                                    ((tmp_0 :> _bool) !=
+                                                                    (0 :> _bool))) then 
+                                                                    (_C_64 : (
+                                                                    (_C_63 : base.unsigned_intM) = 
+                                                                    (_C_62 : ((16 :> int32) :> uint32)))) else 
+                                                                    (_C_61 : (
+                                                                    (_C_60 : base.unsigned_intM) = 
+                                                                    (_C_59 : ((8 :> int32) :> uint32)))))
+                                                                  } else 
+                                                                  (_C_54 : (
+                                                                  (_C_53 : base.unsigned_intM) = 
+                                                                  (_C_52 : ((8 :> int32) :> uint32)))))
+                                                               } else 
+                                                               (_C_47 : (
+                                                               (_C_46 : base.unsigned_intM) = 
+                                                               (_C_45 : ((10 :> int32) :> uint32))))) else ());
+      (if (_C_89 : ((_C_88 : base.unsigned_intM) ==
+                     (_C_87 : ((16 :> int32) :> uint32)))) then (if (_C_86 : 
+                                                                    ((_C_85 : (
+                                                                    (_C_84 : 
+                                                                    (_C_83 : 
+                                                                    (s +
+                                                                    (0 :> int32))).charM) :> int32)) ==
+                                                                    (48 :> int32))) then 
+                                                                {  (_C_78 : (tmp_1 = 
+                                                                   (_C_77 : _tolower(
+                                                                   (_C_76 : 
+                                                                   (_C_75 : 
+                                                                   (s +
+                                                                    (1 :> int32))).charM)))));
+                                                                   (if 
+                                                                   (_C_82 : 
+                                                                   ((_C_81 : (tmp_1 :> int32)) ==
+                                                                    (120 :> int32))) then 
+                                                                   (_C_80 : (s = 
+                                                                   (_C_79 : 
+                                                                   (s +
+                                                                    (2 :> int32))))) else ())
+                                                                } else ()) else ());
+      
+      (return s)
+   }
+}

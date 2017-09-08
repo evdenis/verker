@@ -1,0 +1,537 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+type _bool = 0..1
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+axiomatic Strlen {
+
+  predicate valid_str{L}(charP[..] s) =
+  \at((\exists uint64 n_1;
+        (((s + (n_1 :> integer)).charM == (0 :> int8)) &&
+          \at((if (\at(0,L) <= \at(n_1,L)) then (((\offset_min(\at(s,L)) <=
+                                                    \at(0,L)) &&
+                                                   (\offset_max(\at(s,L)) >=
+                                                     \at(n_1,L))) &&
+                                                  (\forall integer __framac_tmp1;
+                                                    (((\at(0,L) <=
+                                                        __framac_tmp1) &&
+                                                       (__framac_tmp1 <=
+                                                         \at(n_1,L))) ==>
+                                                      true))) else true),L))),L)
+   
+  lemma valid_str_shift1{L} :
+  (_C_1 : (\forall charP[..] s_0;
+            (((s_0.charM != (0 :> int8)) && valid_str{L}(s_0)) ==>
+              valid_str{L}((s_0 + 1)))))
+   
+  lemma valid_str_strend{L} :
+  (_C_2 : (\forall charP[..] s_1;
+            ((\at((((\offset_min(\at(s_1,L)) <= \at(0,L)) &&
+                     (\offset_max(\at(s_1,L)) >= \at(0,L))) &&
+                    true),L) &&
+               (s_1.charM == (0 :> int8))) ==>
+              valid_str{L}(s_1))))
+   
+  logic uint64 strlen{L}(charP[..] s_2) =
+  \at((if ((s_2 + 0).charM == (0 :> int8)) then (0 :> uint64) else ((1 +
+                                                                    (strlen{L}(
+                                                                    (s_2 + 1)) :> integer)) :> uint64)),L)
+   
+  lemma strlen_before_null{L} :
+  (_C_3 : (\forall charP[..] s_3;
+            (\forall integer i_1;
+              (((valid_str{L}(s_3) && (0 <= i_1)) &&
+                 (i_1 < (strlen{L}(s_3) :> integer))) ==>
+                ((s_3 + i_1).charM != (0 :> int8))))))
+   
+  lemma strlen_at_null{L} :
+  (_C_4 : (\forall charP[..] s_4;
+            (valid_str{L}(s_4) ==>
+              ((s_4 + (strlen{L}(s_4) :> integer)).charM == (0 :> int8)))))
+   
+  lemma strlen_shift{L} :
+  (_C_5 : (\forall charP[..] s_5;
+            (\forall uint64 i_2;
+              ((valid_str{L}(s_5) && (i_2 <= strlen{L}(s_5))) ==>
+                ((strlen{L}((s_5 + (i_2 :> integer))) :> integer) ==
+                  ((strlen{L}(s_5) :> integer) - (i_2 :> integer)))))))
+   
+  lemma strlen_shift_ex{L} :
+  (_C_6 : (\forall charP[..] s_6;
+            (\forall uint64 i_3;
+              (((valid_str{L}(s_6) && ((0 :> uint64) < i_3)) &&
+                 (i_3 <= strlen{L}(s_6))) ==>
+                (strlen{L}((s_6 + (i_3 :> integer))) < strlen{L}(s_6))))))
+   
+  lemma strlen_shift1{L} :
+  (_C_7 : (\forall charP[..] s_7;
+            ((valid_str{L}(s_7) && (s_7.charM != (0 :> int8))) ==>
+              ((strlen{L}(s_7) :> integer) ==
+                (1 + (strlen{L}((s_7 + 1)) :> integer))))))
+   
+  lemma strlen_pointers{L} :
+  (_C_8 : (\forall charP[..] s_8;
+            (\forall charP[..] sc;
+              (((((valid_str{L}(s_8) && valid_str{L}(sc)) &&
+                   (\base_block(s_8) == \base_block(sc))) &&
+                  ((\base_block(s_8) == \base_block(sc)) &&
+                    ((s_8 - sc) <= 0))) &&
+                 (\forall integer i_4;
+                   (((0 <= i_4) && (i_4 <= (sc - s_8))) ==>
+                     ((s_8 + i_4).charM != (0 :> int8))))) ==>
+                (strlen{L}(sc) <= strlen{L}(s_8))))))
+   
+  lemma strlen_main{L} :
+  (_C_9 : (\forall charP[..] s_9;
+            (\forall uint64 n_2;
+              (((valid_str{L}(s_9) &&
+                  ((s_9 + (n_2 :> integer)).charM == (0 :> int8))) &&
+                 (\forall uint64 i_5;
+                   ((i_5 < n_2) ==>
+                     ((s_9 + (i_5 :> integer)).charM != (0 :> int8))))) ==>
+                (strlen{L}(s_9) == n_2)))))
+   
+  lemma valid_str_shiftn{L} :
+  (_C_10 : (\forall charP[..] s_10;
+             (\forall integer i_6;
+               (((valid_str{L}(s_10) && (0 <= i_6)) &&
+                  (i_6 < (strlen{L}(s_10) :> integer))) ==>
+                 valid_str{L}((s_10 + i_6))))))
+  
+}
+
+uint64 strlen(charP[..] s)
+  requires (_C_16 : valid_str{Here}(s));
+behavior default:
+  assigns \nothing;
+  ensures (_C_11 : ((_C_12 : (\result == strlen{Here}(\at(s,Old)))) &&
+                     ((_C_14 : ((\at(s,Old) + (\result :> integer)).charM ==
+                                 (0 :> int8))) &&
+                       (_C_15 : (\forall integer i_7;
+                                  (((0 <= i_7) &&
+                                     (i_7 < (\result :> integer))) ==>
+                                    ((\at(s,Old) + i_7).charM != (0 :> int8))))))));
+;
+
+axiomatic Ctype {
+
+  predicate islower(integer c) =
+  ((((97 :> int8) :> integer) <= c) && (c <= ((122 :> int8) :> integer)))
+   
+  predicate isupper(integer c_0) =
+  ((((65 :> int8) :> integer) <= c_0) && (c_0 <= ((90 :> int8) :> integer)))
+   
+  predicate isalpha(integer c_1) =
+  (isupper(c_1) || islower(c_1))
+   
+  predicate isdigit(integer c_2) =
+  ((((48 :> int8) :> integer) <= c_2) && (c_2 <= ((57 :> int8) :> integer)))
+   
+  predicate isodigit(integer c_3) =
+  ((((48 :> int8) :> integer) <= c_3) && (c_3 <= ((55 :> int8) :> integer)))
+   
+  predicate isalnum(integer c_4) =
+  (isdigit(c_4) || isalpha(c_4))
+   
+  predicate isspace(integer c_5) =
+  ((((((c_5 == ((32 :> int8) :> integer)) ||
+        (c_5 == ((12 :> int8) :> integer))) ||
+       (c_5 == ((10 :> int8) :> integer))) ||
+      (c_5 == ((13 :> int8) :> integer))) ||
+     (c_5 == ((9 :> int8) :> integer))) ||
+    (c_5 == ((11 :> int8) :> integer)))
+   
+  predicate isxdigit(integer c_6) =
+  ((isdigit(c_6) ||
+     ((((97 :> int8) :> integer) <= c_6) &&
+       (c_6 <= ((102 :> int8) :> integer)))) ||
+    ((((65 :> int8) :> integer) <= c_6) &&
+      (c_6 <= ((70 :> int8) :> integer))))
+   
+  logic integer tolower(integer c_7)
+   
+  logic integer toupper(integer c_8)
+   
+  axiom a :
+  (_C_17 : (tolower(((65 :> int8) :> integer)) == ((97 :> int8) :> integer)))
+   
+  axiom b :
+  (_C_18 : (tolower(((66 :> int8) :> integer)) == ((98 :> int8) :> integer)))
+   
+  axiom c :
+  (_C_19 : (tolower(((67 :> int8) :> integer)) == ((99 :> int8) :> integer)))
+   
+  axiom d :
+  (_C_20 : (tolower(((68 :> int8) :> integer)) == ((100 :> int8) :> integer)))
+   
+  axiom e :
+  (_C_21 : (tolower(((69 :> int8) :> integer)) == ((101 :> int8) :> integer)))
+   
+  axiom f :
+  (_C_22 : (tolower(((70 :> int8) :> integer)) == ((102 :> int8) :> integer)))
+   
+  axiom g :
+  (_C_23 : (tolower(((71 :> int8) :> integer)) == ((103 :> int8) :> integer)))
+   
+  axiom h :
+  (_C_24 : (tolower(((72 :> int8) :> integer)) == ((104 :> int8) :> integer)))
+   
+  axiom i :
+  (_C_25 : (tolower(((73 :> int8) :> integer)) == ((105 :> int8) :> integer)))
+   
+  axiom j :
+  (_C_26 : (tolower(((74 :> int8) :> integer)) == ((106 :> int8) :> integer)))
+   
+  axiom k :
+  (_C_27 : (tolower(((75 :> int8) :> integer)) == ((107 :> int8) :> integer)))
+   
+  axiom l :
+  (_C_28 : (tolower(((76 :> int8) :> integer)) == ((108 :> int8) :> integer)))
+   
+  axiom m :
+  (_C_29 : (tolower(((77 :> int8) :> integer)) == ((109 :> int8) :> integer)))
+   
+  axiom n :
+  (_C_30 : (tolower(((78 :> int8) :> integer)) == ((110 :> int8) :> integer)))
+   
+  axiom o :
+  (_C_31 : (tolower(((79 :> int8) :> integer)) == ((111 :> int8) :> integer)))
+   
+  axiom p :
+  (_C_32 : (tolower(((80 :> int8) :> integer)) == ((112 :> int8) :> integer)))
+   
+  axiom q :
+  (_C_33 : (tolower(((81 :> int8) :> integer)) == ((113 :> int8) :> integer)))
+   
+  axiom r :
+  (_C_34 : (tolower(((82 :> int8) :> integer)) == ((114 :> int8) :> integer)))
+   
+  axiom s :
+  (_C_35 : (tolower(((83 :> int8) :> integer)) == ((115 :> int8) :> integer)))
+   
+  axiom t :
+  (_C_36 : (tolower(((84 :> int8) :> integer)) == ((116 :> int8) :> integer)))
+   
+  axiom u :
+  (_C_37 : (tolower(((85 :> int8) :> integer)) == ((117 :> int8) :> integer)))
+   
+  axiom v :
+  (_C_38 : (tolower(((86 :> int8) :> integer)) == ((118 :> int8) :> integer)))
+   
+  axiom w :
+  (_C_39 : (tolower(((87 :> int8) :> integer)) == ((119 :> int8) :> integer)))
+   
+  axiom x :
+  (_C_40 : (tolower(((88 :> int8) :> integer)) == ((120 :> int8) :> integer)))
+   
+  axiom y :
+  (_C_41 : (tolower(((89 :> int8) :> integer)) == ((121 :> int8) :> integer)))
+   
+  axiom z :
+  (_C_42 : (tolower(((90 :> int8) :> integer)) == ((122 :> int8) :> integer)))
+   
+  axiom pl :
+  (_C_43 : (\forall integer c_9;
+             ((! isupper(c_9)) ==> (tolower(c_9) == c_9))))
+   
+  axiom pu :
+  (_C_44 : (\forall integer c_10;
+             ((! islower(c_10)) ==> (toupper(c_10) == c_10))))
+   
+  axiom tl :
+  (_C_45 : (\forall integer c_11;
+             ((! islower(c_11)) ==> (toupper(tolower(c_11)) == c_11))))
+   
+  axiom tu :
+  (_C_46 : (\forall integer c_12;
+             ((! isupper(c_12)) ==> (tolower(toupper(c_12)) == c_12))))
+  
+}
+
+_bool isalnum(int8 c_2)
+behavior default:
+  assigns \nothing;
+  ensures (_C_47 : ((\result != 0) <==> isalnum((\at(c_2,Old) :> integer))));
+;
+
+_bool isalpha(int8 c_3)
+behavior default:
+  assigns \nothing;
+  ensures (_C_48 : ((\result != 0) <==> isalpha((\at(c_3,Old) :> integer))));
+;
+
+_bool islower(int8 c_6)
+behavior default:
+  assigns \nothing;
+  ensures (_C_49 : ((\result != 0) <==> islower((\at(c_6,Old) :> integer))));
+;
+
+_bool isspace(int8 c_8)
+behavior default:
+  assigns \nothing;
+  ensures (_C_50 : ((\result != 0) <==> isspace((\at(c_8,Old) :> integer))));
+;
+
+_bool isupper(int8 c_9)
+behavior default:
+  assigns \nothing;
+  ensures (_C_51 : ((\result != 0) <==> isupper((\at(c_9,Old) :> integer))));
+;
+
+_bool isxdigit(int8 c_10)
+behavior default:
+  assigns \nothing;
+  ensures (_C_52 : ((\result != 0) <==> isxdigit((\at(c_10,Old) :> integer))));
+;
+
+_bool isascii(int8 c_4)
+behavior default:
+  assigns \nothing;
+  ensures (_C_53 : ((\result != 0) <==>
+                     (((0 :> int8) <= \at(c_4,Old)) &&
+                       (\at(c_4,Old) <= (127 :> int8)))));
+;
+
+int32 isdigit(int32 c_5)
+behavior default:
+  assigns \nothing;
+  ensures (_C_54 : ((\result != 0) <==> isdigit((\at(c_5,Old) :> integer))));
+;
+
+uint8 __tolower(uint8 c)
+behavior default:
+  assigns \nothing;
+  ensures (_C_55 : ((\result :> integer) == tolower((\at(c,Old) :> integer))));
+;
+
+uint8 __toupper(uint8 c_0)
+behavior default:
+  assigns \nothing;
+  ensures (_C_56 : ((\result :> integer) ==
+                     toupper((\at(c_0,Old) :> integer))));
+;
+
+int8 tolower(int8 c_11)
+behavior default:
+  assigns \nothing;
+  ensures (_C_57 : ((\result :> integer) ==
+                     tolower((\at(c_11,Old) :> integer))));
+;
+
+int8 toupper(int8 c_12)
+behavior default:
+  assigns \nothing;
+  ensures (_C_58 : ((\result :> integer) ==
+                     toupper((\at(c_12,Old) :> integer))));
+;
+
+int8 _tolower(int8 c_1)
+behavior default:
+  assigns \nothing;
+  ensures (_C_59 : ((\result :> integer) ==
+                     tolower((\at(c_1,Old) :> integer))));
+;
+
+int32 isodigit(int8 c_7)
+behavior default:
+  assigns \nothing;
+  ensures (_C_60 : ((\result != 0) <==> isodigit((\at(c_7,Old) :> integer))));
+;
+
+int32 strcasecmp(charP[..] s1, charP[..] s2)
+  requires ((_C_115 : valid_str{Here}(s1)) && (_C_116 : valid_str{Here}(s2)));
+behavior default:
+  assigns \nothing;
+  ensures true;
+behavior equal:
+  assumes (\forall integer i_12;
+            (((0 <= i_12) && (i_12 <= (strlen{Here}(s1) :> integer))) ==>
+              (tolower(((s1 + i_12).charM :> integer)) ==
+                tolower(((s2 + i_12).charM :> integer)))));
+  ensures (_C_109 : (\result == (0 :> int32)));
+behavior not_equal:
+  assumes (\exists integer i_10;
+            (((0 <= i_10) && (i_10 <= (strlen{Here}(s1) :> integer))) &&
+              (tolower(((s1 + i_10).charM :> integer)) !=
+                tolower(((s2 + i_10).charM :> integer)))));
+  ensures (_C_110 : ((_C_111 : (\result != (0 :> int32))) &&
+                      (_C_112 : (\exists integer i_11;
+                                  (((((0 <= i_11) &&
+                                       (i_11 <=
+                                         (strlen{Here}(\at(s1,Old)) :> integer))) &&
+                                      (\forall integer j_1;
+                                        (((0 <= j_1) && (j_1 < i_11)) ==>
+                                          (tolower(((\at(s1,Old) + j_1).charM :> integer)) ==
+                                            tolower(((\at(s2,Old) + j_1).charM :> integer)))))) &&
+                                     (tolower(((\at(s1,Old) + i_11).charM :> integer)) !=
+                                       tolower(((\at(s2,Old) + i_11).charM :> integer)))) &&
+                                    ((\result :> integer) ==
+                                      (tolower(((\at(s1,Old) + i_11).charM :> integer)) -
+                                        tolower(((\at(s2,Old) + i_11).charM :> integer)))))))));
+{  
+   (check (disjoint_behaviors : (! ((\forall integer i_12;
+                                      (((0 <= i_12) &&
+                                         (i_12 <=
+                                           (strlen{Here}(s1) :> integer))) ==>
+                                        (tolower(((s1 + i_12).charM :> integer)) ==
+                                          tolower(((s2 + i_12).charM :> integer))))) &&
+                                     (\exists integer i_10;
+                                       (((0 <= i_10) &&
+                                          (i_10 <=
+                                            (strlen{Here}(s1) :> integer))) &&
+                                         (tolower(((s1 + i_10).charM :> integer)) !=
+                                           tolower(((s2 + i_10).charM :> integer)))))))));
+   
+   (check (complete_behaviors : ((\exists integer i_10;
+                                   (((0 <= i_10) &&
+                                      (i_10 <= (strlen{Here}(s1) :> integer))) &&
+                                     (tolower(((s1 + i_10).charM :> integer)) !=
+                                       tolower(((s2 + i_10).charM :> integer))))) ||
+                                  (\forall integer i_12;
+                                    (((0 <= i_12) &&
+                                       (i_12 <=
+                                         (strlen{Here}(s1) :> integer))) ==>
+                                      (tolower(((s1 + i_12).charM :> integer)) ==
+                                        tolower(((s2 + i_12).charM :> integer))))))));
+   
+   (var int32 c1);
+   
+   (var int32 c2);
+   
+   (var charP[..] os1);
+   
+   (var charP[..] os2);
+   
+   (var charP[..] tmp);
+   
+   (var charP[..] tmp_0);
+   
+   (var int32 res);
+   
+   (var int32 __retres);
+   
+   {  (_C_61 : (os1 = s1));
+      (_C_62 : (os2 = s2));
+      
+      loop 
+      behavior default:
+        invariant (_C_80 : ((_C_81 : valid_str{Here}(s1)) &&
+                             (_C_82 : valid_str{Here}(s2))));
+      behavior default:
+        invariant (_C_73 : (((_C_75 : (\base_block(os1) == \base_block(s1))) &&
+                              (_C_76 : ((os1 - s1) <= 0))) &&
+                             ((_C_78 : (\base_block(s1) ==
+                                         \base_block((os1 +
+                                                       (strlen{Here}(
+                                                       os1) :> integer))))) &&
+                               (_C_79 : ((s1 -
+                                           (os1 +
+                                             (strlen{Here}(os1) :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_66 : (((_C_68 : (\base_block(os2) == \base_block(s2))) &&
+                              (_C_69 : ((os2 - s2) <= 0))) &&
+                             ((_C_71 : (\base_block(s2) ==
+                                         \base_block((os2 +
+                                                       (strlen{Here}(
+                                                       os2) :> integer))))) &&
+                               (_C_72 : ((s2 -
+                                           (os2 +
+                                             (strlen{Here}(os2) :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_65 : ((s1 - os1) == (s2 - os2)));
+      behavior default:
+        invariant (_C_64 : (\forall integer i_8;
+                             (((0 <= i_8) && (i_8 < (s1 - os1))) ==>
+                               (tolower(((os1 + i_8).charM :> integer)) ==
+                                 tolower(((os2 + i_8).charM :> integer))))));
+      variant (_C_63 : ((strlen{Here}(os1) :> integer) - (s1 - os1)));
+      while (true)
+      {  
+         {  
+            {  
+               {  (_C_83 : (tmp = s1));
+                  (_C_85 : (s1 = (_C_84 : (s1 + (1 :> int32)))));
+                  ()
+               };
+               (_C_90 : (let __cil_tmp =
+                        (_C_87 : tolower((_C_86 : tmp.charM)))
+                        in (_C_89 : (c1 = (_C_88 : (__cil_tmp :> int32))))));
+               
+               {  (_C_91 : (tmp_0 = s2));
+                  (_C_93 : (s2 = (_C_92 : (s2 + (1 :> int32)))));
+                  ()
+               };
+               (_C_98 : (let __cil_tmp_13 =
+                        (_C_95 : tolower((_C_94 : tmp_0.charM)))
+                        in (_C_97 : (c2 = (_C_96 : (__cil_tmp_13 :> int32))))))
+            };
+            (if (_C_100 : (c1 == c2)) then (if (_C_99 : (c1 != (0 :> int32))) then () else 
+                                           (goto while_0_break)) else 
+            (goto while_0_break))
+         }
+      };
+      (while_0_break : ());
+      (_C_103 : (res = (_C_102 : ((_C_101 : (c1 - c2)) :> int32))));
+      
+      {  
+         (assert for default: (_C_104 : (jessie : ((c1 == c2) ==>
+                                                    ((c1 == (0 :> int32)) &&
+                                                      (res == (0 :> int32)))))));
+         ()
+      };
+      
+      {  
+         (assert for default: (_C_105 : (jessie : ((c1 != c2) ==>
+                                                    (\exists integer i_9;
+                                                      ((((((0 <= i_9) &&
+                                                            (i_9 <=
+                                                              (strlen{Here}(
+                                                              os1) :> integer))) &&
+                                                           (\forall integer j_0;
+                                                             (((0 <= j_0) &&
+                                                                (j_0 < i_9)) ==>
+                                                               (tolower(
+                                                                 ((os1 + j_0).charM :> integer)) ==
+                                                                 tolower(
+                                                                 ((os2 + j_0).charM :> integer)))))) &&
+                                                          (tolower(((os1 +
+                                                                    i_9).charM :> integer)) !=
+                                                            tolower((
+                                                                    (os2 +
+                                                                    i_9).charM :> integer)))) &&
+                                                         ((res :> integer) ==
+                                                           (tolower((
+                                                                    (os1 +
+                                                                    i_9).charM :> integer)) -
+                                                             tolower(
+                                                             ((os2 + i_9).charM :> integer))))) &&
+                                                        (i_9 ==
+                                                          ((s1 - os1) - 1))))))));
+         ()
+      };
+      (_C_108 : (__retres = (_C_107 : ((_C_106 : (c1 - c2)) :> int32))));
+      
+      (return __retres)
+   }
+}

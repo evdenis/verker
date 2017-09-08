@@ -1,0 +1,261 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+voidP[..] memmove(voidP[..] dest_5, voidP[..] src_3, uint64 count)
+  requires ((_C_94 : (dest_5 <: charP)) &&
+             ((_C_95 : (src_3 <: charP)) &&
+               ((_C_96 : \at((if (\at(0,Here) <=
+                                   \at(((count :> integer) - 1),Here)) then 
+                             (((\offset_min(\at((dest_5 :> charP[..]),Here)) <=
+                                 \at(0,Here)) &&
+                                (\offset_max(\at((dest_5 :> charP[..]),Here)) >=
+                                  \at(((count :> integer) - 1),Here))) &&
+                               (\forall integer __framac_tmp1;
+                                 (((\at(0,Here) <= __framac_tmp1) &&
+                                    (__framac_tmp1 <=
+                                      \at(((count :> integer) - 1),Here))) ==>
+                                   true))) else true),Here)) &&
+                 ((_C_97 : \at((if (\at(0,Here) <=
+                                     \at(((count :> integer) - 1),Here)) then 
+                               (((\offset_min(\at((src_3 :> charP[..]),Here)) <=
+                                   \at(0,Here)) &&
+                                  (\offset_max(\at((src_3 :> charP[..]),Here)) >=
+                                    \at(((count :> integer) - 1),Here))) &&
+                                 (\forall integer __framac_tmp2;
+                                   (((\at(0,Here) <= __framac_tmp2) &&
+                                      (__framac_tmp2 <=
+                                        \at(((count :> integer) - 1),Here))) ==>
+                                     true))) else true),Here)) &&
+                   (_C_98 : (((\base_block(dest_5) == \base_block(src_3)) &&
+                               (! (\base_block(dest_5) != \base_block(src_3)))) ||
+                              ((\base_block(dest_5) != \base_block(src_3)) &&
+                                (! (\base_block(dest_5) ==
+                                     \base_block(src_3))))))))));
+behavior default:
+  assigns ((dest_5 :> charP[..]) + [0..((count :> integer) - 1)]).charM;
+  ensures true;
+behavior same_addr:
+  assumes (\base_block(dest_5) == \base_block(src_3));
+  ensures (_C_90 : (\forall integer i_6;
+                     (((0 <= i_6) && (i_6 < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_5,Old) :> charP[..]) + i_6).charM ==
+                         \at(((src_3 :> charP[..]) + i_6).charM,Old)))));
+behavior diff_addr:
+  assumes (\base_block(dest_5) != \base_block(src_3));
+  ensures (_C_91 : (\forall integer i_5;
+                     (((0 <= i_5) && (i_5 < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_5,Old) :> charP[..]) + i_5).charM ==
+                         \at(((src_3 :> charP[..]) + i_5).charM,Old)))));
+{  
+   (var uint64 orig_count);
+   
+   (var charP[..] tmp);
+   
+   (var charP[..] s);
+   
+   (var charP[..] tmp_0);
+   
+   (var charP[..] tmp_1);
+   
+   (var uint64 tmp_2);
+   
+   (var uint64 tmp_3);
+   
+   {  (_C_1 : (orig_count = count));
+      (if (_C_88 : ((dest_5 - src_3) <= 0)) then 
+      {  (_C_47 : (tmp = (_C_46 : (dest_5 :> charP[..]))));
+         (_C_49 : (s = (_C_48 : (src_3 :> charP[..]))));
+         
+         loop 
+         behavior default:
+           invariant (_C_70 : ((_C_71 : ((0 :> uint64) <= count)) &&
+                                (_C_72 : (count <= orig_count))));
+         behavior default:
+           invariant (_C_67 : ((_C_68 : ((tmp - (dest_5 :> charP[..])) ==
+                                          ((orig_count :> integer) -
+                                            (count :> integer)))) &&
+                                (_C_69 : (((orig_count :> integer) -
+                                            (count :> integer)) ==
+                                           (s - (src_3 :> charP[..]))))));
+         behavior default:
+           invariant (_C_60 : (((_C_62 : (\base_block((dest_5 :> charP[..])) ==
+                                           \base_block(tmp))) &&
+                                 (_C_63 : (((dest_5 :> charP[..]) - tmp) <=
+                                            0))) &&
+                                ((_C_65 : (\base_block(tmp) ==
+                                            \base_block(((dest_5 :> charP[..]) +
+                                                          (orig_count :> integer))))) &&
+                                  (_C_66 : ((tmp -
+                                              ((dest_5 :> charP[..]) +
+                                                (orig_count :> integer))) <=
+                                             0)))));
+         behavior default:
+           invariant (_C_53 : (((_C_55 : (\base_block((src_3 :> charP[..])) ==
+                                           \base_block(s))) &&
+                                 (_C_56 : (((src_3 :> charP[..]) - s) <= 0))) &&
+                                ((_C_58 : (\base_block(s) ==
+                                            \base_block(((src_3 :> charP[..]) +
+                                                          (orig_count :> integer))))) &&
+                                  (_C_59 : ((s -
+                                              ((src_3 :> charP[..]) +
+                                                (orig_count :> integer))) <=
+                                             0)))));
+         behavior default:
+           invariant (_C_52 : (\forall integer i_1;
+                                (((((orig_count :> integer) -
+                                     (count :> integer)) <=
+                                    i_1) &&
+                                   (i_1 < (orig_count :> integer))) ==>
+                                  (((src_3 :> charP[..]) + i_1).charM ==
+                                    \at(((src_3 :> charP[..]) + i_1).charM,Pre)))));
+         behavior default:
+           invariant (_C_51 : (\forall integer i_2;
+                                (((0 <= i_2) &&
+                                   (i_2 <
+                                     ((orig_count :> integer) -
+                                       (count :> integer)))) ==>
+                                  (((dest_5 :> charP[..]) + i_2).charM ==
+                                    \at(((src_3 :> charP[..]) + i_2).charM,Pre)))));
+         variant (_C_50 : count);
+         while (true)
+         {  
+            {  
+               {  (_C_73 : (tmp_2 = count));
+                  (_C_76 : (count = (_C_75 : ((_C_74 : (count -%
+                                                         (1 :> uint64))) :> uint64))));
+                  ()
+               };
+               (if (_C_77 : ((tmp_2 :> uint64) != (0 :> uint64))) then () else 
+               (goto while_0_break));
+               
+               {  
+                  {  (_C_78 : (tmp_0 = tmp));
+                     (_C_80 : (tmp = (_C_79 : (tmp + (1 :> int32)))));
+                     (_C_81 : (tmp_1 = s));
+                     (_C_83 : (s = (_C_82 : (s + (1 :> int32)))));
+                     (_C_86 : ((_C_85 : tmp_0.charM) = (_C_84 : tmp_1.charM)))
+                  };
+                  
+                  {  
+                     (assert for default: (_C_87 : (jessie : (((dest_5 :> charP[..]) +
+                                                                (((orig_count :> integer) -
+                                                                   (count :> integer)) -
+                                                                  1)).charM ==
+                                                               ((src_3 :> charP[..]) +
+                                                                 (((orig_count :> integer) -
+                                                                    (count :> integer)) -
+                                                                   1)).charM))));
+                     ()
+                  }
+               }
+            }
+         };
+         (while_0_break : ())
+      } else 
+      {  (_C_3 : (tmp = (_C_2 : (dest_5 :> charP[..]))));
+         (_C_5 : (tmp = (_C_4 : (tmp + count))));
+         (_C_7 : (s = (_C_6 : (src_3 :> charP[..]))));
+         (_C_9 : (s = (_C_8 : (s + count))));
+         
+         loop 
+         behavior default:
+           invariant (_C_30 : ((_C_31 : ((0 :> uint64) <= count)) &&
+                                (_C_32 : (count <= orig_count))));
+         behavior default:
+           invariant (_C_27 : ((_C_28 : ((tmp - (dest_5 :> charP[..])) ==
+                                          (count :> integer))) &&
+                                (_C_29 : ((count :> integer) ==
+                                           (s - (src_3 :> charP[..]))))));
+         behavior default:
+           invariant (_C_20 : (((_C_22 : (\base_block((dest_5 :> charP[..])) ==
+                                           \base_block(tmp))) &&
+                                 (_C_23 : (((dest_5 :> charP[..]) - tmp) <=
+                                            0))) &&
+                                ((_C_25 : (\base_block(tmp) ==
+                                            \base_block(((dest_5 :> charP[..]) +
+                                                          (orig_count :> integer))))) &&
+                                  (_C_26 : ((tmp -
+                                              ((dest_5 :> charP[..]) +
+                                                (orig_count :> integer))) <=
+                                             0)))));
+         behavior default:
+           invariant (_C_13 : (((_C_15 : (\base_block((src_3 :> charP[..])) ==
+                                           \base_block(s))) &&
+                                 (_C_16 : (((src_3 :> charP[..]) - s) <= 0))) &&
+                                ((_C_18 : (\base_block(s) ==
+                                            \base_block(((src_3 :> charP[..]) +
+                                                          (orig_count :> integer))))) &&
+                                  (_C_19 : ((s -
+                                              ((src_3 :> charP[..]) +
+                                                (orig_count :> integer))) <=
+                                             0)))));
+         behavior default:
+           invariant (_C_12 : (\forall integer i_3;
+                                (((0 <= i_3) && (i_3 < (count :> integer))) ==>
+                                  (((src_3 :> charP[..]) + i_3).charM ==
+                                    \at(((src_3 :> charP[..]) + i_3).charM,Pre)))));
+         behavior default:
+           invariant (_C_11 : (\forall integer i_4;
+                                ((((count :> integer) <= i_4) &&
+                                   (i_4 < (orig_count :> integer))) ==>
+                                  (((dest_5 :> charP[..]) + i_4).charM ==
+                                    \at(((src_3 :> charP[..]) + i_4).charM,Pre)))));
+         variant (_C_10 : count);
+         while (true)
+         {  
+            {  
+               {  (_C_33 : (tmp_3 = count));
+                  (_C_36 : (count = (_C_35 : ((_C_34 : (count -%
+                                                         (1 :> uint64))) :> uint64))));
+                  ()
+               };
+               (if (_C_37 : ((tmp_3 :> uint64) != (0 :> uint64))) then () else 
+               (goto while_0_break_0));
+               
+               {  
+                  {  (_C_39 : (tmp = (_C_38 : (tmp - (1 :> int32)))));
+                     (_C_41 : (s = (_C_40 : (s - (1 :> int32)))));
+                     (_C_44 : ((_C_43 : tmp.charM) = (_C_42 : s.charM)))
+                  };
+                  
+                  {  
+                     (assert for default: (_C_45 : (jessie : (((dest_5 :> charP[..]) +
+                                                                (count :> integer)).charM ==
+                                                               ((src_3 :> charP[..]) +
+                                                                 (count :> integer)).charM))));
+                     ()
+                  }
+               }
+            }
+         };
+         (while_0_break_0 : ())
+      });
+      
+      {  
+         (assert for default: (_C_89 : (jessie : (count ==
+                                                   ((- 1) :%> uint64)))));
+         ()
+      };
+      
+      (return dest_5)
+   }
+}
