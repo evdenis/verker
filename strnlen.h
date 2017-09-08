@@ -1,6 +1,7 @@
 #ifndef __STRNLEN_H__
 #define __STRNLEN_H__
 
+#include "strlen.h"
 #include "kernel_definitions.h"
 
 /*@ axiomatic Strnlen {
