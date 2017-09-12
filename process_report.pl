@@ -74,20 +74,21 @@ foreach my $f (sort keys %stats) {
    my $vmax = -1;
    my $tmin = 100000;
    for (@solvers) {
-      my $done = '-';
+      my $done = '$\varnothing$';
       my $avr  = '-';
-      my $str = '  - | -';
+      my $str = ' - | -';
       if ($stats{$f}{$_}{done}) {
          $done = $stats{$f}{$_}{done};
-         #$done = "\N{CHECK MARK}" if $done == $max;
          $avr = $stats{$f}{$_}{average};
-         push @{$solvers_total{$_}{time}}, @{$stats{$f}{$_}{time}};
-         $str = sprintf("%3s | %0.2f", $done, $avr);
          $vmax = $done if $vmax < $done;
          $tmin = $avr if $tmin > $avr;
+
+         $done = '\checkmark' if $done == $max;
+         push @{$solvers_total{$_}{time}}, @{$stats{$f}{$_}{time}};
+         $str = sprintf("%3s | %0.2f", $done, $avr);
       }
       push @stat, $str;
-      if ($done eq '-') {
+      if ($done eq '$\varnothing$') {
          push @stat1, "$done:2c";
       } else {
          push @stat1, ($done, sprintf("%0.2f", $avr));
@@ -96,7 +97,7 @@ foreach my $f (sort keys %stats) {
    for(my $i = 0; $i < @stat1; $i += 2) {
       unless ($stat1[$i] =~ /2c/){
          $stat1[$i] = "\\textbf{$stat1[$i]}" if $stat1[$i] == $vmax;
-         $stat1[$i+1] = "\\textbf{$stat1[$i+1]}" if $stat1[$i+1] eq sprintf("%0.2f", $tmin);
+         $stat1[$i+1] = "\\underline{$stat1[$i+1]}" if $stat1[$i+1] eq sprintf("%0.2f", $tmin);
       } else {
          $i -= 1;
       }
@@ -132,7 +133,7 @@ for(my $i = 0; $i < @solv1; $i += 2) {
       $solv1[$i] = "\\textbf{$solv1[$i]}";
    }
    if ($solv1[$i+1] == $tmin) {
-      $solv1[$i+1] = "\\textbf{$solv1[$i+1]}";
+      $solv1[$i+1] = "\\underline{$solv1[$i+1]}";
    }
 }
 $table->add_row(['TOTAL', $total_vc, @solv]);
