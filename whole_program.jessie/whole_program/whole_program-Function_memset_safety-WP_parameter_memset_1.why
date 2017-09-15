@@ -1,0 +1,944 @@
+(* this is the prelude for Alt-Ergo, version >= 0.95.2 *)
+(* this is a prelude for Alt-Ergo integer arithmetic *)
+logic comp_div: int, int -> int
+axiom comp_div_def: forall x, y:int. x >= 0 and y > 0 -> comp_div(x,y) = x / y
+logic comp_mod: int, int -> int
+axiom comp_mod_def: forall x, y:int. x >= 0 and y > 0 -> comp_mod(x,y) = x % y
+logic match_bool : bool, 'a, 'a -> 'a
+
+axiom match_bool_True :
+  (forall z:'a. forall z1:'a. (match_bool(true, z, z1) = z))
+
+axiom match_bool_False :
+  (forall z:'a. forall z1:'a. (match_bool(false, z, z1) = z1))
+
+axiom CompatOrderMult :
+  (forall x:int. forall y:int. forall z:int. ((x <= y) -> ((0 <= z) ->
+  ((x * z) <= (y * z)))))
+
+axiom Abs_le :
+  (forall x:int. forall y:int. ((((x >= 0) and (x <= y)) or
+  ((not (x >= 0)) and ((-x) <= y))) -> ((-y) <= x)))
+
+axiom Abs_le1 :
+  (forall x:int. forall y:int. ((((x >= 0) and (x <= y)) or
+  ((not (x >= 0)) and ((-x) <= y))) -> (x <= y)))
+
+axiom Abs_le2 :
+  (forall x:int. forall y:int. ((((-y) <= x) and (x <= y)) -> ((x >= 0) ->
+  (x <= y))))
+
+axiom Abs_le3 :
+  (forall x:int. forall y:int. ((((-y) <= x) and (x <= y)) ->
+  ((not (x >= 0)) -> ((-x) <= y))))
+
+axiom Abs_pos : true
+
+axiom Abs_pos1 : (forall x:int. ((not (x >= 0)) -> ((-x) >= 0)))
+
+axiom Div_mod :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  (x = ((y * comp_div(x,y)) + comp_mod(x,y)))))
+
+axiom Div_bound :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) ->
+  (0 <= comp_div(x,y))))
+
+axiom Div_bound1 :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) ->
+  (comp_div(x,y) <= x)))
+
+axiom Mod_bound :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((y >= 0) ->
+  ((-y) <  comp_mod(x,y)))))
+
+axiom Mod_bound1 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((not (y >= 0)) ->
+  ((-(-y)) <  comp_mod(x,y)))))
+
+axiom Mod_bound2 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((y >= 0) ->
+  (comp_mod(x,y) <  y))))
+
+axiom Mod_bound3 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((not (y >= 0)) ->
+  (comp_mod(x,y) <  (-y)))))
+
+axiom Div_sign_pos :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) ->
+  (comp_div(x,y) >= 0)))
+
+axiom Div_sign_neg :
+  (forall x:int. forall y:int. (((x <= 0) and (0 <  y)) ->
+  (comp_div(x,y) <= 0)))
+
+axiom Mod_sign_pos :
+  (forall x:int. forall y:int. (((x >= 0) and (not (y = 0))) ->
+  (comp_mod(x,y) >= 0)))
+
+axiom Mod_sign_neg :
+  (forall x:int. forall y:int. (((x <= 0) and (not (y = 0))) ->
+  (comp_mod(x,y) <= 0)))
+
+axiom Rounds_toward_zero :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  (((comp_div(x,y) * y) >= 0) -> ((x >= 0) -> ((comp_div(x,y) * y) <= x)))))
+
+axiom Rounds_toward_zero1 :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  (((comp_div(x,y) * y) >= 0) -> ((not (x >= 0)) ->
+  ((comp_div(x,y) * y) <= (-x))))))
+
+axiom Rounds_toward_zero2 :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  ((not ((comp_div(x,y) * y) >= 0)) -> ((x >= 0) ->
+  ((-(comp_div(x,y) * y)) <= x)))))
+
+axiom Rounds_toward_zero3 :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  ((not ((comp_div(x,y) * y) >= 0)) -> ((not (x >= 0)) ->
+  ((-(comp_div(x,y) * y)) <= (-x))))))
+
+axiom Div_1 : (forall x:int. (comp_div(x,1) = x))
+
+axiom Mod_1 : (forall x:int. (comp_mod(x,1) = 0))
+
+axiom Div_inf :
+  (forall x:int. forall y:int. (((0 <= x) and (x <  y)) ->
+  (comp_div(x,y) = 0)))
+
+axiom Mod_inf :
+  (forall x:int. forall y:int. (((0 <= x) and (x <  y)) ->
+  (comp_mod(x,y) = x)))
+
+axiom Div_mult :
+  (forall x:int. forall y:int. forall z:int. (((0 <  x) and ((y >= 0) and
+  (z >= 0))) -> (comp_div(((x * y) + z),x) = (y + comp_div(z,x)))))
+
+axiom Mod_mult :
+  (forall x:int. forall y:int. forall z:int. (((0 <  x) and ((y >= 0) and
+  (z >= 0))) -> (comp_mod(((x * y) + z),x) = comp_mod(z,x))))
+
+axiom Div_mult_simplest :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) ->
+  (comp_div((x * y),y) = x)))
+
+type t
+
+logic to_int : t -> int
+
+axiom To_int_in_bounds : (forall a:t. (0 <= to_int(a)))
+
+axiom To_int_in_bounds1 : (forall a:t. (to_int(a) <= 18446744073709551615))
+
+logic of_int : int -> t
+
+axiom Of_int :
+  (forall a:int. (((0 <= a) and (a <= 18446744073709551615)) ->
+  (to_int(of_int(a)) = a)))
+
+axiom Extensionality1 :
+  (forall x:t. forall y:t. ((to_int(x) = to_int(y)) -> (x = y)))
+
+axiom Extensionality2 :
+  (forall x:int. forall y:int. ((of_int(x) = of_int(y)) -> ((((0 <= x) and
+  (x <= 18446744073709551615)) and ((0 <= y) and
+  (y <= 18446744073709551615))) -> (x = y))))
+
+predicate infix_lseq(a: t, b: t) = (to_int(a) <= to_int(b))
+
+predicate infix_ls(a: t, b: t) = (to_int(a) <  to_int(b))
+
+predicate infix_gteq(a: t, b: t) = (to_int(a) >= to_int(b))
+
+predicate infix_gt(a: t, b: t) = (to_int(b) <  to_int(a))
+
+axiom Div_mod1 :
+  (forall x:int. forall y:int. ((not (y = 0)) ->
+  (x = ((y * (x / y)) + (x % y)))))
+
+axiom Mod_bound4 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> (0 <= (x % y))))
+
+axiom Mod_bound5 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((y >= 0) ->
+  ((x % y) <  y))))
+
+axiom Mod_bound6 :
+  (forall x:int. forall y:int. ((not (y = 0)) -> ((not (y >= 0)) ->
+  ((x % y) <  (-y)))))
+
+axiom Div_unique :
+  (forall x:int. forall y:int. forall q:int. ((0 <  y) ->
+  ((((q * y) <= x) and (x <  ((q * y) + y))) -> ((x / y) = q))))
+
+axiom Div_bound2 :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) -> (0 <= (x / y))))
+
+axiom Div_bound3 :
+  (forall x:int. forall y:int. (((x >= 0) and (0 <  y)) -> ((x / y) <= x)))
+
+axiom Mod_11 : (forall x:int. ((x % 1) = 0))
+
+axiom Div_11 : (forall x:int. ((x / 1) = x))
+
+axiom Div_inf1 :
+  (forall x:int. forall y:int. (((0 <= x) and (x <  y)) -> ((x / y) = 0)))
+
+axiom Div_inf_neg :
+  (forall x:int. forall y:int. (((0 <  x) and (x <= y)) ->
+  (((-x) / y) = (-1))))
+
+axiom Mod_0 : (forall y:int. ((not (y = 0)) -> ((0 % y) = 0)))
+
+axiom Div_1_left : (forall y:int. ((1 <  y) -> ((1 / y) = 0)))
+
+axiom Div_minus1_left : (forall y:int. ((1 <  y) -> (((-1) / y) = (-1))))
+
+axiom Mod_1_left : (forall y:int. ((1 <  y) -> ((1 % y) = 1)))
+
+axiom Mod_minus1_left :
+  (forall y:int. ((1 <  y) -> (((-1) % y) = (y + (-1)))))
+
+axiom Div_mult1 :
+  (forall x:int. forall y:int. forall z:int. ((0 <  x) ->
+  ((((x * y) + z) / x) = (y + (z / x)))))
+
+axiom Mod_mult1 :
+  (forall x:int. forall y:int. forall z:int. ((0 <  x) ->
+  ((((x * y) + z) % x) = (z % x))))
+
+logic of_int_modulo : int -> t
+
+logic of_int_const : int -> t
+
+logic infix_plpc : t, t -> t
+
+logic infix_mnpc : t, t -> t
+
+logic prefix_mnpc : t -> t
+
+logic infix_aspc : t, t -> t
+
+logic infix_slpc : t, t -> t
+
+logic infix_pcpc : t, t -> t
+
+type tt
+
+logic extend : t -> tt
+
+logic is_safe : tt -> prop
+
+logic infix_plpctl : tt, tt -> tt
+
+logic infix_mnpctl : tt, tt -> tt
+
+logic prefix_mnpctl : tt -> tt
+
+logic infix_aspctl : tt, tt -> tt
+
+logic infix_slpctl : tt, tt -> tt
+
+logic infix_pcpctl : tt, tt -> tt
+
+logic infix_et : t, t -> t
+
+logic infix_brcf : t, t -> t
+
+logic prefix_tl : t -> t
+
+logic infix_cf : t, t -> t
+
+logic lsl : t, t -> t
+
+logic lsl_modulo : t, t -> t
+
+logic lsr : t, t -> t
+
+logic asr : t, t -> t
+
+logic lsl_modulo_ : tt, tt -> tt
+
+logic lt : t, t -> prop
+
+logic le : t, t -> prop
+
+logic gt : t, t -> prop
+
+logic ge : t, t -> prop
+
+axiom Of_int_modulo :
+  (forall n:int.
+  (to_int(of_int_modulo(n)) = (0 + ((n + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Add_modulo :
+  (forall a:t. forall b:t. (to_int(infix_plpc(a,
+  b)) = (0 + (((to_int(a) + to_int(b)) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Neg_modulo :
+  (forall a:t.
+  (to_int(prefix_mnpc(a)) = (0 + (((-to_int(a)) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Sub_modulo :
+  (forall a:t. forall b:t. (to_int(infix_mnpc(a,
+  b)) = (0 + (((to_int(a) + (-to_int(b))) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Mult_modulo :
+  (forall a:t. forall b:t. (to_int(infix_aspc(a,
+  b)) = (0 + (((to_int(a) * to_int(b)) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Div_modulo :
+  (forall a:t. forall b:t. (to_int(infix_slpc(a,
+  b)) = (0 + ((comp_div(to_int(a),to_int(b)) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))
+
+axiom Mod_modulo :
+  (forall a:t. forall b:t. (to_int(infix_pcpc(a,
+  b)) = comp_mod(to_int(a),to_int(b))))
+
+logic power2 : int -> int
+
+axiom Powers_of_2 : (power2(0) = 1)
+
+axiom Powers_of_21 : (power2(1) = 2)
+
+axiom Powers_of_22 : (power2(2) = 4)
+
+axiom Powers_of_23 : (power2(3) = 8)
+
+axiom Powers_of_24 : (power2(4) = 16)
+
+axiom Powers_of_25 : (power2(5) = 32)
+
+axiom Powers_of_26 : (power2(6) = 64)
+
+axiom Powers_of_27 : (power2(7) = 128)
+
+axiom Powers_of_28 : (power2(8) = 256)
+
+axiom Powers_of_29 : (power2(9) = 512)
+
+axiom Powers_of_210 : (power2(10) = 1024)
+
+axiom Powers_of_211 : (power2(11) = 2048)
+
+axiom Powers_of_212 : (power2(12) = 4096)
+
+axiom Powers_of_213 : (power2(13) = 8192)
+
+axiom Powers_of_214 : (power2(14) = 16384)
+
+axiom Powers_of_215 : (power2(15) = 32768)
+
+axiom Powers_of_216 : (power2(16) = 65536)
+
+axiom Powers_of_217 : (power2(17) = 131072)
+
+axiom Powers_of_218 : (power2(18) = 262144)
+
+axiom Powers_of_219 : (power2(19) = 524288)
+
+axiom Powers_of_220 : (power2(20) = 1048576)
+
+axiom Powers_of_221 : (power2(21) = 2097152)
+
+axiom Powers_of_222 : (power2(22) = 4194304)
+
+axiom Powers_of_223 : (power2(23) = 8388608)
+
+axiom Powers_of_224 : (power2(24) = 16777216)
+
+axiom Powers_of_225 : (power2(25) = 33554432)
+
+axiom Powers_of_226 : (power2(26) = 67108864)
+
+axiom Powers_of_227 : (power2(27) = 134217728)
+
+axiom Powers_of_228 : (power2(28) = 268435456)
+
+axiom Powers_of_229 : (power2(29) = 536870912)
+
+axiom Powers_of_230 : (power2(30) = 1073741824)
+
+axiom Powers_of_231 : (power2(31) = 2147483648)
+
+axiom Powers_of_232 : (power2(32) = 4294967296)
+
+axiom Powers_of_233 : (power2(33) = 8589934592)
+
+axiom Powers_of_234 : (power2(34) = 17179869184)
+
+axiom Powers_of_235 : (power2(35) = 34359738368)
+
+axiom Powers_of_236 : (power2(36) = 68719476736)
+
+axiom Powers_of_237 : (power2(37) = 137438953472)
+
+axiom Powers_of_238 : (power2(38) = 274877906944)
+
+axiom Powers_of_239 : (power2(39) = 549755813888)
+
+axiom Powers_of_240 : (power2(40) = 1099511627776)
+
+axiom Powers_of_241 : (power2(41) = 2199023255552)
+
+axiom Powers_of_242 : (power2(42) = 4398046511104)
+
+axiom Powers_of_243 : (power2(43) = 8796093022208)
+
+axiom Powers_of_244 : (power2(44) = 17592186044416)
+
+axiom Powers_of_245 : (power2(45) = 35184372088832)
+
+axiom Powers_of_246 : (power2(46) = 70368744177664)
+
+axiom Powers_of_247 : (power2(47) = 140737488355328)
+
+axiom Powers_of_248 : (power2(48) = 281474976710656)
+
+axiom Powers_of_249 : (power2(49) = 562949953421312)
+
+axiom Powers_of_250 : (power2(50) = 1125899906842624)
+
+axiom Powers_of_251 : (power2(51) = 2251799813685248)
+
+axiom Powers_of_252 : (power2(52) = 4503599627370496)
+
+axiom Powers_of_253 : (power2(53) = 9007199254740992)
+
+axiom Powers_of_254 : (power2(54) = 18014398509481984)
+
+axiom Powers_of_255 : (power2(55) = 36028797018963968)
+
+axiom Powers_of_256 : (power2(56) = 72057594037927936)
+
+axiom Powers_of_257 : (power2(57) = 144115188075855872)
+
+axiom Powers_of_258 : (power2(58) = 288230376151711744)
+
+axiom Powers_of_259 : (power2(59) = 576460752303423488)
+
+axiom Powers_of_260 : (power2(60) = 1152921504606846976)
+
+axiom Powers_of_261 : (power2(61) = 2305843009213693952)
+
+axiom Powers_of_262 : (power2(62) = 4611686018427387904)
+
+axiom Powers_of_263 : (power2(63) = 9223372036854775808)
+
+axiom Powers_of_264 : (power2(64) = 18446744073709551616)
+
+axiom Val_two_power_size : (power2(64) = ((18446744073709551615 + (-0)) + 1))
+
+axiom Of_int_const : (forall n:int. (of_int_const(n) = of_int(n)))
+
+axiom Of_int_def :
+  (forall n:int. (((0 <= n) and (n <= 18446744073709551615)) ->
+  (of_int(n) = of_int_modulo(n))))
+
+axiom Lt_eq : (forall a:t. forall b:t. (infix_ls(a, b) -> lt(a, b)))
+
+axiom Lt_eq1 : (forall a:t. forall b:t. (lt(a, b) -> infix_ls(a, b)))
+
+axiom Le_eq : (forall a:t. forall b:t. (infix_lseq(a, b) -> le(a, b)))
+
+axiom Le_eq1 : (forall a:t. forall b:t. (le(a, b) -> infix_lseq(a, b)))
+
+axiom Gt_eq : (forall a:t. forall b:t. (infix_gt(a, b) -> gt(a, b)))
+
+axiom Gt_eq1 : (forall a:t. forall b:t. (gt(a, b) -> infix_gt(a, b)))
+
+axiom Ge_eq : (forall a:t. forall b:t. (infix_gteq(a, b) -> ge(a, b)))
+
+axiom Ge_eq1 : (forall a:t. forall b:t. (ge(a, b) -> infix_gteq(a, b)))
+
+logic nth : t, int -> prop
+
+axiom Nth :
+  (forall a:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(a, n) ->
+  (((to_int(a) >= 0) and
+  (comp_mod(to_int(a),power2((n + 1))) >= power2(n))) or
+  ((to_int(a) <  0) and
+  (comp_mod((((18446744073709551615 + (-0)) + 1) + to_int(a)),power2((n + 1))) >= power2(n))))))))
+
+axiom Nth1 :
+  (forall a:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> ((((to_int(a) >= 0) and
+  (comp_mod(to_int(a),power2((n + 1))) >= power2(n))) or
+  ((to_int(a) <  0) and
+  (comp_mod((((18446744073709551615 + (-0)) + 1) + to_int(a)),power2((n + 1))) >= power2(n)))) ->
+  nth(a, n)))))
+
+axiom Nth_bw_and :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(infix_et(a, b), n) ->
+  nth(a, n)))))
+
+axiom Nth_bw_and1 :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(infix_et(a, b), n) ->
+  nth(b, n)))))
+
+axiom Nth_bw_and2 :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> ((nth(a, n) and nth(b, n)) ->
+  nth(infix_et(a, b), n)))))
+
+axiom Nth_bw_or :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(infix_brcf(a, b), n) ->
+  (nth(a, n) or nth(b, n))))))
+
+axiom Nth_bw_or1 :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> ((nth(a, n) or nth(b, n)) ->
+  nth(infix_brcf(a, b), n)))))
+
+axiom Nth_bw_xor :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(infix_cf(a, b), n) ->
+  (not (nth(a, n) and nth(b, n)))))))
+
+axiom Nth_bw_xor1 :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(infix_cf(a, b), n) ->
+  (not ((not nth(a, n)) and (not nth(b, n))))))))
+
+axiom Nth_bw_xor2 :
+  (forall a:t. forall b:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> ((not (nth(a, n) <-> nth(b,
+  n))) -> nth(infix_cf(a, b), n)))))
+
+axiom Nth_bw_not :
+  (forall a:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> (nth(prefix_tl(a), n) ->
+  (not nth(a, n))))))
+
+axiom Nth_bw_not1 :
+  (forall a:t.
+  (forall n:int. (((0 <= n) and (n <  64)) -> ((not nth(a, n)) ->
+  nth(prefix_tl(a), n)))))
+
+axiom Lsr_nth_low :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + to_int(s)) <  64) -> (nth(lsr(b, s), n) -> nth(b,
+  (n + to_int(s))))))))))
+
+axiom Lsr_nth_low1 :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + to_int(s)) <  64) -> (nth(b, (n + to_int(s))) ->
+  nth(lsr(b, s), n))))))))
+
+axiom Lsr_nth_high :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + to_int(s)) >= 64) -> (not nth(lsr(b, s), n))))))))
+
+axiom Asr_nth_low :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((0 <= (n + to_int(s))) and ((n + to_int(s)) <  64)) ->
+  (nth(asr(b, s), n) -> nth(b, (n + to_int(s))))))))))
+
+axiom Asr_nth_low1 :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((0 <= (n + to_int(s))) and ((n + to_int(s)) <  64)) ->
+  (nth(b, (n + to_int(s))) -> nth(asr(b, s), n))))))))
+
+axiom Asr_nth_high :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + to_int(s)) >= 64) -> (nth(asr(b, s), n) -> nth(b,
+  (64 + (-1))))))))))
+
+axiom Asr_nth_high1 :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + to_int(s)) >= 64) -> (nth(b, (64 + (-1))) ->
+  nth(asr(b, s), n))))))))
+
+axiom Lsl_modulo_nth_high :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((0 <= (n + (-to_int(s)))) and
+  ((n + (-to_int(s))) <  64)) -> (nth(lsl_modulo(b, s), n) -> nth(b,
+  (n + (-to_int(s)))))))))))
+
+axiom Lsl_modulo_nth_high1 :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((0 <= (n + (-to_int(s)))) and
+  ((n + (-to_int(s))) <  64)) -> (nth(b, (n + (-to_int(s)))) ->
+  nth(lsl_modulo(b, s), n))))))))
+
+axiom Lsl_modulo_nth_low :
+  (forall b:t.
+  (forall s:t.
+  (forall n:int. (((0 <= to_int(s)) and (to_int(s) <  64)) -> (((0 <= n) and
+  (n <  64)) -> (((n + (-to_int(s))) <  0) -> (not nth(lsl_modulo(b, s),
+  n))))))))
+
+axiom Lsl :
+  (forall b:t.
+  (forall s:t. (((0 <= to_int(s)) and (to_int(s) <  64)) ->
+  ((lsr(lsl_modulo(b, s), s) = s) -> (lsl(b, s) = lsl_modulo(b, s))))))
+
+axiom Lsr_unsigned :
+  (forall a:t.
+  (forall n:t. (((0 <= to_int(n)) and (to_int(n) <  64)) -> (to_int(lsr(a,
+  n)) = (to_int(a) / power2(to_int(n)))))))
+
+axiom Asr_signed : true
+
+axiom Lsl_modulo :
+  (forall a:t.
+  (forall n:t. (((0 <= to_int(n)) and (to_int(n) <  64)) ->
+  (to_int(lsl_modulo(a,
+  n)) = (0 + (((to_int(a) * power2(to_int(n))) + (-0)) % ((18446744073709551615 + (-0)) + 1)))))))
+
+type t1
+
+logic to_int1 : t1 -> int
+
+axiom To_int_in_bounds2 : (forall a:t1. ((-128) <= to_int1(a)))
+
+axiom To_int_in_bounds3 : (forall a:t1. (to_int1(a) <= 127))
+
+logic of_int1 : int -> t1
+
+axiom Of_int1 :
+  (forall a:int. ((((-128) <= a) and (a <= 127)) ->
+  (to_int1(of_int1(a)) = a)))
+
+axiom Extensionality11 :
+  (forall x:t1. forall y:t1. ((to_int1(x) = to_int1(y)) -> (x = y)))
+
+axiom Extensionality21 :
+  (forall x:int. forall y:int. ((of_int1(x) = of_int1(y)) ->
+  (((((-128) <= x) and (x <= 127)) and (((-128) <= y) and (y <= 127))) ->
+  (x = y))))
+
+predicate infix_lseq1(a: t1, b: t1) = (to_int1(a) <= to_int1(b))
+
+predicate infix_ls1(a: t1, b: t1) = (to_int1(a) <  to_int1(b))
+
+predicate infix_gteq1(a: t1, b: t1) = (to_int1(a) >= to_int1(b))
+
+predicate infix_gt1(a: t1, b: t1) = (to_int1(b) <  to_int1(a))
+
+type t2
+
+logic to_int2 : t2 -> int
+
+axiom To_int_in_bounds4 : (forall a:t2. ((-2147483648) <= to_int2(a)))
+
+axiom To_int_in_bounds5 : (forall a:t2. (to_int2(a) <= 2147483647))
+
+logic of_int2 : int -> t2
+
+axiom Of_int2 :
+  (forall a:int. ((((-2147483648) <= a) and (a <= 2147483647)) ->
+  (to_int2(of_int2(a)) = a)))
+
+axiom Extensionality12 :
+  (forall x:t2. forall y:t2. ((to_int2(x) = to_int2(y)) -> (x = y)))
+
+axiom Extensionality22 :
+  (forall x:int. forall y:int. ((of_int2(x) = of_int2(y)) ->
+  (((((-2147483648) <= x) and (x <= 2147483647)) and
+  (((-2147483648) <= y) and (y <= 2147483647))) -> (x = y))))
+
+predicate infix_lseq2(a: t2, b: t2) = (to_int2(a) <= to_int2(b))
+
+predicate infix_ls2(a: t2, b: t2) = (to_int2(a) <  to_int2(b))
+
+predicate infix_gteq2(a: t2, b: t2) = (to_int2(a) >= to_int2(b))
+
+predicate infix_gt2(a: t2, b: t2) = (to_int2(b) <  to_int2(a))
+
+logic of_int_modulo1 : int -> t2
+
+logic of_int_const1 : int -> t2
+
+logic infix_plpc1 : t2, t2 -> t2
+
+logic infix_mnpc1 : t2, t2 -> t2
+
+logic prefix_mnpc1 : t2 -> t2
+
+logic infix_aspc1 : t2, t2 -> t2
+
+logic infix_slpc1 : t2, t2 -> t2
+
+logic infix_pcpc1 : t2, t2 -> t2
+
+type tt1
+
+logic extend1 : t2 -> tt1
+
+logic is_safe1 : tt1 -> prop
+
+logic infix_plpctl1 : tt1, tt1 -> tt1
+
+logic infix_mnpctl1 : tt1, tt1 -> tt1
+
+logic prefix_mnpctl1 : tt1 -> tt1
+
+logic infix_aspctl1 : tt1, tt1 -> tt1
+
+logic infix_slpctl1 : tt1, tt1 -> tt1
+
+logic infix_pcpctl1 : tt1, tt1 -> tt1
+
+logic infix_et1 : t2, t2 -> t2
+
+logic infix_brcf1 : t2, t2 -> t2
+
+logic prefix_tl1 : t2 -> t2
+
+logic infix_cf1 : t2, t2 -> t2
+
+logic lsl1 : t2, t2 -> t2
+
+logic lsl_modulo1 : t2, t2 -> t2
+
+logic lsr1 : t2, t2 -> t2
+
+logic asr1 : t2, t2 -> t2
+
+logic lsl_modulo_1 : tt1, tt1 -> tt1
+
+logic lt1 : t2, t2 -> prop
+
+logic le1 : t2, t2 -> prop
+
+logic gt1 : t2, t2 -> prop
+
+logic ge1 : t2, t2 -> prop
+
+axiom Of_int_modulo1 :
+  (forall n:int.
+  (to_int2(of_int_modulo1(n)) = ((-2147483648) + ((n + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Add_modulo1 :
+  (forall a:t2. forall b:t2. (to_int2(infix_plpc1(a,
+  b)) = ((-2147483648) + (((to_int2(a) + to_int2(b)) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Neg_modulo1 :
+  (forall a:t2.
+  (to_int2(prefix_mnpc1(a)) = ((-2147483648) + (((-to_int2(a)) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Sub_modulo1 :
+  (forall a:t2. forall b:t2. (to_int2(infix_mnpc1(a,
+  b)) = ((-2147483648) + (((to_int2(a) + (-to_int2(b))) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Mult_modulo1 :
+  (forall a:t2. forall b:t2. (to_int2(infix_aspc1(a,
+  b)) = ((-2147483648) + (((to_int2(a) * to_int2(b)) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Div_modulo1 :
+  (forall a:t2. forall b:t2. (to_int2(infix_slpc1(a,
+  b)) = ((-2147483648) + ((comp_div(to_int2(a),to_int2(b)) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))
+
+axiom Mod_modulo1 :
+  (forall a:t2. forall b:t2. (to_int2(infix_pcpc1(a,
+  b)) = comp_mod(to_int2(a),to_int2(b))))
+
+axiom Val_two_power_size1 :
+  (power2(32) = ((2147483647 + (-(-2147483648))) + 1))
+
+axiom Of_int_const1 : (forall n:int. (of_int_const1(n) = of_int2(n)))
+
+axiom Of_int_def1 :
+  (forall n:int. ((((-2147483648) <= n) and (n <= 2147483647)) ->
+  (of_int2(n) = of_int_modulo1(n))))
+
+axiom Lt_eq2 : (forall a:t2. forall b:t2. (infix_ls2(a, b) -> lt1(a, b)))
+
+axiom Lt_eq3 : (forall a:t2. forall b:t2. (lt1(a, b) -> infix_ls2(a, b)))
+
+axiom Le_eq2 : (forall a:t2. forall b:t2. (infix_lseq2(a, b) -> le1(a, b)))
+
+axiom Le_eq3 : (forall a:t2. forall b:t2. (le1(a, b) -> infix_lseq2(a, b)))
+
+axiom Gt_eq2 : (forall a:t2. forall b:t2. (infix_gt2(a, b) -> gt1(a, b)))
+
+axiom Gt_eq3 : (forall a:t2. forall b:t2. (gt1(a, b) -> infix_gt2(a, b)))
+
+axiom Ge_eq2 : (forall a:t2. forall b:t2. (infix_gteq2(a, b) -> ge1(a, b)))
+
+axiom Ge_eq3 : (forall a:t2. forall b:t2. (ge1(a, b) -> infix_gteq2(a, b)))
+
+logic nth1 : t2, int -> prop
+
+axiom Nth2 :
+  (forall a:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(a, n) ->
+  (((to_int2(a) >= 0) and
+  (comp_mod(to_int2(a),power2((n + 1))) >= power2(n))) or
+  ((to_int2(a) <  0) and
+  (comp_mod((((2147483647 + (-(-2147483648))) + 1) + to_int2(a)),power2((n + 1))) >= power2(n))))))))
+
+axiom Nth3 :
+  (forall a:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> ((((to_int2(a) >= 0) and
+  (comp_mod(to_int2(a),power2((n + 1))) >= power2(n))) or
+  ((to_int2(a) <  0) and
+  (comp_mod((((2147483647 + (-(-2147483648))) + 1) + to_int2(a)),power2((n + 1))) >= power2(n)))) ->
+  nth1(a, n)))))
+
+axiom Nth_bw_and3 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(infix_et1(a, b), n) ->
+  nth1(a, n)))))
+
+axiom Nth_bw_and4 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(infix_et1(a, b), n) ->
+  nth1(b, n)))))
+
+axiom Nth_bw_and5 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> ((nth1(a, n) and nth1(b, n)) ->
+  nth1(infix_et1(a, b), n)))))
+
+axiom Nth_bw_or2 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(infix_brcf1(a, b), n) ->
+  (nth1(a, n) or nth1(b, n))))))
+
+axiom Nth_bw_or3 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> ((nth1(a, n) or nth1(b, n)) ->
+  nth1(infix_brcf1(a, b), n)))))
+
+axiom Nth_bw_xor3 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(infix_cf1(a, b), n) ->
+  (not (nth1(a, n) and nth1(b, n)))))))
+
+axiom Nth_bw_xor4 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(infix_cf1(a, b), n) ->
+  (not ((not nth1(a, n)) and (not nth1(b, n))))))))
+
+axiom Nth_bw_xor5 :
+  (forall a:t2. forall b:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> ((not (nth1(a, n) <-> nth1(b,
+  n))) -> nth1(infix_cf1(a, b), n)))))
+
+axiom Nth_bw_not2 :
+  (forall a:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> (nth1(prefix_tl1(a), n) ->
+  (not nth1(a, n))))))
+
+axiom Nth_bw_not3 :
+  (forall a:t2.
+  (forall n:int. (((0 <= n) and (n <  32)) -> ((not nth1(a, n)) ->
+  nth1(prefix_tl1(a), n)))))
+
+axiom Lsr_nth_low2 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + to_int2(s)) <  32) -> (nth1(lsr1(b, s),
+  n) -> nth1(b, (n + to_int2(s))))))))))
+
+axiom Lsr_nth_low3 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + to_int2(s)) <  32) -> (nth1(b,
+  (n + to_int2(s))) -> nth1(lsr1(b, s), n))))))))
+
+axiom Lsr_nth_high1 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + to_int2(s)) >= 32) -> (not nth1(lsr1(b,
+  s), n))))))))
+
+axiom Asr_nth_low2 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((0 <= (n + to_int2(s))) and
+  ((n + to_int2(s)) <  32)) -> (nth1(asr1(b, s), n) -> nth1(b,
+  (n + to_int2(s))))))))))
+
+axiom Asr_nth_low3 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((0 <= (n + to_int2(s))) and
+  ((n + to_int2(s)) <  32)) -> (nth1(b, (n + to_int2(s))) -> nth1(asr1(b, s),
+  n))))))))
+
+axiom Asr_nth_high2 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + to_int2(s)) >= 32) -> (nth1(asr1(b, s),
+  n) -> nth1(b, (32 + (-1))))))))))
+
+axiom Asr_nth_high3 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + to_int2(s)) >= 32) -> (nth1(b,
+  (32 + (-1))) -> nth1(asr1(b, s), n))))))))
+
+axiom Lsl_modulo_nth_high2 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((0 <= (n + (-to_int2(s)))) and
+  ((n + (-to_int2(s))) <  32)) -> (nth1(lsl_modulo1(b, s), n) -> nth1(b,
+  (n + (-to_int2(s)))))))))))
+
+axiom Lsl_modulo_nth_high3 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((0 <= (n + (-to_int2(s)))) and
+  ((n + (-to_int2(s))) <  32)) -> (nth1(b, (n + (-to_int2(s)))) ->
+  nth1(lsl_modulo1(b, s), n))))))))
+
+axiom Lsl_modulo_nth_low1 :
+  (forall b:t2.
+  (forall s:t2.
+  (forall n:int. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  (((0 <= n) and (n <  32)) -> (((n + (-to_int2(s))) <  0) ->
+  (not nth1(lsl_modulo1(b, s), n))))))))
+
+axiom Lsl1 :
+  (forall b:t2.
+  (forall s:t2. (((0 <= to_int2(s)) and (to_int2(s) <  32)) ->
+  ((lsr1(lsl_modulo1(b, s), s) = s) -> (lsl1(b, s) = lsl_modulo1(b, s))))))
+
+axiom Lsr_unsigned1 : true
+
+axiom Asr_signed1 :
+  (forall a:t2.
+  (forall n:t2. (((0 <= to_int2(n)) and (to_int2(n) <  32)) ->
+  (to_int2(asr1(a, n)) = (to_int2(a) / power2(to_int2(n)))))))
+
+axiom Lsl_modulo1 :
+  (forall a:t2.
+  (forall n:t2. (((0 <= to_int2(n)) and (to_int2(n) <  32)) ->
+  (to_int2(lsl_modulo1(a,
+  n)) = ((-2147483648) + (((to_int2(a) * power2(to_int2(n))) + (-(-2147483648))) % ((2147483647 + (-(-2147483648))) + 1)))))))
+

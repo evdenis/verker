@@ -27,5 +27,5 @@ why3prove: strspn.mlw
 	 why3 prove $(USERWHYTHREEOPT) --extra-config $(JESSIE3CONF) $<
 
 why3sprove: strspn.mlw
-	 why3 sprove --clean --strategy default $(USERWHYTHREEOPT) --extra-config $(JESSIE3CONF) $<
+	 why3 sprove --strategy default $(USERWHYTHREEOPT) --extra-config $(JESSIE3CONF) $<
 
