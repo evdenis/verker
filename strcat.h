@@ -16,6 +16,7 @@
     assigns dest[strlen(dest)..strlen(dest)+strlen(src)];
     ensures \result == dest;
     ensures valid_str(\result);
+    //ensures strlen(\result) == strlen{Pre}(dest) + strlen{Pre}(src);
     ensures \forall integer i; 0 <= i < strlen{Old}(\old(dest)) ==>
             \old(dest[i]) == \result[i];
     ensures \forall integer i;
