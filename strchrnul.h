@@ -3,41 +3,41 @@
 
 #include "strlen.h"
 
-/*@ axiomatic Strchrnull {
-    logic char *strchrnull(char *str, char c) =
-       *str == c ? str : ((*str == '\0') ? str : strchrnull(str+1, c));
+/*@ axiomatic Strchrnul {
+    logic char *strchrnul(char *str, char c) =
+       *str == c ? str : ((*str == '\0') ? str : strchrnul(str+1, c));
 
-    lemma strchrnull_mem:
+    lemma strchrnul_mem:
        \forall char *str, c;
        valid_str(str) ==>
-          (str <= strchrnull(str, c) <= str + strlen(str));
-    lemma strchrnull_iter_one:
+          (str <= strchrnul(str, c) <= str + strlen(str));
+    lemma strchrnul_iter_one:
        \forall char *str, c;
        valid_str(str) && *str != c && *str != '\0' ==>
-          strchrnull(str, c) == strchrnull(str+1, c);
-    lemma strchrnull_res:
+          strchrnul(str, c) == strchrnul(str+1, c);
+    lemma strchrnul_res:
        \forall char *str, c;
        valid_str(str) ==>
-          *strchrnull(str, c) == '\0' ^^ *strchrnull(str, c) == c;
-    lemma strchrnull_strlen:
+          *strchrnul(str, c) == '\0' ^^ *strchrnul(str, c) == c;
+    lemma strchrnul_strlen:
        \forall char *str;
        valid_str(str) ==>
-          strlen(str) == strchrnull(str, (char)'\0') - str;
-    lemma strchrnull_at_end:
+          strlen(str) == strchrnul(str, (char)'\0') - str;
+    lemma strchrnul_at_end:
        \forall char *str, c;
        \valid(str) && (*str == '\0' || *str == c) ==>
-          strchrnull(str, c) == str;
+          strchrnul(str, c) == str;
 
-    lemma strchrnull_defn:
+    lemma strchrnul_defn:
        \forall char *str, c, integer i;
        valid_str(str) && 0 <= i <= strlen(str) &&
        (\forall integer j; 0 <= j < i ==> str[j] != c) &&
        str[i] == c ==>
-          str + i == strchrnull(str, c);
-    lemma strchrnull_skipped:
+          str + i == strchrnul(str, c);
+    lemma strchrnul_skipped:
        \forall char *str, c, integer i;
        valid_str(str) &&
-       0 <= i < strchrnull(str, c) - str <= strlen(str) ==>
+       0 <= i < strchrnul(str, c) - str <= strlen(str) ==>
           str[i] != c;
     }
  */
@@ -54,7 +54,7 @@
 /*@ requires valid_str(s);
     assigns \nothing;
     ensures \base_addr(\result) == \base_addr(s);
-    ensures \result == strchrnull(s, (char %) c);
+    ensures \result == strchrnul(s, (char %) c);
     ensures s <= \result <= s + strlen(s);
     behavior not_exists:
        assumes \forall integer i; 0 <= i < strlen(s) ==> s[i] != (char %) c;
