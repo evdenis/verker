@@ -2767,11 +2767,11 @@ behavior not_exists:
    
    (var charP[..] r);
    
-   (var uint64 count_6);
+   (var uint64 count_5);
    
    (var uint64 __retres_8);
    
-   {  (_C_640 : (count_6 = (_C_639 : ((0 :> int32) :> uint64))));
+   {  (_C_640 : (count_5 = (_C_639 : ((0 :> int32) :> uint64))));
       (_C_641 : (p_1 = s_5));
       
       loop 
@@ -2788,10 +2788,10 @@ behavior not_exists:
                                                (strlen{Here}(s_5) :> integer))) <=
                                             0)))));
       behavior default:
-        invariant (_C_647 : ((_C_648 : ((0 :> uint64) <= count_6)) &&
-                              (_C_649 : (count_6 <= strlen{Here}(s_5)))));
+        invariant (_C_647 : ((_C_648 : ((0 :> uint64) <= count_5)) &&
+                              (_C_649 : (count_5 <= strlen{Here}(s_5)))));
       behavior default:
-        invariant (_C_646 : ((count_6 :> integer) == (p_1 - s_5)));
+        invariant (_C_646 : ((count_5 :> integer) == (p_1 - s_5)));
       behavior default:
         invariant (_C_645 : (\forall charP[..] c_33;
                               (\forall charP[..] t;
@@ -2813,7 +2813,7 @@ behavior not_exists:
         invariant (_C_644 : valid_str{Here}(p_1));
       behavior default:
         invariant (_C_643 : (strcspn(s_5, reject) ==
-                              (strcspn(p_1, reject) + (count_6 :> integer))));
+                              (strcspn(p_1, reject) + (count_5 :> integer))));
       variant (_C_642 : ((strlen{Here}(s_5) :> integer) - (p_1 - s_5)));
       while (true)
       {  
@@ -2869,7 +2869,7 @@ behavior not_exists:
                               ()
                            };
                            
-                           {  (_C_676 : (__retres_8 = count_6));
+                           {  (_C_676 : (__retres_8 = count_5));
                               
                               (goto return_label)
                            }
@@ -2885,14 +2885,14 @@ behavior not_exists:
                                                            reject, p_1.charM)))));
                   ()
                };
-               (_C_687 : (count_6 = (_C_686 : ((_C_685 : (count_6 +
+               (_C_687 : (count_5 = (_C_686 : ((_C_685 : (count_5 +
                                                            (1 :> uint64))) :> uint64))))
             };
             (_C_689 : (p_1 = (_C_688 : (p_1 + (1 :> int32)))))
          }
       };
       (while_0_break : ());
-      (_C_690 : (__retres_8 = count_6));
+      (_C_690 : (__retres_8 = count_5));
       (return_label : 
       (return __retres_8))
    }
@@ -3308,15 +3308,15 @@ behavior not_exists:
    }
 }
 
-uint64 strnlen(charP[..] s_8, uint64 count_5)
-  requires (_C_831 : valid_strn{Here}(s_8, count_5));
+uint64 strnlen(charP[..] s_8, uint64 count_4)
+  requires (_C_831 : valid_strn{Here}(s_8, count_4));
 behavior default:
   assigns \nothing;
   ensures (_C_824 : (\result ==
-                      strnlen{Here}(\at(s_8,Old), \at(count_5,Old))));
+                      strnlen{Here}(\at(s_8,Old), \at(count_4,Old))));
 behavior null_byte:
   assumes (\exists integer i_53;
-            (((0 <= i_53) && (i_53 <= (count_5 :> integer))) &&
+            (((0 <= i_53) && (i_53 <= (count_4 :> integer))) &&
               ((s_8 + i_53).charM == (0 :> int8))));
   ensures (_C_825 : ((_C_826 : ((\at(s_8,Old) + (\result :> integer)).charM ==
                                  (0 :> int8))) &&
@@ -3327,26 +3327,26 @@ behavior null_byte:
                                       (0 :> int8)))))));
 behavior count_len:
   assumes (\forall integer i_52;
-            (((0 <= i_52) && (i_52 <= (count_5 :> integer))) ==>
+            (((0 <= i_52) && (i_52 <= (count_4 :> integer))) ==>
               ((s_8 + i_52).charM != (0 :> int8))));
-  ensures (_C_828 : (\result == \at(count_5,Old)));
+  ensures (_C_828 : (\result == \at(count_4,Old)));
 {  
    (check (disjoint_behaviors : (! ((\exists integer i_53;
                                       (((0 <= i_53) &&
-                                         (i_53 <= (count_5 :> integer))) &&
+                                         (i_53 <= (count_4 :> integer))) &&
                                         ((s_8 + i_53).charM == (0 :> int8)))) &&
                                      (\forall integer i_52;
                                        (((0 <= i_52) &&
-                                          (i_52 <= (count_5 :> integer))) ==>
+                                          (i_52 <= (count_4 :> integer))) ==>
                                          ((s_8 + i_52).charM != (0 :> int8))))))));
    
    (check (complete_behaviors : ((\forall integer i_52;
                                    (((0 <= i_52) &&
-                                      (i_52 <= (count_5 :> integer))) ==>
+                                      (i_52 <= (count_4 :> integer))) ==>
                                      ((s_8 + i_52).charM != (0 :> int8)))) ||
                                   (\exists integer i_53;
                                     (((0 <= i_53) &&
-                                       (i_53 <= (count_5 :> integer))) &&
+                                       (i_53 <= (count_4 :> integer))) &&
                                       ((s_8 + i_53).charM == (0 :> int8)))))));
    
    (var charP[..] sc_0);
@@ -3359,8 +3359,8 @@ behavior count_len:
       
       loop 
       behavior default:
-        invariant (_C_808 : ((_C_809 : ((0 :> uint64) <= count_5)) &&
-                              (_C_810 : (count_5 <= \at(count_5,Pre)))));
+        invariant (_C_808 : ((_C_809 : ((0 :> uint64) <= count_4)) &&
+                              (_C_810 : (count_4 <= \at(count_4,Pre)))));
       behavior default:
         invariant (_C_801 : (((_C_803 : (\base_block(s_8) ==
                                           \base_block(sc_0))) &&
@@ -3369,32 +3369,32 @@ behavior count_len:
                                            \base_block((s_8 +
                                                          (strnlen{Here}(
                                                          s_8,
-                                                         \at(count_5,Pre)) :> integer))))) &&
+                                                         \at(count_4,Pre)) :> integer))))) &&
                                 (_C_807 : ((sc_0 -
                                              (s_8 +
                                                (strnlen{Here}(s_8,
-                                                              \at(count_5,Pre)) :> integer))) <=
+                                                              \at(count_4,Pre)) :> integer))) <=
                                             0)))));
       behavior default:
         invariant (_C_800 : ((sc_0 - s_8) ==
-                              ((\at(count_5,Pre) :> integer) -
-                                (count_5 :> integer))));
+                              ((\at(count_4,Pre) :> integer) -
+                                (count_4 :> integer))));
       behavior default:
-        invariant (_C_799 : valid_strn{Here}(sc_0, count_5));
+        invariant (_C_799 : valid_strn{Here}(sc_0, count_4));
       behavior default:
-        invariant (_C_798 : ((strnlen{Here}(s_8, \at(count_5,Pre)) :> integer) ==
-                              ((strnlen{Here}(sc_0, count_5) :> integer) +
+        invariant (_C_798 : ((strnlen{Here}(s_8, \at(count_4,Pre)) :> integer) ==
+                              ((strnlen{Here}(sc_0, count_4) :> integer) +
                                 (sc_0 - s_8))));
       behavior default:
         invariant (_C_797 : (\forall integer i_51;
                               (((0 <= i_51) && (i_51 < (sc_0 - s_8))) ==>
                                 ((s_8 + i_51).charM != (0 :> int8)))));
-      variant (_C_796 : count_5);
+      variant (_C_796 : count_4);
       while (true)
       {  
          {  
-            {  (_C_811 : (tmp_0_9 = count_5));
-               (_C_814 : (count_5 = (_C_813 : ((_C_812 : (count_5 -%
+            {  (_C_811 : (tmp_0_9 = count_4));
+               (_C_814 : (count_4 = (_C_813 : ((_C_812 : (count_4 -%
                                                            (1 :> uint64))) :> uint64))));
                ()
             };
@@ -3475,184 +3475,184 @@ axiomatic StrPBrk {
   
 }
 
-charP[..] strpbrk(charP[..] cs_2, charP[..] ct_2)
-  requires ((_C_897 : valid_str{Here}(cs_2)) &&
-             (_C_898 : valid_str{Here}(ct_2)));
+charP[..] strpbrk(charP[..] cs_1, charP[..] ct_1)
+  requires ((_C_897 : valid_str{Here}(cs_1)) &&
+             (_C_898 : valid_str{Here}(ct_1)));
 behavior default:
   assigns \nothing;
-  ensures (_C_882 : (\result == strpbrk(\at(cs_2,Old), \at(ct_2,Old))));
+  ensures (_C_882 : (\result == strpbrk(\at(cs_1,Old), \at(ct_1,Old))));
 behavior found:
   assumes (\exists charP[..] p_23;
             (\exists charP[..] t_11;
-              ((((((\base_block(cs_2) == \base_block(p_23)) &&
-                    ((cs_2 - p_23) <= 0)) &&
+              ((((((\base_block(cs_1) == \base_block(p_23)) &&
+                    ((cs_1 - p_23) <= 0)) &&
                    ((\base_block(p_23) ==
-                      \base_block((cs_2 + (strlen{Here}(cs_2) :> integer)))) &&
-                     ((p_23 - (cs_2 + (strlen{Here}(cs_2) :> integer))) < 0))) &&
-                  ((\base_block(ct_2) == \base_block(t_11)) &&
-                    ((ct_2 - t_11) <= 0))) &&
+                      \base_block((cs_1 + (strlen{Here}(cs_1) :> integer)))) &&
+                     ((p_23 - (cs_1 + (strlen{Here}(cs_1) :> integer))) < 0))) &&
+                  ((\base_block(ct_1) == \base_block(t_11)) &&
+                    ((ct_1 - t_11) <= 0))) &&
                  ((\base_block(t_11) ==
-                    \base_block((ct_2 + (strlen{Here}(ct_2) :> integer)))) &&
-                   ((t_11 - (ct_2 + (strlen{Here}(ct_2) :> integer))) < 0))) &&
+                    \base_block((ct_1 + (strlen{Here}(ct_1) :> integer)))) &&
+                   ((t_11 - (ct_1 + (strlen{Here}(ct_1) :> integer))) < 0))) &&
                 (p_23.charM == t_11.charM))));
-  ensures (_C_883 : ((((_C_886 : (\base_block(\at(cs_2,Old)) ==
+  ensures (_C_883 : ((((_C_886 : (\base_block(\at(cs_1,Old)) ==
                                    \base_block(\result))) &&
-                        (_C_887 : ((\at(cs_2,Old) - \result) <= 0))) &&
+                        (_C_887 : ((\at(cs_1,Old) - \result) <= 0))) &&
                        ((_C_889 : (\base_block(\result) ==
-                                    \base_block((\at(cs_2,Old) +
-                                                  (strlen{Here}(\at(cs_2,Old)) :> integer))))) &&
+                                    \base_block((\at(cs_1,Old) +
+                                                  (strlen{Here}(\at(cs_1,Old)) :> integer))))) &&
                          (_C_890 : ((\result -
-                                      (\at(cs_2,Old) +
-                                        (strlen{Here}(\at(cs_2,Old)) :> integer))) <
+                                      (\at(cs_1,Old) +
+                                        (strlen{Here}(\at(cs_1,Old)) :> integer))) <
                                      0)))) &&
                       ((_C_892 : (\exists charP[..] t_12;
-                                   ((((\base_block(\at(ct_2,Old)) ==
+                                   ((((\base_block(\at(ct_1,Old)) ==
                                         \base_block(t_12)) &&
-                                       ((\at(ct_2,Old) - t_12) <= 0)) &&
+                                       ((\at(ct_1,Old) - t_12) <= 0)) &&
                                       ((\base_block(t_12) ==
-                                         \base_block((\at(ct_2,Old) +
+                                         \base_block((\at(ct_1,Old) +
                                                        (strlen{Here}(
-                                                       \at(ct_2,Old)) :> integer)))) &&
+                                                       \at(ct_1,Old)) :> integer)))) &&
                                         ((t_12 -
-                                           (\at(ct_2,Old) +
-                                             (strlen{Here}(\at(ct_2,Old)) :> integer))) <=
+                                           (\at(ct_1,Old) +
+                                             (strlen{Here}(\at(ct_1,Old)) :> integer))) <=
                                           0))) &&
                                      (\result.charM == t_12.charM)))) &&
                         (_C_893 : (\forall charP[..] p_24;
                                     (\forall charP[..] t_13;
-                                      ((((((\base_block(\at(cs_2,Old)) ==
+                                      ((((((\base_block(\at(cs_1,Old)) ==
                                              \base_block(p_24)) &&
-                                            ((\at(cs_2,Old) - p_24) <= 0)) &&
+                                            ((\at(cs_1,Old) - p_24) <= 0)) &&
                                            ((\base_block(p_24) ==
                                               \base_block(\result)) &&
                                              ((p_24 - \result) < 0))) &&
-                                          ((\base_block(\at(ct_2,Old)) ==
+                                          ((\base_block(\at(ct_1,Old)) ==
                                              \base_block(t_13)) &&
-                                            ((\at(ct_2,Old) - t_13) <= 0))) &&
+                                            ((\at(ct_1,Old) - t_13) <= 0))) &&
                                          ((\base_block(t_13) ==
-                                            \base_block((\at(ct_2,Old) +
+                                            \base_block((\at(ct_1,Old) +
                                                           (strlen{Here}(
-                                                          \at(ct_2,Old)) :> integer)))) &&
+                                                          \at(ct_1,Old)) :> integer)))) &&
                                            ((t_13 -
-                                              (\at(ct_2,Old) +
-                                                (strlen{Here}(\at(ct_2,Old)) :> integer))) <
+                                              (\at(ct_1,Old) +
+                                                (strlen{Here}(\at(ct_1,Old)) :> integer))) <
                                              0))) ==>
                                         (p_24.charM != t_13.charM))))))));
 behavior not_found:
   assumes (\forall charP[..] p_22;
             (\forall charP[..] t_10;
-              ((((((\base_block(cs_2) == \base_block(p_22)) &&
-                    ((cs_2 - p_22) <= 0)) &&
+              ((((((\base_block(cs_1) == \base_block(p_22)) &&
+                    ((cs_1 - p_22) <= 0)) &&
                    ((\base_block(p_22) ==
-                      \base_block((cs_2 + (strlen{Here}(cs_2) :> integer)))) &&
-                     ((p_22 - (cs_2 + (strlen{Here}(cs_2) :> integer))) < 0))) &&
-                  ((\base_block(ct_2) == \base_block(t_10)) &&
-                    ((ct_2 - t_10) <= 0))) &&
+                      \base_block((cs_1 + (strlen{Here}(cs_1) :> integer)))) &&
+                     ((p_22 - (cs_1 + (strlen{Here}(cs_1) :> integer))) < 0))) &&
+                  ((\base_block(ct_1) == \base_block(t_10)) &&
+                    ((ct_1 - t_10) <= 0))) &&
                  ((\base_block(t_10) ==
-                    \base_block((ct_2 + (strlen{Here}(ct_2) :> integer)))) &&
-                   ((t_10 - (ct_2 + (strlen{Here}(ct_2) :> integer))) < 0))) ==>
+                    \base_block((ct_1 + (strlen{Here}(ct_1) :> integer)))) &&
+                   ((t_10 - (ct_1 + (strlen{Here}(ct_1) :> integer))) < 0))) ==>
                 (p_22.charM != t_10.charM))));
   ensures (_C_894 : (\result == null));
 {  
    (check (disjoint_behaviors : (! ((\exists charP[..] p_23;
                                       (\exists charP[..] t_11;
-                                        ((((((\base_block(cs_2) ==
+                                        ((((((\base_block(cs_1) ==
                                                \base_block(p_23)) &&
-                                              ((cs_2 - p_23) <= 0)) &&
+                                              ((cs_1 - p_23) <= 0)) &&
                                              ((\base_block(p_23) ==
-                                                \base_block((cs_2 +
+                                                \base_block((cs_1 +
                                                               (strlen{Here}(
-                                                              cs_2) :> integer)))) &&
+                                                              cs_1) :> integer)))) &&
                                                ((p_23 -
-                                                  (cs_2 +
-                                                    (strlen{Here}(cs_2) :> integer))) <
+                                                  (cs_1 +
+                                                    (strlen{Here}(cs_1) :> integer))) <
                                                  0))) &&
-                                            ((\base_block(ct_2) ==
+                                            ((\base_block(ct_1) ==
                                                \base_block(t_11)) &&
-                                              ((ct_2 - t_11) <= 0))) &&
+                                              ((ct_1 - t_11) <= 0))) &&
                                            ((\base_block(t_11) ==
-                                              \base_block((ct_2 +
+                                              \base_block((ct_1 +
                                                             (strlen{Here}(
-                                                            ct_2) :> integer)))) &&
+                                                            ct_1) :> integer)))) &&
                                              ((t_11 -
-                                                (ct_2 +
-                                                  (strlen{Here}(ct_2) :> integer))) <
+                                                (ct_1 +
+                                                  (strlen{Here}(ct_1) :> integer))) <
                                                0))) &&
                                           (p_23.charM == t_11.charM)))) &&
                                      (\forall charP[..] p_22;
                                        (\forall charP[..] t_10;
-                                         ((((((\base_block(cs_2) ==
+                                         ((((((\base_block(cs_1) ==
                                                 \base_block(p_22)) &&
-                                               ((cs_2 - p_22) <= 0)) &&
+                                               ((cs_1 - p_22) <= 0)) &&
                                               ((\base_block(p_22) ==
-                                                 \base_block((cs_2 +
+                                                 \base_block((cs_1 +
                                                                (strlen{Here}(
-                                                               cs_2) :> integer)))) &&
+                                                               cs_1) :> integer)))) &&
                                                 ((p_22 -
-                                                   (cs_2 +
-                                                     (strlen{Here}(cs_2) :> integer))) <
+                                                   (cs_1 +
+                                                     (strlen{Here}(cs_1) :> integer))) <
                                                   0))) &&
-                                             ((\base_block(ct_2) ==
+                                             ((\base_block(ct_1) ==
                                                 \base_block(t_10)) &&
-                                               ((ct_2 - t_10) <= 0))) &&
+                                               ((ct_1 - t_10) <= 0))) &&
                                             ((\base_block(t_10) ==
-                                               \base_block((ct_2 +
+                                               \base_block((ct_1 +
                                                              (strlen{Here}(
-                                                             ct_2) :> integer)))) &&
+                                                             ct_1) :> integer)))) &&
                                               ((t_10 -
-                                                 (ct_2 +
-                                                   (strlen{Here}(ct_2) :> integer))) <
+                                                 (ct_1 +
+                                                   (strlen{Here}(ct_1) :> integer))) <
                                                 0))) ==>
                                            (p_22.charM != t_10.charM))))))));
    
    (check (complete_behaviors : ((\forall charP[..] p_22;
                                    (\forall charP[..] t_10;
-                                     ((((((\base_block(cs_2) ==
+                                     ((((((\base_block(cs_1) ==
                                             \base_block(p_22)) &&
-                                           ((cs_2 - p_22) <= 0)) &&
+                                           ((cs_1 - p_22) <= 0)) &&
                                           ((\base_block(p_22) ==
-                                             \base_block((cs_2 +
+                                             \base_block((cs_1 +
                                                            (strlen{Here}(
-                                                           cs_2) :> integer)))) &&
+                                                           cs_1) :> integer)))) &&
                                             ((p_22 -
-                                               (cs_2 +
-                                                 (strlen{Here}(cs_2) :> integer))) <
+                                               (cs_1 +
+                                                 (strlen{Here}(cs_1) :> integer))) <
                                               0))) &&
-                                         ((\base_block(ct_2) ==
+                                         ((\base_block(ct_1) ==
                                             \base_block(t_10)) &&
-                                           ((ct_2 - t_10) <= 0))) &&
+                                           ((ct_1 - t_10) <= 0))) &&
                                         ((\base_block(t_10) ==
-                                           \base_block((ct_2 +
+                                           \base_block((ct_1 +
                                                          (strlen{Here}(
-                                                         ct_2) :> integer)))) &&
+                                                         ct_1) :> integer)))) &&
                                           ((t_10 -
-                                             (ct_2 +
-                                               (strlen{Here}(ct_2) :> integer))) <
+                                             (ct_1 +
+                                               (strlen{Here}(ct_1) :> integer))) <
                                             0))) ==>
                                        (p_22.charM != t_10.charM)))) ||
                                   (\exists charP[..] p_23;
                                     (\exists charP[..] t_11;
-                                      ((((((\base_block(cs_2) ==
+                                      ((((((\base_block(cs_1) ==
                                              \base_block(p_23)) &&
-                                            ((cs_2 - p_23) <= 0)) &&
+                                            ((cs_1 - p_23) <= 0)) &&
                                            ((\base_block(p_23) ==
-                                              \base_block((cs_2 +
+                                              \base_block((cs_1 +
                                                             (strlen{Here}(
-                                                            cs_2) :> integer)))) &&
+                                                            cs_1) :> integer)))) &&
                                              ((p_23 -
-                                                (cs_2 +
-                                                  (strlen{Here}(cs_2) :> integer))) <
+                                                (cs_1 +
+                                                  (strlen{Here}(cs_1) :> integer))) <
                                                0))) &&
-                                          ((\base_block(ct_2) ==
+                                          ((\base_block(ct_1) ==
                                              \base_block(t_11)) &&
-                                            ((ct_2 - t_11) <= 0))) &&
+                                            ((ct_1 - t_11) <= 0))) &&
                                          ((\base_block(t_11) ==
-                                            \base_block((ct_2 +
+                                            \base_block((ct_1 +
                                                           (strlen{Here}(
-                                                          ct_2) :> integer)))) &&
+                                                          ct_1) :> integer)))) &&
                                            ((t_11 -
-                                              (ct_2 +
-                                                (strlen{Here}(ct_2) :> integer))) <
+                                              (ct_1 +
+                                                (strlen{Here}(ct_1) :> integer))) <
                                              0))) &&
                                         (p_23.charM == t_11.charM)))))));
    
@@ -3662,81 +3662,81 @@ behavior not_found:
    
    (var charP[..] __retres_12);
    
-   {  (_C_837 : (sc1 = cs_2));
+   {  (_C_837 : (sc1 = cs_1));
       
       loop 
       behavior default:
-        invariant (_C_842 : (((_C_844 : (\base_block(cs_2) ==
+        invariant (_C_842 : (((_C_844 : (\base_block(cs_1) ==
                                           \base_block(sc1))) &&
-                               (_C_845 : ((cs_2 - sc1) <= 0))) &&
+                               (_C_845 : ((cs_1 - sc1) <= 0))) &&
                               ((_C_847 : (\base_block(sc1) ==
-                                           \base_block((cs_2 +
+                                           \base_block((cs_1 +
                                                          (strlen{Here}(
-                                                         cs_2) :> integer))))) &&
+                                                         cs_1) :> integer))))) &&
                                 (_C_848 : ((sc1 -
-                                             (cs_2 +
-                                               (strlen{Here}(cs_2) :> integer))) <=
+                                             (cs_1 +
+                                               (strlen{Here}(cs_1) :> integer))) <=
                                             0)))));
       behavior default:
         invariant (_C_841 : valid_str{Here}(sc1));
       behavior default:
         invariant (_C_840 : (\forall charP[..] p_21;
                               (\forall charP[..] t_9;
-                                ((((((\base_block(cs_2) == \base_block(p_21)) &&
-                                      ((cs_2 - p_21) <= 0)) &&
+                                ((((((\base_block(cs_1) == \base_block(p_21)) &&
+                                      ((cs_1 - p_21) <= 0)) &&
                                      ((\base_block(p_21) == \base_block(sc1)) &&
                                        ((p_21 - sc1) < 0))) &&
-                                    ((\base_block(ct_2) == \base_block(t_9)) &&
-                                      ((ct_2 - t_9) <= 0))) &&
+                                    ((\base_block(ct_1) == \base_block(t_9)) &&
+                                      ((ct_1 - t_9) <= 0))) &&
                                    ((\base_block(t_9) ==
-                                      \base_block((ct_2 +
-                                                    (strlen{Here}(ct_2) :> integer)))) &&
+                                      \base_block((ct_1 +
+                                                    (strlen{Here}(ct_1) :> integer)))) &&
                                      ((t_9 -
-                                        (ct_2 +
-                                          (strlen{Here}(ct_2) :> integer))) <
+                                        (ct_1 +
+                                          (strlen{Here}(ct_1) :> integer))) <
                                        0))) ==>
                                   (p_21.charM != t_9.charM)))));
       behavior default:
-        invariant (_C_839 : (strpbrk(cs_2, ct_2) == strpbrk(sc1, ct_2)));
-      variant (_C_838 : ((strlen{Here}(cs_2) :> integer) - (sc1 - cs_2)));
+        invariant (_C_839 : (strpbrk(cs_1, ct_1) == strpbrk(sc1, ct_1)));
+      variant (_C_838 : ((strlen{Here}(cs_1) :> integer) - (sc1 - cs_1)));
       while (true)
       {  
          {  (if (_C_851 : ((_C_850 : ((_C_849 : sc1.charM) :> int32)) !=
                             (0 :> int32))) then () else 
             (goto while_0_break));
             
-            {  (_C_852 : (sc2 = ct_2));
+            {  (_C_852 : (sc2 = ct_1));
                
                loop 
                behavior default:
-                 invariant (_C_857 : (((_C_859 : (\base_block(ct_2) ==
+                 invariant (_C_857 : (((_C_859 : (\base_block(ct_1) ==
                                                    \base_block(sc2))) &&
-                                        (_C_860 : ((ct_2 - sc2) <= 0))) &&
+                                        (_C_860 : ((ct_1 - sc2) <= 0))) &&
                                        ((_C_862 : (\base_block(sc2) ==
-                                                    \base_block((ct_2 +
+                                                    \base_block((ct_1 +
                                                                   (strlen{Here}(
-                                                                  ct_2) :> integer))))) &&
+                                                                  ct_1) :> integer))))) &&
                                          (_C_863 : ((sc2 -
-                                                      (ct_2 +
+                                                      (ct_1 +
                                                         (strlen{Here}(
-                                                        ct_2) :> integer))) <=
+                                                        ct_1) :> integer))) <=
                                                      0)))));
                behavior default:
                  invariant (_C_856 : valid_str{Here}(sc2));
                behavior default:
                  invariant (_C_855 : (\forall charP[..] t_6;
-                                       ((((\base_block(ct_2) ==
+                                       ((((\base_block(ct_1) ==
                                             \base_block(t_6)) &&
-                                           ((ct_2 - t_6) <= 0)) &&
+                                           ((ct_1 - t_6) <= 0)) &&
                                           ((\base_block(t_6) ==
                                              \base_block(sc2)) &&
                                             ((t_6 - sc2) < 0))) ==>
                                          (sc1.charM != t_6.charM))));
                behavior default:
-                 invariant (_C_854 : (in_array{Here}(ct_2, sc1.charM) ==>
+                 invariant (_C_854 : (in_array{Here}(ct_1, sc1.charM) ==>
                                        in_array{Here}(sc2, sc1.charM)));
-               variant (_C_853 : ((strlen{Here}(ct_2) :> integer) -
-                                   (sc2 - ct_2)));
+               variant (_C_853 : ((strlen{Here}(ct_1) :> integer) -
+                                   (sc2 - ct_1)));
                while (true)
                {  
                   {  (if (_C_866 : ((_C_865 : ((_C_864 : sc2.charM) :> int32)) !=
@@ -3750,35 +3750,35 @@ behavior not_found:
                               (assert for default: (_C_867 : (jessie : 
                                                              (\exists charP[..] p_18;
                                                                (\exists charP[..] t_4;
-                                                                 ((((((((\base_block(cs_2) ==
+                                                                 ((((((((\base_block(cs_1) ==
                                                                     \base_block(p_18)) &&
-                                                                    ((cs_2 -
+                                                                    ((cs_1 -
                                                                     p_18) <=
                                                                     0)) &&
                                                                     ((\base_block(p_18) ==
                                                                     \base_block(
-                                                                    (cs_2 +
+                                                                    (cs_1 +
                                                                     (strlen{Here}(
-                                                                    cs_2) :> integer)))) &&
+                                                                    cs_1) :> integer)))) &&
                                                                     ((p_18 -
-                                                                    (cs_2 +
+                                                                    (cs_1 +
                                                                     (strlen{Here}(
-                                                                    cs_2) :> integer))) <
+                                                                    cs_1) :> integer))) <
                                                                     0))) &&
-                                                                    ((\base_block(ct_2) ==
+                                                                    ((\base_block(ct_1) ==
                                                                     \base_block(t_4)) &&
-                                                                    ((ct_2 -
+                                                                    ((ct_1 -
                                                                     t_4) <=
                                                                     0))) &&
                                                                     ((\base_block(t_4) ==
                                                                     \base_block(
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer)))) &&
+                                                                    ct_1) :> integer)))) &&
                                                                     ((t_4 -
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer))) <
+                                                                    ct_1) :> integer))) <
                                                                     0))) &&
                                                                     (p_18.charM ==
                                                                     t_4.charM)) &&
@@ -3793,9 +3793,9 @@ behavior not_found:
                               (assert for default: (_C_868 : (jessie : 
                                                              (\forall charP[..] p_19;
                                                                (\forall charP[..] t_5;
-                                                                 ((((((\base_block(cs_2) ==
+                                                                 ((((((\base_block(cs_1) ==
                                                                     \base_block(p_19)) &&
-                                                                    ((cs_2 -
+                                                                    ((cs_1 -
                                                                     p_19) <=
                                                                     0)) &&
                                                                     ((\base_block(p_19) ==
@@ -3803,20 +3803,20 @@ behavior not_found:
                                                                     ((p_19 -
                                                                     sc1) <
                                                                     0))) &&
-                                                                    ((\base_block(ct_2) ==
+                                                                    ((\base_block(ct_1) ==
                                                                     \base_block(t_5)) &&
-                                                                    ((ct_2 -
+                                                                    ((ct_1 -
                                                                     t_5) <=
                                                                     0))) &&
                                                                     ((\base_block(t_5) ==
                                                                     \base_block(
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer)))) &&
+                                                                    ct_1) :> integer)))) &&
                                                                     ((t_5 -
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer))) <
+                                                                    ct_1) :> integer))) <
                                                                     0))) ==>
                                                                    (p_19.charM !=
                                                                     t_5.charM)))))));
@@ -3836,20 +3836,20 @@ behavior not_found:
                
                {  
                   (assert for default: (_C_877 : (jessie : (\forall charP[..] t_7;
-                                                             ((((\base_block(ct_2) ==
+                                                             ((((\base_block(ct_1) ==
                                                                   \base_block(t_7)) &&
-                                                                 ((ct_2 -
+                                                                 ((ct_1 -
                                                                     t_7) <=
                                                                    0)) &&
                                                                 ((\base_block(t_7) ==
                                                                    \base_block(
-                                                                   (ct_2 +
+                                                                   (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer)))) &&
+                                                                    ct_1) :> integer)))) &&
                                                                   ((t_7 -
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer))) <
+                                                                    ct_1) :> integer))) <
                                                                     0))) ==>
                                                                (sc1.charM !=
                                                                  t_7.charM))))));
@@ -3859,9 +3859,9 @@ behavior not_found:
                {  
                   (assert for default: (_C_878 : (jessie : (\forall charP[..] p_20;
                                                              (\forall charP[..] t_8;
-                                                               ((((((\base_block(cs_2) ==
+                                                               ((((((\base_block(cs_1) ==
                                                                     \base_block(p_20)) &&
-                                                                    ((cs_2 -
+                                                                    ((cs_1 -
                                                                     p_20) <=
                                                                     0)) &&
                                                                     ((\base_block(p_20) ==
@@ -3869,20 +3869,20 @@ behavior not_found:
                                                                     ((p_20 -
                                                                     sc1) <=
                                                                     0))) &&
-                                                                   ((\base_block(ct_2) ==
+                                                                   ((\base_block(ct_1) ==
                                                                     \base_block(t_8)) &&
-                                                                    ((ct_2 -
+                                                                    ((ct_1 -
                                                                     t_8) <=
                                                                     0))) &&
                                                                   ((\base_block(t_8) ==
                                                                     \base_block(
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer)))) &&
+                                                                    ct_1) :> integer)))) &&
                                                                     ((t_8 -
-                                                                    (ct_2 +
+                                                                    (ct_1 +
                                                                     (strlen{Here}(
-                                                                    ct_2) :> integer))) <
+                                                                    ct_1) :> integer))) <
                                                                     0))) ==>
                                                                  (p_20.charM !=
                                                                    t_8.charM)))))));
@@ -4122,8 +4122,8 @@ behavior not_found:
    }
 }
 
-charP[..] strsep(char_xP[..] s_10, charP[..] ct_3)
-  requires ((_C_976 : valid_str{Here}(ct_3)) &&
+charP[..] strsep(char_xP[..] s_10, charP[..] ct_2)
+  requires ((_C_976 : valid_str{Here}(ct_2)) &&
              ((_C_977 : \at((((\offset_min(\at(s_10,Here)) <= \at(0,Here)) &&
                                (\offset_max(\at(s_10,Here)) >= \at(0,Here))) &&
                               true),Here)) &&
@@ -4139,42 +4139,42 @@ behavior input_null:
   ensures (_C_960 : (\result == null));
 behavior input_strpbrk_null:
   assumes (valid_str{Here}(s_10.char_xM) &&
-            (strpbrk(s_10.char_xM, ct_3) == null));
+            (strpbrk(s_10.char_xM, ct_2) == null));
   assigns s_10.char_xM;
   ensures (_C_961 : ((_C_962 : (\result == \at(s_10.char_xM,Old))) &&
                       (_C_963 : (\at(s_10,Old).char_xM == null))));
 behavior input_strpbrk_not_null:
   assumes (valid_str{Here}(s_10.char_xM) &&
-            (strpbrk(s_10.char_xM, ct_3) != null));
-  assigns strpbrk(\at(s_10.char_xM,Old), ct_3).charM,
+            (strpbrk(s_10.char_xM, ct_2) != null));
+  assigns strpbrk(\at(s_10.char_xM,Old), ct_2).charM,
   s_10.char_xM;
   ensures (_C_964 : ((_C_965 : (\result == \at(s_10.char_xM,Old))) &&
                       ((_C_967 : (\at(s_10,Old).char_xM ==
                                    (strpbrk(\at(s_10.char_xM,Old),
-                                            \at(ct_3,Old)) +
+                                            \at(ct_2,Old)) +
                                      1))) &&
                         ((_C_969 : (strpbrk(\at(s_10.char_xM,Old),
-                                            \at(ct_3,Old)).charM ==
+                                            \at(ct_2,Old)).charM ==
                                      (0 :> int8))) &&
                           (_C_970 : valid_str{Here}(\result))))));
 {  
    (check (disjoint_behaviors : (! ((valid_str{Here}(s_10.char_xM) &&
-                                      (strpbrk(s_10.char_xM, ct_3) == null)) &&
+                                      (strpbrk(s_10.char_xM, ct_2) == null)) &&
                                      (valid_str{Here}(s_10.char_xM) &&
-                                       (strpbrk(s_10.char_xM, ct_3) != null))))));
+                                       (strpbrk(s_10.char_xM, ct_2) != null))))));
    
    (check (disjoint_behaviors : (! ((s_10.char_xM == null) &&
                                      (valid_str{Here}(s_10.char_xM) &&
-                                       (strpbrk(s_10.char_xM, ct_3) == null))))));
+                                       (strpbrk(s_10.char_xM, ct_2) == null))))));
    
    (check (disjoint_behaviors : (! ((s_10.char_xM == null) &&
                                      (valid_str{Here}(s_10.char_xM) &&
-                                       (strpbrk(s_10.char_xM, ct_3) != null))))));
+                                       (strpbrk(s_10.char_xM, ct_2) != null))))));
    
    (check (complete_behaviors : ((valid_str{Here}(s_10.char_xM) &&
-                                   (strpbrk(s_10.char_xM, ct_3) != null)) ||
+                                   (strpbrk(s_10.char_xM, ct_2) != null)) ||
                                   ((valid_str{Here}(s_10.char_xM) &&
-                                     (strpbrk(s_10.char_xM, ct_3) == null)) ||
+                                     (strpbrk(s_10.char_xM, ct_2) == null)) ||
                                     (s_10.char_xM == null)))));
    
    (var charP[..] sbegin);
@@ -4191,10 +4191,10 @@ behavior input_strpbrk_not_null:
          
          (goto return_label)
       } else ());
-      (_C_948 : (end_0 = (_C_947 : strpbrk(sbegin, ct_3))));
+      (_C_948 : (end_0 = (_C_947 : strpbrk(sbegin, ct_2))));
       
       {  
-         (assert for default: (_C_949 : (jessie : (strpbrk(sbegin, ct_3) ==
+         (assert for default: (_C_949 : (jessie : (strpbrk(sbegin, ct_2) ==
                                                     end_0))));
          ()
       };
@@ -4266,11 +4266,11 @@ behavior default:
    
    (var charP[..] a);
    
-   (var uint64 count_7);
+   (var uint64 count_6);
    
    (var uint64 __retres_15);
    
-   {  (_C_980 : (count_7 = (_C_979 : ((0 :> int32) :> uint64))));
+   {  (_C_980 : (count_6 = (_C_979 : ((0 :> int32) :> uint64))));
       (_C_981 : (p_2 = s_11));
       
       loop 
@@ -4287,10 +4287,10 @@ behavior default:
                                                (strlen{Here}(s_11) :> integer))) <=
                                             0)))));
       behavior default:
-        invariant (_C_987 : ((_C_988 : ((0 :> uint64) <= count_7)) &&
-                              (_C_989 : (count_7 <= strlen{Here}(s_11)))));
+        invariant (_C_987 : ((_C_988 : ((0 :> uint64) <= count_6)) &&
+                              (_C_989 : (count_6 <= strlen{Here}(s_11)))));
       behavior default:
-        invariant (_C_986 : ((count_7 :> integer) == (p_2 - s_11)));
+        invariant (_C_986 : ((count_6 :> integer) == (p_2 - s_11)));
       behavior default:
         invariant (_C_985 : (\forall charP[..] c_35;
                               ((((\base_block(s_11) == \base_block(c_35)) &&
@@ -4313,7 +4313,7 @@ behavior default:
         invariant (_C_984 : valid_str{Here}(p_2));
       behavior default:
         invariant (_C_983 : (strspn(s_11, accept) ==
-                              (strspn(p_2, accept) + (count_7 :> integer))));
+                              (strspn(p_2, accept) + (count_6 :> integer))));
       variant (_C_982 : ((strlen{Here}(s_11) :> integer) - (p_2 - s_11)));
       while (true)
       {  
@@ -4377,7 +4377,7 @@ behavior default:
                      ()
                   };
                   
-                  {  (_C_1023 : (__retres_15 = count_7));
+                  {  (_C_1023 : (__retres_15 = count_6));
                      
                      (goto return_label)
                   }
@@ -4388,14 +4388,14 @@ behavior default:
                                                   accept, p_2.charM))));
                   ()
                };
-               (_C_1030 : (count_7 = (_C_1029 : ((_C_1028 : (count_7 +
+               (_C_1030 : (count_6 = (_C_1029 : ((_C_1028 : (count_6 +
                                                               (1 :> uint64))) :> uint64))))
             };
             (_C_1032 : (p_2 = (_C_1031 : (p_2 + (1 :> int32)))))
          }
       };
       (while_0_break : ());
-      (_C_1033 : (__retres_15 = count_7));
+      (_C_1033 : (__retres_15 = count_6));
       (return_label : 
       (return __retres_15))
    }
@@ -5333,216 +5333,5 @@ behavior shift:
                                                                     } else ()) else ());
       
       (return s)
-   }
-}
-
-int32 strncmp(charP[..] cs_1, charP[..] ct_1, uint64 count_4)
-  requires ((_C_1446 : valid_strn{Here}(cs_1, count_4)) &&
-             (_C_1447 : valid_strn{Here}(ct_1, count_4)));
-behavior default:
-  assigns \nothing;
-  ensures true;
-behavior equal:
-  assumes ((count_4 > (0 :> uint64)) &&
-            ((strnlen{Here}(cs_1, count_4) == strnlen{Here}(ct_1, count_4)) &&
-              (\forall integer i_68;
-                (((0 <= i_68) &&
-                   (i_68 < (strnlen{Here}(cs_1, count_4) :> integer))) ==>
-                  ((cs_1 + i_68).charM == (ct_1 + i_68).charM)))));
-  ensures (_C_1437 : (\result == (0 :> int32)));
-behavior not_equal:
-  assumes ((count_4 > (0 :> uint64)) &&
-            ((strnlen{Here}(cs_1, count_4) != strnlen{Here}(ct_1, count_4)) ||
-              (\exists integer i_67;
-                (((0 <= i_67) &&
-                   (i_67 < (strnlen{Here}(cs_1, count_4) :> integer))) &&
-                  ((cs_1 + i_67).charM != (ct_1 + i_67).charM)))));
-  ensures (_C_1438 : ((\result == ((- 1) :> int32)) ||
-                       (\result == (1 :> int32))));
-behavior zero_count:
-  assumes (count_4 == (0 :> uint64));
-  ensures (_C_1439 : (\result == (0 :> int32)));
-{  
-   (check (disjoint_behaviors : (! (((count_4 > (0 :> uint64)) &&
-                                      ((strnlen{Here}(cs_1, count_4) !=
-                                         strnlen{Here}(ct_1, count_4)) ||
-                                        (\exists integer i_67;
-                                          (((0 <= i_67) &&
-                                             (i_67 <
-                                               (strnlen{Here}(cs_1, count_4) :> integer))) &&
-                                            ((cs_1 + i_67).charM !=
-                                              (ct_1 + i_67).charM))))) &&
-                                     (count_4 == (0 :> uint64))))));
-   
-   (check (disjoint_behaviors : (! (((count_4 > (0 :> uint64)) &&
-                                      ((strnlen{Here}(cs_1, count_4) ==
-                                         strnlen{Here}(ct_1, count_4)) &&
-                                        (\forall integer i_68;
-                                          (((0 <= i_68) &&
-                                             (i_68 <
-                                               (strnlen{Here}(cs_1, count_4) :> integer))) ==>
-                                            ((cs_1 + i_68).charM ==
-                                              (ct_1 + i_68).charM))))) &&
-                                     ((count_4 > (0 :> uint64)) &&
-                                       ((strnlen{Here}(cs_1, count_4) !=
-                                          strnlen{Here}(ct_1, count_4)) ||
-                                         (\exists integer i_67;
-                                           (((0 <= i_67) &&
-                                              (i_67 <
-                                                (strnlen{Here}(cs_1, count_4) :> integer))) &&
-                                             ((cs_1 + i_67).charM !=
-                                               (ct_1 + i_67).charM)))))))));
-   
-   (check (disjoint_behaviors : (! (((count_4 > (0 :> uint64)) &&
-                                      ((strnlen{Here}(cs_1, count_4) ==
-                                         strnlen{Here}(ct_1, count_4)) &&
-                                        (\forall integer i_68;
-                                          (((0 <= i_68) &&
-                                             (i_68 <
-                                               (strnlen{Here}(cs_1, count_4) :> integer))) ==>
-                                            ((cs_1 + i_68).charM ==
-                                              (ct_1 + i_68).charM))))) &&
-                                     (count_4 == (0 :> uint64))))));
-   
-   (check (complete_behaviors : ((count_4 == (0 :> uint64)) ||
-                                  (((count_4 > (0 :> uint64)) &&
-                                     ((strnlen{Here}(cs_1, count_4) !=
-                                        strnlen{Here}(ct_1, count_4)) ||
-                                       (\exists integer i_67;
-                                         (((0 <= i_67) &&
-                                            (i_67 <
-                                              (strnlen{Here}(cs_1, count_4) :> integer))) &&
-                                           ((cs_1 + i_67).charM !=
-                                             (ct_1 + i_67).charM))))) ||
-                                    ((count_4 > (0 :> uint64)) &&
-                                      ((strnlen{Here}(cs_1, count_4) ==
-                                         strnlen{Here}(ct_1, count_4)) &&
-                                        (\forall integer i_68;
-                                          (((0 <= i_68) &&
-                                             (i_68 <
-                                               (strnlen{Here}(cs_1, count_4) :> integer))) ==>
-                                            ((cs_1 + i_68).charM ==
-                                              (ct_1 + i_68).charM)))))))));
-   
-   (var uint8 c1_1);
-   
-   (var uint8 c2_1);
-   
-   (var charP[..] ocs);
-   
-   (var charP[..] oct);
-   
-   (var uint64 ocount_2);
-   
-   (var charP[..] tmp_0_21);
-   
-   (var charP[..] tmp_0_22);
-   
-   (var int32 tmp_1_5);
-   
-   (var int32 __retres_17);
-   
-   {  (_C_1379 : (ocs = cs_1));
-      (_C_1380 : (oct = ct_1));
-      (_C_1381 : (ocount_2 = count_4));
-      
-      loop 
-      behavior default:
-        invariant (_C_1406 : ((_C_1407 : ((0 :> uint64) <= count_4)) &&
-                               (_C_1408 : (count_4 <= ocount_2))));
-      behavior default:
-        invariant (_C_1399 : (((_C_1401 : (\base_block(ocs) ==
-                                            \base_block(cs_1))) &&
-                                (_C_1402 : ((ocs - cs_1) <= 0))) &&
-                               ((_C_1404 : (\base_block(cs_1) ==
-                                             \base_block((ocs +
-                                                           (strnlen{Here}(
-                                                           ocs, ocount_2) :> integer))))) &&
-                                 (_C_1405 : ((cs_1 -
-                                               (ocs +
-                                                 (strnlen{Here}(ocs, ocount_2) :> integer))) <=
-                                              0)))));
-      behavior default:
-        invariant (_C_1392 : (((_C_1394 : (\base_block(oct) ==
-                                            \base_block(ct_1))) &&
-                                (_C_1395 : ((oct - ct_1) <= 0))) &&
-                               ((_C_1397 : (\base_block(ct_1) ==
-                                             \base_block((oct +
-                                                           (strnlen{Here}(
-                                                           oct, ocount_2) :> integer))))) &&
-                                 (_C_1398 : ((ct_1 -
-                                               (oct +
-                                                 (strnlen{Here}(oct, ocount_2) :> integer))) <=
-                                              0)))));
-      behavior default:
-        invariant (_C_1389 : ((_C_1390 : ((cs_1 - ocs) == (ct_1 - oct))) &&
-                               (_C_1391 : ((ct_1 - oct) ==
-                                            ((ocount_2 :> integer) -
-                                              (count_4 :> integer))))));
-      behavior default:
-        invariant (_C_1386 : ((_C_1387 : valid_strn{Here}(cs_1, count_4)) &&
-                               (_C_1388 : valid_strn{Here}(ct_1, count_4))));
-      behavior default:
-        invariant (_C_1385 : ((strnlen{Here}(cs_1, count_4) :> integer) ==
-                               ((strnlen{Here}(ocs, ocount_2) :> integer) -
-                                 (cs_1 - ocs))));
-      behavior default:
-        invariant (_C_1384 : ((strnlen{Here}(ct_1, count_4) :> integer) ==
-                               ((strnlen{Here}(oct, ocount_2) :> integer) -
-                                 (ct_1 - oct))));
-      behavior default:
-        invariant (_C_1383 : (\forall integer i_66;
-                               (((0 <= i_66) &&
-                                  (i_66 <
-                                    ((ocount_2 :> integer) -
-                                      (count_4 :> integer)))) ==>
-                                 (((ocs + i_66).charM :%> uint8) ==
-                                   ((oct + i_66).charM :%> uint8)))));
-      variant (_C_1382 : count_4);
-      while (true)
-      {  
-         {  (if (_C_1409 : ((count_4 :> uint64) != (0 :> uint64))) then () else 
-            (goto while_0_break));
-            
-            {  
-               {  (_C_1410 : (tmp_0_21 = cs_1));
-                  (_C_1412 : (cs_1 = (_C_1411 : (cs_1 + (1 :> int32)))));
-                  (_C_1415 : (c1_1 = (_C_1414 : ((_C_1413 : tmp_0_21.charM) :%> uint8))))
-               };
-               
-               {  (_C_1416 : (tmp_0_22 = ct_1));
-                  (_C_1418 : (ct_1 = (_C_1417 : (ct_1 + (1 :> int32)))));
-                  (_C_1421 : (c2_1 = (_C_1420 : ((_C_1419 : tmp_0_22.charM) :%> uint8))))
-               };
-               (if (_C_1430 : ((_C_1429 : (c1_1 :> int32)) !=
-                                (_C_1428 : (c2_1 :> int32)))) then 
-               {  (if (_C_1426 : ((_C_1425 : (c1_1 :> int32)) <
-                                   (_C_1424 : (c2_1 :> int32)))) then 
-                  (_C_1423 : (tmp_1_5 = (-1 :> int32))) else (_C_1422 : (tmp_1_5 = (1 :> int32))));
-                  (_C_1427 : (__retres_17 = tmp_1_5));
-                  
-                  (goto return_label)
-               } else ());
-               (if (_C_1431 : (! ((c1_1 :> uint8) != (0 :> uint8)))) then 
-               (goto while_0_break) else ());
-               (_C_1434 : (count_4 = (_C_1433 : ((_C_1432 : (count_4 -
-                                                              (1 :> uint64))) :> uint64))));
-               
-               {  
-                  (assert for default: (_C_1435 : (jessie : ((ocs +
-                                                               ((cs_1 - ocs) -
-                                                                 1)).charM ==
-                                                              (oct +
-                                                                ((cs_1 - ocs) -
-                                                                  1)).charM))));
-                  ()
-               }
-            }
-         }
-      };
-      (while_0_break : ());
-      (_C_1436 : (__retres_17 = (0 :> int32)));
-      (return_label : 
-      (return __retres_17))
    }
 }

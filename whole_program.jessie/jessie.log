@@ -643,7 +643,7 @@ Component 35:
 is_hex
 
 ******************************
-Call graph: has 41 components
+Call graph: has 40 components
 ******************************
 Component 0:
  check_bytes8 calls: 
@@ -768,9 +768,6 @@ Component 39:
  _parse_integer_fixup_radix calls: _tolower, isxdigit,
 _tolower
 
-Component 40:
- strncmp calls: 
-
 Adding invariants
 Computation of regions
 Separation: treating function check_bytes8
@@ -853,8 +850,6 @@ Separation: treating function kstrtobool
 Separation: treating function kstrtobool
 Separation: treating function _parse_integer_fixup_radix
 Separation: treating function _parse_integer_fixup_radix
-Separation: treating function strncmp
-Separation: treating function strncmp
 Computation of effects
 Effects: doing one iteration
 Effects: fixpoint reached
@@ -1914,7 +1909,7 @@ Effects for function strcspn:
                        (s_5_41 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: __retres_8 at (Here), count_6 at (Here), r at (Here),
+         locals: __retres_8 at (Here), count_5 at (Here), r at (Here),
                  p_1 at (Here), \result at (Here), reject at (Here),
                  s_5 at (Here)
 
@@ -1924,7 +1919,7 @@ Effects for function strcspn:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres_8 at (Here), count_6 at (Here), r at (Here),
+          locals: __retres_8 at (Here), count_5 at (Here), r at (Here),
                   p_1 at (Here)
 
  raises: 
@@ -1966,7 +1961,7 @@ Effects for function strnlen:
          precise memories: 
          globals: 
          locals: __retres_11 at (Here), tmp_0_9 at (Here), sc_0 at (Here),
-                 \result at (Here), count_5 at (Here, Pre, Old),
+                 \result at (Here), count_4 at (Here, Pre, Old),
                  s_8 at (Here)
 
  writes:  alloc_table: 
@@ -1976,7 +1971,7 @@ Effects for function strnlen:
           precise memories: 
           globals: 
           locals: __retres_11 at (Here), tmp_0_9 at (Here), sc_0 at (Here),
-                  count_5 at (Here)
+                  count_4 at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -1985,17 +1980,17 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strpbrk:
- reads:  alloc_table: (ct_2_53 : alloc-root "voidP") at (Here),
-                      (cs_2_52 : alloc-root "voidP") at (Here)
-         tag_table: (ct_2_53 : voidP) at (Here), (cs_2_52 : voidP) at (Here)
-         memories: (ct_2_53 : mem-field "charM") at (Here),
-                   (cs_2_52 : mem-field "charM") at (Here)
-         raw memories: (ct_2_53 : mem-field "charM") at (Here),
-                       (cs_2_52 : mem-field "charM") at (Here)
+ reads:  alloc_table: (ct_1_53 : alloc-root "voidP") at (Here),
+                      (cs_1_52 : alloc-root "voidP") at (Here)
+         tag_table: (ct_1_53 : voidP) at (Here), (cs_1_52 : voidP) at (Here)
+         memories: (ct_1_53 : mem-field "charM") at (Here),
+                   (cs_1_52 : mem-field "charM") at (Here)
+         raw memories: (ct_1_53 : mem-field "charM") at (Here),
+                       (cs_1_52 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: __retres_12 at (Here), sc2 at (Here), sc1 at (Here),
-                 \result at (Here), ct_2 at (Here), cs_2 at (Here)
+                 \result at (Here), ct_1 at (Here), cs_1 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -2038,20 +2033,20 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strsep:
  reads:  alloc_table: (result_59 : alloc-root "voidP") at (Here, Old),
-                      (ct_3_58 : alloc-root "voidP") at (Here),
+                      (ct_2_58 : alloc-root "voidP") at (Here),
                       (s_10_57 : alloc-root "char_xP") at (Here, Old)
          tag_table: (result_59 : voidP) at (Here),
-                    (ct_3_58 : voidP) at (Here)
+                    (ct_2_58 : voidP) at (Here)
          memories: (s_10_57 : mem-field "char_xM") at (Here, Old),
                    (result_59 : mem-field "charM") at (Here),
-                   (ct_3_58 : mem-field "charM") at (Here)
+                   (ct_2_58 : mem-field "charM") at (Here)
          raw memories: (s_10_57 : mem-field "char_xM") at (Here, Old),
                        (result_59 : mem-field "charM") at (Here),
-                       (ct_3_58 : mem-field "charM") at (Here)
+                       (ct_2_58 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: __retres_14 at (Here), tmp_0_11 at (Here), end_0 at (Here),
-                 sbegin at (Here), \result at (Here), ct_3 at (Here),
+                 sbegin at (Here), \result at (Here), ct_2 at (Here),
                  s_10 at (Here)
 
  writes:  alloc_table: 
@@ -2082,7 +2077,7 @@ Effects for function strspn:
                        (s_11_60 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: __retres_15 at (Here), count_7 at (Here), a at (Here),
+         locals: __retres_15 at (Here), count_6 at (Here), a at (Here),
                  p_2 at (Here), \result at (Here), accept at (Here),
                  s_11 at (Here)
 
@@ -2092,7 +2087,7 @@ Effects for function strspn:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres_15 at (Here), count_7 at (Here), a at (Here),
+          locals: __retres_15 at (Here), count_6 at (Here), a at (Here),
                   p_2 at (Here)
 
  raises: 
@@ -2288,39 +2283,6 @@ Effects for function _parse_integer_fixup_radix:
           globals: 
           locals: tmp_1_4 at (Here), tmp_0_20 at (Here), tmp_0_19 at (Here),
                   s at (Here)
-
- raises: 
-Effects: doing one iteration...
-Effects: doing one iteration...
-Effects: doing one iteration...
-Effects: doing one iteration...
-Effects: fixpoint reached
-Effects for function strncmp:
- reads:  alloc_table: (ct_1_91 : alloc-root "voidP") at (Here),
-                      (cs_1_90 : alloc-root "voidP") at (Here)
-         tag_table: (ct_1_91 : voidP) at (Here), (cs_1_90 : voidP) at (Here)
-         memories: (ct_1_91 : mem-field "charM") at (Here),
-                   (cs_1_90 : mem-field "charM") at (Here)
-         raw memories: (ct_1_91 : mem-field "charM") at (Here),
-                       (cs_1_90 : mem-field "charM") at (Here)
-         precise memories: 
-         globals: 
-         locals: __retres_17 at (Here), tmp_1_5 at (Here),
-                 tmp_0_22 at (Here), tmp_0_21 at (Here), c2_1 at (Here),
-                 c1_1 at (Here), \result at (Here), count_4 at (Here),
-                 ct_1 at (Here), cs_1 at (Here)
-
- writes:  alloc_table: 
-          tag_table: 
-          memories: 
-          raw memories: 
-          precise memories: 
-          globals: 
-          locals: __retres_17 at (Here), tmp_1_5 at (Here),
-                  tmp_0_22 at (Here), tmp_0_21 at (Here), ocount_2 at (Here),
-                  oct at (Here), ocs at (Here), c2_1 at (Here),
-                  c1_1 at (Here), count_4 at (Here), ct_1 at (Here),
-                  cs_1 at (Here)
 
  raises: 
 Translate logic types
@@ -3586,7 +3548,6 @@ Pre-treatement Function memcpy
 Pre-treatement Function memset
 Pre-treatement Function kstrtobool
 Pre-treatement Function _parse_integer_fixup_radix
-Pre-treatement Function strncmp
 Function check_bytes8
 Function memchr
 Function memcmp
@@ -3627,5 +3588,4 @@ Function memcpy
 Function memset
 Function kstrtobool
 Function _parse_integer_fixup_radix
-Function strncmp
 Produce makefile
