@@ -13,10 +13,18 @@ use utf8::all;
 my %stats;
 my @csv = read_file $ARGV[0];
 my @head = split /,/, shift @csv;
+#my %skip_solvers = (
+#   "CVC4 (1.5 SPARK)" => undef,
+#);
 my %skip_solvers = (
-   "Alt-Ergo (1.30 -Em)" => undef,
+   "Simplify (1.5.4)" => undef,
+   "veriT (stable2016)" => undef,
    "CVC4 (1.5 SPARK)" => undef,
-   "Z3 (4.5.0 noBV)" => undef
+   "CVC4 (1.5 SPARK noBV)" => undef,
+   "Alt-Ergo (1.30 -Em)" => undef,
+   "Z3 (4.5.0 noBV)" => undef,
+   "CVC4 (1.4 noBV)" => undef,
+   "CVC4 (1.5 noBV)" => undef,
 );
 my @solvers = map {s/\s*+"(\s*+)//gr} @head[1 .. $#head];
 my @ssolvers = grep {! exists $skip_solvers{$_} } @solvers;
@@ -33,7 +41,7 @@ foreach (@csv) {
       my $fname = ($+{name} =~ s/_(0|ensures).*+//r);
       for(my $i = 0; $i < @time; ++$i) {
          if (defined $time[$i]) {
-            if ($time[$i] + 0.0 > 40.0) {
+            if ($time[$i] + 0.0 > 60.0) {
                print "Timelimit exceed: $fname $solvers[$i] $time[$i]\n";
                $time[$i] = undef;
             }
@@ -123,16 +131,16 @@ foreach my $f (sort keys %stats) {
    for(my $i = 0; $i < @stat1; $i += 2) {
       unless ($stat1[$i] =~ /2c/){
          if ($stat1[$i] == $vmax) {
-            $stat1[$i] = "\\textbf{$stat1[$i]}"
+            $stat1[$i] = "\\cellcolor{green} $stat1[$i]"
             #$stat1[$i] = "$stat1[$i]+"
          } elsif ($stat1[$i] == $vmin) {
-            $stat1[$i] = "\\textit{$stat1[$i]}"
+            $stat1[$i] = "\\cellcolor{red} $stat1[$i]"
             #$stat1[$i] = "$stat1[$i]-"
          }
          if ($stat1[$i+1] eq sprintf("%0.2f", $tmin)) {
-            $stat1[$i+1] = "\\underline{$stat1[$i+1]}"
+            $stat1[$i+1] = "\\cellcolor{cyan} $stat1[$i+1]"
          } elsif ($stat1[$i+1] eq sprintf("%0.2f", $tmax)) {
-            $stat1[$i+1] = "\\dashuline{$stat1[$i+1]}"
+            $stat1[$i+1] = "\\cellcolor{brown} $stat1[$i+1]"
          }
       } else {
          $i -= 1;
@@ -166,10 +174,10 @@ foreach(@ssolvers) {
 }
 for(my $i = 0; $i < @solv1; $i += 2) {
    if ($solv1[$i] == $vmax) {
-      $solv1[$i] = "\\textbf{$solv1[$i]}";
+      $solv1[$i] = "\\cellcolor{green} $solv1[$i]";
    }
    if ($solv1[$i+1] == $tmin) {
-      $solv1[$i+1] = "\\underline{$solv1[$i+1]}";
+      $solv1[$i+1] = "\\cellcolor{red} $solv1[$i+1]";
    }
 }
 $table->add_row(['TOTAL', $total_vc, @solv]);
