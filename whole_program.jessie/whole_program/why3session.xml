@@ -35989,14 +35989,14 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_memchr_safety" sum="510f8e1a39502ec119ea52b779be6c47" expanded="true">
- <goal name="WP_parameter memchr" expl="Function memchr, safety" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter memchr.1" expl="Downcast" expanded="true">
-  <transf name="inline_all" expanded="true">
-   <goal name="WP_parameter memchr.1.1" expl="Downcast" expanded="true">
-   <transf name="introduce_premises" expanded="true">
-    <goal name="WP_parameter memchr.1.1.1" expl="Downcast" expanded="true">
+<theory name="Function_memchr_safety" sum="510f8e1a39502ec119ea52b779be6c47">
+ <goal name="WP_parameter memchr" expl="Function memchr, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter memchr.1" expl="Downcast">
+  <transf name="inline_all">
+   <goal name="WP_parameter memchr.1.1" expl="Downcast">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter memchr.1.1.1" expl="Downcast">
     <proof prover="0"><result status="valid" time="0.09"/></proof>
     <proof prover="1"><result status="valid" time="0.06"/></proof>
     <proof prover="2"><result status="valid" time="0.07"/></proof>
@@ -50924,6 +50924,2123 @@
  </transf>
  </goal>
 </theory>
+<theory name="Function_strncmp_safety" sum="6961f33ef638af81f97551edf074a25d">
+ <goal name="WP_parameter strncmp" expl="Function strncmp, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp.1" expl="Integer cast (integer overflow)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.1.1" expl="Integer cast (integer overflow)">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.1.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.1.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.13"/></proof>
+     <proof prover="1"><result status="valid" time="0.09"/></proof>
+     <proof prover="2"><result status="valid" time="0.15"/></proof>
+     <proof prover="3"><result status="valid" time="0.11"/></proof>
+     <proof prover="4"><result status="valid" time="0.35"/></proof>
+     <proof prover="5"><result status="valid" time="0.12"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.08" steps="90"/></proof>
+     <proof prover="8"><result status="valid" time="0.04"/></proof>
+     <proof prover="9"><result status="valid" time="0.09" steps="90"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.1.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.1.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.13"/></proof>
+     <proof prover="1"><result status="valid" time="0.24"/></proof>
+     <proof prover="2"><result status="valid" time="0.15"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.62"/></proof>
+     <proof prover="5"><result status="valid" time="0.12"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.09" steps="90"/></proof>
+     <proof prover="8"><result status="valid" time="0.05"/></proof>
+     <proof prover="9"><result status="valid" time="0.08" steps="90"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.2" expl="Pointer dereference (Validity)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp.2.1" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.2.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.2.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.38"/></proof>
+     <proof prover="1"><result status="valid" time="0.05"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.00"/></proof>
+     <proof prover="3"><result status="valid" time="0.24"/></proof>
+     <proof prover="4"><result status="valid" time="0.45"/></proof>
+     <proof prover="5"><result status="valid" time="0.22"/></proof>
+     <proof prover="6"><result status="valid" time="0.36"/></proof>
+     <proof prover="7"><result status="valid" time="0.76" steps="184"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.81" steps="184"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp.2.2" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.2.2.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.2.2.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="1.47"/></proof>
+     <proof prover="1"><result status="timeout" time="58.98"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.15"/></proof>
+     <proof prover="3"><result status="valid" time="0.25"/></proof>
+     <proof prover="4"><result status="valid" time="4.92"/></proof>
+     <proof prover="5"><result status="valid" time="0.23"/></proof>
+     <proof prover="6"><result status="valid" time="1.44"/></proof>
+     <proof prover="7"><result status="valid" time="1.30" steps="363"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="1.41" steps="363"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.3" expl="Pointer dereference (Validity)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp.3.1" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.3.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.3.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.41"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.18"/></proof>
+     <proof prover="3"><result status="valid" time="0.24"/></proof>
+     <proof prover="4"><result status="valid" time="0.46"/></proof>
+     <proof prover="5"><result status="valid" time="0.23"/></proof>
+     <proof prover="6"><result status="valid" time="0.39"/></proof>
+     <proof prover="7"><result status="valid" time="0.79" steps="197"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.87" steps="197"/></proof>
+     <proof prover="10"><result status="valid" time="0.14"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp.3.2" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.3.2.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.3.2.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="12.17"/></proof>
+     <proof prover="1"><result status="outofmemory" time="57.21"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.24"/></proof>
+     <proof prover="3"><result status="valid" time="0.25"/></proof>
+     <proof prover="4"><result status="valid" time="3.37"/></proof>
+     <proof prover="5"><result status="valid" time="0.23"/></proof>
+     <proof prover="6"><result status="valid" time="50.58"/></proof>
+     <proof prover="7"><result status="valid" time="1.54" steps="382"/></proof>
+     <proof prover="8"><result status="valid" time="0.11"/></proof>
+     <proof prover="9"><result status="valid" time="1.68" steps="382"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.4" expl="Integer cast (integer overflow)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.4.1" expl="Integer cast (integer overflow)">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.4.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.4.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="timeout" time="59.16"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.01"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="timeout" time="60.61"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.10" steps="113"/></proof>
+     <proof prover="8"><result status="valid" time="0.05"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="113"/></proof>
+     <proof prover="10"><result status="valid" time="0.02"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.4.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.4.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.10"/></proof>
+     <proof prover="1"><result status="valid" time="0.21"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.07"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="6.73"/></proof>
+     <proof prover="5"><result status="valid" time="0.14"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.10" steps="113"/></proof>
+     <proof prover="8"><result status="valid" time="0.05"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="113"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.5" expl="Integer cast (integer overflow)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.5.1" expl="Integer cast (integer overflow)">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.5.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.5.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.03"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.42"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.13"/></proof>
+     <proof prover="7"><result status="valid" time="0.12" steps="120"/></proof>
+     <proof prover="8"><result status="valid" time="0.06"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="120"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.5.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.5.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.14"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.08"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="0.40"/></proof>
+     <proof prover="5"><result status="valid" time="0.14"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="120"/></proof>
+     <proof prover="8"><result status="valid" time="0.02"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="120"/></proof>
+     <proof prover="10"><result status="valid" time="0.04"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.6" expl="Integer cast (integer overflow)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.6.1" expl="Integer cast (integer overflow)">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.6.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.6.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.01"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="0.37"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.11"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="116"/></proof>
+     <proof prover="8"><result status="valid" time="0.05"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="116"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.6.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.6.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.00"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.13"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="116"/></proof>
+     <proof prover="8"><result status="valid" time="0.06"/></proof>
+     <proof prover="9"><result status="valid" time="0.12" steps="116"/></proof>
+     <proof prover="10"><result status="valid" time="0.04"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.7" expl="Integer cast (integer overflow)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.7.1" expl="Integer cast (integer overflow)">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.7.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.7.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.13"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.30"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.39"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.11"/></proof>
+     <proof prover="7"><result status="valid" time="0.09" steps="112"/></proof>
+     <proof prover="8"><result status="valid" time="0.03"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="112"/></proof>
+     <proof prover="10"><result status="valid" time="0.04"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.7.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.7.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.34"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.44"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="timeout" time="60.28"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.12" steps="112"/></proof>
+     <proof prover="8"><result status="valid" time="0.05"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="112"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.8" expl="integer overflow">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp.8.1" expl="integer overflow">
+   <transf name="split_goal_wp">
+    <goal name="WP_parameter strncmp.8.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.8.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.25"/></proof>
+     <proof prover="1"><result status="valid" time="1.59"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.59"/></proof>
+     <proof prover="3"><result status="valid" time="0.28"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.25"/></proof>
+     <proof prover="6"><result status="valid" time="0.25"/></proof>
+     <proof prover="7"><result status="valid" time="8.26" steps="572"/></proof>
+     <proof prover="8"><result status="valid" time="0.11"/></proof>
+     <proof prover="9"><result status="valid" time="8.42" steps="572"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="WP_parameter strncmp.8.1.2" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.8.1.2.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.25"/></proof>
+     <proof prover="1"><result status="valid" time="1.05"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.87"/></proof>
+     <proof prover="3"><result status="valid" time="0.28"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.26"/></proof>
+     <proof prover="6"><result status="valid" time="0.24"/></proof>
+     <proof prover="7"><result status="valid" time="7.98" steps="419"/></proof>
+     <proof prover="8"><result status="valid" time="0.11"/></proof>
+     <proof prover="9"><result status="valid" time="8.37" steps="419"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp.9" expl="loop variant decrease">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp.9.1" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.9.1.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.9.1.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.94"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="0.40"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="120"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="120"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp.9.2" expl="Function strncmp, safety">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp.9.2.1" expl="Function strncmp, safety">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp.9.2.1.1" expl="Function strncmp, safety">
+     <proof prover="0"><result status="valid" time="0.19"/></proof>
+     <proof prover="1"><result status="valid" time="0.47"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.91"/></proof>
+     <proof prover="3"><result status="valid" time="0.15"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.16"/></proof>
+     <proof prover="7"><result status="valid" time="0.10" steps="120"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="120"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strncmp_behaviors" sum="9e79c0d14f7b287fafbbf2d68c95ccb1" expanded="true">
+ <goal name="WP_parameter strncmp_ensures_default" expl="Function strncmp, default behavior" expanded="true">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp_ensures_default.1" expl="Behavior disjointness check">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.1.1" expl="Behavior disjointness check">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.1.1.1" expl="Behavior disjointness check">
+    <proof prover="0"><result status="valid" time="0.17"/></proof>
+    <proof prover="1"><result status="valid" time="0.12"/></proof>
+    <proof prover="2"><result status="valid" time="0.13"/></proof>
+    <proof prover="3"><result status="valid" time="0.20"/></proof>
+    <proof prover="4"><result status="valid" time="0.58"/></proof>
+    <proof prover="5"><result status="valid" time="0.18"/></proof>
+    <proof prover="6"><result status="valid" time="0.15"/></proof>
+    <proof prover="7"><result status="valid" time="0.15" steps="89"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.16" steps="89"/></proof>
+    <proof prover="10"><result status="valid" time="0.09"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.2" expl="Behavior disjointness check">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.2.1" expl="Behavior disjointness check">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.2.1.1" expl="Behavior disjointness check">
+    <proof prover="0"><result status="valid" time="0.19"/></proof>
+    <proof prover="1"><result status="valid" time="0.11"/></proof>
+    <proof prover="2"><result status="valid" time="0.12"/></proof>
+    <proof prover="3"><result status="valid" time="0.17"/></proof>
+    <proof prover="4"><result status="valid" time="0.39"/></proof>
+    <proof prover="5"><result status="valid" time="0.18"/></proof>
+    <proof prover="6"><result status="valid" time="0.17"/></proof>
+    <proof prover="7"><result status="valid" time="0.15" steps="82"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.15" steps="82"/></proof>
+    <proof prover="10"><result status="valid" time="0.10"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.3" expl="Behavior disjointness check">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.3.1" expl="Behavior disjointness check">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.3.1.1" expl="Behavior disjointness check">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.34"/></proof>
+    <proof prover="2"><result status="valid" time="0.15"/></proof>
+    <proof prover="3"><result status="valid" time="0.66"/></proof>
+    <proof prover="4"><result status="valid" time="52.28"/></proof>
+    <proof prover="5"><result status="valid" time="0.65"/></proof>
+    <proof prover="6"><result status="valid" time="0.19"/></proof>
+    <proof prover="7"><result status="valid" time="0.61" steps="205"/></proof>
+    <proof prover="8"><result status="outofmemory" time="40.04"/></proof>
+    <proof prover="9"><result status="valid" time="0.62" steps="205"/></proof>
+    <proof prover="10"><result status="outofmemory" time="40.59"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.4" expl="Behavior completeness check">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.4.1" expl="Behavior completeness check">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.4.1.1" expl="Behavior completeness check">
+    <proof prover="0"><result status="valid" time="0.27"/></proof>
+    <proof prover="1"><result status="valid" time="6.57"/></proof>
+    <proof prover="2"><result status="valid" time="0.21"/></proof>
+    <proof prover="3"><result status="valid" time="14.47"/></proof>
+    <proof prover="4"><result status="timeout" time="60.00"/></proof>
+    <proof prover="5"><result status="valid" time="13.79"/></proof>
+    <proof prover="6"><result status="valid" time="0.24"/></proof>
+    <proof prover="7"><result status="valid" time="1.04" steps="386"/></proof>
+    <proof prover="8"><result status="outofmemory" time="40.23"/></proof>
+    <proof prover="9"><result status="valid" time="1.07" steps="386"/></proof>
+    <proof prover="10"><result status="outofmemory" time="40.70"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.5" expl="Assertion in line 36">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.5.1" expl="Assertion in line 36">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.5.1.1" expl="Assertion in line 36">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.5.1.1.1" expl="Assertion in line 36">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="0.39"/></proof>
+     <proof prover="5"><result status="valid" time="0.16"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.07" steps="79"/></proof>
+     <proof prover="8"><result status="valid" time="0.06"/></proof>
+     <proof prover="9"><result status="valid" time="0.08" steps="79"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.5.2" expl="Assertion in line 36">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.5.2.1" expl="Assertion in line 36">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.5.2.1.1" expl="Assertion in line 36">
+     <proof prover="0"><result status="valid" time="0.93"/></proof>
+     <proof prover="1"><result status="outofmemory" time="52.60"/></proof>
+     <proof prover="2"><result status="valid" time="1.65"/></proof>
+     <proof prover="3"><result status="valid" time="0.12"/></proof>
+     <proof prover="4"><result status="timeout" time="60.76"/></proof>
+     <proof prover="5"><result status="timeout" time="60.00"/></proof>
+     <proof prover="6"><result status="valid" time="0.11"/></proof>
+     <proof prover="7"><result status="timeout" time="59.85"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.87"/></proof>
+     <proof prover="10"><result status="valid" time="0.06"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.6" expl="loop invariant init">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.6.1" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.1.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.1.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.21"/></proof>
+     <proof prover="1"><result status="valid" time="0.24"/></proof>
+     <proof prover="2"><result status="valid" time="0.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.20"/></proof>
+     <proof prover="7"><result status="valid" time="0.15" steps="85"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.16" steps="85"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.2" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.2.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.2.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.22"/></proof>
+     <proof prover="1"><result status="valid" time="0.19"/></proof>
+     <proof prover="2"><result status="valid" time="0.11"/></proof>
+     <proof prover="3"><result status="valid" time="0.19"/></proof>
+     <proof prover="4"><result status="valid" time="0.54"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.19"/></proof>
+     <proof prover="7"><result status="valid" time="0.08" steps="77"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.08" steps="77"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.3" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.3.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.3.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.19"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.20"/></proof>
+     <proof prover="3"><result status="valid" time="0.19"/></proof>
+     <proof prover="4"><result status="valid" time="0.36"/></proof>
+     <proof prover="5"><result status="valid" time="0.18"/></proof>
+     <proof prover="6"><result status="valid" time="0.17"/></proof>
+     <proof prover="7"><result status="valid" time="0.15" steps="80"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.14" steps="80"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.4" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.4.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.4.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.17"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="0.37"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.16"/></proof>
+     <proof prover="7"><result status="valid" time="0.15" steps="80"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.14" steps="80"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.5" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.5.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.5.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.07"/></proof>
+     <proof prover="2"><result status="valid" time="0.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="0.42"/></proof>
+     <proof prover="5"><result status="valid" time="0.19"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.14" steps="80"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.14" steps="80"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.6" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.6.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.6.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.23"/></proof>
+     <proof prover="1"><result status="valid" time="0.24"/></proof>
+     <proof prover="2"><result status="valid" time="0.58"/></proof>
+     <proof prover="3"><result status="valid" time="0.78"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.75"/></proof>
+     <proof prover="6"><result status="valid" time="0.21"/></proof>
+     <proof prover="7"><result status="valid" time="0.30" steps="113"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.33" steps="113"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.7" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.7.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.7.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.40"/></proof>
+     <proof prover="3"><result status="valid" time="0.19"/></proof>
+     <proof prover="4"><result status="valid" time="0.36"/></proof>
+     <proof prover="5"><result status="valid" time="0.19"/></proof>
+     <proof prover="6"><result status="valid" time="0.17"/></proof>
+     <proof prover="7"><result status="valid" time="0.15" steps="84"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.15" steps="84"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.8" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.8.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.8.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.20"/></proof>
+     <proof prover="1"><result status="valid" time="0.07"/></proof>
+     <proof prover="2"><result status="valid" time="0.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.20"/></proof>
+     <proof prover="4"><result status="valid" time="0.37"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.16" steps="84"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.15" steps="84"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.9" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.9.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.9.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.19"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.13"/></proof>
+     <proof prover="3"><result status="valid" time="0.19"/></proof>
+     <proof prover="4"><result status="valid" time="0.39"/></proof>
+     <proof prover="5"><result status="valid" time="0.19"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.15" steps="84"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.14" steps="84"/></proof>
+     <proof prover="10"><result status="valid" time="0.07"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.10" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.10.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.10.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.24"/></proof>
+     <proof prover="1"><result status="valid" time="0.24"/></proof>
+     <proof prover="2"><result status="valid" time="0.82"/></proof>
+     <proof prover="3"><result status="valid" time="1.17"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="1.16"/></proof>
+     <proof prover="6"><result status="valid" time="0.23"/></proof>
+     <proof prover="7"><result status="valid" time="0.32" steps="118"/></proof>
+     <proof prover="8"><result status="valid" time="0.24"/></proof>
+     <proof prover="9"><result status="valid" time="0.35" steps="118"/></proof>
+     <proof prover="10"><result status="valid" time="0.25"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.11" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.11.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.11.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.20"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="valid" time="0.11"/></proof>
+     <proof prover="3"><result status="valid" time="0.20"/></proof>
+     <proof prover="4"><result status="valid" time="0.34"/></proof>
+     <proof prover="5"><result status="valid" time="0.18"/></proof>
+     <proof prover="6"><result status="valid" time="0.17"/></proof>
+     <proof prover="7"><result status="valid" time="0.14" steps="88"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.15" steps="88"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.12" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.12.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.12.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.19"/></proof>
+     <proof prover="1"><result status="valid" time="0.07"/></proof>
+     <proof prover="2"><result status="valid" time="0.14"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.18"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.16" steps="88"/></proof>
+     <proof prover="8"><result status="outofmemory" time="51.60"/></proof>
+     <proof prover="9"><result status="valid" time="0.19" steps="88"/></proof>
+     <proof prover="10"><result status="outofmemory" time="51.97"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.13" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.13.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.13.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.17"/></proof>
+     <proof prover="1"><result status="valid" time="0.12"/></proof>
+     <proof prover="2"><result status="valid" time="0.13"/></proof>
+     <proof prover="3"><result status="valid" time="0.21"/></proof>
+     <proof prover="4"><result status="valid" time="0.60"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.17"/></proof>
+     <proof prover="7"><result status="valid" time="0.31" steps="117"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.32" steps="117"/></proof>
+     <proof prover="10"><result status="valid" time="0.07"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.14" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.14.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.14.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.12"/></proof>
+     <proof prover="2"><result status="valid" time="0.13"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="0.58"/></proof>
+     <proof prover="5"><result status="valid" time="0.19"/></proof>
+     <proof prover="6"><result status="valid" time="0.16"/></proof>
+     <proof prover="7"><result status="valid" time="0.30" steps="115"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.31" steps="115"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.15" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.15.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.15.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.19"/></proof>
+     <proof prover="2"><result status="valid" time="0.11"/></proof>
+     <proof prover="3"><result status="valid" time="0.16"/></proof>
+     <proof prover="4"><result status="valid" time="0.64"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.17"/></proof>
+     <proof prover="7"><result status="valid" time="0.07" steps="88"/></proof>
+     <proof prover="8"><result status="outofmemory" time="56.18"/></proof>
+     <proof prover="9"><result status="valid" time="0.09" steps="88"/></proof>
+     <proof prover="10"><result status="outofmemory" time="57.04"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.16" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.16.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.16.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.20"/></proof>
+     <proof prover="2"><result status="valid" time="0.14"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.66"/></proof>
+     <proof prover="5"><result status="valid" time="0.14"/></proof>
+     <proof prover="6"><result status="valid" time="0.13"/></proof>
+     <proof prover="7"><result status="valid" time="0.07" steps="89"/></proof>
+     <proof prover="8"><result status="outofmemory" time="39.52"/></proof>
+     <proof prover="9"><result status="valid" time="0.09" steps="89"/></proof>
+     <proof prover="10"><result status="outofmemory" time="40.91"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.6.17" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.6.17.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.6.17.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.17"/></proof>
+     <proof prover="1"><result status="valid" time="0.44"/></proof>
+     <proof prover="2"><result status="valid" time="0.13"/></proof>
+     <proof prover="3"><result status="valid" time="0.18"/></proof>
+     <proof prover="4"><result status="valid" time="31.98"/></proof>
+     <proof prover="5"><result status="valid" time="0.16"/></proof>
+     <proof prover="6"><result status="valid" time="0.16"/></proof>
+     <proof prover="7"><result status="valid" time="0.09" steps="91"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.09" steps="91"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.7" expl="Assertion in line 53">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.7.1" expl="Assertion in line 53">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.7.1.1" expl="Assertion in line 53">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.7.1.1.1" expl="Assertion in line 53">
+     <proof prover="0"><result status="valid" time="0.63"/></proof>
+     <proof prover="1"><result status="timeout" time="59.13"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.12"/></proof>
+     <proof prover="3"><result status="valid" time="0.27"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="13.70"/></proof>
+     <proof prover="6"><result status="valid" time="0.26"/></proof>
+     <proof prover="7"><result status="timeout" time="59.93"/></proof>
+     <proof prover="8"><result status="outofmemory" time="26.03"/></proof>
+     <proof prover="9"><result status="timeout" time="59.91"/></proof>
+     <proof prover="10"><result status="outofmemory" time="27.04"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.7.2" expl="Assertion in line 53">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.7.2.1" expl="Assertion in line 53">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.7.2.1.1" expl="Assertion in line 53">
+     <proof prover="0"><result status="valid" time="1.93"/></proof>
+     <proof prover="1"><result status="timeout" time="59.14"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.25"/></proof>
+     <proof prover="3"><result status="valid" time="16.76"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="21.58"/></proof>
+     <proof prover="6"><result status="valid" time="2.27"/></proof>
+     <proof prover="7"><result status="timeout" time="59.95"/></proof>
+     <proof prover="8"><result status="outofmemory" time="27.10"/></proof>
+     <proof prover="9"><result status="timeout" time="59.95"/></proof>
+     <proof prover="10"><result status="outofmemory" time="28.39"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.7.3" expl="Assertion in line 53">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.7.3.1" expl="Assertion in line 53">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.7.3.1.1" expl="Assertion in line 53">
+     <proof prover="0"><result status="valid" time="0.60"/></proof>
+     <proof prover="1"><result status="outofmemory" time="45.14"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.10"/></proof>
+     <proof prover="3"><result status="valid" time="0.27"/></proof>
+     <proof prover="4"><result status="timeout" time="60.21"/></proof>
+     <proof prover="5"><result status="valid" time="19.60"/></proof>
+     <proof prover="6"><result status="valid" time="0.27"/></proof>
+     <proof prover="7"><result status="timeout" time="59.94"/></proof>
+     <proof prover="8"><result status="outofmemory" time="26.22"/></proof>
+     <proof prover="9"><result status="timeout" time="59.90"/></proof>
+     <proof prover="10"><result status="outofmemory" time="26.81"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.8" expl="Assertion in line 54">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.8.1" expl="Assertion in line 54">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.8.1.1" expl="Assertion in line 54">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.8.1.1.1" expl="Assertion in line 54">
+     <proof prover="0"><result status="valid" time="2.94"/></proof>
+     <proof prover="1"><result status="timeout" time="59.16"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.09"/></proof>
+     <proof prover="3"><result status="valid" time="0.27"/></proof>
+     <proof prover="4"><result status="timeout" time="60.10"/></proof>
+     <proof prover="5"><result status="valid" time="15.48"/></proof>
+     <proof prover="6"><result status="valid" time="0.52"/></proof>
+     <proof prover="7"><result status="timeout" time="59.93"/></proof>
+     <proof prover="8"><result status="outofmemory" time="26.04"/></proof>
+     <proof prover="9"><result status="timeout" time="59.95"/></proof>
+     <proof prover="10"><result status="outofmemory" time="26.83"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.8.2" expl="Assertion in line 54">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.8.2.1" expl="Assertion in line 54">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.8.2.1.1" expl="Assertion in line 54">
+     <proof prover="0"><result status="valid" time="4.43"/></proof>
+     <proof prover="1"><result status="timeout" time="59.25"/></proof>
+     <proof prover="2"><result status="outofmemory" time="22.07"/></proof>
+     <proof prover="3"><result status="valid" time="19.64"/></proof>
+     <proof prover="4"><result status="timeout" time="60.96"/></proof>
+     <proof prover="5"><result status="valid" time="24.54"/></proof>
+     <proof prover="6"><result status="valid" time="6.14"/></proof>
+     <proof prover="7"><result status="timeout" time="59.92"/></proof>
+     <proof prover="8"><result status="outofmemory" time="26.23"/></proof>
+     <proof prover="9"><result status="timeout" time="59.90"/></proof>
+     <proof prover="10"><result status="outofmemory" time="27.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.8.3" expl="Assertion in line 54">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.8.3.1" expl="Assertion in line 54">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.8.3.1.1" expl="Assertion in line 54">
+     <proof prover="0"><result status="valid" time="1.45"/></proof>
+     <proof prover="1"><result status="outofmemory" time="50.54"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.20"/></proof>
+     <proof prover="3"><result status="valid" time="0.25"/></proof>
+     <proof prover="4"><result status="timeout" time="60.96"/></proof>
+     <proof prover="5"><result status="valid" time="22.01"/></proof>
+     <proof prover="6"><result status="valid" time="0.32"/></proof>
+     <proof prover="7"><result status="timeout" time="59.94"/></proof>
+     <proof prover="8"><result status="outofmemory" time="26.53"/></proof>
+     <proof prover="9"><result status="timeout" time="59.94"/></proof>
+     <proof prover="10"><result status="outofmemory" time="26.78"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.9" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.9.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.9.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.07"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.03"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.39"/></proof>
+    <proof prover="5"><result status="valid" time="0.16"/></proof>
+    <proof prover="6"><result status="valid" time="0.12"/></proof>
+    <proof prover="7"><result status="valid" time="0.12" steps="115"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.12" steps="115"/></proof>
+    <proof prover="10"><result status="valid" time="0.09"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.10" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.10.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.10.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.13"/></proof>
+    <proof prover="1"><result status="valid" time="0.09"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.16"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.37"/></proof>
+    <proof prover="5"><result status="valid" time="0.14"/></proof>
+    <proof prover="6"><result status="valid" time="0.11"/></proof>
+    <proof prover="7"><result status="valid" time="0.10" steps="112"/></proof>
+    <proof prover="8"><result status="valid" time="0.08"/></proof>
+    <proof prover="9"><result status="valid" time="0.11" steps="112"/></proof>
+    <proof prover="10"><result status="valid" time="0.07"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.11" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.11.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.11.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.08"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.15"/></proof>
+    <proof prover="3"><result status="valid" time="0.13"/></proof>
+    <proof prover="4"><result status="valid" time="0.37"/></proof>
+    <proof prover="5"><result status="valid" time="0.15"/></proof>
+    <proof prover="6"><result status="valid" time="0.11"/></proof>
+    <proof prover="7"><result status="valid" time="0.09" steps="110"/></proof>
+    <proof prover="8"><result status="valid" time="0.08"/></proof>
+    <proof prover="9"><result status="valid" time="0.11" steps="110"/></proof>
+    <proof prover="10"><result status="valid" time="0.07"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.12" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.12.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.12.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.12"/></proof>
+    <proof prover="1"><result status="valid" time="0.13"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.07"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.38"/></proof>
+    <proof prover="5"><result status="valid" time="0.13"/></proof>
+    <proof prover="6"><result status="valid" time="0.11"/></proof>
+    <proof prover="7"><result status="valid" time="0.11" steps="113"/></proof>
+    <proof prover="8"><result status="valid" time="0.11"/></proof>
+    <proof prover="9"><result status="valid" time="0.08" steps="113"/></proof>
+    <proof prover="10"><result status="valid" time="0.11"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.13" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.13.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.13.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.13"/></proof>
+    <proof prover="1"><result status="valid" time="0.07"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.16"/></proof>
+    <proof prover="3"><result status="valid" time="0.12"/></proof>
+    <proof prover="4"><result status="valid" time="0.37"/></proof>
+    <proof prover="5"><result status="valid" time="0.13"/></proof>
+    <proof prover="6"><result status="valid" time="0.13"/></proof>
+    <proof prover="7"><result status="valid" time="0.10" steps="112"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.10" steps="112"/></proof>
+    <proof prover="10"><result status="valid" time="0.08"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.14" expl="Assertion in line 68">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.14.1" expl="Assertion in line 68">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.14.1.1" expl="Assertion in line 68">
+    <proof prover="0"><result status="valid" time="28.41"/></proof>
+    <proof prover="1"><result status="timeout" time="59.01"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.27"/></proof>
+    <proof prover="3"><result status="unknown" time="59.65"/></proof>
+    <proof prover="4"><result status="timeout" time="60.91"/></proof>
+    <proof prover="5"><result status="unknown" time="59.81"/></proof>
+    <proof prover="6"><result status="valid" time="34.68"/></proof>
+    <proof prover="7"><result status="timeout" time="59.87"/></proof>
+    <proof prover="8"><result status="outofmemory" time="31.82"/></proof>
+    <proof prover="9"><result status="valid" time="28.86" steps="778"/></proof>
+    <proof prover="10"><result status="valid" time="0.13"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.15" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.15.1" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.1.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.1.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.26"/></proof>
+     <proof prover="1"><result status="valid" time="0.25"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.94"/></proof>
+     <proof prover="3"><result status="valid" time="0.27"/></proof>
+     <proof prover="4"><result status="timeout" time="60.95"/></proof>
+     <proof prover="5"><result status="valid" time="0.27"/></proof>
+     <proof prover="6"><result status="valid" time="0.21"/></proof>
+     <proof prover="7"><result status="valid" time="0.81" steps="236"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.87" steps="237"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.2" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.2.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.2.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.27"/></proof>
+     <proof prover="1"><result status="valid" time="1.94"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.23"/></proof>
+     <proof prover="3"><result status="valid" time="0.28"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.26"/></proof>
+     <proof prover="6"><result status="valid" time="0.24"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="111"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="111"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.3" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.3.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.3.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.20"/></proof>
+     <proof prover="1"><result status="valid" time="0.23"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.75"/></proof>
+     <proof prover="3"><result status="valid" time="0.27"/></proof>
+     <proof prover="4"><result status="valid" time="0.83"/></proof>
+     <proof prover="5"><result status="valid" time="0.28"/></proof>
+     <proof prover="6"><result status="valid" time="0.18"/></proof>
+     <proof prover="7"><result status="valid" time="0.45" steps="124"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.26" steps="117"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.4" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.4.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.4.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.27"/></proof>
+     <proof prover="1"><result status="valid" time="29.81"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.98"/></proof>
+     <proof prover="3"><result status="valid" time="0.29"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.26"/></proof>
+     <proof prover="6"><result status="valid" time="0.26"/></proof>
+     <proof prover="7"><result status="timeout" time="59.96"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.27" steps="117"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.5" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.5.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.5.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.22"/></proof>
+     <proof prover="1"><result status="valid" time="0.22"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.22"/></proof>
+     <proof prover="3"><result status="valid" time="0.29"/></proof>
+     <proof prover="4"><result status="valid" time="9.89"/></proof>
+     <proof prover="5"><result status="valid" time="0.27"/></proof>
+     <proof prover="6"><result status="valid" time="0.19"/></proof>
+     <proof prover="7"><result status="timeout" time="59.94"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.27" steps="117"/></proof>
+     <proof prover="10"><result status="valid" time="0.09"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.6" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.6.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.6.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.30"/></proof>
+     <proof prover="1"><result status="timeout" time="59.12"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.93"/></proof>
+     <proof prover="3"><result status="valid" time="0.33"/></proof>
+     <proof prover="4"><result status="timeout" time="60.08"/></proof>
+     <proof prover="5"><result status="valid" time="18.63"/></proof>
+     <proof prover="6"><result status="valid" time="4.32"/></proof>
+     <proof prover="7"><result status="timeout" time="59.91"/></proof>
+     <proof prover="8"><result status="outofmemory" time="54.96"/></proof>
+     <proof prover="9"><result status="timeout" time="59.90"/></proof>
+     <proof prover="10"><result status="outofmemory" time="58.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.7" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.7.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.7.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.20"/></proof>
+     <proof prover="1"><result status="valid" time="0.23"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.23"/></proof>
+     <proof prover="3"><result status="valid" time="0.28"/></proof>
+     <proof prover="4"><result status="valid" time="0.83"/></proof>
+     <proof prover="5"><result status="valid" time="0.27"/></proof>
+     <proof prover="6"><result status="valid" time="0.21"/></proof>
+     <proof prover="7"><result status="valid" time="0.45" steps="128"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.27" steps="121"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.8" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.8.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.8.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.26"/></proof>
+     <proof prover="1"><result status="valid" time="5.60"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.90"/></proof>
+     <proof prover="3"><result status="valid" time="0.29"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.28"/></proof>
+     <proof prover="6"><result status="valid" time="0.28"/></proof>
+     <proof prover="7"><result status="timeout" time="59.94"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.27" steps="121"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.9" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.9.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.9.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.21"/></proof>
+     <proof prover="1"><result status="valid" time="0.21"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.95"/></proof>
+     <proof prover="3"><result status="valid" time="0.28"/></proof>
+     <proof prover="4"><result status="valid" time="10.11"/></proof>
+     <proof prover="5"><result status="valid" time="0.26"/></proof>
+     <proof prover="6"><result status="valid" time="0.21"/></proof>
+     <proof prover="7"><result status="timeout" time="59.93"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.27" steps="121"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.10" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.10.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.10.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.59"/></proof>
+     <proof prover="1"><result status="timeout" time="59.06"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.46"/></proof>
+     <proof prover="3"><result status="valid" time="0.33"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="23.64"/></proof>
+     <proof prover="6"><result status="valid" time="0.61"/></proof>
+     <proof prover="7"><result status="timeout" time="59.92"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.92"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.11" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.11.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.11.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.29"/></proof>
+     <proof prover="1"><result status="valid" time="0.46"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.28"/></proof>
+     <proof prover="3"><result status="valid" time="0.33"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.39"/></proof>
+     <proof prover="6"><result status="valid" time="0.26"/></proof>
+     <proof prover="7"><result status="timeout" time="59.94"/></proof>
+     <proof prover="8"><result status="valid" time="21.25"/></proof>
+     <proof prover="9"><result status="valid" time="0.71" steps="203"/></proof>
+     <proof prover="10"><result status="valid" time="24.90"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.12" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.12.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.12.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.27"/></proof>
+     <proof prover="1"><result status="valid" time="0.51"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.21"/></proof>
+     <proof prover="3"><result status="valid" time="0.31"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.29"/></proof>
+     <proof prover="6"><result status="valid" time="0.29"/></proof>
+     <proof prover="7"><result status="timeout" time="59.86"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="valid" time="1.80" steps="308"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.13" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.13.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.13.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="unknown" time="59.40"/></proof>
+     <proof prover="1"><result status="timeout" time="59.15"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.90"/></proof>
+     <proof prover="3"><result status="unknown" time="59.58"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="unknown" time="59.64"/></proof>
+     <proof prover="6"><result status="valid" time="52.07"/></proof>
+     <proof prover="7"><result status="timeout" time="59.87"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.94"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.14" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.14.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.14.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="unknown" time="59.10"/></proof>
+     <proof prover="1"><result status="timeout" time="59.13"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.01"/></proof>
+     <proof prover="3"><result status="unknown" time="59.69"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="unknown" time="59.67"/></proof>
+     <proof prover="6"><result status="valid" time="4.59"/></proof>
+     <proof prover="7"><result status="timeout" time="59.89"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.96"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.15" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.15.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.15.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="39.47"/></proof>
+     <proof prover="1"><result status="outofmemory" time="55.72"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.01"/></proof>
+     <proof prover="3"><result status="timeout" time="60.00"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="timeout" time="60.00"/></proof>
+     <proof prover="6"><result status="valid" time="6.20"/></proof>
+     <proof prover="7"><result status="timeout" time="59.92"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.93"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.16" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.16.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.16.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="6.07"/></proof>
+     <proof prover="1"><result status="outofmemory" time="58.75"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.92"/></proof>
+     <proof prover="3"><result status="timeout" time="60.00"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="timeout" time="60.00"/></proof>
+     <proof prover="6"><result status="valid" time="41.57"/></proof>
+     <proof prover="7"><result status="timeout" time="59.89"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="timeout" time="59.90"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.17" expl="Function strncmp, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_default.15.17.1" expl="Function strncmp, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_default.15.17.1.1" expl="Function strncmp, default behavior">
+     <proof prover="0"><result status="valid" time="0.32"/></proof>
+     <proof prover="1"><result status="timeout" time="59.02"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.05"/></proof>
+     <proof prover="3"><result status="valid" time="0.46"/></proof>
+     <proof prover="4"><result status="timeout" time="60.09"/></proof>
+     <proof prover="5"><result status="valid" time="0.39"/></proof>
+     <proof prover="6"><result status="valid" time="0.73"/></proof>
+     <proof prover="7"><result status="valid" time="0.36" steps="141"/></proof>
+     <proof prover="8"><result status="timeout" time="60.00"/></proof>
+     <proof prover="9"><result status="valid" time="0.38" steps="141"/></proof>
+     <proof prover="10"><result status="timeout" time="60.00"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.16" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_default.16.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_default.16.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.12"/></proof>
+    <proof prover="1"><result status="valid" time="0.08"/></proof>
+    <proof prover="2"><result status="outofmemory" time="18.39"/></proof>
+    <proof prover="3"><result status="valid" time="0.13"/></proof>
+    <proof prover="4"><result status="valid" time="0.35"/></proof>
+    <proof prover="5"><result status="valid" time="0.13"/></proof>
+    <proof prover="6"><result status="valid" time="0.14"/></proof>
+    <proof prover="7"><result status="valid" time="0.09" steps="95"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.08" steps="95"/></proof>
+    <proof prover="10"><result status="valid" time="0.09"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_equal" expl="Function strncmp, behavior equal">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp_ensures_equal.1" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.1.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.1.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.51"/></proof>
+    <proof prover="1"><result status="timeout" time="59.03"/></proof>
+    <proof prover="2"><result status="outofmemory" time="20.96"/></proof>
+    <proof prover="3"><result status="valid" time="18.26"/></proof>
+    <proof prover="4"><result status="timeout" time="60.73"/></proof>
+    <proof prover="5"><result status="valid" time="17.48"/></proof>
+    <proof prover="6"><result status="valid" time="1.08"/></proof>
+    <proof prover="7"><result status="timeout" time="59.93"/></proof>
+    <proof prover="8"><result status="outofmemory" time="26.11"/></proof>
+    <proof prover="9"><result status="timeout" time="59.94"/></proof>
+    <proof prover="10"><result status="outofmemory" time="26.43"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_equal.2" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.2.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.2.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.08"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.12"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.40"/></proof>
+    <proof prover="5"><result status="valid" time="0.13"/></proof>
+    <proof prover="6"><result status="valid" time="0.13"/></proof>
+    <proof prover="7"><result status="valid" time="0.11" steps="112"/></proof>
+    <proof prover="8"><result status="valid" time="0.07"/></proof>
+    <proof prover="9"><result status="valid" time="0.11" steps="112"/></proof>
+    <proof prover="10"><result status="valid" time="0.07"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_equal.3" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.3.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.3.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.09"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.47"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.39"/></proof>
+    <proof prover="5"><result status="valid" time="0.12"/></proof>
+    <proof prover="6"><result status="valid" time="0.13"/></proof>
+    <proof prover="7"><result status="valid" time="0.10" steps="110"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.10" steps="110"/></proof>
+    <proof prover="10"><result status="valid" time="0.08"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_equal.4" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.4.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.4.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="2.71"/></proof>
+    <proof prover="1"><result status="timeout" time="59.04"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.48"/></proof>
+    <proof prover="3"><result status="valid" time="18.22"/></proof>
+    <proof prover="4"><result status="timeout" time="60.00"/></proof>
+    <proof prover="5"><result status="valid" time="17.38"/></proof>
+    <proof prover="6"><result status="valid" time="5.90"/></proof>
+    <proof prover="7"><result status="timeout" time="59.94"/></proof>
+    <proof prover="8"><result status="outofmemory" time="26.29"/></proof>
+    <proof prover="9"><result status="timeout" time="59.95"/></proof>
+    <proof prover="10"><result status="outofmemory" time="26.69"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_equal.5" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.5.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.5.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.13"/></proof>
+    <proof prover="1"><result status="valid" time="0.06"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.12"/></proof>
+    <proof prover="3"><result status="valid" time="0.15"/></proof>
+    <proof prover="4"><result status="valid" time="0.38"/></proof>
+    <proof prover="5"><result status="valid" time="0.14"/></proof>
+    <proof prover="6"><result status="valid" time="0.12"/></proof>
+    <proof prover="7"><result status="valid" time="0.11" steps="112"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.11" steps="112"/></proof>
+    <proof prover="10"><result status="valid" time="0.12"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_equal.6" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_equal.6.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_equal.6.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.13"/></proof>
+    <proof prover="1"><result status="valid" time="0.09"/></proof>
+    <proof prover="2"><result status="outofmemory" time="18.52"/></proof>
+    <proof prover="3"><result status="valid" time="0.14"/></proof>
+    <proof prover="4"><result status="valid" time="0.36"/></proof>
+    <proof prover="5"><result status="valid" time="0.13"/></proof>
+    <proof prover="6"><result status="valid" time="0.11"/></proof>
+    <proof prover="7"><result status="valid" time="0.09" steps="95"/></proof>
+    <proof prover="8"><result status="valid" time="0.09"/></proof>
+    <proof prover="9"><result status="valid" time="0.09" steps="95"/></proof>
+    <proof prover="10"><result status="valid" time="0.08"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_len_diff" expl="Function strncmp, behavior len_diff">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp_ensures_len_diff.1" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.1.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.1.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.1.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.13"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.32"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.17"/></proof>
+     <proof prover="6"><result status="valid" time="0.14"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="118"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="118"/></proof>
+     <proof prover="10"><result status="valid" time="0.10"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.1.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.1.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.1.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.51"/></proof>
+     <proof prover="1"><result status="timeout" time="59.02"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.22"/></proof>
+     <proof prover="3"><result status="valid" time="25.03"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="23.39"/></proof>
+     <proof prover="6"><result status="valid" time="0.55"/></proof>
+     <proof prover="7"><result status="timeout" time="59.95"/></proof>
+     <proof prover="8"><result status="outofmemory" time="25.13"/></proof>
+     <proof prover="9"><result status="timeout" time="59.92"/></proof>
+     <proof prover="10"><result status="valid" time="3.66"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_len_diff.2" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.2.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.2.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.2.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.18"/></proof>
+     <proof prover="1"><result status="valid" time="0.09"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.17"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.14"/></proof>
+     <proof prover="6"><result status="valid" time="0.14"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="114"/></proof>
+     <proof prover="8"><result status="valid" time="0.07"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="114"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.2.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.2.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.2.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.13"/></proof>
+     <proof prover="1"><result status="valid" time="0.09"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.06"/></proof>
+     <proof prover="3"><result status="valid" time="0.12"/></proof>
+     <proof prover="4"><result status="valid" time="0.41"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.12" steps="114"/></proof>
+     <proof prover="8"><result status="valid" time="0.06"/></proof>
+     <proof prover="9"><result status="valid" time="0.09" steps="114"/></proof>
+     <proof prover="10"><result status="valid" time="0.07"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_len_diff.3" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.3.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.3.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.3.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.15"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.21"/></proof>
+     <proof prover="3"><result status="valid" time="0.12"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.12"/></proof>
+     <proof prover="7"><result status="valid" time="0.10" steps="112"/></proof>
+     <proof prover="8"><result status="valid" time="0.06"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="112"/></proof>
+     <proof prover="10"><result status="valid" time="0.05"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.3.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.3.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.3.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.19"/></proof>
+     <proof prover="1"><result status="valid" time="0.08"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.02"/></proof>
+     <proof prover="3"><result status="valid" time="0.14"/></proof>
+     <proof prover="4"><result status="valid" time="0.40"/></proof>
+     <proof prover="5"><result status="valid" time="0.13"/></proof>
+     <proof prover="6"><result status="valid" time="0.13"/></proof>
+     <proof prover="7"><result status="valid" time="0.09" steps="112"/></proof>
+     <proof prover="8"><result status="valid" time="0.08"/></proof>
+     <proof prover="9"><result status="valid" time="0.10" steps="112"/></proof>
+     <proof prover="10"><result status="valid" time="0.08"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_len_diff.4" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.4.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.4.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.4.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="1.16"/></proof>
+     <proof prover="1"><result status="timeout" time="59.06"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.92"/></proof>
+     <proof prover="3"><result status="valid" time="28.18"/></proof>
+     <proof prover="4"><result status="timeout" time="60.29"/></proof>
+     <proof prover="5"><result status="valid" time="25.81"/></proof>
+     <proof prover="6"><result status="valid" time="1.45"/></proof>
+     <proof prover="7"><result status="timeout" time="59.88"/></proof>
+     <proof prover="8"><result status="outofmemory" time="25.50"/></proof>
+     <proof prover="9"><result status="timeout" time="59.89"/></proof>
+     <proof prover="10"><result status="outofmemory" time="25.21"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.4.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.4.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.4.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.12"/></proof>
+     <proof prover="1"><result status="valid" time="0.13"/></proof>
+     <proof prover="2"><result status="outofmemory" time="20.99"/></proof>
+     <proof prover="3"><result status="valid" time="0.13"/></proof>
+     <proof prover="4"><result status="valid" time="0.38"/></proof>
+     <proof prover="5"><result status="valid" time="0.14"/></proof>
+     <proof prover="6"><result status="valid" time="0.14"/></proof>
+     <proof prover="7"><result status="valid" time="0.11" steps="116"/></proof>
+     <proof prover="8"><result status="valid" time="0.10"/></proof>
+     <proof prover="9"><result status="valid" time="0.11" steps="116"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_len_diff.5" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.5.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.5.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.5.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.20"/></proof>
+     <proof prover="1"><result status="valid" time="8.41"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.02"/></proof>
+     <proof prover="3"><result status="valid" time="0.29"/></proof>
+     <proof prover="4"><result status="timeout" time="60.69"/></proof>
+     <proof prover="5"><result status="valid" time="0.28"/></proof>
+     <proof prover="6"><result status="valid" time="0.21"/></proof>
+     <proof prover="7"><result status="valid" time="12.20" steps="635"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="12.44" steps="635"/></proof>
+     <proof prover="10"><result status="valid" time="0.12"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.5.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.5.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.5.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.21"/></proof>
+     <proof prover="1"><result status="valid" time="8.56"/></proof>
+     <proof prover="2"><result status="outofmemory" time="21.06"/></proof>
+     <proof prover="3"><result status="valid" time="0.26"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="0.24"/></proof>
+     <proof prover="6"><result status="valid" time="0.22"/></proof>
+     <proof prover="7"><result status="valid" time="0.36" steps="126"/></proof>
+     <proof prover="8"><result status="valid" time="0.09"/></proof>
+     <proof prover="9"><result status="valid" time="0.36" steps="126"/></proof>
+     <proof prover="10"><result status="valid" time="0.11"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_len_diff.6" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_len_diff.6.1" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.6.1.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.6.1.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.30"/></proof>
+     <proof prover="1"><result status="timeout" time="59.03"/></proof>
+     <proof prover="2"><result status="outofmemory" time="18.52"/></proof>
+     <proof prover="3"><result status="valid" time="6.50"/></proof>
+     <proof prover="4"><result status="timeout" time="60.92"/></proof>
+     <proof prover="5"><result status="valid" time="6.51"/></proof>
+     <proof prover="6"><result status="valid" time="0.30"/></proof>
+     <proof prover="7"><result status="timeout" time="59.90"/></proof>
+     <proof prover="8"><result status="valid" time="0.38"/></proof>
+     <proof prover="9"><result status="timeout" time="59.90"/></proof>
+     <proof prover="10"><result status="valid" time="0.39"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_len_diff.6.2" expl="Ensures clause">
+   <transf name="inline_all">
+    <goal name="WP_parameter strncmp_ensures_len_diff.6.2.1" expl="Ensures clause">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strncmp_ensures_len_diff.6.2.1.1" expl="Ensures clause">
+     <proof prover="0"><result status="valid" time="0.30"/></proof>
+     <proof prover="1"><result status="timeout" time="59.03"/></proof>
+     <proof prover="2"><result status="outofmemory" time="18.52"/></proof>
+     <proof prover="3"><result status="valid" time="3.98"/></proof>
+     <proof prover="4"><result status="timeout" time="60.00"/></proof>
+     <proof prover="5"><result status="valid" time="3.99"/></proof>
+     <proof prover="6"><result status="valid" time="0.30"/></proof>
+     <proof prover="7"><result status="valid" time="47.96" steps="3321"/></proof>
+     <proof prover="8"><result status="valid" time="0.42"/></proof>
+     <proof prover="9"><result status="valid" time="47.34" steps="3321"/></proof>
+     <proof prover="10"><result status="valid" time="0.39"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_not_equal" expl="Function strncmp, behavior not_equal" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strncmp_ensures_not_equal.1" expl="Assertion in line 58">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.1.1" expl="Assertion in line 58">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.1.1.1" expl="Assertion in line 58">
+    <proof prover="0"><result status="valid" time="26.36"/></proof>
+    <proof prover="1"><result status="timeout" time="59.32"/></proof>
+    <proof prover="2"><result status="outofmemory" time="20.92"/></proof>
+    <proof prover="3"><result status="unknown" time="59.82"/></proof>
+    <proof prover="4"><result status="timeout" time="60.13"/></proof>
+    <proof prover="5"><result status="unknown" time="59.85"/></proof>
+    <proof prover="6"><result status="timeout" time="60.00"/></proof>
+    <proof prover="7"><result status="valid" time="7.64" steps="1910"/></proof>
+    <proof prover="8"><result status="outofmemory" time="29.70"/></proof>
+    <proof prover="9"><result status="valid" time="8.32" steps="1910"/></proof>
+    <proof prover="10"><result status="outofmemory" time="30.61"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.2" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.2.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.2.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.27"/></proof>
+    <proof prover="1"><result status="valid" time="2.20"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.27"/></proof>
+    <proof prover="3"><result status="valid" time="25.77"/></proof>
+    <proof prover="4"><result status="timeout" time="60.15"/></proof>
+    <proof prover="5"><result status="valid" time="22.18"/></proof>
+    <proof prover="6"><result status="valid" time="0.25"/></proof>
+    <proof prover="7"><result status="timeout" time="59.91"/></proof>
+    <proof prover="8"><result status="outofmemory" time="34.11"/></proof>
+    <proof prover="9"><result status="timeout" time="59.92"/></proof>
+    <proof prover="10"><result status="outofmemory" time="34.03"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.3" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.3.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.3.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.18"/></proof>
+    <proof prover="1"><result status="valid" time="0.09"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.24"/></proof>
+    <proof prover="3"><result status="valid" time="0.13"/></proof>
+    <proof prover="4"><result status="valid" time="0.42"/></proof>
+    <proof prover="5"><result status="valid" time="0.12"/></proof>
+    <proof prover="6"><result status="valid" time="0.13"/></proof>
+    <proof prover="7"><result status="valid" time="0.11" steps="120"/></proof>
+    <proof prover="8"><result status="valid" time="0.06"/></proof>
+    <proof prover="9"><result status="valid" time="0.10" steps="120"/></proof>
+    <proof prover="10"><result status="valid" time="0.09"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.4" expl="Assertion in line 58" expanded="true">
+  <transf name="inline_all" expanded="true">
+   <goal name="WP_parameter strncmp_ensures_not_equal.4.1" expl="Assertion in line 58" expanded="true">
+   <transf name="introduce_premises" expanded="true">
+    <goal name="WP_parameter strncmp_ensures_not_equal.4.1.1" expl="Assertion in line 58" expanded="true">
+    <proof prover="0"><result status="valid" time="27.69"/></proof>
+    <proof prover="1"><result status="timeout" time="59.29"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.04"/></proof>
+    <proof prover="3"><result status="unknown" time="59.91"/></proof>
+    <proof prover="4"><result status="timeout" time="60.37"/></proof>
+    <proof prover="5"><result status="unknown" time="59.96"/></proof>
+    <proof prover="6"><result status="timeout" time="60.00"/></proof>
+    <proof prover="7"><result status="timeout" time="59.89"/></proof>
+    <proof prover="8"><result status="outofmemory" time="30.51"/></proof>
+    <proof prover="9"><result status="timeout" time="59.87"/></proof>
+    <proof prover="10"><result status="outofmemory" time="30.35"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.5" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.5.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.5.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.19"/></proof>
+    <proof prover="1"><result status="valid" time="0.09"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.00"/></proof>
+    <proof prover="3"><result status="valid" time="0.12"/></proof>
+    <proof prover="4"><result status="valid" time="0.43"/></proof>
+    <proof prover="5"><result status="valid" time="0.12"/></proof>
+    <proof prover="6"><result status="valid" time="0.12"/></proof>
+    <proof prover="7"><result status="valid" time="0.12" steps="118"/></proof>
+    <proof prover="8"><result status="valid" time="0.08"/></proof>
+    <proof prover="9"><result status="valid" time="0.11" steps="118"/></proof>
+    <proof prover="10"><result status="valid" time="0.07"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.6" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.6.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.6.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.27"/></proof>
+    <proof prover="1"><result status="valid" time="2.24"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.03"/></proof>
+    <proof prover="3"><result status="valid" time="25.69"/></proof>
+    <proof prover="4"><result status="timeout" time="60.00"/></proof>
+    <proof prover="5"><result status="valid" time="22.07"/></proof>
+    <proof prover="6"><result status="valid" time="0.28"/></proof>
+    <proof prover="7"><result status="timeout" time="59.87"/></proof>
+    <proof prover="8"><result status="outofmemory" time="34.08"/></proof>
+    <proof prover="9"><result status="timeout" time="59.88"/></proof>
+    <proof prover="10"><result status="outofmemory" time="34.05"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.7" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.7.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.7.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.28"/></proof>
+    <proof prover="1"><result status="valid" time="0.32"/></proof>
+    <proof prover="2"><result status="outofmemory" time="21.00"/></proof>
+    <proof prover="3"><result status="valid" time="0.27"/></proof>
+    <proof prover="4"><result status="timeout" time="60.15"/></proof>
+    <proof prover="5"><result status="valid" time="0.24"/></proof>
+    <proof prover="6"><result status="valid" time="0.25"/></proof>
+    <proof prover="7"><result status="valid" time="17.45" steps="745"/></proof>
+    <proof prover="8"><result status="valid" time="0.11"/></proof>
+    <proof prover="9"><result status="valid" time="53.10" steps="2077"/></proof>
+    <proof prover="10"><result status="valid" time="0.11"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.8" expl="Ensures clause (Postcondition)">
+  <transf name="inline_all">
+   <goal name="WP_parameter strncmp_ensures_not_equal.8.1" expl="Ensures clause (Postcondition)">
+   <transf name="introduce_premises">
+    <goal name="WP_parameter strncmp_ensures_not_equal.8.1.1" expl="Ensures clause (Postcondition)">
+    <proof prover="0"><result status="valid" time="0.29"/></proof>
+    <proof prover="1"><result status="valid" time="2.22"/></proof>
+    <proof prover="2"><result status="outofmemory" time="18.32"/></proof>
+    <proof prover="3"><result status="valid" time="4.07"/></proof>
+    <proof prover="4"><result status="timeout" time="60.00"/></proof>
+    <proof prover="5"><result status="valid" time="3.64"/></proof>
+    <proof prover="6"><result status="valid" time="0.30"/></proof>
+    <proof prover="7"><result status="timeout" time="59.82"/></proof>
+    <proof prover="8"><result status="valid" time="0.85"/></proof>
+    <proof prover="9"><result status="timeout" time="59.87"/></proof>
+    <proof prover="10"><result status="valid" time="0.83"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+</theory>
 <theory name="Function_strnlen_0_safety" sum="0509ca5856bbf4d844899866783c5175">
  <goal name="WP_parameter strnlen_0" expl="Function strnlen, safety">
  <transf name="split_goal_wp">
@@ -57140,16 +59257,16 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strspn_0_behaviors" sum="a843959c828c98f0cfc45574c64a2869" expanded="true">
- <goal name="WP_parameter strspn_ensures_default" expl="Function strspn, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strspn_ensures_default.1" expl="loop invariant init" expanded="true">
-  <transf name="split_goal_wp" expanded="true">
-   <goal name="WP_parameter strspn_ensures_default.1.1" expl="Function strspn, default behavior" expanded="true">
-   <transf name="inline_all" expanded="true">
-    <goal name="WP_parameter strspn_ensures_default.1.1.1" expl="Function strspn, default behavior" expanded="true">
-    <transf name="introduce_premises" expanded="true">
-     <goal name="WP_parameter strspn_ensures_default.1.1.1.1" expl="Function strspn, default behavior" expanded="true">
+<theory name="Function_strspn_0_behaviors" sum="a843959c828c98f0cfc45574c64a2869">
+ <goal name="WP_parameter strspn_ensures_default" expl="Function strspn, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strspn_ensures_default.1" expl="loop invariant init">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strspn_ensures_default.1.1" expl="Function strspn, default behavior">
+   <transf name="inline_all">
+    <goal name="WP_parameter strspn_ensures_default.1.1.1" expl="Function strspn, default behavior">
+    <transf name="introduce_premises">
+     <goal name="WP_parameter strspn_ensures_default.1.1.1.1" expl="Function strspn, default behavior">
      <proof prover="0"><result status="valid" time="0.11"/></proof>
      <proof prover="1"><result status="valid" time="0.06"/></proof>
      <proof prover="2"><result status="valid" time="0.09"/></proof>
@@ -58859,12 +60976,12 @@
 </theory>
 <theory name="Axiomatic_IntBase" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_CheckBytes8" sum="e2b72f22b1aa7bbd7b9d73d6faf162f8" expanded="true">
- <goal name="Check_bytes8_shift1" expl="Lemma check_bytes8_shift1" expanded="true">
+<theory name="Axiomatic_CheckBytes8" sum="e2b72f22b1aa7bbd7b9d73d6faf162f8">
+ <goal name="Check_bytes8_shift1" expl="Lemma check_bytes8_shift1">
  </goal>
- <goal name="Check_bytes8_stop" expl="Lemma check_bytes8_stop" expanded="true">
+ <goal name="Check_bytes8_stop" expl="Lemma check_bytes8_stop">
  </goal>
- <goal name="Check_bytes8_stop_bytes_zero" expl="Lemma check_bytes8_stop_bytes_zero" expanded="true">
+ <goal name="Check_bytes8_stop_bytes_zero" expl="Lemma check_bytes8_stop_bytes_zero">
  </goal>
 </theory>
 <theory name="Root__BoolP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -58891,46 +61008,46 @@
 </theory>
 <theory name="Unsafe_bit_uint8_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="caf75b263ca2ba4c120ecdd3aad60eb7" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
+<theory name="Axiomatic_Strlen" sum="caf75b263ca2ba4c120ecdd3aad60eb7">
+ <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1">
  </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
+ <goal name="Valid_str_strend" expl="Lemma valid_str_strend">
  </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
+ <goal name="Strlen_before_null" expl="Lemma strlen_before_null">
  </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
+ <goal name="Strlen_at_null" expl="Lemma strlen_at_null">
  </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
+ <goal name="Strlen_shift" expl="Lemma strlen_shift">
  </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
+ <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex">
  </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
+ <goal name="Strlen_shift1" expl="Lemma strlen_shift1">
  </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
+ <goal name="Strlen_pointers" expl="Lemma strlen_pointers">
  </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
+ <goal name="Strlen_main" expl="Lemma strlen_main">
  </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
+ <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn">
  </goal>
 </theory>
 <theory name="Function_isspace_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_isspace_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_SkipSpaces" sum="481b779c08612c375c5dd8944e24d76a" expanded="true">
- <goal name="Skip_spaces_defn" expl="Lemma skip_spaces_defn" expanded="true">
+<theory name="Axiomatic_SkipSpaces" sum="481b779c08612c375c5dd8944e24d76a">
+ <goal name="Skip_spaces_defn" expl="Lemma skip_spaces_defn">
  </goal>
- <goal name="Skip_spaces_deref" expl="Lemma skip_spaces_deref" expanded="true">
+ <goal name="Skip_spaces_deref" expl="Lemma skip_spaces_deref">
  </goal>
- <goal name="Skip_spaces_range" expl="Lemma skip_spaces_range" expanded="true">
+ <goal name="Skip_spaces_range" expl="Lemma skip_spaces_range">
  </goal>
- <goal name="Skip_spaces_iter_one" expl="Lemma skip_spaces_iter_one" expanded="true">
+ <goal name="Skip_spaces_iter_one" expl="Lemma skip_spaces_iter_one">
  </goal>
- <goal name="Skip_spaces_base_addr" expl="Lemma skip_spaces_base_addr" expanded="true">
+ <goal name="Skip_spaces_base_addr" expl="Lemma skip_spaces_base_addr">
  </goal>
- <goal name="Skip_spaces_same" expl="Lemma skip_spaces_same" expanded="true">
+ <goal name="Skip_spaces_same" expl="Lemma skip_spaces_same">
  </goal>
- <goal name="Skipped_are_spaces" expl="Lemma skipped_are_spaces" expanded="true">
+ <goal name="Skipped_are_spaces" expl="Lemma skipped_are_spaces">
  </goal>
 </theory>
 <theory name="Function_tolower_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -58941,74 +61058,74 @@
 </theory>
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strchr" sum="8774cd0a8db3da2bb1c73d10fe0c895a" expanded="true">
- <goal name="Strchr_mem" expl="Lemma strchr_mem" expanded="true">
+<theory name="Axiomatic_Strchr" sum="8774cd0a8db3da2bb1c73d10fe0c895a">
+ <goal name="Strchr_mem" expl="Lemma strchr_mem">
  </goal>
- <goal name="Strchr_iter_one" expl="Lemma strchr_iter_one" expanded="true">
+ <goal name="Strchr_iter_one" expl="Lemma strchr_iter_one">
  </goal>
- <goal name="Strchr_res" expl="Lemma strchr_res" expanded="true">
+ <goal name="Strchr_res" expl="Lemma strchr_res">
  </goal>
- <goal name="Strchr_at_end_zero" expl="Lemma strchr_at_end_zero" expanded="true">
+ <goal name="Strchr_at_end_zero" expl="Lemma strchr_at_end_zero">
  </goal>
- <goal name="Strchr_at_end_char" expl="Lemma strchr_at_end_char" expanded="true">
+ <goal name="Strchr_at_end_char" expl="Lemma strchr_at_end_char">
  </goal>
- <goal name="Strchr_defn" expl="Lemma strchr_defn" expanded="true">
+ <goal name="Strchr_defn" expl="Lemma strchr_defn">
  </goal>
- <goal name="Strchr_skipped" expl="Lemma strchr_skipped" expanded="true">
+ <goal name="Strchr_skipped" expl="Lemma strchr_skipped">
  </goal>
 </theory>
 <theory name="Safe_bit_int32_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_int32_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strchrnul" sum="3547deb05853b44fb90a25a4e8397cb7" expanded="true">
- <goal name="Strchrnul_mem" expl="Lemma strchrnul_mem" expanded="true">
+<theory name="Axiomatic_Strchrnul" sum="3547deb05853b44fb90a25a4e8397cb7">
+ <goal name="Strchrnul_mem" expl="Lemma strchrnul_mem">
  </goal>
- <goal name="Strchrnul_iter_one" expl="Lemma strchrnul_iter_one" expanded="true">
+ <goal name="Strchrnul_iter_one" expl="Lemma strchrnul_iter_one">
  </goal>
- <goal name="Strchrnul_res" expl="Lemma strchrnul_res" expanded="true">
+ <goal name="Strchrnul_res" expl="Lemma strchrnul_res">
  </goal>
- <goal name="Strchrnul_strlen" expl="Lemma strchrnul_strlen" expanded="true">
+ <goal name="Strchrnul_strlen" expl="Lemma strchrnul_strlen">
  </goal>
- <goal name="Strchrnul_at_end" expl="Lemma strchrnul_at_end" expanded="true">
+ <goal name="Strchrnul_at_end" expl="Lemma strchrnul_at_end">
  </goal>
- <goal name="Strchrnul_defn" expl="Lemma strchrnul_defn" expanded="true">
+ <goal name="Strchrnul_defn" expl="Lemma strchrnul_defn">
  </goal>
- <goal name="Strchrnul_skipped" expl="Lemma strchrnul_skipped" expanded="true">
+ <goal name="Strchrnul_skipped" expl="Lemma strchrnul_skipped">
  </goal>
 </theory>
 <theory name="Safe_bit_uint8_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_uint8_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrSpn" sum="43c1ccf43325bccee2718289a2e59f29" expanded="true">
- <goal name="In_array_shift1" expl="Lemma in_array_shift1" expanded="true">
+<theory name="Axiomatic_StrSpn" sum="43c1ccf43325bccee2718289a2e59f29">
+ <goal name="In_array_shift1" expl="Lemma in_array_shift1">
  </goal>
- <goal name="In_array_true" expl="Lemma in_array_true" expanded="true">
+ <goal name="In_array_true" expl="Lemma in_array_true">
  </goal>
- <goal name="In_array_false" expl="Lemma in_array_false" expanded="true">
+ <goal name="In_array_false" expl="Lemma in_array_false">
  </goal>
- <goal name="Strspn_strend" expl="Lemma strspn_strend" expanded="true">
+ <goal name="Strspn_strend" expl="Lemma strspn_strend">
  </goal>
- <goal name="Strspn_empty_accept" expl="Lemma strspn_empty_accept" expanded="true">
+ <goal name="Strspn_empty_accept" expl="Lemma strspn_empty_accept">
  </goal>
- <goal name="Strspn_range" expl="Lemma strspn_range" expanded="true">
+ <goal name="Strspn_range" expl="Lemma strspn_range">
  </goal>
- <goal name="Strspn_shift1" expl="Lemma strspn_shift1" expanded="true">
+ <goal name="Strspn_shift1" expl="Lemma strspn_shift1">
  </goal>
- <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept" expanded="true">
+ <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept">
  </goal>
 </theory>
-<theory name="Axiomatic_StrCSpn" sum="d63b0226c3313c7f7600357f54d87154" expanded="true">
- <goal name="Strcspn_strend" expl="Lemma strcspn_strend" expanded="true">
+<theory name="Axiomatic_StrCSpn" sum="d63b0226c3313c7f7600357f54d87154">
+ <goal name="Strcspn_strend" expl="Lemma strcspn_strend">
  </goal>
- <goal name="Strcspn_empty_reject" expl="Lemma strcspn_empty_reject" expanded="true">
+ <goal name="Strcspn_empty_reject" expl="Lemma strcspn_empty_reject">
  </goal>
- <goal name="Strcspn_range" expl="Lemma strcspn_range" expanded="true">
+ <goal name="Strcspn_range" expl="Lemma strcspn_range">
  </goal>
- <goal name="Strcspn_shift1" expl="Lemma strcspn_shift1" expanded="true">
+ <goal name="Strcspn_shift1" expl="Lemma strcspn_shift1">
  </goal>
- <goal name="Strcspn_stop_in_reject" expl="Lemma strcspn_stop_in_reject" expanded="true">
+ <goal name="Strcspn_stop_in_reject" expl="Lemma strcspn_stop_in_reject">
  </goal>
 </theory>
 <theory name="Axiomatic_memcpy_char" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -59021,52 +61138,52 @@
 </theory>
 <theory name="Unsafe_int8_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strnlen" sum="3c2463330ebd76ded1ca1b0fcf97c1bb" expanded="true">
- <goal name="Valid_strn_shift1" expl="Lemma valid_strn_shift1" expanded="true">
+<theory name="Axiomatic_Strnlen" sum="3c2463330ebd76ded1ca1b0fcf97c1bb">
+ <goal name="Valid_strn_shift1" expl="Lemma valid_strn_shift1">
  </goal>
- <goal name="Valid_str_to_valid_strn" expl="Lemma valid_str_to_valid_strn" expanded="true">
+ <goal name="Valid_str_to_valid_strn" expl="Lemma valid_str_to_valid_strn">
  </goal>
- <goal name="Strnlen_range" expl="Lemma strnlen_range" expanded="true">
+ <goal name="Strnlen_range" expl="Lemma strnlen_range">
  </goal>
- <goal name="Strnlen_null" expl="Lemma strnlen_null" expanded="true">
+ <goal name="Strnlen_null" expl="Lemma strnlen_null">
  </goal>
- <goal name="Strnlen_zero_count" expl="Lemma strnlen_zero_count" expanded="true">
+ <goal name="Strnlen_zero_count" expl="Lemma strnlen_zero_count">
  </goal>
- <goal name="Strnlen_min_len" expl="Lemma strnlen_min_len" expanded="true">
+ <goal name="Strnlen_min_len" expl="Lemma strnlen_min_len">
  </goal>
- <goal name="Strnlen_before_zero" expl="Lemma strnlen_before_zero" expanded="true">
+ <goal name="Strnlen_before_zero" expl="Lemma strnlen_before_zero">
  </goal>
- <goal name="Strnlen_at_zero" expl="Lemma strnlen_at_zero" expanded="true">
+ <goal name="Strnlen_at_zero" expl="Lemma strnlen_at_zero">
  </goal>
- <goal name="Strnlen_at_cnt" expl="Lemma strnlen_at_cnt" expanded="true">
+ <goal name="Strnlen_at_cnt" expl="Lemma strnlen_at_cnt">
  </goal>
- <goal name="Strnlen_zero" expl="Lemma strnlen_zero" expanded="true">
+ <goal name="Strnlen_zero" expl="Lemma strnlen_zero">
  </goal>
- <goal name="Strnlen_cnt" expl="Lemma strnlen_cnt" expanded="true">
+ <goal name="Strnlen_cnt" expl="Lemma strnlen_cnt">
  </goal>
- <goal name="Strnlen_shift" expl="Lemma strnlen_shift" expanded="true">
+ <goal name="Strnlen_shift" expl="Lemma strnlen_shift">
  </goal>
- <goal name="Strnlen_shift_ex" expl="Lemma strnlen_shift_ex" expanded="true">
+ <goal name="Strnlen_shift_ex" expl="Lemma strnlen_shift_ex">
  </goal>
- <goal name="Strnlen_shift1" expl="Lemma strnlen_shift1" expanded="true">
+ <goal name="Strnlen_shift1" expl="Lemma strnlen_shift1">
  </goal>
- <goal name="Strnlen_cmp" expl="Lemma strnlen_cmp" expanded="true">
+ <goal name="Strnlen_cmp" expl="Lemma strnlen_cmp">
  </goal>
- <goal name="Strnlen_less" expl="Lemma strnlen_less" expanded="true">
+ <goal name="Strnlen_less" expl="Lemma strnlen_less">
  </goal>
- <goal name="Valid_str_strn" expl="Lemma valid_str_strn" expanded="true">
+ <goal name="Valid_str_strn" expl="Lemma valid_str_strn">
  </goal>
 </theory>
-<theory name="Axiomatic_StrPBrk" sum="970a286b4a03102998b463c3ce19bda8" expanded="true">
- <goal name="Strpbrk_strend" expl="Lemma strpbrk_strend" expanded="true">
+<theory name="Axiomatic_StrPBrk" sum="970a286b4a03102998b463c3ce19bda8">
+ <goal name="Strpbrk_strend" expl="Lemma strpbrk_strend">
  </goal>
- <goal name="Strpbrk_empty_ct" expl="Lemma strpbrk_empty_ct" expanded="true">
+ <goal name="Strpbrk_empty_ct" expl="Lemma strpbrk_empty_ct">
  </goal>
- <goal name="Strpbrk_range" expl="Lemma strpbrk_range" expanded="true">
+ <goal name="Strpbrk_range" expl="Lemma strpbrk_range">
  </goal>
- <goal name="Strpbrk_shift1" expl="Lemma strpbrk_shift1" expanded="true">
+ <goal name="Strpbrk_shift1" expl="Lemma strpbrk_shift1">
  </goal>
- <goal name="Strpbrk_stop_in_ct" expl="Lemma strpbrk_stop_in_ct" expanded="true">
+ <goal name="Strpbrk_stop_in_ct" expl="Lemma strpbrk_stop_in_ct">
  </goal>
 </theory>
 <theory name="Root_char_xP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -59738,6 +61855,10 @@
 <theory name="Function__parse_integer_fixup_radix" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function__parse_integer_fixup_radix_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strncmp" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strncmp_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 </file>
 </why3session>
