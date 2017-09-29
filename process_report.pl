@@ -4,8 +4,6 @@ use warnings;
 use strict;
 
 use File::Slurp qw/read_file/;
-use Data::Printer;
-use Text::ANSITable;
 use POSIX qw/round/;
 use LaTeX::Table; 
 use utf8::all;
@@ -13,22 +11,7 @@ use utf8::all;
 my %stats;
 my @csv = read_file $ARGV[0];
 my @head = split /,/, shift @csv;
-#my %skip_solvers = (
-#   "CVC4 (1.5 SPARK)" => undef,
-#);
-my %skip_solvers = (
-   "Simplify (1.5.4)" => undef,
-   "veriT (stable2016)" => undef,
-   "CVC4 (1.5 SPARK)" => undef,
-   "CVC4 (1.5 SPARK noBV)" => undef,
-   "Alt-Ergo (1.30 -Em)" => undef,
-   "Z3 (4.5.0 noBV)" => undef,
-   "CVC4 (1.4 noBV)" => undef,
-   "CVC4 (1.5 noBV)" => undef,
-);
 my @solvers = map {s/\s*+"(\s*+)//gr} @head[1 .. $#head];
-my @ssolvers = grep {! exists $skip_solvers{$_} } @solvers;
-
 
 foreach (@csv) {
    chomp;
@@ -73,23 +56,9 @@ foreach my $f (keys %stats) {
    }
    $stats{$f}{max} = $max;
 }
-my $column_names = ['Function', 'VC', @ssolvers];
-my $table = Text::ANSITable->new;
-$table->border_style('Default::bold');
-$table->color_theme('Default::default_gradation');
-$table->columns($column_names);
-my @data = ['', 'total', map {('vc', 'atime')} @ssolvers];
+my $column_names = ['Function', 'VC', @solvers];
+my @data = ['', 'total', map {('vc', 'atime')} @solvers];
 push @data, [];
-
-=comment
-\uline{important} underlined text like important
-\uuline{urgent} double-underlined text like urgent
-\uwave{boat} wavy underline like
-\sout{wrong} line struck through word like wrong
-\xout{removed} marked over like
-\dashuline{dashing} dashed underline like dashing
-\dotuline{dotty} dotted underline like
-=cut
 
 my $total_vc = 0;
 my %solvers_total;
@@ -105,7 +74,7 @@ foreach my $f (sort keys %stats) {
    my $tmax = -1;
    my $vmax = -1;
    my $tmin = 100000;
-   for (@ssolvers) {
+   for (@solvers) {
       my $done = '$\varnothing$';
       my $avr  = '-';
       my $str = ' - | -';
@@ -128,6 +97,7 @@ foreach my $f (sort keys %stats) {
          push @stat1, ($done, sprintf("%0.2f", $avr));
       }
    }
+   print "vmax: $vmax vmin: $vmin tmax: $tmax tmin: $tmin\n";
    for(my $i = 0; $i < @stat1; $i += 2) {
       unless ($stat1[$i] =~ /2c/){
          if ($stat1[$i] == $vmax) {
@@ -146,7 +116,6 @@ foreach my $f (sort keys %stats) {
          $i -= 1;
       }
    }
-   $table->add_row([$ff, $max, @stat]);
    push @data, [$ff, $max, @stat1];
 }
 
@@ -156,7 +125,7 @@ my @solv;
 my @solv1;
 my $vmax = -1;
 my $tmin = 100000;
-foreach(@ssolvers) {
+foreach(@solvers) {
    my $avr = 0.0;
    my @succ = grep defined, @{$solvers_total{$_}{time}};
    my $done = @succ;
@@ -180,9 +149,7 @@ for(my $i = 0; $i < @solv1; $i += 2) {
       $solv1[$i+1] = "\\cellcolor{red} $solv1[$i+1]";
    }
 }
-$table->add_row(['TOTAL', $total_vc, @solv]);
 push @data, ['TOTAL', $total_vc, @solv1];
-print $table->draw;
 
 my $ltable = LaTeX::Table->new(
    {   
@@ -193,8 +160,8 @@ my $ltable = LaTeX::Table->new(
       position    => 'tbp',
    }
 );
-my @snames = map {m/(\H++)/; "$1:2c"} @ssolvers;
-my @svers = map {m/\(([^\)]++)/; "$1:2c"} @ssolvers;
+my @snames = map {m/(\H++)/; "$1:2c"} @solvers;
+my @svers = map {m/\(([^\)]++)/; "$1:2c"} @solvers;
 $ltable->set_header([['Function', 'VC', @snames], ['', '', @svers]]);
 #$ltable->set_theme('Houston');
 $ltable->set_theme('Dresden');
