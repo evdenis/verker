@@ -24,7 +24,7 @@ char *strcat(char *dest, const char *src)
 	    loop invariant valid_str(src);
 	    loop invariant \forall integer i; 0 <= i < src - osrc ==>
 	                   mdest[i] == osrc[i];
-	    loop invariant \forall integer i;  0 <= i < src - osrc ==> mdest[i] != '\0';
+	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
 	    loop assigns mdest[0..strlen(osrc)];
 	    loop variant strlen(osrc) - (src - osrc);
 	 */
@@ -35,7 +35,11 @@ char *strcat(char *dest, const char *src)
 	//@ assert dest - 1 == tmp + dest_len + strlen(osrc);
 	//@ assert strlen(osrc) == src - osrc - 1;
 	//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (dest_len + strlen(osrc));
-	//@ assert valid_str(tmp);
+	/*@ assert valid_str(tmp) &&
+	    (tmp[(size_t)(dest_len + strlen(osrc))] == '\0') &&
+	    (\forall integer i; 0 <= i < (size_t)(dest_len + strlen(osrc)) ==> tmp[i] != '\0');
+	 */
+	//@ assert strlen(tmp) == (size_t) (dest_len + strlen(osrc));
 	return tmp;
 }
 

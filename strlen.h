@@ -61,7 +61,7 @@
        \forall char *s, size_t n;
        valid_str(s) &&
        s[n] == '\0' &&
-       (\forall size_t i; i < n ==> s[i] != '\0') ==>
+       (\forall integer i; 0 <= i < n ==> s[i] != '\0') ==>
            strlen(s) == n;
 
     lemma valid_str_shiftn:
