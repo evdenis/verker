@@ -7,12 +7,14 @@ char *strcat(char *dest, const char *src)
 
 	/*@ loop invariant tmp <= dest <= tmp + dest_len;
 	    loop invariant valid_str(dest);
+	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
 	    loop variant dest_len - (dest - tmp);
 	 */
 	while (*dest)
 		dest++;
 	//@ assert *dest == '\0';
 	//@ assert dest == tmp + dest_len;
+	//@ assert strlen(tmp) == dest_len;
 	//@ ghost char *osrc = src;
 	//@ ghost char *mdest = dest;
 
@@ -22,6 +24,7 @@ char *strcat(char *dest, const char *src)
 	    loop invariant valid_str(src);
 	    loop invariant \forall integer i; 0 <= i < src - osrc ==>
 	                   mdest[i] == osrc[i];
+	    loop invariant \forall integer i;  0 <= i < src - osrc ==> mdest[i] != '\0';
 	    loop assigns mdest[0..strlen(osrc)];
 	    loop variant strlen(osrc) - (src - osrc);
 	 */
