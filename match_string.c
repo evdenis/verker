@@ -58,5 +58,6 @@ int main(int argc, char *argv[])
 	};
 	match_string(list, -1, str);
 	match_string(list, 3, str);
+   return 0;
 }
 #endif
