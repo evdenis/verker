@@ -4,11 +4,14 @@ os:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install ocaml aspcud
+  - sudo apt-get install ocaml aspcud cvc3 z3
   - wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.06.1
-  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git
   - opam install depext
-  - opam depext --yes --noninteractive --install jessie2
+
+install:
+  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git
+  - opam depext --yes --noninteractive --install frama-c jessie2 why3 alt-ergo
 
 script:
    - make
+   - make replay-separatedly
