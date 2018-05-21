@@ -5,19 +5,20 @@ os:
 cache:
    directories:
       - $HOME/.opam
+      - /usr/local/bin
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install ocaml aspcud cvc3
+  - sudo apt-get install ocaml aspcud
   - sudo wget http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.4-x86_64-linux-opt -O /usr/local/bin/cvc4-1.4
   - wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.06.1
   - opam install depext
 
 install:
-  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git
+  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || echo "ALREADY ADDED"
+  - opam update
   - opam depext --yes --noninteractive --install -j1 frama-c jessie2 why3 alt-ergo.2.2.0
-  - eval $(opam env)
-  - why3 config --detect
+  - eval $(opam config env); why3 config --detect
 
 script:
    - make

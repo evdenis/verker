@@ -1,4 +1,5 @@
 # VerKer
+[![Replay Status](https://travis-ci.org/evdenis/verker.svg?branch=master)](https://travis-ci.org/evdenis/verker)
 
 To view this file in Russian, please follow the [link](README_ru.md).
 

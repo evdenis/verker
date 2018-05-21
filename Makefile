@@ -15,7 +15,12 @@ VALDIR           := $(GENDIR)/val
 GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
 EACSLFUZZDIR     := $(FUZZDIR)/eacsl
+OPAM_VERSION     := $(shell opam --version | grep -q '^2.' && echo 2 || echo 1)
+ifeq ($(OPAM_VERSION), 2)
+OPAM_EVAL        := eval $$(opam env)
+else
 OPAM_EVAL        := eval $$(opam config env)
+endif
 FRAMAC           := $(OPAM_EVAL); frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_DFLAGS    := -jessie
@@ -193,7 +198,7 @@ replay-separatedly: ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
 
 replay-proved: ## Replay proved functions consequently.
-	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
+	@FAIL=0; for i in $(PROVEDFILES); do $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c

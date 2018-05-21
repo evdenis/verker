@@ -1,4 +1,5 @@
 # VerKer
+[![Replay Status](https://travis-ci.org/evdenis/verker.svg?branch=master)](https://travis-ci.org/evdenis/verker)
 
 ACSL cпецикации к библиотечным функциям ядра Linux
 
