@@ -10,9 +10,9 @@ before_install:
 
 install:
   - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git
-  - opam depext --yes --noninteractive --install frama-c jessie2 why3 alt-ergo
+  - opam depext --yes --noninteractive --install -j1 frama-c jessie2 why3 alt-ergo.2.2.0
   - why3 config --detect
 
 script:
    - make
-   - make replay-separatedly
+   - make replay-proved

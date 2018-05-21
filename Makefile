@@ -192,6 +192,9 @@ replay: ## Replay proofs simultaiously. You can also type replay-<target>.
 replay-separatedly: ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
 
+replay-proved: ## Replay proved functions consequently.
+	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
+
 replay-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
 
@@ -201,7 +204,7 @@ sprove: ## Replay proofs simultaiously. You can also type sprove-<target>.
 sprove-separatedly: ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
-sprove-proved:
+sprove-proved: ## Run sprove strategy on proved functions.
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPRVE) $$i; done
 
 sprove-%:
@@ -210,7 +213,7 @@ sprove-%:
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.pp.c
 
-.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved sprove-proved replay replay-separatedly sprove sprove-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved sprove-proved replay replay-separatedly replay-proved sprove sprove-separatedly clean
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
