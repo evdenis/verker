@@ -1,0 +1,139 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+voidP[..] memcpy(voidP[..] dest_3, voidP[..] src_1, uint64 count)
+  requires ((_C_44 : (src_1 <: charP)) &&
+             ((_C_45 : (dest_3 <: charP)) &&
+               ((_C_46 : \at((if (\at(0,Here) <=
+                                   \at(((count :> integer) - 1),Here)) then 
+                             (((\offset_min(\at((src_1 :> charP[..]),Here)) <=
+                                 \at(0,Here)) &&
+                                (\offset_max(\at((src_1 :> charP[..]),Here)) >=
+                                  \at(((count :> integer) - 1),Here))) &&
+                               (\forall integer __framac_tmp1;
+                                 (((\at(0,Here) <= __framac_tmp1) &&
+                                    (__framac_tmp1 <=
+                                      \at(((count :> integer) - 1),Here))) ==>
+                                   true))) else true),Here)) &&
+                 (_C_47 : \at((if (\at(0,Here) <=
+                                    \at(((count :> integer) - 1),Here)) then 
+                              (((\offset_min(\at((dest_3 :> charP[..]),Here)) <=
+                                  \at(0,Here)) &&
+                                 (\offset_max(\at((dest_3 :> charP[..]),Here)) >=
+                                   \at(((count :> integer) - 1),Here))) &&
+                                (\forall integer __framac_tmp2;
+                                  (((\at(0,Here) <= __framac_tmp2) &&
+                                     (__framac_tmp2 <=
+                                       \at(((count :> integer) - 1),Here))) ==>
+                                    true))) else true),Here)))));
+behavior default:
+  assigns ((dest_3 :> charP[..]) + [0..((count :> integer) - 1)]).charM;
+  ensures (_C_43 : (\forall integer i_2;
+                     (((0 <= i_2) && (i_2 < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_3,Old) :> charP[..]) + i_2).charM ==
+                         ((\at(src_1,Old) :> charP[..]) + i_2).charM))));
+{  
+   (var charP[..] tmp);
+   
+   (var charP[..] s);
+   
+   (var uint64 ocount);
+   
+   (var charP[..] tmp_0);
+   
+   (var charP[..] tmp_1);
+   
+   (var uint64 tmp_2);
+   
+   {  (_C_2 : (tmp = (_C_1 : (dest_3 :> charP[..]))));
+      (_C_4 : (s = (_C_3 : (src_1 :> charP[..]))));
+      (_C_5 : (ocount = count));
+      
+      loop 
+      behavior default:
+        invariant (_C_25 : ((_C_26 : ((0 :> uint64) <= count)) &&
+                             (_C_27 : (count <= ocount))));
+      behavior default:
+        invariant (_C_18 : (((_C_20 : (\base_block((dest_3 :> charP[..])) ==
+                                        \base_block(tmp))) &&
+                              (_C_21 : (((dest_3 :> charP[..]) - tmp) <= 0))) &&
+                             ((_C_23 : (\base_block(tmp) ==
+                                         \base_block(((dest_3 :> charP[..]) +
+                                                       (ocount :> integer))))) &&
+                               (_C_24 : ((tmp -
+                                           ((dest_3 :> charP[..]) +
+                                             (ocount :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_11 : (((_C_13 : (\base_block((src_1 :> charP[..])) ==
+                                        \base_block(s))) &&
+                              (_C_14 : (((src_1 :> charP[..]) - s) <= 0))) &&
+                             ((_C_16 : (\base_block(s) ==
+                                         \base_block(((src_1 :> charP[..]) +
+                                                       (ocount :> integer))))) &&
+                               (_C_17 : ((s -
+                                           ((src_1 :> charP[..]) +
+                                             (ocount :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_8 : ((_C_9 : ((tmp - (dest_3 :> charP[..])) ==
+                                     (s - (src_1 :> charP[..])))) &&
+                            (_C_10 : ((s - (src_1 :> charP[..])) ==
+                                       ((ocount :> integer) -
+                                         (count :> integer))))));
+      behavior default:
+        invariant (_C_7 : (\forall integer i_1;
+                            (((0 <= i_1) &&
+                               (i_1 <
+                                 ((ocount :> integer) - (count :> integer)))) ==>
+                              (((dest_3 :> charP[..]) + i_1).charM ==
+                                ((src_1 :> charP[..]) + i_1).charM))));
+      variant (_C_6 : count);
+      while (true)
+      {  
+         {  
+            {  (_C_28 : (tmp_2 = count));
+               (_C_31 : (count = (_C_30 : ((_C_29 : (count -% (1 :> uint64))) :> uint64))));
+               ()
+            };
+            (if (_C_32 : ((tmp_2 :> uint64) != (0 :> uint64))) then () else 
+            (goto while_0_break));
+            
+            {  (_C_33 : (tmp_0 = tmp));
+               (_C_35 : (tmp = (_C_34 : (tmp + (1 :> int32)))));
+               (_C_36 : (tmp_1 = s));
+               (_C_38 : (s = (_C_37 : (s + (1 :> int32)))));
+               (_C_41 : ((_C_40 : tmp_0.charM) = (_C_39 : tmp_1.charM)))
+            }
+         }
+      };
+      (while_0_break : ());
+      
+      {  
+         (assert for default: (_C_42 : (jessie : (count ==
+                                                   ((- 1) :%> uint64)))));
+         ()
+      };
+      
+      (return dest_3)
+   }
+}

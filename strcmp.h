@@ -59,10 +59,10 @@
     assigns \nothing;
     //ensures \result == strcmp(cs, ct);
     behavior equal:
-       assumes \forall integer i; 0 <= i <= strlen(cs) ==> (u8 %)cs[i] == (u8 %)ct[i];
+       assumes \forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i];
        ensures \result == 0;
     behavior not_equal:
-       assumes \exists integer i; 0 <= i <= strlen(cs) && (u8 %)cs[i] != (u8 %)ct[i];
+       assumes \exists integer i; 0 <= i <= strlen(cs) && cs[i] != ct[i];
        ensures \result == -1 || \result == 1;
        ensures \exists integer i; 0 <= i <= strlen(cs) &&
                (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&

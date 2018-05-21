@@ -1,6 +1,7 @@
 #ifndef __STRNLEN_H__
 #define __STRNLEN_H__
 
+#include "strlen.h"
 #include "kernel_definitions.h"
 
 /*@ axiomatic Strnlen {
@@ -12,6 +13,9 @@
        \forall char *s, size_t cnt;
        valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
           valid_strn(s+1, (size_t)(cnt-1));
+    lemma valid_str_to_valid_strn:
+       \forall char *s, size_t cnt;
+         valid_str(s) ==> valid_strn(s, cnt);
 
     logic size_t strnlen(char *s, size_t cnt) =
        (s[0] == '\0' || cnt == 0) ?
@@ -24,8 +28,17 @@
              0 <= strnlen(s, cnt) <= cnt;
 
     lemma strnlen_null:
-       \forall char *s, size_t cnt;
-       strnlen(s, cnt) == 0 <==> (*s == '\0' || cnt == 0);
+       \forall char *s, size_t cnt; \valid(s) ==>
+         (strnlen(s, cnt) == 0 <==> (*s == '\0' || cnt == 0));
+
+    lemma strnlen_zero_count:
+       \forall char *s;
+         strnlen(s, 0) == 0;
+
+    lemma strnlen_min_len:
+      \forall char *s, size_t cnt;
+       (\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ==>
+         strnlen(s, cnt) == \min(strlen(s), cnt);
 
     lemma strnlen_before_zero:
        \forall char* s, size_t i, cnt;
@@ -72,6 +85,11 @@
        \forall char *s, size_t cnt;
           valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
              strnlen(s, cnt) == strnlen(s+1, (size_t)(cnt-1)) + 1;
+
+    lemma strnlen_cmp:
+       \forall char *s1, *s2, size_t cnt;
+       valid_str(s1) && valid_strn(s2, cnt) && strlen(s1) < strnlen(s2, cnt) ==>
+         strnlen(s1, cnt) < strnlen(s2, cnt);
 
     lemma strnlen_less:
        \forall char *s, size_t i, cnt;

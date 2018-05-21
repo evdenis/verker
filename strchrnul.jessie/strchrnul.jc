@@ -1,0 +1,329 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = {
+  uint8 unsigned_charM: 8;
+}
+
+type unsigned_charP = [unsigned_charP]
+
+axiomatic Strlen {
+
+  predicate valid_str{L}(charP[..] s) =
+  \at((\exists uint64 n_1;
+        (((s + (n_1 :> integer)).charM == (0 :> int8)) &&
+          \at((if (\at(0,L) <= \at(n_1,L)) then (((\offset_min(\at(s,L)) <=
+                                                    \at(0,L)) &&
+                                                   (\offset_max(\at(s,L)) >=
+                                                     \at(n_1,L))) &&
+                                                  (\forall integer __framac_tmp1;
+                                                    (((\at(0,L) <=
+                                                        __framac_tmp1) &&
+                                                       (__framac_tmp1 <=
+                                                         \at(n_1,L))) ==>
+                                                      true))) else true),L))),L)
+   
+  lemma valid_str_shift1{L} :
+  (_C_1 : (\forall charP[..] s_0;
+            (((s_0.charM != (0 :> int8)) && valid_str{L}(s_0)) ==>
+              valid_str{L}((s_0 + 1)))))
+   
+  lemma valid_str_strend{L} :
+  (_C_2 : (\forall charP[..] s_1;
+            ((\at((((\offset_min(\at(s_1,L)) <= \at(0,L)) &&
+                     (\offset_max(\at(s_1,L)) >= \at(0,L))) &&
+                    true),L) &&
+               (s_1.charM == (0 :> int8))) ==>
+              valid_str{L}(s_1))))
+   
+  logic uint64 strlen{L}(charP[..] s_2) =
+  \at((if ((s_2 + 0).charM == (0 :> int8)) then (0 :> uint64) else ((1 +
+                                                                    (strlen{L}(
+                                                                    (s_2 + 1)) :> integer)) :> uint64)),L)
+   
+  lemma strlen_before_null{L} :
+  (_C_3 : (\forall charP[..] s_3;
+            (\forall integer i_1;
+              (((valid_str{L}(s_3) && (0 <= i_1)) &&
+                 (i_1 < (strlen{L}(s_3) :> integer))) ==>
+                ((s_3 + i_1).charM != (0 :> int8))))))
+   
+  lemma strlen_at_null{L} :
+  (_C_4 : (\forall charP[..] s_4;
+            (valid_str{L}(s_4) ==>
+              ((s_4 + (strlen{L}(s_4) :> integer)).charM == (0 :> int8)))))
+   
+  lemma strlen_shift{L} :
+  (_C_5 : (\forall charP[..] s_5;
+            (\forall uint64 i_2;
+              ((valid_str{L}(s_5) && (i_2 <= strlen{L}(s_5))) ==>
+                ((strlen{L}((s_5 + (i_2 :> integer))) :> integer) ==
+                  ((strlen{L}(s_5) :> integer) - (i_2 :> integer)))))))
+   
+  lemma strlen_shift_ex{L} :
+  (_C_6 : (\forall charP[..] s_6;
+            (\forall uint64 i_3;
+              (((valid_str{L}(s_6) && ((0 :> uint64) < i_3)) &&
+                 (i_3 <= strlen{L}(s_6))) ==>
+                (strlen{L}((s_6 + (i_3 :> integer))) < strlen{L}(s_6))))))
+   
+  lemma strlen_shift1{L} :
+  (_C_7 : (\forall charP[..] s_7;
+            ((valid_str{L}(s_7) && (s_7.charM != (0 :> int8))) ==>
+              ((strlen{L}(s_7) :> integer) ==
+                (1 + (strlen{L}((s_7 + 1)) :> integer))))))
+   
+  lemma strlen_pointers{L} :
+  (_C_8 : (\forall charP[..] s_8;
+            (\forall charP[..] sc;
+              (((((valid_str{L}(s_8) && valid_str{L}(sc)) &&
+                   (\base_block(s_8) == \base_block(sc))) &&
+                  ((\base_block(s_8) == \base_block(sc)) &&
+                    ((s_8 - sc) <= 0))) &&
+                 (\forall integer i_4;
+                   (((0 <= i_4) && (i_4 <= (sc - s_8))) ==>
+                     ((s_8 + i_4).charM != (0 :> int8))))) ==>
+                (strlen{L}(sc) <= strlen{L}(s_8))))))
+   
+  lemma strlen_main{L} :
+  (_C_9 : (\forall charP[..] s_9;
+            (\forall uint64 n_2;
+              (((valid_str{L}(s_9) &&
+                  ((s_9 + (n_2 :> integer)).charM == (0 :> int8))) &&
+                 (\forall integer i_5;
+                   (((0 <= i_5) && (i_5 < (n_2 :> integer))) ==>
+                     ((s_9 + i_5).charM != (0 :> int8))))) ==>
+                (strlen{L}(s_9) == n_2)))))
+   
+  lemma valid_str_shiftn{L} :
+  (_C_10 : (\forall charP[..] s_10;
+             (\forall integer i_6;
+               (((valid_str{L}(s_10) && (0 <= i_6)) &&
+                  (i_6 < (strlen{L}(s_10) :> integer))) ==>
+                 valid_str{L}((s_10 + i_6))))))
+  
+}
+
+uint64 strlen(charP[..] s_0)
+  requires (_C_16 : valid_str{Here}(s_0));
+behavior default:
+  assigns \nothing;
+  ensures (_C_11 : ((_C_12 : (\result == strlen{Here}(\at(s_0,Old)))) &&
+                     ((_C_14 : ((\at(s_0,Old) + (\result :> integer)).charM ==
+                                 (0 :> int8))) &&
+                       (_C_15 : (\forall integer i_7;
+                                  (((0 <= i_7) &&
+                                     (i_7 < (\result :> integer))) ==>
+                                    ((\at(s_0,Old) + i_7).charM !=
+                                      (0 :> int8))))))));
+;
+
+axiomatic Strchrnul {
+
+  logic charP[..] strchrnul{L}(charP[..] str, int8 c) =
+  \at((if (str.charM == c) then str else (if (str.charM == (0 :> int8)) then str else strchrnul{L}(
+                                         (str + 1), c))),L)
+   
+  lemma strchrnul_mem{L} :
+  (_C_17 : (\forall charP[..] str_0;
+             (\forall int8 c_0;
+               (valid_str{L}(str_0) ==>
+                 (((\base_block(str_0) ==
+                     \base_block(strchrnul{L}(str_0, c_0))) &&
+                    ((str_0 - strchrnul{L}(str_0, c_0)) <= 0)) &&
+                   ((\base_block(strchrnul{L}(str_0, c_0)) ==
+                      \base_block((str_0 + (strlen{L}(str_0) :> integer)))) &&
+                     ((strchrnul{L}(str_0, c_0) -
+                        (str_0 + (strlen{L}(str_0) :> integer))) <=
+                       0)))))))
+   
+  lemma strchrnul_iter_one{L} :
+  (_C_18 : (\forall charP[..] str_1;
+             (\forall int8 c_1;
+               (((valid_str{L}(str_1) && (str_1.charM != c_1)) &&
+                  (str_1.charM != (0 :> int8))) ==>
+                 (strchrnul{L}(str_1, c_1) == strchrnul{L}((str_1 + 1), c_1))))))
+   
+  lemma strchrnul_res{L} :
+  (_C_19 : (\forall charP[..] str_2;
+             (\forall int8 c_2;
+               (valid_str{L}(str_2) ==>
+                 (((strchrnul{L}(str_2, c_2).charM == (0 :> int8)) &&
+                    (! (strchrnul{L}(str_2, c_2).charM == c_2))) ||
+                   ((strchrnul{L}(str_2, c_2).charM == c_2) &&
+                     (! (strchrnul{L}(str_2, c_2).charM == (0 :> int8)))))))))
+   
+  lemma strchrnul_strlen{L} :
+  (_C_20 : (\forall charP[..] str_3;
+             (valid_str{L}(str_3) ==>
+               ((strlen{L}(str_3) :> integer) ==
+                 (strchrnul{L}(str_3, (0 :> int8)) - str_3)))))
+   
+  lemma strchrnul_at_end{L} :
+  (_C_21 : (\forall charP[..] str_4;
+             (\forall int8 c_3;
+               ((\at((((\offset_min(\at(str_4,L)) <= \at(0,L)) &&
+                        (\offset_max(\at(str_4,L)) >= \at(0,L))) &&
+                       true),L) &&
+                  ((str_4.charM == (0 :> int8)) || (str_4.charM == c_3))) ==>
+                 (strchrnul{L}(str_4, c_3) == str_4)))))
+   
+  lemma strchrnul_defn{L} :
+  (_C_22 : (\forall charP[..] str_5;
+             (\forall int8 c_4;
+               (\forall integer i_8;
+                 (((((valid_str{L}(str_5) && (0 <= i_8)) &&
+                      (i_8 <= (strlen{L}(str_5) :> integer))) &&
+                     (\forall integer j_0;
+                       (((0 <= j_0) && (j_0 < i_8)) ==>
+                         ((str_5 + j_0).charM != c_4)))) &&
+                    ((str_5 + i_8).charM == c_4)) ==>
+                   ((str_5 + i_8) == strchrnul{L}(str_5, c_4)))))))
+   
+  lemma strchrnul_skipped{L} :
+  (_C_23 : (\forall charP[..] str_6;
+             (\forall int8 c_5;
+               (\forall integer i_9;
+                 ((((valid_str{L}(str_6) && (0 <= i_9)) &&
+                     (i_9 < (strchrnul{L}(str_6, c_5) - str_6))) &&
+                    ((strchrnul{L}(str_6, c_5) - str_6) <=
+                      (strlen{L}(str_6) :> integer))) ==>
+                   ((str_6 + i_9).charM != c_5))))))
+  
+}
+
+charP[..] strchrnul(charP[..] s, int32 c)
+  requires (_C_67 : valid_str{Here}(s));
+behavior default:
+  assigns \nothing;
+  ensures (_C_48 : ((_C_49 : (\base_block(\result) ==
+                               \base_block(\at(s,Old)))) &&
+                     ((_C_51 : (\result ==
+                                 strchrnul{Here}(\at(s,Old),
+                                                 (\at(c,Old) :%> int8)))) &&
+                       (((_C_54 : (\base_block(\at(s,Old)) ==
+                                    \base_block(\result))) &&
+                          (_C_55 : ((\at(s,Old) - \result) <= 0))) &&
+                         ((_C_57 : (\base_block(\result) ==
+                                     \base_block((\at(s,Old) +
+                                                   (strlen{Here}(\at(s,Old)) :> integer))))) &&
+                           (_C_58 : ((\result -
+                                       (\at(s,Old) +
+                                         (strlen{Here}(\at(s,Old)) :> integer))) <=
+                                      0)))))));
+behavior not_exists:
+  assumes (\forall integer i_11;
+            (((0 <= i_11) && (i_11 < (strlen{Here}(s) :> integer))) ==>
+              ((s + i_11).charM != (c :%> int8))));
+  ensures (_C_59 : ((_C_60 : (\result ==
+                               (\at(s,Old) +
+                                 (strlen{Here}(\at(s,Old)) :> integer)))) &&
+                     (_C_61 : (\result.charM == (0 :> int8)))));
+behavior exists:
+  assumes (\exists integer i_10;
+            (((0 <= i_10) && (i_10 < (strlen{Here}(s) :> integer))) &&
+              ((s + i_10).charM == (c :%> int8))));
+  ensures (_C_62 : ((_C_63 : (\result.charM == (\at(c,Old) :%> int8))) &&
+                     (_C_64 : (\forall charP[..] p_0;
+                                ((((\base_block(\at(s,Old)) ==
+                                     \base_block(p_0)) &&
+                                    ((\at(s,Old) - p_0) <= 0)) &&
+                                   ((\base_block(p_0) ==
+                                      \base_block(\result)) &&
+                                     ((p_0 - \result) < 0))) ==>
+                                  (p_0.charM != (\at(c,Old) :%> int8)))))));
+{  
+   (check (disjoint_behaviors : (! ((\forall integer i_11;
+                                      (((0 <= i_11) &&
+                                         (i_11 <
+                                           (strlen{Here}(s) :> integer))) ==>
+                                        ((s + i_11).charM != (c :%> int8)))) &&
+                                     (\exists integer i_10;
+                                       (((0 <= i_10) &&
+                                          (i_10 <
+                                            (strlen{Here}(s) :> integer))) &&
+                                         ((s + i_10).charM == (c :%> int8))))))));
+   
+   (check (complete_behaviors : ((\exists integer i_10;
+                                   (((0 <= i_10) &&
+                                      (i_10 < (strlen{Here}(s) :> integer))) &&
+                                     ((s + i_10).charM == (c :%> int8)))) ||
+                                  (\forall integer i_11;
+                                    (((0 <= i_11) &&
+                                       (i_11 < (strlen{Here}(s) :> integer))) ==>
+                                      ((s + i_11).charM != (c :%> int8)))))));
+   
+   (var charP[..] os);
+   
+   (var charP[..] __retres);
+   
+   {  (_C_24 : (os = s));
+      
+      loop 
+      behavior default:
+        invariant (_C_35 : valid_str{Here}(s));
+      behavior default:
+        invariant (_C_28 : (((_C_30 : (\base_block(os) == \base_block(s))) &&
+                              (_C_31 : ((os - s) <= 0))) &&
+                             ((_C_33 : (\base_block(s) ==
+                                         \base_block((os +
+                                                       (strlen{Here}(
+                                                       os) :> integer))))) &&
+                               (_C_34 : ((s -
+                                           (os +
+                                             (strlen{Here}(os) :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_27 : (\forall charP[..] p;
+                             ((((\base_block(os) == \base_block(p)) &&
+                                 ((os - p) <= 0)) &&
+                                ((\base_block(p) == \base_block(s)) &&
+                                  ((p - s) < 0))) ==>
+                               (p.charM != (c :%> int8)))));
+      behavior default:
+        invariant (_C_26 : (strchrnul{Here}(os, (c :%> int8)) ==
+                             strchrnul{Here}(s, (c :%> int8))));
+      variant (_C_25 : ((strlen{Here}(os) :> integer) - (s - os)));
+      while (true)
+      {  
+         {  (if (_C_42 : (((_C_41 : s.charM) :> int8) != (0 :> int8))) then 
+            (if (_C_40 : ((_C_39 : ((_C_38 : s.charM) :> int32)) !=
+                           (_C_37 : ((_C_36 : (c :%> int8)) :> int32)))) then () else 
+            (goto while_0_break)) else 
+            (goto while_0_break));
+            (_C_44 : (s = (_C_43 : (s + (1 :> int32)))))
+         }
+      };
+      (while_0_break : ());
+      
+      {  
+         (assert for default: (_C_45 : (jessie : (((c :%> int8) ==
+                                                    (0 :> int8)) ==>
+                                                   (s.charM == (0 :> int8))))));
+         ()
+      };
+      
+      {  
+         (assert for default: (_C_46 : (jessie : ((s.charM == (0 :> int8)) ==>
+                                                   ((s - os) ==
+                                                     (strlen{Here}(os) :> integer))))));
+         ()
+      };
+      (_C_47 : (__retres = s));
+      
+      (return __retres)
+   }
+}
