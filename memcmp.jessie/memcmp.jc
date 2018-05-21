@@ -1,0 +1,196 @@
+
+axiomatic Padding {
+
+  logic type padding
+  
+}
+
+axiomatic Jessie_memory_reinterpretation_predicates {
+
+  predicate uint8_as_uint8(uint8 d0, uint8 a0) =
+  ((d0 == a0) && \uint8_as_uint8(d0, a0))
+   
+  logic uint8 complement_to_uint8(int8 v) =
+  (if (v >= 0) then (v :> uint8) else (((v :> integer) + 256) :> uint8))
+   
+  predicate uint8_as_int8(int8 d0, uint8 a0) =
+  (uint8_as_uint8(complement_to_uint8(d0), a0) && \uint8_as_int8(d0, a0))
+   
+  predicate int8_as_uint8(int8 d0, uint8 a0) =
+  (uint8_as_uint8(complement_to_uint8(d0), a0) && \int8_as_uint8(d0, a0))
+  
+}
+
+tag voidP = {
+}
+
+type voidP = [voidP]
+
+tag charP = voidP with {
+  int8 charM: 8;
+}
+
+tag unsigned_charP = voidP with {
+  uint8 unsigned_charM: 8;
+}
+
+int32 memcmp(voidP[..] cs, voidP[..] ct, uint64 count)
+  requires ((_C_52 : (cs <: unsigned_charP)) &&
+             ((_C_53 : (ct <: unsigned_charP)) &&
+               ((_C_54 : \at((if (\at(0,Here) <=
+                                   \at(((count :> integer) - 1),Here)) then 
+                             (((\offset_min(\at((cs :> unsigned_charP[..]),Here)) <=
+                                 \at(0,Here)) &&
+                                (\offset_max(\at((cs :> unsigned_charP[..]),Here)) >=
+                                  \at(((count :> integer) - 1),Here))) &&
+                               (\forall integer __framac_tmp1;
+                                 (((\at(0,Here) <= __framac_tmp1) &&
+                                    (__framac_tmp1 <=
+                                      \at(((count :> integer) - 1),Here))) ==>
+                                   true))) else true),Here)) &&
+                 ((_C_55 : \at((if (\at(0,Here) <=
+                                     \at(((count :> integer) - 1),Here)) then 
+                               (((\offset_min(\at((ct :> unsigned_charP[..]),Here)) <=
+                                   \at(0,Here)) &&
+                                  (\offset_max(\at((ct :> unsigned_charP[..]),Here)) >=
+                                    \at(((count :> integer) - 1),Here))) &&
+                                 (\forall integer __framac_tmp2;
+                                   (((\at(0,Here) <= __framac_tmp2) &&
+                                      (__framac_tmp2 <=
+                                        \at(((count :> integer) - 1),Here))) ==>
+                                     true))) else true),Here)) &&
+                   (_C_56 : (((\base_block((cs :> unsigned_charP[..])) ==
+                                \base_block((ct :> unsigned_charP[..]))) &&
+                               (! (\base_block((cs :> unsigned_charP[..])) !=
+                                    \base_block((ct :> unsigned_charP[..]))))) ||
+                              ((\base_block((cs :> unsigned_charP[..])) !=
+                                 \base_block((ct :> unsigned_charP[..]))) &&
+                                (! (\base_block((cs :> unsigned_charP[..])) ==
+                                     \base_block((ct :> unsigned_charP[..])))))))))));
+behavior default:
+  assigns \nothing;
+  ensures true;
+behavior equal:
+  assumes (\forall integer i_4;
+            (((0 <= i_4) && (i_4 < (count :> integer))) ==>
+              (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
+                ((ct :> unsigned_charP[..]) + i_4).unsigned_charM)));
+  ensures (_C_48 : (\result == (0 :> int32)));
+behavior diff:
+  assumes (\exists integer i_2;
+            (((0 <= i_2) && (i_2 < (count :> integer))) &&
+              (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
+                ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)));
+  ensures (_C_49 : (\exists integer i_3;
+                     (((((0 <= i_3) && (i_3 < (\at(count,Old) :> integer))) &&
+                         (\forall integer j_0;
+                           (((0 <= j_0) && (j_0 < i_3)) ==>
+                             (((\at(cs,Old) :> unsigned_charP[..]) + j_0).unsigned_charM ==
+                               ((\at(ct,Old) :> unsigned_charP[..]) + j_0).unsigned_charM)))) &&
+                        (((\at(cs,Old) :> unsigned_charP[..]) + i_3).unsigned_charM !=
+                          ((\at(ct,Old) :> unsigned_charP[..]) + i_3).unsigned_charM)) &&
+                       ((\result :> integer) ==
+                         ((((\at(cs,Old) :> unsigned_charP[..]) + i_3).unsigned_charM :> integer) -
+                           (((\at(ct,Old) :> unsigned_charP[..]) + i_3).unsigned_charM :> integer))))));
+{  
+   (check (disjoint_behaviors : (! ((\forall integer i_4;
+                                      (((0 <= i_4) &&
+                                         (i_4 < (count :> integer))) ==>
+                                        (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
+                                          ((ct :> unsigned_charP[..]) + i_4).unsigned_charM))) &&
+                                     (\exists integer i_2;
+                                       (((0 <= i_2) &&
+                                          (i_2 < (count :> integer))) &&
+                                         (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
+                                           ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)))))));
+   
+   (check (complete_behaviors : ((\exists integer i_2;
+                                   (((0 <= i_2) &&
+                                      (i_2 < (count :> integer))) &&
+                                     (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
+                                       ((ct :> unsigned_charP[..]) + i_2).unsigned_charM))) ||
+                                  (\forall integer i_4;
+                                    (((0 <= i_4) &&
+                                       (i_4 < (count :> integer))) ==>
+                                      (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
+                                        ((ct :> unsigned_charP[..]) + i_4).unsigned_charM))))));
+   
+   (var unsigned_charP[..] su1);
+   
+   (var unsigned_charP[..] su2);
+   
+   (var int32 res);
+   
+   (var int32 __retres);
+   
+   {  (_C_1 : (res = (0 :> int32)));
+      (_C_3 : (su1 = (_C_2 : (cs :> unsigned_charP[..]))));
+      (_C_5 : (su2 = (_C_4 : (ct :> unsigned_charP[..]))));
+      
+      loop 
+      behavior default:
+        invariant (_C_26 : ((_C_27 : ((0 :> uint64) <= count)) &&
+                             (_C_28 : (count <= \at(count,Pre)))));
+      behavior default:
+        invariant (_C_19 : (((_C_21 : (\base_block((cs :> unsigned_charP[..])) ==
+                                        \base_block(su1))) &&
+                              (_C_22 : (((cs :> unsigned_charP[..]) - su1) <=
+                                         0))) &&
+                             ((_C_24 : (\base_block(su1) ==
+                                         \base_block(((cs :> unsigned_charP[..]) +
+                                                       (\at(count,Pre) :> integer))))) &&
+                               (_C_25 : ((su1 -
+                                           ((cs :> unsigned_charP[..]) +
+                                             (\at(count,Pre) :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_12 : (((_C_14 : (\base_block((ct :> unsigned_charP[..])) ==
+                                        \base_block(su2))) &&
+                              (_C_15 : (((ct :> unsigned_charP[..]) - su2) <=
+                                         0))) &&
+                             ((_C_17 : (\base_block(su2) ==
+                                         \base_block(((ct :> unsigned_charP[..]) +
+                                                       (\at(count,Pre) :> integer))))) &&
+                               (_C_18 : ((su2 -
+                                           ((ct :> unsigned_charP[..]) +
+                                             (\at(count,Pre) :> integer))) <=
+                                          0)))));
+      behavior default:
+        invariant (_C_9 : ((_C_10 : ((su1 - (cs :> unsigned_charP[..])) ==
+                                      (su2 - (ct :> unsigned_charP[..])))) &&
+                            (_C_11 : ((su2 - (ct :> unsigned_charP[..])) ==
+                                       ((\at(count,Pre) :> integer) -
+                                         (count :> integer))))));
+      behavior default:
+        invariant (_C_8 : (\forall integer i_1;
+                            (((0 <= i_1) &&
+                               (i_1 <
+                                 ((\at(count,Pre) :> integer) -
+                                   (count :> integer)))) ==>
+                              (((cs :> unsigned_charP[..]) + i_1).unsigned_charM ==
+                                ((ct :> unsigned_charP[..]) + i_1).unsigned_charM))));
+      behavior default:
+        invariant (_C_7 : (res == (0 :> int32)));
+      behavior default:
+        
+        assigns res;
+      variant (_C_6 : count);
+      while (true)
+      {  
+         {  (if (_C_30 : ((_C_29 : ((0 :> int32) :> uint64)) < count)) then () else 
+            (goto while_0_break));
+            (_C_37 : (res = (_C_36 : ((_C_35 : ((_C_34 : ((_C_33 : su1.unsigned_charM) :> int32)) -
+                                                 (_C_32 : ((_C_31 : su2.unsigned_charM) :> int32)))) :> int32))));
+            (if (_C_38 : (res != (0 :> int32))) then 
+            (goto while_0_break) else ());
+            (_C_40 : (su1 = (_C_39 : (su1 + (1 :> int32)))));
+            (_C_42 : (su2 = (_C_41 : (su2 + (1 :> int32)))));
+            (_C_45 : (count = (_C_44 : ((_C_43 : (count - (1 :> uint64))) :> uint64))))
+         }
+      };
+      (while_0_break : ());
+      (_C_47 : (__retres = (_C_46 : (res :> int32))));
+      
+      (return __retres)
+   }
+}
