@@ -1,7 +1,7 @@
 #include "strrchr.h"
 
 
-/*@ axiomatic Strrchr {
+/* axiomatic Strrchr {
     logic char *strrchr_helper(char *s, char c, char *pos) =
        *pos == c ? pos : (pos == s ? (char *) \null : strrchr_helper(s,c,pos-1));
     logic char *strrchr(char *s, char c) = strrchr_helper(s, c, s + strlen(s));
@@ -50,7 +50,7 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
-    ensures \result == strrchr(s, (char %) c);
+    //ensures \result == strrchr(s, (char %) c);
     behavior found:
        assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char %)c;
        ensures s <= \result <= s + strlen(s);
@@ -83,7 +83,7 @@ char *strrchr(const char *s, int c)
 	//@ assert s[-1] == '\0';
 	//@ assert s == os + strlen(os) + 1;
 	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char %) c) ==> (last != \null);
-	//@ assert strrchr(\at(s,Pre), (char %c)) == last;
+	// assert strrchr(\at(s,Pre), (char %) c) == last;
 	return (char *)last;
 }
 
