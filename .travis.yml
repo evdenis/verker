@@ -15,9 +15,10 @@ before_install:
   - opam install depext
 
 install:
-  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || echo "ALREADY ADDED"
+  - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
   - opam update
   - opam depext --yes --noninteractive --install -j1 frama-c jessie2 why3 alt-ergo.2.2.0
+  - rm -fr ~/.opam/log
   - eval $(opam config env); why3 config --detect
 
 script:
