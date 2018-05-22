@@ -182,7 +182,10 @@ verify: ## Run Frama-C on all files simultaneously. You can also type verify-<ta
 verify-separatedly: ## Run Frama-C on each file consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
 
-verify-proved: ## Run Frama-C on each file consequently.
+verify-proved: ## Run Frama-C on each file consequently. Only completely proved functions.
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(PROVEDFILES)
+
+verify-proved-separatedly: ## Run Frama-C on each file consequently. Only completely proved functions.
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
 
 verify-%:
@@ -197,7 +200,10 @@ replay: ## Replay proofs simultaiously. You can also type replay-<target>.
 replay-separatedly: ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
 
-replay-proved: ## Replay proved functions consequently.
+replay-proved: ## Replay proofs for completely proved functions.
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(PROVEDFILES)
+
+replay-proved-separatedly: ## Replay proved functions consequently.
 	@FAIL=0; for i in $(PROVEDFILES); do $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
@@ -218,7 +224,7 @@ sprove-%:
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.pp.c
 
-.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved sprove-proved replay replay-separatedly replay-proved sprove sprove-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
