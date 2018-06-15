@@ -17,6 +17,7 @@ before_install:
 install:
   - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
   - opam update
+  - opam upgrade --yes -j1
   - opam depext --yes --noninteractive --install -j1 frama-c jessie2 why3 alt-ergo.2.2.0
   - rm -fr ~/.opam/log
   - eval $(opam config env); why3 config --detect
