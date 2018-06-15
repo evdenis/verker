@@ -6,6 +6,7 @@
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="3" steplimit="0" memlimit="16000"/>
 <prover id="2" name="CVC4" version="1.4" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
 <prover id="3" name="CVC4" version="1.5" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
+<prover id="4" name="CVC4" version="1.5" timelimit="3" steplimit="0" memlimit="16000"/>
 <file name="../whole_program.mlw" expanded="true">
 <theory name="Function_memcpy_safety" sum="4f55391fd03a86866c74e7097ecc45c4">
  <goal name="WP_parameter memcpy" expl="Function memcpy, safety">
@@ -73,10 +74,15 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_memmove_safety" sum="f128d199bacdde11968a321ac2e39912" expanded="true">
- <goal name="WP_parameter memmove" expl="Function memmove, safety" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter memmove.1" expl="Pointer difference" expanded="true">
+<theory name="Function_memmove_safety" sum="f128d199bacdde11968a321ac2e39912">
+ <goal name="WP_parameter memmove" expl="Function memmove, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter memmove.1" expl="Pointer difference">
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
   <goal name="WP_parameter memmove.2" expl="Downcast">
   <proof prover="1"><result status="valid" time="0.03" steps="149"/></proof>
@@ -637,7 +643,11 @@
  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess" expl="Function _parse_integer_fixup_radix, behavior guess">
  <transf name="split_goal_wp">
   <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.1" expl="Ensures clause (Postcondition)">
-  <proof prover="2"><result status="valid" time="0.93"/></proof>
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
   <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.2" expl="Ensures clause (Postcondition)">
   <proof prover="1"><result status="valid" time="0.26" steps="143"/></proof>
@@ -1375,7 +1385,11 @@
   <proof prover="1"><result status="valid" time="0.02" steps="145"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.9" expl="integer overflow">
-  <proof prover="2"><result status="valid" time="0.74"/></proof>
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.10" expl="integer overflow">
   <proof prover="2"><result status="valid" time="0.05"/></proof>
@@ -1383,7 +1397,7 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcasecmp_behaviors" sum="01d6f6ca53864a18b1ffb3f0afc54269">
+<theory name="Function_strcasecmp_behaviors" sum="b7360331a4fc803d1682ca551bfd658b">
  <goal name="WP_parameter strcasecmp_ensures_default" expl="Function strcasecmp, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcasecmp_ensures_default.1" expl="Behavior disjointness check">
@@ -1460,7 +1474,11 @@
   </transf>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.5" expl="Assertion in line 22">
-  <proof prover="2"><result status="valid" time="0.55"/></proof>
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.01"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.6" expl="Assertion in line 23">
   <proof prover="2"><result status="valid" time="0.04"/></proof>
@@ -1469,7 +1487,11 @@
   <proof prover="2"><result status="valid" time="0.04"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.8" expl="Assertion in line 23">
-  <proof prover="2"><result status="valid" time="1.40"/></proof>
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.01"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
  </transf>
  </goal>
@@ -1486,9 +1508,13 @@
    <goal name="WP_parameter strcasecmp_ensures_not_equal.1.2" expl="Ensures clause">
    <transf name="inline_all">
     <goal name="WP_parameter strcasecmp_ensures_not_equal.1.2.1" expl="Ensures clause">
-    <transf name="remove_triggers">
+    <transf name="introduce_premises">
      <goal name="WP_parameter strcasecmp_ensures_not_equal.1.2.1.1" expl="Ensures clause">
-     <proof prover="1" timelimit="5" memlimit="2000"><result status="valid" time="4.64" steps="13754"/></proof>
+     <proof prover="0"><undone/></proof>
+     <proof prover="1"><result status="timeout" time="5.01"/></proof>
+     <proof prover="2"><result status="unknown" time="2.95"/></proof>
+     <proof prover="3"><undone/></proof>
+     <proof prover="4"><undone/></proof>
      </goal>
     </transf>
     </goal>
@@ -1497,22 +1523,11 @@
   </transf>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_not_equal.2" expl="Ensures clause (Postcondition)">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strcasecmp_ensures_not_equal.2.1" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="2.86"/></proof>
-   </goal>
-   <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2" expl="Ensures clause">
-   <transf name="inline_all">
-    <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2.1" expl="Ensures clause">
-    <transf name="remove_triggers">
-     <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2.1.1" expl="Ensures clause">
-     <proof prover="0" timelimit="15" memlimit="8000"><result status="valid" time="12.66"/></proof>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="5.01"/></proof>
+  <proof prover="2"><result status="unknown" time="4.89"/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
  </transf>
  </goal>
@@ -2979,14 +2994,14 @@
 </theory>
 <theory name="Axiomatic_IntBase" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_CheckBytes8" sum="643ccd6ea208f581521acd59c6a00146">
- <goal name="Check_bytes8_shift1" expl="Lemma check_bytes8_shift1">
+<theory name="Axiomatic_CheckBytes8" sum="643ccd6ea208f581521acd59c6a00146" expanded="true">
+ <goal name="Check_bytes8_shift1" expl="Lemma check_bytes8_shift1" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="10"/></proof>
  </goal>
- <goal name="Check_bytes8_stop" expl="Lemma check_bytes8_stop">
+ <goal name="Check_bytes8_stop" expl="Lemma check_bytes8_stop" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="10"/></proof>
  </goal>
- <goal name="Check_bytes8_stop_bytes_zero" expl="Lemma check_bytes8_stop_bytes_zero">
+ <goal name="Check_bytes8_stop_bytes_zero" expl="Lemma check_bytes8_stop_bytes_zero" expanded="true">
  <proof prover="1"><result status="valid" time="0.00" steps="2"/></proof>
  </goal>
 </theory>
@@ -3016,14 +3031,39 @@
 </theory>
 <theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="5.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="5.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="5.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="5.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="5.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex">
  <proof prover="1"><result status="valid" time="0.01" steps="33"/></proof>
@@ -3038,6 +3078,11 @@
  <proof prover="1"><result status="valid" time="0.04" steps="366"/></proof>
  </goal>
  <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
 <theory name="Function_isspace_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -3046,19 +3091,49 @@
 </theory>
 <theory name="Axiomatic_SkipSpaces" sum="a71bc8c7827fbac7488f8e8c71514760" expanded="true">
  <goal name="Skip_spaces_defn" expl="Lemma skip_spaces_defn" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Skip_spaces_deref" expl="Lemma skip_spaces_deref" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Skip_spaces_range" expl="Lemma skip_spaces_range" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Skip_spaces_iter_one" expl="Lemma skip_spaces_iter_one" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Skip_spaces_base_addr" expl="Lemma skip_spaces_base_addr" expanded="true">
  <proof prover="1"><result status="valid" time="0.29" steps="56"/></proof>
  </goal>
  <goal name="Skip_spaces_same" expl="Lemma skip_spaces_same" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Skipped_are_spaces" expl="Lemma skipped_are_spaces" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
 <theory name="Function_tolower_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -3071,13 +3146,28 @@
 </theory>
 <theory name="Axiomatic_Strchr" sum="858bfd4bf0ce59ac846882161cb04c59" expanded="true">
  <goal name="Strchr_mem" expl="Lemma strchr_mem" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchr_iter_one" expl="Lemma strchr_iter_one" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="8"/></proof>
  </goal>
  <goal name="Strchr_res" expl="Lemma strchr_res" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchr_at_end_zero" expl="Lemma strchr_at_end_zero" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchr_at_end_char" expl="Lemma strchr_at_end_char" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="8"/></proof>
@@ -3111,14 +3201,28 @@
 </theory>
 <theory name="Axiomatic_Strchrnul" sum="7fb11a58ae4e98454a285c1fe511e70a" expanded="true">
  <goal name="Strchrnul_mem" expl="Lemma strchrnul_mem" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchrnul_iter_one" expl="Lemma strchrnul_iter_one" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="8"/></proof>
  </goal>
  <goal name="Strchrnul_res" expl="Lemma strchrnul_res" expanded="true">
+ <proof prover="0" timelimit="3" memlimit="16000"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchrnul_strlen" expl="Lemma strchrnul_strlen">
- <proof prover="2"><result status="valid" time="0.02"/></proof>
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strchrnul_at_end" expl="Lemma strchrnul_at_end" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="7"/></proof>
@@ -3134,10 +3238,20 @@
 </theory>
 <theory name="Unsafe_bit_uint8_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrSpn" sum="48d8c062e20190ca5268fd92233c4b2a" expanded="true">
+<theory name="Axiomatic_StrSpn" sum="e1dda07bf1e2b5f153891d842c07ffc0" expanded="true">
  <goal name="In_array_shift1" expl="Lemma in_array_shift1" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="In_array_true" expl="Lemma in_array_true" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="In_array_false" expl="Lemma in_array_false">
  <proof prover="1"><result status="valid" time="0.10" steps="481"/></proof>
@@ -3166,16 +3280,12 @@
  </goal>
  <goal name="Strspn_range" expl="Lemma strspn_range" expanded="true">
  <transf name="split_goal_wp" expanded="true">
-  <goal name="Strspn_range.1" expl="Lemma strspn_range" expanded="true">
-  <transf name="inline_all" expanded="true">
-   <goal name="Strspn_range.1.1" expl="Lemma strspn_range" expanded="true">
-   <transf name="introduce_premises" expanded="true">
-    <goal name="Strspn_range.1.1.1" expl="Lemma strspn_range">
-    <proof prover="3"><result status="valid" time="1.44"/></proof>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <goal name="Strspn_range.1" expl="Lemma strspn_range">
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="3.01"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
   <goal name="Strspn_range.2" expl="Lemma strspn_range">
   <transf name="inline_all">
@@ -3202,9 +3312,14 @@
  </transf>
  </goal>
  <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
-<theory name="Axiomatic_StrCSpn" sum="21c80244891e057cf3995341dc809d0c" expanded="true">
+<theory name="Axiomatic_StrCSpn" sum="f471e28bcc5aed2fa2b7a70da8f57eaa" expanded="true">
  <goal name="Strcspn_strend" expl="Lemma strcspn_strend">
  <transf name="inline_all">
   <goal name="Strcspn_strend.1" expl="Lemma strcspn_strend">
@@ -3220,25 +3335,25 @@
  <proof prover="2"><result status="valid" time="0.63"/></proof>
  </goal>
  <goal name="Strcspn_range" expl="Lemma strcspn_range" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="Strcspn_range.1" expl="Lemma strcspn_range" expanded="true">
-  <transf name="inline_all" expanded="true">
-   <goal name="Strcspn_range.1.1" expl="Lemma strcspn_range" expanded="true">
-   <transf name="introduce_premises" expanded="true">
-    <goal name="Strcspn_range.1.1.1" expl="Lemma strcspn_range">
-    <proof prover="3"><result status="valid" time="2.56"/></proof>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="Strcspn_range.2" expl="Lemma strcspn_range" expanded="true">
-  </goal>
- </transf>
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.05"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strcspn_shift1" expl="Lemma strcspn_shift1" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strcspn_stop_in_reject" expl="Lemma strcspn_stop_in_reject" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.01"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_memcpy_char" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -3251,7 +3366,7 @@
 </theory>
 <theory name="Unsafe_int8_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strnlen" sum="0e98219184e3309eea120a39419a4754" expanded="true">
+<theory name="Axiomatic_Strnlen" sum="26cccde7ade05e81382a8d5f63994c9c" expanded="true">
  <goal name="Valid_strn_shift1" expl="Lemma valid_strn_shift1">
  <transf name="inline_all">
   <goal name="Valid_strn_shift1.1" expl="Lemma valid_strn_shift1">
@@ -3272,27 +3387,40 @@
   <proof prover="1"><result status="valid" time="0.02" steps="49"/></proof>
   </goal>
   <goal name="Strnlen_range.2" expl="Lemma strnlen_range" expanded="true">
+  <proof prover="0"><undone/></proof>
+  <proof prover="1"><result status="timeout" time="3.01"/></proof>
+  <proof prover="2"><undone/></proof>
+  <proof prover="3"><undone/></proof>
+  <proof prover="4"><undone/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="Strnlen_null" expl="Lemma strnlen_null" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="Strnlen_null.1" expl="Lemma strnlen_null" expanded="true">
-  </goal>
-  <goal name="Strnlen_null.2" expl="Lemma strnlen_null">
-  <proof prover="1" timelimit="5" memlimit="2000"><result status="valid" time="0.02" steps="112"/></proof>
-  </goal>
- </transf>
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strnlen_zero_count" expl="Lemma strnlen_zero_count" expanded="true">
  <proof prover="1"><result status="valid" time="0.01" steps="16"/></proof>
  </goal>
  <goal name="Strnlen_min_len" expl="Lemma strnlen_min_len" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strnlen_before_zero" expl="Lemma strnlen_before_zero">
  <proof prover="2"><result status="valid" time="1.88"/></proof>
  </goal>
  <goal name="Strnlen_at_zero" expl="Lemma strnlen_at_zero" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strnlen_at_cnt" expl="Lemma strnlen_at_cnt">
  <proof prover="1"><result status="valid" time="0.02" steps="28"/></proof>
@@ -3304,6 +3432,11 @@
  <proof prover="1"><result status="valid" time="0.03" steps="228"/></proof>
  </goal>
  <goal name="Strnlen_shift" expl="Lemma strnlen_shift" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="2.98"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strnlen_shift_ex" expl="Lemma strnlen_shift_ex">
  <proof prover="1"><result status="valid" time="0.02" steps="36"/></proof>
@@ -3311,18 +3444,19 @@
  <goal name="Strnlen_shift1" expl="Lemma strnlen_shift1" expanded="true">
  <proof prover="1"><result status="valid" time="0.09" steps="625"/></proof>
  </goal>
- <goal name="Strnlen_cmp" expl="Lemma strnlen_cmp" expanded="true">
- <transf name="inline_all" expanded="true">
-  <goal name="Strnlen_cmp.1" expl="Lemma strnlen_cmp" expanded="true">
-  <transf name="remove_triggers" expanded="true">
-   <goal name="Strnlen_cmp.1.1" expl="Lemma strnlen_cmp">
-   <proof prover="0" timelimit="15" memlimit="8000"><result status="valid" time="10.07"/></proof>
-   </goal>
-  </transf>
-  </goal>
- </transf>
+ <goal name="Strnlen_cmp" expl="Lemma strnlen_cmp">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="2.98"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strnlen_less" expl="Lemma strnlen_less" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="2.99"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Valid_str_strn" expl="Lemma valid_str_strn">
  <proof prover="1"><result status="valid" time="0.01" steps="6"/></proof>
@@ -3344,10 +3478,25 @@
  <proof prover="2"><result status="valid" time="0.61"/></proof>
  </goal>
  <goal name="Strpbrk_range" expl="Lemma strpbrk_range" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="2.98"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strpbrk_shift1" expl="Lemma strpbrk_shift1" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
  <goal name="Strpbrk_stop_in_ct" expl="Lemma strpbrk_stop_in_ct" expanded="true">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><result status="timeout" time="3.00"/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="3"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
 <theory name="Root_char_xP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">

@@ -22,8 +22,8 @@ Typing axiomatic Padding
 Typing axiomatic Jessie_memory_reinterpretation_predicates
 Typing tag voidP
 Typing tag charP
-Typing tag unsigned_charP
 Typing tag unsigned_intP
+Typing tag unsigned_charP
 Typing tag _BoolP
 Typing tag char_xP
 Typing axiomatic Ctype
@@ -1662,7 +1662,7 @@ Effects for function memchr:
          precise memories: 
          globals: 
          locals: __retres_1 at (Here), tmp_0_1 at (Here), tmp_0_0 at (Here),
-                 p at (Here), \result at (Here), n_1 at (Here, Pre, Old),
+                 p at (Here), \result at (Here), n at (Here, Pre, Old),
                  c_11 at (Here), s_1 at (Here)
 
  writes:  alloc_table: 
@@ -1672,7 +1672,7 @@ Effects for function memchr:
           precise memories: 
           globals: 
           locals: __retres_1 at (Here), tmp_0_1 at (Here), tmp_0_0 at (Here),
-                  p at (Here), n_1 at (Here)
+                  p at (Here), n at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -1711,23 +1711,23 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function memcpy:
  reads:  alloc_table: (src_0_22 : alloc-root "voidP") at (Here),
-                      (dest_2_21 : alloc-root "voidP") at (Here, Old)
+                      (dest_0_21 : alloc-root "voidP") at (Here, Old)
          tag_table: (src_0_22 : voidP) at (Here),
-                    (dest_2_21 : voidP) at (Here, Old)
+                    (dest_0_21 : voidP) at (Here, Old)
          memories: (src_0_22 : mem-field "charM") at (Here),
-                   (dest_2_21 : mem-field "charM") at (Here)
+                   (dest_0_21 : mem-field "charM") at (Here)
          raw memories: (src_0_22 : mem-field "charM") at (Here),
-                       (dest_2_21 : mem-field "charM") at (Here)
+                       (dest_0_21 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: tmp_2 at (Here), tmp_1_0 at (Here), tmp_0_3 at (Here),
                  s_12 at (Here), tmp_0_2 at (Here), count_0 at (Here, Old),
-                 src_0 at (Here), dest_2 at (Here)
+                 src_0 at (Here), dest_0 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_2_21 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_2_21 : mem-field "charM") at (Here, Old)
+          memories: (dest_0_21 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_0_21 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
           locals: tmp_2 at (Here), tmp_1_0 at (Here), tmp_0_3 at (Here),
@@ -1741,20 +1741,20 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function memmove:
- reads:  alloc_table: (dest_5_24 : alloc-root "voidP") at (Here, Old)
-         tag_table: (dest_5_24 : voidP) at (Here, Pre, Old)
-         memories: (dest_5_24 : mem-field "charM") at (Here, Pre, Old)
-         raw memories: (dest_5_24 : mem-field "charM") at (Here, Pre, Old)
+ reads:  alloc_table: (dest_3_24 : alloc-root "voidP") at (Here, Old)
+         tag_table: (dest_3_24 : voidP) at (Here, Pre, Old)
+         memories: (dest_3_24 : mem-field "charM") at (Here, Pre, Old)
+         raw memories: (dest_3_24 : mem-field "charM") at (Here, Pre, Old)
          precise memories: 
          globals: 
          locals: tmp_3 at (Here), tmp_2_0 at (Here), tmp_1_1 at (Here),
                  tmp_0_5 at (Here), s_13 at (Here), tmp_0_4 at (Here),
-                 count_1 at (Here, Old), src_3 at (Here), dest_5 at (Here)
+                 count_1 at (Here, Old), src_3 at (Here), dest_3 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_5_24 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_5_24 : mem-field "charM") at (Here, Old)
+          memories: (dest_3_24 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_3_24 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
           locals: tmp_3 at (Here), tmp_2_0 at (Here), tmp_1_1 at (Here),
@@ -1775,7 +1775,7 @@ Effects for function memscan:
          precise memories: 
          globals: 
          locals: __retres_3 at (Here), p_0 at (Here), \result at (Here),
-                 size_2 at (Here, Pre, Old), c_12 at (Here), addr at (Here)
+                 size_1 at (Here, Pre, Old), c_12 at (Here), addr at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -1783,7 +1783,7 @@ Effects for function memscan:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres_3 at (Here), p_0 at (Here), size_2 at (Here)
+          locals: __retres_3 at (Here), p_0 at (Here), size_1 at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -1852,10 +1852,10 @@ Effects for function strcasecmp:
                        (s1_37 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: __cil_tmp_13 at (Here), __cil_tmp at (Here),
-                 __retres_5 at (Here), tmp_0_10 at (Here), tmp_0_9 at (Here),
-                 c2 at (Here), c1 at (Here), \result at (Here), s2 at (Here,
-                 Old), s1 at (Here, Old)
+         locals: __retres_5 at (Here), tmp_2_1 at (Here), tmp_1_2 at (Here),
+                 tmp_0_10 at (Here), tmp_0_9 at (Here), c2 at (Here),
+                 c1 at (Here), \result at (Here), s2 at (Here, Old),
+                 s1 at (Here, Old)
 
  writes:  alloc_table: 
           tag_table: 
@@ -1863,9 +1863,10 @@ Effects for function strcasecmp:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres_5 at (Here), res_1 at (Here), tmp_0_10 at (Here),
-                  tmp_0_9 at (Here), os2 at (Here), os1 at (Here),
-                  c2 at (Here), c1 at (Here), s2 at (Here), s1 at (Here)
+          locals: __retres_5 at (Here), res_1 at (Here), tmp_2_1 at (Here),
+                  tmp_1_2 at (Here), tmp_0_10 at (Here), tmp_0_9 at (Here),
+                  os2 at (Here), os1 at (Here), c2 at (Here), c1 at (Here),
+                  s2 at (Here), s1 at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -1899,28 +1900,28 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strcat:
  reads:  alloc_table: (src_5_40 : alloc-root "voidP") at (Here),
-                      (dest_8_39 : alloc-root "voidP") at (Here, Old)
+                      (dest_6_39 : alloc-root "voidP") at (Here, Old)
          tag_table: (src_5_40 : voidP) at (Here),
-                    (dest_8_39 : voidP) at (Here)
+                    (dest_6_39 : voidP) at (Here)
          memories: (src_5_40 : mem-field "charM") at (Here, Old),
-                   (dest_8_39 : mem-field "charM") at (Here, Pre, Old)
+                   (dest_6_39 : mem-field "charM") at (Here, Pre, Old)
          raw memories: (src_5_40 : mem-field "charM") at (Here),
-                       (dest_8_39 : mem-field "charM") at (Here, Pre, Old)
+                       (dest_6_39 : mem-field "charM") at (Here, Pre, Old)
          precise memories: 
          globals: 
-         locals: tmp_3_0 at (Here), tmp_2_1 at (Here), tmp_1_2 at (Here),
+         locals: tmp_3_0 at (Here), tmp_2_2 at (Here), tmp_1_3 at (Here),
                  tmp_0_11 at (Here), \result at (Here), src_5 at (Here, Old),
-                 dest_8 at (Here, Pre, Old)
+                 dest_6 at (Here, Pre, Old)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_8_39 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_8_39 : mem-field "charM") at (Here, Old)
+          memories: (dest_6_39 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_6_39 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
-          locals: tmp_3_0 at (Here), tmp_2_1 at (Here), tmp_1_2 at (Here),
+          locals: tmp_3_0 at (Here), tmp_2_2 at (Here), tmp_1_3 at (Here),
                   mdest at (Here), osrc at (Here), dest_len at (Here),
-                  tmp_0_11 at (Here), src_5 at (Here), dest_8 at (Here)
+                  tmp_0_11 at (Here), src_5 at (Here), dest_6 at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -1986,7 +1987,7 @@ Effects for function strcmp:
                        (cs_0_50 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: __retres_8 at (Here), tmp_2_2 at (Here), tmp_1_3 at (Here),
+         locals: __retres_8 at (Here), tmp_2_3 at (Here), tmp_1_4 at (Here),
                  tmp_0_13 at (Here), tmp_0_12 at (Here), c2_0 at (Here),
                  c1_0 at (Here), \result at (Here), ct_0 at (Here, Pre, Old),
                  cs_0 at (Here, Pre, Old)
@@ -1997,7 +1998,7 @@ Effects for function strcmp:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres_8 at (Here), tmp_2_2 at (Here), tmp_1_3 at (Here),
+          locals: __retres_8 at (Here), tmp_2_3 at (Here), tmp_1_4 at (Here),
                   res_2 at (Here), tmp_0_13 at (Here), tmp_0_12 at (Here),
                   c2_0 at (Here), c1_0 at (Here), ct_0 at (Here),
                   cs_0 at (Here)
@@ -2010,28 +2011,28 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strcpy:
  reads:  alloc_table: (src_6_53 : alloc-root "voidP") at (Here),
-                      (dest_9_52 : alloc-root "voidP") at (Here, Old)
+                      (dest_7_52 : alloc-root "voidP") at (Here, Old)
          tag_table: (src_6_53 : voidP) at (Here),
-                    (dest_9_52 : voidP) at (Here)
+                    (dest_7_52 : voidP) at (Here)
          memories: (src_6_53 : mem-field "charM") at (Here, Old),
-                   (dest_9_52 : mem-field "charM") at (Here)
+                   (dest_7_52 : mem-field "charM") at (Here)
          raw memories: (src_6_53 : mem-field "charM") at (Here),
-                       (dest_9_52 : mem-field "charM") at (Here)
+                       (dest_7_52 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: tmp_2_3 at (Here), tmp_1_4 at (Here), tmp_0_15 at (Here),
+         locals: tmp_2_4 at (Here), tmp_1_5 at (Here), tmp_0_15 at (Here),
                  tmp_0_14 at (Here), \result at (Here), src_6 at (Here, Old),
-                 dest_9 at (Here, Old)
+                 dest_7 at (Here, Old)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_9_52 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_9_52 : mem-field "charM") at (Here, Old)
+          memories: (dest_7_52 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_7_52 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
-          locals: tmp_2_3 at (Here), tmp_1_4 at (Here), tmp_0_15 at (Here),
+          locals: tmp_2_4 at (Here), tmp_1_5 at (Here), tmp_0_15 at (Here),
                   osrc_0 at (Here), tmp_0_14 at (Here), src_6 at (Here),
-                  dest_9 at (Here)
+                  dest_7 at (Here)
 
  raises: 
 Effects: doing one iteration...
@@ -2070,20 +2071,20 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function memcpy_char_0:
  reads:  alloc_table: (src_2_63 : alloc-root "voidP") at (Here),
-                      (dest_4_62 : alloc-root "voidP") at (Here, Old)
+                      (dest_2_62 : alloc-root "voidP") at (Here, Old)
          tag_table: 
          memories: (src_2_63 : mem-field "charM") at (Here),
-                   (dest_4_62 : mem-field "charM") at (Here)
+                   (dest_2_62 : mem-field "charM") at (Here)
          raw memories: 
          precise memories: 
          globals: 
-         locals: \result at (Here), n_4 at (Here), src_2 at (Here),
-                 dest_4 at (Here)
+         locals: \result at (Here), n_2 at (Here), src_2 at (Here),
+                 dest_2 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_4_62 : mem-field "charM") at (Old)
-          raw memories: (dest_4_62 : mem-field "charM") at (Old)
+          memories: (dest_2_62 : mem-field "charM") at (Old)
+          raw memories: (dest_2_62 : mem-field "charM") at (Old)
           precise memories: 
           globals: 
           locals: 
@@ -2096,22 +2097,22 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlcpy:
  reads:  alloc_table: (src_7_70 : alloc-root "voidP") at (Here),
-                      (dest_10_69 : alloc-root "voidP") at (Here, Old)
+                      (dest_8_69 : alloc-root "voidP") at (Here, Old)
          tag_table: (src_7_70 : voidP) at (Here),
-                    (dest_10_69 : voidP) at (Here)
+                    (dest_8_69 : voidP) at (Here)
          memories: (src_7_70 : mem-field "charM") at (Here, Old),
-                   (dest_10_69 : mem-field "charM") at (Here)
+                   (dest_8_69 : mem-field "charM") at (Here)
          raw memories: (src_7_70 : mem-field "charM") at (Here),
-                       (dest_10_69 : mem-field "charM") at (Here)
+                       (dest_8_69 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: tmp_0_16 at (Here), len at (Here), ret at (Here),
-                 size_3 at (Here), src_7 at (Here), dest_10 at (Here)
+                 size_2 at (Here), src_7 at (Here), dest_8 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_10_69 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_10_69 : mem-field "charM") at (Here, Old)
+          memories: (dest_8_69 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_8_69 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
           locals: tmp_0_16 at (Here), len at (Here), ret at (Here)
