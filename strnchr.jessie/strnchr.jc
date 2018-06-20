@@ -14,12 +14,6 @@ tag charP = voidP with {
   int8 charM: 8;
 }
 
-tag unsigned_charP = {
-  uint8 unsigned_charM: 8;
-}
-
-type unsigned_charP = [unsigned_charP]
-
 axiomatic Strlen {
 
   predicate valid_str{L}(charP[..] s) =
@@ -56,10 +50,10 @@ axiomatic Strlen {
    
   lemma strlen_before_null{L} :
   (_C_3 : (\forall charP[..] s_3;
-            (\forall integer i_1;
-              (((valid_str{L}(s_3) && (0 <= i_1)) &&
-                 (i_1 < (strlen{L}(s_3) :> integer))) ==>
-                ((s_3 + i_1).charM != (0 :> int8))))))
+            (\forall integer i;
+              (((valid_str{L}(s_3) && (0 <= i)) &&
+                 (i < (strlen{L}(s_3) :> integer))) ==>
+                ((s_3 + i).charM != (0 :> int8))))))
    
   lemma strlen_at_null{L} :
   (_C_4 : (\forall charP[..] s_4;
@@ -68,17 +62,17 @@ axiomatic Strlen {
    
   lemma strlen_shift{L} :
   (_C_5 : (\forall charP[..] s_5;
-            (\forall uint64 i_2;
-              ((valid_str{L}(s_5) && (i_2 <= strlen{L}(s_5))) ==>
-                ((strlen{L}((s_5 + (i_2 :> integer))) :> integer) ==
-                  ((strlen{L}(s_5) :> integer) - (i_2 :> integer)))))))
+            (\forall uint64 i_0;
+              ((valid_str{L}(s_5) && (i_0 <= strlen{L}(s_5))) ==>
+                ((strlen{L}((s_5 + (i_0 :> integer))) :> integer) ==
+                  ((strlen{L}(s_5) :> integer) - (i_0 :> integer)))))))
    
   lemma strlen_shift_ex{L} :
   (_C_6 : (\forall charP[..] s_6;
-            (\forall uint64 i_3;
-              (((valid_str{L}(s_6) && ((0 :> uint64) < i_3)) &&
-                 (i_3 <= strlen{L}(s_6))) ==>
-                (strlen{L}((s_6 + (i_3 :> integer))) < strlen{L}(s_6))))))
+            (\forall uint64 i_1;
+              (((valid_str{L}(s_6) && ((0 :> uint64) < i_1)) &&
+                 (i_1 <= strlen{L}(s_6))) ==>
+                (strlen{L}((s_6 + (i_1 :> integer))) < strlen{L}(s_6))))))
    
   lemma strlen_shift1{L} :
   (_C_7 : (\forall charP[..] s_7;
@@ -93,9 +87,9 @@ axiomatic Strlen {
                    (\base_block(s_8) == \base_block(sc))) &&
                   ((\base_block(s_8) == \base_block(sc)) &&
                     ((s_8 - sc) <= 0))) &&
-                 (\forall integer i_4;
-                   (((0 <= i_4) && (i_4 <= (sc - s_8))) ==>
-                     ((s_8 + i_4).charM != (0 :> int8))))) ==>
+                 (\forall integer i_2;
+                   (((0 <= i_2) && (i_2 <= (sc - s_8))) ==>
+                     ((s_8 + i_2).charM != (0 :> int8))))) ==>
                 (strlen{L}(sc) <= strlen{L}(s_8))))))
    
   lemma strlen_main{L} :
@@ -103,17 +97,17 @@ axiomatic Strlen {
             (\forall uint64 n_2;
               (((valid_str{L}(s_9) &&
                   ((s_9 + (n_2 :> integer)).charM == (0 :> int8))) &&
-                 (\forall integer i_5;
-                   (((0 <= i_5) && (i_5 < (n_2 :> integer))) ==>
-                     ((s_9 + i_5).charM != (0 :> int8))))) ==>
+                 (\forall integer i_3;
+                   (((0 <= i_3) && (i_3 < (n_2 :> integer))) ==>
+                     ((s_9 + i_3).charM != (0 :> int8))))) ==>
                 (strlen{L}(s_9) == n_2)))))
    
   lemma valid_str_shiftn{L} :
   (_C_10 : (\forall charP[..] s_10;
-             (\forall integer i_6;
-               (((valid_str{L}(s_10) && (0 <= i_6)) &&
-                  (i_6 < (strlen{L}(s_10) :> integer))) ==>
-                 valid_str{L}((s_10 + i_6))))))
+             (\forall integer i_4;
+               (((valid_str{L}(s_10) && (0 <= i_4)) &&
+                  (i_4 < (strlen{L}(s_10) :> integer))) ==>
+                 valid_str{L}((s_10 + i_4))))))
   
 }
 
@@ -124,10 +118,10 @@ behavior default:
   ensures (_C_11 : ((_C_12 : (\result == strlen{Here}(\at(s,Old)))) &&
                      ((_C_14 : ((\at(s,Old) + (\result :> integer)).charM ==
                                  (0 :> int8))) &&
-                       (_C_15 : (\forall integer i_7;
-                                  (((0 <= i_7) &&
-                                     (i_7 < (\result :> integer))) ==>
-                                    ((\at(s,Old) + i_7).charM != (0 :> int8))))))));
+                       (_C_15 : (\forall integer i_5;
+                                  (((0 <= i_5) &&
+                                     (i_5 < (\result :> integer))) ==>
+                                    ((\at(s,Old) + i_5).charM != (0 :> int8))))))));
 ;
 
 axiomatic Strnlen {
@@ -218,11 +212,11 @@ axiomatic Strnlen {
    
   lemma strnlen_before_zero{L} :
   (_C_23 : (\forall charP[..] s_19;
-             (\forall uint64 i_8;
+             (\forall uint64 i_6;
                (\forall uint64 cnt_6;
-                 (((valid_strn{L}(s_19, cnt_6) && ((0 :> uint64) <= i_8)) &&
-                    (i_8 < strnlen{L}(s_19, cnt_6))) ==>
-                   ((s_19 + (i_8 :> integer)).charM != (0 :> int8)))))))
+                 (((valid_strn{L}(s_19, cnt_6) && ((0 :> uint64) <= i_6)) &&
+                    (i_6 < strnlen{L}(s_19, cnt_6))) ==>
+                   ((s_19 + (i_6 :> integer)).charM != (0 :> int8)))))))
    
   lemma strnlen_at_zero{L} :
   (_C_24 : (\forall charP[..] s_20;
@@ -234,12 +228,12 @@ axiomatic Strnlen {
    
   lemma strnlen_at_cnt{L} :
   (_C_25 : (\forall charP[..] s_21;
-             (\forall uint64 i_9;
+             (\forall uint64 i_7;
                (\forall uint64 cnt_8;
                  ((valid_strn{L}(s_21, cnt_8) &&
-                    (i_9 == strnlen{L}(s_21, cnt_8))) ==>
-                   (((s_21 + (i_9 :> integer)).charM == (0 :> int8)) ||
-                     (i_9 == cnt_8)))))))
+                    (i_7 == strnlen{L}(s_21, cnt_8))) ==>
+                   (((s_21 + (i_7 :> integer)).charM == (0 :> int8)) ||
+                     (i_7 == cnt_8)))))))
    
   lemma strnlen_zero{L} :
   (_C_26 : (\forall charP[..] s_22;
@@ -247,9 +241,9 @@ axiomatic Strnlen {
                (\forall uint64 n_5;
                  ((((valid_strn{L}(s_22, cnt_9) && (n_5 < cnt_9)) &&
                      ((s_22 + (n_5 :> integer)).charM == (0 :> int8))) &&
-                    (\forall uint64 i_10;
-                      ((i_10 < n_5) ==>
-                        ((s_22 + (i_10 :> integer)).charM != (0 :> int8))))) ==>
+                    (\forall uint64 i_8;
+                      ((i_8 < n_5) ==>
+                        ((s_22 + (i_8 :> integer)).charM != (0 :> int8))))) ==>
                    (strnlen{L}(s_22, cnt_9) == n_5))))))
    
   lemma strnlen_cnt{L} :
@@ -263,21 +257,21 @@ axiomatic Strnlen {
    
   lemma strnlen_shift{L} :
   (_C_28 : (\forall charP[..] s_24;
-             (\forall uint64 i_11;
+             (\forall uint64 i_9;
                (\forall uint64 cnt_11;
                  ((valid_strn{L}(s_24, cnt_11) &&
-                    (i_11 <= strnlen{L}(s_24, cnt_11))) ==>
-                   ((strnlen{L}((s_24 + (i_11 :> integer)), cnt_11) :> integer) ==
+                    (i_9 <= strnlen{L}(s_24, cnt_11))) ==>
+                   ((strnlen{L}((s_24 + (i_9 :> integer)), cnt_11) :> integer) ==
                      ((strnlen{L}(s_24, cnt_11) :> integer) -
-                       (i_11 :> integer))))))))
+                       (i_9 :> integer))))))))
    
   lemma strnlen_shift_ex{L} :
   (_C_29 : (\forall charP[..] s_25;
-             (\forall uint64 i_12;
+             (\forall uint64 i_10;
                (\forall uint64 cnt_12;
-                 (((valid_strn{L}(s_25, cnt_12) && ((0 :> uint64) < i_12)) &&
-                    (i_12 <= strnlen{L}(s_25, cnt_12))) ==>
-                   (strnlen{L}((s_25 + (i_12 :> integer)), cnt_12) <
+                 (((valid_strn{L}(s_25, cnt_12) && ((0 :> uint64) < i_10)) &&
+                    (i_10 <= strnlen{L}(s_25, cnt_12))) ==>
+                   (strnlen{L}((s_25 + (i_10 :> integer)), cnt_12) <
                      strnlen{L}(s_25, cnt_12)))))))
    
   lemma strnlen_shift1{L} :
@@ -300,10 +294,10 @@ axiomatic Strnlen {
    
   lemma strnlen_less{L} :
   (_C_32 : (\forall charP[..] s_27;
-             (\forall uint64 i_13;
+             (\forall uint64 i_11;
                (\forall uint64 cnt_15;
-                 ((valid_strn{L}(s_27, cnt_15) && (i_13 <= cnt_15)) ==>
-                   (strnlen{L}(s_27, i_13) <= strnlen{L}(s_27, cnt_15)))))))
+                 ((valid_strn{L}(s_27, cnt_15) && (i_11 <= cnt_15)) ==>
+                   (strnlen{L}(s_27, i_11) <= strnlen{L}(s_27, cnt_15)))))))
    
   lemma valid_str_strn{L} :
   (_C_33 : (\forall charP[..] s_28;
@@ -319,20 +313,20 @@ behavior default:
   assigns \nothing;
   ensures (_C_34 : (\result == strnlen{Here}(\at(s_1,Old), \at(count_0,Old))));
 behavior null_byte:
-  assumes (\exists integer i_15;
-            (((0 <= i_15) && (i_15 <= (count_0 :> integer))) &&
-              ((s_1 + i_15).charM == (0 :> int8))));
+  assumes (\exists integer i_13;
+            (((0 <= i_13) && (i_13 <= (count_0 :> integer))) &&
+              ((s_1 + i_13).charM == (0 :> int8))));
   ensures (_C_35 : ((_C_36 : ((\at(s_1,Old) + (\result :> integer)).charM ==
                                (0 :> int8))) &&
-                     (_C_37 : (\forall integer i_16;
-                                (((0 <= i_16) &&
-                                   (i_16 < (\result :> integer))) ==>
-                                  ((\at(s_1,Old) + i_16).charM !=
+                     (_C_37 : (\forall integer i_14;
+                                (((0 <= i_14) &&
+                                   (i_14 < (\result :> integer))) ==>
+                                  ((\at(s_1,Old) + i_14).charM !=
                                     (0 :> int8)))))));
 behavior count_len:
-  assumes (\forall integer i_14;
-            (((0 <= i_14) && (i_14 <= (count_0 :> integer))) ==>
-              ((s_1 + i_14).charM != (0 :> int8))));
+  assumes (\forall integer i_12;
+            (((0 <= i_12) && (i_12 <= (count_0 :> integer))) ==>
+              ((s_1 + i_12).charM != (0 :> int8))));
   ensures (_C_38 : (\result == \at(count_0,Old)));
 ;
 

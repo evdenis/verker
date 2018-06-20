@@ -1881,8 +1881,18 @@ theory Axiomatic_CheckBytes8
   
   use why3.Bool.Bool 
   
-  function check_bytes8 (pointer voidP) Uint8.t int (memory voidP Uint8.t) :
-  (pointer voidP)
+  function check_bytes8 (start_0 : (pointer voidP)) (value : Uint8.t) (bytes
+  : int) (unsigned_charP_unsigned_charM_start_2_at_L : (memory voidP
+  Uint8.t)) : (pointer voidP)
+  =
+     (if ((=) bytes (0)) then null else
+      (if
+       (Uint8.(<>)
+       (select unsigned_charP_unsigned_charM_start_2_at_L start_0) value)
+       then start_0 else
+       (check_bytes8 (shift start_0 (1)) value (Int.(-) bytes (1))
+       unsigned_charP_unsigned_charM_start_2_at_L)))
+  
   
   lemma Check_bytes8_shift1
   #"/home/work/workspace/self/verker-gh/check_bytes8.h" 11 7 212#
@@ -1956,25 +1966,6 @@ theory Axiomatic_CheckBytes8
      ((=)
      (check_bytes8 start_2 value_2 (0)
      unsigned_charP_unsigned_charM_start_2_13_at_L) null)))))
-  
-  axiom Check_bytes8_definition :
-  (forall start_0 : (pointer voidP).
-   (forall value : Uint8.t.
-    (forall bytes : int.
-     (forall unsigned_charP_unsigned_charM_start_2_at_L : (memory voidP
-      Uint8.t)
-      [(check_bytes8 start_0 value bytes
-       unsigned_charP_unsigned_charM_start_2_at_L)] .
-      ((=)
-      (check_bytes8 start_0 value bytes
-      unsigned_charP_unsigned_charM_start_2_at_L)
-      (if ((=) bytes (0)) then null else
-       (if
-        (Uint8.(<>)
-        (select unsigned_charP_unsigned_charM_start_2_at_L start_0) value)
-        then start_0 else
-        (check_bytes8 (shift start_0 (1)) value (Int.(-) bytes (1))
-        unsigned_charP_unsigned_charM_start_2_at_L))))))))
   
 end
 
@@ -2098,18 +2089,18 @@ module Function_check_bytes8_0_safety
         (let _jessie_30 = !mutable_start_1 in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 5 11 13#
+        (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 5 15 21#
         "expl:Pointer index bounds" true) }); _jessie_30 end));
         begin
         (obytes :=
          (let _jessie_26 = !mutable_bytes_0 in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 6 11 19#
+         (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 6 24 30#
          "expl:Pointer index bounds" true) }); _jessie_26 end));
          'Loop_4:
          loop
-         invariant { (#"check_bytes8.jc" 212 6 2294# true) }
+         invariant { (#"check_bytes8.jc" 211 6 2282# true) }
            variant {
              (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 13 18 23#
              (Uint32.to_int
@@ -2129,12 +2120,12 @@ module Function_check_bytes8_0_safety
              unsigned_charP_unsigned_charM_start_4)))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 11 20 70#
-             (forall i_1 : (pointer voidP).
-              (((same_block !ostart i_1) /\
-               (((<=) (sub_pointer !ostart i_1) (0)) /\
-               ((same_block i_1 !mutable_start_1) /\
-               ((<) (sub_pointer i_1 !mutable_start_1) (0))))) ->
-               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_1)
+             (forall i : (pointer voidP).
+              (((same_block !ostart i) /\
+               (((<=) (sub_pointer !ostart i) (0)) /\
+               ((same_block i !mutable_start_1) /\
+               ((<) (sub_pointer i !mutable_start_1) (0))))) ->
+               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i)
                value_0))))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 10 20 52#
@@ -2164,7 +2155,7 @@ module Function_check_bytes8_0_safety
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 30#
-             (Uint32.(<=) (#"check_bytes8.jc" 214 38 51# "expl:Integer cast"
+             (Uint32.(<=) (#"check_bytes8.jc" 213 38 51# "expl:Integer cast"
              (Uint32.of_int (0))) !mutable_bytes_0))
             /\
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 25 40#
@@ -2175,7 +2166,7 @@ module Function_check_bytes8_0_safety
             (if
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 15 8 13#
             (Safe_uint32.(<>)  !mutable_bytes_0
-             (#"check_bytes8.jc" 244 47 60# "expl:Integer cast"
+             (#"check_bytes8.jc" 243 47 60# "expl:Integer cast"
              (Safe_uint32.of_int (0))) )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2206,7 +2197,7 @@ module Function_check_bytes8_0_safety
                (let _jessie_28 =
                (shift_typesafe  !mutable_start_1
                 (Safe_int32.to_int 
-                 (#"check_bytes8.jc" 253 51 63# "expl:Integer cast"
+                 (#"check_bytes8.jc" 252 51 63# "expl:Integer cast"
                  (Safe_int32.of_int (1))) ) ) in
                begin
                (assert {
@@ -2215,7 +2206,7 @@ module Function_check_bytes8_0_safety
                (mutable_bytes_0 :=
                 (let _jessie_29 =
                 (Safe_uint32.(-)  !mutable_bytes_0
-                 (#"check_bytes8.jc" 254 61 74# "expl:Integer cast"
+                 (#"check_bytes8.jc" 253 61 74# "expl:Integer cast"
                  (Safe_uint32.of_int (1))) ) in
                 begin
                 (assert {
@@ -2234,7 +2225,7 @@ module Function_check_bytes8_0_safety
         requires { true } reads { mutable_bytes_0 }
         ensures {
           (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 21 12 22#
-          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 261 59 72#
+          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 260 59 72#
           "expl:Integer cast" (Uint32.of_int (0))))) } ; () end;
         begin
         any unit
@@ -2258,7 +2249,7 @@ module Function_check_bytes8_0_safety
        (let _jessie_32 = !__retres in
        begin
        (assert {
-       (#"check_bytes8.jc" 274 7 22# "expl:Pointer index bounds" true) });
+       (#"check_bytes8.jc" 273 7 22# "expl:Pointer index bounds" true) });
         _jessie_32 end)); (raise Return) end end))); absurd  end with Return
     -> !return end)))
   
@@ -2367,57 +2358,57 @@ module Function_check_bytes8_0_behaviors
    try
     begin
     (check {
-    (#"check_bytes8.jc" 158 10 1475# "expl:Behavior disjointness check"
+    (#"check_bytes8.jc" 157 10 1475# "expl:Behavior disjointness check"
     (not
-    ((exists i_3_0 : (pointer voidP).
-      ((same_block !mutable_start_1 i_3_0) /\
-      (((<=) (sub_pointer !mutable_start_1 i_3_0) (0)) /\
-      ((same_block i_3_0
+    ((exists i_1_0 : (pointer voidP).
+      ((same_block !mutable_start_1 i_1_0) /\
+      (((<=) (sub_pointer !mutable_start_1 i_1_0) (0)) /\
+      ((same_block i_1_0
        (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0)))
       /\
       (((<)
-       (sub_pointer i_3_0
+       (sub_pointer i_1_0
        (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0))) (0))
       /\
-      (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_3_0)
+      (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_1_0)
       value_0))))))
     /\
-    (forall i_2_0 : (pointer voidP).
-     (((same_block !mutable_start_1 i_2_0) /\
-      (((<=) (sub_pointer !mutable_start_1 i_2_0) (0)) /\
-      ((same_block i_2_0
+    (forall i_0_0 : (pointer voidP).
+     (((same_block !mutable_start_1 i_0_0) /\
+      (((<=) (sub_pointer !mutable_start_1 i_0_0) (0)) /\
+      ((same_block i_0_0
        (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0)))
       /\
       ((<)
-      (sub_pointer i_2_0
+      (sub_pointer i_0_0
       (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0))) (0))))) ->
-      (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_2_0)
+      (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_0_0)
       value_0)))))) });
      (check {
-     (#"check_bytes8.jc" 181 10 1365# "expl:Behavior completeness check"
-     ((forall i_2_1 : (pointer voidP).
-       (((same_block !mutable_start_1 i_2_1) /\
-        (((<=) (sub_pointer !mutable_start_1 i_2_1) (0)) /\
-        ((same_block i_2_1
+     (#"check_bytes8.jc" 180 10 1365# "expl:Behavior completeness check"
+     ((forall i_0_1 : (pointer voidP).
+       (((same_block !mutable_start_1 i_0_1) /\
+        (((<=) (sub_pointer !mutable_start_1 i_0_1) (0)) /\
+        ((same_block i_0_1
          (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0)))
         /\
         ((<)
-        (sub_pointer i_2_1
+        (sub_pointer i_0_1
         (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0))) (0))))) ->
-        (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_2_1)
+        (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_0_1)
         value_0)))
      \/
-     (exists i_3_1 : (pointer voidP).
-      ((same_block !mutable_start_1 i_3_1) /\
-      (((<=) (sub_pointer !mutable_start_1 i_3_1) (0)) /\
-      ((same_block i_3_1
+     (exists i_1_1 : (pointer voidP).
+      ((same_block !mutable_start_1 i_1_1) /\
+      (((<=) (sub_pointer !mutable_start_1 i_1_1) (0)) /\
+      ((same_block i_1_1
        (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0)))
       /\
       (((<)
-       (sub_pointer i_3_1
+       (sub_pointer i_1_1
        (shift !mutable_start_1 (Uint32.to_int !mutable_bytes_0))) (0))
       /\
-      (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_3_1)
+      (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_1_1)
       value_0)))))))) });
      (let ostart = ref (any_pointer  () : (pointer voidP)) in
      (let obytes = ref (Unsafe_uint32.any_  () ) in
@@ -2435,7 +2426,7 @@ module Function_check_bytes8_0_behaviors
            { ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
               (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
               ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 30#
-               (Uint32.(<=) (#"check_bytes8.jc" 214 38 51#
+               (Uint32.(<=) (#"check_bytes8.jc" 213 38 51#
                "expl:Integer cast" (Uint32.of_int (0))) !mutable_bytes_0))
               /\
               (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 25 40#
@@ -2466,12 +2457,12 @@ module Function_check_bytes8_0_behaviors
               (Uint32.to_int !mutable_bytes_0))))
              &&
              ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 11 20 70#
-              (forall i_1 : (pointer voidP).
-               (((same_block !ostart i_1) /\
-                (((<=) (sub_pointer !ostart i_1) (0)) /\
-                ((same_block i_1 !mutable_start_1) /\
-                ((<) (sub_pointer i_1 !mutable_start_1) (0))))) ->
-                (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_1)
+              (forall i : (pointer voidP).
+               (((same_block !ostart i) /\
+                (((<=) (sub_pointer !ostart i) (0)) /\
+                ((same_block i !mutable_start_1) /\
+                ((<) (sub_pointer i !mutable_start_1) (0))))) ->
+                (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i)
                 value_0))))
              &&
              (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 12 20 92#
@@ -2489,7 +2480,7 @@ module Function_check_bytes8_0_behaviors
             (if
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 15 8 13#
             (Unsafe_uint32.(<>)  !mutable_bytes_0
-             (#"check_bytes8.jc" 244 47 60# "expl:Integer cast"
+             (#"check_bytes8.jc" 243 47 60# "expl:Integer cast"
              (Unsafe_uint32.of_int (0))) )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2512,11 +2503,11 @@ module Function_check_bytes8_0_behaviors
               (mutable_start_1 :=
                (shift_  !mutable_start_1
                 (Unsafe_int32.to_int 
-                 (#"check_bytes8.jc" 253 51 63# "expl:Integer cast"
+                 (#"check_bytes8.jc" 252 51 63# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                (mutable_bytes_0 :=
                 (Unsafe_uint32.(-)  !mutable_bytes_0
-                 (#"check_bytes8.jc" 254 61 74# "expl:Integer cast"
+                 (#"check_bytes8.jc" 253 61 74# "expl:Integer cast"
                  (Unsafe_uint32.of_int (1))) )) end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2529,7 +2520,7 @@ module Function_check_bytes8_0_behaviors
         (assert {
         (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 21 12 22#
         "expl:Assertion in line 21"
-        (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 261 59 72#
+        (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 260 59 72#
         "expl:Integer cast" (Uint32.of_int (0))))) }); () end;
         begin
         (assert {
@@ -2553,12 +2544,12 @@ module Function_check_bytes8_0_behaviors
    : (tag_table voidP)) (unsigned_charP_unsigned_charM_start_4 : (memory
    voidP Uint8.t)) 
    requires {
-   ((exists i_3 : (pointer voidP).
-     ((same_block start_1 i_3) /\
-     (((<=) (sub_pointer start_1 i_3) (0)) /\
-     ((same_block i_3 (shift start_1 (Uint32.to_int bytes_0))) /\
-     (((<) (sub_pointer i_3 (shift start_1 (Uint32.to_int bytes_0))) (0)) /\
-     (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_3) value_0))))))
+   ((exists i_1 : (pointer voidP).
+     ((same_block start_1 i_1) /\
+     (((<=) (sub_pointer start_1 i_1) (0)) /\
+     ((same_block i_1 (shift start_1 (Uint32.to_int bytes_0))) /\
+     (((<) (sub_pointer i_1 (shift start_1 (Uint32.to_int bytes_0))) (0)) /\
+     (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_1) value_0))))))
    /\
    (((allocated voidP_start_4_alloc_table start_1) ->
      (((=) (typeof voidP_start_4_tag_table start_1) unsigned_charP_tag) /\
@@ -2624,17 +2615,17 @@ module Function_check_bytes8_0_behaviors
      /\
      (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 31 15 72#
      "expl:Ensures clause"
-     (forall j_0 : (pointer voidP).
-      (((same_block start_1 j_0) /\
-       (((<=) (sub_pointer start_1 j_0) (0)) /\
-       ((same_block j_0
+     (forall j : (pointer voidP).
+      (((same_block start_1 j) /\
+       (((<=) (sub_pointer start_1 j) (0)) /\
+       ((same_block j
         (downcast voidP_start_4_tag_table result unsigned_charP_tag))
        /\
        ((<)
-       (sub_pointer j_0
+       (sub_pointer j
        (downcast voidP_start_4_tag_table result unsigned_charP_tag)) (0)))))
        ->
-       (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j_0) value_0))))))))))))))))
+       (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j) value_0))))))))))))))))
      } diverges  ->
    (let mutable_start_1 = ref start_1 in
    (let mutable_bytes_0 = ref bytes_0 in
@@ -2655,7 +2646,7 @@ module Function_check_bytes8_0_behaviors
         (obytes := !mutable_bytes_0);
          'Loop_2:
          loop
-         invariant { (#"check_bytes8.jc" 212 6 2294# true) } 
+         invariant { (#"check_bytes8.jc" 211 6 2282# true) } 
           begin
           any unit
           requires { true } reads { mutable_bytes_0, mutable_start_1, value_0
@@ -2670,12 +2661,12 @@ module Function_check_bytes8_0_behaviors
              unsigned_charP_unsigned_charM_start_4)))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 11 20 70#
-             (forall i_1 : (pointer voidP).
-              (((same_block !ostart i_1) /\
-               (((<=) (sub_pointer !ostart i_1) (0)) /\
-               ((same_block i_1 !mutable_start_1) /\
-               ((<) (sub_pointer i_1 !mutable_start_1) (0))))) ->
-               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_1)
+             (forall i : (pointer voidP).
+              (((same_block !ostart i) /\
+               (((<=) (sub_pointer !ostart i) (0)) /\
+               ((same_block i !mutable_start_1) /\
+               ((<) (sub_pointer i !mutable_start_1) (0))))) ->
+               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i)
                value_0))))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 10 20 52#
@@ -2705,7 +2696,7 @@ module Function_check_bytes8_0_behaviors
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 30#
-             (Uint32.(<=) (#"check_bytes8.jc" 214 38 51# "expl:Integer cast"
+             (Uint32.(<=) (#"check_bytes8.jc" 213 38 51# "expl:Integer cast"
              (Uint32.of_int (0))) !mutable_bytes_0))
             /\
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 25 40#
@@ -2716,7 +2707,7 @@ module Function_check_bytes8_0_behaviors
             (if
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 15 8 13#
             (Unsafe_uint32.(<>)  !mutable_bytes_0
-             (#"check_bytes8.jc" 244 47 60# "expl:Integer cast"
+             (#"check_bytes8.jc" 243 47 60# "expl:Integer cast"
              (Unsafe_uint32.of_int (0))) )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2739,11 +2730,11 @@ module Function_check_bytes8_0_behaviors
               (mutable_start_1 :=
                (shift_  !mutable_start_1
                 (Unsafe_int32.to_int 
-                 (#"check_bytes8.jc" 253 51 63# "expl:Integer cast"
+                 (#"check_bytes8.jc" 252 51 63# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                (mutable_bytes_0 :=
                 (Unsafe_uint32.(-)  !mutable_bytes_0
-                 (#"check_bytes8.jc" 254 61 74# "expl:Integer cast"
+                 (#"check_bytes8.jc" 253 61 74# "expl:Integer cast"
                  (Unsafe_uint32.of_int (1))) )) end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2757,7 +2748,7 @@ module Function_check_bytes8_0_behaviors
         requires { true } reads { mutable_bytes_0 }
         ensures {
           (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 21 12 22#
-          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 261 59 72#
+          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 260 59 72#
           "expl:Integer cast" (Uint32.of_int (0))))) } ; () end;
         begin
         any unit
@@ -2782,13 +2773,13 @@ module Function_check_bytes8_0_behaviors
    : (tag_table voidP)) (unsigned_charP_unsigned_charM_start_4 : (memory
    voidP Uint8.t)) 
    requires {
-   ((forall i_2 : (pointer voidP).
-     (((same_block start_1 i_2) /\
-      (((<=) (sub_pointer start_1 i_2) (0)) /\
-      ((same_block i_2 (shift start_1 (Uint32.to_int bytes_0))) /\
-      ((<) (sub_pointer i_2 (shift start_1 (Uint32.to_int bytes_0))) (0)))))
+   ((forall i_0 : (pointer voidP).
+     (((same_block start_1 i_0) /\
+      (((<=) (sub_pointer start_1 i_0) (0)) /\
+      ((same_block i_0 (shift start_1 (Uint32.to_int bytes_0))) /\
+      ((<) (sub_pointer i_0 (shift start_1 (Uint32.to_int bytes_0))) (0)))))
       ->
-      (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_2) value_0)))
+      (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_0) value_0)))
    /\
    (((allocated voidP_start_4_alloc_table start_1) ->
      (((=) (typeof voidP_start_4_tag_table start_1) unsigned_charP_tag) /\
@@ -2831,7 +2822,7 @@ module Function_check_bytes8_0_behaviors
         (obytes := !mutable_bytes_0);
          'Loop_3:
          loop
-         invariant { (#"check_bytes8.jc" 212 6 2294# true) } 
+         invariant { (#"check_bytes8.jc" 211 6 2282# true) } 
           begin
           any unit
           requires { true } reads { mutable_bytes_0, mutable_start_1, value_0
@@ -2846,12 +2837,12 @@ module Function_check_bytes8_0_behaviors
              unsigned_charP_unsigned_charM_start_4)))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 11 20 70#
-             (forall i_1 : (pointer voidP).
-              (((same_block !ostart i_1) /\
-               (((<=) (sub_pointer !ostart i_1) (0)) /\
-               ((same_block i_1 !mutable_start_1) /\
-               ((<) (sub_pointer i_1 !mutable_start_1) (0))))) ->
-               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_1)
+             (forall i : (pointer voidP).
+              (((same_block !ostart i) /\
+               (((<=) (sub_pointer !ostart i) (0)) /\
+               ((same_block i !mutable_start_1) /\
+               ((<) (sub_pointer i !mutable_start_1) (0))))) ->
+               (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i)
                value_0))))
             /\
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 10 20 52#
@@ -2881,7 +2872,7 @@ module Function_check_bytes8_0_behaviors
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 40#
             ((#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 20 30#
-             (Uint32.(<=) (#"check_bytes8.jc" 214 38 51# "expl:Integer cast"
+             (Uint32.(<=) (#"check_bytes8.jc" 213 38 51# "expl:Integer cast"
              (Uint32.of_int (0))) !mutable_bytes_0))
             /\
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 8 25 40#
@@ -2892,7 +2883,7 @@ module Function_check_bytes8_0_behaviors
             (if
             (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 15 8 13#
             (Unsafe_uint32.(<>)  !mutable_bytes_0
-             (#"check_bytes8.jc" 244 47 60# "expl:Integer cast"
+             (#"check_bytes8.jc" 243 47 60# "expl:Integer cast"
              (Unsafe_uint32.of_int (0))) )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2915,11 +2906,11 @@ module Function_check_bytes8_0_behaviors
               (mutable_start_1 :=
                (shift_  !mutable_start_1
                 (Unsafe_int32.to_int 
-                 (#"check_bytes8.jc" 253 51 63# "expl:Integer cast"
+                 (#"check_bytes8.jc" 252 51 63# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                (mutable_bytes_0 :=
                 (Unsafe_uint32.(-)  !mutable_bytes_0
-                 (#"check_bytes8.jc" 254 61 74# "expl:Integer cast"
+                 (#"check_bytes8.jc" 253 61 74# "expl:Integer cast"
                  (Unsafe_uint32.of_int (1))) )) end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2933,7 +2924,7 @@ module Function_check_bytes8_0_behaviors
         requires { true } reads { mutable_bytes_0 }
         ensures {
           (#"/home/work/workspace/self/verker-gh/check_bytes8.c" 21 12 22#
-          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 261 59 72#
+          (Uint32.(=) !mutable_bytes_0 (#"check_bytes8.jc" 260 59 72#
           "expl:Integer cast" (Uint32.of_int (0))))) } ; () end;
         begin
         any unit
@@ -8276,6 +8267,7 @@ theory Axiomatic_Jessie_memory_reinterpretation_predicates
   predicate uint8_as_uint8 (d0 : Uint8.t) (a0 : Uint8.t)
   = ((Uint8.(=) d0 a0) /\ ((=) d0 a0))
   
+  
   function complement_to_uint8 (v : Int8.t) : Uint8.t
   =
      (if ((>=) (Int8.to_int v) (0)) then (#"check_bytes8.jc" 14 20 32#
@@ -8283,15 +8275,18 @@ theory Axiomatic_Jessie_memory_reinterpretation_predicates
       (#"check_bytes8.jc" 14 38 71# "expl:Integer cast"
       (Uint8.of_int (Int.(+) (Int8.to_int v) (256)))))
   
-  predicate uint8_as_int8 (d0_0 : Int8.t) (a0_0 : Uint8.t)
-  =
-     ((uint8_as_uint8 (complement_to_uint8 d0_0) a0_0) /\
-     (Bit_int8_of_bit_uint8.bit_uint8_as_bit_int8 d0_0 a0_0))
   
   predicate int8_as_uint8 (d0_1 : Int8.t) (a0_1 : Uint8.t)
   =
      ((uint8_as_uint8 (complement_to_uint8 d0_1) a0_1) /\
      (Bit_uint8_of_bit_int8.bit_int8_as_bit_uint8 d0_1 a0_1))
+  
+  
+  predicate uint8_as_int8 (d0_0 : Int8.t) (a0_0 : Uint8.t)
+  =
+     ((uint8_as_uint8 (complement_to_uint8 d0_0) a0_0) /\
+     (Bit_int8_of_bit_uint8.bit_uint8_as_bit_int8 d0_0 a0_0))
+  
   
 end
 
@@ -8344,25 +8339,25 @@ module Function_check_bytes8_0
               ((<) i (offset_max voidP_start_4_alloc_table result))) ->
               (instanceof voidP_start_4_tag_table (shift result i) voidP_tag)))))
           /\
-          (((forall i_2 : (pointer voidP).
-             (((same_block start_1 i_2) /\
-              (((<=) (sub_pointer start_1 i_2) (0)) /\
-              ((same_block i_2 (shift start_1 (Uint32.to_int bytes_0))) /\
-              ((<) (sub_pointer i_2 (shift start_1 (Uint32.to_int bytes_0)))
+          (((forall i_0 : (pointer voidP).
+             (((same_block start_1 i_0) /\
+              (((<=) (sub_pointer start_1 i_0) (0)) /\
+              ((same_block i_0 (shift start_1 (Uint32.to_int bytes_0))) /\
+              ((<) (sub_pointer i_0 (shift start_1 (Uint32.to_int bytes_0)))
               (0))))) ->
-              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_2)
+              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_0)
               value_0))) ->
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 34 15 31#
             "expl:Ensures clause" ((=) result null)))
           /\
-          (((exists i_3 : (pointer voidP).
-             ((same_block start_1 i_3) /\
-             (((<=) (sub_pointer start_1 i_3) (0)) /\
-             ((same_block i_3 (shift start_1 (Uint32.to_int bytes_0))) /\
-             (((<) (sub_pointer i_3 (shift start_1 (Uint32.to_int bytes_0)))
+          (((exists i_1 : (pointer voidP).
+             ((same_block start_1 i_1) /\
+             (((<=) (sub_pointer start_1 i_1) (0)) /\
+             ((same_block i_1 (shift start_1 (Uint32.to_int bytes_0))) /\
+             (((<) (sub_pointer i_1 (shift start_1 (Uint32.to_int bytes_0)))
               (0))
              /\
-             (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_3)
+             (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_1)
              value_0)))))) ->
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 29 15 53#
             "expl:Ensures clause"
@@ -8410,17 +8405,17 @@ module Function_check_bytes8_0
             /\
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 31 15 72#
             "expl:Ensures clause"
-            (forall j_0 : (pointer voidP).
-             (((same_block start_1 j_0) /\
-              (((<=) (sub_pointer start_1 j_0) (0)) /\
-              ((same_block j_0
+            (forall j : (pointer voidP).
+             (((same_block start_1 j) /\
+              (((<=) (sub_pointer start_1 j) (0)) /\
+              ((same_block j
                (downcast voidP_start_4_tag_table result unsigned_charP_tag))
               /\
               ((<)
-              (sub_pointer j_0
+              (sub_pointer j
               (downcast voidP_start_4_tag_table result unsigned_charP_tag))
               (0))))) ->
-              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j_0)
+              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j)
               value_0))))))))))))))))
           /\
           (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 26 12 56#
@@ -8492,25 +8487,25 @@ module Function_check_bytes8_0_safe
               ((<) i (offset_max voidP_start_4_alloc_table result))) ->
               (instanceof voidP_start_4_tag_table (shift result i) voidP_tag)))))
           /\
-          (((forall i_2 : (pointer voidP).
-             (((same_block start_1 i_2) /\
-              (((<=) (sub_pointer start_1 i_2) (0)) /\
-              ((same_block i_2 (shift start_1 (Uint32.to_int bytes_0))) /\
-              ((<) (sub_pointer i_2 (shift start_1 (Uint32.to_int bytes_0)))
+          (((forall i_0 : (pointer voidP).
+             (((same_block start_1 i_0) /\
+              (((<=) (sub_pointer start_1 i_0) (0)) /\
+              ((same_block i_0 (shift start_1 (Uint32.to_int bytes_0))) /\
+              ((<) (sub_pointer i_0 (shift start_1 (Uint32.to_int bytes_0)))
               (0))))) ->
-              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_2)
+              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 i_0)
               value_0))) ->
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 34 15 31#
             "expl:Ensures clause" ((=) result null)))
           /\
-          (((exists i_3 : (pointer voidP).
-             ((same_block start_1 i_3) /\
-             (((<=) (sub_pointer start_1 i_3) (0)) /\
-             ((same_block i_3 (shift start_1 (Uint32.to_int bytes_0))) /\
-             (((<) (sub_pointer i_3 (shift start_1 (Uint32.to_int bytes_0)))
+          (((exists i_1 : (pointer voidP).
+             ((same_block start_1 i_1) /\
+             (((<=) (sub_pointer start_1 i_1) (0)) /\
+             ((same_block i_1 (shift start_1 (Uint32.to_int bytes_0))) /\
+             (((<) (sub_pointer i_1 (shift start_1 (Uint32.to_int bytes_0)))
               (0))
              /\
-             (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_3)
+             (Uint8.(<>) (select unsigned_charP_unsigned_charM_start_4 i_1)
              value_0)))))) ->
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 29 15 53#
             "expl:Ensures clause"
@@ -8558,17 +8553,17 @@ module Function_check_bytes8_0_safe
             /\
             (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 31 15 72#
             "expl:Ensures clause"
-            (forall j_0 : (pointer voidP).
-             (((same_block start_1 j_0) /\
-              (((<=) (sub_pointer start_1 j_0) (0)) /\
-              ((same_block j_0
+            (forall j : (pointer voidP).
+             (((same_block start_1 j) /\
+              (((<=) (sub_pointer start_1 j) (0)) /\
+              ((same_block j
                (downcast voidP_start_4_tag_table result unsigned_charP_tag))
               /\
               ((<)
-              (sub_pointer j_0
+              (sub_pointer j
               (downcast voidP_start_4_tag_table result unsigned_charP_tag))
               (0))))) ->
-              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j_0)
+              (Uint8.(=) (select unsigned_charP_unsigned_charM_start_4 j)
               value_0))))))))))))))))
           /\
           (#"/home/work/workspace/self/verker-gh/check_bytes8.h" 26 12 56#

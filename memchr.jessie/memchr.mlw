@@ -2031,10 +2031,9 @@ module Function_memchr_safety
   let memchr #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
   "expl:Function memchr, safety" =
   fun
-   (s : (pointer voidP)) (c : Int32.t) (n_1 : Uint64.t)
-   (voidP_s_2_alloc_table : (alloc_table voidP)) (voidP_s_2_tag_table :
-   (tag_table voidP)) (unsigned_charP_unsigned_charM_s_2 : (memory voidP
-   Uint8.t)) 
+   (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
+   : (alloc_table voidP)) (voidP_s_2_tag_table : (tag_table voidP))
+   (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) 
    requires {
    (((allocated voidP_s_2_alloc_table s) ->
      ((instanceof voidP_s_2_tag_table s voidP_tag) /\
@@ -2043,12 +2042,12 @@ module Function_memchr_safety
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memchr.jc" 38 12 751#
+   (#"memchr.jc" 38 12 713#
    ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
    (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
-   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n_1) (1))) then
+   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag)) (0))
@@ -2056,14 +2055,14 @@ module Function_memchr_safety
     (((>=)
      (offset_max voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-     (Int.(-) (Bit_uint64.to_int n_1) (1)))
+     (Int.(-) (Bit_uint64.to_int n) (1)))
     /\
     (forall __framac_tmp1 : int.
      ((((<=) (0) __framac_tmp1) /\
-      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n_1) (1)))) ->
+      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n) (1)))) ->
       ((=) true true))))) else ((=) true true)))))) }
    ensures { ("expl:Postcondition" true) }  ->
-   (let mutable_n_1 = ref n_1 in
+   (let mutable_n = ref n in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
    try
@@ -2083,19 +2082,19 @@ module Function_memchr_safety
         (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) )) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memchr.c" 5 1 6#
+        (#"/home/work/workspace/self/verker-gh/memchr.c" 5 21 23#
         "expl:Pointer index bounds" true) }); _jessie_29 end));
         'Loop_4:
         loop
-        invariant { (#"memchr.jc" 158 6 2422# true) }
+        invariant { (#"memchr.jc" 157 6 2400# true) }
           variant {
             (#"/home/work/workspace/self/verker-gh/memchr.c" 10 18 19#
             (Bit_uint64.to_int
             (#"/home/work/workspace/self/verker-gh/memchr.c" 10 18 19#
-            !mutable_n_1))) }
+            !mutable_n))) }
          begin
          any unit
-         requires { true } reads { c, mutable_n_1, s }
+         requires { true } reads { c, mutable_n, s }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
@@ -2108,15 +2107,15 @@ module Function_memchr_safety
               /\ ((same_block k_1 !p_4) /\ ((<) (sub_pointer k_1 !p_4) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 k_1)
-              (#"memchr.jc" 183 53 66# "expl:Integer cast"
+              (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-            (Int.(-) (Bit_uint64.to_int (at !mutable_n_1 'Init))
-            (Bit_uint64.to_int !mutable_n_1))))
+            (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
+            (Bit_uint64.to_int !mutable_n))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
@@ -2134,37 +2133,37 @@ module Function_memchr_safety
             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Bit_uint64.to_int (at !mutable_n_1 'Init)))))
+             (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-            (Bit_uint64.to_int (at !mutable_n_1 'Init)))) (0))))))))))
+            (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
-            (Bit_uint64.(<=) (#"memchr.jc" 160 38 51# "expl:Integer cast"
-            (Bit_uint64.of_int_const 0)) !mutable_n_1))
+            (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
+            (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
-           (Bit_uint64.(<=) !mutable_n_1 (at !mutable_n_1 'Init))))))))) } ;
+           (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
            begin
            begin
            (tmp_0 :=
-            (let _jessie_30 = !mutable_n_1 in
+            (let _jessie_30 = !mutable_n in
             begin
             (assert {
             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 16#
             "expl:Pointer index bounds" true) }); _jessie_30 end));
             begin
-            (mutable_n_1 :=
+            (mutable_n :=
              (let _jessie_31 =
-             (Safe_bit_uint64.(-%)  !mutable_n_1
-              (#"memchr.jc" 189 58 71# "expl:Integer cast"
+             (Safe_bit_uint64.(-%)  !mutable_n
+              (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Safe_bit_uint64.of_int_const 1)) ) in
              begin
              (assert {
@@ -2177,7 +2176,7 @@ module Function_memchr_safety
              (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
              "expl:Integer cast"
              (Safe_bit_uint64_of_Safe_bit_int32.cast 
-              (#"memchr.jc" 192 45 57# "expl:Integer cast"
+              (#"memchr.jc" 191 45 57# "expl:Integer cast"
               (Safe_bit_int32.of_int_const 0)) )) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2193,7 +2192,7 @@ module Function_memchr_safety
               (let _jessie_33 =
               (shift_typesafe  !p_4
                (Safe_bit_int32.to_int 
-                (#"memchr.jc" 197 46 58# "expl:Integer cast"
+                (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Safe_bit_int32.of_int_const 1)) ) ) in
               begin
               (assert {
@@ -2223,7 +2222,7 @@ module Function_memchr_safety
                (shift_typesafe  !p_4
                 (Int.(-_) 
                  (Safe_bit_int32.to_int 
-                  (#"memchr.jc" 202 63 75# "expl:Integer cast"
+                  (#"memchr.jc" 201 63 75# "expl:Integer cast"
                   (Safe_bit_int32.of_int_const 1)) ) ) ) in
                begin
                (assert {
@@ -2239,10 +2238,10 @@ module Function_memchr_safety
        ();
         begin
         any unit
-        requires { true } reads { mutable_n_1 }
+        requires { true } reads { mutable_n }
         ensures {
           (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
-          (Bit_uint64.(=) !mutable_n_1 (#"memchr.jc" 212 57 75#
+          (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end;
         (__retres :=
@@ -2258,7 +2257,7 @@ module Function_memchr_safety
       (return :=
        (let _jessie_36 = !__retres in
        begin
-       (assert { (#"memchr.jc" 217 7 22# "expl:Pointer index bounds" true) });
+       (assert { (#"memchr.jc" 216 7 22# "expl:Pointer index bounds" true) });
         _jessie_36 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end))
   
@@ -2414,10 +2413,9 @@ module Function_memchr_behaviors
   #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
   "expl:Function memchr, default behavior" =
   fun
-   (s : (pointer voidP)) (c : Int32.t) (n_1 : Uint64.t)
-   (voidP_s_2_alloc_table : (alloc_table voidP)) (voidP_s_2_tag_table :
-   (tag_table voidP)) (unsigned_charP_unsigned_charM_s_2 : (memory voidP
-   Uint8.t)) 
+   (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
+   : (alloc_table voidP)) (voidP_s_2_tag_table : (tag_table voidP))
+   (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) 
    requires {
    (((allocated voidP_s_2_alloc_table s) ->
      ((instanceof voidP_s_2_tag_table s voidP_tag) /\
@@ -2426,12 +2424,12 @@ module Function_memchr_behaviors
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memchr.jc" 38 12 751#
+   (#"memchr.jc" 38 12 713#
    ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
    (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
-   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n_1) (1))) then
+   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag)) (0))
@@ -2439,21 +2437,21 @@ module Function_memchr_behaviors
     (((>=)
      (offset_max voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-     (Int.(-) (Bit_uint64.to_int n_1) (1)))
+     (Int.(-) (Bit_uint64.to_int n) (1)))
     /\
     (forall __framac_tmp1 : int.
      ((((<=) (0) __framac_tmp1) /\
-      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n_1) (1)))) ->
+      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n) (1)))) ->
       ((=) true true))))) else ((=) true true)))))) }
    ensures { ("expl:Postcondition" ("expl:Ensures clause" true)) } diverges 
    ->
-   (let mutable_n_1 = ref n_1 in
+   (let mutable_n = ref n in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
    try
     begin
     (check {
-    (#"memchr.jc" 95 10 1817# "expl:Behavior disjointness check"
+    (#"memchr.jc" 94 10 1809# "expl:Behavior disjointness check"
     (not
     ((exists p_0_0 : (pointer voidP).
       ((same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag) p_0_0)
@@ -2464,15 +2462,15 @@ module Function_memchr_behaviors
       /\
       ((same_block p_0_0
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int !mutable_n_1)))
+       (Bit_uint64.to_int !mutable_n)))
       /\
       (((<)
        (sub_pointer p_0_0
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int !mutable_n_1))) (0))
+       (Bit_uint64.to_int !mutable_n))) (0))
       /\
       (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0_0)
-      (#"memchr.jc" 107 63 76# "expl:Integer cast"
+      (#"memchr.jc" 106 63 76# "expl:Integer cast"
       (Bit_uint8_of_Bit_int32.cast_modulo c))))))))
     /\
     (forall p_2 : (pointer voidP).
@@ -2484,17 +2482,17 @@ module Function_memchr_behaviors
       /\
       ((same_block p_2
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int !mutable_n_1)))
+       (Bit_uint64.to_int !mutable_n)))
       /\
       ((<)
       (sub_pointer p_2
       (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-      (Bit_uint64.to_int !mutable_n_1))) (0))))) ->
+      (Bit_uint64.to_int !mutable_n))) (0))))) ->
       (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p_2)
-      (#"memchr.jc" 120 62 75# "expl:Integer cast"
+      (#"memchr.jc" 119 62 75# "expl:Integer cast"
       (Bit_uint8_of_Bit_int32.cast_modulo c)))))))) });
      (check {
-     (#"memchr.jc" 122 10 1697# "expl:Behavior completeness check"
+     (#"memchr.jc" 121 10 1689# "expl:Behavior completeness check"
      ((forall p_3 : (pointer voidP).
        (((same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag) p_3)
         /\
@@ -2504,14 +2502,14 @@ module Function_memchr_behaviors
         /\
         ((same_block p_3
          (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-         (Bit_uint64.to_int !mutable_n_1)))
+         (Bit_uint64.to_int !mutable_n)))
         /\
         ((<)
         (sub_pointer p_3
         (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-        (Bit_uint64.to_int !mutable_n_1))) (0))))) ->
+        (Bit_uint64.to_int !mutable_n))) (0))))) ->
         (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p_3)
-        (#"memchr.jc" 133 58 71# "expl:Integer cast"
+        (#"memchr.jc" 132 58 71# "expl:Integer cast"
         (Bit_uint8_of_Bit_int32.cast_modulo c)))))
      \/
      (exists p_0_1 : (pointer voidP).
@@ -2523,15 +2521,15 @@ module Function_memchr_behaviors
       /\
       ((same_block p_0_1
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int !mutable_n_1)))
+       (Bit_uint64.to_int !mutable_n)))
       /\
       (((<)
        (sub_pointer p_0_1
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int !mutable_n_1))) (0))
+       (Bit_uint64.to_int !mutable_n))) (0))
       /\
       (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0_1)
-      (#"memchr.jc" 146 61 74# "expl:Integer cast"
+      (#"memchr.jc" 145 61 74# "expl:Integer cast"
       (Bit_uint8_of_Bit_int32.cast_modulo c)))))))))) });
      (let p_4 = ref (any_pointer  () : (pointer voidP)) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
@@ -2548,11 +2546,11 @@ module Function_memchr_behaviors
           { ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
              (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
              ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
-              (Bit_uint64.(<=) (#"memchr.jc" 160 38 51# "expl:Integer cast"
-              (Bit_uint64.of_int_const 0)) !mutable_n_1))
+              (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
+              (Bit_uint64.of_int_const 0)) !mutable_n))
              /\
              (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
-             (Bit_uint64.(<=) !mutable_n_1 (at !mutable_n_1 'Init))))))
+             (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))
             &&
             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
              (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
@@ -2570,20 +2568,20 @@ module Function_memchr_behaviors
              ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
               (same_block !p_4
               (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-              (Bit_uint64.to_int (at !mutable_n_1 'Init)))))
+              (Bit_uint64.to_int (at !mutable_n 'Init)))))
              /\
              (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
              ((<=)
              (sub_pointer !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Bit_uint64.to_int (at !mutable_n_1 'Init)))) (0))))))))))
+             (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
             &&
             ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
              ((=)
              (sub_pointer !p_4
              (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-             (Int.(-) (Bit_uint64.to_int (at !mutable_n_1 'Init))
-             (Bit_uint64.to_int !mutable_n_1))))
+             (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
+             (Bit_uint64.to_int !mutable_n))))
             &&
             (#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
@@ -2596,7 +2594,7 @@ module Function_memchr_behaviors
               /\ ((same_block k_1 !p_4) /\ ((<) (sub_pointer k_1 !p_4) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 k_1)
-              (#"memchr.jc" 183 53 66# "expl:Integer cast"
+              (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))))) } 
          begin
          any unit requires { true } ensures { true } ;
@@ -2604,11 +2602,11 @@ module Function_memchr_behaviors
            begin
            begin
            begin
-           (tmp_0 := !mutable_n_1);
+           (tmp_0 := !mutable_n);
             begin
-            (mutable_n_1 :=
-             (Unsafe_bit_uint64.(-%)  !mutable_n_1
-              (#"memchr.jc" 189 58 71# "expl:Integer cast"
+            (mutable_n :=
+             (Unsafe_bit_uint64.(-%)  !mutable_n
+              (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
@@ -2616,7 +2614,7 @@ module Function_memchr_behaviors
              (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
              "expl:Integer cast"
              (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 192 45 57# "expl:Integer cast"
+              (#"memchr.jc" 191 45 57# "expl:Integer cast"
               (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2626,7 +2624,7 @@ module Function_memchr_behaviors
              (p_4 :=
               (shift_  !p_4
                (Unsafe_bit_int32.to_int 
-                (#"memchr.jc" 197 46 58# "expl:Integer cast"
+                (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
@@ -2647,7 +2645,7 @@ module Function_memchr_behaviors
                (shift_  !p_4
                 (Int.(-_) 
                  (Unsafe_bit_int32.to_int 
-                  (#"memchr.jc" 202 63 75# "expl:Integer cast"
+                  (#"memchr.jc" 201 63 75# "expl:Integer cast"
                   (Unsafe_bit_int32.of_int_const 1)) ) ) ));
                (raise (Return_label_exc ())) end else ()) end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -2661,7 +2659,7 @@ module Function_memchr_behaviors
         (assert {
         (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
         "expl:Assertion in line 17"
-        (Bit_uint64.(=) !mutable_n_1 (#"memchr.jc" 212 57 75#
+        (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) });
          () end; (__retres := (null  )) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
@@ -2673,10 +2671,9 @@ module Function_memchr_behaviors
   #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
   "expl:Function memchr, behavior found" =
   fun
-   (s : (pointer voidP)) (c : Int32.t) (n_1 : Uint64.t)
-   (voidP_s_2_alloc_table : (alloc_table voidP)) (voidP_s_2_tag_table :
-   (tag_table voidP)) (unsigned_charP_unsigned_charM_s_2 : (memory voidP
-   Uint8.t)) 
+   (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
+   : (alloc_table voidP)) (voidP_s_2_tag_table : (tag_table voidP))
+   (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) 
    requires {
    ((exists p_0 : (pointer voidP).
      ((same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag) p_0) /\
@@ -2686,15 +2683,15 @@ module Function_memchr_behaviors
      /\
      ((same_block p_0
       (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-      (Bit_uint64.to_int n_1)))
+      (Bit_uint64.to_int n)))
      /\
      (((<)
       (sub_pointer p_0
       (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-      (Bit_uint64.to_int n_1))) (0))
+      (Bit_uint64.to_int n))) (0))
      /\
      (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0)
-     (#"memchr.jc" 60 37 50# "expl:Integer cast"
+     (#"memchr.jc" 59 37 50# "expl:Integer cast"
      (Bit_uint8_of_Bit_int32.cast_modulo c))))))))
    /\
    (((allocated voidP_s_2_alloc_table s) ->
@@ -2704,12 +2701,12 @@ module Function_memchr_behaviors
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memchr.jc" 38 12 751#
+   (#"memchr.jc" 38 12 713#
    ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
    (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
-   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n_1) (1))) then
+   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag)) (0))
@@ -2717,11 +2714,11 @@ module Function_memchr_behaviors
     (((>=)
      (offset_max voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-     (Int.(-) (Bit_uint64.to_int n_1) (1)))
+     (Int.(-) (Bit_uint64.to_int n) (1)))
     /\
     (forall __framac_tmp1 : int.
      ((((<=) (0) __framac_tmp1) /\
-      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n_1) (1)))) ->
+      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n) (1)))) ->
       ((=) true true))))) else ((=) true true))))))) }
    ensures {
      ("expl:Postcondition"
@@ -2741,13 +2738,13 @@ module Function_memchr_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
       "expl:Ensures clause"
-      (same_block result (shift s (Bit_uint64.to_int n_1))))
+      (same_block result (shift s (Bit_uint64.to_int n))))
      /\
      (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
       "expl:Ensures clause"
-      ((<=) (sub_pointer result (shift s (Bit_uint64.to_int n_1))) (0)))
+      ((<=) (sub_pointer result (shift s (Bit_uint64.to_int n))) (0)))
      /\
      (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
      "expl:Ensures clause"
@@ -2767,7 +2764,7 @@ module Function_memchr_behaviors
         (sub_pointer p_1
         (downcast voidP_s_2_tag_table result unsigned_charP_tag)) (0))))) ->
         (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p_1)
-        (#"memchr.jc" 82 37 59# "expl:Integer cast"
+        (#"memchr.jc" 81 37 59# "expl:Integer cast"
         (Bit_uint8_of_Bit_int32.cast_modulo c))))))
      /\
      (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
@@ -2775,9 +2772,9 @@ module Function_memchr_behaviors
      (Bit_uint8.(=)
      (select unsigned_charP_unsigned_charM_s_2
      (downcast voidP_s_2_tag_table result unsigned_charP_tag))
-     (#"memchr.jc" 84 34 56# "expl:Integer cast"
+     (#"memchr.jc" 83 34 56# "expl:Integer cast"
      (Bit_uint8_of_Bit_int32.cast_modulo c)))))))))))))))) } diverges  ->
-   (let mutable_n_1 = ref n_1 in
+   (let mutable_n = ref n in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
    try
@@ -2794,10 +2791,10 @@ module Function_memchr_behaviors
        (p_4 := (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) ));
         'Loop_2:
         loop
-        invariant { (#"memchr.jc" 158 6 2422# true) } 
+        invariant { (#"memchr.jc" 157 6 2400# true) } 
          begin
          any unit
-         requires { true } reads { c, mutable_n_1, s }
+         requires { true } reads { c, mutable_n, s }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
@@ -2810,15 +2807,15 @@ module Function_memchr_behaviors
               /\ ((same_block k_1 !p_4) /\ ((<) (sub_pointer k_1 !p_4) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 k_1)
-              (#"memchr.jc" 183 53 66# "expl:Integer cast"
+              (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-            (Int.(-) (Bit_uint64.to_int (at !mutable_n_1 'Init))
-            (Bit_uint64.to_int !mutable_n_1))))
+            (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
+            (Bit_uint64.to_int !mutable_n))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
@@ -2836,31 +2833,31 @@ module Function_memchr_behaviors
             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Bit_uint64.to_int (at !mutable_n_1 'Init)))))
+             (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-            (Bit_uint64.to_int (at !mutable_n_1 'Init)))) (0))))))))))
+            (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
-            (Bit_uint64.(<=) (#"memchr.jc" 160 38 51# "expl:Integer cast"
-            (Bit_uint64.of_int_const 0)) !mutable_n_1))
+            (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
+            (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
-           (Bit_uint64.(<=) !mutable_n_1 (at !mutable_n_1 'Init))))))))) } ;
+           (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
            begin
            begin
-           (tmp_0 := !mutable_n_1);
+           (tmp_0 := !mutable_n);
             begin
-            (mutable_n_1 :=
-             (Unsafe_bit_uint64.(-%)  !mutable_n_1
-              (#"memchr.jc" 189 58 71# "expl:Integer cast"
+            (mutable_n :=
+             (Unsafe_bit_uint64.(-%)  !mutable_n
+              (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
@@ -2868,7 +2865,7 @@ module Function_memchr_behaviors
              (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
              "expl:Integer cast"
              (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 192 45 57# "expl:Integer cast"
+              (#"memchr.jc" 191 45 57# "expl:Integer cast"
               (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2878,7 +2875,7 @@ module Function_memchr_behaviors
              (p_4 :=
               (shift_  !p_4
                (Unsafe_bit_int32.to_int 
-                (#"memchr.jc" 197 46 58# "expl:Integer cast"
+                (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
@@ -2899,7 +2896,7 @@ module Function_memchr_behaviors
                (shift_  !p_4
                 (Int.(-_) 
                  (Unsafe_bit_int32.to_int 
-                  (#"memchr.jc" 202 63 75# "expl:Integer cast"
+                  (#"memchr.jc" 201 63 75# "expl:Integer cast"
                   (Unsafe_bit_int32.of_int_const 1)) ) ) ));
                (raise (Return_label_exc ())) end else ()) end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -2911,10 +2908,10 @@ module Function_memchr_behaviors
        ();
         begin
         any unit
-        requires { true } reads { mutable_n_1 }
+        requires { true } reads { mutable_n }
         ensures {
           (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
-          (Bit_uint64.(=) !mutable_n_1 (#"memchr.jc" 212 57 75#
+          (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end; (__retres := (null  )) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
@@ -2926,10 +2923,9 @@ module Function_memchr_behaviors
   #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
   "expl:Function memchr, behavior not_exists" =
   fun
-   (s : (pointer voidP)) (c : Int32.t) (n_1 : Uint64.t)
-   (voidP_s_2_alloc_table : (alloc_table voidP)) (voidP_s_2_tag_table :
-   (tag_table voidP)) (unsigned_charP_unsigned_charM_s_2 : (memory voidP
-   Uint8.t)) 
+   (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
+   : (alloc_table voidP)) (voidP_s_2_tag_table : (tag_table voidP))
+   (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) 
    requires {
    ((forall p : (pointer voidP).
      (((same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag) p) /\
@@ -2939,14 +2935,14 @@ module Function_memchr_behaviors
       /\
       ((same_block p
        (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-       (Bit_uint64.to_int n_1)))
+       (Bit_uint64.to_int n)))
       /\
       ((<)
       (sub_pointer p
       (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-      (Bit_uint64.to_int n_1))) (0))))) ->
+      (Bit_uint64.to_int n))) (0))))) ->
       (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p)
-      (#"memchr.jc" 92 35 48# "expl:Integer cast"
+      (#"memchr.jc" 91 35 48# "expl:Integer cast"
       (Bit_uint8_of_Bit_int32.cast_modulo c)))))
    /\
    (((allocated voidP_s_2_alloc_table s) ->
@@ -2956,12 +2952,12 @@ module Function_memchr_behaviors
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memchr.jc" 38 12 751#
+   (#"memchr.jc" 38 12 713#
    ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
    (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
-   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n_1) (1))) then
+   (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag)) (0))
@@ -2969,17 +2965,17 @@ module Function_memchr_behaviors
     (((>=)
      (offset_max voidP_s_2_alloc_table
      (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-     (Int.(-) (Bit_uint64.to_int n_1) (1)))
+     (Int.(-) (Bit_uint64.to_int n) (1)))
     /\
     (forall __framac_tmp1 : int.
      ((((<=) (0) __framac_tmp1) /\
-      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n_1) (1)))) ->
+      ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int n) (1)))) ->
       ((=) true true))))) else ((=) true true))))))) }
    ensures {
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
      "expl:Ensures clause" ((=) result null))) } diverges  ->
-   (let mutable_n_1 = ref n_1 in
+   (let mutable_n = ref n in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
    try
@@ -2996,10 +2992,10 @@ module Function_memchr_behaviors
        (p_4 := (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) ));
         'Loop_3:
         loop
-        invariant { (#"memchr.jc" 158 6 2422# true) } 
+        invariant { (#"memchr.jc" 157 6 2400# true) } 
          begin
          any unit
-         requires { true } reads { c, mutable_n_1, s }
+         requires { true } reads { c, mutable_n, s }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
@@ -3012,15 +3008,15 @@ module Function_memchr_behaviors
               /\ ((same_block k_1 !p_4) /\ ((<) (sub_pointer k_1 !p_4) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 k_1)
-              (#"memchr.jc" 183 53 66# "expl:Integer cast"
+              (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-            (Int.(-) (Bit_uint64.to_int (at !mutable_n_1 'Init))
-            (Bit_uint64.to_int !mutable_n_1))))
+            (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
+            (Bit_uint64.to_int !mutable_n))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
@@ -3038,31 +3034,31 @@ module Function_memchr_behaviors
             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Bit_uint64.to_int (at !mutable_n_1 'Init)))))
+             (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-            (Bit_uint64.to_int (at !mutable_n_1 'Init)))) (0))))))))))
+            (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
            ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
-            (Bit_uint64.(<=) (#"memchr.jc" 160 38 51# "expl:Integer cast"
-            (Bit_uint64.of_int_const 0)) !mutable_n_1))
+            (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
+            (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
-           (Bit_uint64.(<=) !mutable_n_1 (at !mutable_n_1 'Init))))))))) } ;
+           (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
            begin
            begin
-           (tmp_0 := !mutable_n_1);
+           (tmp_0 := !mutable_n);
             begin
-            (mutable_n_1 :=
-             (Unsafe_bit_uint64.(-%)  !mutable_n_1
-              (#"memchr.jc" 189 58 71# "expl:Integer cast"
+            (mutable_n :=
+             (Unsafe_bit_uint64.(-%)  !mutable_n
+              (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
@@ -3070,7 +3066,7 @@ module Function_memchr_behaviors
              (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
              "expl:Integer cast"
              (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 192 45 57# "expl:Integer cast"
+              (#"memchr.jc" 191 45 57# "expl:Integer cast"
               (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -3080,7 +3076,7 @@ module Function_memchr_behaviors
              (p_4 :=
               (shift_  !p_4
                (Unsafe_bit_int32.to_int 
-                (#"memchr.jc" 197 46 58# "expl:Integer cast"
+                (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
@@ -3101,7 +3097,7 @@ module Function_memchr_behaviors
                (shift_  !p_4
                 (Int.(-_) 
                  (Unsafe_bit_int32.to_int 
-                  (#"memchr.jc" 202 63 75# "expl:Integer cast"
+                  (#"memchr.jc" 201 63 75# "expl:Integer cast"
                   (Unsafe_bit_int32.of_int_const 1)) ) ) ));
                (raise (Return_label_exc ())) end else ()) end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -3113,10 +3109,10 @@ module Function_memchr_behaviors
        ();
         begin
         any unit
-        requires { true } reads { mutable_n_1 }
+        requires { true } reads { mutable_n }
         ensures {
           (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
-          (Bit_uint64.(=) !mutable_n_1 (#"memchr.jc" 212 57 75#
+          (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end; (__retres := (null  )) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
@@ -8307,6 +8303,7 @@ theory Axiomatic_Jessie_memory_reinterpretation_predicates
   predicate uint8_as_uint8 (d0 : Uint8.t) (a0 : Uint8.t)
   = ((Uint8.(=) d0 a0) /\ ((=) d0 a0))
   
+  
   function complement_to_uint8 (v : Int8.t) : Uint8.t
   =
      (if ((>=) (Int8.to_int v) (0)) then (#"memchr.jc" 14 20 32#
@@ -8314,15 +8311,18 @@ theory Axiomatic_Jessie_memory_reinterpretation_predicates
       (#"memchr.jc" 14 38 71# "expl:Integer cast"
       (Uint8.of_int (Int.(+) (Int8.to_int v) (256)))))
   
-  predicate uint8_as_int8 (d0_0 : Int8.t) (a0_0 : Uint8.t)
-  =
-     ((uint8_as_uint8 (complement_to_uint8 d0_0) a0_0) /\
-     (Bit_int8_of_bit_uint8.bit_uint8_as_bit_int8 d0_0 a0_0))
   
   predicate int8_as_uint8 (d0_1 : Int8.t) (a0_1 : Uint8.t)
   =
      ((uint8_as_uint8 (complement_to_uint8 d0_1) a0_1) /\
      (Bit_uint8_of_bit_int8.bit_int8_as_bit_uint8 d0_1 a0_1))
+  
+  
+  predicate uint8_as_int8 (d0_0 : Int8.t) (a0_0 : Uint8.t)
+  =
+     ((uint8_as_uint8 (complement_to_uint8 d0_0) a0_0) /\
+     (Bit_int8_of_bit_uint8.bit_uint8_as_bit_int8 d0_0 a0_0))
+  
   
 end
 
@@ -8365,7 +8365,7 @@ module Function_memchr
   val memchr
   (s : (pointer voidP)) 
    (c : Int32.t) 
-    (n_1 : Uint64.t) 
+    (n : Uint64.t) 
      (voidP_s_2_alloc_table : (alloc_table voidP)) 
       (voidP_s_2_tag_table : (tag_table voidP)) 
        (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) :
@@ -8389,14 +8389,14 @@ module Function_memchr
               /\
               ((same_block p
                (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-               (Uint64.to_int n_1)))
+               (Uint64.to_int n)))
               /\
               ((<)
               (sub_pointer p
               (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-              (Uint64.to_int n_1))) (0))))) ->
+              (Uint64.to_int n))) (0))))) ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p)
-              (#"memchr.jc" 92 35 48# "expl:Integer cast"
+              (#"memchr.jc" 91 35 48# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))) ->
             (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
             "expl:Ensures clause" ((=) result null)))
@@ -8411,15 +8411,15 @@ module Function_memchr
             /\
             ((same_block p_0
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Uint64.to_int n_1)))
+             (Uint64.to_int n)))
             /\
             (((<)
              (sub_pointer p_0
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Uint64.to_int n_1))) (0))
+             (Uint64.to_int n))) (0))
             /\
             (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0)
-            (#"memchr.jc" 60 37 50# "expl:Integer cast"
+            (#"memchr.jc" 59 37 50# "expl:Integer cast"
             (Bit_uint8_of_Bit_int32.cast_modulo c)))))))) ->
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
@@ -8437,13 +8437,13 @@ module Function_memchr
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
             "expl:Ensures clause"
-            (same_block result (shift s (Uint64.to_int n_1))))
+            (same_block result (shift s (Uint64.to_int n))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
             "expl:Ensures clause"
-            ((<=) (sub_pointer result (shift s (Uint64.to_int n_1))) (0)))
+            ((<=) (sub_pointer result (shift s (Uint64.to_int n))) (0)))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
@@ -8465,7 +8465,7 @@ module Function_memchr
               (downcast voidP_s_2_tag_table result unsigned_charP_tag)) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p_1)
-              (#"memchr.jc" 82 37 59# "expl:Integer cast"
+              (#"memchr.jc" 81 37 59# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
@@ -8473,7 +8473,7 @@ module Function_memchr
            (Bit_uint8.(=)
            (select unsigned_charP_unsigned_charM_s_2
            (downcast voidP_s_2_tag_table result unsigned_charP_tag))
-           (#"memchr.jc" 84 34 56# "expl:Integer cast"
+           (#"memchr.jc" 83 34 56# "expl:Integer cast"
            (Bit_uint8_of_Bit_int32.cast_modulo c)))))))))))))))))) }
   
 end
@@ -8517,21 +8517,21 @@ module Function_memchr_safe
   val memchr
   (s : (pointer voidP)) 
    (c : Int32.t) 
-    (n_1 : Uint64.t) 
+    (n : Uint64.t) 
      (voidP_s_2_alloc_table : (alloc_table voidP)) 
       (voidP_s_2_tag_table : (tag_table voidP)) 
        (unsigned_charP_unsigned_charM_s_2 : (memory voidP Uint8.t)) :
         (pointer voidP)
         requires {
           ("expl:Internal"
-          (#"memchr.jc" 38 12 751# "expl:Requires clause"
+          (#"memchr.jc" 38 12 713# "expl:Requires clause"
           ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
            "expl:Requires clause"
            (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
           /\
           (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
           "expl:Requires clause"
-          (if ((<=) (0) (Int.(-) (Uint64.to_int n_1) (1))) then
+          (if ((<=) (0) (Int.(-) (Uint64.to_int n) (1))) then
            (((<=)
             (offset_min voidP_s_2_alloc_table
             (downcast voidP_s_2_tag_table s unsigned_charP_tag)) (0))
@@ -8539,11 +8539,11 @@ module Function_memchr_safe
            (((>=)
             (offset_max voidP_s_2_alloc_table
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
-            (Int.(-) (Uint64.to_int n_1) (1)))
+            (Int.(-) (Uint64.to_int n) (1)))
            /\
            (forall __framac_tmp1 : int.
             ((((<=) (0) __framac_tmp1) /\
-             ((<=) __framac_tmp1 (Int.(-) (Uint64.to_int n_1) (1)))) ->
+             ((<=) __framac_tmp1 (Int.(-) (Uint64.to_int n) (1)))) ->
              ((=) true true))))) else ((=) true true)))))) }
         ensures {
           (((allocated voidP_s_2_alloc_table result) ->
@@ -8563,14 +8563,14 @@ module Function_memchr_safe
               /\
               ((same_block p
                (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-               (Uint64.to_int n_1)))
+               (Uint64.to_int n)))
               /\
               ((<)
               (sub_pointer p
               (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-              (Uint64.to_int n_1))) (0))))) ->
+              (Uint64.to_int n))) (0))))) ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p)
-              (#"memchr.jc" 92 35 48# "expl:Integer cast"
+              (#"memchr.jc" 91 35 48# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))) ->
             (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
             "expl:Ensures clause" ((=) result null)))
@@ -8585,15 +8585,15 @@ module Function_memchr_safe
             /\
             ((same_block p_0
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Uint64.to_int n_1)))
+             (Uint64.to_int n)))
             /\
             (((<)
              (sub_pointer p_0
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
-             (Uint64.to_int n_1))) (0))
+             (Uint64.to_int n))) (0))
             /\
             (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0)
-            (#"memchr.jc" 60 37 50# "expl:Integer cast"
+            (#"memchr.jc" 59 37 50# "expl:Integer cast"
             (Bit_uint8_of_Bit_int32.cast_modulo c)))))))) ->
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
@@ -8611,13 +8611,13 @@ module Function_memchr_safe
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
             "expl:Ensures clause"
-            (same_block result (shift s (Uint64.to_int n_1))))
+            (same_block result (shift s (Uint64.to_int n))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
             "expl:Ensures clause"
-            ((<=) (sub_pointer result (shift s (Uint64.to_int n_1))) (0)))
+            ((<=) (sub_pointer result (shift s (Uint64.to_int n))) (0)))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
            "expl:Ensures clause"
@@ -8639,7 +8639,7 @@ module Function_memchr_safe
               (downcast voidP_s_2_tag_table result unsigned_charP_tag)) (0)))))
               ->
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p_1)
-              (#"memchr.jc" 82 37 59# "expl:Integer cast"
+              (#"memchr.jc" 81 37 59# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
@@ -8647,7 +8647,7 @@ module Function_memchr_safe
            (Bit_uint8.(=)
            (select unsigned_charP_unsigned_charM_s_2
            (downcast voidP_s_2_tag_table result unsigned_charP_tag))
-           (#"memchr.jc" 84 34 56# "expl:Integer cast"
+           (#"memchr.jc" 83 34 56# "expl:Integer cast"
            (Bit_uint8_of_Bit_int32.cast_modulo c)))))))))))))))))) }
   
 end

@@ -34,18 +34,17 @@ tag unsigned_charP = voidP with {
   uint8 unsigned_charM: 8;
 }
 
-voidP[..] memchr(voidP[..] s, int32 c, uint64 n_1)
+voidP[..] memchr(voidP[..] s, int32 c, uint64 n)
   requires ((_C_49 : (s <: unsigned_charP)) &&
-             (_C_50 : \at((if (\at(0,Here) <=
-                                \at(((n_1 :> integer) - 1),Here)) then 
+             (_C_50 : \at((if (\at(0,Here) <= \at(((n :> integer) - 1),Here)) then 
                           (((\offset_min(\at((s :> unsigned_charP[..]),Here)) <=
                               \at(0,Here)) &&
                              (\offset_max(\at((s :> unsigned_charP[..]),Here)) >=
-                               \at(((n_1 :> integer) - 1),Here))) &&
+                               \at(((n :> integer) - 1),Here))) &&
                             (\forall integer __framac_tmp1;
                               (((\at(0,Here) <= __framac_tmp1) &&
                                  (__framac_tmp1 <=
-                                   \at(((n_1 :> integer) - 1),Here))) ==>
+                                   \at(((n :> integer) - 1),Here))) ==>
                                 true))) else true),Here)));
 behavior default:
   assigns \nothing;
@@ -55,17 +54,17 @@ behavior found:
             ((((\base_block((s :> unsigned_charP[..])) == \base_block(p_0)) &&
                 (((s :> unsigned_charP[..]) - p_0) <= 0)) &&
                ((\base_block(p_0) ==
-                  \base_block(((s :> unsigned_charP[..]) + (n_1 :> integer)))) &&
-                 ((p_0 - ((s :> unsigned_charP[..]) + (n_1 :> integer))) < 0))) &&
+                  \base_block(((s :> unsigned_charP[..]) + (n :> integer)))) &&
+                 ((p_0 - ((s :> unsigned_charP[..]) + (n :> integer))) < 0))) &&
               (p_0.unsigned_charM == (c :%> uint8))));
   ensures (_C_35 : ((((_C_38 : (\base_block(\at(s,Old)) ==
                                  \base_block(\result))) &&
                        (_C_39 : ((\at(s,Old) - \result) <= 0))) &&
                       ((_C_41 : (\base_block(\result) ==
                                   \base_block((\at(s,Old) +
-                                                (\at(n_1,Old) :> integer))))) &&
+                                                (\at(n,Old) :> integer))))) &&
                         (_C_42 : ((\result -
-                                    (\at(s,Old) + (\at(n_1,Old) :> integer))) <=
+                                    (\at(s,Old) + (\at(n,Old) :> integer))) <=
                                    0)))) &&
                      ((_C_44 : (\forall unsigned_charP[..] p_1;
                                  ((((\base_block((\at(s,Old) :> unsigned_charP[..])) ==
@@ -87,8 +86,8 @@ behavior not_exists:
             ((((\base_block((s :> unsigned_charP[..])) == \base_block(p)) &&
                 (((s :> unsigned_charP[..]) - p) <= 0)) &&
                ((\base_block(p) ==
-                  \base_block(((s :> unsigned_charP[..]) + (n_1 :> integer)))) &&
-                 ((p - ((s :> unsigned_charP[..]) + (n_1 :> integer))) < 0))) ==>
+                  \base_block(((s :> unsigned_charP[..]) + (n :> integer)))) &&
+                 ((p - ((s :> unsigned_charP[..]) + (n :> integer))) < 0))) ==>
               (p.unsigned_charM != (c :%> uint8))));
   ensures (_C_46 : (\result == null));
 {  
@@ -99,10 +98,10 @@ behavior not_exists:
                                             0)) &&
                                          ((\base_block(p_0) ==
                                             \base_block(((s :> unsigned_charP[..]) +
-                                                          (n_1 :> integer)))) &&
+                                                          (n :> integer)))) &&
                                            ((p_0 -
                                               ((s :> unsigned_charP[..]) +
-                                                (n_1 :> integer))) <
+                                                (n :> integer))) <
                                              0))) &&
                                         (p_0.unsigned_charM == (c :%> uint8)))) &&
                                      (\forall unsigned_charP[..] p;
@@ -112,10 +111,10 @@ behavior not_exists:
                                              0)) &&
                                           ((\base_block(p) ==
                                              \base_block(((s :> unsigned_charP[..]) +
-                                                           (n_1 :> integer)))) &&
+                                                           (n :> integer)))) &&
                                             ((p -
                                                ((s :> unsigned_charP[..]) +
-                                                 (n_1 :> integer))) <
+                                                 (n :> integer))) <
                                               0))) ==>
                                          (p.unsigned_charM != (c :%> uint8))))))));
    
@@ -125,10 +124,10 @@ behavior not_exists:
                                        (((s :> unsigned_charP[..]) - p) <= 0)) &&
                                       ((\base_block(p) ==
                                          \base_block(((s :> unsigned_charP[..]) +
-                                                       (n_1 :> integer)))) &&
+                                                       (n :> integer)))) &&
                                         ((p -
                                            ((s :> unsigned_charP[..]) +
-                                             (n_1 :> integer))) <
+                                             (n :> integer))) <
                                           0))) ==>
                                      (p.unsigned_charM != (c :%> uint8)))) ||
                                   (\exists unsigned_charP[..] p_0;
@@ -138,10 +137,10 @@ behavior not_exists:
                                           0)) &&
                                        ((\base_block(p_0) ==
                                           \base_block(((s :> unsigned_charP[..]) +
-                                                        (n_1 :> integer)))) &&
+                                                        (n :> integer)))) &&
                                          ((p_0 -
                                             ((s :> unsigned_charP[..]) +
-                                              (n_1 :> integer))) <
+                                              (n :> integer))) <
                                            0))) &&
                                       (p_0.unsigned_charM == (c :%> uint8)))))));
    
@@ -157,22 +156,22 @@ behavior not_exists:
       
       loop 
       behavior default:
-        invariant (_C_13 : ((_C_14 : ((0 :> uint64) <= n_1)) &&
-                             (_C_15 : (n_1 <= \at(n_1,Pre)))));
+        invariant (_C_13 : ((_C_14 : ((0 :> uint64) <= n)) &&
+                             (_C_15 : (n <= \at(n,Pre)))));
       behavior default:
         invariant (_C_6 : (((_C_8 : (\base_block((s :> unsigned_charP[..])) ==
                                       \base_block(p))) &&
                              (_C_9 : (((s :> unsigned_charP[..]) - p) <= 0))) &&
                             ((_C_11 : (\base_block(p) ==
                                         \base_block(((s :> unsigned_charP[..]) +
-                                                      (\at(n_1,Pre) :> integer))))) &&
+                                                      (\at(n,Pre) :> integer))))) &&
                               (_C_12 : ((p -
                                           ((s :> unsigned_charP[..]) +
-                                            (\at(n_1,Pre) :> integer))) <=
+                                            (\at(n,Pre) :> integer))) <=
                                          0)))));
       behavior default:
         invariant (_C_5 : ((p - (s :> unsigned_charP[..])) ==
-                            ((\at(n_1,Pre) :> integer) - (n_1 :> integer))));
+                            ((\at(n,Pre) :> integer) - (n :> integer))));
       behavior default:
         invariant (_C_4 : (\forall unsigned_charP[..] k_1;
                             ((((\base_block((s :> unsigned_charP[..])) ==
@@ -181,12 +180,12 @@ behavior not_exists:
                                ((\base_block(k_1) == \base_block(p)) &&
                                  ((k_1 - p) < 0))) ==>
                               (k_1.unsigned_charM != (c :%> uint8)))));
-      variant (_C_3 : n_1);
+      variant (_C_3 : n);
       while (true)
       {  
          {  
-            {  (_C_16 : (tmp_0 = n_1));
-               (_C_19 : (n_1 = (_C_18 : ((_C_17 : (n_1 -% (1 :> uint64))) :> uint64))));
+            {  (_C_16 : (tmp_0 = n));
+               (_C_19 : (n = (_C_18 : ((_C_17 : (n -% (1 :> uint64))) :> uint64))));
                ()
             };
             (if (_C_21 : (tmp_0 != (_C_20 : ((0 :> int32) :> uint64)))) then () else 
@@ -209,7 +208,7 @@ behavior not_exists:
       (while_0_break : ());
       
       {  
-         (assert for default: (_C_33 : (jessie : (n_1 == ((- 1) :%> uint64)))));
+         (assert for default: (_C_33 : (jessie : (n == ((- 1) :%> uint64)))));
          ()
       };
       (_C_34 : (__retres = null));

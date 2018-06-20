@@ -1646,18 +1646,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 module Exceptions
 
   use why3.Bool.Bool 
@@ -1726,11 +1714,11 @@ module Function_memcpy_safety
   let memcpy #"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55#
   "expl:Function memcpy, safety" =
   fun
-   (dest_3 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
-   (charP_charM_dest_3_2 : ref (memory voidP Int8.t))
-   (voidP_dest_3_2_alloc_table : (alloc_table voidP))
+   (dest_1 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
+   (charP_charM_dest_1_2 : ref (memory voidP Int8.t))
+   (voidP_dest_1_2_alloc_table : (alloc_table voidP))
    (voidP_src_1_3_alloc_table : (alloc_table voidP)) (voidP_src_1_3_tag_table
-   : (tag_table voidP)) (voidP_dest_3_2_tag_table : (tag_table voidP))
+   : (tag_table voidP)) (voidP_dest_1_2_tag_table : (tag_table voidP))
    (charP_charM_src_1_3 : (memory voidP Int8.t)) 
    requires {
    (((allocated voidP_src_1_3_alloc_table src_1) ->
@@ -1740,22 +1728,22 @@ module Function_memcpy_safety
        ((<) i (offset_max voidP_src_1_3_alloc_table src_1))) ->
        (instanceof voidP_src_1_3_tag_table (shift src_1 i) voidP_tag)))))
    /\
-   (((allocated voidP_dest_3_2_alloc_table dest_3) ->
-     ((instanceof voidP_dest_3_2_tag_table dest_3 voidP_tag) /\
+   (((allocated voidP_dest_1_2_alloc_table dest_1) ->
+     ((instanceof voidP_dest_1_2_tag_table dest_1 voidP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_dest_3_2_alloc_table dest_3) i) /\
-       ((<) i (offset_max voidP_dest_3_2_alloc_table dest_3))) ->
-       (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
+      ((((<=) (offset_min voidP_dest_1_2_alloc_table dest_1) i) /\
+       ((<) i (offset_max voidP_dest_1_2_alloc_table dest_1))) ->
+       (instanceof voidP_dest_1_2_tag_table (shift dest_1 i) voidP_tag)))))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
     (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
-    (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
+    (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
@@ -1775,12 +1763,12 @@ module Function_memcpy_safety
    (#"/home/work/workspace/self/verker-gh/memcpy.h" 19 13 46#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
-     (offset_min voidP_dest_3_2_alloc_table
-     (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0))
+     (offset_min voidP_dest_1_2_alloc_table
+     (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0))
     /\
     (((>=)
-     (offset_max voidP_dest_3_2_alloc_table
-     (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+     (offset_max voidP_dest_1_2_alloc_table
+     (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
      (Int.(-) (Bit_uint64.to_int count) (1)))
     /\
     (forall __framac_tmp2 : int.
@@ -1804,10 +1792,10 @@ module Function_memcpy_safety
      (tmp :=
       (let _jessie_32 =
       (#"/home/work/workspace/self/verker-gh/memcpy.c" 5 13 17#
-      (downcast_  voidP_dest_3_2_tag_table dest_3 (charP_tag  ) )) in
+      (downcast_  voidP_dest_1_2_tag_table dest_1 (charP_tag  ) )) in
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memcpy.c" 5 1 5#
+      (#"/home/work/workspace/self/verker-gh/memcpy.c" 5 6 10#
       "expl:Pointer index bounds" true) }); _jessie_32 end));
       begin
       (s :=
@@ -1816,18 +1804,18 @@ module Function_memcpy_safety
        (downcast_  voidP_src_1_3_tag_table src_1 (charP_tag  ) )) in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/memcpy.c" 6 1 6#
+       (#"/home/work/workspace/self/verker-gh/memcpy.c" 6 12 14#
        "expl:Pointer index bounds" true) }); _jessie_31 end));
        begin
        (ocount :=
         (let _jessie_19 = !mutable_count in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memcpy.c" 7 11 17#
+        (#"/home/work/workspace/self/verker-gh/memcpy.c" 7 18 24#
         "expl:Pointer index bounds" true) }); _jessie_19 end));
         'Loop_2:
         loop
-        invariant { (#"memcpy.jc" 71 6 2960# true) }
+        invariant { (#"memcpy.jc" 65 6 2950# true) }
           variant {
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 15 18 23#
             (Bit_uint64.to_int
@@ -1835,28 +1823,27 @@ module Function_memcpy_safety
             !mutable_count))) }
          begin
          any unit
-         requires { true } reads { charP_charM_dest_3_2, dest_3,
+         requires { true } reads { charP_charM_dest_1_2, dest_1,
          mutable_count, src_1 }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 13 20 124#
-            (forall i_1 : int.
-             ((((<=) (0) i_1) /\
-              ((<) i_1
+            (forall i : int.
+             ((((<=) (0) i) /\
+              ((<) i
               (Int.(-) (Bit_uint64.to_int !ocount)
               (Bit_uint64.to_int !mutable_count)))) ->
               (Int8.(=)
-              (select !charP_charM_dest_3_2
-              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-              i_1))
+              (select !charP_charM_dest_1_2
+              (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
               (select charP_charM_src_1_3
-              (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_1))))))
+              (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 41#
              ((=)
              (sub_pointer !tmp
-             (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+             (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
              (sub_pointer !s
              (downcast voidP_src_1_3_tag_table src_1 charP_tag))))
             /\
@@ -1894,31 +1881,31 @@ module Function_memcpy_safety
            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
-             (same_block (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
+             (same_block (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
              !tmp))
             /\
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
              ((<=)
              (sub_pointer
-             (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp) (0)))
+             (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp) (0)))
             /\
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
              (same_block !tmp
-             (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
+             (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
              (Bit_uint64.to_int !ocount))))
             /\
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
             ((<=)
             (sub_pointer !tmp
-            (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
+            (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
             (Bit_uint64.to_int !ocount))) (0))))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
            (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 30#
-            (Bit_uint64.(<=) (#"memcpy.jc" 73 38 51# "expl:Integer cast"
+            (Bit_uint64.(<=) (#"memcpy.jc" 67 38 51# "expl:Integer cast"
             (Bit_uint64.of_int_const 0)) !mutable_count))
            /\
            (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 25 40#
@@ -1937,7 +1924,7 @@ module Function_memcpy_safety
             (mutable_count :=
              (let _jessie_21 =
              (Safe_bit_uint64.(-%)  !mutable_count
-              (#"memcpy.jc" 115 62 75# "expl:Integer cast"
+              (#"memcpy.jc" 109 62 75# "expl:Integer cast"
               (Safe_bit_uint64.of_int_const 1)) ) in
              begin
              (assert {
@@ -1947,7 +1934,7 @@ module Function_memcpy_safety
             (if
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
             (Safe_bit_uint64.(<>)  !tmp_2
-             (#"memcpy.jc" 118 47 60# "expl:Integer cast"
+             (#"memcpy.jc" 112 47 60# "expl:Integer cast"
              (Safe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -1962,7 +1949,7 @@ module Function_memcpy_safety
               (let _jessie_23 =
               (shift_typesafe  !tmp
                (Safe_int32.to_int 
-                (#"memcpy.jc" 122 47 59# "expl:Integer cast"
+                (#"memcpy.jc" 116 47 59# "expl:Integer cast"
                 (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
@@ -1980,7 +1967,7 @@ module Function_memcpy_safety
                 (let _jessie_25 =
                 (shift_typesafe  !s
                  (Safe_int32.to_int 
-                  (#"memcpy.jc" 124 43 55# "expl:Integer cast"
+                  (#"memcpy.jc" 118 43 55# "expl:Integer cast"
                   (Safe_int32.of_int (1))) ) ) in
                 begin
                 (assert {
@@ -2001,7 +1988,7 @@ module Function_memcpy_safety
                 (let _jessie_30 = _jessie_28 in
                 (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 2 15#
                 "expl:Pointer dereference"
-                (upd  voidP_dest_3_2_alloc_table charP_charM_dest_3_2
+                (upd  voidP_dest_1_2_alloc_table charP_charM_dest_1_2
                  _jessie_28 _jessie_27 )))))) end end end end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2015,14 +2002,14 @@ module Function_memcpy_safety
       requires { true } reads { mutable_count }
       ensures {
         (#"/home/work/workspace/self/verker-gh/memcpy.c" 19 12 35#
-        (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 133 51 69#
+        (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 127 51 69#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
        () end;
       begin
       (return :=
-       (let _jessie_33 = dest_3 in
+       (let _jessie_33 = dest_1 in
        begin
-       (assert { (#"memcpy.jc" 137 7 20# "expl:Pointer index bounds" true) });
+       (assert { (#"memcpy.jc" 131 7 20# "expl:Pointer index bounds" true) });
         _jessie_33 end)); (raise Return) end end end)))))); absurd  end with
     Return -> !return end))
   
@@ -2090,11 +2077,11 @@ module Function_memcpy_behaviors
   #"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55#
   "expl:Function memcpy, default behavior" =
   fun
-   (dest_3 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
-   (charP_charM_dest_3_2 : ref (memory voidP Int8.t))
-   (voidP_dest_3_2_alloc_table : (alloc_table voidP))
+   (dest_1 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
+   (charP_charM_dest_1_2 : ref (memory voidP Int8.t))
+   (voidP_dest_1_2_alloc_table : (alloc_table voidP))
    (voidP_src_1_3_alloc_table : (alloc_table voidP)) (voidP_src_1_3_tag_table
-   : (tag_table voidP)) (voidP_dest_3_2_tag_table : (tag_table voidP))
+   : (tag_table voidP)) (voidP_dest_1_2_tag_table : (tag_table voidP))
    (charP_charM_src_1_3 : (memory voidP Int8.t)) 
    requires {
    (((allocated voidP_src_1_3_alloc_table src_1) ->
@@ -2104,22 +2091,22 @@ module Function_memcpy_behaviors
        ((<) i (offset_max voidP_src_1_3_alloc_table src_1))) ->
        (instanceof voidP_src_1_3_tag_table (shift src_1 i) voidP_tag)))))
    /\
-   (((allocated voidP_dest_3_2_alloc_table dest_3) ->
-     ((instanceof voidP_dest_3_2_tag_table dest_3 voidP_tag) /\
+   (((allocated voidP_dest_1_2_alloc_table dest_1) ->
+     ((instanceof voidP_dest_1_2_tag_table dest_1 voidP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_dest_3_2_alloc_table dest_3) i) /\
-       ((<) i (offset_max voidP_dest_3_2_alloc_table dest_3))) ->
-       (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
+      ((((<=) (offset_min voidP_dest_1_2_alloc_table dest_1) i) /\
+       ((<) i (offset_max voidP_dest_1_2_alloc_table dest_1))) ->
+       (instanceof voidP_dest_1_2_tag_table (shift dest_1 i) voidP_tag)))))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
     (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
-    (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
+    (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
    /\
-   (#"memcpy.jc" 24 12 1572#
+   (#"memcpy.jc" 18 12 1572#
    ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
@@ -2139,12 +2126,12 @@ module Function_memcpy_behaviors
    (#"/home/work/workspace/self/verker-gh/memcpy.h" 19 13 46#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
-     (offset_min voidP_dest_3_2_alloc_table
-     (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0))
+     (offset_min voidP_dest_1_2_alloc_table
+     (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0))
     /\
     (((>=)
-     (offset_max voidP_dest_3_2_alloc_table
-     (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+     (offset_max voidP_dest_1_2_alloc_table
+     (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
      (Int.(-) (Bit_uint64.to_int count) (1)))
     /\
     (forall __framac_tmp2 : int.
@@ -2153,22 +2140,22 @@ module Function_memcpy_behaviors
       ((=) true true))))) else ((=) true true))))))))))) }
    ensures {
      ("expl:Postcondition"
-     ((#"memcpy.jc" 49 10 71# "expl:Assigns clause"
-      (not_assigns voidP_dest_3_2_alloc_table voidP_dest_3_2_alloc_table (old
-      !charP_charM_dest_3_2) !charP_charM_dest_3_2
+     ((#"memcpy.jc" 43 10 71# "expl:Assigns clause"
+      (not_assigns voidP_dest_1_2_alloc_table voidP_dest_1_2_alloc_table (old
+      !charP_charM_dest_1_2) !charP_charM_dest_1_2
       (pset_range
-      (pset_singleton (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+      (pset_singleton (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
       (0) (Int.(-) (Bit_uint64.to_int count) (1)))))
      /\
      (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
      "expl:Ensures clause"
-     (forall i_2 : int.
-      ((((<=) (0) i_2) /\ ((<) i_2 (Bit_uint64.to_int count))) ->
+     (forall i_0 : int.
+      ((((<=) (0) i_0) /\ ((<) i_0 (Bit_uint64.to_int count))) ->
        (Int8.(=)
-       (select !charP_charM_dest_3_2
-       (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i_2))
+       (select !charP_charM_dest_1_2
+       (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i_0))
        (select charP_charM_src_1_3
-       (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_2))))))))
+       (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
      } diverges  ->
    (let mutable_count = ref count in
    'Init:
@@ -2183,7 +2170,7 @@ module Function_memcpy_behaviors
     (let tmp_2 = ref (Unsafe_bit_uint64.any_  () ) in
     try
      begin
-     (tmp := (downcast_  voidP_dest_3_2_tag_table dest_3 (charP_tag  ) ));
+     (tmp := (downcast_  voidP_dest_1_2_tag_table dest_1 (charP_tag  ) ));
       begin
       (s := (downcast_  voidP_src_1_3_tag_table src_1 (charP_tag  ) ));
        begin
@@ -2194,7 +2181,7 @@ module Function_memcpy_behaviors
           { (((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
               ((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 30#
-               (Bit_uint64.(<=) (#"memcpy.jc" 73 38 51# "expl:Integer cast"
+               (Bit_uint64.(<=) (#"memcpy.jc" 67 38 51# "expl:Integer cast"
                (Bit_uint64.of_int_const 0)) !mutable_count))
               /\
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 25 40#
@@ -2204,25 +2191,25 @@ module Function_memcpy_behaviors
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
               ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
                (same_block
-               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
+               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp))
               /\
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
               ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
                ((<=)
                (sub_pointer
-               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
+               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp)
                (0)))
               /\
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
               ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
                (same_block !tmp
-               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
                (Bit_uint64.to_int !ocount))))
               /\
               (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
               ((<=)
               (sub_pointer !tmp
-              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
+              (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
               (Bit_uint64.to_int !ocount))) (0))))))))))
              &&
              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
@@ -2254,7 +2241,7 @@ module Function_memcpy_behaviors
               ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 41#
                ((=)
                (sub_pointer !tmp
-               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
                (sub_pointer !s
                (downcast voidP_src_1_3_tag_table src_1 charP_tag))))
               /\
@@ -2266,25 +2253,24 @@ module Function_memcpy_behaviors
               (Bit_uint64.to_int !mutable_count)))))))
              &&
              (#"/home/work/workspace/self/verker-gh/memcpy.c" 13 20 124#
-             (forall i_1 : int.
-              ((((<=) (0) i_1) /\
-               ((<) i_1
+             (forall i : int.
+              ((((<=) (0) i) /\
+               ((<) i
                (Int.(-) (Bit_uint64.to_int !ocount)
                (Bit_uint64.to_int !mutable_count)))) ->
                (Int8.(=)
-               (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_1))
+               (select !charP_charM_dest_1_2
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_1))))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))))))
             /\
-            (#"memcpy.jc" 49 10 71# "expl:Assigns clause"
-            (not_assigns voidP_dest_3_2_alloc_table
-            voidP_dest_3_2_alloc_table (at !charP_charM_dest_3_2 'Init)
-            !charP_charM_dest_3_2
+            (#"memcpy.jc" 43 10 71# "expl:Assigns clause"
+            (not_assigns voidP_dest_1_2_alloc_table
+            voidP_dest_1_2_alloc_table (at !charP_charM_dest_1_2 'Init)
+            !charP_charM_dest_1_2
             (pset_range
             (pset_singleton
-            (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0)
+            (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0)
             (Int.(-) (Bit_uint64.to_int (at !mutable_count 'Init)) (1)))))) } 
           
          begin
@@ -2297,12 +2283,12 @@ module Function_memcpy_behaviors
             begin
             (mutable_count :=
              (Unsafe_bit_uint64.(-%)  !mutable_count
-              (#"memcpy.jc" 115 62 75# "expl:Integer cast"
+              (#"memcpy.jc" 109 62 75# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
             (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
             (Unsafe_bit_uint64.(<>)  !tmp_2
-             (#"memcpy.jc" 118 47 60# "expl:Integer cast"
+             (#"memcpy.jc" 112 47 60# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2311,7 +2297,7 @@ module Function_memcpy_behaviors
              (tmp :=
               (shift_  !tmp
                (Unsafe_int32.to_int 
-                (#"memcpy.jc" 122 47 59# "expl:Integer cast"
+                (#"memcpy.jc" 116 47 59# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ));
               begin
               (tmp_1 := !s);
@@ -2319,13 +2305,13 @@ module Function_memcpy_behaviors
                (s :=
                 (shift_  !s
                  (Unsafe_int32.to_int 
-                  (#"memcpy.jc" 124 43 55# "expl:Integer cast"
+                  (#"memcpy.jc" 118 43 55# "expl:Integer cast"
                   (Unsafe_int32.of_int (1))) ) ));
                 (let _jessie_12 = (acc  charP_charM_src_1_3 !tmp_1 ) in
                 (let _jessie_13 = !tmp_0 in
                 (let _jessie_14 = (0) in
                 (let _jessie_15 = _jessie_13 in
-                (upd  charP_charM_dest_3_2 _jessie_15 _jessie_12 ))))) end
+                (upd  charP_charM_dest_1_2 _jessie_15 _jessie_12 ))))) end
               end end end end; (raise (Loop_continue_exc ())) end with
            Loop_continue_exc _jessie_3 -> () end end end;
         (raise (Goto_while_0_break_exc ())) end end end with
@@ -2338,9 +2324,9 @@ module Function_memcpy_behaviors
       (assert {
       (#"/home/work/workspace/self/verker-gh/memcpy.c" 19 12 35#
       "expl:Assertion in line 19"
-      (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 133 51 69#
+      (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 127 51 69#
       "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) }); ()
-      end; begin (return := dest_3); (raise Return) end end end)))))); 
+      end; begin (return := dest_1); (raise Return) end end end)))))); 
      absurd  end with Return -> !return end))
   
 end
@@ -2671,298 +2657,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -7982,45 +7676,45 @@ module Function_memcpy
   use why3.Bool.Bool 
   
   val memcpy
-  (dest_3 : (pointer voidP)) 
+  (dest_1 : (pointer voidP)) 
    (src_1 : (pointer voidP)) 
     (count : Uint64.t) 
-     (charP_charM_dest_3_2 : ref (memory voidP Int8.t)) 
+     (charP_charM_dest_1_2 : ref (memory voidP Int8.t)) 
       (voidP_src_1_3_alloc_table : (alloc_table voidP)) 
-       (voidP_dest_3_2_alloc_table : (alloc_table voidP)) 
+       (voidP_dest_1_2_alloc_table : (alloc_table voidP)) 
         (voidP_src_1_3_tag_table : (tag_table voidP)) 
-         (voidP_dest_3_2_tag_table : (tag_table voidP)) 
+         (voidP_dest_1_2_tag_table : (tag_table voidP)) 
           (charP_charM_src_1_3 : (memory voidP Int8.t)) : (pointer voidP)
-           requires { true } reads { charP_charM_dest_3_2 } writes {
-           charP_charM_dest_3_2 }
+           requires { true } reads { charP_charM_dest_1_2 } writes {
+           charP_charM_dest_1_2 }
            ensures {
-             (((allocated voidP_dest_3_2_alloc_table result) ->
-               ((instanceof voidP_dest_3_2_tag_table result voidP_tag) /\
+             (((allocated voidP_dest_1_2_alloc_table result) ->
+               ((instanceof voidP_dest_1_2_tag_table result voidP_tag) /\
                (forall i : int.
-                ((((<=) (offset_min voidP_dest_3_2_alloc_table result) i) /\
-                 ((<) i (offset_max voidP_dest_3_2_alloc_table result))) ->
-                 (instanceof voidP_dest_3_2_tag_table (shift result i)
+                ((((<=) (offset_min voidP_dest_1_2_alloc_table result) i) /\
+                 ((<) i (offset_max voidP_dest_1_2_alloc_table result))) ->
+                 (instanceof voidP_dest_1_2_tag_table (shift result i)
                  voidP_tag)))))
              /\
-             ((#"memcpy.jc" 49 10 71# "expl:Assigns clause"
-              (not_assigns voidP_dest_3_2_alloc_table
-              voidP_dest_3_2_alloc_table (old !charP_charM_dest_3_2)
-              !charP_charM_dest_3_2
+             ((#"memcpy.jc" 43 10 71# "expl:Assigns clause"
+              (not_assigns voidP_dest_1_2_alloc_table
+              voidP_dest_1_2_alloc_table (old !charP_charM_dest_1_2)
+              !charP_charM_dest_1_2
               (pset_range
               (pset_singleton
-              (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0)
+              (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0)
               (Int.(-) (Uint64.to_int count) (1)))))
              /\
              (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
              "expl:Ensures clause"
-             (forall i_2 : int.
-              ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int count))) ->
+             (forall i_0 : int.
+              ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
                (Int8.(=)
-               (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_2))
+               (select !charP_charM_dest_1_2
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
+               i_0))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_2))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
              }
   
 end
@@ -8062,28 +7756,28 @@ module Function_memcpy_safe
   use why3.Bool.Bool 
   
   val memcpy
-  (dest_3 : (pointer voidP)) 
+  (dest_1 : (pointer voidP)) 
    (src_1 : (pointer voidP)) 
     (count : Uint64.t) 
-     (charP_charM_dest_3_2 : ref (memory voidP Int8.t)) 
+     (charP_charM_dest_1_2 : ref (memory voidP Int8.t)) 
       (voidP_src_1_3_alloc_table : (alloc_table voidP)) 
-       (voidP_dest_3_2_alloc_table : (alloc_table voidP)) 
+       (voidP_dest_1_2_alloc_table : (alloc_table voidP)) 
         (voidP_src_1_3_tag_table : (tag_table voidP)) 
-         (voidP_dest_3_2_tag_table : (tag_table voidP)) 
+         (voidP_dest_1_2_tag_table : (tag_table voidP)) 
           (charP_charM_src_1_3 : (memory voidP Int8.t)) : (pointer voidP)
            requires {
              ("expl:Internal"
-             (#"memcpy.jc" 24 12 1572# "expl:Requires clause"
+             (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
              ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
               "expl:Requires clause"
               (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
              /\
-             (#"memcpy.jc" 24 12 1572# "expl:Requires clause"
+             (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
              ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
               "expl:Requires clause"
-              (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
+              (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
              /\
-             (#"memcpy.jc" 24 12 1572# "expl:Requires clause"
+             (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
              ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
               "expl:Requires clause"
               (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
@@ -8105,47 +7799,47 @@ module Function_memcpy_safe
              "expl:Requires clause"
              (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
               (((<=)
-               (offset_min voidP_dest_3_2_alloc_table
-               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0))
+               (offset_min voidP_dest_1_2_alloc_table
+               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0))
               /\
               (((>=)
-               (offset_max voidP_dest_3_2_alloc_table
-               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
+               (offset_max voidP_dest_1_2_alloc_table
+               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
                (Int.(-) (Uint64.to_int count) (1)))
               /\
               (forall __framac_tmp2 : int.
                ((((<=) (0) __framac_tmp2) /\
                 ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
                 ((=) true true))))) else ((=) true true)))))))))) }
-           reads { charP_charM_dest_3_2 } writes { charP_charM_dest_3_2 }
+           reads { charP_charM_dest_1_2 } writes { charP_charM_dest_1_2 }
            ensures {
-             (((allocated voidP_dest_3_2_alloc_table result) ->
-               ((instanceof voidP_dest_3_2_tag_table result voidP_tag) /\
+             (((allocated voidP_dest_1_2_alloc_table result) ->
+               ((instanceof voidP_dest_1_2_tag_table result voidP_tag) /\
                (forall i : int.
-                ((((<=) (offset_min voidP_dest_3_2_alloc_table result) i) /\
-                 ((<) i (offset_max voidP_dest_3_2_alloc_table result))) ->
-                 (instanceof voidP_dest_3_2_tag_table (shift result i)
+                ((((<=) (offset_min voidP_dest_1_2_alloc_table result) i) /\
+                 ((<) i (offset_max voidP_dest_1_2_alloc_table result))) ->
+                 (instanceof voidP_dest_1_2_tag_table (shift result i)
                  voidP_tag)))))
              /\
-             ((#"memcpy.jc" 49 10 71# "expl:Assigns clause"
-              (not_assigns voidP_dest_3_2_alloc_table
-              voidP_dest_3_2_alloc_table (old !charP_charM_dest_3_2)
-              !charP_charM_dest_3_2
+             ((#"memcpy.jc" 43 10 71# "expl:Assigns clause"
+              (not_assigns voidP_dest_1_2_alloc_table
+              voidP_dest_1_2_alloc_table (old !charP_charM_dest_1_2)
+              !charP_charM_dest_1_2
               (pset_range
               (pset_singleton
-              (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)) (0)
+              (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0)
               (Int.(-) (Uint64.to_int count) (1)))))
              /\
              (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
              "expl:Ensures clause"
-             (forall i_2 : int.
-              ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int count))) ->
+             (forall i_0 : int.
+              ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
                (Int8.(=)
-               (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_2))
+               (select !charP_charM_dest_1_2
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
+               i_0))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_2))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
              }
   
 end

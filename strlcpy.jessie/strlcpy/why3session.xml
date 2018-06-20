@@ -5,7 +5,7 @@
 <prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
 <file name="../strlcpy.mlw" expanded="true">
-<theory name="Function_strlcpy_safety" sum="8df27608353c761beba34d84309d9fe2" expanded="true">
+<theory name="Function_strlcpy_safety" sum="8e832683247598eee049ee79151321c8" expanded="true">
  <goal name="WP_parameter strlcpy" expl="Function strlcpy, safety" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strlcpy.1" expl="Precondition for strlen (Requires clause. External)">
@@ -21,10 +21,10 @@
   <proof prover="1"><result status="valid" time="0.03" steps="34"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy.5" expl="integer overflow">
-  <proof prover="1"><result status="valid" time="0.05" steps="203"/></proof>
+  <proof prover="1"><result status="valid" time="0.05" steps="201"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy.6" expl="Precondition for memcpy_char_0 (Requires clause. External)">
-  <proof prover="1"><result status="valid" time="1.61" steps="3938"/></proof>
+  <proof prover="1"><result status="valid" time="1.61" steps="4442"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy.7" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.04" steps="57"/></proof>
@@ -36,7 +36,7 @@
   <proof prover="1"><result status="valid" time="0.04" steps="145"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy.10" expl="Precondition for memcpy_char_0 (Requires clause. External)">
-  <proof prover="1"><result status="valid" time="1.17" steps="2844"/></proof>
+  <proof prover="1"><result status="valid" time="1.17" steps="3044"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy.11" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.02" steps="45"/></proof>
@@ -50,11 +50,11 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strlcpy_behaviors" sum="a3c16ab462bec0152466a81015325d90" expanded="true">
+<theory name="Function_strlcpy_behaviors" sum="a47a1b89a4912d48ef990f5ef71ea976" expanded="true">
  <goal name="WP_parameter strlcpy_ensures_default" expl="Function strlcpy, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strlcpy_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.07" steps="278"/></proof>
+  <proof prover="1"><result status="valid" time="0.07" steps="254"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.2" expl="Behavior disjointness check">
   <proof prover="1"><result status="valid" time="0.02" steps="20"/></proof>
@@ -63,25 +63,25 @@
   <proof prover="1"><result status="valid" time="0.02" steps="20"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.4" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.04" steps="139"/></proof>
+  <proof prover="1"><result status="valid" time="0.04" steps="138"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.5" expl="Assertion in line 10">
-  <proof prover="1"><result status="valid" time="0.08" steps="178"/></proof>
+  <proof prover="1"><result status="valid" time="0.08" steps="177"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.6" expl="Assertion in line 12">
-  <proof prover="1"><result status="valid" time="0.15" steps="576"/></proof>
+  <proof prover="1"><result status="valid" time="0.15" steps="575"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.7" expl="Assertion in line 13">
-  <proof prover="1"><result status="valid" time="0.97" steps="2332"/></proof>
+  <proof prover="1"><result status="valid" time="1.23" steps="4134"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.8" expl="Assertion in line 10">
-  <proof prover="1"><result status="valid" time="0.07" steps="191"/></proof>
+  <proof prover="1"><result status="valid" time="0.07" steps="190"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.9" expl="Assertion in line 12">
-  <proof prover="1"><result status="valid" time="0.11" steps="436"/></proof>
+  <proof prover="1"><result status="valid" time="0.11" steps="434"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_default.10" expl="Assertion in line 13">
-  <proof prover="1"><result status="valid" time="0.78" steps="2643"/></proof>
+  <proof prover="1"><result status="valid" time="1.00" steps="3015"/></proof>
   </goal>
  </transf>
  </goal>
@@ -91,17 +91,17 @@
   <proof prover="1"><result status="valid" time="0.02" steps="55"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_size_is_greater_src.2" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="2.40"/></proof>
+  <proof prover="0"><result status="valid" time="1.18"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_size_is_greater_src.3" expl="Postcondition">
-  <proof prover="1"><result status="valid" time="0.03" steps="72"/></proof>
+  <proof prover="1"><result status="valid" time="0.03" steps="71"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter strlcpy_ensures_size_is_lower_src" expl="Function strlcpy, behavior size_is_lower_src" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strlcpy_ensures_size_is_lower_src.1" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="2.25"/></proof>
+  <proof prover="0"><result status="valid" time="4.08"/></proof>
   </goal>
   <goal name="WP_parameter strlcpy_ensures_size_is_lower_src.2" expl="Postcondition">
   <proof prover="1"><result status="valid" time="0.03" steps="51"/></proof>
@@ -413,11 +413,7 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
@@ -466,14 +462,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

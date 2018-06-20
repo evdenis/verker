@@ -10,7 +10,6 @@ Typing axiomatic memcpy_char
 Typing axiomatic Padding
 Typing tag voidP
 Typing tag charP
-Typing tag unsigned_charP
 Typing axiomatic Strlen
 Typing lemma/axiom valid_str_shift1
 Typing lemma/axiom valid_str_strend
@@ -142,20 +141,20 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function memcpy_char_0:
  reads:  alloc_table: (src_3_6 : alloc-root "voidP") at (Here),
-                      (dest_5_5 : alloc-root "voidP") at (Here, Old)
+                      (dest_3_5 : alloc-root "voidP") at (Here, Old)
          tag_table: 
          memories: (src_3_6 : mem-field "charM") at (Here),
-                   (dest_5_5 : mem-field "charM") at (Here)
+                   (dest_3_5 : mem-field "charM") at (Here)
          raw memories: 
          precise memories: 
          globals: 
-         locals: \result at (Here), n_4 at (Here), src_3 at (Here),
-                 dest_5 at (Here)
+         locals: \result at (Here), n_2 at (Here), src_3 at (Here),
+                 dest_3 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_5_5 : mem-field "charM") at (Old)
-          raw memories: (dest_5_5 : mem-field "charM") at (Old)
+          memories: (dest_3_5 : mem-field "charM") at (Old)
+          raw memories: (dest_3_5 : mem-field "charM") at (Old)
           precise memories: 
           globals: 
           locals: 
@@ -168,21 +167,21 @@ Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlcpy:
  reads:  alloc_table: (src_6_13 : alloc-root "voidP") at (Here),
-                      (dest_10_12 : alloc-root "voidP") at (Here, Old)
-         tag_table: (dest_10_12 : voidP) at (Here)
+                      (dest_8_12 : alloc-root "voidP") at (Here, Old)
+         tag_table: (dest_8_12 : voidP) at (Here)
          memories: (src_6_13 : mem-field "charM") at (Here, Old),
-                   (dest_10_12 : mem-field "charM") at (Here)
+                   (dest_8_12 : mem-field "charM") at (Here)
          raw memories: (src_6_13 : mem-field "charM") at (Here),
-                       (dest_10_12 : mem-field "charM") at (Here)
+                       (dest_8_12 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: tmp_0 at (Here), len at (Here), ret at (Here),
-                 size_2 at (Here), src_6 at (Here), dest_10 at (Here)
+                 size_1 at (Here), src_6 at (Here), dest_8 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (dest_10_12 : mem-field "charM") at (Here, Old)
-          raw memories: (dest_10_12 : mem-field "charM") at (Here, Old)
+          memories: (dest_8_12 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_8_12 : mem-field "charM") at (Here, Old)
           precise memories: 
           globals: 
           locals: tmp_0 at (Here), len at (Here), ret at (Here)
@@ -399,192 +398,6 @@ all_allocs(tag charP):
 all_memories(tag voidP):
   Found 0 memories.
 all_allocs(tag voidP):
-  Found 1 allocs.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_tags(tag unsigned_charP):
-  Found 1 tags.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
-  Found 1 allocs.
-all_memories(tag unsigned_charP):
-  Found 0 memories.
-all_allocs(tag unsigned_charP):
   Found 1 allocs.
 all_allocs(tag voidP):
   Found 1 allocs.

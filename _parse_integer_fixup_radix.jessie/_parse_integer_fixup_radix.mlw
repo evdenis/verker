@@ -1702,18 +1702,6 @@ module Root_unsigned_intP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 theory Root_unsigned_intP
 
   use why3.Bool.Bool 
@@ -1760,15 +1748,17 @@ theory Axiomatic_Ctype
   use why3.Bool.Bool 
   
   function tolower int : int
+  with toupper int : int
+  
   
   axiom A #"/home/work/workspace/self/verker-gh/ctype.h" 59 13 32#
   "expl:Axiom a" :
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 71 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 65 20 32#
   "expl:Integer cast" (Int8.of_int (65)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 71 50 62#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 65 50 62#
   "expl:Integer cast" (Int8.of_int (97))))))
   
   axiom B #"/home/work/workspace/self/verker-gh/ctype.h" 59 43 62#
@@ -1776,9 +1766,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 74 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 68 20 32#
   "expl:Integer cast" (Int8.of_int (66)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 74 50 62#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 68 50 62#
   "expl:Integer cast" (Int8.of_int (98))))))
   
   axiom C_13 #"/home/work/workspace/self/verker-gh/ctype.h" 59 73 92#
@@ -1786,9 +1776,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 77 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 71 20 32#
   "expl:Integer cast" (Int8.of_int (67)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 77 50 62#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 71 50 62#
   "expl:Integer cast" (Int8.of_int (99))))))
   
   axiom D #"/home/work/workspace/self/verker-gh/ctype.h" 60 13 32#
@@ -1796,9 +1786,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 80 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 74 20 32#
   "expl:Integer cast" (Int8.of_int (68)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 80 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 74 50 63#
   "expl:Integer cast" (Int8.of_int (100))))))
   
   axiom E #"/home/work/workspace/self/verker-gh/ctype.h" 60 43 62#
@@ -1806,9 +1796,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 83 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 77 20 32#
   "expl:Integer cast" (Int8.of_int (69)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 83 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 77 50 63#
   "expl:Integer cast" (Int8.of_int (101))))))
   
   axiom F #"/home/work/workspace/self/verker-gh/ctype.h" 60 73 92#
@@ -1816,9 +1806,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 86 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 80 20 32#
   "expl:Integer cast" (Int8.of_int (70)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 86 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 80 50 63#
   "expl:Integer cast" (Int8.of_int (102))))))
   
   axiom G #"/home/work/workspace/self/verker-gh/ctype.h" 61 13 32#
@@ -1826,9 +1816,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 89 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 83 20 32#
   "expl:Integer cast" (Int8.of_int (71)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 89 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 83 50 63#
   "expl:Integer cast" (Int8.of_int (103))))))
   
   axiom H #"/home/work/workspace/self/verker-gh/ctype.h" 61 43 62#
@@ -1836,9 +1826,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 92 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 86 20 32#
   "expl:Integer cast" (Int8.of_int (72)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 92 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 86 50 63#
   "expl:Integer cast" (Int8.of_int (104))))))
   
   axiom I #"/home/work/workspace/self/verker-gh/ctype.h" 61 73 92#
@@ -1846,9 +1836,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 95 20 32#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 89 20 32#
   "expl:Integer cast" (Int8.of_int (73)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 95 50 63#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 89 50 63#
   "expl:Integer cast" (Int8.of_int (105))))))
   
   axiom J #"/home/work/workspace/self/verker-gh/ctype.h" 62 13 32#
@@ -1856,9 +1846,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 98 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 92 21 33#
   "expl:Integer cast" (Int8.of_int (74)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 98 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 92 51 64#
   "expl:Integer cast" (Int8.of_int (106))))))
   
   axiom K #"/home/work/workspace/self/verker-gh/ctype.h" 62 43 62#
@@ -1866,9 +1856,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 101 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 95 21 33#
   "expl:Integer cast" (Int8.of_int (75)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 101 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 95 51 64#
   "expl:Integer cast" (Int8.of_int (107))))))
   
   axiom L #"/home/work/workspace/self/verker-gh/ctype.h" 62 73 92#
@@ -1876,9 +1866,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 104 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 98 21 33#
   "expl:Integer cast" (Int8.of_int (76)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 104 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 98 51 64#
   "expl:Integer cast" (Int8.of_int (108))))))
   
   axiom M #"/home/work/workspace/self/verker-gh/ctype.h" 63 13 32#
@@ -1886,9 +1876,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 107 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 101 21 33#
   "expl:Integer cast" (Int8.of_int (77)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 107 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 101 51 64#
   "expl:Integer cast" (Int8.of_int (109))))))
   
   axiom N #"/home/work/workspace/self/verker-gh/ctype.h" 63 43 62#
@@ -1896,9 +1886,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 110 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 104 21 33#
   "expl:Integer cast" (Int8.of_int (78)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 110 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 104 51 64#
   "expl:Integer cast" (Int8.of_int (110))))))
   
   axiom O #"/home/work/workspace/self/verker-gh/ctype.h" 63 73 92#
@@ -1906,9 +1896,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 113 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 107 21 33#
   "expl:Integer cast" (Int8.of_int (79)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 113 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 107 51 64#
   "expl:Integer cast" (Int8.of_int (111))))))
   
   axiom P #"/home/work/workspace/self/verker-gh/ctype.h" 64 13 32#
@@ -1916,9 +1906,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 116 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 110 21 33#
   "expl:Integer cast" (Int8.of_int (80)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 116 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 110 51 64#
   "expl:Integer cast" (Int8.of_int (112))))))
   
   axiom Q #"/home/work/workspace/self/verker-gh/ctype.h" 64 43 62#
@@ -1926,9 +1916,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 119 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 113 21 33#
   "expl:Integer cast" (Int8.of_int (81)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 119 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 113 51 64#
   "expl:Integer cast" (Int8.of_int (113))))))
   
   axiom R #"/home/work/workspace/self/verker-gh/ctype.h" 64 73 92#
@@ -1936,9 +1926,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 122 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 116 21 33#
   "expl:Integer cast" (Int8.of_int (82)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 122 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 116 51 64#
   "expl:Integer cast" (Int8.of_int (114))))))
   
   axiom S_3 #"/home/work/workspace/self/verker-gh/ctype.h" 65 13 32#
@@ -1946,9 +1936,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 125 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 119 21 33#
   "expl:Integer cast" (Int8.of_int (83)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 125 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 119 51 64#
   "expl:Integer cast" (Int8.of_int (115))))))
   
   axiom T #"/home/work/workspace/self/verker-gh/ctype.h" 65 43 62#
@@ -1956,9 +1946,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 128 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 122 21 33#
   "expl:Integer cast" (Int8.of_int (84)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 128 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 122 51 64#
   "expl:Integer cast" (Int8.of_int (116))))))
   
   axiom U #"/home/work/workspace/self/verker-gh/ctype.h" 65 73 92#
@@ -1966,9 +1956,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 131 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 125 21 33#
   "expl:Integer cast" (Int8.of_int (85)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 131 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 125 51 64#
   "expl:Integer cast" (Int8.of_int (117))))))
   
   axiom V #"/home/work/workspace/self/verker-gh/ctype.h" 66 13 32#
@@ -1976,9 +1966,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 134 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 128 21 33#
   "expl:Integer cast" (Int8.of_int (86)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 134 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 128 51 64#
   "expl:Integer cast" (Int8.of_int (118))))))
   
   axiom W #"/home/work/workspace/self/verker-gh/ctype.h" 66 43 62#
@@ -1986,9 +1976,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 137 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 131 21 33#
   "expl:Integer cast" (Int8.of_int (87)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 137 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 131 51 64#
   "expl:Integer cast" (Int8.of_int (119))))))
   
   axiom X #"/home/work/workspace/self/verker-gh/ctype.h" 66 73 92#
@@ -1996,9 +1986,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 140 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 134 21 33#
   "expl:Integer cast" (Int8.of_int (88)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 140 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 134 51 64#
   "expl:Integer cast" (Int8.of_int (120))))))
   
   axiom Y #"/home/work/workspace/self/verker-gh/ctype.h" 67 13 32#
@@ -2006,9 +1996,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 67 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 143 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 137 21 33#
   "expl:Integer cast" (Int8.of_int (89)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 143 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 137 51 64#
   "expl:Integer cast" (Int8.of_int (121))))))
   
   axiom Z #"/home/work/workspace/self/verker-gh/ctype.h" 67 43 62#
@@ -2016,20 +2006,21 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 67 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 146 21 33#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 140 21 33#
   "expl:Integer cast" (Int8.of_int (90)))))
-  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 146 51 64#
+  (Int8.to_int (#"_parse_integer_fixup_radix.jc" 140 51 64#
   "expl:Integer cast" (Int8.of_int (122))))))
   
   predicate isupper (c_0 : int)
   =
      (((<=)
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 37 5 17#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 31 5 17#
       "expl:Integer cast" (Int8.of_int (65)))) c_0)
      /\
      ((<=) c_0
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 37 50 62#
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 31 50 62#
      "expl:Integer cast" (Int8.of_int (90))))))
+  
   
   axiom Pl #"/home/work/workspace/self/verker-gh/ctype.h" 69 14 64#
   "expl:Axiom pl" :
@@ -2040,14 +2031,13 @@ theory Axiomatic_Ctype
   predicate islower (c : int)
   =
      (((<=)
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 34 5 17#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 28 5 17#
       "expl:Integer cast" (Int8.of_int (97)))) c)
      /\
      ((<=) c
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 34 46 59#
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 28 46 59#
      "expl:Integer cast" (Int8.of_int (122))))))
   
-  function toupper int : int
   
   axiom Pu #"/home/work/workspace/self/verker-gh/ctype.h" 70 14 64#
   "expl:Axiom pu" :
@@ -2067,74 +2057,80 @@ theory Axiomatic_Ctype
   (forall c_12_0 : int.
    ((not (isupper c_12_0)) -> ((=) (tolower (toupper c_12_0)) c_12_0))))
   
-  predicate isalpha (c_1 : int) = ((isupper c_1) \/ (islower c_1))
-  
   predicate isdigit (c_2 : int)
   =
      (((<=)
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 43 5 17#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 37 5 17#
       "expl:Integer cast" (Int8.of_int (48)))) c_2)
      /\
      ((<=) c_2
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 43 50 62#
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 37 50 62#
      "expl:Integer cast" (Int8.of_int (57))))))
   
-  predicate isodigit (c_3 : int)
-  =
-     (((<=)
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 46 5 17#
-      "expl:Integer cast" (Int8.of_int (48)))) c_3)
-     /\
-     ((<=) c_3
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 46 50 62#
-     "expl:Integer cast" (Int8.of_int (55))))))
-  
-  predicate isalnum (c_4 : int) = ((isdigit c_4) \/ (isalpha c_4))
-  
-  predicate isspace (c_5 : int)
-  =
-     (((=) c_5
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 52 16 28#
-      "expl:Integer cast" (Int8.of_int (32)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 53 17 29#
-      "expl:Integer cast" (Int8.of_int (12)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 54 16 28#
-      "expl:Integer cast" (Int8.of_int (10)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 55 15 27#
-      "expl:Integer cast" (Int8.of_int (13)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 56 14 25#
-      "expl:Integer cast" (Int8.of_int (9)))))
-     \/
-     ((=) c_5
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 57 13 25#
-     "expl:Integer cast" (Int8.of_int (11))))))))))
   
   predicate isxdigit (c_6 : int)
   =
      ((isdigit c_6) \/
      ((((<=)
-       (Int8.to_int (#"_parse_integer_fixup_radix.jc" 61 8 20#
+       (Int8.to_int (#"_parse_integer_fixup_radix.jc" 55 8 20#
        "expl:Integer cast" (Int8.of_int (97)))) c_6)
       /\
       ((<=) c_6
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 62 16 29#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 56 16 29#
       "expl:Integer cast" (Int8.of_int (102))))))
      \/
      (((<=)
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 63 7 19#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 57 7 19#
       "expl:Integer cast" (Int8.of_int (65)))) c_6)
      /\
      ((<=) c_6
-     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 64 15 27#
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 58 15 27#
      "expl:Integer cast" (Int8.of_int (70))))))))
+  
+  
+  predicate isodigit (c_3 : int)
+  =
+     (((<=)
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 40 5 17#
+      "expl:Integer cast" (Int8.of_int (48)))) c_3)
+     /\
+     ((<=) c_3
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 40 50 62#
+     "expl:Integer cast" (Int8.of_int (55))))))
+  
+  
+  predicate isalpha (c_1 : int) = ((isupper c_1) \/ (islower c_1))
+  
+  
+  predicate isalnum (c_4 : int) = ((isdigit c_4) \/ (isalpha c_4))
+  
+  
+  predicate isspace (c_5 : int)
+  =
+     (((=) c_5
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 46 16 28#
+      "expl:Integer cast" (Int8.of_int (32)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 47 17 29#
+      "expl:Integer cast" (Int8.of_int (12)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 48 16 28#
+      "expl:Integer cast" (Int8.of_int (10)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 49 15 27#
+      "expl:Integer cast" (Int8.of_int (13)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 50 14 25#
+      "expl:Integer cast" (Int8.of_int (9)))))
+     \/
+     ((=) c_5
+     (Int8.to_int (#"_parse_integer_fixup_radix.jc" 51 13 25#
+     "expl:Integer cast" (Int8.of_int (11))))))))))
+  
   
 end
 
@@ -2256,31 +2252,31 @@ module Function__parse_integer_fixup_radix_safety
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
    ((#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 13 13 29#
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((<=) (offset_min voidP_s_5_alloc_table s_2) (0)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((>=) (offset_max voidP_s_5_alloc_table s_2) (2)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    /\
    (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 14 13 25#
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((<=) (offset_min unsigned_intP_base_6_alloc_table base) (0)))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((>=) (offset_max unsigned_intP_base_6_alloc_table base) (0)))
-   /\ (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true))))))))))
+   /\ (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true))))))))))
    } ensures { ("expl:Postcondition" true) }  ->
    (let mutable_s_2 = ref s_2 in
    'Init:
@@ -2301,7 +2297,7 @@ module Function__parse_integer_fixup_radix_safety
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 5 14 15#
      "expl:Integer cast"
      (Safe_uint32_of_Safe_int32.cast 
-      (#"_parse_integer_fixup_radix.jc" 311 31 43# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 305 31 43# "expl:Integer cast"
       (Safe_int32.of_int (0))) )) ))
     then
      (if
@@ -2313,7 +2309,7 @@ module Function__parse_integer_fixup_radix_safety
        (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 6 6 10#
        "expl:Pointer dereference"
        (acc  voidP_s_5_alloc_table charP_charM_s_5 !mutable_s_2 )) ))
-      (#"_parse_integer_fixup_radix.jc" 317 68 81# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 311 68 81# "expl:Integer cast"
       (Safe_int32.of_int (48))) ))
      then
       begin
@@ -2336,7 +2332,7 @@ module Function__parse_integer_fixup_radix_safety
        (Safe_int32.(=) 
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
         "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  !tmp ))
-        (#"_parse_integer_fixup_radix.jc" 327 68 82# "expl:Integer cast"
+        (#"_parse_integer_fixup_radix.jc" 321 68 82# "expl:Integer cast"
         (Safe_int32.of_int (120))) ))
        then
         begin
@@ -2357,7 +2353,7 @@ module Function__parse_integer_fixup_radix_safety
          (if
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          (Safe_enum__bool.(<>)  !tmp_0
-          (#"_parse_integer_fixup_radix.jc" 337 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 331 68 80# "expl:Integer cast"
           (Safe_enum__bool.of_int  (0) )) ))
          then
           (let _jessie_105 =
@@ -2365,7 +2361,7 @@ module Function__parse_integer_fixup_radix_safety
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 8 12 14#
           "expl:Integer cast"
           (Safe_uint32_of_Safe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 340 78 91# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 334 78 91# "expl:Integer cast"
            (Safe_int32.of_int (16))) )) in
           begin
           (assert {
@@ -2384,7 +2380,7 @@ module Function__parse_integer_fixup_radix_safety
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
           "expl:Integer cast"
           (Safe_uint32_of_Safe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 343 78 90# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 337 78 90# "expl:Integer cast"
            (Safe_int32.of_int (8))) )) in
           begin
           (assert {
@@ -2404,7 +2400,7 @@ module Function__parse_integer_fixup_radix_safety
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
         "expl:Integer cast"
         (Safe_uint32_of_Safe_int32.cast 
-         (#"_parse_integer_fixup_radix.jc" 347 76 88# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 341 76 88# "expl:Integer cast"
          (Safe_int32.of_int (8))) )) in
         begin
         (assert {
@@ -2423,7 +2419,7 @@ module Function__parse_integer_fixup_radix_safety
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 12 11 13#
       "expl:Integer cast"
       (Safe_uint32_of_Safe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 351 73 86# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 345 73 86# "expl:Integer cast"
        (Safe_int32.of_int (10))) )) in
       begin
       (assert {
@@ -2447,7 +2443,7 @@ module Function__parse_integer_fixup_radix_safety
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 14 16#
       "expl:Integer cast"
       (Safe_uint32_of_Safe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 353 31 44# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 347 31 44# "expl:Integer cast"
        (Safe_int32.of_int (16))) )) ))
      then
       (if
@@ -2459,7 +2455,7 @@ module Function__parse_integer_fixup_radix_safety
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 20 24#
         "expl:Pointer dereference"
         (acc  voidP_s_5_alloc_table charP_charM_s_5 !mutable_s_2 )) ))
-       (#"_parse_integer_fixup_radix.jc" 359 68 81# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 353 68 81# "expl:Integer cast"
        (Safe_int32.of_int (48))) ))
       then
        begin
@@ -2482,14 +2478,14 @@ module Function__parse_integer_fixup_radix_safety
         (Safe_int32.(=) 
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
          "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  !tmp_1 ))
-         (#"_parse_integer_fixup_radix.jc" 369 68 82# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 363 68 82# "expl:Integer cast"
          (Safe_int32.of_int (120))) ))
         then
          (mutable_s_2 :=
           (let _jessie_111 =
           (shift_typesafe  !mutable_s_2
            (Safe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 373 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 367 68 80# "expl:Integer cast"
             (Safe_int32.of_int (2))) ) ) in
           begin
           (assert {
@@ -2501,7 +2497,7 @@ module Function__parse_integer_fixup_radix_safety
       (let _jessie_112 = !mutable_s_2 in
       begin
       (assert {
-      (#"_parse_integer_fixup_radix.jc" 376 7 15# "expl:Pointer index bounds"
+      (#"_parse_integer_fixup_radix.jc" 370 7 15# "expl:Pointer index bounds"
       true) }); _jessie_112 end)); (raise Return) end end))); absurd  end
     with Return -> !return end))
   
@@ -2599,28 +2595,31 @@ theory Axiomatic_IntBase
   voidP Int8.t))
   =
      ((Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-      (#"_parse_integer_fixup_radix.jc" 259 26 38# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 253 26 38# "expl:Integer cast"
       (Int8.of_int (48))))
      /\
      (((=)
       (tolower (Int8.to_int (select charP_charM_s_2_at_L (shift s (1)))))
-      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 260 50 63#
+      (Int8.to_int (#"_parse_integer_fixup_radix.jc" 254 50 63#
       "expl:Integer cast" (Int8.of_int (120)))))
      /\ (isxdigit (Int8.to_int (select charP_charM_s_2_at_L (shift s (2)))))))
+  
   
   predicate is_oct (s_0 : (pointer voidP)) (charP_charM_s_0_3_at_L : (memory
   voidP Int8.t))
   =
      ((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-      (#"_parse_integer_fixup_radix.jc" 264 27 39# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 258 27 39# "expl:Integer cast"
       (Int8.of_int (48))))
      /\ (not (is_hex s_0 charP_charM_s_0_3_at_L)))
+  
   
   predicate is_dec (s_1 : (pointer voidP)) (charP_charM_s_1_4_at_L : (memory
   voidP Int8.t))
   =
      ((not (is_hex s_1 charP_charM_s_1_4_at_L)) /\
      (not (is_oct s_1 charP_charM_s_1_4_at_L)))
+  
   
 end
 
@@ -2705,35 +2704,35 @@ module Function__parse_integer_fixup_radix_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
    ((#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 13 13 29#
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((<=) (offset_min voidP_s_5_alloc_table s_2) (0)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((>=) (offset_max voidP_s_5_alloc_table s_2) (2)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    /\
    (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 14 13 25#
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((<=) (offset_min unsigned_intP_base_6_alloc_table base) (0)))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((>=) (offset_max unsigned_intP_base_6_alloc_table base) (0)))
-   /\ (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true))))))))))
+   /\ (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true))))))))))
    }
    ensures {
      ("expl:Postcondition"
-     ((#"_parse_integer_fixup_radix.jc" 279 10 28# "expl:Assigns clause"
+     ((#"_parse_integer_fixup_radix.jc" 273 10 28# "expl:Assigns clause"
       (not_assigns unsigned_intP_base_6_alloc_table
       unsigned_intP_base_6_alloc_table (old
       !unsigned_intP_unsigned_intM_base_6)
@@ -2757,7 +2756,7 @@ module Function__parse_integer_fixup_radix_behaviors
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 5 14 15#
      "expl:Integer cast"
      (Unsafe_uint32_of_Unsafe_int32.cast 
-      (#"_parse_integer_fixup_radix.jc" 311 31 43# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 305 31 43# "expl:Integer cast"
       (Unsafe_int32.of_int (0))) )) ))
     then
      (if
@@ -2769,9 +2768,9 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 316 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 310 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (0))) ) ) ) ))
-      (#"_parse_integer_fixup_radix.jc" 317 68 81# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 311 68 81# "expl:Integer cast"
       (Unsafe_int32.of_int (48))) ))
      then
       begin
@@ -2780,7 +2779,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 323 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 317 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) ) ) ) in
        (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
        "expl:Precondition for _tolower"
@@ -2790,7 +2789,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (Unsafe_int32.(=) 
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
         "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp ))
-        (#"_parse_integer_fixup_radix.jc" 327 68 82# "expl:Integer cast"
+        (#"_parse_integer_fixup_radix.jc" 321 68 82# "expl:Integer cast"
         (Unsafe_int32.of_int (120))) ))
        then
         begin
@@ -2799,7 +2798,7 @@ module Function__parse_integer_fixup_radix_behaviors
          (acc  charP_charM_s_5
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 333 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 327 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) ) ) in
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          "expl:Precondition for isxdigit"
@@ -2807,14 +2806,14 @@ module Function__parse_integer_fixup_radix_behaviors
          (if
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          (Unsafe_enum__bool.(<>)  !tmp_0
-          (#"_parse_integer_fixup_radix.jc" 337 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 331 68 80# "expl:Integer cast"
           (Unsafe_enum__bool.of_int  (0) )) ))
          then
           (let _jessie_21 =
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 8 12 14#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 340 78 91# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 334 78 91# "expl:Integer cast"
            (Unsafe_int32.of_int (16))) )) in
           (let _jessie_22 = base in
           (let _jessie_23 = (0) in
@@ -2825,7 +2824,7 @@ module Function__parse_integer_fixup_radix_behaviors
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 343 78 90# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 337 78 90# "expl:Integer cast"
            (Unsafe_int32.of_int (8))) )) in
           (let _jessie_17 = base in
           (let _jessie_18 = (0) in
@@ -2837,7 +2836,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
         "expl:Integer cast"
         (Unsafe_uint32_of_Unsafe_int32.cast 
-         (#"_parse_integer_fixup_radix.jc" 347 76 88# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 341 76 88# "expl:Integer cast"
          (Unsafe_int32.of_int (8))) )) in
         (let _jessie_10 = base in
         (let _jessie_11 = (0) in
@@ -2849,7 +2848,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 12 11 13#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 351 73 86# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 345 73 86# "expl:Integer cast"
        (Unsafe_int32.of_int (10))) )) in
       (let _jessie_3 = base in
       (let _jessie_4 = (0) in
@@ -2862,7 +2861,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 14 16#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 353 31 44# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 347 31 44# "expl:Integer cast"
        (Unsafe_int32.of_int (16))) )) ))
      then
       (if
@@ -2874,9 +2873,9 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 358 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 352 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) ) ) ) ))
-       (#"_parse_integer_fixup_radix.jc" 359 68 81# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 353 68 81# "expl:Integer cast"
        (Unsafe_int32.of_int (48))) ))
       then
        begin
@@ -2885,7 +2884,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 365 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 359 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (1))) ) ) ) in
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
         "expl:Precondition for _tolower"
@@ -2895,13 +2894,13 @@ module Function__parse_integer_fixup_radix_behaviors
         (Unsafe_int32.(=) 
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
          "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_1 ))
-         (#"_parse_integer_fixup_radix.jc" 369 68 82# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 363 68 82# "expl:Integer cast"
          (Unsafe_int32.of_int (120))) ))
         then
          (mutable_s_2 :=
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 373 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 367 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) )) else ()) end else ()) else ());
      begin (return := !mutable_s_2); (raise Return) end end))); absurd  end
     with Return -> !return end))
@@ -2917,7 +2916,7 @@ module Function__parse_integer_fixup_radix_behaviors
    (tag_table voidP)) (charP_charM_s_5 : (memory voidP Int8.t)) 
    requires {
    ((Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-    (#"_parse_integer_fixup_radix.jc" 282 33 46# "expl:Integer cast"
+    (#"_parse_integer_fixup_radix.jc" 276 33 46# "expl:Integer cast"
     (Uint32.of_int (0))))
    /\
    (((allocated voidP_s_5_alloc_table s_2) ->
@@ -2927,31 +2926,31 @@ module Function__parse_integer_fixup_radix_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
    ((#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 13 13 29#
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((<=) (offset_min voidP_s_5_alloc_table s_2) (0)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((>=) (offset_max voidP_s_5_alloc_table s_2) (2)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    /\
    (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 14 13 25#
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((<=) (offset_min unsigned_intP_base_6_alloc_table base) (0)))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((>=) (offset_max unsigned_intP_base_6_alloc_table base) (0)))
-   /\ (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+   /\ (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    }
    ensures {
      ("expl:Postcondition"
@@ -2963,7 +2962,7 @@ module Function__parse_integer_fixup_radix_behaviors
       "expl:Ensures clause"
       ((is_hex s_2 charP_charM_s_5) ->
        (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-       (#"_parse_integer_fixup_radix.jc" 285 33 47# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 279 33 47# "expl:Integer cast"
        (Uint32.of_int (16))))))
      /\
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -2972,7 +2971,7 @@ module Function__parse_integer_fixup_radix_behaviors
       "expl:Ensures clause"
       ((is_oct s_2 charP_charM_s_5) ->
        (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-       (#"_parse_integer_fixup_radix.jc" 288 35 48# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 282 35 48# "expl:Integer cast"
        (Uint32.of_int (8))))))
      /\
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -2981,7 +2980,7 @@ module Function__parse_integer_fixup_radix_behaviors
       "expl:Ensures clause"
       ((is_dec s_2 charP_charM_s_5) ->
        (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-       (#"_parse_integer_fixup_radix.jc" 291 37 51# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 285 37 51# "expl:Integer cast"
        (Uint32.of_int (10))))))
      /\
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -3009,7 +3008,7 @@ module Function__parse_integer_fixup_radix_behaviors
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 5 14 15#
      "expl:Integer cast"
      (Unsafe_uint32_of_Unsafe_int32.cast 
-      (#"_parse_integer_fixup_radix.jc" 311 31 43# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 305 31 43# "expl:Integer cast"
       (Unsafe_int32.of_int (0))) )) ))
     then
      (if
@@ -3021,9 +3020,9 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 316 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 310 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (0))) ) ) ) ))
-      (#"_parse_integer_fixup_radix.jc" 317 68 81# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 311 68 81# "expl:Integer cast"
       (Unsafe_int32.of_int (48))) ))
      then
       begin
@@ -3032,7 +3031,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 323 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 317 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) ) ) ) in
        (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
        "expl:Precondition for _tolower"
@@ -3042,7 +3041,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (Unsafe_int32.(=) 
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
         "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp ))
-        (#"_parse_integer_fixup_radix.jc" 327 68 82# "expl:Integer cast"
+        (#"_parse_integer_fixup_radix.jc" 321 68 82# "expl:Integer cast"
         (Unsafe_int32.of_int (120))) ))
        then
         begin
@@ -3051,7 +3050,7 @@ module Function__parse_integer_fixup_radix_behaviors
          (acc  charP_charM_s_5
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 333 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 327 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) ) ) in
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          "expl:Precondition for isxdigit"
@@ -3059,14 +3058,14 @@ module Function__parse_integer_fixup_radix_behaviors
          (if
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          (Unsafe_enum__bool.(<>)  !tmp_0
-          (#"_parse_integer_fixup_radix.jc" 337 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 331 68 80# "expl:Integer cast"
           (Unsafe_enum__bool.of_int  (0) )) ))
          then
           (let _jessie_49 =
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 8 12 14#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 340 78 91# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 334 78 91# "expl:Integer cast"
            (Unsafe_int32.of_int (16))) )) in
           (let _jessie_50 = base in
           (let _jessie_51 = (0) in
@@ -3077,7 +3076,7 @@ module Function__parse_integer_fixup_radix_behaviors
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 343 78 90# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 337 78 90# "expl:Integer cast"
            (Unsafe_int32.of_int (8))) )) in
           (let _jessie_45 = base in
           (let _jessie_46 = (0) in
@@ -3089,7 +3088,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
         "expl:Integer cast"
         (Unsafe_uint32_of_Unsafe_int32.cast 
-         (#"_parse_integer_fixup_radix.jc" 347 76 88# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 341 76 88# "expl:Integer cast"
          (Unsafe_int32.of_int (8))) )) in
         (let _jessie_38 = base in
         (let _jessie_39 = (0) in
@@ -3101,7 +3100,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 12 11 13#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 351 73 86# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 345 73 86# "expl:Integer cast"
        (Unsafe_int32.of_int (10))) )) in
       (let _jessie_31 = base in
       (let _jessie_32 = (0) in
@@ -3114,7 +3113,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 14 16#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 353 31 44# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 347 31 44# "expl:Integer cast"
        (Unsafe_int32.of_int (16))) )) ))
      then
       (if
@@ -3126,9 +3125,9 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 358 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 352 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) ) ) ) ))
-       (#"_parse_integer_fixup_radix.jc" 359 68 81# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 353 68 81# "expl:Integer cast"
        (Unsafe_int32.of_int (48))) ))
       then
        begin
@@ -3137,7 +3136,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 365 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 359 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (1))) ) ) ) in
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
         "expl:Precondition for _tolower"
@@ -3147,13 +3146,13 @@ module Function__parse_integer_fixup_radix_behaviors
         (Unsafe_int32.(=) 
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
          "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_1 ))
-         (#"_parse_integer_fixup_radix.jc" 369 68 82# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 363 68 82# "expl:Integer cast"
          (Unsafe_int32.of_int (120))) ))
         then
          (mutable_s_2 :=
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 373 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 367 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) )) else ()) end else ()) else ());
      begin (return := !mutable_s_2); (raise Return) end end))); absurd  end
     with Return -> !return end))
@@ -3169,15 +3168,15 @@ module Function__parse_integer_fixup_radix_behaviors
    (tag_table voidP)) (charP_charM_s_5 : (memory voidP Int8.t)) 
    requires {
    (((Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-     (#"_parse_integer_fixup_radix.jc" 298 35 49# "expl:Integer cast"
+     (#"_parse_integer_fixup_radix.jc" 292 35 49# "expl:Integer cast"
      (Uint32.of_int (16))))
     /\
     ((Int8.(=) (select charP_charM_s_5 (shift s_2 (0)))
-     (#"_parse_integer_fixup_radix.jc" 299 31 43# "expl:Integer cast"
+     (#"_parse_integer_fixup_radix.jc" 293 31 43# "expl:Integer cast"
      (Int8.of_int (48))))
     /\
     ((=) (tolower (Int8.to_int (select charP_charM_s_5 (shift s_2 (1)))))
-    (Int8.to_int (#"_parse_integer_fixup_radix.jc" 301 15 28#
+    (Int8.to_int (#"_parse_integer_fixup_radix.jc" 295 15 28#
     "expl:Integer cast" (Int8.of_int (120)))))))
    /\
    (((allocated voidP_s_5_alloc_table s_2) ->
@@ -3187,31 +3186,31 @@ module Function__parse_integer_fixup_radix_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
    ((#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 13 13 29#
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((<=) (offset_min voidP_s_5_alloc_table s_2) (0)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409#
      ((>=) (offset_max voidP_s_5_alloc_table s_2) (2)))
     /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409#
-    ((#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)) /\
-    (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409#
+    ((#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)) /\
+    (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    /\
    (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 14 13 25#
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((<=) (offset_min unsigned_intP_base_6_alloc_table base) (0)))
    /\
-   (#"_parse_integer_fixup_radix.jc" 272 12 409#
-   ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+   (#"_parse_integer_fixup_radix.jc" 266 12 409#
+   ((#"_parse_integer_fixup_radix.jc" 266 12 409#
     ((>=) (offset_max unsigned_intP_base_6_alloc_table base) (0)))
-   /\ (#"_parse_integer_fixup_radix.jc" 272 12 409# ((=) true true)))))))))))
+   /\ (#"_parse_integer_fixup_radix.jc" 266 12 409# ((=) true true)))))))))))
    }
    ensures {
      ("expl:Postcondition"
@@ -3232,7 +3231,7 @@ module Function__parse_integer_fixup_radix_behaviors
      (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 5 14 15#
      "expl:Integer cast"
      (Unsafe_uint32_of_Unsafe_int32.cast 
-      (#"_parse_integer_fixup_radix.jc" 311 31 43# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 305 31 43# "expl:Integer cast"
       (Unsafe_int32.of_int (0))) )) ))
     then
      (if
@@ -3244,9 +3243,9 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 316 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 310 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (0))) ) ) ) ))
-      (#"_parse_integer_fixup_radix.jc" 317 68 81# "expl:Integer cast"
+      (#"_parse_integer_fixup_radix.jc" 311 68 81# "expl:Integer cast"
       (Unsafe_int32.of_int (48))) ))
      then
       begin
@@ -3255,7 +3254,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (acc  charP_charM_s_5
         (shift_  !mutable_s_2
          (Unsafe_int32.to_int 
-          (#"_parse_integer_fixup_radix.jc" 323 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 317 68 80# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) ) ) ) in
        (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
        "expl:Precondition for _tolower"
@@ -3265,7 +3264,7 @@ module Function__parse_integer_fixup_radix_behaviors
        (Unsafe_int32.(=) 
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 7 21#
         "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp ))
-        (#"_parse_integer_fixup_radix.jc" 327 68 82# "expl:Integer cast"
+        (#"_parse_integer_fixup_radix.jc" 321 68 82# "expl:Integer cast"
         (Unsafe_int32.of_int (120))) ))
        then
         begin
@@ -3274,7 +3273,7 @@ module Function__parse_integer_fixup_radix_behaviors
          (acc  charP_charM_s_5
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 333 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 327 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) ) ) in
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          "expl:Precondition for isxdigit"
@@ -3282,14 +3281,14 @@ module Function__parse_integer_fixup_radix_behaviors
          (if
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 7 32 46#
          (Unsafe_enum__bool.(<>)  !tmp_0
-          (#"_parse_integer_fixup_radix.jc" 337 68 80# "expl:Integer cast"
+          (#"_parse_integer_fixup_radix.jc" 331 68 80# "expl:Integer cast"
           (Unsafe_enum__bool.of_int  (0) )) ))
          then
           (let _jessie_77 =
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 8 12 14#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 340 78 91# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 334 78 91# "expl:Integer cast"
            (Unsafe_int32.of_int (16))) )) in
           (let _jessie_78 = base in
           (let _jessie_79 = (0) in
@@ -3300,7 +3299,7 @@ module Function__parse_integer_fixup_radix_behaviors
           (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
           "expl:Integer cast"
           (Unsafe_uint32_of_Unsafe_int32.cast 
-           (#"_parse_integer_fixup_radix.jc" 343 78 90# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 337 78 90# "expl:Integer cast"
            (Unsafe_int32.of_int (8))) )) in
           (let _jessie_73 = base in
           (let _jessie_74 = (0) in
@@ -3312,7 +3311,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 10 12 13#
         "expl:Integer cast"
         (Unsafe_uint32_of_Unsafe_int32.cast 
-         (#"_parse_integer_fixup_radix.jc" 347 76 88# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 341 76 88# "expl:Integer cast"
          (Unsafe_int32.of_int (8))) )) in
         (let _jessie_66 = base in
         (let _jessie_67 = (0) in
@@ -3324,7 +3323,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 12 11 13#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 351 73 86# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 345 73 86# "expl:Integer cast"
        (Unsafe_int32.of_int (10))) )) in
       (let _jessie_59 = base in
       (let _jessie_60 = (0) in
@@ -3337,7 +3336,7 @@ module Function__parse_integer_fixup_radix_behaviors
       (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 14 16#
       "expl:Integer cast"
       (Unsafe_uint32_of_Unsafe_int32.cast 
-       (#"_parse_integer_fixup_radix.jc" 353 31 44# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 347 31 44# "expl:Integer cast"
        (Unsafe_int32.of_int (16))) )) ))
      then
       (if
@@ -3349,9 +3348,9 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 358 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 352 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) ) ) ) ))
-       (#"_parse_integer_fixup_radix.jc" 359 68 81# "expl:Integer cast"
+       (#"_parse_integer_fixup_radix.jc" 353 68 81# "expl:Integer cast"
        (Unsafe_int32.of_int (48))) ))
       then
        begin
@@ -3360,7 +3359,7 @@ module Function__parse_integer_fixup_radix_behaviors
         (acc  charP_charM_s_5
          (shift_  !mutable_s_2
           (Unsafe_int32.to_int 
-           (#"_parse_integer_fixup_radix.jc" 365 68 80# "expl:Integer cast"
+           (#"_parse_integer_fixup_radix.jc" 359 68 80# "expl:Integer cast"
            (Unsafe_int32.of_int (1))) ) ) ) in
         (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
         "expl:Precondition for _tolower"
@@ -3370,13 +3369,13 @@ module Function__parse_integer_fixup_radix_behaviors
         (Unsafe_int32.(=) 
          (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.c" 14 35 49#
          "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_1 ))
-         (#"_parse_integer_fixup_radix.jc" 369 68 82# "expl:Integer cast"
+         (#"_parse_integer_fixup_radix.jc" 363 68 82# "expl:Integer cast"
          (Unsafe_int32.of_int (120))) ))
         then
          (mutable_s_2 :=
           (shift_  !mutable_s_2
            (Unsafe_int32.to_int 
-            (#"_parse_integer_fixup_radix.jc" 373 68 80# "expl:Integer cast"
+            (#"_parse_integer_fixup_radix.jc" 367 68 80# "expl:Integer cast"
             (Unsafe_int32.of_int (2))) ) )) else ()) end else ()) else ());
      begin (return := !mutable_s_2); (raise Return) end end))); absurd  end
     with Return -> !return end))
@@ -3712,298 +3711,6 @@ module Struct_charP_safe
   
 end
 
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
-  
-end
-
 theory Struct_unsigned_intP
 
   use import Root_unsigned_intP 
@@ -4127,7 +3834,7 @@ theory Struct_unsigned_intP
      (((=) (offset_min unsigned_intP_alloc_table p) a) /\
      ((=) (offset_max unsigned_intP_alloc_table p) b))
   
-  axiom Unsigned_intP_int : ((=) (int_of_tag unsigned_intP_tag) (5))
+  axiom Unsigned_intP_int : ((=) (int_of_tag unsigned_intP_tag) (4))
   
 end
 
@@ -10151,10 +9858,10 @@ module Function_isascii
      (#"/home/work/workspace/self/verker-gh/ctype.h" 94 12 40#
      "expl:Ensures clause"
      (((<>) (Enum__bool.to_int result) (0)) <->
-     ((Int8.(<=) (#"_parse_integer_fixup_radix.jc" 206 23 34#
+     ((Int8.(<=) (#"_parse_integer_fixup_radix.jc" 200 23 34#
       "expl:Integer cast" (Int8.of_int (0))) c_4_0)
      /\
-     (Int8.(<=) c_4_0 (#"_parse_integer_fixup_radix.jc" 207 40 53#
+     (Int8.(<=) c_4_0 (#"_parse_integer_fixup_radix.jc" 201 40 53#
      "expl:Integer cast" (Int8.of_int (127))))))) }
   
 end
@@ -10176,10 +9883,10 @@ module Function_isascii_safe
      (#"/home/work/workspace/self/verker-gh/ctype.h" 94 12 40#
      "expl:Ensures clause"
      (((<>) (Enum__bool.to_int result) (0)) <->
-     ((Int8.(<=) (#"_parse_integer_fixup_radix.jc" 206 23 34#
+     ((Int8.(<=) (#"_parse_integer_fixup_radix.jc" 200 23 34#
       "expl:Integer cast" (Int8.of_int (0))) c_4_0)
      /\
-     (Int8.(<=) c_4_0 (#"_parse_integer_fixup_radix.jc" 207 40 53#
+     (Int8.(<=) c_4_0 (#"_parse_integer_fixup_radix.jc" 201 40 53#
      "expl:Integer cast" (Int8.of_int (127))))))) }
   
 end
@@ -10485,23 +10192,23 @@ module Function__parse_integer_fixup_radix
            /\
            ((((Uint32.(=)
               (select (old !unsigned_intP_unsigned_intM_base_6) base)
-              (#"_parse_integer_fixup_radix.jc" 298 35 49#
+              (#"_parse_integer_fixup_radix.jc" 292 35 49#
               "expl:Integer cast" (Uint32.of_int (16))))
              /\
              ((Int8.(=) (select charP_charM_s_5 (shift s_2 (0)))
-              (#"_parse_integer_fixup_radix.jc" 299 31 43#
+              (#"_parse_integer_fixup_radix.jc" 293 31 43#
               "expl:Integer cast" (Int8.of_int (48))))
              /\
              ((=)
              (tolower (Int8.to_int (select charP_charM_s_5 (shift s_2 (1)))))
-             (Int8.to_int (#"_parse_integer_fixup_radix.jc" 301 15 28#
+             (Int8.to_int (#"_parse_integer_fixup_radix.jc" 295 15 28#
              "expl:Integer cast" (Int8.of_int (120))))))) ->
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 26 15 37#
              "expl:Ensures clause" ((=) result (shift s_2 (2)))))
            /\
            (((Uint32.(=)
              (select (old !unsigned_intP_unsigned_intM_base_6) base)
-             (#"_parse_integer_fixup_radix.jc" 282 33 46# "expl:Integer cast"
+             (#"_parse_integer_fixup_radix.jc" 276 33 46# "expl:Integer cast"
              (Uint32.of_int (0)))) ->
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
              "expl:Ensures clause"
@@ -10511,7 +10218,7 @@ module Function__parse_integer_fixup_radix
               "expl:Ensures clause"
               ((is_hex s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 285 33 47#
+               (#"_parse_integer_fixup_radix.jc" 279 33 47#
                "expl:Integer cast" (Uint32.of_int (16))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10520,7 +10227,7 @@ module Function__parse_integer_fixup_radix
               "expl:Ensures clause"
               ((is_oct s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 288 35 48#
+               (#"_parse_integer_fixup_radix.jc" 282 35 48#
                "expl:Integer cast" (Uint32.of_int (8))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10529,7 +10236,7 @@ module Function__parse_integer_fixup_radix
               "expl:Ensures clause"
               ((is_dec s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 291 37 51#
+               (#"_parse_integer_fixup_radix.jc" 285 37 51#
                "expl:Integer cast" (Uint32.of_int (10))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10543,7 +10250,7 @@ module Function__parse_integer_fixup_radix
              (((is_oct s_2 charP_charM_s_5) \/ (is_dec s_2 charP_charM_s_5))
               -> ((=) result s_2)))))))))))))
            /\
-           ((#"_parse_integer_fixup_radix.jc" 279 10 28#
+           ((#"_parse_integer_fixup_radix.jc" 273 10 28#
             "expl:Assigns clause"
             (not_assigns unsigned_intP_base_6_alloc_table
             unsigned_intP_base_6_alloc_table (old
@@ -10603,50 +10310,50 @@ module Function__parse_integer_fixup_radix_safe
         (charP_charM_s_5 : (memory voidP Int8.t)) : (pointer voidP)
          requires {
            ("expl:Internal"
-           (#"_parse_integer_fixup_radix.jc" 272 12 409#
+           (#"_parse_integer_fixup_radix.jc" 266 12 409#
            "expl:Requires clause"
            ((#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 13 13 29#
             "expl:Requires clause"
-            (#"_parse_integer_fixup_radix.jc" 272 12 409#
+            (#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
-            ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+            ((#"_parse_integer_fixup_radix.jc" 266 12 409#
              "expl:Requires clause"
              ((<=) (offset_min voidP_s_5_alloc_table s_2) (0)))
             /\
-            (#"_parse_integer_fixup_radix.jc" 272 12 409#
+            (#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
-            ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+            ((#"_parse_integer_fixup_radix.jc" 266 12 409#
              "expl:Requires clause"
              ((>=) (offset_max voidP_s_5_alloc_table s_2) (2)))
             /\
-            (#"_parse_integer_fixup_radix.jc" 272 12 409#
+            (#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
-            ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+            ((#"_parse_integer_fixup_radix.jc" 266 12 409#
              "expl:Requires clause" ((=) true true))
             /\
-            (#"_parse_integer_fixup_radix.jc" 272 12 409#
+            (#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
-            ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+            ((#"_parse_integer_fixup_radix.jc" 266 12 409#
              "expl:Requires clause" ((=) true true))
             /\
-            (#"_parse_integer_fixup_radix.jc" 272 12 409#
+            (#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause" ((=) true true)))))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 14 13 25#
            "expl:Requires clause"
-           (#"_parse_integer_fixup_radix.jc" 272 12 409#
+           (#"_parse_integer_fixup_radix.jc" 266 12 409#
            "expl:Requires clause"
-           ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+           ((#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
             ((<=) (offset_min unsigned_intP_base_6_alloc_table base) (0)))
            /\
-           (#"_parse_integer_fixup_radix.jc" 272 12 409#
+           (#"_parse_integer_fixup_radix.jc" 266 12 409#
            "expl:Requires clause"
-           ((#"_parse_integer_fixup_radix.jc" 272 12 409#
+           ((#"_parse_integer_fixup_radix.jc" 266 12 409#
             "expl:Requires clause"
             ((>=) (offset_max unsigned_intP_base_6_alloc_table base) (0)))
            /\
-           (#"_parse_integer_fixup_radix.jc" 272 12 409#
+           (#"_parse_integer_fixup_radix.jc" 266 12 409#
            "expl:Requires clause" ((=) true true)))))))))) }
          reads { unsigned_intP_unsigned_intM_base_6 } writes {
          unsigned_intP_unsigned_intM_base_6 }
@@ -10660,23 +10367,23 @@ module Function__parse_integer_fixup_radix_safe
            /\
            ((((Uint32.(=)
               (select (old !unsigned_intP_unsigned_intM_base_6) base)
-              (#"_parse_integer_fixup_radix.jc" 298 35 49#
+              (#"_parse_integer_fixup_radix.jc" 292 35 49#
               "expl:Integer cast" (Uint32.of_int (16))))
              /\
              ((Int8.(=) (select charP_charM_s_5 (shift s_2 (0)))
-              (#"_parse_integer_fixup_radix.jc" 299 31 43#
+              (#"_parse_integer_fixup_radix.jc" 293 31 43#
               "expl:Integer cast" (Int8.of_int (48))))
              /\
              ((=)
              (tolower (Int8.to_int (select charP_charM_s_5 (shift s_2 (1)))))
-             (Int8.to_int (#"_parse_integer_fixup_radix.jc" 301 15 28#
+             (Int8.to_int (#"_parse_integer_fixup_radix.jc" 295 15 28#
              "expl:Integer cast" (Int8.of_int (120))))))) ->
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 26 15 37#
              "expl:Ensures clause" ((=) result (shift s_2 (2)))))
            /\
            (((Uint32.(=)
              (select (old !unsigned_intP_unsigned_intM_base_6) base)
-             (#"_parse_integer_fixup_radix.jc" 282 33 46# "expl:Integer cast"
+             (#"_parse_integer_fixup_radix.jc" 276 33 46# "expl:Integer cast"
              (Uint32.of_int (0)))) ->
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
              "expl:Ensures clause"
@@ -10686,7 +10393,7 @@ module Function__parse_integer_fixup_radix_safe
               "expl:Ensures clause"
               ((is_hex s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 285 33 47#
+               (#"_parse_integer_fixup_radix.jc" 279 33 47#
                "expl:Integer cast" (Uint32.of_int (16))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10695,7 +10402,7 @@ module Function__parse_integer_fixup_radix_safe
               "expl:Ensures clause"
               ((is_oct s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 288 35 48#
+               (#"_parse_integer_fixup_radix.jc" 282 35 48#
                "expl:Integer cast" (Uint32.of_int (8))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10704,7 +10411,7 @@ module Function__parse_integer_fixup_radix_safe
               "expl:Ensures clause"
               ((is_dec s_2 charP_charM_s_5) ->
                (Uint32.(=) (select !unsigned_intP_unsigned_intM_base_6 base)
-               (#"_parse_integer_fixup_radix.jc" 291 37 51#
+               (#"_parse_integer_fixup_radix.jc" 285 37 51#
                "expl:Integer cast" (Uint32.of_int (10))))))
              /\
              (#"/home/work/workspace/self/verker-gh/_parse_integer_fixup_radix.h" 19 15 40#
@@ -10718,7 +10425,7 @@ module Function__parse_integer_fixup_radix_safe
              (((is_oct s_2 charP_charM_s_5) \/ (is_dec s_2 charP_charM_s_5))
               -> ((=) result s_2)))))))))))))
            /\
-           ((#"_parse_integer_fixup_radix.jc" 279 10 28#
+           ((#"_parse_integer_fixup_radix.jc" 273 10 28#
             "expl:Assigns clause"
             (not_assigns unsigned_intP_base_6_alloc_table
             unsigned_intP_base_6_alloc_table (old

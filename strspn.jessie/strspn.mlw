@@ -1646,18 +1646,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 theory Axiomatic_Strlen
 
   use enum.Uint64 
@@ -1681,7 +1669,7 @@ theory Axiomatic_Strlen
   =
      (exists n_1 : Uint64.t.
       ((Int8.(=) (select charP_charM_s_2_at_L (shift s (Uint64.to_int n_1)))
-       (#"strspn.jc" 27 42 53# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strspn.jc" 21 42 53# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (if ((<=) (0) (Uint64.to_int n_1)) then
        (((<=) (offset_min voidP_s_2_alloc_table_at_L s) (0)) /\
@@ -1692,6 +1680,7 @@ theory Axiomatic_Strlen
          ((<=) __framac_tmp1 (Uint64.to_int n_1))) -> ((=) true true)))))
        else ((=) true true))))
   
+  
   lemma Valid_str_shift1
   #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
@@ -1700,7 +1689,7 @@ theory Axiomatic_Strlen
     (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
     (forall s_0_1 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_10_at_L s_0_1)
-       (#"strspn.jc" 41 28 39# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strspn.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (valid_str s_0_1 voidP_s_0_10_alloc_table_at_L charP_charM_s_0_10_at_L))
       ->
@@ -1718,12 +1707,22 @@ theory Axiomatic_Strlen
        (((>=) (offset_max voidP_s_1_11_alloc_table_at_L s_1) (0)) /\
        ((=) true true)))
       /\
-      (Int8.(=) (select charP_charM_s_1_11_at_L s_1) (#"strspn.jc" 49 29 40#
+      (Int8.(=) (select charP_charM_s_1_11_at_L s_1) (#"strspn.jc" 43 29 40#
       "expl:Integer cast" (Int8.of_int (0))))) ->
       (valid_str s_1 voidP_s_1_11_alloc_table_at_L charP_charM_s_1_11_at_L))))))
   
-  function strlen (pointer voidP) (memory voidP Int8.t) :
-  Uint64.t
+  function strlen (s_2 : (pointer voidP)) (charP_charM_s_2_3_at_L : (memory
+  voidP Int8.t)) : Uint64.t
+  =
+     (if
+      (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
+      (#"strspn.jc" 47 30 41# "expl:Integer cast" (Int8.of_int (0)))) then
+      (#"strspn.jc" 47 48 61# "expl:Integer cast" (Uint64.of_int (0))) else
+      (#"strspn.jc" 47 67 255# "expl:Integer cast"
+      (Uint64.of_int
+      (Int.(+) (1)
+      (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L))))))
+  
   
   lemma Strlen_before_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
@@ -1732,13 +1731,13 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_3_12_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
-     (forall i_1 : int.
+     (forall i : int.
       (((valid_str s_3 voidP_s_3_12_alloc_table_at_L charP_charM_s_3_12_at_L)
        /\
-       (((<=) (0) i_1) /\
-       ((<) i_1 (Uint64.to_int (strlen s_3 charP_charM_s_3_12_at_L))))) ->
-       (Int8.(<>) (select charP_charM_s_3_12_at_L (shift s_3 i_1))
-       (#"strspn.jc" 62 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))
+       (((<=) (0) i) /\
+       ((<) i (Uint64.to_int (strlen s_3 charP_charM_s_3_12_at_L))))) ->
+       (Int8.(<>) (select charP_charM_s_3_12_at_L (shift s_3 i))
+       (#"strspn.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
   lemma Strlen_at_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
@@ -1752,7 +1751,7 @@ theory Axiomatic_Strlen
       (Int8.(=)
       (select charP_charM_s_4_13_at_L
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_13_at_L))))
-      (#"strspn.jc" 67 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
+      (#"strspn.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
   lemma Strlen_shift
   #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
@@ -1761,14 +1760,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_5_14_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
-     (forall i_2 : Uint64.t.
+     (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_14_alloc_table_at_L charP_charM_s_5_14_at_L)
-       /\ (Uint64.(<=) i_2 (strlen s_5 charP_charM_s_5_14_at_L))) ->
+       /\ (Uint64.(<=) i_0 (strlen s_5 charP_charM_s_5_14_at_L))) ->
        ((=)
        (Uint64.to_int
-       (strlen (shift s_5 (Uint64.to_int i_2)) charP_charM_s_5_14_at_L))
+       (strlen (shift s_5 (Uint64.to_int i_0)) charP_charM_s_5_14_at_L))
        (Int.(-) (Uint64.to_int (strlen s_5 charP_charM_s_5_14_at_L))
-       (Uint64.to_int i_2)))))))))
+       (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
   #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
@@ -1777,14 +1776,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_6_15_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
-     (forall i_3 : Uint64.t.
+     (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_15_alloc_table_at_L charP_charM_s_6_15_at_L)
        /\
-       ((Uint64.(<) (#"strspn.jc" 79 39 52# "expl:Integer cast"
-        (Uint64.of_int (0))) i_3)
-       /\ (Uint64.(<=) i_3 (strlen s_6 charP_charM_s_6_15_at_L)))) ->
+       ((Uint64.(<) (#"strspn.jc" 73 39 52# "expl:Integer cast"
+        (Uint64.of_int (0))) i_1)
+       /\ (Uint64.(<=) i_1 (strlen s_6 charP_charM_s_6_15_at_L)))) ->
        (Uint64.(<)
-       (strlen (shift s_6 (Uint64.to_int i_3)) charP_charM_s_6_15_at_L)
+       (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_15_at_L)
        (strlen s_6 charP_charM_s_6_15_at_L))))))))
   
   lemma Strlen_shift1
@@ -1796,7 +1795,7 @@ theory Axiomatic_Strlen
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_16_alloc_table_at_L charP_charM_s_7_16_at_L)
       /\
-      (Int8.(<>) (select charP_charM_s_7_16_at_L s_7) (#"strspn.jc" 85 49 60#
+      (Int8.(<>) (select charP_charM_s_7_16_at_L s_7) (#"strspn.jc" 79 49 60#
       "expl:Integer cast" (Int8.of_int (0))))) ->
       ((=) (Uint64.to_int (strlen s_7 charP_charM_s_7_16_at_L))
       (Int.(+) (1)
@@ -1817,10 +1816,10 @@ theory Axiomatic_Strlen
        ((same_block s_8 sc) /\
        ((same_block s_8 sc) /\
        (((<=) (sub_pointer s_8 sc) (0)) /\
-       (forall i_4 : int.
-        ((((<=) (0) i_4) /\ ((<=) i_4 (sub_pointer sc s_8))) ->
-         (Int8.(<>) (select charP_charM_s_8_17_at_L (shift s_8 i_4))
-         (#"strspn.jc" 98 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
+       (forall i_2 : int.
+        ((((<=) (0) i_2) /\ ((<=) i_2 (sub_pointer sc s_8))) ->
+         (Int8.(<>) (select charP_charM_s_8_17_at_L (shift s_8 i_2))
+         (#"strspn.jc" 92 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
        ->
        (Uint64.(<=) (strlen sc charP_charM_s_8_17_at_L)
        (strlen s_8 charP_charM_s_8_17_at_L))))))))
@@ -1836,12 +1835,12 @@ theory Axiomatic_Strlen
        /\
        ((Int8.(=)
         (select charP_charM_s_9_19_at_L (shift s_9 (Uint64.to_int n_2)))
-        (#"strspn.jc" 105 53 64# "expl:Integer cast" (Int8.of_int (0))))
+        (#"strspn.jc" 99 53 64# "expl:Integer cast" (Int8.of_int (0))))
        /\
-       (forall i_5 : int.
-        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int n_2))) ->
-         (Int8.(<>) (select charP_charM_s_9_19_at_L (shift s_9 i_5))
-         (#"strspn.jc" 108 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
+       (forall i_3 : int.
+        ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int n_2))) ->
+         (Int8.(<>) (select charP_charM_s_9_19_at_L (shift s_9 i_3))
+         (#"strspn.jc" 102 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_19_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
@@ -1851,28 +1850,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_10_20_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
-     (forall i_6 : int.
+     (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_20_alloc_table_at_L
         charP_charM_s_10_20_at_L)
        /\
-       (((<=) (0) i_6) /\
-       ((<) i_6 (Uint64.to_int (strlen s_10 charP_charM_s_10_20_at_L))))) ->
-       (valid_str (shift s_10 i_6) voidP_s_10_20_alloc_table_at_L
+       (((<=) (0) i_4) /\
+       ((<) i_4 (Uint64.to_int (strlen s_10 charP_charM_s_10_20_at_L))))) ->
+       (valid_str (shift s_10 i_4) voidP_s_10_20_alloc_table_at_L
        charP_charM_s_10_20_at_L)))))))
-  
-  axiom Strlen_definition :
-  (forall s_2 : (pointer voidP).
-   (forall charP_charM_s_2_3_at_L : (memory voidP Int8.t)
-    [(strlen s_2 charP_charM_s_2_3_at_L)] .
-    ((=) (strlen s_2 charP_charM_s_2_3_at_L)
-    (if
-     (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
-     (#"strspn.jc" 53 30 41# "expl:Integer cast" (Int8.of_int (0)))) then
-     (#"strspn.jc" 53 48 61# "expl:Integer cast" (Uint64.of_int (0))) else
-     (#"strspn.jc" 53 67 255# "expl:Integer cast"
-     (Uint64.of_int
-     (Int.(+) (1)
-     (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L)))))))))
   
 end
 
@@ -1926,6 +1911,7 @@ theory Axiomatic_StrSpn
        (0))
       /\ (Int8.(=) (select charP_charM_s_11_5_at_L p) c))))))
   
+  
   lemma In_array_shift1
   #"/home/work/workspace/self/verker-gh/strspn.h" 17 7 129#
   "expl:Lemma in_array_shift1" :
@@ -1972,6 +1958,7 @@ theory Axiomatic_StrSpn
   
   function strspn (pointer voidP) (pointer voidP) : int
   
+  
   lemma Strspn_strend
   #"/home/work/workspace/self/verker-gh/strspn.h" 32 7 106#
   "expl:Lemma strspn_strend" :
@@ -1985,7 +1972,7 @@ theory Axiomatic_StrSpn
         ((=) true true)))
        /\
        (Int8.(=) (select charP_charM_s_15_6_at_L s_16)
-       (#"strspn.jc" 172 33 44# "expl:Integer cast" (Int8.of_int (0))))) ->
+       (#"strspn.jc" 166 33 44# "expl:Integer cast" (Int8.of_int (0))))) ->
        ((=) (strspn s_16 accept_0_0) (0))))))))
   
   lemma Strspn_empty_accept
@@ -2001,7 +1988,7 @@ theory Axiomatic_StrSpn
         ((=) true true)))
        /\
        (Int8.(=) (select charP_charM_accept_7_at_L accept_1)
-       (#"strspn.jc" 181 37 48# "expl:Integer cast" (Int8.of_int (0))))) ->
+       (#"strspn.jc" 175 37 48# "expl:Integer cast" (Int8.of_int (0))))) ->
        ((=) (strspn s_17 accept_1) (0))))))))
   
   lemma Strspn_range
@@ -2040,7 +2027,7 @@ theory Axiomatic_StrSpn
           charP_charM_accept_7_at_L)
          /\
          ((Int8.(<>) (select charP_charM_s_15_6_at_L s_19)
-          (#"strspn.jc" 195 34 45# "expl:Integer cast" (Int8.of_int (0))))
+          (#"strspn.jc" 189 34 45# "expl:Integer cast" (Int8.of_int (0))))
          /\
          (in_array accept_3 (select charP_charM_s_15_6_at_L s_19)
          charP_charM_accept_7_at_L)))) ->
@@ -2064,7 +2051,7 @@ theory Axiomatic_StrSpn
           charP_charM_accept_7_at_L)
          /\
          ((Int8.(<>) (select charP_charM_s_15_6_at_L s_20)
-          (#"strspn.jc" 204 34 45# "expl:Integer cast" (Int8.of_int (0))))
+          (#"strspn.jc" 198 34 45# "expl:Integer cast" (Int8.of_int (0))))
          /\
          (not
          (in_array accept_4 (select charP_charM_s_15_6_at_L s_20)
@@ -2175,7 +2162,7 @@ module Function_strspn_0_safety
        ((<) i (offset_max voidP_s_0_8_alloc_table s_0_0))) ->
        ((=) (typeof voidP_s_0_8_tag_table (shift s_0_0 i)) charP_tag)))))
    /\
-   (#"strspn.jc" 211 12 92#
+   (#"strspn.jc" 205 12 92#
    ((#"/home/work/workspace/self/verker-gh/strspn.h" 60 13 25#
     (valid_str s_0_0 voidP_s_0_8_alloc_table charP_charM_s_0_8))
    /\
@@ -2199,11 +2186,11 @@ module Function_strspn_0_safety
        (#"/home/work/workspace/self/verker-gh/strspn.c" 7 16 17#
        "expl:Integer cast"
        (Safe_uint64_of_Safe_int32.cast 
-        (#"strspn.jc" 265 34 46# "expl:Integer cast" (Safe_int32.of_int (0)))
+        (#"strspn.jc" 259 34 46# "expl:Integer cast" (Safe_int32.of_int (0)))
         )) in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strspn.c" 7 1 7#
+       (#"/home/work/workspace/self/verker-gh/strspn.c" 7 8 13#
        "expl:Pointer index bounds" true) }); _jessie_23 end));
        begin
        (p_1 :=
@@ -2214,7 +2201,7 @@ module Function_strspn_0_safety
         "expl:Pointer index bounds" true) }); _jessie_17 end));
         'Loop_3:
         loop
-        invariant { (#"strspn.jc" 268 6 5854# true) }
+        invariant { (#"strspn.jc" 262 6 5854# true) }
           variant {
             (#"/home/work/workspace/self/verker-gh/strspn.c" 16 18 37#
             (Int.(-) (Uint64.to_int (strlen s_0_0 charP_charM_s_0_8))
@@ -2257,7 +2244,7 @@ module Function_strspn_0_safety
            ((#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 43#
             (#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 43#
             ((#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 30#
-             (Uint64.(<=) (#"strspn.jc" 281 38 51# "expl:Integer cast"
+             (Uint64.(<=) (#"strspn.jc" 275 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !count))
             /\
             (#"/home/work/workspace/self/verker-gh/strspn.c" 10 25 43#
@@ -2294,7 +2281,7 @@ module Function_strspn_0_safety
              (#"/home/work/workspace/self/verker-gh/strspn.c" 18 13 15#
              "expl:Pointer dereference"
              (acc  voidP_s_0_8_alloc_table charP_charM_s_0_8 !p_1 )) ))
-            (#"strspn.jc" 311 27 39# "expl:Integer cast"
+            (#"strspn.jc" 305 27 39# "expl:Integer cast"
             (Safe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2307,7 +2294,7 @@ module Function_strspn_0_safety
               "expl:Pointer index bounds" true) }); _jessie_18 end));
               'Loop_4:
               loop
-              invariant { (#"strspn.jc" 316 15 2377# true) }
+              invariant { (#"strspn.jc" 310 15 2377# true) }
                 variant {
                   (#"/home/work/workspace/self/verker-gh/strspn.c" 23 19 48#
                   (Int.(-)
@@ -2370,7 +2357,7 @@ module Function_strspn_0_safety
                    "expl:Pointer dereference"
                    (acc  voidP_accept_9_alloc_table charP_charM_accept_9 !a ))
                    ))
-                  (#"strspn.jc" 348 36 48# "expl:Integer cast"
+                  (#"strspn.jc" 342 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2394,7 +2381,7 @@ module Function_strspn_0_safety
                    (let _jessie_19 =
                    (shift_typesafe  !a
                     (Safe_int32.to_int 
-                     (#"strspn.jc" 355 49 61# "expl:Integer cast"
+                     (#"strspn.jc" 349 49 61# "expl:Integer cast"
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
@@ -2417,7 +2404,7 @@ module Function_strspn_0_safety
                 (#"/home/work/workspace/self/verker-gh/strspn.c" 29 6 8#
                 "expl:Pointer dereference"
                 (acc  voidP_accept_9_alloc_table charP_charM_accept_9 !a )) ))
-               (#"strspn.jc" 360 30 42# "expl:Integer cast"
+               (#"strspn.jc" 354 30 42# "expl:Integer cast"
                (Safe_int32.of_int (0))) ))
               then
                begin
@@ -2447,7 +2434,7 @@ module Function_strspn_0_safety
               (count :=
                (let _jessie_21 =
                (Safe_uint64.(+)  !count
-                (#"strspn.jc" 379 61 74# "expl:Integer cast"
+                (#"strspn.jc" 373 61 74# "expl:Integer cast"
                 (Safe_uint64.of_int (1))) ) in
                begin
                (assert {
@@ -2457,7 +2444,7 @@ module Function_strspn_0_safety
              (let _jessie_22 =
              (shift_typesafe  !p_1
               (Safe_int32.to_int 
-               (#"strspn.jc" 381 40 52# "expl:Integer cast"
+               (#"strspn.jc" 375 40 52# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2483,7 +2470,7 @@ module Function_strspn_0_safety
      (return :=
       (let _jessie_25 = !__retres in
       begin
-      (assert { (#"strspn.jc" 387 7 22# "expl:Pointer index bounds" true) });
+      (assert { (#"strspn.jc" 381 7 22# "expl:Pointer index bounds" true) });
        _jessie_25 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end)
   
@@ -2593,7 +2580,7 @@ module Function_strspn_0_behaviors
        ((<) i (offset_max voidP_s_0_8_alloc_table s_0_0))) ->
        ((=) (typeof voidP_s_0_8_tag_table (shift s_0_0 i)) charP_tag)))))
    /\
-   (#"strspn.jc" 211 12 92#
+   (#"strspn.jc" 205 12 92#
    ((#"/home/work/workspace/self/verker-gh/strspn.h" 60 13 25#
     (valid_str s_0_0 voidP_s_0_8_alloc_table charP_charM_s_0_8))
    /\
@@ -2608,7 +2595,7 @@ module Function_strspn_0_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 24#
       "expl:Ensures clause"
-      (Uint64.(<=) (#"strspn.jc" 215 31 44# "expl:Integer cast"
+      (Uint64.(<=) (#"strspn.jc" 209 31 44# "expl:Integer cast"
       (Uint64.of_int (0))) result))
      /\
      (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
@@ -2681,7 +2668,7 @@ module Function_strspn_0_behaviors
        (#"/home/work/workspace/self/verker-gh/strspn.c" 7 16 17#
        "expl:Integer cast"
        (Unsafe_uint64_of_Unsafe_int32.cast 
-        (#"strspn.jc" 265 34 46# "expl:Integer cast"
+        (#"strspn.jc" 259 34 46# "expl:Integer cast"
         (Unsafe_int32.of_int (0))) )));
        begin
        (p_1 := s_0_0);
@@ -2711,7 +2698,7 @@ module Function_strspn_0_behaviors
             ((#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 43#
              (#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 43#
              ((#"/home/work/workspace/self/verker-gh/strspn.c" 10 20 30#
-              (Uint64.(<=) (#"strspn.jc" 281 38 51# "expl:Integer cast"
+              (Uint64.(<=) (#"strspn.jc" 275 38 51# "expl:Integer cast"
               (Uint64.of_int (0))) !count))
              /\
              (#"/home/work/workspace/self/verker-gh/strspn.c" 10 25 43#
@@ -2761,7 +2748,7 @@ module Function_strspn_0_behaviors
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_0_8 !p_1 )
              ))
-            (#"strspn.jc" 311 27 39# "expl:Integer cast"
+            (#"strspn.jc" 305 27 39# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2822,7 +2809,7 @@ module Function_strspn_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_accept_9 !a ) ))
-                  (#"strspn.jc" 348 36 48# "expl:Integer cast"
+                  (#"strspn.jc" 342 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2840,7 +2827,7 @@ module Function_strspn_0_behaviors
                   (a :=
                    (shift_  !a
                     (Unsafe_int32.to_int 
-                     (#"strspn.jc" 355 49 61# "expl:Integer cast"
+                     (#"strspn.jc" 349 49 61# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -2857,7 +2844,7 @@ module Function_strspn_0_behaviors
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_int8.cast 
                 (acc  charP_charM_accept_9 !a ) ))
-               (#"strspn.jc" 360 30 42# "expl:Integer cast"
+               (#"strspn.jc" 354 30 42# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
               then
                begin
@@ -2878,12 +2865,12 @@ module Function_strspn_0_behaviors
               charP_charM_accept_9)) }); () end;
               (count :=
                (Unsafe_uint64.(+)  !count
-                (#"strspn.jc" 379 61 74# "expl:Integer cast"
+                (#"strspn.jc" 373 61 74# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end;
             (p_1 :=
              (shift_  !p_1
               (Unsafe_int32.to_int 
-               (#"strspn.jc" 381 40 52# "expl:Integer cast"
+               (#"strspn.jc" 375 40 52# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3222,298 +3209,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -8477,14 +8172,14 @@ module Function_strlen_0
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strspn.jc" 126 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strspn.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strspn.jc" 130 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strspn.jc" 124 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -8532,14 +8227,14 @@ module Function_strlen_0_safe
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strspn.jc" 126 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strspn.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strspn.jc" 130 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strspn.jc" 124 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -8585,7 +8280,7 @@ module Function_strspn_0
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 24#
              "expl:Ensures clause"
-             (Uint64.(<=) (#"strspn.jc" 215 31 44# "expl:Integer cast"
+             (Uint64.(<=) (#"strspn.jc" 209 31 44# "expl:Integer cast"
              (Uint64.of_int (0))) result))
             /\
             (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
@@ -8682,7 +8377,7 @@ module Function_strspn_0_safe
          (charP_charM_s_0_8 : (memory voidP Int8.t)) : Uint64.t
           requires {
             ("expl:Internal"
-            (#"strspn.jc" 211 12 92# "expl:Requires clause"
+            (#"strspn.jc" 205 12 92# "expl:Requires clause"
             ((#"/home/work/workspace/self/verker-gh/strspn.h" 60 13 25#
              "expl:Requires clause"
              (valid_str s_0_0 voidP_s_0_8_alloc_table charP_charM_s_0_8))
@@ -8698,7 +8393,7 @@ module Function_strspn_0_safe
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 24#
              "expl:Ensures clause"
-             (Uint64.(<=) (#"strspn.jc" 215 31 44# "expl:Integer cast"
+             (Uint64.(<=) (#"strspn.jc" 209 31 44# "expl:Integer cast"
              (Uint64.of_int (0))) result))
             /\
             (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#

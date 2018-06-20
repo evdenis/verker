@@ -2,24 +2,18 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
+<prover id="2" name="CVC4" version="1.4" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
 <file name="../strnlen.mlw" expanded="true">
 <theory name="Function_strnlen_0_safety" sum="5639915487078cf1bc402afbbd2d8fc7" expanded="true">
  <goal name="WP_parameter strnlen_0" expl="Function strnlen, safety" expanded="true">
- <proof prover="0"><result status="unknown" time="4.80"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strnlen_0.1" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.05" steps="176"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_0.2" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="unknown" time="4.77"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter strnlen_0.2.1" expl="Function strnlen, safety">
-   <proof prover="0"><result status="unknown" time="4.82"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strnlen_0.2.1.1" expl="Function strnlen, safety">
     <transf name="remove_triggers" expanded="true">
@@ -31,8 +25,6 @@
    </transf>
    </goal>
    <goal name="WP_parameter strnlen_0.2.2" expl="Function strnlen, safety">
-   <proof prover="0"><result status="unknown" time="4.80"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strnlen_0.2.2.1" expl="Function strnlen, safety">
     <transf name="remove_triggers" expanded="true">
@@ -66,13 +58,11 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strnlen_0_behaviors" sum="3b97104d45dc819f55e10ef4114501d4" expanded="true">
+<theory name="Function_strnlen_0_behaviors" sum="10bc58af745632244da1c285c3c234ce" expanded="true">
  <goal name="WP_parameter strnlen_ensures_count_len" expl="Function strnlen, behavior count_len" expanded="true">
  <proof prover="1"><result status="valid" time="4.83" steps="7383"/></proof>
  </goal>
  <goal name="WP_parameter strnlen_ensures_default" expl="Function strnlen, default behavior" expanded="true">
- <proof prover="0"><result status="unknown" time="4.92"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strnlen_ensures_default.1" expl="Behavior disjointness check">
   <proof prover="1"><result status="valid" time="0.03" steps="150"/></proof>
@@ -84,9 +74,7 @@
   <proof prover="1"><result status="valid" time="0.09" steps="531"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_ensures_default.4" expl="loop invariant preservation">
-  <proof prover="0"><result status="unknown" time="4.81"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
-  <transf name="split_goal_wp" expanded="true">
+  <transf name="split_goal_wp">
    <goal name="WP_parameter strnlen_ensures_default.4.1" expl="Function strnlen, default behavior">
    <proof prover="1"><result status="valid" time="0.05" steps="186"/></proof>
    </goal>
@@ -109,32 +97,10 @@
    <proof prover="1"><result status="valid" time="0.15" steps="436"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.8" expl="Function strnlen, default behavior">
-   <proof prover="0"><result status="unknown" time="4.83"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
-   <transf name="inline_all" expanded="true">
-    <goal name="WP_parameter strnlen_ensures_default.4.8.1" expl="Function strnlen, default behavior">
-    <transf name="remove_triggers" expanded="true">
-     <goal name="WP_parameter strnlen_ensures_default.4.8.1.1" expl="Function strnlen, default behavior">
-     <proof prover="0" timelimit="15" memlimit="8000"><result status="timeout" time="15.00"/></proof>
-     <proof prover="1" timelimit="15" memlimit="8000"><result status="timeout" time="15.01"/></proof>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
+   <proof prover="2"><result status="valid" time="0.58"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.9" expl="Function strnlen, default behavior">
-   <proof prover="0"><result status="unknown" time="4.92"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
-   <transf name="inline_all" expanded="true">
-    <goal name="WP_parameter strnlen_ensures_default.4.9.1" expl="Function strnlen, default behavior">
-    <transf name="remove_triggers" expanded="true">
-     <goal name="WP_parameter strnlen_ensures_default.4.9.1.1" expl="Function strnlen, default behavior">
-     <proof prover="0" timelimit="15" memlimit="8000"><result status="timeout" time="15.00"/></proof>
-     <proof prover="1" timelimit="15" memlimit="8000"><result status="timeout" time="15.01"/></proof>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
+   <proof prover="2"><result status="valid" time="0.76"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.10" expl="Function strnlen, default behavior">
    <proof prover="1"><result status="valid" time="0.19" steps="476"/></proof>
@@ -150,8 +116,6 @@
  </transf>
  </goal>
  <goal name="WP_parameter strnlen_ensures_null_byte" expl="Function strnlen, behavior null_byte" expanded="true">
- <proof prover="0"><result status="unknown" time="4.89"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strnlen_ensures_null_byte.1" expl="Ensures clause (Postcondition)">
   <proof prover="1"><result status="valid" time="0.24" steps="810"/></proof>

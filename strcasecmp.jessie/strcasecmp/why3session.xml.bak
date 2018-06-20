@@ -7,29 +7,24 @@
 <file name="../strcasecmp.mlw" expanded="true">
 <theory name="Function_strcasecmp_safety" sum="6fbfdad7b996602dc398fa14875a085a" expanded="true">
  <goal name="WP_parameter strcasecmp" expl="Function strcasecmp, safety" expanded="true">
- <proof prover="0"><result status="unknown" time="4.75"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcasecmp.1" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.27" steps="96"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.2" expl="Pointer dereference (Validity)">
   <proof prover="0"><result status="valid" time="2.27"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.3" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.04" steps="110"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.4" expl="Pointer dereference (Validity)">
   <proof prover="0"><result status="valid" time="3.95"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.5" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.34" steps="130"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.6" expl="loop variant decrease">
   <proof prover="0"><result status="valid" time="0.38"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.7" expl="integer overflow">
   <proof prover="1"><result status="valid" time="0.04" steps="132"/></proof>
@@ -39,7 +34,6 @@
   </goal>
   <goal name="WP_parameter strcasecmp.9" expl="integer overflow">
   <proof prover="0"><result status="valid" time="1.70"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp.10" expl="integer overflow">
   <proof prover="1"><result status="valid" time="0.04" steps="142"/></proof>
@@ -49,8 +43,6 @@
 </theory>
 <theory name="Function_strcasecmp_behaviors" sum="88d5ad100e61816e6b20d4133701be8a" expanded="true">
  <goal name="WP_parameter strcasecmp_ensures_default" expl="Function strcasecmp, default behavior" expanded="true">
- <proof prover="0"><result status="unknown" time="4.71"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcasecmp_ensures_default.1" expl="Behavior disjointness check">
   <proof prover="1"><result status="valid" time="0.25" steps="74"/></proof>
@@ -60,35 +52,26 @@
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.3" expl="loop invariant init">
   <proof prover="0"><result status="valid" time="1.41"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.4" expl="loop invariant preservation">
-  <proof prover="0"><result status="unknown" time="4.82"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter strcasecmp_ensures_default.4.1" expl="Function strcasecmp, default behavior">
-   <proof prover="0"><result status="unknown" time="4.80"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_default.4.1.1" expl="Function strcasecmp, default behavior">
     <transf name="remove_triggers" expanded="true">
      <goal name="WP_parameter strcasecmp_ensures_default.4.1.1.1" expl="Function strcasecmp, default behavior">
      <proof prover="0"><result status="valid" time="4.62"/></proof>
-     <proof prover="1"><result status="timeout" time="5.01"/></proof>
      </goal>
     </transf>
     </goal>
    </transf>
    </goal>
    <goal name="WP_parameter strcasecmp_ensures_default.4.2" expl="Function strcasecmp, default behavior">
-   <proof prover="0"><result status="unknown" time="4.85"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_default.4.2.1" expl="Function strcasecmp, default behavior">
     <transf name="remove_triggers" expanded="true">
      <goal name="WP_parameter strcasecmp_ensures_default.4.2.1.1" expl="Function strcasecmp, default behavior">
      <proof prover="0"><result status="valid" time="4.74"/></proof>
-     <proof prover="1"><result status="timeout" time="5.01"/></proof>
      </goal>
     </transf>
     </goal>
@@ -104,14 +87,11 @@
    <proof prover="1"><result status="valid" time="0.38" steps="128"/></proof>
    </goal>
    <goal name="WP_parameter strcasecmp_ensures_default.4.6" expl="Function strcasecmp, default behavior">
-   <proof prover="0"><result status="unknown" time="4.78"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_default.4.6.1" expl="Function strcasecmp, default behavior">
     <transf name="remove_triggers" expanded="true">
      <goal name="WP_parameter strcasecmp_ensures_default.4.6.1.1" expl="Function strcasecmp, default behavior">
      <proof prover="0"><result status="valid" time="0.66"/></proof>
-     <proof prover="1"><result status="timeout" time="5.01"/></proof>
      </goal>
     </transf>
     </goal>
@@ -127,14 +107,11 @@
    <proof prover="1"><result status="valid" time="0.36" steps="136"/></proof>
    </goal>
    <goal name="WP_parameter strcasecmp_ensures_default.4.10" expl="Function strcasecmp, default behavior">
-   <proof prover="0"><result status="unknown" time="4.61"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_default.4.10.1" expl="Function strcasecmp, default behavior">
     <transf name="remove_triggers" expanded="true">
      <goal name="WP_parameter strcasecmp_ensures_default.4.10.1.1" expl="Function strcasecmp, default behavior">
      <proof prover="0"><result status="valid" time="0.65"/></proof>
-     <proof prover="1"><result status="timeout" time="5.00"/></proof>
      </goal>
     </transf>
     </goal>
@@ -150,7 +127,6 @@
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.5" expl="Assertion in line 22">
   <proof prover="0"><result status="valid" time="2.12"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.6" expl="Assertion in line 23">
   <proof prover="1"><result status="valid" time="0.03" steps="128"/></proof>
@@ -159,14 +135,11 @@
   <proof prover="1"><result status="valid" time="0.02" steps="120"/></proof>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_default.8" expl="Assertion in line 23">
-  <proof prover="0"><result status="unknown" time="4.80"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   <transf name="inline_all" expanded="true">
    <goal name="WP_parameter strcasecmp_ensures_default.8.1" expl="Assertion in line 23">
    <transf name="remove_triggers" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_default.8.1.1" expl="Assertion in line 23">
     <proof prover="0" timelimit="10" memlimit="4000"><result status="valid" time="4.78"/></proof>
-    <proof prover="1" timelimit="10" memlimit="4000"><result status="timeout" time="10.01"/></proof>
     </goal>
    </transf>
    </goal>
@@ -176,19 +149,12 @@
  </goal>
  <goal name="WP_parameter strcasecmp_ensures_equal" expl="Function strcasecmp, behavior equal" expanded="true">
  <proof prover="0"><result status="valid" time="0.86"/></proof>
- <proof prover="1"><result status="timeout" time="5.00"/></proof>
  </goal>
  <goal name="WP_parameter strcasecmp_ensures_not_equal" expl="Function strcasecmp, behavior not_equal" expanded="true">
- <proof prover="0"><result status="unknown" time="4.66"/></proof>
- <proof prover="1"><result status="timeout" time="5.00"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcasecmp_ensures_not_equal.1" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="unknown" time="4.81"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter strcasecmp_ensures_not_equal.1.1" expl="Ensures clause">
-   <proof prover="0"><result status="unknown" time="4.85"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_not_equal.1.1.1" expl="Ensures clause">
     <transf name="remove_triggers" expanded="true">
@@ -200,8 +166,6 @@
    </transf>
    </goal>
    <goal name="WP_parameter strcasecmp_ensures_not_equal.1.2" expl="Ensures clause">
-   <proof prover="0"><result status="unknown" time="4.80"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_not_equal.1.2.1" expl="Ensures clause">
     <transf name="remove_triggers" expanded="true">
@@ -215,21 +179,15 @@
   </transf>
   </goal>
   <goal name="WP_parameter strcasecmp_ensures_not_equal.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="unknown" time="4.87"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter strcasecmp_ensures_not_equal.2.1" expl="Ensures clause">
    <proof prover="0"><result status="valid" time="3.10"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    </goal>
    <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2" expl="Ensures clause">
-   <proof prover="0"><result status="unknown" time="4.88"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2.1" expl="Ensures clause">
     <transf name="remove_triggers" expanded="true">
      <goal name="WP_parameter strcasecmp_ensures_not_equal.2.2.1.1" expl="Ensures clause">
-     <proof prover="0"><result status="unknown" time="4.84"/></proof>
      <proof prover="1" timelimit="10" memlimit="4000"><result status="valid" time="5.94" steps="16480"/></proof>
      </goal>
     </transf>

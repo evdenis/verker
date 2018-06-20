@@ -14,12 +14,6 @@ tag charP = voidP with {
   int8 charM: 8;
 }
 
-tag unsigned_charP = {
-  uint8 unsigned_charM: 8;
-}
-
-type unsigned_charP = [unsigned_charP]
-
 voidP[..] memset(voidP[..] s, int32 c, uint64 count)
   requires ((_C_32 : (s <: charP)) &&
              (_C_33 : \at((if (\at(0,Here) <=

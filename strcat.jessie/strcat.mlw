@@ -1646,18 +1646,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 theory Axiomatic_Strlen
 
   use enum.Uint64 
@@ -1681,7 +1669,7 @@ theory Axiomatic_Strlen
   =
      (exists n_1 : Uint64.t.
       ((Int8.(=) (select charP_charM_s_2_at_L (shift s (Uint64.to_int n_1)))
-       (#"strcat.jc" 27 42 53# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strcat.jc" 21 42 53# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (if ((<=) (0) (Uint64.to_int n_1)) then
        (((<=) (offset_min voidP_s_2_alloc_table_at_L s) (0)) /\
@@ -1692,6 +1680,7 @@ theory Axiomatic_Strlen
          ((<=) __framac_tmp1 (Uint64.to_int n_1))) -> ((=) true true)))))
        else ((=) true true))))
   
+  
   lemma Valid_str_shift1
   #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
@@ -1700,7 +1689,7 @@ theory Axiomatic_Strlen
     (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
     (forall s_0_0 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_8_at_L s_0_0)
-       (#"strcat.jc" 41 28 39# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strcat.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (valid_str s_0_0 voidP_s_0_8_alloc_table_at_L charP_charM_s_0_8_at_L))
       ->
@@ -1718,12 +1707,22 @@ theory Axiomatic_Strlen
        (((>=) (offset_max voidP_s_1_9_alloc_table_at_L s_1) (0)) /\
        ((=) true true)))
       /\
-      (Int8.(=) (select charP_charM_s_1_9_at_L s_1) (#"strcat.jc" 49 29 40#
+      (Int8.(=) (select charP_charM_s_1_9_at_L s_1) (#"strcat.jc" 43 29 40#
       "expl:Integer cast" (Int8.of_int (0))))) ->
       (valid_str s_1 voidP_s_1_9_alloc_table_at_L charP_charM_s_1_9_at_L))))))
   
-  function strlen (pointer voidP) (memory voidP Int8.t) :
-  Uint64.t
+  function strlen (s_2 : (pointer voidP)) (charP_charM_s_2_3_at_L : (memory
+  voidP Int8.t)) : Uint64.t
+  =
+     (if
+      (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
+      (#"strcat.jc" 47 30 41# "expl:Integer cast" (Int8.of_int (0)))) then
+      (#"strcat.jc" 47 48 61# "expl:Integer cast" (Uint64.of_int (0))) else
+      (#"strcat.jc" 47 67 255# "expl:Integer cast"
+      (Uint64.of_int
+      (Int.(+) (1)
+      (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L))))))
+  
   
   lemma Strlen_before_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
@@ -1732,13 +1731,13 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_3_10_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
-     (forall i_1 : int.
+     (forall i : int.
       (((valid_str s_3 voidP_s_3_10_alloc_table_at_L charP_charM_s_3_10_at_L)
        /\
-       (((<=) (0) i_1) /\
-       ((<) i_1 (Uint64.to_int (strlen s_3 charP_charM_s_3_10_at_L))))) ->
-       (Int8.(<>) (select charP_charM_s_3_10_at_L (shift s_3 i_1))
-       (#"strcat.jc" 62 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))
+       (((<=) (0) i) /\
+       ((<) i (Uint64.to_int (strlen s_3 charP_charM_s_3_10_at_L))))) ->
+       (Int8.(<>) (select charP_charM_s_3_10_at_L (shift s_3 i))
+       (#"strcat.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
   lemma Strlen_at_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
@@ -1752,7 +1751,7 @@ theory Axiomatic_Strlen
       (Int8.(=)
       (select charP_charM_s_4_11_at_L
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_11_at_L))))
-      (#"strcat.jc" 67 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
+      (#"strcat.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
   lemma Strlen_shift
   #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
@@ -1761,14 +1760,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_5_12_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
-     (forall i_2 : Uint64.t.
+     (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_12_alloc_table_at_L charP_charM_s_5_12_at_L)
-       /\ (Uint64.(<=) i_2 (strlen s_5 charP_charM_s_5_12_at_L))) ->
+       /\ (Uint64.(<=) i_0 (strlen s_5 charP_charM_s_5_12_at_L))) ->
        ((=)
        (Uint64.to_int
-       (strlen (shift s_5 (Uint64.to_int i_2)) charP_charM_s_5_12_at_L))
+       (strlen (shift s_5 (Uint64.to_int i_0)) charP_charM_s_5_12_at_L))
        (Int.(-) (Uint64.to_int (strlen s_5 charP_charM_s_5_12_at_L))
-       (Uint64.to_int i_2)))))))))
+       (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
   #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
@@ -1777,14 +1776,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_6_13_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
-     (forall i_3 : Uint64.t.
+     (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_13_alloc_table_at_L charP_charM_s_6_13_at_L)
        /\
-       ((Uint64.(<) (#"strcat.jc" 79 39 52# "expl:Integer cast"
-        (Uint64.of_int (0))) i_3)
-       /\ (Uint64.(<=) i_3 (strlen s_6 charP_charM_s_6_13_at_L)))) ->
+       ((Uint64.(<) (#"strcat.jc" 73 39 52# "expl:Integer cast"
+        (Uint64.of_int (0))) i_1)
+       /\ (Uint64.(<=) i_1 (strlen s_6 charP_charM_s_6_13_at_L)))) ->
        (Uint64.(<)
-       (strlen (shift s_6 (Uint64.to_int i_3)) charP_charM_s_6_13_at_L)
+       (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_13_at_L)
        (strlen s_6 charP_charM_s_6_13_at_L))))))))
   
   lemma Strlen_shift1
@@ -1796,7 +1795,7 @@ theory Axiomatic_Strlen
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_14_alloc_table_at_L charP_charM_s_7_14_at_L)
       /\
-      (Int8.(<>) (select charP_charM_s_7_14_at_L s_7) (#"strcat.jc" 85 49 60#
+      (Int8.(<>) (select charP_charM_s_7_14_at_L s_7) (#"strcat.jc" 79 49 60#
       "expl:Integer cast" (Int8.of_int (0))))) ->
       ((=) (Uint64.to_int (strlen s_7 charP_charM_s_7_14_at_L))
       (Int.(+) (1)
@@ -1817,10 +1816,10 @@ theory Axiomatic_Strlen
        ((same_block s_8 sc) /\
        ((same_block s_8 sc) /\
        (((<=) (sub_pointer s_8 sc) (0)) /\
-       (forall i_4 : int.
-        ((((<=) (0) i_4) /\ ((<=) i_4 (sub_pointer sc s_8))) ->
-         (Int8.(<>) (select charP_charM_s_8_15_at_L (shift s_8 i_4))
-         (#"strcat.jc" 98 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
+       (forall i_2 : int.
+        ((((<=) (0) i_2) /\ ((<=) i_2 (sub_pointer sc s_8))) ->
+         (Int8.(<>) (select charP_charM_s_8_15_at_L (shift s_8 i_2))
+         (#"strcat.jc" 92 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
        ->
        (Uint64.(<=) (strlen sc charP_charM_s_8_15_at_L)
        (strlen s_8 charP_charM_s_8_15_at_L))))))))
@@ -1836,12 +1835,12 @@ theory Axiomatic_Strlen
        /\
        ((Int8.(=)
         (select charP_charM_s_9_17_at_L (shift s_9 (Uint64.to_int n_2)))
-        (#"strcat.jc" 105 53 64# "expl:Integer cast" (Int8.of_int (0))))
+        (#"strcat.jc" 99 53 64# "expl:Integer cast" (Int8.of_int (0))))
        /\
-       (forall i_5 : int.
-        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int n_2))) ->
-         (Int8.(<>) (select charP_charM_s_9_17_at_L (shift s_9 i_5))
-         (#"strcat.jc" 108 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
+       (forall i_3 : int.
+        ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int n_2))) ->
+         (Int8.(<>) (select charP_charM_s_9_17_at_L (shift s_9 i_3))
+         (#"strcat.jc" 102 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_17_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
@@ -1851,28 +1850,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_10_18_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
-     (forall i_6 : int.
+     (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_18_alloc_table_at_L
         charP_charM_s_10_18_at_L)
        /\
-       (((<=) (0) i_6) /\
-       ((<) i_6 (Uint64.to_int (strlen s_10 charP_charM_s_10_18_at_L))))) ->
-       (valid_str (shift s_10 i_6) voidP_s_10_18_alloc_table_at_L
+       (((<=) (0) i_4) /\
+       ((<) i_4 (Uint64.to_int (strlen s_10 charP_charM_s_10_18_at_L))))) ->
+       (valid_str (shift s_10 i_4) voidP_s_10_18_alloc_table_at_L
        charP_charM_s_10_18_at_L)))))))
-  
-  axiom Strlen_definition :
-  (forall s_2 : (pointer voidP).
-   (forall charP_charM_s_2_3_at_L : (memory voidP Int8.t)
-    [(strlen s_2 charP_charM_s_2_3_at_L)] .
-    ((=) (strlen s_2 charP_charM_s_2_3_at_L)
-    (if
-     (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
-     (#"strcat.jc" 53 30 41# "expl:Integer cast" (Int8.of_int (0)))) then
-     (#"strcat.jc" 53 48 61# "expl:Integer cast" (Uint64.of_int (0))) else
-     (#"strcat.jc" 53 67 255# "expl:Integer cast"
-     (Uint64.of_int
-     (Int.(+) (1)
-     (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L)))))))))
   
 end
 
@@ -1919,14 +1904,14 @@ module Function_strlen_0_safe
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strcat.jc" 126 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strcat.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strcat.jc" 130 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strcat.jc" 124 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -2015,10 +2000,10 @@ module Function_strcat_safety
   let strcat #"/home/work/workspace/self/verker-gh/strcat.c" 3 5 41#
   "expl:Function strcat, safety" =
   fun
-   (dest_9 : (pointer voidP)) (src_5 : (pointer voidP)) (charP_charM_dest_9_5
-   : ref (memory voidP Int8.t)) (voidP_dest_9_5_alloc_table : (alloc_table
+   (dest_7 : (pointer voidP)) (src_5 : (pointer voidP)) (charP_charM_dest_7_5
+   : ref (memory voidP Int8.t)) (voidP_dest_7_5_alloc_table : (alloc_table
    voidP)) (voidP_src_5_6_alloc_table : (alloc_table voidP))
-   (voidP_src_5_6_tag_table : (tag_table voidP)) (voidP_dest_9_5_tag_table :
+   (voidP_src_5_6_tag_table : (tag_table voidP)) (voidP_dest_7_5_tag_table :
    (tag_table voidP)) (charP_charM_src_5_6 : (memory voidP Int8.t)) 
    requires {
    (((allocated voidP_src_5_6_alloc_table src_5) ->
@@ -2028,46 +2013,46 @@ module Function_strcat_safety
        ((<) i (offset_max voidP_src_5_6_alloc_table src_5))) ->
        ((=) (typeof voidP_src_5_6_tag_table (shift src_5 i)) charP_tag)))))
    /\
-   (((allocated voidP_dest_9_5_alloc_table dest_9) ->
-     (((=) (typeof voidP_dest_9_5_tag_table dest_9) charP_tag) /\
+   (((allocated voidP_dest_7_5_alloc_table dest_7) ->
+     (((=) (typeof voidP_dest_7_5_tag_table dest_7) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_dest_9_5_alloc_table dest_9) i) /\
-       ((<) i (offset_max voidP_dest_9_5_alloc_table dest_9))) ->
-       ((=) (typeof voidP_dest_9_5_tag_table (shift dest_9 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_dest_7_5_alloc_table dest_7) i) /\
+       ((<) i (offset_max voidP_dest_7_5_alloc_table dest_7))) ->
+       ((=) (typeof voidP_dest_7_5_tag_table (shift dest_7 i)) charP_tag)))))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 12 13 27#
     (valid_str src_5 voidP_src_5_6_alloc_table charP_charM_src_5_6))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 13 13 28#
-    (valid_str dest_9 voidP_dest_9_5_alloc_table !charP_charM_dest_9_5))
+    (valid_str dest_7 voidP_dest_7_5_alloc_table !charP_charM_dest_7_5))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 14 13 63#
     ((<=)
-    (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
     (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))
     (18446744073709551615)))
    /\
    (#"/home/work/workspace/self/verker-gh/strcat.h" 16 13 55#
    (if
     ((<=) (0)
-    (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
     (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))) then
-    (((<=) (offset_min voidP_dest_9_5_alloc_table dest_9) (0)) /\
-    (((>=) (offset_max voidP_dest_9_5_alloc_table dest_9)
-     (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (((<=) (offset_min voidP_dest_7_5_alloc_table dest_7) (0)) /\
+    (((>=) (offset_max voidP_dest_7_5_alloc_table dest_7)
+     (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
      (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
     /\
     (forall __framac_tmp4 : int.
      ((((<=) (0) __framac_tmp4) /\
       ((<=) __framac_tmp4
-      (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+      (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
       (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
       ((=) true true))))) else ((=) true true))))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
-   (let mutable_dest_9 = ref dest_9 in
+   (let mutable_dest_7 = ref dest_7 in
    (let mutable_src_5 = ref src_5 in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2085,10 +2070,10 @@ module Function_strcat_safety
      try
       begin
       (tmp :=
-       (let _jessie_27 = !mutable_dest_9 in
+       (let _jessie_27 = !mutable_dest_7 in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strcat.c" 5 1 5#
+       (#"/home/work/workspace/self/verker-gh/strcat.c" 5 6 10#
        "expl:Pointer index bounds" true) }); _jessie_27 end));
        begin
        (dest_len :=
@@ -2097,51 +2082,51 @@ module Function_strcat_safety
         (#"/home/work/workspace/self/verker-gh/strcat.c" 6 29 40#
         "expl:Precondition for strlen"
         (Function_strlen_0_safe.strlen_0  _jessie_25
-         voidP_dest_9_5_alloc_table !charP_charM_dest_9_5 ))) in
+         voidP_dest_7_5_alloc_table !charP_charM_dest_7_5 ))) in
         begin
         (assert {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 6 29 40#
         "expl:Pointer index bounds" true) }); _jessie_24 end));
         'Loop_3:
         loop
-        invariant { (#"strcat.jc" 196 6 1209# true) }
+        invariant { (#"strcat.jc" 190 6 1209# true) }
           variant {
             (#"/home/work/workspace/self/verker-gh/strcat.c" 11 18 41#
             (Int.(-) (Uint64.to_int !dest_len)
-            (sub_pointer !mutable_dest_9 !tmp))) }
+            (sub_pointer !mutable_dest_7 !tmp))) }
          begin
          any unit
-         requires { true } reads { charP_charM_dest_9_5, mutable_dest_9 }
+         requires { true } reads { charP_charM_dest_7_5, mutable_dest_7 }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/strcat.c" 10 20 77#
-            (forall i_8 : int.
-             ((((<=) (0) i_8) /\
-              ((<) i_8 (sub_pointer !mutable_dest_9 !tmp))) ->
-              (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_8))
-              (#"strcat.jc" 212 53 64# "expl:Integer cast" (Int8.of_int
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\
+              ((<) i_6 (sub_pointer !mutable_dest_7 !tmp))) ->
+              (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_6))
+              (#"strcat.jc" 206 53 64# "expl:Integer cast" (Int8.of_int
               (0)))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/strcat.c" 9 20 35#
-            (valid_str !mutable_dest_9 voidP_dest_9_5_alloc_table
-            !charP_charM_dest_9_5))
+            (valid_str !mutable_dest_7 voidP_dest_7_5_alloc_table
+            !charP_charM_dest_7_5))
            /\
            (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
            (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
            ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 31#
-            (same_block !tmp !mutable_dest_9))
+            (same_block !tmp !mutable_dest_7))
            /\
            (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
            ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 31#
-            ((<=) (sub_pointer !tmp !mutable_dest_9) (0)))
+            ((<=) (sub_pointer !tmp !mutable_dest_7) (0)))
            /\
            (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
            ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 27 49#
-            (same_block !mutable_dest_9
+            (same_block !mutable_dest_7
             (shift !tmp (Uint64.to_int !dest_len))))
            /\
            (#"/home/work/workspace/self/verker-gh/strcat.c" 8 27 49#
            ((<=)
-           (sub_pointer !mutable_dest_9
+           (sub_pointer !mutable_dest_7
            (shift !tmp (Uint64.to_int !dest_len))) (0)))))))))))) } ;
           try
            begin
@@ -2151,16 +2136,16 @@ module Function_strcat_safety
            (Safe_int8.(<>) 
             (#"/home/work/workspace/self/verker-gh/strcat.c" 13 8 13#
             "expl:Pointer dereference"
-            (acc  voidP_dest_9_5_alloc_table !charP_charM_dest_9_5
-             !mutable_dest_9 ))
-            (#"strcat.jc" 216 62 73# "expl:Integer cast"
+            (acc  voidP_dest_7_5_alloc_table !charP_charM_dest_7_5
+             !mutable_dest_7 ))
+            (#"strcat.jc" 210 62 73# "expl:Integer cast"
             (Safe_int8.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
-            (mutable_dest_9 :=
+            (mutable_dest_7 :=
              (let _jessie_26 =
-             (shift_typesafe  !mutable_dest_9
+             (shift_typesafe  !mutable_dest_7
               (Safe_int32.to_int 
-               (#"strcat.jc" 218 50 62# "expl:Integer cast"
+               (#"strcat.jc" 212 50 62# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2175,66 +2160,66 @@ module Function_strcat_safety
       ();
        begin
        any unit
-       requires { true } reads { charP_charM_dest_9_5, mutable_dest_9 }
+       requires { true } reads { charP_charM_dest_7_5, mutable_dest_7 }
        ensures {
          (#"/home/work/workspace/self/verker-gh/strcat.c" 15 12 25#
-         (Int8.(=) (select !charP_charM_dest_9_5 !mutable_dest_9)
-         (#"strcat.jc" 225 51 62# "expl:Integer cast" (Int8.of_int (0))))) } ;
+         (Int8.(=) (select !charP_charM_dest_7_5 !mutable_dest_7)
+         (#"strcat.jc" 219 51 62# "expl:Integer cast" (Int8.of_int (0))))) } ;
         () end;
        begin
        any unit
-       requires { true } reads { mutable_dest_9 }
+       requires { true } reads { mutable_dest_7 }
        ensures {
          (#"/home/work/workspace/self/verker-gh/strcat.c" 16 12 34#
-         ((=) !mutable_dest_9 (shift !tmp (Uint64.to_int !dest_len)))) } ; ()
+         ((=) !mutable_dest_7 (shift !tmp (Uint64.to_int !dest_len)))) } ; ()
        end;
        begin
        any unit
-       requires { true } reads { charP_charM_dest_9_5 }
+       requires { true } reads { charP_charM_dest_7_5 }
        ensures {
          (#"/home/work/workspace/self/verker-gh/strcat.c" 17 12 35#
-         (Uint64.(=) (strlen !tmp !charP_charM_dest_9_5) !dest_len)) } ; ()
+         (Uint64.(=) (strlen !tmp !charP_charM_dest_7_5) !dest_len)) } ; ()
        end;
        begin
        (osrc :=
         (let _jessie_28 = !mutable_src_5 in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/strcat.c" 18 11 15#
+        (#"/home/work/workspace/self/verker-gh/strcat.c" 18 17 21#
         "expl:Pointer index bounds" true) }); _jessie_28 end));
         begin
         (mdest :=
-         (let _jessie_29 = !mutable_dest_9 in
+         (let _jessie_29 = !mutable_dest_7 in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/strcat.c" 19 11 15#
+         (#"/home/work/workspace/self/verker-gh/strcat.c" 19 17 22#
          "expl:Pointer index bounds" true) }); _jessie_29 end));
          'Loop_4:
          loop
-         invariant { (#"strcat.jc" 244 6 2781# true) }
+         invariant { (#"strcat.jc" 238 6 2777# true) }
            variant {
              (#"/home/work/workspace/self/verker-gh/strcat.c" 29 18 45#
              (Int.(-) (Uint64.to_int (strlen !osrc charP_charM_src_5_6))
              (sub_pointer !mutable_src_5 !osrc))) }
           begin
           any unit
-          requires { true } reads { charP_charM_dest_9_5, mutable_dest_9,
+          requires { true } reads { charP_charM_dest_7_5, mutable_dest_7,
           mutable_src_5 }
           ensures {
             ((#"/home/work/workspace/self/verker-gh/strcat.c" 27 20 77#
-             (forall i_10 : int.
-              ((((<=) (0) i_10) /\
-               ((<) i_10 (sub_pointer !mutable_dest_9 !tmp))) ->
-               (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_10))
-               (#"strcat.jc" 280 54 65# "expl:Integer cast" (Int8.of_int
+             (forall i_8 : int.
+              ((((<=) (0) i_8) /\
+               ((<) i_8 (sub_pointer !mutable_dest_7 !tmp))) ->
+               (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_8))
+               (#"strcat.jc" 274 53 64# "expl:Integer cast" (Int8.of_int
                (0)))))))
             /\
             ((#"/home/work/workspace/self/verker-gh/strcat.c" 25 20 102#
-             (forall i_9 : int.
-              ((((<=) (0) i_9) /\
-               ((<) i_9 (sub_pointer !mutable_src_5 !osrc))) ->
-               (Int8.(=) (select !charP_charM_dest_9_5 (shift !mdest i_9))
-               (select charP_charM_src_5_6 (shift !osrc i_9))))))
+             (forall i_7 : int.
+              ((((<=) (0) i_7) /\
+               ((<) i_7 (sub_pointer !mutable_src_5 !osrc))) ->
+               (Int8.(=) (select !charP_charM_dest_7_5 (shift !mdest i_7))
+               (select charP_charM_src_5_6 (shift !osrc i_7))))))
             /\
             ((#"/home/work/workspace/self/verker-gh/strcat.c" 24 20 34#
              (valid_str !mutable_src_5 voidP_src_5_6_alloc_table
@@ -2242,26 +2227,26 @@ module Function_strcat_safety
             /\
             ((#"/home/work/workspace/self/verker-gh/strcat.c" 23 20 46#
              ((=) (sub_pointer !mutable_src_5 !osrc)
-             (sub_pointer !mutable_dest_9 !mdest)))
+             (sub_pointer !mutable_dest_7 !mdest)))
             /\
             ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
              (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
              ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 33#
-              (same_block !mdest !mutable_dest_9))
+              (same_block !mdest !mutable_dest_7))
              /\
              (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
              ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 33#
-              ((<=) (sub_pointer !mdest !mutable_dest_9) (0)))
+              ((<=) (sub_pointer !mdest !mutable_dest_7) (0)))
              /\
              (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
              ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 29 57#
-              (same_block !mutable_dest_9
+              (same_block !mutable_dest_7
               (shift !mdest
               (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))
              /\
              (#"/home/work/workspace/self/verker-gh/strcat.c" 22 29 57#
              ((<=)
-             (sub_pointer !mutable_dest_9
+             (sub_pointer !mutable_dest_7
              (shift !mdest
              (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))) (0))))))))))
             /\
@@ -2289,17 +2274,17 @@ module Function_strcat_safety
             begin
             begin
             (tmp_1 :=
-             (let _jessie_30 = !mutable_dest_9 in
+             (let _jessie_30 = !mutable_dest_7 in
              begin
              (assert {
              (#"/home/work/workspace/self/verker-gh/strcat.c" 31 10 16#
              "expl:Pointer index bounds" true) }); _jessie_30 end));
              begin
-             (mutable_dest_9 :=
+             (mutable_dest_7 :=
               (let _jessie_31 =
-              (shift_typesafe  !mutable_dest_9
+              (shift_typesafe  !mutable_dest_7
                (Safe_int32.to_int 
-                (#"strcat.jc" 289 53 65# "expl:Integer cast"
+                (#"strcat.jc" 283 53 65# "expl:Integer cast"
                 (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
@@ -2317,7 +2302,7 @@ module Function_strcat_safety
                 (let _jessie_33 =
                 (shift_typesafe  !mutable_src_5
                  (Safe_int32.to_int 
-                  (#"strcat.jc" 291 51 63# "expl:Integer cast"
+                  (#"strcat.jc" 285 51 63# "expl:Integer cast"
                   (Safe_int32.of_int (1))) ) ) in
                 begin
                 (assert {
@@ -2346,14 +2331,14 @@ module Function_strcat_safety
              (let _jessie_39 = _jessie_37 in
              (#"/home/work/workspace/self/verker-gh/strcat.c" 31 9 25#
              "expl:Pointer dereference"
-             (upd  voidP_dest_9_5_alloc_table charP_charM_dest_9_5 _jessie_37
+             (upd  voidP_dest_7_5_alloc_table charP_charM_dest_7_5 _jessie_37
               _jessie_36 ))))));
               (if
               (#"/home/work/workspace/self/verker-gh/strcat.c" 31 8 34#
               (Safe_int32.(<>) 
                (#"/home/work/workspace/self/verker-gh/strcat.c" 31 9 25#
                "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  !tmp_2 ))
-               (#"strcat.jc" 295 56 68# "expl:Integer cast"
+               (#"strcat.jc" 289 56 68# "expl:Integer cast"
                (Safe_int32.of_int (0))) )) then ()
               else (raise (Goto_while_1_break_exc ()))) end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -2366,39 +2351,39 @@ module Function_strcat_safety
      ();
       begin
       any unit
-      requires { true } reads { charP_charM_dest_9_5, mutable_dest_9 }
+      requires { true } reads { charP_charM_dest_7_5, mutable_dest_7 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 33 12 79#
-        (forall i_11 : int.
-         ((((<=) (0) i_11) /\ ((<) i_11 (Uint64.to_int !dest_len))) ->
+        (forall i_9 : int.
+         ((((<=) (0) i_9) /\ ((<) i_9 (Uint64.to_int !dest_len))) ->
           (Int8.(=)
-          (select (at !charP_charM_dest_9_5 'Init)
-          (shift (at !mutable_dest_9 'Init) i_11))
-          (select !charP_charM_dest_9_5 (shift !tmp i_11)))))) } ; () end;
+          (select (at !charP_charM_dest_7_5 'Init)
+          (shift (at !mutable_dest_7 'Init) i_9))
+          (select !charP_charM_dest_7_5 (shift !tmp i_9)))))) } ; () end;
       begin
       any unit
-      requires { true } reads { charP_charM_dest_9_5, mutable_dest_9,
+      requires { true } reads { charP_charM_dest_7_5, mutable_dest_7,
       mutable_src_5 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
         (#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
         ((#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
          (Int8.(=)
-         (select !charP_charM_dest_9_5
-         (shift !mutable_dest_9 (Int.(-_) (1)))) (#"strcat.jc" 313 52 63#
+         (select !charP_charM_dest_7_5
+         (shift !mutable_dest_7 (Int.(-_) (1)))) (#"strcat.jc" 307 52 63#
          "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
         (Int8.(=)
         (select charP_charM_src_5_6 (shift !mutable_src_5 (Int.(-_) (1))))
-        (#"strcat.jc" 315 53 64# "expl:Integer cast" (Int8.of_int (0))))))))
+        (#"strcat.jc" 309 53 64# "expl:Integer cast" (Int8.of_int (0))))))))
         } ; () end;
       begin
       any unit
-      requires { true } reads { mutable_dest_9 }
+      requires { true } reads { mutable_dest_7 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 35 12 53#
-        ((=) (shift !mutable_dest_9 (Int.(-_) (1)))
+        ((=) (shift !mutable_dest_7 (Int.(-_) (1)))
         (shift (shift !tmp (Uint64.to_int !dest_len))
         (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))) } ; () end;
       begin
@@ -2410,17 +2395,17 @@ module Function_strcat_safety
         (Int.(-) (sub_pointer !mutable_src_5 !osrc) (1)))) } ; () end;
       begin
       any unit
-      requires { true } reads { charP_charM_dest_9_5 }
+      requires { true } reads { charP_charM_dest_7_5 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 37 12 109#
         (exists n_3 : Uint64.t.
          ((Int8.(=)
-          (select !charP_charM_dest_9_5 (shift !tmp (Uint64.to_int n_3)))
-          (#"strcat.jc" 337 55 66# "expl:Integer cast" (Int8.of_int (0))))
+          (select !charP_charM_dest_7_5 (shift !tmp (Uint64.to_int n_3)))
+          (#"strcat.jc" 331 55 66# "expl:Integer cast" (Int8.of_int (0))))
          /\
          ((if ((<=) (0) (Uint64.to_int n_3)) then
-           (((<=) (offset_min voidP_dest_9_5_alloc_table !tmp) (0)) /\
-           (((>=) (offset_max voidP_dest_9_5_alloc_table !tmp)
+           (((<=) (offset_min voidP_dest_7_5_alloc_table !tmp) (0)) /\
+           (((>=) (offset_max voidP_dest_7_5_alloc_table !tmp)
             (Uint64.to_int n_3))
            /\
            (forall __framac_tmp3 : int.
@@ -2428,49 +2413,49 @@ module Function_strcat_safety
              ((<=) __framac_tmp3 (Uint64.to_int n_3))) -> ((=) true true)))))
            else ((=) true true))
          /\
-         (Uint64.(=) n_3 (#"strcat.jc" 353 55 241# "expl:Integer cast"
+         (Uint64.(=) n_3 (#"strcat.jc" 347 55 241# "expl:Integer cast"
          (Uint64.of_int
          (Int.(+) (Uint64.to_int !dest_len)
          (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))))))) } ; ()
       end;
       begin
       any unit
-      requires { true } reads { charP_charM_dest_9_5 }
+      requires { true } reads { charP_charM_dest_7_5 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
         (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
         ((#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
-         (valid_str !tmp voidP_dest_9_5_alloc_table !charP_charM_dest_9_5))
+         (valid_str !tmp voidP_dest_7_5_alloc_table !charP_charM_dest_7_5))
         /\
         (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
         ((#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
          (Int8.(=)
-         (select !charP_charM_dest_9_5
+         (select !charP_charM_dest_7_5
          (shift !tmp
-         (Uint64.to_int (#"strcat.jc" 362 56 244# "expl:Integer cast"
+         (Uint64.to_int (#"strcat.jc" 356 56 244# "expl:Integer cast"
          (Uint64.of_int
          (Int.(+) (Uint64.to_int !dest_len)
          (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))))))
-         (#"strcat.jc" 365 54 65# "expl:Integer cast" (Int8.of_int (0)))))
+         (#"strcat.jc" 359 54 65# "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
-        (forall i_12 : int.
-         ((((<=) (0) i_12) /\
-          ((<) i_12
-          (Uint64.to_int (#"strcat.jc" 369 59 253# "expl:Integer cast"
+        (forall i_10 : int.
+         ((((<=) (0) i_10) /\
+          ((<) i_10
+          (Uint64.to_int (#"strcat.jc" 363 59 253# "expl:Integer cast"
           (Uint64.of_int
           (Int.(+) (Uint64.to_int !dest_len)
           (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))))) ->
-          (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_12))
-          (#"strcat.jc" 373 57 68# "expl:Integer cast" (Int8.of_int (0))))))))))))
+          (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_10))
+          (#"strcat.jc" 367 57 68# "expl:Integer cast" (Int8.of_int (0))))))))))))
         } ; () end;
       begin
       any unit
-      requires { true } reads { charP_charM_dest_9_5 }
+      requires { true } reads { charP_charM_dest_7_5 }
       ensures {
         (#"/home/work/workspace/self/verker-gh/strcat.c" 42 12 61#
-        (Uint64.(=) (strlen !tmp !charP_charM_dest_9_5)
-        (#"strcat.jc" 379 51 174# "expl:Integer cast"
+        (Uint64.(=) (strlen !tmp !charP_charM_dest_7_5)
+        (#"strcat.jc" 373 51 174# "expl:Integer cast"
         (Uint64.of_int
         (Int.(+) (Uint64.to_int !dest_len)
         (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))))) } ; () end;
@@ -2478,7 +2463,7 @@ module Function_strcat_safety
       (return :=
        (let _jessie_40 = !tmp in
        begin
-       (assert { (#"strcat.jc" 384 7 17# "expl:Pointer index bounds" true) });
+       (assert { (#"strcat.jc" 378 7 17# "expl:Pointer index bounds" true) });
         _jessie_40 end)); (raise Return) end end end))))))); absurd  end with
     Return -> !return end)))
   
@@ -2523,14 +2508,14 @@ module Function_strlen_0
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strcat.jc" 126 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strcat.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strcat.jc" 130 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strcat.jc" 124 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -2611,10 +2596,10 @@ module Function_strcat_behaviors
   #"/home/work/workspace/self/verker-gh/strcat.c" 3 5 41#
   "expl:Function strcat, default behavior" =
   fun
-   (dest_9 : (pointer voidP)) (src_5 : (pointer voidP)) (charP_charM_dest_9_5
-   : ref (memory voidP Int8.t)) (voidP_dest_9_5_alloc_table : (alloc_table
+   (dest_7 : (pointer voidP)) (src_5 : (pointer voidP)) (charP_charM_dest_7_5
+   : ref (memory voidP Int8.t)) (voidP_dest_7_5_alloc_table : (alloc_table
    voidP)) (voidP_src_5_6_alloc_table : (alloc_table voidP))
-   (voidP_src_5_6_tag_table : (tag_table voidP)) (voidP_dest_9_5_tag_table :
+   (voidP_src_5_6_tag_table : (tag_table voidP)) (voidP_dest_7_5_tag_table :
    (tag_table voidP)) (charP_charM_src_5_6 : (memory voidP Int8.t)) 
    requires {
    (((allocated voidP_src_5_6_alloc_table src_5) ->
@@ -2624,52 +2609,52 @@ module Function_strcat_behaviors
        ((<) i (offset_max voidP_src_5_6_alloc_table src_5))) ->
        ((=) (typeof voidP_src_5_6_tag_table (shift src_5 i)) charP_tag)))))
    /\
-   (((allocated voidP_dest_9_5_alloc_table dest_9) ->
-     (((=) (typeof voidP_dest_9_5_tag_table dest_9) charP_tag) /\
+   (((allocated voidP_dest_7_5_alloc_table dest_7) ->
+     (((=) (typeof voidP_dest_7_5_tag_table dest_7) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_dest_9_5_alloc_table dest_9) i) /\
-       ((<) i (offset_max voidP_dest_9_5_alloc_table dest_9))) ->
-       ((=) (typeof voidP_dest_9_5_tag_table (shift dest_9 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_dest_7_5_alloc_table dest_7) i) /\
+       ((<) i (offset_max voidP_dest_7_5_alloc_table dest_7))) ->
+       ((=) (typeof voidP_dest_7_5_tag_table (shift dest_7 i)) charP_tag)))))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 12 13 27#
     (valid_str src_5 voidP_src_5_6_alloc_table charP_charM_src_5_6))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 13 13 28#
-    (valid_str dest_9 voidP_dest_9_5_alloc_table !charP_charM_dest_9_5))
+    (valid_str dest_7 voidP_dest_7_5_alloc_table !charP_charM_dest_7_5))
    /\
-   (#"strcat.jc" 134 12 1266#
+   (#"strcat.jc" 128 12 1266#
    ((#"/home/work/workspace/self/verker-gh/strcat.h" 14 13 63#
     ((<=)
-    (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
     (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))
     (18446744073709551615)))
    /\
    (#"/home/work/workspace/self/verker-gh/strcat.h" 16 13 55#
    (if
     ((<=) (0)
-    (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
     (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))) then
-    (((<=) (offset_min voidP_dest_9_5_alloc_table dest_9) (0)) /\
-    (((>=) (offset_max voidP_dest_9_5_alloc_table dest_9)
-     (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+    (((<=) (offset_min voidP_dest_7_5_alloc_table dest_7) (0)) /\
+    (((>=) (offset_max voidP_dest_7_5_alloc_table dest_7)
+     (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
      (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
     /\
     (forall __framac_tmp4 : int.
      ((((<=) (0) __framac_tmp4) /\
       ((<=) __framac_tmp4
-      (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+      (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
       (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
       ((=) true true))))) else ((=) true true))))))))))) }
    ensures {
      ("expl:Postcondition"
-     ((#"strcat.jc" 154 10 192# "expl:Assigns clause"
-      (not_assigns voidP_dest_9_5_alloc_table voidP_dest_9_5_alloc_table (old
-      !charP_charM_dest_9_5) !charP_charM_dest_9_5
-      (pset_range (pset_singleton dest_9)
-      (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
-      (Int.(+) (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+     ((#"strcat.jc" 148 10 192# "expl:Assigns clause"
+      (not_assigns voidP_dest_7_5_alloc_table voidP_dest_7_5_alloc_table (old
+      !charP_charM_dest_7_5) !charP_charM_dest_7_5
+      (pset_range (pset_singleton dest_7)
+      (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
+      (Int.(+) (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
       (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))))
      /\
      (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
@@ -2677,50 +2662,50 @@ module Function_strcat_behaviors
      (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
-      "expl:Ensures clause" ((=) result dest_9))
+      "expl:Ensures clause" ((=) result dest_7))
      /\
      (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strcat.h" 19 12 30#
       "expl:Ensures clause"
-      (valid_str result voidP_dest_9_5_alloc_table !charP_charM_dest_9_5))
+      (valid_str result voidP_dest_7_5_alloc_table !charP_charM_dest_7_5))
      /\
      (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strcat.h" 20 12 101#
       "expl:Ensures clause"
-      (forall i_13 : int.
-       ((((<=) (0) i_13) /\
-        ((<) i_13
-        (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5))))) ->
-        (Int8.(=) (select (old !charP_charM_dest_9_5) (shift dest_9 i_13))
-        (select !charP_charM_dest_9_5 (shift result i_13))))))
+      (forall i_11 : int.
+       ((((<=) (0) i_11) /\
+        ((<) i_11
+        (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5))))) ->
+        (Int8.(=) (select (old !charP_charM_dest_7_5) (shift dest_7 i_11))
+        (select !charP_charM_dest_7_5 (shift result i_11))))))
      /\
      (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strcat.h" 22 12 156#
       "expl:Ensures clause"
-      (forall i_14 : int.
-       ((((<=) (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
-         i_14)
+      (forall i_12 : int.
+       ((((<=) (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
+         i_12)
         /\
-        ((<) i_14
-        (Int.(+) (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+        ((<) i_12
+        (Int.(+) (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
         (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
         (Int8.(=)
         (select charP_charM_src_5_6
         (shift src_5
-        (Int.(-) i_14
-        (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5))))))
-        (select !charP_charM_dest_9_5 (shift result i_14))))))
+        (Int.(-) i_12
+        (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5))))))
+        (select !charP_charM_dest_7_5 (shift result i_12))))))
      /\
      (#"/home/work/workspace/self/verker-gh/strcat.h" 25 12 62#
      "expl:Ensures clause"
-     ((=) (Uint64.to_int (strlen result !charP_charM_dest_9_5))
-     (Int.(+) (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+     ((=) (Uint64.to_int (strlen result !charP_charM_dest_7_5))
+     (Int.(+) (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
      (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))))))))))))))) }
    diverges  ->
-   (let mutable_dest_9 = ref dest_9 in
+   (let mutable_dest_7 = ref dest_7 in
    (let mutable_src_5 = ref src_5 in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2737,59 +2722,59 @@ module Function_strcat_behaviors
      begin
      try
       begin
-      (tmp := !mutable_dest_9);
+      (tmp := !mutable_dest_7);
        begin
        (dest_len :=
         (let _jessie_8 = !tmp in
         (#"/home/work/workspace/self/verker-gh/strcat.c" 6 29 40#
         "expl:Precondition for strlen"
-        (Function_strlen_0.strlen_0  _jessie_8 voidP_dest_9_5_alloc_table
-         !charP_charM_dest_9_5 ))));
+        (Function_strlen_0.strlen_0  _jessie_8 voidP_dest_7_5_alloc_table
+         !charP_charM_dest_7_5 ))));
         'Loop_1:
         loop
         invariant
           { (((#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
               (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 31#
-               (same_block !tmp !mutable_dest_9))
+               (same_block !tmp !mutable_dest_7))
               /\
               (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 31#
-               ((<=) (sub_pointer !tmp !mutable_dest_9) (0)))
+               ((<=) (sub_pointer !tmp !mutable_dest_7) (0)))
               /\
               (#"/home/work/workspace/self/verker-gh/strcat.c" 8 20 49#
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 8 27 49#
-               (same_block !mutable_dest_9
+               (same_block !mutable_dest_7
                (shift !tmp (Uint64.to_int !dest_len))))
               /\
               (#"/home/work/workspace/self/verker-gh/strcat.c" 8 27 49#
               ((<=)
-              (sub_pointer !mutable_dest_9
+              (sub_pointer !mutable_dest_7
               (shift !tmp (Uint64.to_int !dest_len))) (0))))))))))
              &&
              ((#"/home/work/workspace/self/verker-gh/strcat.c" 9 20 35#
-              (valid_str !mutable_dest_9 voidP_dest_9_5_alloc_table
-              !charP_charM_dest_9_5))
+              (valid_str !mutable_dest_7 voidP_dest_7_5_alloc_table
+              !charP_charM_dest_7_5))
              &&
              (#"/home/work/workspace/self/verker-gh/strcat.c" 10 20 77#
-             (forall i_8 : int.
-              ((((<=) (0) i_8) /\
-               ((<) i_8 (sub_pointer !mutable_dest_9 !tmp))) ->
-               (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_8))
-               (#"strcat.jc" 212 53 64# "expl:Integer cast" (Int8.of_int
+             (forall i_6 : int.
+              ((((<=) (0) i_6) /\
+               ((<) i_6 (sub_pointer !mutable_dest_7 !tmp))) ->
+               (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_6))
+               (#"strcat.jc" 206 53 64# "expl:Integer cast" (Int8.of_int
                (0)))))))))
             /\
-            (#"strcat.jc" 154 10 192# "expl:Assigns clause"
-            (not_assigns voidP_dest_9_5_alloc_table
-            voidP_dest_9_5_alloc_table (at !charP_charM_dest_9_5 'Init)
-            !charP_charM_dest_9_5
-            (pset_range (pset_singleton (at !mutable_dest_9 'Init))
+            (#"strcat.jc" 148 10 192# "expl:Assigns clause"
+            (not_assigns voidP_dest_7_5_alloc_table
+            voidP_dest_7_5_alloc_table (at !charP_charM_dest_7_5 'Init)
+            !charP_charM_dest_7_5
+            (pset_range (pset_singleton (at !mutable_dest_7 'Init))
             (Uint64.to_int
-            (strlen (at !mutable_dest_9 'Init) (at !charP_charM_dest_9_5
+            (strlen (at !mutable_dest_7 'Init) (at !charP_charM_dest_7_5
             'Init)))
             (Int.(+)
             (Uint64.to_int
-            (strlen (at !mutable_dest_9 'Init) (at !charP_charM_dest_9_5
+            (strlen (at !mutable_dest_7 'Init) (at !charP_charM_dest_7_5
             'Init)))
             (Uint64.to_int
             (strlen (at !mutable_src_5 'Init) charP_charM_src_5_6))))))) } 
@@ -2801,14 +2786,14 @@ module Function_strcat_behaviors
            begin
            (if
            (#"/home/work/workspace/self/verker-gh/strcat.c" 13 8 13#
-           (Unsafe_int8.(<>)  (acc  !charP_charM_dest_9_5 !mutable_dest_9 )
-            (#"strcat.jc" 216 62 73# "expl:Integer cast"
+           (Unsafe_int8.(<>)  (acc  !charP_charM_dest_7_5 !mutable_dest_7 )
+            (#"strcat.jc" 210 62 73# "expl:Integer cast"
             (Unsafe_int8.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
-            (mutable_dest_9 :=
-             (shift_  !mutable_dest_9
+            (mutable_dest_7 :=
+             (shift_  !mutable_dest_7
               (Unsafe_int32.to_int 
-               (#"strcat.jc" 218 50 62# "expl:Integer cast"
+               (#"strcat.jc" 212 50 62# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2821,24 +2806,24 @@ module Function_strcat_behaviors
        (assert {
        (#"/home/work/workspace/self/verker-gh/strcat.c" 15 12 25#
        "expl:Assertion in line 15"
-       (Int8.(=) (select !charP_charM_dest_9_5 !mutable_dest_9)
-       (#"strcat.jc" 225 51 62# "expl:Integer cast" (Int8.of_int (0))))) });
+       (Int8.(=) (select !charP_charM_dest_7_5 !mutable_dest_7)
+       (#"strcat.jc" 219 51 62# "expl:Integer cast" (Int8.of_int (0))))) });
         () end;
        begin
        (assert {
        (#"/home/work/workspace/self/verker-gh/strcat.c" 16 12 34#
        "expl:Assertion in line 16"
-       ((=) !mutable_dest_9 (shift !tmp (Uint64.to_int !dest_len)))) }); ()
+       ((=) !mutable_dest_7 (shift !tmp (Uint64.to_int !dest_len)))) }); ()
        end;
        begin
        (assert {
        (#"/home/work/workspace/self/verker-gh/strcat.c" 17 12 35#
        "expl:Assertion in line 17"
-       (Uint64.(=) (strlen !tmp !charP_charM_dest_9_5) !dest_len)) }); () end;
+       (Uint64.(=) (strlen !tmp !charP_charM_dest_7_5) !dest_len)) }); () end;
        begin
        (osrc := !mutable_src_5);
         begin
-        (mdest := !mutable_dest_9);
+        (mdest := !mutable_dest_7);
          'Loop_2:
          loop
          invariant
@@ -2866,65 +2851,65 @@ module Function_strcat_behaviors
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
                (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
                ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 33#
-                (same_block !mdest !mutable_dest_9))
+                (same_block !mdest !mutable_dest_7))
                /\
                (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
                ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 33#
-                ((<=) (sub_pointer !mdest !mutable_dest_9) (0)))
+                ((<=) (sub_pointer !mdest !mutable_dest_7) (0)))
                /\
                (#"/home/work/workspace/self/verker-gh/strcat.c" 22 20 57#
                ((#"/home/work/workspace/self/verker-gh/strcat.c" 22 29 57#
-                (same_block !mutable_dest_9
+                (same_block !mutable_dest_7
                 (shift !mdest
                 (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))
                /\
                (#"/home/work/workspace/self/verker-gh/strcat.c" 22 29 57#
                ((<=)
-               (sub_pointer !mutable_dest_9
+               (sub_pointer !mutable_dest_7
                (shift !mdest
                (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))) (0))))))))))
               &&
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 23 20 46#
                ((=) (sub_pointer !mutable_src_5 !osrc)
-               (sub_pointer !mutable_dest_9 !mdest)))
+               (sub_pointer !mutable_dest_7 !mdest)))
               &&
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 24 20 34#
                (valid_str !mutable_src_5 voidP_src_5_6_alloc_table
                charP_charM_src_5_6))
               &&
               ((#"/home/work/workspace/self/verker-gh/strcat.c" 25 20 102#
-               (forall i_9 : int.
-                ((((<=) (0) i_9) /\
-                 ((<) i_9 (sub_pointer !mutable_src_5 !osrc))) ->
-                 (Int8.(=) (select !charP_charM_dest_9_5 (shift !mdest i_9))
-                 (select charP_charM_src_5_6 (shift !osrc i_9))))))
+               (forall i_7 : int.
+                ((((<=) (0) i_7) /\
+                 ((<) i_7 (sub_pointer !mutable_src_5 !osrc))) ->
+                 (Int8.(=) (select !charP_charM_dest_7_5 (shift !mdest i_7))
+                 (select charP_charM_src_5_6 (shift !osrc i_7))))))
               &&
               (#"/home/work/workspace/self/verker-gh/strcat.c" 27 20 77#
-              (forall i_10 : int.
-               ((((<=) (0) i_10) /\
-                ((<) i_10 (sub_pointer !mutable_dest_9 !tmp))) ->
-                (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_10))
-                (#"strcat.jc" 280 54 65# "expl:Integer cast" (Int8.of_int
+              (forall i_8 : int.
+               ((((<=) (0) i_8) /\
+                ((<) i_8 (sub_pointer !mutable_dest_7 !tmp))) ->
+                (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_8))
+                (#"strcat.jc" 274 53 64# "expl:Integer cast" (Int8.of_int
                 (0))))))))))))
              /\
-             ((#"strcat.jc" 244 6 2781# "expl:Assigns clause"
-              (not_assigns voidP_dest_9_5_alloc_table
-              voidP_dest_9_5_alloc_table (at !charP_charM_dest_9_5 'Loop_2)
-              !charP_charM_dest_9_5
+             ((#"strcat.jc" 238 6 2777# "expl:Assigns clause"
+              (not_assigns voidP_dest_7_5_alloc_table
+              voidP_dest_7_5_alloc_table (at !charP_charM_dest_7_5 'Loop_2)
+              !charP_charM_dest_7_5
               (pset_range (pset_singleton !mdest) (0)
               (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))
              /\
-             (#"strcat.jc" 154 10 192# "expl:Assigns clause"
-             (not_assigns voidP_dest_9_5_alloc_table
-             voidP_dest_9_5_alloc_table (at !charP_charM_dest_9_5 'Init)
-             !charP_charM_dest_9_5
-             (pset_range (pset_singleton (at !mutable_dest_9 'Init))
+             (#"strcat.jc" 148 10 192# "expl:Assigns clause"
+             (not_assigns voidP_dest_7_5_alloc_table
+             voidP_dest_7_5_alloc_table (at !charP_charM_dest_7_5 'Init)
+             !charP_charM_dest_7_5
+             (pset_range (pset_singleton (at !mutable_dest_7 'Init))
              (Uint64.to_int
-             (strlen (at !mutable_dest_9 'Init) (at !charP_charM_dest_9_5
+             (strlen (at !mutable_dest_7 'Init) (at !charP_charM_dest_7_5
              'Init)))
              (Int.(+)
              (Uint64.to_int
-             (strlen (at !mutable_dest_9 'Init) (at !charP_charM_dest_9_5
+             (strlen (at !mutable_dest_7 'Init) (at !charP_charM_dest_7_5
              'Init)))
              (Uint64.to_int
              (strlen (at !mutable_src_5 'Init) charP_charM_src_5_6)))))))) } 
@@ -2935,12 +2920,12 @@ module Function_strcat_behaviors
             begin
             begin
             begin
-            (tmp_1 := !mutable_dest_9);
+            (tmp_1 := !mutable_dest_7);
              begin
-             (mutable_dest_9 :=
-              (shift_  !mutable_dest_9
+             (mutable_dest_7 :=
+              (shift_  !mutable_dest_7
                (Unsafe_int32.to_int 
-                (#"strcat.jc" 289 53 65# "expl:Integer cast"
+                (#"strcat.jc" 283 53 65# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ));
               begin
               (tmp_3 := !mutable_src_5);
@@ -2948,7 +2933,7 @@ module Function_strcat_behaviors
                (mutable_src_5 :=
                 (shift_  !mutable_src_5
                  (Unsafe_int32.to_int 
-                  (#"strcat.jc" 291 51 63# "expl:Integer cast"
+                  (#"strcat.jc" 285 51 63# "expl:Integer cast"
                   (Unsafe_int32.of_int (1))) ) ));
                 (tmp_2 := (acc  charP_charM_src_5_6 !tmp_3 )) end end end end;
              begin
@@ -2956,14 +2941,14 @@ module Function_strcat_behaviors
              (let _jessie_20 = !tmp_1 in
              (let _jessie_21 = (0) in
              (let _jessie_22 = _jessie_20 in
-             (upd  charP_charM_dest_9_5 _jessie_22 _jessie_19 )))));
+             (upd  charP_charM_dest_7_5 _jessie_22 _jessie_19 )))));
               (if
               (#"/home/work/workspace/self/verker-gh/strcat.c" 31 8 34#
               (Unsafe_int32.(<>) 
                (#"/home/work/workspace/self/verker-gh/strcat.c" 31 9 25#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_int8.cast  !tmp_2 ))
-               (#"strcat.jc" 295 56 68# "expl:Integer cast"
+               (#"strcat.jc" 289 56 68# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) )) then ()
               else (raise (Goto_while_1_break_exc ()))) end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -2978,12 +2963,12 @@ module Function_strcat_behaviors
       (assert {
       (#"/home/work/workspace/self/verker-gh/strcat.c" 33 12 79#
       "expl:Assertion in line 33"
-      (forall i_11 : int.
-       ((((<=) (0) i_11) /\ ((<) i_11 (Uint64.to_int !dest_len))) ->
+      (forall i_9 : int.
+       ((((<=) (0) i_9) /\ ((<) i_9 (Uint64.to_int !dest_len))) ->
         (Int8.(=)
-        (select (at !charP_charM_dest_9_5 'Init)
-        (shift (at !mutable_dest_9 'Init) i_11))
-        (select !charP_charM_dest_9_5 (shift !tmp i_11)))))) }); () end;
+        (select (at !charP_charM_dest_7_5 'Init)
+        (shift (at !mutable_dest_7 'Init) i_9))
+        (select !charP_charM_dest_7_5 (shift !tmp i_9)))))) }); () end;
       begin
       (assert {
       (#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
@@ -2993,20 +2978,20 @@ module Function_strcat_behaviors
       ((#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
        "expl:Assertion in line 34"
        (Int8.(=)
-       (select !charP_charM_dest_9_5 (shift !mutable_dest_9 (Int.(-_) (1))))
-       (#"strcat.jc" 313 52 63# "expl:Integer cast" (Int8.of_int (0)))))
+       (select !charP_charM_dest_7_5 (shift !mutable_dest_7 (Int.(-_) (1))))
+       (#"strcat.jc" 307 52 63# "expl:Integer cast" (Int8.of_int (0)))))
       /\
       (#"/home/work/workspace/self/verker-gh/strcat.c" 34 12 47#
       "expl:Assertion in line 34"
       (Int8.(=)
       (select charP_charM_src_5_6 (shift !mutable_src_5 (Int.(-_) (1))))
-      (#"strcat.jc" 315 53 64# "expl:Integer cast" (Int8.of_int (0)))))))) });
+      (#"strcat.jc" 309 53 64# "expl:Integer cast" (Int8.of_int (0)))))))) });
        () end;
       begin
       (assert {
       (#"/home/work/workspace/self/verker-gh/strcat.c" 35 12 53#
       "expl:Assertion in line 35"
-      ((=) (shift !mutable_dest_9 (Int.(-_) (1)))
+      ((=) (shift !mutable_dest_7 (Int.(-_) (1)))
       (shift (shift !tmp (Uint64.to_int !dest_len))
       (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))) }); () end;
       begin
@@ -3021,12 +3006,12 @@ module Function_strcat_behaviors
       "expl:Assertion in line 37"
       (exists n_3 : Uint64.t.
        ((Int8.(=)
-        (select !charP_charM_dest_9_5 (shift !tmp (Uint64.to_int n_3)))
-        (#"strcat.jc" 337 55 66# "expl:Integer cast" (Int8.of_int (0))))
+        (select !charP_charM_dest_7_5 (shift !tmp (Uint64.to_int n_3)))
+        (#"strcat.jc" 331 55 66# "expl:Integer cast" (Int8.of_int (0))))
        /\
        ((if ((<=) (0) (Uint64.to_int n_3)) then
-         (((<=) (offset_min voidP_dest_9_5_alloc_table !tmp) (0)) /\
-         (((>=) (offset_max voidP_dest_9_5_alloc_table !tmp)
+         (((<=) (offset_min voidP_dest_7_5_alloc_table !tmp) (0)) /\
+         (((>=) (offset_max voidP_dest_7_5_alloc_table !tmp)
           (Uint64.to_int n_3))
          /\
          (forall __framac_tmp3 : int.
@@ -3034,7 +3019,7 @@ module Function_strcat_behaviors
            ((<=) __framac_tmp3 (Uint64.to_int n_3))) -> ((=) true true)))))
          else ((=) true true))
        /\
-       (Uint64.(=) n_3 (#"strcat.jc" 353 55 241# "expl:Integer cast"
+       (Uint64.(=) n_3 (#"strcat.jc" 347 55 241# "expl:Integer cast"
        (Uint64.of_int
        (Int.(+) (Uint64.to_int !dest_len)
        (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))))))) }); () end;
@@ -3046,39 +3031,39 @@ module Function_strcat_behaviors
       "expl:Assertion in line 38"
       ((#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
        "expl:Assertion in line 38"
-       (valid_str !tmp voidP_dest_9_5_alloc_table !charP_charM_dest_9_5))
+       (valid_str !tmp voidP_dest_7_5_alloc_table !charP_charM_dest_7_5))
       /\
       (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
       "expl:Assertion in line 38"
       ((#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
        "expl:Assertion in line 38"
        (Int8.(=)
-       (select !charP_charM_dest_9_5
+       (select !charP_charM_dest_7_5
        (shift !tmp
-       (Uint64.to_int (#"strcat.jc" 362 56 244# "expl:Integer cast"
+       (Uint64.to_int (#"strcat.jc" 356 56 244# "expl:Integer cast"
        (Uint64.of_int
        (Int.(+) (Uint64.to_int !dest_len)
        (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))))))
-       (#"strcat.jc" 365 54 65# "expl:Integer cast" (Int8.of_int (0)))))
+       (#"strcat.jc" 359 54 65# "expl:Integer cast" (Int8.of_int (0)))))
       /\
       (#"/home/work/workspace/self/verker-gh/strcat.c" 38 12 174#
       "expl:Assertion in line 38"
-      (forall i_12 : int.
-       ((((<=) (0) i_12) /\
-        ((<) i_12
-        (Uint64.to_int (#"strcat.jc" 369 59 253# "expl:Integer cast"
+      (forall i_10 : int.
+       ((((<=) (0) i_10) /\
+        ((<) i_10
+        (Uint64.to_int (#"strcat.jc" 363 59 253# "expl:Integer cast"
         (Uint64.of_int
         (Int.(+) (Uint64.to_int !dest_len)
         (Uint64.to_int (strlen !osrc charP_charM_src_5_6)))))))) ->
-        (Int8.(<>) (select !charP_charM_dest_9_5 (shift !tmp i_12))
-        (#"strcat.jc" 373 57 68# "expl:Integer cast" (Int8.of_int (0))))))))))))
+        (Int8.(<>) (select !charP_charM_dest_7_5 (shift !tmp i_10))
+        (#"strcat.jc" 367 57 68# "expl:Integer cast" (Int8.of_int (0))))))))))))
       }); () end;
       begin
       (assert {
       (#"/home/work/workspace/self/verker-gh/strcat.c" 42 12 61#
       "expl:Assertion in line 42"
-      (Uint64.(=) (strlen !tmp !charP_charM_dest_9_5)
-      (#"strcat.jc" 379 51 174# "expl:Integer cast"
+      (Uint64.(=) (strlen !tmp !charP_charM_dest_7_5)
+      (#"strcat.jc" 373 51 174# "expl:Integer cast"
       (Uint64.of_int
       (Int.(+) (Uint64.to_int !dest_len)
       (Uint64.to_int (strlen !osrc charP_charM_src_5_6))))))) }); () end;
@@ -3413,298 +3398,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -8694,33 +8387,33 @@ module Function_strcat
   use why3.Bool.Bool 
   
   val strcat
-  (dest_9 : (pointer voidP)) 
+  (dest_7 : (pointer voidP)) 
    (src_5 : (pointer voidP)) 
-    (charP_charM_dest_9_5 : ref (memory voidP Int8.t)) 
+    (charP_charM_dest_7_5 : ref (memory voidP Int8.t)) 
      (voidP_src_5_6_alloc_table : (alloc_table voidP)) 
-      (voidP_dest_9_5_alloc_table : (alloc_table voidP)) 
+      (voidP_dest_7_5_alloc_table : (alloc_table voidP)) 
        (voidP_src_5_6_tag_table : (tag_table voidP)) 
-        (voidP_dest_9_5_tag_table : (tag_table voidP)) 
+        (voidP_dest_7_5_tag_table : (tag_table voidP)) 
          (charP_charM_src_5_6 : (memory voidP Int8.t)) : (pointer voidP)
-          requires { true } reads { charP_charM_dest_9_5 } writes {
-          charP_charM_dest_9_5 }
+          requires { true } reads { charP_charM_dest_7_5 } writes {
+          charP_charM_dest_7_5 }
           ensures {
-            (((allocated voidP_dest_9_5_alloc_table result) ->
-              (((=) (typeof voidP_dest_9_5_tag_table result) charP_tag) /\
+            (((allocated voidP_dest_7_5_alloc_table result) ->
+              (((=) (typeof voidP_dest_7_5_tag_table result) charP_tag) /\
               (forall i : int.
-               ((((<=) (offset_min voidP_dest_9_5_alloc_table result) i) /\
-                ((<) i (offset_max voidP_dest_9_5_alloc_table result))) ->
-                ((=) (typeof voidP_dest_9_5_tag_table (shift result i))
+               ((((<=) (offset_min voidP_dest_7_5_alloc_table result) i) /\
+                ((<) i (offset_max voidP_dest_7_5_alloc_table result))) ->
+                ((=) (typeof voidP_dest_7_5_tag_table (shift result i))
                 charP_tag)))))
             /\
-            ((#"strcat.jc" 154 10 192# "expl:Assigns clause"
-             (not_assigns voidP_dest_9_5_alloc_table
-             voidP_dest_9_5_alloc_table (old !charP_charM_dest_9_5)
-             !charP_charM_dest_9_5
-             (pset_range (pset_singleton dest_9)
-             (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+            ((#"strcat.jc" 148 10 192# "expl:Assigns clause"
+             (not_assigns voidP_dest_7_5_alloc_table
+             voidP_dest_7_5_alloc_table (old !charP_charM_dest_7_5)
+             !charP_charM_dest_7_5
+             (pset_range (pset_singleton dest_7)
+             (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
              (Int.(+)
-             (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+             (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
              (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
@@ -8728,53 +8421,53 @@ module Function_strcat
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
-             "expl:Ensures clause" ((=) result dest_9))
+             "expl:Ensures clause" ((=) result dest_7))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 19 12 30#
              "expl:Ensures clause"
-             (valid_str result voidP_dest_9_5_alloc_table
-             !charP_charM_dest_9_5))
+             (valid_str result voidP_dest_7_5_alloc_table
+             !charP_charM_dest_7_5))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 20 12 101#
              "expl:Ensures clause"
-             (forall i_13 : int.
-              ((((<=) (0) i_13) /\
-               ((<) i_13
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))))
+             (forall i_11 : int.
+              ((((<=) (0) i_11) /\
+               ((<) i_11
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))))
                ->
                (Int8.(=)
-               (select (old !charP_charM_dest_9_5) (shift dest_9 i_13))
-               (select !charP_charM_dest_9_5 (shift result i_13))))))
+               (select (old !charP_charM_dest_7_5) (shift dest_7 i_11))
+               (select !charP_charM_dest_7_5 (shift result i_11))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 22 12 156#
              "expl:Ensures clause"
-             (forall i_14 : int.
+             (forall i_12 : int.
               ((((<=)
-                (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
-                i_14)
+                (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
+                i_12)
                /\
-               ((<) i_14
+               ((<) i_12
                (Int.(+)
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
                (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
                (Int8.(=)
                (select charP_charM_src_5_6
                (shift src_5
-               (Int.(-) i_14
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5))))))
-               (select !charP_charM_dest_9_5 (shift result i_14))))))
+               (Int.(-) i_12
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5))))))
+               (select !charP_charM_dest_7_5 (shift result i_12))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 25 12 62#
             "expl:Ensures clause"
-            ((=) (Uint64.to_int (strlen result !charP_charM_dest_9_5))
+            ((=) (Uint64.to_int (strlen result !charP_charM_dest_7_5))
             (Int.(+)
-            (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+            (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
             (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))))))))))))))
             }
   
@@ -8815,32 +8508,32 @@ module Function_strcat_safe
   use why3.Bool.Bool 
   
   val strcat
-  (dest_9 : (pointer voidP)) 
+  (dest_7 : (pointer voidP)) 
    (src_5 : (pointer voidP)) 
-    (charP_charM_dest_9_5 : ref (memory voidP Int8.t)) 
+    (charP_charM_dest_7_5 : ref (memory voidP Int8.t)) 
      (voidP_src_5_6_alloc_table : (alloc_table voidP)) 
-      (voidP_dest_9_5_alloc_table : (alloc_table voidP)) 
+      (voidP_dest_7_5_alloc_table : (alloc_table voidP)) 
        (voidP_src_5_6_tag_table : (tag_table voidP)) 
-        (voidP_dest_9_5_tag_table : (tag_table voidP)) 
+        (voidP_dest_7_5_tag_table : (tag_table voidP)) 
          (charP_charM_src_5_6 : (memory voidP Int8.t)) : (pointer voidP)
           requires {
             ("expl:Internal"
-            (#"strcat.jc" 134 12 1266# "expl:Requires clause"
+            (#"strcat.jc" 128 12 1266# "expl:Requires clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 12 13 27#
              "expl:Requires clause"
              (valid_str src_5 voidP_src_5_6_alloc_table charP_charM_src_5_6))
             /\
-            (#"strcat.jc" 134 12 1266# "expl:Requires clause"
+            (#"strcat.jc" 128 12 1266# "expl:Requires clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 13 13 28#
              "expl:Requires clause"
-             (valid_str dest_9 voidP_dest_9_5_alloc_table
-             !charP_charM_dest_9_5))
+             (valid_str dest_7 voidP_dest_7_5_alloc_table
+             !charP_charM_dest_7_5))
             /\
-            (#"strcat.jc" 134 12 1266# "expl:Requires clause"
+            (#"strcat.jc" 128 12 1266# "expl:Requires clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 14 13 63#
              "expl:Requires clause"
              ((<=)
-             (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+             (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
              (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))
              (18446744073709551615)))
             /\
@@ -8848,37 +8541,37 @@ module Function_strcat_safe
             "expl:Requires clause"
             (if
              ((<=) (0)
-             (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+             (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
              (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))) then
-             (((<=) (offset_min voidP_dest_9_5_alloc_table dest_9) (0)) /\
-             (((>=) (offset_max voidP_dest_9_5_alloc_table dest_9)
-              (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+             (((<=) (offset_min voidP_dest_7_5_alloc_table dest_7) (0)) /\
+             (((>=) (offset_max voidP_dest_7_5_alloc_table dest_7)
+              (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
               (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
              /\
              (forall __framac_tmp4 : int.
               ((((<=) (0) __framac_tmp4) /\
                ((<=) __framac_tmp4
-               (Int.(+) (Uint64.to_int (strlen dest_9 !charP_charM_dest_9_5))
+               (Int.(+) (Uint64.to_int (strlen dest_7 !charP_charM_dest_7_5))
                (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
                ((=) true true))))) else ((=) true true)))))))))) }
-          reads { charP_charM_dest_9_5 } writes { charP_charM_dest_9_5 }
+          reads { charP_charM_dest_7_5 } writes { charP_charM_dest_7_5 }
           ensures {
-            (((allocated voidP_dest_9_5_alloc_table result) ->
-              (((=) (typeof voidP_dest_9_5_tag_table result) charP_tag) /\
+            (((allocated voidP_dest_7_5_alloc_table result) ->
+              (((=) (typeof voidP_dest_7_5_tag_table result) charP_tag) /\
               (forall i : int.
-               ((((<=) (offset_min voidP_dest_9_5_alloc_table result) i) /\
-                ((<) i (offset_max voidP_dest_9_5_alloc_table result))) ->
-                ((=) (typeof voidP_dest_9_5_tag_table (shift result i))
+               ((((<=) (offset_min voidP_dest_7_5_alloc_table result) i) /\
+                ((<) i (offset_max voidP_dest_7_5_alloc_table result))) ->
+                ((=) (typeof voidP_dest_7_5_tag_table (shift result i))
                 charP_tag)))))
             /\
-            ((#"strcat.jc" 154 10 192# "expl:Assigns clause"
-             (not_assigns voidP_dest_9_5_alloc_table
-             voidP_dest_9_5_alloc_table (old !charP_charM_dest_9_5)
-             !charP_charM_dest_9_5
-             (pset_range (pset_singleton dest_9)
-             (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+            ((#"strcat.jc" 148 10 192# "expl:Assigns clause"
+             (not_assigns voidP_dest_7_5_alloc_table
+             voidP_dest_7_5_alloc_table (old !charP_charM_dest_7_5)
+             !charP_charM_dest_7_5
+             (pset_range (pset_singleton dest_7)
+             (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
              (Int.(+)
-             (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+             (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
              (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
@@ -8886,53 +8579,53 @@ module Function_strcat_safe
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
-             "expl:Ensures clause" ((=) result dest_9))
+             "expl:Ensures clause" ((=) result dest_7))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 19 12 30#
              "expl:Ensures clause"
-             (valid_str result voidP_dest_9_5_alloc_table
-             !charP_charM_dest_9_5))
+             (valid_str result voidP_dest_7_5_alloc_table
+             !charP_charM_dest_7_5))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 20 12 101#
              "expl:Ensures clause"
-             (forall i_13 : int.
-              ((((<=) (0) i_13) /\
-               ((<) i_13
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))))
+             (forall i_11 : int.
+              ((((<=) (0) i_11) /\
+               ((<) i_11
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))))
                ->
                (Int8.(=)
-               (select (old !charP_charM_dest_9_5) (shift dest_9 i_13))
-               (select !charP_charM_dest_9_5 (shift result i_13))))))
+               (select (old !charP_charM_dest_7_5) (shift dest_7 i_11))
+               (select !charP_charM_dest_7_5 (shift result i_11))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 18 12 27#
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker-gh/strcat.h" 22 12 156#
              "expl:Ensures clause"
-             (forall i_14 : int.
+             (forall i_12 : int.
               ((((<=)
-                (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
-                i_14)
+                (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
+                i_12)
                /\
-               ((<) i_14
+               ((<) i_12
                (Int.(+)
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
                (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))) ->
                (Int8.(=)
                (select charP_charM_src_5_6
                (shift src_5
-               (Int.(-) i_14
-               (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5))))))
-               (select !charP_charM_dest_9_5 (shift result i_14))))))
+               (Int.(-) i_12
+               (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5))))))
+               (select !charP_charM_dest_7_5 (shift result i_12))))))
             /\
             (#"/home/work/workspace/self/verker-gh/strcat.h" 25 12 62#
             "expl:Ensures clause"
-            ((=) (Uint64.to_int (strlen result !charP_charM_dest_9_5))
+            ((=) (Uint64.to_int (strlen result !charP_charM_dest_7_5))
             (Int.(+)
-            (Uint64.to_int (strlen dest_9 (old !charP_charM_dest_9_5)))
+            (Uint64.to_int (strlen dest_7 (old !charP_charM_dest_7_5)))
             (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))))))))))))))
             }
   

@@ -1690,18 +1690,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 theory Axiomatic_Ctype
 
   use enum.Int8 
@@ -1711,15 +1699,17 @@ theory Axiomatic_Ctype
   use why3.Bool.Bool 
   
   function tolower int : int
+  with toupper int : int
+  
   
   axiom A #"/home/work/workspace/self/verker-gh/ctype.h" 59 13 32#
   "expl:Axiom a" :
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 175 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 169 21 33# "expl:Integer cast" (Int8.of_int
   (65)))))
-  (Int8.to_int (#"strcasecmp.jc" 175 51 63# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 169 51 63# "expl:Integer cast" (Int8.of_int
   (97))))))
   
   axiom B #"/home/work/workspace/self/verker-gh/ctype.h" 59 43 62#
@@ -1727,9 +1717,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 178 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 172 21 33# "expl:Integer cast" (Int8.of_int
   (66)))))
-  (Int8.to_int (#"strcasecmp.jc" 178 51 63# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 172 51 63# "expl:Integer cast" (Int8.of_int
   (98))))))
   
   axiom C_13 #"/home/work/workspace/self/verker-gh/ctype.h" 59 73 92#
@@ -1737,9 +1727,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 59 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 181 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 175 21 33# "expl:Integer cast" (Int8.of_int
   (67)))))
-  (Int8.to_int (#"strcasecmp.jc" 181 51 63# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 175 51 63# "expl:Integer cast" (Int8.of_int
   (99))))))
   
   axiom D #"/home/work/workspace/self/verker-gh/ctype.h" 60 13 32#
@@ -1747,9 +1737,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 184 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 178 21 33# "expl:Integer cast" (Int8.of_int
   (68)))))
-  (Int8.to_int (#"strcasecmp.jc" 184 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 178 51 64# "expl:Integer cast" (Int8.of_int
   (100))))))
   
   axiom E #"/home/work/workspace/self/verker-gh/ctype.h" 60 43 62#
@@ -1757,9 +1747,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 187 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 181 21 33# "expl:Integer cast" (Int8.of_int
   (69)))))
-  (Int8.to_int (#"strcasecmp.jc" 187 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 181 51 64# "expl:Integer cast" (Int8.of_int
   (101))))))
   
   axiom F #"/home/work/workspace/self/verker-gh/ctype.h" 60 73 92#
@@ -1767,9 +1757,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 60 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 190 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 184 21 33# "expl:Integer cast" (Int8.of_int
   (70)))))
-  (Int8.to_int (#"strcasecmp.jc" 190 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 184 51 64# "expl:Integer cast" (Int8.of_int
   (102))))))
   
   axiom G #"/home/work/workspace/self/verker-gh/ctype.h" 61 13 32#
@@ -1777,9 +1767,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 193 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 187 21 33# "expl:Integer cast" (Int8.of_int
   (71)))))
-  (Int8.to_int (#"strcasecmp.jc" 193 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 187 51 64# "expl:Integer cast" (Int8.of_int
   (103))))))
   
   axiom H #"/home/work/workspace/self/verker-gh/ctype.h" 61 43 62#
@@ -1787,29 +1777,29 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 196 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 190 21 33# "expl:Integer cast" (Int8.of_int
   (72)))))
-  (Int8.to_int (#"strcasecmp.jc" 196 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 190 51 64# "expl:Integer cast" (Int8.of_int
   (104))))))
   
-  axiom I #"/home/work/workspace/self/verker-gh/ctype.h" 61 73 92#
+  axiom I_11 #"/home/work/workspace/self/verker-gh/ctype.h" 61 73 92#
   "expl:Axiom i" :
   (#"/home/work/workspace/self/verker-gh/ctype.h" 61 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 199 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 193 21 33# "expl:Integer cast" (Int8.of_int
   (73)))))
-  (Int8.to_int (#"strcasecmp.jc" 199 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 193 51 64# "expl:Integer cast" (Int8.of_int
   (105))))))
   
-  axiom J #"/home/work/workspace/self/verker-gh/ctype.h" 62 13 32#
+  axiom J_1 #"/home/work/workspace/self/verker-gh/ctype.h" 62 13 32#
   "expl:Axiom j" :
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 202 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 196 21 33# "expl:Integer cast" (Int8.of_int
   (74)))))
-  (Int8.to_int (#"strcasecmp.jc" 202 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 196 51 64# "expl:Integer cast" (Int8.of_int
   (106))))))
   
   axiom K #"/home/work/workspace/self/verker-gh/ctype.h" 62 43 62#
@@ -1817,9 +1807,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 205 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 199 21 33# "expl:Integer cast" (Int8.of_int
   (75)))))
-  (Int8.to_int (#"strcasecmp.jc" 205 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 199 51 64# "expl:Integer cast" (Int8.of_int
   (107))))))
   
   axiom L #"/home/work/workspace/self/verker-gh/ctype.h" 62 73 92#
@@ -1827,9 +1817,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 62 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 208 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 202 21 33# "expl:Integer cast" (Int8.of_int
   (76)))))
-  (Int8.to_int (#"strcasecmp.jc" 208 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 202 51 64# "expl:Integer cast" (Int8.of_int
   (108))))))
   
   axiom M #"/home/work/workspace/self/verker-gh/ctype.h" 63 13 32#
@@ -1837,9 +1827,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 211 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 205 21 33# "expl:Integer cast" (Int8.of_int
   (77)))))
-  (Int8.to_int (#"strcasecmp.jc" 211 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 205 51 64# "expl:Integer cast" (Int8.of_int
   (109))))))
   
   axiom N #"/home/work/workspace/self/verker-gh/ctype.h" 63 43 62#
@@ -1847,9 +1837,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 214 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 208 21 33# "expl:Integer cast" (Int8.of_int
   (78)))))
-  (Int8.to_int (#"strcasecmp.jc" 214 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 208 51 64# "expl:Integer cast" (Int8.of_int
   (110))))))
   
   axiom O #"/home/work/workspace/self/verker-gh/ctype.h" 63 73 92#
@@ -1857,9 +1847,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 63 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 217 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 211 21 33# "expl:Integer cast" (Int8.of_int
   (79)))))
-  (Int8.to_int (#"strcasecmp.jc" 217 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 211 51 64# "expl:Integer cast" (Int8.of_int
   (111))))))
   
   axiom P #"/home/work/workspace/self/verker-gh/ctype.h" 64 13 32#
@@ -1867,9 +1857,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 220 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 214 21 33# "expl:Integer cast" (Int8.of_int
   (80)))))
-  (Int8.to_int (#"strcasecmp.jc" 220 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 214 51 64# "expl:Integer cast" (Int8.of_int
   (112))))))
   
   axiom Q #"/home/work/workspace/self/verker-gh/ctype.h" 64 43 62#
@@ -1877,9 +1867,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 223 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 217 21 33# "expl:Integer cast" (Int8.of_int
   (81)))))
-  (Int8.to_int (#"strcasecmp.jc" 223 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 217 51 64# "expl:Integer cast" (Int8.of_int
   (113))))))
   
   axiom R #"/home/work/workspace/self/verker-gh/ctype.h" 64 73 92#
@@ -1887,9 +1877,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 64 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 226 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 220 21 33# "expl:Integer cast" (Int8.of_int
   (82)))))
-  (Int8.to_int (#"strcasecmp.jc" 226 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 220 51 64# "expl:Integer cast" (Int8.of_int
   (114))))))
   
   axiom S_11 #"/home/work/workspace/self/verker-gh/ctype.h" 65 13 32#
@@ -1897,9 +1887,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 229 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 223 21 33# "expl:Integer cast" (Int8.of_int
   (83)))))
-  (Int8.to_int (#"strcasecmp.jc" 229 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 223 51 64# "expl:Integer cast" (Int8.of_int
   (115))))))
   
   axiom T #"/home/work/workspace/self/verker-gh/ctype.h" 65 43 62#
@@ -1907,9 +1897,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 232 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 226 21 33# "expl:Integer cast" (Int8.of_int
   (84)))))
-  (Int8.to_int (#"strcasecmp.jc" 232 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 226 51 64# "expl:Integer cast" (Int8.of_int
   (116))))))
   
   axiom U #"/home/work/workspace/self/verker-gh/ctype.h" 65 73 92#
@@ -1917,9 +1907,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 65 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 235 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 229 21 33# "expl:Integer cast" (Int8.of_int
   (85)))))
-  (Int8.to_int (#"strcasecmp.jc" 235 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 229 51 64# "expl:Integer cast" (Int8.of_int
   (117))))))
   
   axiom V #"/home/work/workspace/self/verker-gh/ctype.h" 66 13 32#
@@ -1927,9 +1917,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 238 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 232 21 33# "expl:Integer cast" (Int8.of_int
   (86)))))
-  (Int8.to_int (#"strcasecmp.jc" 238 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 232 51 64# "expl:Integer cast" (Int8.of_int
   (118))))))
   
   axiom W #"/home/work/workspace/self/verker-gh/ctype.h" 66 43 62#
@@ -1937,9 +1927,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 241 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 235 21 33# "expl:Integer cast" (Int8.of_int
   (87)))))
-  (Int8.to_int (#"strcasecmp.jc" 241 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 235 51 64# "expl:Integer cast" (Int8.of_int
   (119))))))
   
   axiom X #"/home/work/workspace/self/verker-gh/ctype.h" 66 73 92#
@@ -1947,9 +1937,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 66 73 92#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 244 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 238 21 33# "expl:Integer cast" (Int8.of_int
   (88)))))
-  (Int8.to_int (#"strcasecmp.jc" 244 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 238 51 64# "expl:Integer cast" (Int8.of_int
   (120))))))
   
   axiom Y #"/home/work/workspace/self/verker-gh/ctype.h" 67 13 32#
@@ -1957,9 +1947,9 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 67 13 32#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 247 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 241 21 33# "expl:Integer cast" (Int8.of_int
   (89)))))
-  (Int8.to_int (#"strcasecmp.jc" 247 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 241 51 64# "expl:Integer cast" (Int8.of_int
   (121))))))
   
   axiom Z #"/home/work/workspace/self/verker-gh/ctype.h" 67 43 62#
@@ -1967,20 +1957,21 @@ theory Axiomatic_Ctype
   (#"/home/work/workspace/self/verker-gh/ctype.h" 67 43 62#
   ((=)
   (tolower
-  (Int8.to_int (#"strcasecmp.jc" 250 21 33# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 244 21 33# "expl:Integer cast" (Int8.of_int
   (90)))))
-  (Int8.to_int (#"strcasecmp.jc" 250 51 64# "expl:Integer cast" (Int8.of_int
+  (Int8.to_int (#"strcasecmp.jc" 244 51 64# "expl:Integer cast" (Int8.of_int
   (122))))))
   
   predicate isupper (c_0 : int)
   =
      (((<=)
-      (Int8.to_int (#"strcasecmp.jc" 141 5 17# "expl:Integer cast"
+      (Int8.to_int (#"strcasecmp.jc" 135 5 17# "expl:Integer cast"
       (Int8.of_int (65)))) c_0)
      /\
      ((<=) c_0
-     (Int8.to_int (#"strcasecmp.jc" 141 50 62# "expl:Integer cast"
+     (Int8.to_int (#"strcasecmp.jc" 135 50 62# "expl:Integer cast"
      (Int8.of_int (90))))))
+  
   
   axiom Pl #"/home/work/workspace/self/verker-gh/ctype.h" 69 14 64#
   "expl:Axiom pl" :
@@ -1991,14 +1982,13 @@ theory Axiomatic_Ctype
   predicate islower (c : int)
   =
      (((<=)
-      (Int8.to_int (#"strcasecmp.jc" 138 5 17# "expl:Integer cast"
+      (Int8.to_int (#"strcasecmp.jc" 132 5 17# "expl:Integer cast"
       (Int8.of_int (97)))) c)
      /\
      ((<=) c
-     (Int8.to_int (#"strcasecmp.jc" 138 46 59# "expl:Integer cast"
+     (Int8.to_int (#"strcasecmp.jc" 132 46 59# "expl:Integer cast"
      (Int8.of_int (122))))))
   
-  function toupper int : int
   
   axiom Pu #"/home/work/workspace/self/verker-gh/ctype.h" 70 14 64#
   "expl:Axiom pu" :
@@ -2018,74 +2008,80 @@ theory Axiomatic_Ctype
   (forall c_12_0 : int.
    ((not (isupper c_12_0)) -> ((=) (tolower (toupper c_12_0)) c_12_0))))
   
-  predicate isalpha (c_1 : int) = ((isupper c_1) \/ (islower c_1))
+  predicate isspace (c_5 : int)
+  =
+     (((=) c_5
+      (Int8.to_int (#"strcasecmp.jc" 150 16 28# "expl:Integer cast"
+      (Int8.of_int (32)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"strcasecmp.jc" 151 17 29# "expl:Integer cast"
+      (Int8.of_int (12)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"strcasecmp.jc" 152 16 28# "expl:Integer cast"
+      (Int8.of_int (10)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"strcasecmp.jc" 153 15 27# "expl:Integer cast"
+      (Int8.of_int (13)))))
+     \/
+     (((=) c_5
+      (Int8.to_int (#"strcasecmp.jc" 154 14 25# "expl:Integer cast"
+      (Int8.of_int (9)))))
+     \/
+     ((=) c_5
+     (Int8.to_int (#"strcasecmp.jc" 155 13 25# "expl:Integer cast"
+     (Int8.of_int (11))))))))))
+  
   
   predicate isdigit (c_2 : int)
   =
      (((<=)
-      (Int8.to_int (#"strcasecmp.jc" 147 5 17# "expl:Integer cast"
+      (Int8.to_int (#"strcasecmp.jc" 141 5 17# "expl:Integer cast"
       (Int8.of_int (48)))) c_2)
      /\
      ((<=) c_2
-     (Int8.to_int (#"strcasecmp.jc" 147 50 62# "expl:Integer cast"
+     (Int8.to_int (#"strcasecmp.jc" 141 50 62# "expl:Integer cast"
      (Int8.of_int (57))))))
   
-  predicate isodigit (c_3 : int)
-  =
-     (((<=)
-      (Int8.to_int (#"strcasecmp.jc" 150 5 17# "expl:Integer cast"
-      (Int8.of_int (48)))) c_3)
-     /\
-     ((<=) c_3
-     (Int8.to_int (#"strcasecmp.jc" 150 50 62# "expl:Integer cast"
-     (Int8.of_int (55))))))
+  
+  predicate isalpha (c_1 : int) = ((isupper c_1) \/ (islower c_1))
+  
   
   predicate isalnum (c_4 : int) = ((isdigit c_4) \/ (isalpha c_4))
   
-  predicate isspace (c_5 : int)
-  =
-     (((=) c_5
-      (Int8.to_int (#"strcasecmp.jc" 156 16 28# "expl:Integer cast"
-      (Int8.of_int (32)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"strcasecmp.jc" 157 17 29# "expl:Integer cast"
-      (Int8.of_int (12)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"strcasecmp.jc" 158 16 28# "expl:Integer cast"
-      (Int8.of_int (10)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"strcasecmp.jc" 159 15 27# "expl:Integer cast"
-      (Int8.of_int (13)))))
-     \/
-     (((=) c_5
-      (Int8.to_int (#"strcasecmp.jc" 160 14 25# "expl:Integer cast"
-      (Int8.of_int (9)))))
-     \/
-     ((=) c_5
-     (Int8.to_int (#"strcasecmp.jc" 161 13 25# "expl:Integer cast"
-     (Int8.of_int (11))))))))))
   
   predicate isxdigit (c_6 : int)
   =
      ((isdigit c_6) \/
      ((((<=)
-       (Int8.to_int (#"strcasecmp.jc" 165 8 20# "expl:Integer cast"
+       (Int8.to_int (#"strcasecmp.jc" 159 8 20# "expl:Integer cast"
        (Int8.of_int (97)))) c_6)
       /\
       ((<=) c_6
-      (Int8.to_int (#"strcasecmp.jc" 166 16 29# "expl:Integer cast"
+      (Int8.to_int (#"strcasecmp.jc" 160 16 29# "expl:Integer cast"
       (Int8.of_int (102))))))
      \/
      (((<=)
-      (Int8.to_int (#"strcasecmp.jc" 167 7 19# "expl:Integer cast"
+      (Int8.to_int (#"strcasecmp.jc" 161 7 19# "expl:Integer cast"
       (Int8.of_int (65)))) c_6)
      /\
      ((<=) c_6
-     (Int8.to_int (#"strcasecmp.jc" 168 15 27# "expl:Integer cast"
+     (Int8.to_int (#"strcasecmp.jc" 162 15 27# "expl:Integer cast"
      (Int8.of_int (70))))))))
+  
+  
+  predicate isodigit (c_3 : int)
+  =
+     (((<=)
+      (Int8.to_int (#"strcasecmp.jc" 144 5 17# "expl:Integer cast"
+      (Int8.of_int (48)))) c_3)
+     /\
+     ((<=) c_3
+     (Int8.to_int (#"strcasecmp.jc" 144 50 62# "expl:Integer cast"
+     (Int8.of_int (55))))))
+  
   
 end
 
@@ -2112,7 +2108,7 @@ theory Axiomatic_Strlen
   =
      (exists n_1 : Uint64.t.
       ((Int8.(=) (select charP_charM_s_2_at_L (shift s (Uint64.to_int n_1)))
-       (#"strcasecmp.jc" 29 42 53# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strcasecmp.jc" 23 42 53# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (if ((<=) (0) (Uint64.to_int n_1)) then
        (((<=) (offset_min voidP_s_2_alloc_table_at_L s) (0)) /\
@@ -2123,6 +2119,7 @@ theory Axiomatic_Strlen
          ((<=) __framac_tmp1 (Uint64.to_int n_1))) -> ((=) true true)))))
        else ((=) true true))))
   
+  
   lemma Valid_str_shift1
   #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
@@ -2131,7 +2128,7 @@ theory Axiomatic_Strlen
     (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
     (forall s_0_0 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_7_at_L s_0_0)
-       (#"strcasecmp.jc" 43 28 39# "expl:Integer cast" (Int8.of_int (0))))
+       (#"strcasecmp.jc" 37 28 39# "expl:Integer cast" (Int8.of_int (0))))
       /\
       (valid_str s_0_0 voidP_s_0_7_alloc_table_at_L charP_charM_s_0_7_at_L))
       ->
@@ -2150,11 +2147,21 @@ theory Axiomatic_Strlen
        ((=) true true)))
       /\
       (Int8.(=) (select charP_charM_s_1_8_at_L s_1)
-      (#"strcasecmp.jc" 51 29 40# "expl:Integer cast" (Int8.of_int (0))))) ->
+      (#"strcasecmp.jc" 45 29 40# "expl:Integer cast" (Int8.of_int (0))))) ->
       (valid_str s_1 voidP_s_1_8_alloc_table_at_L charP_charM_s_1_8_at_L))))))
   
-  function strlen (pointer voidP) (memory voidP Int8.t) :
-  Uint64.t
+  function strlen (s_2 : (pointer voidP)) (charP_charM_s_2_3_at_L : (memory
+  voidP Int8.t)) : Uint64.t
+  =
+     (if
+      (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
+      (#"strcasecmp.jc" 49 30 41# "expl:Integer cast" (Int8.of_int (0))))
+      then (#"strcasecmp.jc" 49 48 61# "expl:Integer cast" (Uint64.of_int
+      (0))) else (#"strcasecmp.jc" 49 67 255# "expl:Integer cast"
+      (Uint64.of_int
+      (Int.(+) (1)
+      (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L))))))
+  
   
   lemma Strlen_before_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
@@ -2163,13 +2170,13 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_3_9_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
-     (forall i_1 : int.
+     (forall i : int.
       (((valid_str s_3 voidP_s_3_9_alloc_table_at_L charP_charM_s_3_9_at_L)
        /\
-       (((<=) (0) i_1) /\
-       ((<) i_1 (Uint64.to_int (strlen s_3 charP_charM_s_3_9_at_L))))) ->
-       (Int8.(<>) (select charP_charM_s_3_9_at_L (shift s_3 i_1))
-       (#"strcasecmp.jc" 64 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))
+       (((<=) (0) i) /\
+       ((<) i (Uint64.to_int (strlen s_3 charP_charM_s_3_9_at_L))))) ->
+       (Int8.(<>) (select charP_charM_s_3_9_at_L (shift s_3 i))
+       (#"strcasecmp.jc" 58 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
   lemma Strlen_at_null
   #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
@@ -2183,7 +2190,7 @@ theory Axiomatic_Strlen
       (Int8.(=)
       (select charP_charM_s_4_10_at_L
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_10_at_L))))
-      (#"strcasecmp.jc" 69 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
+      (#"strcasecmp.jc" 63 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
   lemma Strlen_shift
   #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
@@ -2192,14 +2199,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_5_11_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
-     (forall i_2 : Uint64.t.
+     (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_11_alloc_table_at_L charP_charM_s_5_11_at_L)
-       /\ (Uint64.(<=) i_2 (strlen s_5 charP_charM_s_5_11_at_L))) ->
+       /\ (Uint64.(<=) i_0 (strlen s_5 charP_charM_s_5_11_at_L))) ->
        ((=)
        (Uint64.to_int
-       (strlen (shift s_5 (Uint64.to_int i_2)) charP_charM_s_5_11_at_L))
+       (strlen (shift s_5 (Uint64.to_int i_0)) charP_charM_s_5_11_at_L))
        (Int.(-) (Uint64.to_int (strlen s_5 charP_charM_s_5_11_at_L))
-       (Uint64.to_int i_2)))))))))
+       (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
   #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
@@ -2208,14 +2215,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_6_12_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
-     (forall i_3 : Uint64.t.
+     (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_12_alloc_table_at_L charP_charM_s_6_12_at_L)
        /\
-       ((Uint64.(<) (#"strcasecmp.jc" 81 39 52# "expl:Integer cast"
-        (Uint64.of_int (0))) i_3)
-       /\ (Uint64.(<=) i_3 (strlen s_6 charP_charM_s_6_12_at_L)))) ->
+       ((Uint64.(<) (#"strcasecmp.jc" 75 39 52# "expl:Integer cast"
+        (Uint64.of_int (0))) i_1)
+       /\ (Uint64.(<=) i_1 (strlen s_6 charP_charM_s_6_12_at_L)))) ->
        (Uint64.(<)
-       (strlen (shift s_6 (Uint64.to_int i_3)) charP_charM_s_6_12_at_L)
+       (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_12_at_L)
        (strlen s_6 charP_charM_s_6_12_at_L))))))))
   
   lemma Strlen_shift1
@@ -2228,7 +2235,7 @@ theory Axiomatic_Strlen
      (((valid_str s_7 voidP_s_7_13_alloc_table_at_L charP_charM_s_7_13_at_L)
       /\
       (Int8.(<>) (select charP_charM_s_7_13_at_L s_7)
-      (#"strcasecmp.jc" 87 49 60# "expl:Integer cast" (Int8.of_int (0))))) ->
+      (#"strcasecmp.jc" 81 49 60# "expl:Integer cast" (Int8.of_int (0))))) ->
       ((=) (Uint64.to_int (strlen s_7 charP_charM_s_7_13_at_L))
       (Int.(+) (1)
       (Uint64.to_int (strlen (shift s_7 (1)) charP_charM_s_7_13_at_L)))))))))
@@ -2248,10 +2255,10 @@ theory Axiomatic_Strlen
        ((same_block s_8 sc) /\
        ((same_block s_8 sc) /\
        (((<=) (sub_pointer s_8 sc) (0)) /\
-       (forall i_4 : int.
-        ((((<=) (0) i_4) /\ ((<=) i_4 (sub_pointer sc s_8))) ->
-         (Int8.(<>) (select charP_charM_s_8_14_at_L (shift s_8 i_4))
-         (#"strcasecmp.jc" 100 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
+       (forall i_2 : int.
+        ((((<=) (0) i_2) /\ ((<=) i_2 (sub_pointer sc s_8))) ->
+         (Int8.(<>) (select charP_charM_s_8_14_at_L (shift s_8 i_2))
+         (#"strcasecmp.jc" 94 43 54# "expl:Integer cast" (Int8.of_int (0)))))))))))
        ->
        (Uint64.(<=) (strlen sc charP_charM_s_8_14_at_L)
        (strlen s_8 charP_charM_s_8_14_at_L))))))))
@@ -2267,12 +2274,12 @@ theory Axiomatic_Strlen
        /\
        ((Int8.(=)
         (select charP_charM_s_9_16_at_L (shift s_9 (Uint64.to_int n_2)))
-        (#"strcasecmp.jc" 107 53 64# "expl:Integer cast" (Int8.of_int (0))))
+        (#"strcasecmp.jc" 101 53 64# "expl:Integer cast" (Int8.of_int (0))))
        /\
-       (forall i_5 : int.
-        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int n_2))) ->
-         (Int8.(<>) (select charP_charM_s_9_16_at_L (shift s_9 i_5))
-         (#"strcasecmp.jc" 110 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
+       (forall i_3 : int.
+        ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int n_2))) ->
+         (Int8.(<>) (select charP_charM_s_9_16_at_L (shift s_9 i_3))
+         (#"strcasecmp.jc" 104 43 54# "expl:Integer cast" (Int8.of_int (0))))))))
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_16_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
@@ -2282,28 +2289,14 @@ theory Axiomatic_Strlen
    (forall charP_charM_s_10_17_at_L : (memory voidP Int8.t).
     (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
-     (forall i_6 : int.
+     (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_17_alloc_table_at_L
         charP_charM_s_10_17_at_L)
        /\
-       (((<=) (0) i_6) /\
-       ((<) i_6 (Uint64.to_int (strlen s_10 charP_charM_s_10_17_at_L))))) ->
-       (valid_str (shift s_10 i_6) voidP_s_10_17_alloc_table_at_L
+       (((<=) (0) i_4) /\
+       ((<) i_4 (Uint64.to_int (strlen s_10 charP_charM_s_10_17_at_L))))) ->
+       (valid_str (shift s_10 i_4) voidP_s_10_17_alloc_table_at_L
        charP_charM_s_10_17_at_L)))))))
-  
-  axiom Strlen_definition :
-  (forall s_2 : (pointer voidP).
-   (forall charP_charM_s_2_3_at_L : (memory voidP Int8.t)
-    [(strlen s_2 charP_charM_s_2_3_at_L)] .
-    ((=) (strlen s_2 charP_charM_s_2_3_at_L)
-    (if
-     (Int8.(=) (select charP_charM_s_2_3_at_L (shift s_2 (0)))
-     (#"strcasecmp.jc" 55 30 41# "expl:Integer cast" (Int8.of_int (0)))) then
-     (#"strcasecmp.jc" 55 48 61# "expl:Integer cast" (Uint64.of_int (0)))
-     else (#"strcasecmp.jc" 55 67 255# "expl:Integer cast"
-     (Uint64.of_int
-     (Int.(+) (1)
-     (Uint64.to_int (strlen (shift s_2 (1)) charP_charM_s_2_3_at_L)))))))))
   
 end
 
@@ -2360,6 +2353,8 @@ module Function_strcasecmp_safety
 "expl:strcasecmp, safety"
 
   use enum.Uint64 
+  
+  use Safe_int8 
   
   use Safe_int32_of_Safe_int8 
   
@@ -2428,7 +2423,7 @@ module Function_strcasecmp_safety
        ((<) i (offset_max voidP_s1_5_alloc_table s1))) ->
        ((=) (typeof voidP_s1_5_tag_table (shift s1 i)) charP_tag)))))
    /\
-   (#"strcasecmp.jc" 361 12 76#
+   (#"strcasecmp.jc" 355 12 76#
    ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 8 13 26#
     (valid_str s1 voidP_s1_5_alloc_table charP_charM_s1_5))
    /\
@@ -2447,7 +2442,9 @@ module Function_strcasecmp_safety
      (let os1 = ref (any_pointer  () : (pointer voidP)) in
      (let os2 = ref (any_pointer  () : (pointer voidP)) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
-     (let tmp_0 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_0 = ref (Safe_int8.any_  () ) in
+     (let tmp_1 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_2 = ref (Safe_int8.any_  () ) in
      (let res = ref (Safe_int32.any_  () ) in
      (let __retres = ref (Safe_int32.any_  () ) in
      try
@@ -2456,18 +2453,18 @@ module Function_strcasecmp_safety
        (let _jessie_60 = !mutable_s1 in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 6 11 15#
+       (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 6 17 20#
        "expl:Pointer index bounds" true) }); _jessie_60 end));
        begin
        (os2 :=
         (let _jessie_49 = !mutable_s2 in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 7 11 15#
+        (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 7 17 20#
         "expl:Pointer index bounds" true) }); _jessie_49 end));
         'Loop_4:
         loop
-        invariant { (#"strcasecmp.jc" 435 6 2896# true) }
+        invariant { (#"strcasecmp.jc" 433 6 3018# true) }
           variant {
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 15 18 42#
             (Int.(-) (Uint64.to_int (strlen !os1 charP_charM_s1_5))
@@ -2477,13 +2474,13 @@ module Function_strcasecmp_safety
          requires { true } reads { mutable_s1, mutable_s2 }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 13 20 115#
-            (forall i_8 : int.
-             ((((<=) (0) i_8) /\ ((<) i_8 (sub_pointer !mutable_s1 !os1))) ->
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\ ((<) i_6 (sub_pointer !mutable_s1 !os1))) ->
               ((=)
               (tolower
-              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_8))))
+              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_6))))
               (tolower
-              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_8))))))))
+              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_6))))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 12 20 40#
             ((=) (sub_pointer !mutable_s1 !os1)
@@ -2540,6 +2537,8 @@ module Function_strcasecmp_safety
            begin
            begin
            begin
+           begin
+           begin
            (tmp :=
             (let _jessie_50 = !mutable_s1 in
             begin
@@ -2551,77 +2550,76 @@ module Function_strcasecmp_safety
              (let _jessie_51 =
              (shift_typesafe  !mutable_s1
               (Safe_int32.to_int 
-               (#"strcasecmp.jc" 474 48 60# "expl:Integer cast"
+               (#"strcasecmp.jc" 474 54 66# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 16 20#
              "expl:Pointer index bounds" true) }); _jessie_51 end)); () end
            end;
-            begin
-            (let __cil_tmp =
-            (let _jessie_52 =
-            (let _jessie_53 =
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 15 20#
-            "expl:Pointer dereference"
-            (acc  voidP_s1_5_alloc_table charP_charM_s1_5 !tmp )) in
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-            "expl:Precondition for tolower"
-            (Function_tolower_0_safe.tolower_0  _jessie_53 ))) in
-            begin
-            (assert {
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-            "expl:Pointer index bounds" true) }); _jessie_52 end) in
+            (tmp_0 :=
+             (let _jessie_52 =
+             (let _jessie_53 =
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 15 20#
+             "expl:Pointer dereference"
+             (acc  voidP_s1_5_alloc_table charP_charM_s1_5 !tmp )) in
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
+             "expl:Precondition for tolower"
+             (Function_tolower_0_safe.tolower_0  _jessie_53 ))) in
+             begin
+             (assert {
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
+             "expl:Pointer index bounds" true) }); _jessie_52 end)) end;
             (c1 :=
              (let _jessie_54 =
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-             "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  __cil_tmp ))
-             in
+             "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  !tmp_0 )) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-             "expl:Pointer index bounds" true) }); _jessie_54 end)));
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 2 21#
+             "expl:Pointer index bounds" true) }); _jessie_54 end)) end;
+            begin
+            begin
+            begin
+            (tmp_1 :=
+             (let _jessie_55 = !mutable_s2 in
              begin
-             (tmp_0 :=
-              (let _jessie_55 = !mutable_s2 in
+             (assert {
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 16 20#
+             "expl:Pointer index bounds" true) }); _jessie_55 end));
+             begin
+             (mutable_s2 :=
+              (let _jessie_56 =
+              (shift_typesafe  !mutable_s2
+               (Safe_int32.to_int 
+                (#"strcasecmp.jc" 485 54 66# "expl:Integer cast"
+                (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 16 20#
-              "expl:Pointer index bounds" true) }); _jessie_55 end));
-              begin
-              (mutable_s2 :=
-               (let _jessie_56 =
-               (shift_typesafe  !mutable_s2
-                (Safe_int32.to_int 
-                 (#"strcasecmp.jc" 482 48 60# "expl:Integer cast"
-                 (Safe_int32.of_int (1))) ) ) in
-               begin
-               (assert {
-               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 16 20#
-               "expl:Pointer index bounds" true) }); _jessie_56 end)); () end
-             end;
-             (let __cil_tmp_13 =
-             (let _jessie_57 =
-             (let _jessie_58 =
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 15 20#
-             "expl:Pointer dereference"
-             (acc  voidP_s2_6_alloc_table charP_charM_s2_6 !tmp_0 )) in
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-             "expl:Precondition for tolower"
-             (Function_tolower_0_safe.tolower_0  _jessie_58 ))) in
-             begin
-             (assert {
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-             "expl:Pointer index bounds" true) }); _jessie_57 end) in
-             (c2 :=
-              (let _jessie_59 =
+              "expl:Pointer index bounds" true) }); _jessie_56 end)); () end
+            end;
+             (tmp_2 :=
+              (let _jessie_57 =
+              (let _jessie_58 =
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 15 20#
+              "expl:Pointer dereference"
+              (acc  voidP_s2_6_alloc_table charP_charM_s2_6 !tmp_1 )) in
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-              "expl:Integer cast"
-              (Safe_int32_of_Safe_int8.cast  __cil_tmp_13 )) in
+              "expl:Precondition for tolower"
+              (Function_tolower_0_safe.tolower_0  _jessie_58 ))) in
               begin
               (assert {
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-              "expl:Pointer index bounds" true) }); _jessie_59 end))) end end;
+              "expl:Pointer index bounds" true) }); _jessie_57 end)) end;
+             (c2 :=
+              (let _jessie_59 =
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
+              "expl:Integer cast" (Safe_int32_of_Safe_int8.cast  !tmp_2 )) in
+              begin
+              (assert {
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 2 21#
+              "expl:Pointer index bounds" true) }); _jessie_59 end)) end end;
             (if
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 10 18#
             (Safe_int32.(=)  !c1 !c2 ))
@@ -2629,7 +2627,7 @@ module Function_strcasecmp_safety
              (if
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 22 29#
              (Safe_int32.(<>)  !c1
-              (#"strcasecmp.jc" 489 63 75# "expl:Integer cast"
+              (#"strcasecmp.jc" 493 63 75# "expl:Integer cast"
               (Safe_int32.of_int (0))) )) then ()
              else (raise (Goto_while_0_break_exc ())))
             else (raise (Goto_while_0_break_exc ()))) end;
@@ -2645,7 +2643,7 @@ module Function_strcasecmp_safety
         (let _jessie_61 = (Safe_int32.(-)  !c1 !c2 ) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 21 11 14#
+        (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 21 15 18#
         "expl:Pointer index bounds" true) }); _jessie_61 end));
         begin
         any unit
@@ -2653,10 +2651,10 @@ module Function_strcasecmp_safety
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 22 12 44#
           ((Int32.(=) !c1 !c2) ->
-           ((Int32.(=) !c1 (#"strcasecmp.jc" 499 60 72# "expl:Integer cast"
+           ((Int32.(=) !c1 (#"strcasecmp.jc" 503 60 72# "expl:Integer cast"
             (Int32.of_int (0))))
            /\
-           (Int32.(=) !res (#"strcasecmp.jc" 500 62 74# "expl:Integer cast"
+           (Int32.(=) !res (#"strcasecmp.jc" 504 62 74# "expl:Integer cast"
            (Int32.of_int (0))))))) } ; () end;
         begin
         any unit
@@ -2664,30 +2662,30 @@ module Function_strcasecmp_safety
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 23 12 289#
           ((Int32.(<>) !c1 !c2) ->
-           (exists i_9 : int.
-            (((<=) (0) i_9) /\
-            (((<=) i_9 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
-            ((forall j_0 : int.
-              ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
+           (exists i_7 : int.
+            (((<=) (0) i_7) /\
+            (((<=) i_7 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
+            ((forall j : int.
+              ((((<=) (0) j) /\ ((<) j i_7)) ->
                ((=)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j_0))))
+               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j_0)))))))
+               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j)))))))
             /\
             (((<>)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9)))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7)))))
             /\
             (((=) (Int32.to_int !res)
              (Int.(-)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9))))))
-            /\ ((=) i_9 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7))))))
+            /\ ((=) i_7 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
           } ; () end;
         begin
         (__retres :=
@@ -2701,8 +2699,8 @@ module Function_strcasecmp_safety
           (let _jessie_63 = !__retres in
           begin
           (assert {
-          (#"strcasecmp.jc" 535 7 22# "expl:Pointer index bounds" true) });
-           _jessie_63 end)); (raise Return) end end end end end))))))));
+          (#"strcasecmp.jc" 539 7 22# "expl:Pointer index bounds" true) });
+           _jessie_63 end)); (raise Return) end end end end end))))))))));
      absurd  end with Return -> !return end)))
   
 end
@@ -2745,6 +2743,8 @@ module Function_strcasecmp_behaviors
 #"/home/work/workspace/self/verker-gh/strcasecmp.c" 3 4 46#
 "expl:strcasecmp, behaviors"
 
+  use Unsafe_int8 
+  
   use Unsafe_int32_of_Unsafe_int8 
   
   use Unsafe_int32 
@@ -2815,7 +2815,7 @@ module Function_strcasecmp_behaviors
        ((<) i (offset_max voidP_s1_5_alloc_table s1))) ->
        ((=) (typeof voidP_s1_5_tag_table (shift s1 i)) charP_tag)))))
    /\
-   (#"strcasecmp.jc" 361 12 76#
+   (#"strcasecmp.jc" 355 12 76#
    ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 8 13 26#
     (valid_str s1 voidP_s1_5_alloc_table charP_charM_s1_5))
    /\
@@ -2830,55 +2830,56 @@ module Function_strcasecmp_behaviors
    try
     begin
     (check {
-    (#"strcasecmp.jc" 391 10 834# "expl:Behavior disjointness check"
+    (#"strcasecmp.jc" 385 10 829# "expl:Behavior disjointness check"
     (not
-    ((forall i_12_0 : int.
-      ((((<=) (0) i_12_0) /\
-       ((<=) i_12_0 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))))
+    ((forall i_10_0 : int.
+      ((((<=) (0) i_10_0) /\
+       ((<=) i_10_0 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))))
        ->
        ((=)
        (tolower
-       (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_12_0))))
+       (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_10_0))))
        (tolower
-       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_12_0)))))))
+       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_10_0)))))))
     /\
-    (exists i_10_0 : int.
-     (((<=) (0) i_10_0) /\
-     (((<=) i_10_0 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))) /\
+    (exists i_8_0 : int.
+     (((<=) (0) i_8_0) /\
+     (((<=) i_8_0 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))) /\
      ((<>)
      (tolower
-     (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_10_0))))
+     (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_8_0))))
      (tolower
-     (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_10_0)))))))))))
+     (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_8_0)))))))))))
     });
      (check {
-     (#"strcasecmp.jc" 404 10 757# "expl:Behavior completeness check"
-     ((exists i_10_1 : int.
-       (((<=) (0) i_10_1) /\
-       (((<=) i_10_1 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5)))
-       /\
+     (#"strcasecmp.jc" 398 10 752# "expl:Behavior completeness check"
+     ((exists i_8_1 : int.
+       (((<=) (0) i_8_1) /\
+       (((<=) i_8_1 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))) /\
        ((<>)
+       (tolower
+       (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_8_1))))
+       (tolower
+       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_8_1))))))))
+     \/
+     (forall i_10_1 : int.
+      ((((<=) (0) i_10_1) /\
+       ((<=) i_10_1 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))))
+       ->
+       ((=)
        (tolower
        (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_10_1))))
        (tolower
-       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_10_1))))))))
-     \/
-     (forall i_12_1 : int.
-      ((((<=) (0) i_12_1) /\
-       ((<=) i_12_1 (Uint64.to_int (strlen !mutable_s1 charP_charM_s1_5))))
-       ->
-       ((=)
-       (tolower
-       (Int8.to_int (select charP_charM_s1_5 (shift !mutable_s1 i_12_1))))
-       (tolower
-       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_12_1)))))))))
+       (Int8.to_int (select charP_charM_s2_6 (shift !mutable_s2 i_10_1)))))))))
      });
      (let c1 = ref (Unsafe_int32.any_  () ) in
      (let c2 = ref (Unsafe_int32.any_  () ) in
      (let os1 = ref (any_pointer  () : (pointer voidP)) in
      (let os2 = ref (any_pointer  () : (pointer voidP)) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
-     (let tmp_0 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_0 = ref (Unsafe_int8.any_  () ) in
+     (let tmp_1 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_2 = ref (Unsafe_int8.any_  () ) in
      (let res = ref (Unsafe_int32.any_  () ) in
      (let __retres = ref (Unsafe_int32.any_  () ) in
      try
@@ -2942,17 +2943,19 @@ module Function_strcasecmp_behaviors
              (sub_pointer !mutable_s2 !os2)))
             &&
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 13 20 115#
-            (forall i_8 : int.
-             ((((<=) (0) i_8) /\ ((<) i_8 (sub_pointer !mutable_s1 !os1))) ->
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\ ((<) i_6 (sub_pointer !mutable_s1 !os1))) ->
               ((=)
               (tolower
-              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_8))))
+              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_6))))
               (tolower
-              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_8)))))))))))) }
+              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_6)))))))))))) }
           
          begin
          any unit requires { true } ensures { true } ;
           try
+           begin
+           begin
            begin
            begin
            begin
@@ -2962,35 +2965,36 @@ module Function_strcasecmp_behaviors
             (mutable_s1 :=
              (shift_  !mutable_s1
               (Unsafe_int32.to_int 
-               (#"strcasecmp.jc" 474 48 60# "expl:Integer cast"
+               (#"strcasecmp.jc" 474 54 66# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )); () end end;
-            begin
-            (let __cil_tmp =
-            (let _jessie_8 = (acc  charP_charM_s1_5 !tmp ) in
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-            "expl:Precondition for tolower"
-            (Function_tolower_0.tolower_0  _jessie_8 ))) in
+            (tmp_0 :=
+             (let _jessie_8 = (acc  charP_charM_s1_5 !tmp ) in
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
+             "expl:Precondition for tolower"
+             (Function_tolower_0.tolower_0  _jessie_8 )))) end;
             (c1 :=
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-             "expl:Integer cast"
-             (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp ))));
+             "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_0 )))
+           end;
+            begin
+            begin
+            begin
+            (tmp_1 := !mutable_s2);
              begin
-             (tmp_0 := !mutable_s2);
-              begin
-              (mutable_s2 :=
-               (shift_  !mutable_s2
-                (Unsafe_int32.to_int 
-                 (#"strcasecmp.jc" 482 48 60# "expl:Integer cast"
-                 (Unsafe_int32.of_int (1))) ) )); () end end;
-             (let __cil_tmp_13 =
-             (let _jessie_13 = (acc  charP_charM_s2_6 !tmp_0 ) in
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-             "expl:Precondition for tolower"
-             (Function_tolower_0.tolower_0  _jessie_13 ))) in
+             (mutable_s2 :=
+              (shift_  !mutable_s2
+               (Unsafe_int32.to_int 
+                (#"strcasecmp.jc" 485 54 66# "expl:Integer cast"
+                (Unsafe_int32.of_int (1))) ) )); () end end;
+             (tmp_2 :=
+              (let _jessie_13 = (acc  charP_charM_s2_6 !tmp_1 ) in
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
+              "expl:Precondition for tolower"
+              (Function_tolower_0.tolower_0  _jessie_13 )))) end;
              (c2 :=
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
               "expl:Integer cast"
-              (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp_13 )))) end end;
+              (Unsafe_int32_of_Unsafe_int8.cast  !tmp_2 ))) end end;
             (if
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 10 18#
             (Unsafe_int32.(=)  !c1 !c2 ))
@@ -2998,7 +3002,7 @@ module Function_strcasecmp_behaviors
              (if
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 22 29#
              (Unsafe_int32.(<>)  !c1
-              (#"strcasecmp.jc" 489 63 75# "expl:Integer cast"
+              (#"strcasecmp.jc" 493 63 75# "expl:Integer cast"
               (Unsafe_int32.of_int (0))) )) then ()
              else (raise (Goto_while_0_break_exc ())))
             else (raise (Goto_while_0_break_exc ()))) end;
@@ -3016,40 +3020,38 @@ module Function_strcasecmp_behaviors
         (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 22 12 44#
         "expl:Assertion in line 22"
         ((Int32.(=) !c1 !c2) ->
-         ((Int32.(=) !c1 (#"strcasecmp.jc" 499 60 72# "expl:Integer cast"
+         ((Int32.(=) !c1 (#"strcasecmp.jc" 503 60 72# "expl:Integer cast"
           (Int32.of_int (0))))
          /\
-         (Int32.(=) !res (#"strcasecmp.jc" 500 62 74# "expl:Integer cast"
+         (Int32.(=) !res (#"strcasecmp.jc" 504 62 74# "expl:Integer cast"
          (Int32.of_int (0))))))) }); () end;
         begin
         (assert {
         (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 23 12 289#
         "expl:Assertion in line 23"
         ((Int32.(<>) !c1 !c2) ->
-         (exists i_9 : int.
-          (((<=) (0) i_9) /\
-          (((<=) i_9 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
-          ((forall j_0 : int.
-            ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
+         (exists i_7 : int.
+          (((<=) (0) i_7) /\
+          (((<=) i_7 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
+          ((forall j : int.
+            ((((<=) (0) j) /\ ((<) j i_7)) ->
              ((=)
-             (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 j_0))))
-             (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 j_0)))))))
+             (tolower (Int8.to_int (select charP_charM_s1_5 (shift !os1 j))))
+             (tolower (Int8.to_int (select charP_charM_s2_6 (shift !os2 j)))))))
           /\
           (((<>)
-           (tolower (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
-           (tolower (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9)))))
+           (tolower (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
+           (tolower (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7)))))
           /\
           (((=) (Int32.to_int !res)
            (Int.(-)
-           (tolower (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
-           (tolower (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9))))))
-          /\ ((=) i_9 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
+           (tolower (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
+           (tolower (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7))))))
+          /\ ((=) i_7 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
         }); () end;
         begin
         (__retres := (Unsafe_int32.(-)  !c1 !c2 ));
-         begin (return := !__retres); (raise Return) end end end end end))))))));
+         begin (return := !__retres); (raise Return) end end end end end))))))))));
      absurd  end with Return -> !return end)))
   
   let strcasecmp_ensures_equal
@@ -3062,11 +3064,11 @@ module Function_strcasecmp_behaviors
    (tag_table voidP)) (charP_charM_s1_5 : (memory voidP Int8.t))
    (charP_charM_s2_6 : (memory voidP Int8.t)) 
    requires {
-   ((forall i_12 : int.
-     ((((<=) (0) i_12) /\
-      ((<=) i_12 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
-      ((=) (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_12))))
-      (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_12)))))))
+   ((forall i_10 : int.
+     ((((<=) (0) i_10) /\
+      ((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
+      ((=) (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
+      (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10)))))))
    /\
    (((allocated voidP_s2_6_alloc_table s2) ->
      (((=) (typeof voidP_s2_6_tag_table s2) charP_tag) /\
@@ -3082,7 +3084,7 @@ module Function_strcasecmp_behaviors
        ((<) i (offset_max voidP_s1_5_alloc_table s1))) ->
        ((=) (typeof voidP_s1_5_tag_table (shift s1 i)) charP_tag)))))
    /\
-   (#"strcasecmp.jc" 361 12 76#
+   (#"strcasecmp.jc" 355 12 76#
    ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 8 13 26#
     (valid_str s1 voidP_s1_5_alloc_table charP_charM_s1_5))
    /\
@@ -3092,7 +3094,7 @@ module Function_strcasecmp_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 13 15 27#
      "expl:Ensures clause"
-     (Int32.(=) result (#"strcasecmp.jc" 370 32 44# "expl:Integer cast"
+     (Int32.(=) result (#"strcasecmp.jc" 364 32 44# "expl:Integer cast"
      (Int32.of_int (0)))))) } diverges  ->
    (let mutable_s1 = ref s1 in
    (let mutable_s2 = ref s2 in
@@ -3106,7 +3108,9 @@ module Function_strcasecmp_behaviors
      (let os1 = ref (any_pointer  () : (pointer voidP)) in
      (let os2 = ref (any_pointer  () : (pointer voidP)) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
-     (let tmp_0 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_0 = ref (Unsafe_int8.any_  () ) in
+     (let tmp_1 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_2 = ref (Unsafe_int8.any_  () ) in
      (let res = ref (Unsafe_int32.any_  () ) in
      (let __retres = ref (Unsafe_int32.any_  () ) in
      try
@@ -3116,19 +3120,19 @@ module Function_strcasecmp_behaviors
        (os2 := !mutable_s2);
         'Loop_2:
         loop
-        invariant { (#"strcasecmp.jc" 435 6 2896# true) } 
+        invariant { (#"strcasecmp.jc" 433 6 3018# true) } 
          begin
          any unit
          requires { true } reads { mutable_s1, mutable_s2 }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 13 20 115#
-            (forall i_8 : int.
-             ((((<=) (0) i_8) /\ ((<) i_8 (sub_pointer !mutable_s1 !os1))) ->
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\ ((<) i_6 (sub_pointer !mutable_s1 !os1))) ->
               ((=)
               (tolower
-              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_8))))
+              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_6))))
               (tolower
-              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_8))))))))
+              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_6))))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 12 20 40#
             ((=) (sub_pointer !mutable_s1 !os1)
@@ -3185,40 +3189,43 @@ module Function_strcasecmp_behaviors
            begin
            begin
            begin
+           begin
+           begin
            (tmp := !mutable_s1);
             begin
             (mutable_s1 :=
              (shift_  !mutable_s1
               (Unsafe_int32.to_int 
-               (#"strcasecmp.jc" 474 48 60# "expl:Integer cast"
+               (#"strcasecmp.jc" 474 54 66# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )); () end end;
-            begin
-            (let __cil_tmp =
-            (let _jessie_23 = (acc  charP_charM_s1_5 !tmp ) in
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-            "expl:Precondition for tolower"
-            (Function_tolower_0.tolower_0  _jessie_23 ))) in
+            (tmp_0 :=
+             (let _jessie_23 = (acc  charP_charM_s1_5 !tmp ) in
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
+             "expl:Precondition for tolower"
+             (Function_tolower_0.tolower_0  _jessie_23 )))) end;
             (c1 :=
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-             "expl:Integer cast"
-             (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp ))));
+             "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_0 )))
+           end;
+            begin
+            begin
+            begin
+            (tmp_1 := !mutable_s2);
              begin
-             (tmp_0 := !mutable_s2);
-              begin
-              (mutable_s2 :=
-               (shift_  !mutable_s2
-                (Unsafe_int32.to_int 
-                 (#"strcasecmp.jc" 482 48 60# "expl:Integer cast"
-                 (Unsafe_int32.of_int (1))) ) )); () end end;
-             (let __cil_tmp_13 =
-             (let _jessie_28 = (acc  charP_charM_s2_6 !tmp_0 ) in
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-             "expl:Precondition for tolower"
-             (Function_tolower_0.tolower_0  _jessie_28 ))) in
+             (mutable_s2 :=
+              (shift_  !mutable_s2
+               (Unsafe_int32.to_int 
+                (#"strcasecmp.jc" 485 54 66# "expl:Integer cast"
+                (Unsafe_int32.of_int (1))) ) )); () end end;
+             (tmp_2 :=
+              (let _jessie_28 = (acc  charP_charM_s2_6 !tmp_1 ) in
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
+              "expl:Precondition for tolower"
+              (Function_tolower_0.tolower_0  _jessie_28 )))) end;
              (c2 :=
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
               "expl:Integer cast"
-              (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp_13 )))) end end;
+              (Unsafe_int32_of_Unsafe_int8.cast  !tmp_2 ))) end end;
             (if
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 10 18#
             (Unsafe_int32.(=)  !c1 !c2 ))
@@ -3226,7 +3233,7 @@ module Function_strcasecmp_behaviors
              (if
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 22 29#
              (Unsafe_int32.(<>)  !c1
-              (#"strcasecmp.jc" 489 63 75# "expl:Integer cast"
+              (#"strcasecmp.jc" 493 63 75# "expl:Integer cast"
               (Unsafe_int32.of_int (0))) )) then ()
              else (raise (Goto_while_0_break_exc ())))
             else (raise (Goto_while_0_break_exc ()))) end;
@@ -3245,10 +3252,10 @@ module Function_strcasecmp_behaviors
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 22 12 44#
           ((Int32.(=) !c1 !c2) ->
-           ((Int32.(=) !c1 (#"strcasecmp.jc" 499 60 72# "expl:Integer cast"
+           ((Int32.(=) !c1 (#"strcasecmp.jc" 503 60 72# "expl:Integer cast"
             (Int32.of_int (0))))
            /\
-           (Int32.(=) !res (#"strcasecmp.jc" 500 62 74# "expl:Integer cast"
+           (Int32.(=) !res (#"strcasecmp.jc" 504 62 74# "expl:Integer cast"
            (Int32.of_int (0))))))) } ; () end;
         begin
         any unit
@@ -3256,34 +3263,34 @@ module Function_strcasecmp_behaviors
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 23 12 289#
           ((Int32.(<>) !c1 !c2) ->
-           (exists i_9 : int.
-            (((<=) (0) i_9) /\
-            (((<=) i_9 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
-            ((forall j_0 : int.
-              ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
+           (exists i_7 : int.
+            (((<=) (0) i_7) /\
+            (((<=) i_7 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
+            ((forall j : int.
+              ((((<=) (0) j) /\ ((<) j i_7)) ->
                ((=)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j_0))))
+               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j_0)))))))
+               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j)))))))
             /\
             (((<>)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9)))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7)))))
             /\
             (((=) (Int32.to_int !res)
              (Int.(-)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9))))))
-            /\ ((=) i_9 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7))))))
+            /\ ((=) i_7 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
           } ; () end;
         begin
         (__retres := (Unsafe_int32.(-)  !c1 !c2 ));
-         begin (return := !__retres); (raise Return) end end end end end))))))));
+         begin (return := !__retres); (raise Return) end end end end end))))))))));
      absurd  end with Return -> !return end)))
   
   let strcasecmp_ensures_not_equal
@@ -3296,11 +3303,11 @@ module Function_strcasecmp_behaviors
    (tag_table voidP)) (charP_charM_s1_5 : (memory voidP Int8.t))
    (charP_charM_s2_6 : (memory voidP Int8.t)) 
    requires {
-   ((exists i_10 : int.
-     (((<=) (0) i_10) /\
-     (((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
-     ((<>) (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
-     (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10))))))))
+   ((exists i_8 : int.
+     (((<=) (0) i_8) /\
+     (((<=) i_8 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+     ((<>) (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_8))))
+     (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_8))))))))
    /\
    (((allocated voidP_s2_6_alloc_table s2) ->
      (((=) (typeof voidP_s2_6_tag_table s2) charP_tag) /\
@@ -3316,7 +3323,7 @@ module Function_strcasecmp_behaviors
        ((<) i (offset_max voidP_s1_5_alloc_table s1))) ->
        ((=) (typeof voidP_s1_5_tag_table (shift s1 i)) charP_tag)))))
    /\
-   (#"strcasecmp.jc" 361 12 76#
+   (#"strcasecmp.jc" 355 12 76#
    ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 8 13 26#
     (valid_str s1 voidP_s1_5_alloc_table charP_charM_s1_5))
    /\
@@ -3330,28 +3337,27 @@ module Function_strcasecmp_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
       "expl:Ensures clause"
-      (Int32.(<>) result (#"strcasecmp.jc" 376 43 55# "expl:Integer cast"
+      (Int32.(<>) result (#"strcasecmp.jc" 370 43 55# "expl:Integer cast"
       (Int32.of_int (0)))))
      /\
      (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 17 15 253#
      "expl:Ensures clause"
-     (exists i_11 : int.
-      (((<=) (0) i_11) /\
-      (((<=) i_11 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
-      ((forall j_1 : int.
-        ((((<=) (0) j_1) /\ ((<) j_1 i_11)) ->
+     (exists i_9 : int.
+      (((<=) (0) i_9) /\
+      (((<=) i_9 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+      ((forall j_0 : int.
+        ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
          ((=)
-         (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 j_1))))
-         (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 j_1)))))))
+         (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 j_0))))
+         (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 j_0)))))))
       /\
-      (((<>)
-       (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
-       (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11)))))
+      (((<>) (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
+       (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9)))))
       /\
       ((=) (Int32.to_int result)
       (Int.(-)
-      (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
-      (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11))))))))))))))))
+      (tolower (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
+      (tolower (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9))))))))))))))))
      } diverges  ->
    (let mutable_s1 = ref s1 in
    (let mutable_s2 = ref s2 in
@@ -3365,7 +3371,9 @@ module Function_strcasecmp_behaviors
      (let os1 = ref (any_pointer  () : (pointer voidP)) in
      (let os2 = ref (any_pointer  () : (pointer voidP)) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
-     (let tmp_0 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_0 = ref (Unsafe_int8.any_  () ) in
+     (let tmp_1 = ref (any_pointer  () : (pointer voidP)) in
+     (let tmp_2 = ref (Unsafe_int8.any_  () ) in
      (let res = ref (Unsafe_int32.any_  () ) in
      (let __retres = ref (Unsafe_int32.any_  () ) in
      try
@@ -3375,19 +3383,19 @@ module Function_strcasecmp_behaviors
        (os2 := !mutable_s2);
         'Loop_3:
         loop
-        invariant { (#"strcasecmp.jc" 435 6 2896# true) } 
+        invariant { (#"strcasecmp.jc" 433 6 3018# true) } 
          begin
          any unit
          requires { true } reads { mutable_s1, mutable_s2 }
          ensures {
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 13 20 115#
-            (forall i_8 : int.
-             ((((<=) (0) i_8) /\ ((<) i_8 (sub_pointer !mutable_s1 !os1))) ->
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\ ((<) i_6 (sub_pointer !mutable_s1 !os1))) ->
               ((=)
               (tolower
-              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_8))))
+              (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_6))))
               (tolower
-              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_8))))))))
+              (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_6))))))))
            /\
            ((#"/home/work/workspace/self/verker-gh/strcasecmp.c" 12 20 40#
             ((=) (sub_pointer !mutable_s1 !os1)
@@ -3444,40 +3452,43 @@ module Function_strcasecmp_behaviors
            begin
            begin
            begin
+           begin
+           begin
            (tmp := !mutable_s1);
             begin
             (mutable_s1 :=
              (shift_  !mutable_s1
               (Unsafe_int32.to_int 
-               (#"strcasecmp.jc" 474 48 60# "expl:Integer cast"
+               (#"strcasecmp.jc" 474 54 66# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )); () end end;
-            begin
-            (let __cil_tmp =
-            (let _jessie_38 = (acc  charP_charM_s1_5 !tmp ) in
-            (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-            "expl:Precondition for tolower"
-            (Function_tolower_0.tolower_0  _jessie_38 ))) in
+            (tmp_0 :=
+             (let _jessie_38 = (acc  charP_charM_s1_5 !tmp ) in
+             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
+             "expl:Precondition for tolower"
+             (Function_tolower_0.tolower_0  _jessie_38 )))) end;
             (c1 :=
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 18 7 21#
-             "expl:Integer cast"
-             (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp ))));
+             "expl:Integer cast" (Unsafe_int32_of_Unsafe_int8.cast  !tmp_0 )))
+           end;
+            begin
+            begin
+            begin
+            (tmp_1 := !mutable_s2);
              begin
-             (tmp_0 := !mutable_s2);
-              begin
-              (mutable_s2 :=
-               (shift_  !mutable_s2
-                (Unsafe_int32.to_int 
-                 (#"strcasecmp.jc" 482 48 60# "expl:Integer cast"
-                 (Unsafe_int32.of_int (1))) ) )); () end end;
-             (let __cil_tmp_13 =
-             (let _jessie_43 = (acc  charP_charM_s2_6 !tmp_0 ) in
-             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
-             "expl:Precondition for tolower"
-             (Function_tolower_0.tolower_0  _jessie_43 ))) in
+             (mutable_s2 :=
+              (shift_  !mutable_s2
+               (Unsafe_int32.to_int 
+                (#"strcasecmp.jc" 485 54 66# "expl:Integer cast"
+                (Unsafe_int32.of_int (1))) ) )); () end end;
+             (tmp_2 :=
+              (let _jessie_43 = (acc  charP_charM_s2_6 !tmp_1 ) in
+              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
+              "expl:Precondition for tolower"
+              (Function_tolower_0.tolower_0  _jessie_43 )))) end;
              (c2 :=
               (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 19 7 21#
               "expl:Integer cast"
-              (Unsafe_int32_of_Unsafe_int8.cast  __cil_tmp_13 )))) end end;
+              (Unsafe_int32_of_Unsafe_int8.cast  !tmp_2 ))) end end;
             (if
             (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 10 18#
             (Unsafe_int32.(=)  !c1 !c2 ))
@@ -3485,7 +3496,7 @@ module Function_strcasecmp_behaviors
              (if
              (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 20 22 29#
              (Unsafe_int32.(<>)  !c1
-              (#"strcasecmp.jc" 489 63 75# "expl:Integer cast"
+              (#"strcasecmp.jc" 493 63 75# "expl:Integer cast"
               (Unsafe_int32.of_int (0))) )) then ()
              else (raise (Goto_while_0_break_exc ())))
             else (raise (Goto_while_0_break_exc ()))) end;
@@ -3504,10 +3515,10 @@ module Function_strcasecmp_behaviors
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 22 12 44#
           ((Int32.(=) !c1 !c2) ->
-           ((Int32.(=) !c1 (#"strcasecmp.jc" 499 60 72# "expl:Integer cast"
+           ((Int32.(=) !c1 (#"strcasecmp.jc" 503 60 72# "expl:Integer cast"
             (Int32.of_int (0))))
            /\
-           (Int32.(=) !res (#"strcasecmp.jc" 500 62 74# "expl:Integer cast"
+           (Int32.(=) !res (#"strcasecmp.jc" 504 62 74# "expl:Integer cast"
            (Int32.of_int (0))))))) } ; () end;
         begin
         any unit
@@ -3515,34 +3526,34 @@ module Function_strcasecmp_behaviors
         ensures {
           (#"/home/work/workspace/self/verker-gh/strcasecmp.c" 23 12 289#
           ((Int32.(<>) !c1 !c2) ->
-           (exists i_9 : int.
-            (((<=) (0) i_9) /\
-            (((<=) i_9 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
-            ((forall j_0 : int.
-              ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
+           (exists i_7 : int.
+            (((<=) (0) i_7) /\
+            (((<=) i_7 (Uint64.to_int (strlen !os1 charP_charM_s1_5))) /\
+            ((forall j : int.
+              ((((<=) (0) j) /\ ((<) j i_7)) ->
                ((=)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j_0))))
+               (Int8.to_int (select charP_charM_s1_5 (shift !os1 j))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j_0)))))))
+               (Int8.to_int (select charP_charM_s2_6 (shift !os2 j)))))))
             /\
             (((<>)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9)))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7)))))
             /\
             (((=) (Int32.to_int !res)
              (Int.(-)
              (tolower
-             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_9))))
+             (Int8.to_int (select charP_charM_s1_5 (shift !os1 i_7))))
              (tolower
-             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_9))))))
-            /\ ((=) i_9 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
+             (Int8.to_int (select charP_charM_s2_6 (shift !os2 i_7))))))
+            /\ ((=) i_7 (Int.(-) (sub_pointer !mutable_s1 !os1) (1)))))))))))
           } ; () end;
         begin
         (__retres := (Unsafe_int32.(-)  !c1 !c2 ));
-         begin (return := !__retres); (raise Return) end end end end end))))))));
+         begin (return := !__retres); (raise Return) end end end end end))))))))));
      absurd  end with Return -> !return end)))
   
 end
@@ -3873,298 +3884,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -9846,14 +9565,14 @@ module Function_strlen_0
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strcasecmp.jc" 128 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strcasecmp.jc" 122 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strcasecmp.jc" 132 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strcasecmp.jc" 126 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -9901,14 +9620,14 @@ module Function_strlen_0_safe
        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
-        (#"strcasecmp.jc" 128 33 44# "expl:Integer cast" (Int8.of_int (0)))))
+        (#"strcasecmp.jc" 122 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
        "expl:Ensures clause"
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int result))) ->
-         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_7))
-         (#"strcasecmp.jc" 132 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
+       (forall i_5 : int.
+        ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
+         (Int8.(<>) (select charP_charM_s_4 (shift s_0 i_5))
+         (#"strcasecmp.jc" 126 65 76# "expl:Integer cast" (Int8.of_int (0))))))))))))
        }
   
 end
@@ -10206,10 +9925,10 @@ module Function_isascii
      (#"/home/work/workspace/self/verker-gh/ctype.h" 94 12 40#
      "expl:Ensures clause"
      (((<>) (Enum__bool.to_int result) (0)) <->
-     ((Int8.(<=) (#"strcasecmp.jc" 310 23 34# "expl:Integer cast"
+     ((Int8.(<=) (#"strcasecmp.jc" 304 23 34# "expl:Integer cast"
       (Int8.of_int (0))) c_4_0)
      /\
-     (Int8.(<=) c_4_0 (#"strcasecmp.jc" 311 40 53# "expl:Integer cast"
+     (Int8.(<=) c_4_0 (#"strcasecmp.jc" 305 40 53# "expl:Integer cast"
      (Int8.of_int (127))))))) }
   
 end
@@ -10231,10 +9950,10 @@ module Function_isascii_safe
      (#"/home/work/workspace/self/verker-gh/ctype.h" 94 12 40#
      "expl:Ensures clause"
      (((<>) (Enum__bool.to_int result) (0)) <->
-     ((Int8.(<=) (#"strcasecmp.jc" 310 23 34# "expl:Integer cast"
+     ((Int8.(<=) (#"strcasecmp.jc" 304 23 34# "expl:Integer cast"
       (Int8.of_int (0))) c_4_0)
      /\
-     (Int8.(<=) c_4_0 (#"strcasecmp.jc" 311 40 53# "expl:Integer cast"
+     (Int8.(<=) c_4_0 (#"strcasecmp.jc" 305 40 53# "expl:Integer cast"
      (Int8.of_int (127))))))) }
   
 end
@@ -10520,61 +10239,60 @@ module Function_strcasecmp
          (charP_charM_s1_5 : (memory voidP Int8.t)) : Int32.t
           requires { true }
           ensures {
-            (((exists i_10 : int.
-               (((<=) (0) i_10) /\
-               (((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+            (((exists i_8 : int.
+               (((<=) (0) i_8) /\
+               (((<=) i_8 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
                ((<>)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_8))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10))))))))
-              ->
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_8)))))))) ->
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
                "expl:Ensures clause"
-               (Int32.(<>) result (#"strcasecmp.jc" 376 43 55#
+               (Int32.(<>) result (#"strcasecmp.jc" 370 43 55#
                "expl:Integer cast" (Int32.of_int (0)))))
               /\
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 17 15 253#
               "expl:Ensures clause"
-              (exists i_11 : int.
-               (((<=) (0) i_11) /\
-               (((<=) i_11 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
-               ((forall j_1 : int.
-                 ((((<=) (0) j_1) /\ ((<) j_1 i_11)) ->
+              (exists i_9 : int.
+               (((<=) (0) i_9) /\
+               (((<=) i_9 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+               ((forall j_0 : int.
+                 ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
                   ((=)
                   (tolower
-                  (Int8.to_int (select charP_charM_s1_5 (shift s1 j_1))))
+                  (Int8.to_int (select charP_charM_s1_5 (shift s1 j_0))))
                   (tolower
-                  (Int8.to_int (select charP_charM_s2_6 (shift s2 j_1)))))))
+                  (Int8.to_int (select charP_charM_s2_6 (shift s2 j_0)))))))
                /\
                (((<>)
                 (tolower
-                (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
+                (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
                 (tolower
-                (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11)))))
+                (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9)))))
                /\
                ((=) (Int32.to_int result)
                (Int.(-)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11))))))))))))))))
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9))))))))))))))))
             /\
-            ((forall i_12 : int.
-              ((((<=) (0) i_12) /\
-               ((<=) i_12 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
+            ((forall i_10 : int.
+              ((((<=) (0) i_10) /\
+               ((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
                ((=)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_12))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_12))))))) ->
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10))))))) ->
              (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 13 15 27#
              "expl:Ensures clause"
-             (Int32.(=) result (#"strcasecmp.jc" 370 32 44#
+             (Int32.(=) result (#"strcasecmp.jc" 364 32 44#
              "expl:Integer cast" (Int32.of_int (0))))))) }
   
 end
@@ -10616,7 +10334,7 @@ module Function_strcasecmp_safe
          (charP_charM_s1_5 : (memory voidP Int8.t)) : Int32.t
           requires {
             ("expl:Internal"
-            (#"strcasecmp.jc" 361 12 76# "expl:Requires clause"
+            (#"strcasecmp.jc" 355 12 76# "expl:Requires clause"
             ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 8 13 26#
              "expl:Requires clause"
              (valid_str s1 voidP_s1_5_alloc_table charP_charM_s1_5))
@@ -10625,61 +10343,60 @@ module Function_strcasecmp_safe
             "expl:Requires clause"
             (valid_str s2 voidP_s2_6_alloc_table charP_charM_s2_6))))) }
           ensures {
-            (((exists i_10 : int.
-               (((<=) (0) i_10) /\
-               (((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+            (((exists i_8 : int.
+               (((<=) (0) i_8) /\
+               (((<=) i_8 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
                ((<>)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_8))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10))))))))
-              ->
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_8)))))))) ->
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker-gh/strcasecmp.h" 16 15 27#
                "expl:Ensures clause"
-               (Int32.(<>) result (#"strcasecmp.jc" 376 43 55#
+               (Int32.(<>) result (#"strcasecmp.jc" 370 43 55#
                "expl:Integer cast" (Int32.of_int (0)))))
               /\
               (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 17 15 253#
               "expl:Ensures clause"
-              (exists i_11 : int.
-               (((<=) (0) i_11) /\
-               (((<=) i_11 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
-               ((forall j_1 : int.
-                 ((((<=) (0) j_1) /\ ((<) j_1 i_11)) ->
+              (exists i_9 : int.
+               (((<=) (0) i_9) /\
+               (((<=) i_9 (Uint64.to_int (strlen s1 charP_charM_s1_5))) /\
+               ((forall j_0 : int.
+                 ((((<=) (0) j_0) /\ ((<) j_0 i_9)) ->
                   ((=)
                   (tolower
-                  (Int8.to_int (select charP_charM_s1_5 (shift s1 j_1))))
+                  (Int8.to_int (select charP_charM_s1_5 (shift s1 j_0))))
                   (tolower
-                  (Int8.to_int (select charP_charM_s2_6 (shift s2 j_1)))))))
+                  (Int8.to_int (select charP_charM_s2_6 (shift s2 j_0)))))))
                /\
                (((<>)
                 (tolower
-                (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
+                (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
                 (tolower
-                (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11)))))
+                (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9)))))
                /\
                ((=) (Int32.to_int result)
                (Int.(-)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_11))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_9))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_11))))))))))))))))
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_9))))))))))))))))
             /\
-            ((forall i_12 : int.
-              ((((<=) (0) i_12) /\
-               ((<=) i_12 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
+            ((forall i_10 : int.
+              ((((<=) (0) i_10) /\
+               ((<=) i_10 (Uint64.to_int (strlen s1 charP_charM_s1_5)))) ->
                ((=)
                (tolower
-               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_12))))
+               (Int8.to_int (select charP_charM_s1_5 (shift s1 i_10))))
                (tolower
-               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_12))))))) ->
+               (Int8.to_int (select charP_charM_s2_6 (shift s2 i_10))))))) ->
              (#"/home/work/workspace/self/verker-gh/strcasecmp.h" 13 15 27#
              "expl:Ensures clause"
-             (Int32.(=) result (#"strcasecmp.jc" 370 32 44#
+             (Int32.(=) result (#"strcasecmp.jc" 364 32 44#
              "expl:Integer cast" (Int32.of_int (0))))))) }
   
 end

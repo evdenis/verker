@@ -5,7 +5,7 @@
 <prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
 <file name="../strcat.mlw" expanded="true">
-<theory name="Function_strcat_safety" sum="a915d33b0b51a8a8c0356ec48e076dd8" expanded="true">
+<theory name="Function_strcat_safety" sum="3a0ced0b2007a0d1f40ae6b66d87b8e4" expanded="true">
  <goal name="WP_parameter strcat" expl="Function strcat, safety" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcat.1" expl="Precondition for strlen (Requires clause. External)">
@@ -15,13 +15,13 @@
   <proof prover="1"><result status="valid" time="0.02" steps="36"/></proof>
   </goal>
   <goal name="WP_parameter strcat.3" expl="Pointer dereference (Validity)">
-  <proof prover="1"><result status="valid" time="0.13" steps="512"/></proof>
+  <proof prover="1"><result status="valid" time="0.13" steps="507"/></proof>
   </goal>
   <goal name="WP_parameter strcat.4" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.02" steps="46"/></proof>
   </goal>
   <goal name="WP_parameter strcat.5" expl="loop variant decrease">
-  <proof prover="1"><result status="valid" time="0.04" steps="186"/></proof>
+  <proof prover="1"><result status="valid" time="0.04" steps="184"/></proof>
   </goal>
   <goal name="WP_parameter strcat.6" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.04" steps="76"/></proof>
@@ -30,10 +30,10 @@
   <proof prover="1"><result status="valid" time="0.03" steps="79"/></proof>
   </goal>
   <goal name="WP_parameter strcat.8" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.30"/></proof>
+  <proof prover="0"><result status="valid" time="0.48"/></proof>
   </goal>
   <goal name="WP_parameter strcat.9" expl="Pointer dereference (Assignment)">
-  <proof prover="1"><result status="valid" time="0.55" steps="999"/></proof>
+  <proof prover="1"><result status="valid" time="0.55" steps="1021"/></proof>
   </goal>
   <goal name="WP_parameter strcat.10" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.05" steps="100"/></proof>
@@ -44,29 +44,29 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcat_behaviors" sum="0d1653bb10286650b5bdc2aefbfa1307" expanded="true">
+<theory name="Function_strcat_behaviors" sum="7ae438fe49d81f0604abd663dce3bbf5" expanded="true">
  <goal name="WP_parameter strcat_ensures_default" expl="Function strcat, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcat_ensures_default.1" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.09" steps="465"/></proof>
+  <proof prover="1"><result status="valid" time="0.09" steps="442"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.78" steps="1814"/></proof>
+  <proof prover="1"><result status="valid" time="0.78" steps="1759"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.3" expl="Assertion in line 15">
-  <proof prover="1"><result status="valid" time="0.06" steps="182"/></proof>
+  <proof prover="1"><result status="valid" time="0.06" steps="178"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.4" expl="Assertion in line 16">
-  <proof prover="1"><result status="valid" time="0.65" steps="1086"/></proof>
+  <proof prover="1"><result status="valid" time="0.65" steps="1002"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.5" expl="Assertion in line 17">
   <proof prover="1"><result status="valid" time="0.02" steps="40"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.6" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.53" steps="1670"/></proof>
+  <proof prover="1"><result status="valid" time="0.53" steps="1599"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.7" expl="loop invariant preservation">
-  <transf name="split_goal_wp" expanded="true">
+  <transf name="split_goal_wp">
    <goal name="WP_parameter strcat_ensures_default.7.1" expl="Function strcat, default behavior">
    <proof prover="1"><result status="valid" time="0.03" steps="95"/></proof>
    </goal>
@@ -89,7 +89,7 @@
    <proof prover="1"><result status="valid" time="0.05" steps="103"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.8" expl="Function strcat, default behavior">
-   <proof prover="1"><result status="valid" time="0.13" steps="633"/></proof>
+   <proof prover="1"><result status="valid" time="0.13" steps="641"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.9" expl="Function strcat, default behavior">
    <proof prover="1"><result status="valid" time="0.05" steps="111"/></proof>
@@ -98,13 +98,13 @@
    <proof prover="1"><result status="valid" time="0.06" steps="113"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.11" expl="Function strcat, default behavior">
-   <proof prover="1"><result status="valid" time="0.21" steps="832"/></proof>
+   <proof prover="1"><result status="valid" time="0.21" steps="830"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.12" expl="Function strcat, default behavior">
-   <proof prover="1"><result status="valid" time="2.31" steps="2669"/></proof>
+   <proof prover="1"><result status="valid" time="2.31" steps="2645"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.13" expl="Assigns clause">
-   <proof prover="0"><result status="valid" time="0.31"/></proof>
+   <proof prover="0"><result status="valid" time="0.52"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.7.14" expl="Assigns clause">
    <proof prover="0"><result status="valid" time="0.29"/></proof>
@@ -112,30 +112,30 @@
   </transf>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.8" expl="Assertion in line 33">
-  <proof prover="0"><result status="valid" time="1.37"/></proof>
+  <proof prover="0"><result status="valid" time="1.63"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.9" expl="Assertion in line 34">
-  <proof prover="1"><result status="valid" time="0.58" steps="1180"/></proof>
+  <proof prover="1"><result status="valid" time="0.58" steps="1155"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.10" expl="Assertion in line 35">
-  <proof prover="1"><result status="valid" time="0.27" steps="610"/></proof>
+  <proof prover="1"><result status="valid" time="0.27" steps="605"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.11" expl="Assertion in line 36">
-  <proof prover="1"><result status="valid" time="0.42" steps="634"/></proof>
+  <proof prover="1"><result status="valid" time="0.42" steps="625"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.12" expl="Assertion in line 37">
-  <proof prover="1"><result status="valid" time="0.86" steps="1678"/></proof>
+  <proof prover="1"><result status="valid" time="0.86" steps="1675"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.13" expl="Assertion in line 38">
-  <transf name="split_goal_wp" expanded="true">
+  <transf name="split_goal_wp">
    <goal name="WP_parameter strcat_ensures_default.13.1" expl="Assertion in line 38">
-   <proof prover="1"><result status="valid" time="0.44" steps="673"/></proof>
+   <proof prover="1"><result status="valid" time="0.44" steps="669"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.13.2" expl="Assertion in line 38">
    <proof prover="1"><result status="valid" time="0.03" steps="100"/></proof>
    </goal>
    <goal name="WP_parameter strcat_ensures_default.13.3" expl="Assertion in line 38">
-   <proof prover="1"><result status="valid" time="0.95" steps="1787"/></proof>
+   <proof prover="1"><result status="valid" time="0.95" steps="1756"/></proof>
    </goal>
   </transf>
   </goal>
@@ -143,7 +143,26 @@
   <proof prover="0"><result status="valid" time="0.28"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.15" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="4.15"/></proof>
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strcat_ensures_default.15.1" expl="Assigns clause">
+   <proof prover="0"><result status="valid" time="3.37"/></proof>
+   </goal>
+   <goal name="WP_parameter strcat_ensures_default.15.2" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.02" steps="106"/></proof>
+   </goal>
+   <goal name="WP_parameter strcat_ensures_default.15.3" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.02" steps="106"/></proof>
+   </goal>
+   <goal name="WP_parameter strcat_ensures_default.15.4" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.05" steps="116"/></proof>
+   </goal>
+   <goal name="WP_parameter strcat_ensures_default.15.5" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.97" steps="2331"/></proof>
+   </goal>
+   <goal name="WP_parameter strcat_ensures_default.15.6" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.28" steps="681"/></proof>
+   </goal>
+  </transf>
   </goal>
  </transf>
  </goal>
@@ -446,11 +465,7 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
@@ -491,14 +506,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

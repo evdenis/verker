@@ -1690,18 +1690,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 module Root__BoolP_safe
 
   use why3.Bool.Bool 
@@ -1835,7 +1823,7 @@ module Function_kstrtobool_safety
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
    ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
@@ -1843,14 +1831,14 @@ module Function_kstrtobool_safety
     (((=) true true) /\ ((=) true true))))))
    /\
    (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
    /\
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((>=) (offset_max _BoolP_res_6_alloc_table res) (0)))
-   /\ (#"kstrtobool.jc" 50 12 435# ((=) true true)))))))))) }
+   /\ (#"kstrtobool.jc" 44 12 435# ((=) true true)))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    (let return = ref (Safe_int32.any_  () ) in
@@ -1865,14 +1853,14 @@ module Function_kstrtobool_safety
        (if
        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 5 5 7#
        (Bool.notb 
-        (#"kstrtobool.jc" 85 22 31#
+        (#"kstrtobool.jc" 79 22 31#
         (neq_pointer  voidP_s_5_alloc_table voidP_s_5_alloc_table s_2
          (null  ) )) ))
        then
         begin
         (__retres :=
          (let _jessie_95 =
-         (#"kstrtobool.jc" 86 29 43# "expl:Integer cast"
+         (#"kstrtobool.jc" 80 29 43# "expl:Integer cast"
          (Safe_int32.of_int  (Int.(-_)  (22) ) )) in
          begin
          (assert {
@@ -1889,292 +1877,228 @@ module Function_kstrtobool_safety
          (acc  voidP_s_5_alloc_table charP_charM_s_5 s_2 )) )) in
         begin (assert { ("expl:Pointer index bounds" true) }); _jessie_96 end)
         in
-        begin
         (if
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Safe_int32.of_int (49))) ))
         ||
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Safe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
         (Safe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Safe_int32.of_int (121))) ))))))
         then
          begin
-         (let _jessie_99 =
-         (let _jessie_98 =
+         (let _jessie_118 =
+         (let _jessie_117 =
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
          "expl:Integer cast"
          (Safe_enum__bool_of_Safe_int32.cast 
-          (#"kstrtobool.jc" 95 51 63# "expl:Integer cast"
+          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
           (Safe_int32.of_int (1))) )) in
          begin
          (assert {
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 2 13#
-         "expl:Pointer index bounds" true) }); _jessie_98 end) in
-         (let _jessie_100 = res in
-         (let _jessie_101 = (0) in
-         (let _jessie_102 = _jessie_100 in
+         "expl:Pointer index bounds" true) }); _jessie_117 end) in
+         (let _jessie_119 = res in
+         (let _jessie_120 = (0) in
+         (let _jessie_121 = _jessie_119 in
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 2 13#
          "expl:Pointer dereference"
-         (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_100
-          _jessie_99 ))))));
+         (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_119
+          _jessie_118 ))))));
           begin
           (__retres :=
-           (let _jessie_97 =
-           (#"kstrtobool.jc" 96 31 43# "expl:Integer cast"
+           (let _jessie_116 =
+           (#"kstrtobool.jc" 90 31 43# "expl:Integer cast"
            (Safe_int32.of_int (0))) in
            begin
            (assert {
            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 13 2 11#
-           "expl:Pointer index bounds" true) }); _jessie_97 end));
-           (raise (Return_label_exc ())) end end else ());
+           "expl:Pointer index bounds" true) }); _jessie_116 end));
+           (raise (Return_label_exc ())) end end
+        else
          (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Safe_int32.of_int (48))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Safe_int32.of_int (78))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Safe_int32.of_int (121))) ))))))))))))
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          "expl:Integer cast" (Safe_int32.of_int (110))) ))))))
          then
           begin
-          (let _jessie_105 =
-          (let _jessie_104 =
+          (let _jessie_112 =
+          (let _jessie_111 =
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
           "expl:Integer cast"
           (Safe_enum__bool_of_Safe_int32.cast 
-           (#"kstrtobool.jc" 103 54 66# "expl:Integer cast"
+           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
            (Safe_int32.of_int (0))) )) in
           begin
           (assert {
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 2 14#
-          "expl:Pointer index bounds" true) }); _jessie_104 end) in
-          (let _jessie_106 = res in
-          (let _jessie_107 = (0) in
-          (let _jessie_108 = _jessie_106 in
+          "expl:Pointer index bounds" true) }); _jessie_111 end) in
+          (let _jessie_113 = res in
+          (let _jessie_114 = (0) in
+          (let _jessie_115 = _jessie_113 in
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 2 14#
           "expl:Pointer dereference"
-          (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_106
-           _jessie_105 ))))));
+          (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_113
+           _jessie_112 ))))));
            begin
            (__retres :=
-            (let _jessie_103 =
-            (#"kstrtobool.jc" 104 32 44# "expl:Integer cast"
+            (let _jessie_110 =
+            (#"kstrtobool.jc" 98 32 44# "expl:Integer cast"
             (Safe_int32.of_int (0))) in
             begin
             (assert {
             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 18 2 11#
-            "expl:Pointer index bounds" true) }); _jessie_103 end));
-            (raise (Return_label_exc ())) end end else ());
-         (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
+            "expl:Pointer index bounds" true) }); _jessie_110 end));
+            (raise (Return_label_exc ())) end end
+         else
+          begin
+          (if
+          (#"kstrtobool.jc" 85 14 79#
+          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+           (Safe_int32.(=)  _jessie_6
+            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            "expl:Integer cast" (Safe_int32.of_int (79))) ))
+          ||
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (79))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (111))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (48))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (78))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Safe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-         (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Safe_int32.of_int (121))) ))))))))))))))))
-         then
-          try
-           begin
-           ();
-            (let _jessie_4 =
-            (let _jessie_109 =
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
-            "expl:Integer cast"
-            (Safe_int32_of_Safe_int8.cast 
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           "expl:Integer cast" (Safe_int32.of_int (111))) ))))
+          then
+           try
+            begin
+            ();
+             (let _jessie_4 =
+             (let _jessie_97 =
              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
-             "expl:Pointer dereference"
-             (acc_offset_typesafe  voidP_s_5_alloc_table charP_charM_s_5 s_2
-              (1) )) )) in
-            begin
-            (assert { ("expl:Pointer index bounds" true) }); _jessie_109 end)
-            in
-            begin
-            (if
-            (#"kstrtobool.jc" 112 19 84#
-            ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-             (Safe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              "expl:Integer cast" (Safe_int32.of_int (78))) ))
-            ||
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-            (Safe_int32.(=)  _jessie_4
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-             "expl:Integer cast" (Safe_int32.of_int (110))) ))))
-            then
-             begin
-             (let _jessie_112 =
-             (let _jessie_111 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
              "expl:Integer cast"
-             (Safe_enum__bool_of_Safe_int32.cast 
-              (#"kstrtobool.jc" 115 59 71# "expl:Integer cast"
-              (Safe_int32.of_int (1))) )) in
+             (Safe_int32_of_Safe_int8.cast 
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+              "expl:Pointer dereference"
+              (acc_offset_typesafe  voidP_s_5_alloc_table charP_charM_s_5 s_2
+               (1) )) )) in
              begin
-             (assert {
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
-             "expl:Pointer index bounds" true) }); _jessie_111 end) in
-             (let _jessie_113 = res in
-             (let _jessie_114 = (0) in
-             (let _jessie_115 = _jessie_113 in
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
-             "expl:Pointer dereference"
-             (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_113
-              _jessie_112 ))))));
-              begin
-              (__retres :=
-               (let _jessie_110 =
-               (#"kstrtobool.jc" 116 37 49# "expl:Integer cast"
-               (Safe_int32.of_int (0))) in
-               begin
-               (assert {
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 25 3 12#
-               "expl:Pointer index bounds" true) }); _jessie_110 end));
-               (raise (Return_label_exc ())) end end else ());
+             (assert { ("expl:Pointer index bounds" true) }); _jessie_97 end)
+             in
              (if
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
+             (#"kstrtobool.jc" 106 19 84#
+             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
               (Safe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
-               "expl:Integer cast" (Safe_int32.of_int (70))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-              (Safe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-               "expl:Integer cast" (Safe_int32.of_int (102))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              (Safe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Safe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
              (Safe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-              "expl:Integer cast" (Safe_int32.of_int (110))) ))))))))
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              "expl:Integer cast" (Safe_int32.of_int (110))) ))))
              then
               begin
-              (let _jessie_118 =
-              (let _jessie_117 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+              (let _jessie_106 =
+              (let _jessie_105 =
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
               "expl:Integer cast"
               (Safe_enum__bool_of_Safe_int32.cast 
-               (#"kstrtobool.jc" 122 59 71# "expl:Integer cast"
-               (Safe_int32.of_int (0))) )) in
+               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
+               (Safe_int32.of_int (1))) )) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
-              "expl:Pointer index bounds" true) }); _jessie_117 end) in
-              (let _jessie_119 = res in
-              (let _jessie_120 = (0) in
-              (let _jessie_121 = _jessie_119 in
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
+              "expl:Pointer index bounds" true) }); _jessie_105 end) in
+              (let _jessie_107 = res in
+              (let _jessie_108 = (0) in
+              (let _jessie_109 = _jessie_107 in
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
               "expl:Pointer dereference"
-              (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_119
-               _jessie_118 ))))));
+              (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_107
+               _jessie_106 ))))));
                begin
                (__retres :=
-                (let _jessie_116 =
-                (#"kstrtobool.jc" 123 37 49# "expl:Integer cast"
+                (let _jessie_104 =
+                (#"kstrtobool.jc" 110 37 49# "expl:Integer cast"
                 (Safe_int32.of_int (0))) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 29 3 12#
-                "expl:Pointer index bounds" true) }); _jessie_116 end));
-                (raise (Return_label_exc ())) end end else ());
-             (if (true)
-             then begin (); (raise (Goto_switch_1_break_exc ())) end 
-             else ()) end); (raise (Goto_switch_1_break_exc ())) end with
-           Goto_switch_1_break_exc _jessie_1 ->
-           'Switch_1_break: 'Switch_1_break: () end else ());
-         (if (true) then begin (); (raise (Goto_switch_0_break_exc ())) end
-         else ()) end); (raise (Goto_switch_0_break_exc ())) end with
-       Goto_switch_0_break_exc _jessie_2 ->
+                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 25 3 12#
+                "expl:Pointer index bounds" true) }); _jessie_104 end));
+                (raise (Return_label_exc ())) end end
+             else
+              (if
+              (#"kstrtobool.jc" 106 19 84#
+              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+               (Safe_int32.(=)  _jessie_4
+                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                "expl:Integer cast" (Safe_int32.of_int (70))) ))
+              ||
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (Safe_int32.(=)  _jessie_4
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               "expl:Integer cast" (Safe_int32.of_int (102))) ))))
+              then
+               begin
+               (let _jessie_100 =
+               (let _jessie_99 =
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+               "expl:Integer cast"
+               (Safe_enum__bool_of_Safe_int32.cast 
+                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
+                (Safe_int32.of_int (0))) )) in
+               begin
+               (assert {
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
+               "expl:Pointer index bounds" true) }); _jessie_99 end) in
+               (let _jessie_101 = res in
+               (let _jessie_102 = (0) in
+               (let _jessie_103 = _jessie_101 in
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
+               "expl:Pointer dereference"
+               (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_101
+                _jessie_100 ))))));
+                begin
+                (__retres :=
+                 (let _jessie_98 =
+                 (#"kstrtobool.jc" 117 37 49# "expl:Integer cast"
+                 (Safe_int32.of_int (0))) in
+                 begin
+                 (assert {
+                 (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 29 3 12#
+                 "expl:Pointer index bounds" true) }); _jessie_98 end));
+                 (raise (Return_label_exc ())) end end
+              else
+               (if (true) then (raise (Goto_switch_1_break_exc ())) else ()))));
+             (raise (Goto_switch_1_break_exc ())) end with
+            Goto_switch_1_break_exc _jessie_1 ->
+            'Switch_1_break: 'Switch_1_break: () end else ());
+           (if (true) then (raise (Goto_switch_0_break_exc ())) else ()) end)));
+        (raise (Goto_switch_0_break_exc ())) end with Goto_switch_0_break_exc
+       _jessie_2 ->
        'Switch_0_break:
        'Switch_0_break:
        begin
        ();
         (__retres :=
          (let _jessie_122 =
-         (#"kstrtobool.jc" 142 27 41# "expl:Integer cast"
+         (#"kstrtobool.jc" 134 27 41# "expl:Integer cast"
          (Safe_int32.of_int  (Int.(-_)  (22) ) )) in
          begin
          (assert {
@@ -2188,7 +2112,7 @@ module Function_kstrtobool_safety
        (let _jessie_123 = !__retres in
        begin
        (assert {
-       (#"kstrtobool.jc" 144 7 22# "expl:Pointer index bounds" true) });
+       (#"kstrtobool.jc" 136 7 22# "expl:Pointer index bounds" true) });
         _jessie_123 end)); (raise Return) end end); absurd  end with Return
     -> !return end)
   
@@ -2210,25 +2134,26 @@ theory Logic_kstrtobool_fmt_true
   (charP_charM_s_0_3_at_L : (memory voidP Int8.t))
   =
      ((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-      (#"kstrtobool.jc" 38 27 39# "expl:Integer cast" (Int8.of_int (89))))
+      (#"kstrtobool.jc" 32 27 39# "expl:Integer cast" (Int8.of_int (89))))
      \/
      ((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-      (#"kstrtobool.jc" 39 28 41# "expl:Integer cast" (Int8.of_int (121))))
+      (#"kstrtobool.jc" 33 28 41# "expl:Integer cast" (Int8.of_int (121))))
      \/
      ((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-      (#"kstrtobool.jc" 40 27 39# "expl:Integer cast" (Int8.of_int (49))))
+      (#"kstrtobool.jc" 34 27 39# "expl:Integer cast" (Int8.of_int (49))))
      \/
      (((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-       (#"kstrtobool.jc" 41 28 41# "expl:Integer cast" (Int8.of_int (111))))
+       (#"kstrtobool.jc" 35 28 41# "expl:Integer cast" (Int8.of_int (111))))
       \/
       (Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (0)))
-      (#"kstrtobool.jc" 42 29 41# "expl:Integer cast" (Int8.of_int (79)))))
+      (#"kstrtobool.jc" 36 29 41# "expl:Integer cast" (Int8.of_int (79)))))
      /\
      ((Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (1)))
-      (#"kstrtobool.jc" 43 29 41# "expl:Integer cast" (Int8.of_int (78))))
+      (#"kstrtobool.jc" 37 29 41# "expl:Integer cast" (Int8.of_int (78))))
      \/
      (Int8.(=) (select charP_charM_s_0_3_at_L (shift s_0 (1)))
-     (#"kstrtobool.jc" 44 30 43# "expl:Integer cast" (Int8.of_int (110)))))))))
+     (#"kstrtobool.jc" 38 30 43# "expl:Integer cast" (Int8.of_int (110)))))))))
+  
   
 end
 
@@ -2248,25 +2173,26 @@ theory Logic_kstrtobool_fmt_false
   : (memory voidP Int8.t))
   =
      ((Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-      (#"kstrtobool.jc" 32 25 37# "expl:Integer cast" (Int8.of_int (78))))
+      (#"kstrtobool.jc" 26 25 37# "expl:Integer cast" (Int8.of_int (78))))
      \/
      ((Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-      (#"kstrtobool.jc" 32 60 73# "expl:Integer cast" (Int8.of_int (110))))
+      (#"kstrtobool.jc" 26 60 73# "expl:Integer cast" (Int8.of_int (110))))
      \/
      ((Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-      (#"kstrtobool.jc" 33 25 37# "expl:Integer cast" (Int8.of_int (48))))
+      (#"kstrtobool.jc" 27 25 37# "expl:Integer cast" (Int8.of_int (48))))
      \/
      (((Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-       (#"kstrtobool.jc" 34 26 39# "expl:Integer cast" (Int8.of_int (111))))
+       (#"kstrtobool.jc" 28 26 39# "expl:Integer cast" (Int8.of_int (111))))
       \/
       (Int8.(=) (select charP_charM_s_2_at_L (shift s (0)))
-      (#"kstrtobool.jc" 34 62 74# "expl:Integer cast" (Int8.of_int (79)))))
+      (#"kstrtobool.jc" 28 62 74# "expl:Integer cast" (Int8.of_int (79)))))
      /\
      ((Int8.(=) (select charP_charM_s_2_at_L (shift s (1)))
-      (#"kstrtobool.jc" 35 27 39# "expl:Integer cast" (Int8.of_int (70))))
+      (#"kstrtobool.jc" 29 27 39# "expl:Integer cast" (Int8.of_int (70))))
      \/
      (Int8.(=) (select charP_charM_s_2_at_L (shift s (1)))
-     (#"kstrtobool.jc" 35 62 75# "expl:Integer cast" (Int8.of_int (102)))))))))
+     (#"kstrtobool.jc" 29 62 75# "expl:Integer cast" (Int8.of_int (102)))))))))
+  
   
 end
 
@@ -2291,6 +2217,7 @@ theory Logic_kstrtobool_fmt
   =
      ((kstrtobool_fmt_true s_1 charP_charM_s_1_4_at_L) \/
      (kstrtobool_fmt_false s_1 charP_charM_s_1_4_at_L))
+  
   
 end
 
@@ -2401,7 +2328,7 @@ module Function_kstrtobool_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
    ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
@@ -2409,17 +2336,17 @@ module Function_kstrtobool_behaviors
     (((=) true true) /\ ((=) true true))))))
    /\
    (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
    /\
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((>=) (offset_max _BoolP_res_6_alloc_table res) (0)))
-   /\ (#"kstrtobool.jc" 50 12 435# ((=) true true))))))))))) }
+   /\ (#"kstrtobool.jc" 44 12 435# ((=) true true))))))))))) }
    ensures {
      ("expl:Postcondition"
-     ((#"kstrtobool.jc" 68 10 20# "expl:Assigns clause"
+     ((#"kstrtobool.jc" 62 10 20# "expl:Assigns clause"
       (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table (old
       !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 (pset_singleton res)))
      /\
@@ -2431,7 +2358,7 @@ module Function_kstrtobool_behaviors
       "expl:Ensures clause"
       ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
        (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-       (#"kstrtobool.jc" 70 55 67# "expl:Integer cast"
+       (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
        (Enum__bool.of_int (1))))))
      /\
      (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
@@ -2440,12 +2367,12 @@ module Function_kstrtobool_behaviors
       "expl:Ensures clause"
       ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
        (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-       (#"kstrtobool.jc" 72 57 69# "expl:Integer cast"
+       (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
        (Enum__bool.of_int (0))))))
      /\
      (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
      "expl:Ensures clause"
-     (Int32.(=) result (#"kstrtobool.jc" 73 44 56# "expl:Integer cast"
+     (Int32.(=) result (#"kstrtobool.jc" 67 44 56# "expl:Integer cast"
      (Int32.of_int (0)))))))))))) }  ->
    'Init:
    (let return = ref (Unsafe_int32.any_  () ) in
@@ -2463,7 +2390,7 @@ module Function_kstrtobool_behaviors
        then
         begin
         (__retres :=
-         (#"kstrtobool.jc" 86 29 43# "expl:Integer cast"
+         (#"kstrtobool.jc" 80 29 43# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
@@ -2473,238 +2400,173 @@ module Function_kstrtobool_behaviors
          (acc  charP_charM_s_5
           (shift_  s_2
            (Unsafe_int32.to_int 
-            (#"kstrtobool.jc" 91 47 59# "expl:Integer cast"
+            (#"kstrtobool.jc" 85 47 59# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) ) ) ) )) in
-        begin
         (if
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
-         (let _jessie_70 =
+         (let _jessie_89 =
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
          "expl:Integer cast"
          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 95 51 63# "expl:Integer cast"
+          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) )) in
-         (let _jessie_71 = res in
-         (let _jessie_72 = (0) in
-         (let _jessie_73 = _jessie_71 in
-         (upd  _BoolP__BoolM_res_6 _jessie_73 _jessie_70 )))));
+         (let _jessie_90 = res in
+         (let _jessie_91 = (0) in
+         (let _jessie_92 = _jessie_90 in
+         (upd  _BoolP__BoolM_res_6 _jessie_92 _jessie_89 )))));
           begin
           (__retres :=
-           (#"kstrtobool.jc" 96 31 43# "expl:Integer cast"
+           (#"kstrtobool.jc" 90 31 43# "expl:Integer cast"
            (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end end
-        else ());
+        else
          (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
-          (let _jessie_76 =
+          (let _jessie_83 =
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
           "expl:Integer cast"
           (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 103 54 66# "expl:Integer cast"
+           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) )) in
-          (let _jessie_77 = res in
-          (let _jessie_78 = (0) in
-          (let _jessie_79 = _jessie_77 in
-          (upd  _BoolP__BoolM_res_6 _jessie_79 _jessie_76 )))));
+          (let _jessie_84 = res in
+          (let _jessie_85 = (0) in
+          (let _jessie_86 = _jessie_84 in
+          (upd  _BoolP__BoolM_res_6 _jessie_86 _jessie_83 )))));
            begin
            (__retres :=
-            (#"kstrtobool.jc" 104 32 44# "expl:Integer cast"
+            (#"kstrtobool.jc" 98 32 44# "expl:Integer cast"
             (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-          end else ());
-         (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
+          end
+         else
+          begin
+          (if
+          (#"kstrtobool.jc" 85 14 79#
+          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+           (Unsafe_int32.(=)  _jessie_6
+            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
+          ||
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-         (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))))))
-         then
-          try
-           begin
-           ();
-            (let _jessie_4 =
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
-            "expl:Integer cast"
-            (Unsafe_int32_of_Unsafe_int8.cast 
-             (acc  charP_charM_s_5
-              (shift_  s_2
-               (Unsafe_int32.to_int 
-                (#"kstrtobool.jc" 112 52 64# "expl:Integer cast"
-                (Unsafe_int32.of_int (1))) ) ) ) )) in
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
+          then
+           try
             begin
-            (if
-            (#"kstrtobool.jc" 112 19 84#
-            ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-             (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-            ||
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-            (Unsafe_int32.(=)  _jessie_4
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-             "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
-            then
-             begin
-             (let _jessie_83 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
+            ();
+             (let _jessie_4 =
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
-             (Unsafe_enum__bool_of_Unsafe_int32.cast 
-              (#"kstrtobool.jc" 115 59 71# "expl:Integer cast"
-              (Unsafe_int32.of_int (1))) )) in
-             (let _jessie_84 = res in
-             (let _jessie_85 = (0) in
-             (let _jessie_86 = _jessie_84 in
-             (upd  _BoolP__BoolM_res_6 _jessie_86 _jessie_83 )))));
-              begin
-              (__retres :=
-               (#"kstrtobool.jc" 116 37 49# "expl:Integer cast"
-               (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-             end else ());
+             (Unsafe_int32_of_Unsafe_int8.cast 
+              (acc  charP_charM_s_5
+               (shift_  s_2
+                (Unsafe_int32.to_int 
+                 (#"kstrtobool.jc" 106 52 64# "expl:Integer cast"
+                 (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
+             (#"kstrtobool.jc" 106 19 84#
+             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))))
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
-              (let _jessie_89 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+              (let _jessie_77 =
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
               "expl:Integer cast"
               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 122 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (0))) )) in
-              (let _jessie_90 = res in
-              (let _jessie_91 = (0) in
-              (let _jessie_92 = _jessie_90 in
-              (upd  _BoolP__BoolM_res_6 _jessie_92 _jessie_89 )))));
+               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
+               (Unsafe_int32.of_int (1))) )) in
+              (let _jessie_78 = res in
+              (let _jessie_79 = (0) in
+              (let _jessie_80 = _jessie_78 in
+              (upd  _BoolP__BoolM_res_6 _jessie_80 _jessie_77 )))));
                begin
                (__retres :=
-                (#"kstrtobool.jc" 123 37 49# "expl:Integer cast"
+                (#"kstrtobool.jc" 110 37 49# "expl:Integer cast"
                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
-               end end else ());
-             (if (true)
-             then begin (); (raise (Goto_switch_1_break_exc ())) end 
-             else ()) end); (raise (Goto_switch_1_break_exc ())) end with
-           Goto_switch_1_break_exc _jessie_1 ->
-           'Switch_1_break: 'Switch_1_break: () end else ());
-         (if (true) then begin (); (raise (Goto_switch_0_break_exc ())) end
-         else ()) end); (raise (Goto_switch_0_break_exc ())) end with
-       Goto_switch_0_break_exc _jessie_2 ->
+               end end
+             else
+              (if
+              (#"kstrtobool.jc" 106 19 84#
+              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+               (Unsafe_int32.(=)  _jessie_4
+                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
+              ||
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (Unsafe_int32.(=)  _jessie_4
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
+              then
+               begin
+               (let _jessie_71 =
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+               "expl:Integer cast"
+               (Unsafe_enum__bool_of_Unsafe_int32.cast 
+                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
+                (Unsafe_int32.of_int (0))) )) in
+               (let _jessie_72 = res in
+               (let _jessie_73 = (0) in
+               (let _jessie_74 = _jessie_72 in
+               (upd  _BoolP__BoolM_res_6 _jessie_74 _jessie_71 )))));
+                begin
+                (__retres :=
+                 (#"kstrtobool.jc" 117 37 49# "expl:Integer cast"
+                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
+                end end
+              else
+               (if (true) then (raise (Goto_switch_1_break_exc ())) else ()))));
+             (raise (Goto_switch_1_break_exc ())) end with
+            Goto_switch_1_break_exc _jessie_1 ->
+            'Switch_1_break: 'Switch_1_break: () end else ());
+           (if (true) then (raise (Goto_switch_0_break_exc ())) else ()) end)));
+        (raise (Goto_switch_0_break_exc ())) end with Goto_switch_0_break_exc
+       _jessie_2 ->
        'Switch_0_break:
        'Switch_0_break:
        begin
        ();
         (__retres :=
-         (#"kstrtobool.jc" 142 27 41# "expl:Integer cast"
+         (#"kstrtobool.jc" 134 27 41# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) ))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
       'Return_label:
@@ -2729,7 +2591,7 @@ module Function_kstrtobool_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
    ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
@@ -2737,23 +2599,23 @@ module Function_kstrtobool_behaviors
     (((=) true true) /\ ((=) true true))))))
    /\
    (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
    /\
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((>=) (offset_max _BoolP_res_6_alloc_table res) (0)))
-   /\ (#"kstrtobool.jc" 50 12 435# ((=) true true))))))))))) }
+   /\ (#"kstrtobool.jc" 44 12 435# ((=) true true))))))))))) }
    ensures {
      ("expl:Postcondition"
-     ((#"kstrtobool.jc" 64 10 18# "expl:Assigns clause"
+     ((#"kstrtobool.jc" 58 10 18# "expl:Assigns clause"
       (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table (old
       !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
      /\
      (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
      "expl:Ensures clause"
-     (Int32.(=) result (#"kstrtobool.jc" 65 31 48# "expl:Integer cast"
+     (Int32.(=) result (#"kstrtobool.jc" 59 31 48# "expl:Integer cast"
      (Int32.of_int (Int.(-_) (22)))))))) }  ->
    'Init:
    (let return = ref (Unsafe_int32.any_  () ) in
@@ -2771,7 +2633,7 @@ module Function_kstrtobool_behaviors
        then
         begin
         (__retres :=
-         (#"kstrtobool.jc" 86 29 43# "expl:Integer cast"
+         (#"kstrtobool.jc" 80 29 43# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
@@ -2781,238 +2643,173 @@ module Function_kstrtobool_behaviors
          (acc  charP_charM_s_5
           (shift_  s_2
            (Unsafe_int32.to_int 
-            (#"kstrtobool.jc" 91 47 59# "expl:Integer cast"
+            (#"kstrtobool.jc" 85 47 59# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) ) ) ) )) in
-        begin
         (if
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
-         (let _jessie_41 =
+         (let _jessie_60 =
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
          "expl:Integer cast"
          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 95 51 63# "expl:Integer cast"
+          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) )) in
-         (let _jessie_42 = res in
-         (let _jessie_43 = (0) in
-         (let _jessie_44 = _jessie_42 in
-         (upd  _BoolP__BoolM_res_6 _jessie_44 _jessie_41 )))));
+         (let _jessie_61 = res in
+         (let _jessie_62 = (0) in
+         (let _jessie_63 = _jessie_61 in
+         (upd  _BoolP__BoolM_res_6 _jessie_63 _jessie_60 )))));
           begin
           (__retres :=
-           (#"kstrtobool.jc" 96 31 43# "expl:Integer cast"
+           (#"kstrtobool.jc" 90 31 43# "expl:Integer cast"
            (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end end
-        else ());
+        else
          (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
-          (let _jessie_47 =
+          (let _jessie_54 =
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
           "expl:Integer cast"
           (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 103 54 66# "expl:Integer cast"
+           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) )) in
-          (let _jessie_48 = res in
-          (let _jessie_49 = (0) in
-          (let _jessie_50 = _jessie_48 in
-          (upd  _BoolP__BoolM_res_6 _jessie_50 _jessie_47 )))));
+          (let _jessie_55 = res in
+          (let _jessie_56 = (0) in
+          (let _jessie_57 = _jessie_55 in
+          (upd  _BoolP__BoolM_res_6 _jessie_57 _jessie_54 )))));
            begin
            (__retres :=
-            (#"kstrtobool.jc" 104 32 44# "expl:Integer cast"
+            (#"kstrtobool.jc" 98 32 44# "expl:Integer cast"
             (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-          end else ());
-         (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
+          end
+         else
+          begin
+          (if
+          (#"kstrtobool.jc" 85 14 79#
+          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+           (Unsafe_int32.(=)  _jessie_6
+            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
+          ||
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-         (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))))))
-         then
-          try
-           begin
-           ();
-            (let _jessie_4 =
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
-            "expl:Integer cast"
-            (Unsafe_int32_of_Unsafe_int8.cast 
-             (acc  charP_charM_s_5
-              (shift_  s_2
-               (Unsafe_int32.to_int 
-                (#"kstrtobool.jc" 112 52 64# "expl:Integer cast"
-                (Unsafe_int32.of_int (1))) ) ) ) )) in
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
+          then
+           try
             begin
-            (if
-            (#"kstrtobool.jc" 112 19 84#
-            ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-             (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-            ||
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-            (Unsafe_int32.(=)  _jessie_4
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-             "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
-            then
-             begin
-             (let _jessie_54 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
+            ();
+             (let _jessie_4 =
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
-             (Unsafe_enum__bool_of_Unsafe_int32.cast 
-              (#"kstrtobool.jc" 115 59 71# "expl:Integer cast"
-              (Unsafe_int32.of_int (1))) )) in
-             (let _jessie_55 = res in
-             (let _jessie_56 = (0) in
-             (let _jessie_57 = _jessie_55 in
-             (upd  _BoolP__BoolM_res_6 _jessie_57 _jessie_54 )))));
-              begin
-              (__retres :=
-               (#"kstrtobool.jc" 116 37 49# "expl:Integer cast"
-               (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-             end else ());
+             (Unsafe_int32_of_Unsafe_int8.cast 
+              (acc  charP_charM_s_5
+               (shift_  s_2
+                (Unsafe_int32.to_int 
+                 (#"kstrtobool.jc" 106 52 64# "expl:Integer cast"
+                 (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
+             (#"kstrtobool.jc" 106 19 84#
+             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))))
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
-              (let _jessie_60 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+              (let _jessie_48 =
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
               "expl:Integer cast"
               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 122 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (0))) )) in
-              (let _jessie_61 = res in
-              (let _jessie_62 = (0) in
-              (let _jessie_63 = _jessie_61 in
-              (upd  _BoolP__BoolM_res_6 _jessie_63 _jessie_60 )))));
+               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
+               (Unsafe_int32.of_int (1))) )) in
+              (let _jessie_49 = res in
+              (let _jessie_50 = (0) in
+              (let _jessie_51 = _jessie_49 in
+              (upd  _BoolP__BoolM_res_6 _jessie_51 _jessie_48 )))));
                begin
                (__retres :=
-                (#"kstrtobool.jc" 123 37 49# "expl:Integer cast"
+                (#"kstrtobool.jc" 110 37 49# "expl:Integer cast"
                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
-               end end else ());
-             (if (true)
-             then begin (); (raise (Goto_switch_1_break_exc ())) end 
-             else ()) end); (raise (Goto_switch_1_break_exc ())) end with
-           Goto_switch_1_break_exc _jessie_1 ->
-           'Switch_1_break: 'Switch_1_break: () end else ());
-         (if (true) then begin (); (raise (Goto_switch_0_break_exc ())) end
-         else ()) end); (raise (Goto_switch_0_break_exc ())) end with
-       Goto_switch_0_break_exc _jessie_2 ->
+               end end
+             else
+              (if
+              (#"kstrtobool.jc" 106 19 84#
+              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+               (Unsafe_int32.(=)  _jessie_4
+                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
+              ||
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (Unsafe_int32.(=)  _jessie_4
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
+              then
+               begin
+               (let _jessie_42 =
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+               "expl:Integer cast"
+               (Unsafe_enum__bool_of_Unsafe_int32.cast 
+                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
+                (Unsafe_int32.of_int (0))) )) in
+               (let _jessie_43 = res in
+               (let _jessie_44 = (0) in
+               (let _jessie_45 = _jessie_43 in
+               (upd  _BoolP__BoolM_res_6 _jessie_45 _jessie_42 )))));
+                begin
+                (__retres :=
+                 (#"kstrtobool.jc" 117 37 49# "expl:Integer cast"
+                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
+                end end
+              else
+               (if (true) then (raise (Goto_switch_1_break_exc ())) else ()))));
+             (raise (Goto_switch_1_break_exc ())) end with
+            Goto_switch_1_break_exc _jessie_1 ->
+            'Switch_1_break: 'Switch_1_break: () end else ());
+           (if (true) then (raise (Goto_switch_0_break_exc ())) else ()) end)));
+        (raise (Goto_switch_0_break_exc ())) end with Goto_switch_0_break_exc
+       _jessie_2 ->
        'Switch_0_break:
        'Switch_0_break:
        begin
        ();
         (__retres :=
-         (#"kstrtobool.jc" 142 27 41# "expl:Integer cast"
+         (#"kstrtobool.jc" 134 27 41# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) ))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
       'Return_label:
@@ -3036,7 +2833,7 @@ module Function_kstrtobool_behaviors
        ((<) i (offset_max voidP_s_5_alloc_table s_2))) ->
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
    ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
@@ -3044,14 +2841,14 @@ module Function_kstrtobool_behaviors
     (((=) true true) /\ ((=) true true))))))
    /\
    (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
    /\
-   (#"kstrtobool.jc" 50 12 435#
-   ((#"kstrtobool.jc" 50 12 435#
+   (#"kstrtobool.jc" 44 12 435#
+   ((#"kstrtobool.jc" 44 12 435#
     ((>=) (offset_max _BoolP_res_6_alloc_table res) (0)))
-   /\ (#"kstrtobool.jc" 50 12 435# ((=) true true)))))))))) }
+   /\ (#"kstrtobool.jc" 44 12 435# ((=) true true)))))))))) }
    ensures {
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
@@ -3060,27 +2857,27 @@ module Function_kstrtobool_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
       "expl:Ensures clause"
-      ((Int32.(=) result (#"kstrtobool.jc" 58 42 54# "expl:Integer cast"
+      ((Int32.(=) result (#"kstrtobool.jc" 52 42 54# "expl:Integer cast"
        (Int32.of_int (0))))
       \/
-      (Int32.(=) result (#"kstrtobool.jc" 59 43 60# "expl:Integer cast"
+      (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
       (Int32.of_int (Int.(-_) (22)))))))
      /\
      (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
      "expl:Ensures clause"
-     ((Int32.(=) result (#"kstrtobool.jc" 60 43 60# "expl:Integer cast"
+     ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
       (Int32.of_int (Int.(-_) (22))))) -> ((=) res res))))))) }  ->
    'Init:
    (let return = ref (Unsafe_int32.any_  () ) in
    try
     begin
     (check {
-    (#"kstrtobool.jc" 75 10 202# "expl:Behavior disjointness check"
+    (#"kstrtobool.jc" 69 10 202# "expl:Behavior disjointness check"
     (not
     ((((=) s_2 null) \/ (not (kstrtobool_fmt s_2 charP_charM_s_5))) /\
     (((<>) s_2 null) /\ (kstrtobool_fmt s_2 charP_charM_s_5))))) });
      (check {
-     (#"kstrtobool.jc" 79 10 193# "expl:Behavior completeness check"
+     (#"kstrtobool.jc" 73 10 193# "expl:Behavior completeness check"
      ((((<>) s_2 null) /\ (kstrtobool_fmt s_2 charP_charM_s_5)) \/
      (((=) s_2 null) \/ (not (kstrtobool_fmt s_2 charP_charM_s_5))))) });
      (let __retres = ref (Unsafe_int32.any_  () ) in
@@ -3094,7 +2891,7 @@ module Function_kstrtobool_behaviors
        then
         begin
         (__retres :=
-         (#"kstrtobool.jc" 86 29 43# "expl:Integer cast"
+         (#"kstrtobool.jc" 80 29 43# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
@@ -3104,238 +2901,173 @@ module Function_kstrtobool_behaviors
          (acc  charP_charM_s_5
           (shift_  s_2
            (Unsafe_int32.to_int 
-            (#"kstrtobool.jc" 91 47 59# "expl:Integer cast"
+            (#"kstrtobool.jc" 85 47 59# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) ) ) ) )) in
-        begin
         (if
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
-        (#"kstrtobool.jc" 91 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+        (#"kstrtobool.jc" 85 14 79#
+        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
-         (let _jessie_12 =
+         (let _jessie_31 =
          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
          "expl:Integer cast"
          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 95 51 63# "expl:Integer cast"
+          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
           (Unsafe_int32.of_int (1))) )) in
-         (let _jessie_13 = res in
-         (let _jessie_14 = (0) in
-         (let _jessie_15 = _jessie_13 in
-         (upd  _BoolP__BoolM_res_6 _jessie_15 _jessie_12 )))));
+         (let _jessie_32 = res in
+         (let _jessie_33 = (0) in
+         (let _jessie_34 = _jessie_32 in
+         (upd  _BoolP__BoolM_res_6 _jessie_34 _jessie_31 )))));
           begin
           (__retres :=
-           (#"kstrtobool.jc" 96 31 43# "expl:Integer cast"
+           (#"kstrtobool.jc" 90 31 43# "expl:Integer cast"
            (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end end
-        else ());
+        else
          (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+         (#"kstrtobool.jc" 85 14 79#
+         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
+         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
-          (let _jessie_18 =
+          (let _jessie_25 =
           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
           "expl:Integer cast"
           (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 103 54 66# "expl:Integer cast"
+           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
            (Unsafe_int32.of_int (0))) )) in
-          (let _jessie_19 = res in
-          (let _jessie_20 = (0) in
-          (let _jessie_21 = _jessie_19 in
-          (upd  _BoolP__BoolM_res_6 _jessie_21 _jessie_18 )))));
+          (let _jessie_26 = res in
+          (let _jessie_27 = (0) in
+          (let _jessie_28 = _jessie_26 in
+          (upd  _BoolP__BoolM_res_6 _jessie_28 _jessie_25 )))));
            begin
            (__retres :=
-            (#"kstrtobool.jc" 104 32 44# "expl:Integer cast"
+            (#"kstrtobool.jc" 98 32 44# "expl:Integer cast"
             (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-          end else ());
-         (if
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
+          end
+         else
+          begin
+          (if
+          (#"kstrtobool.jc" 85 14 79#
+          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+           (Unsafe_int32.(=)  _jessie_6
+            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
+          ||
+          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
-         ||
-         (#"kstrtobool.jc" 91 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-          (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 8 9#
-           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
-         ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-         (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 8 9#
-          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))))))))))))
-         then
-          try
-           begin
-           ();
-            (let _jessie_4 =
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
-            "expl:Integer cast"
-            (Unsafe_int32_of_Unsafe_int8.cast 
-             (acc  charP_charM_s_5
-              (shift_  s_2
-               (Unsafe_int32.to_int 
-                (#"kstrtobool.jc" 112 52 64# "expl:Integer cast"
-                (Unsafe_int32.of_int (1))) ) ) ) )) in
+           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
+          then
+           try
             begin
-            (if
-            (#"kstrtobool.jc" 112 19 84#
-            ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-             (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
-            ||
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-            (Unsafe_int32.(=)  _jessie_4
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-             "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
-            then
-             begin
-             (let _jessie_25 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
+            ();
+             (let _jessie_4 =
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
-             (Unsafe_enum__bool_of_Unsafe_int32.cast 
-              (#"kstrtobool.jc" 115 59 71# "expl:Integer cast"
-              (Unsafe_int32.of_int (1))) )) in
-             (let _jessie_26 = res in
-             (let _jessie_27 = (0) in
-             (let _jessie_28 = _jessie_26 in
-             (upd  _BoolP__BoolM_res_6 _jessie_28 _jessie_25 )))));
-              begin
-              (__retres :=
-               (#"kstrtobool.jc" 116 37 49# "expl:Integer cast"
-               (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ())) end
-             end else ());
+             (Unsafe_int32_of_Unsafe_int8.cast 
+              (acc  charP_charM_s_5
+               (shift_  s_2
+                (Unsafe_int32.to_int 
+                 (#"kstrtobool.jc" 106 52 64# "expl:Integer cast"
+                 (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
+             (#"kstrtobool.jc" 106 19 84#
+             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 9 10#
-               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))
-             ||
-             (#"kstrtobool.jc" 112 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
-              (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 9 10#
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
+             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 9 10#
-              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))))
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
-              (let _jessie_31 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+              (let _jessie_19 =
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
               "expl:Integer cast"
               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 122 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (0))) )) in
-              (let _jessie_32 = res in
-              (let _jessie_33 = (0) in
-              (let _jessie_34 = _jessie_32 in
-              (upd  _BoolP__BoolM_res_6 _jessie_34 _jessie_31 )))));
+               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
+               (Unsafe_int32.of_int (1))) )) in
+              (let _jessie_20 = res in
+              (let _jessie_21 = (0) in
+              (let _jessie_22 = _jessie_20 in
+              (upd  _BoolP__BoolM_res_6 _jessie_22 _jessie_19 )))));
                begin
                (__retres :=
-                (#"kstrtobool.jc" 123 37 49# "expl:Integer cast"
+                (#"kstrtobool.jc" 110 37 49# "expl:Integer cast"
                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
-               end end else ());
-             (if (true)
-             then begin (); (raise (Goto_switch_1_break_exc ())) end 
-             else ()) end); (raise (Goto_switch_1_break_exc ())) end with
-           Goto_switch_1_break_exc _jessie_1 ->
-           'Switch_1_break: 'Switch_1_break: () end else ());
-         (if (true) then begin (); (raise (Goto_switch_0_break_exc ())) end
-         else ()) end); (raise (Goto_switch_0_break_exc ())) end with
-       Goto_switch_0_break_exc _jessie_2 ->
+               end end
+             else
+              (if
+              (#"kstrtobool.jc" 106 19 84#
+              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+               (Unsafe_int32.(=)  _jessie_4
+                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
+              ||
+              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (Unsafe_int32.(=)  _jessie_4
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
+              then
+               begin
+               (let _jessie_13 =
+               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
+               "expl:Integer cast"
+               (Unsafe_enum__bool_of_Unsafe_int32.cast 
+                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
+                (Unsafe_int32.of_int (0))) )) in
+               (let _jessie_14 = res in
+               (let _jessie_15 = (0) in
+               (let _jessie_16 = _jessie_14 in
+               (upd  _BoolP__BoolM_res_6 _jessie_16 _jessie_13 )))));
+                begin
+                (__retres :=
+                 (#"kstrtobool.jc" 117 37 49# "expl:Integer cast"
+                 (Unsafe_int32.of_int (0)))); (raise (Return_label_exc ()))
+                end end
+              else
+               (if (true) then (raise (Goto_switch_1_break_exc ())) else ()))));
+             (raise (Goto_switch_1_break_exc ())) end with
+            Goto_switch_1_break_exc _jessie_1 ->
+            'Switch_1_break: 'Switch_1_break: () end else ());
+           (if (true) then (raise (Goto_switch_0_break_exc ())) else ()) end)));
+        (raise (Goto_switch_0_break_exc ())) end with Goto_switch_0_break_exc
+       _jessie_2 ->
        'Switch_0_break:
        'Switch_0_break:
        begin
        ();
         (__retres :=
-         (#"kstrtobool.jc" 142 27 41# "expl:Integer cast"
+         (#"kstrtobool.jc" 134 27 41# "expl:Integer cast"
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) ))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
       'Return_label:
@@ -3914,298 +3646,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (5))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -9866,7 +9306,7 @@ module Function_kstrtobool
          _BoolP__BoolM_res_6 }
          ensures {
            (((((<>) s_2 null) /\ (kstrtobool_fmt s_2 charP_charM_s_5)) ->
-             ((#"kstrtobool.jc" 68 10 20# "expl:Assigns clause"
+             ((#"kstrtobool.jc" 62 10 20# "expl:Assigns clause"
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6
               (pset_singleton res)))
@@ -9879,7 +9319,7 @@ module Function_kstrtobool
               "expl:Ensures clause"
               ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-               (#"kstrtobool.jc" 70 55 67# "expl:Integer cast"
+               (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
                (Enum__bool.of_int (1))))))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
@@ -9888,23 +9328,23 @@ module Function_kstrtobool
               "expl:Ensures clause"
               ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-               (#"kstrtobool.jc" 72 57 69# "expl:Integer cast"
+               (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
                (Enum__bool.of_int (0))))))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
              "expl:Ensures clause"
-             (Int32.(=) result (#"kstrtobool.jc" 73 44 56#
+             (Int32.(=) result (#"kstrtobool.jc" 67 44 56#
              "expl:Integer cast" (Int32.of_int (0))))))))))))
            /\
            (((((=) s_2 null) \/ (not (kstrtobool_fmt s_2 charP_charM_s_5)))
              ->
-             ((#"kstrtobool.jc" 64 10 18# "expl:Assigns clause"
+             ((#"kstrtobool.jc" 58 10 18# "expl:Assigns clause"
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
              "expl:Ensures clause"
-             (Int32.(=) result (#"kstrtobool.jc" 65 31 48#
+             (Int32.(=) result (#"kstrtobool.jc" 59 31 48#
              "expl:Integer cast" (Int32.of_int (Int.(-_) (22))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
@@ -9913,15 +9353,15 @@ module Function_kstrtobool
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
             "expl:Ensures clause"
-            ((Int32.(=) result (#"kstrtobool.jc" 58 42 54#
+            ((Int32.(=) result (#"kstrtobool.jc" 52 42 54#
              "expl:Integer cast" (Int32.of_int (0))))
             \/
-            (Int32.(=) result (#"kstrtobool.jc" 59 43 60# "expl:Integer cast"
+            (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22)))))))
            /\
            (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
            "expl:Ensures clause"
-           ((Int32.(=) result (#"kstrtobool.jc" 60 43 60# "expl:Integer cast"
+           ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22))))) -> ((=) res res)))))))) }
   
 end
@@ -9972,7 +9412,7 @@ module Function_kstrtobool_safe
         (charP_charM_s_5 : (memory voidP Int8.t)) : Int32.t
          requires {
            ("expl:Internal"
-           (#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
+           (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
            ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
             "expl:Requires clause"
             (((=) s_2 null) \/
@@ -9982,20 +9422,20 @@ module Function_kstrtobool_safe
            /\
            (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
            "expl:Requires clause"
-           (#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
-           ((#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
+           (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
+           ((#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
             ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
            /\
-           (#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
-           ((#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
+           (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
+           ((#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
             ((>=) (offset_max _BoolP_res_6_alloc_table res) (0)))
            /\
-           (#"kstrtobool.jc" 50 12 435# "expl:Requires clause"
+           (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
            ((=) true true)))))))))) }
          reads { _BoolP__BoolM_res_6 } writes { _BoolP__BoolM_res_6 }
          ensures {
            (((((<>) s_2 null) /\ (kstrtobool_fmt s_2 charP_charM_s_5)) ->
-             ((#"kstrtobool.jc" 68 10 20# "expl:Assigns clause"
+             ((#"kstrtobool.jc" 62 10 20# "expl:Assigns clause"
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6
               (pset_singleton res)))
@@ -10008,7 +9448,7 @@ module Function_kstrtobool_safe
               "expl:Ensures clause"
               ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-               (#"kstrtobool.jc" 70 55 67# "expl:Integer cast"
+               (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
                (Enum__bool.of_int (1))))))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
@@ -10017,23 +9457,23 @@ module Function_kstrtobool_safe
               "expl:Ensures clause"
               ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
-               (#"kstrtobool.jc" 72 57 69# "expl:Integer cast"
+               (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
                (Enum__bool.of_int (0))))))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
              "expl:Ensures clause"
-             (Int32.(=) result (#"kstrtobool.jc" 73 44 56#
+             (Int32.(=) result (#"kstrtobool.jc" 67 44 56#
              "expl:Integer cast" (Int32.of_int (0))))))))))))
            /\
            (((((=) s_2 null) \/ (not (kstrtobool_fmt s_2 charP_charM_s_5)))
              ->
-             ((#"kstrtobool.jc" 64 10 18# "expl:Assigns clause"
+             ((#"kstrtobool.jc" 58 10 18# "expl:Assigns clause"
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
              /\
              (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
              "expl:Ensures clause"
-             (Int32.(=) result (#"kstrtobool.jc" 65 31 48#
+             (Int32.(=) result (#"kstrtobool.jc" 59 31 48#
              "expl:Integer cast" (Int32.of_int (Int.(-_) (22))))))))
            /\
            (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
@@ -10042,15 +9482,15 @@ module Function_kstrtobool_safe
            "expl:Ensures clause"
            ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
             "expl:Ensures clause"
-            ((Int32.(=) result (#"kstrtobool.jc" 58 42 54#
+            ((Int32.(=) result (#"kstrtobool.jc" 52 42 54#
              "expl:Integer cast" (Int32.of_int (0))))
             \/
-            (Int32.(=) result (#"kstrtobool.jc" 59 43 60# "expl:Integer cast"
+            (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22)))))))
            /\
            (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
            "expl:Ensures clause"
-           ((Int32.(=) result (#"kstrtobool.jc" 60 43 60# "expl:Integer cast"
+           ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22))))) -> ((=) res res)))))))) }
   
 end

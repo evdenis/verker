@@ -14,12 +14,6 @@ tag charP = voidP with {
   int8 charM: 8;
 }
 
-tag unsigned_charP = {
-  uint8 unsigned_charM: 8;
-}
-
-type unsigned_charP = [unsigned_charP]
-
 axiomatic Strlen {
 
   predicate valid_str{L}(charP[..] s) =
@@ -56,10 +50,10 @@ axiomatic Strlen {
    
   lemma strlen_before_null{L} :
   (_C_3 : (\forall charP[..] s_3;
-            (\forall integer i_1;
-              (((valid_str{L}(s_3) && (0 <= i_1)) &&
-                 (i_1 < (strlen{L}(s_3) :> integer))) ==>
-                ((s_3 + i_1).charM != (0 :> int8))))))
+            (\forall integer i;
+              (((valid_str{L}(s_3) && (0 <= i)) &&
+                 (i < (strlen{L}(s_3) :> integer))) ==>
+                ((s_3 + i).charM != (0 :> int8))))))
    
   lemma strlen_at_null{L} :
   (_C_4 : (\forall charP[..] s_4;
@@ -68,17 +62,17 @@ axiomatic Strlen {
    
   lemma strlen_shift{L} :
   (_C_5 : (\forall charP[..] s_5;
-            (\forall uint64 i_2;
-              ((valid_str{L}(s_5) && (i_2 <= strlen{L}(s_5))) ==>
-                ((strlen{L}((s_5 + (i_2 :> integer))) :> integer) ==
-                  ((strlen{L}(s_5) :> integer) - (i_2 :> integer)))))))
+            (\forall uint64 i_0;
+              ((valid_str{L}(s_5) && (i_0 <= strlen{L}(s_5))) ==>
+                ((strlen{L}((s_5 + (i_0 :> integer))) :> integer) ==
+                  ((strlen{L}(s_5) :> integer) - (i_0 :> integer)))))))
    
   lemma strlen_shift_ex{L} :
   (_C_6 : (\forall charP[..] s_6;
-            (\forall uint64 i_3;
-              (((valid_str{L}(s_6) && ((0 :> uint64) < i_3)) &&
-                 (i_3 <= strlen{L}(s_6))) ==>
-                (strlen{L}((s_6 + (i_3 :> integer))) < strlen{L}(s_6))))))
+            (\forall uint64 i_1;
+              (((valid_str{L}(s_6) && ((0 :> uint64) < i_1)) &&
+                 (i_1 <= strlen{L}(s_6))) ==>
+                (strlen{L}((s_6 + (i_1 :> integer))) < strlen{L}(s_6))))))
    
   lemma strlen_shift1{L} :
   (_C_7 : (\forall charP[..] s_7;
@@ -93,9 +87,9 @@ axiomatic Strlen {
                    (\base_block(s_8) == \base_block(sc))) &&
                   ((\base_block(s_8) == \base_block(sc)) &&
                     ((s_8 - sc) <= 0))) &&
-                 (\forall integer i_4;
-                   (((0 <= i_4) && (i_4 <= (sc - s_8))) ==>
-                     ((s_8 + i_4).charM != (0 :> int8))))) ==>
+                 (\forall integer i_2;
+                   (((0 <= i_2) && (i_2 <= (sc - s_8))) ==>
+                     ((s_8 + i_2).charM != (0 :> int8))))) ==>
                 (strlen{L}(sc) <= strlen{L}(s_8))))))
    
   lemma strlen_main{L} :
@@ -103,17 +97,17 @@ axiomatic Strlen {
             (\forall uint64 n_2;
               (((valid_str{L}(s_9) &&
                   ((s_9 + (n_2 :> integer)).charM == (0 :> int8))) &&
-                 (\forall integer i_5;
-                   (((0 <= i_5) && (i_5 < (n_2 :> integer))) ==>
-                     ((s_9 + i_5).charM != (0 :> int8))))) ==>
+                 (\forall integer i_3;
+                   (((0 <= i_3) && (i_3 < (n_2 :> integer))) ==>
+                     ((s_9 + i_3).charM != (0 :> int8))))) ==>
                 (strlen{L}(s_9) == n_2)))))
    
   lemma valid_str_shiftn{L} :
   (_C_10 : (\forall charP[..] s_10;
-             (\forall integer i_6;
-               (((valid_str{L}(s_10) && (0 <= i_6)) &&
-                  (i_6 < (strlen{L}(s_10) :> integer))) ==>
-                 valid_str{L}((s_10 + i_6))))))
+             (\forall integer i_4;
+               (((valid_str{L}(s_10) && (0 <= i_4)) &&
+                  (i_4 < (strlen{L}(s_10) :> integer))) ==>
+                 valid_str{L}((s_10 + i_4))))))
   
 }
 
@@ -124,10 +118,10 @@ behavior default:
   ensures (_C_11 : ((_C_12 : (\result == strlen{Here}(\at(s_0,Old)))) &&
                      ((_C_14 : ((\at(s_0,Old) + (\result :> integer)).charM ==
                                  (0 :> int8))) &&
-                       (_C_15 : (\forall integer i_7;
-                                  (((0 <= i_7) &&
-                                     (i_7 < (\result :> integer))) ==>
-                                    ((\at(s_0,Old) + i_7).charM !=
+                       (_C_15 : (\forall integer i_5;
+                                  (((0 <= i_5) &&
+                                     (i_5 < (\result :> integer))) ==>
+                                    ((\at(s_0,Old) + i_5).charM !=
                                       (0 :> int8))))))));
 ;
 
@@ -198,24 +192,24 @@ axiomatic Strchr {
   lemma strchr_defn{L} :
   (_C_22 : (\forall charP[..] str_5;
              (\forall int8 c_5;
-               (\forall integer i_8;
-                 (((((valid_str{L}(str_5) && (0 <= i_8)) &&
-                      (i_8 <= (strlen{L}(str_5) :> integer))) &&
-                     (\forall integer j_0;
-                       (((0 <= j_0) && (j_0 < i_8)) ==>
-                         ((str_5 + j_0).charM != c_5)))) &&
-                    ((str_5 + i_8).charM == c_5)) ==>
-                   ((str_5 + i_8) == strchr{L}(str_5, c_5)))))))
+               (\forall integer i_6;
+                 (((((valid_str{L}(str_5) && (0 <= i_6)) &&
+                      (i_6 <= (strlen{L}(str_5) :> integer))) &&
+                     (\forall integer j;
+                       (((0 <= j) && (j < i_6)) ==>
+                         ((str_5 + j).charM != c_5)))) &&
+                    ((str_5 + i_6).charM == c_5)) ==>
+                   ((str_5 + i_6) == strchr{L}(str_5, c_5)))))))
    
   lemma strchr_skipped{L} :
   (_C_23 : (\forall charP[..] str_6;
              (\forall int8 c_6;
-               (\forall integer i_9;
-                 ((((valid_str{L}(str_6) && (0 <= i_9)) &&
-                     (i_9 < (strchr{L}(str_6, c_6) - str_6))) &&
+               (\forall integer i_7;
+                 ((((valid_str{L}(str_6) && (0 <= i_7)) &&
+                     (i_7 < (strchr{L}(str_6, c_6) - str_6))) &&
                     ((strchr{L}(str_6, c_6) - str_6) <=
                       (strlen{L}(str_6) :> integer))) ==>
-                   ((str_6 + i_9).charM != c_6))))))
+                   ((str_6 + i_7).charM != c_6))))))
   
 }
 

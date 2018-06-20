@@ -5,18 +5,18 @@
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
 <prover id="2" name="CVC4" version="1.4" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
 <file name="../strnlen.mlw" expanded="true">
-<theory name="Function_strnlen_0_safety" sum="5639915487078cf1bc402afbbd2d8fc7" expanded="true">
+<theory name="Function_strnlen_0_safety" sum="4e8fb6840408788547f21054efda5f90" expanded="true">
  <goal name="WP_parameter strnlen_0" expl="Function strnlen, safety" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strnlen_0.1" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.05" steps="176"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_0.2" expl="Pointer dereference (Validity)">
-  <transf name="split_goal_wp" expanded="true">
+  <transf name="split_goal_wp">
    <goal name="WP_parameter strnlen_0.2.1" expl="Function strnlen, safety">
-   <transf name="inline_all" expanded="true">
+   <transf name="inline_all">
     <goal name="WP_parameter strnlen_0.2.1.1" expl="Function strnlen, safety">
-    <transf name="remove_triggers" expanded="true">
+    <transf name="remove_triggers">
      <goal name="WP_parameter strnlen_0.2.1.1.1" expl="Function strnlen, safety">
      <proof prover="1"><result status="valid" time="0.09" steps="327"/></proof>
      </goal>
@@ -25,9 +25,9 @@
    </transf>
    </goal>
    <goal name="WP_parameter strnlen_0.2.2" expl="Function strnlen, safety">
-   <transf name="inline_all" expanded="true">
+   <transf name="inline_all">
     <goal name="WP_parameter strnlen_0.2.2.1" expl="Function strnlen, safety">
-    <transf name="remove_triggers" expanded="true">
+    <transf name="remove_triggers">
      <goal name="WP_parameter strnlen_0.2.2.1.1" expl="Function strnlen, safety">
      <proof prover="1"><result status="valid" time="0.13" steps="531"/></proof>
      </goal>
@@ -47,7 +47,7 @@
   <proof prover="1"><result status="valid" time="0.06" steps="188"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_0.6" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.12" steps="352"/></proof>
+  <proof prover="1"><result status="valid" time="0.12" steps="350"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_0.7" expl="Pointer difference">
   <proof prover="1"><result status="valid" time="0.06" steps="176"/></proof>
@@ -58,9 +58,9 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strnlen_0_behaviors" sum="10bc58af745632244da1c285c3c234ce" expanded="true">
+<theory name="Function_strnlen_0_behaviors" sum="bdc5616573fe25f9729296ddb9350b6e" expanded="true">
  <goal name="WP_parameter strnlen_ensures_count_len" expl="Function strnlen, behavior count_len" expanded="true">
- <proof prover="1"><result status="valid" time="4.83" steps="7383"/></proof>
+ <proof prover="1"><result status="valid" time="2.46" steps="3931"/></proof>
  </goal>
  <goal name="WP_parameter strnlen_ensures_default" expl="Function strnlen, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
@@ -71,7 +71,7 @@
   <proof prover="1"><result status="valid" time="0.03" steps="148"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.09" steps="531"/></proof>
+  <proof prover="1"><result status="valid" time="0.09" steps="449"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_ensures_default.4" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -91,37 +91,37 @@
    <proof prover="1"><result status="valid" time="0.05" steps="190"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.6" expl="Function strnlen, default behavior">
-   <proof prover="1"><result status="valid" time="1.66" steps="1044"/></proof>
+   <proof prover="1"><result status="valid" time="1.16" steps="1016"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.7" expl="Function strnlen, default behavior">
-   <proof prover="1"><result status="valid" time="0.15" steps="436"/></proof>
+   <proof prover="1"><result status="valid" time="0.15" steps="434"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.8" expl="Function strnlen, default behavior">
-   <proof prover="2"><result status="valid" time="0.58"/></proof>
+   <proof prover="2"><result status="valid" time="1.13"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.9" expl="Function strnlen, default behavior">
-   <proof prover="2"><result status="valid" time="0.76"/></proof>
+   <proof prover="2"><result status="valid" time="1.09"/></proof>
    </goal>
    <goal name="WP_parameter strnlen_ensures_default.4.10" expl="Function strnlen, default behavior">
-   <proof prover="1"><result status="valid" time="0.19" steps="476"/></proof>
+   <proof prover="1"><result status="valid" time="0.19" steps="473"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter strnlen_ensures_default.5" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="2.16" steps="3103"/></proof>
+  <proof prover="1"><result status="valid" time="1.73" steps="3018"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_ensures_default.6" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.11" steps="339"/></proof>
+  <proof prover="1"><result status="valid" time="0.11" steps="337"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter strnlen_ensures_null_byte" expl="Function strnlen, behavior null_byte" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strnlen_ensures_null_byte.1" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.24" steps="810"/></proof>
+  <proof prover="1"><result status="valid" time="0.24" steps="762"/></proof>
   </goal>
   <goal name="WP_parameter strnlen_ensures_null_byte.2" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.10" steps="392"/></proof>
+  <proof prover="1"><result status="valid" time="0.10" steps="390"/></proof>
   </goal>
  </transf>
  </goal>
@@ -424,11 +424,7 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
@@ -450,7 +446,7 @@
  <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
  </goal>
 </theory>
-<theory name="Axiomatic_Strnlen" sum="4568279ffaf150e3b4077aadced2d394" expanded="true">
+<theory name="Axiomatic_Strnlen" sum="bd588a94f934233970c182186164d52c" expanded="true">
  <goal name="Valid_strn_shift1" expl="Lemma valid_strn_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_to_valid_strn" expl="Lemma valid_str_to_valid_strn" expanded="true">
@@ -501,14 +497,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

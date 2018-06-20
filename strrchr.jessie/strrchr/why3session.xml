@@ -5,7 +5,7 @@
 <prover id="3" name="Alt-Ergo" version="2.2.0" timelimit="3" steplimit="0" memlimit="16000"/>
 <prover id="4" name="CVC4" version="1.4" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
 <file name="../strrchr.mlw" expanded="true">
-<theory name="Function_strrchr_safety" sum="3ead82e4207da761320aaa2368692bbc">
+<theory name="Function_strrchr_safety" sum="c76a1135c8db6f607f119a7f52f63b2d">
  <goal name="WP_parameter strrchr" expl="Function strrchr, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strrchr.1" expl="Pointer dereference (Validity)">
@@ -26,9 +26,9 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_strrchr_behaviors" sum="d0b30159a89e228146ddcbaaee3fbe7e">
- <goal name="WP_parameter strrchr_ensures_default" expl="Function strrchr, default behavior">
- <transf name="split_goal_wp">
+<theory name="Function_strrchr_behaviors" sum="93fd608bbd4c6994f91348b5bd102b35" expanded="true">
+ <goal name="WP_parameter strrchr_ensures_default" expl="Function strrchr, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strrchr_ensures_default.1" expl="Behavior disjointness check">
   <proof prover="3"><result status="valid" time="0.02" steps="155"/></proof>
   </goal>
@@ -36,7 +36,7 @@
   <proof prover="3"><result status="valid" time="0.02" steps="153"/></proof>
   </goal>
   <goal name="WP_parameter strrchr_ensures_default.3" expl="loop invariant init">
-  <proof prover="3"><result status="valid" time="0.13" steps="751"/></proof>
+  <proof prover="3"><result status="valid" time="0.13" steps="592"/></proof>
   </goal>
   <goal name="WP_parameter strrchr_ensures_default.4" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -53,13 +53,13 @@
    <proof prover="3"><result status="valid" time="0.05" steps="344"/></proof>
    </goal>
    <goal name="WP_parameter strrchr_ensures_default.4.5" expl="Function strrchr, default behavior">
-   <proof prover="4"><result status="valid" time="0.97"/></proof>
+   <proof prover="4"><result status="valid" time="1.70"/></proof>
    </goal>
    <goal name="WP_parameter strrchr_ensures_default.4.6" expl="Function strrchr, default behavior">
    <proof prover="3"><result status="valid" time="0.03" steps="202"/></proof>
    </goal>
    <goal name="WP_parameter strrchr_ensures_default.4.7" expl="Function strrchr, default behavior">
-   <proof prover="3"><result status="valid" time="0.24" steps="807"/></proof>
+   <proof prover="3"><result status="valid" time="0.24" steps="799"/></proof>
    </goal>
    <goal name="WP_parameter strrchr_ensures_default.4.8" expl="Function strrchr, default behavior">
    <proof prover="3"><result status="valid" time="0.06" steps="207"/></proof>
@@ -72,34 +72,34 @@
    </goal>
   </transf>
   </goal>
-  <goal name="WP_parameter strrchr_ensures_default.5" expl="Assertion in line 83">
-  <proof prover="3"><result status="valid" time="0.10" steps="361"/></proof>
+  <goal name="WP_parameter strrchr_ensures_default.5" expl="Assertion in line 20">
+  <proof prover="4"><result status="valid" time="0.13"/></proof>
   </goal>
-  <goal name="WP_parameter strrchr_ensures_default.6" expl="Assertion in line 84">
-  <proof prover="4"><result status="valid" time="0.19"/></proof>
-  </goal>
-  <goal name="WP_parameter strrchr_ensures_default.7" expl="Assertion in line 85">
-  <proof prover="4"><result status="valid" time="0.32"/></proof>
-  </goal>
-  <goal name="WP_parameter strrchr_ensures_default.8" expl="loop invariant preservation">
-  <proof prover="4"><result status="valid" time="1.87"/></proof>
-  </goal>
-  <goal name="WP_parameter strrchr_ensures_default.9" expl="Assertion in line 83">
-  <proof prover="3"><result status="valid" time="0.13" steps="358"/></proof>
-  </goal>
-  <goal name="WP_parameter strrchr_ensures_default.10" expl="Assertion in line 84">
+  <goal name="WP_parameter strrchr_ensures_default.6" expl="Assertion in line 21">
   <proof prover="4"><result status="valid" time="0.27"/></proof>
   </goal>
-  <goal name="WP_parameter strrchr_ensures_default.11" expl="Assertion in line 85">
-  <proof prover="3"><result status="valid" time="0.19" steps="383"/></proof>
+  <goal name="WP_parameter strrchr_ensures_default.7" expl="Assertion in line 22" expanded="true">
+  <proof prover="3"><result status="valid" time="2.84" steps="2070"/></proof>
+  </goal>
+  <goal name="WP_parameter strrchr_ensures_default.8" expl="loop invariant preservation">
+  <proof prover="4"><result status="valid" time="2.42"/></proof>
+  </goal>
+  <goal name="WP_parameter strrchr_ensures_default.9" expl="Assertion in line 20">
+  <proof prover="3"><result status="valid" time="0.19" steps="357"/></proof>
+  </goal>
+  <goal name="WP_parameter strrchr_ensures_default.10" expl="Assertion in line 21">
+  <proof prover="4"><result status="valid" time="0.19"/></proof>
+  </goal>
+  <goal name="WP_parameter strrchr_ensures_default.11" expl="Assertion in line 22">
+  <proof prover="3"><result status="valid" time="0.13" steps="382"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter strrchr_ensures_found" expl="Function strrchr, behavior found">
- <proof prover="3"><result status="valid" time="1.77" steps="4475"/></proof>
+ <proof prover="3"><result status="valid" time="1.77" steps="4375"/></proof>
  </goal>
  <goal name="WP_parameter strrchr_ensures_not_found" expl="Function strrchr, behavior not_found">
- <proof prover="3"><result status="valid" time="1.05" steps="3362"/></proof>
+ <proof prover="3"><result status="valid" time="1.05" steps="3015"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -400,11 +400,7 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
@@ -445,14 +441,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

@@ -71,49 +71,49 @@ behavior default:
   assigns \nothing;
   ensures true;
 behavior equal:
-  assumes (\forall integer i_4;
-            (((0 <= i_4) && (i_4 < (count :> integer))) ==>
-              (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
-                ((ct :> unsigned_charP[..]) + i_4).unsigned_charM)));
+  assumes (\forall integer i_2;
+            (((0 <= i_2) && (i_2 < (count :> integer))) ==>
+              (((cs :> unsigned_charP[..]) + i_2).unsigned_charM ==
+                ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)));
   ensures (_C_48 : (\result == (0 :> int32)));
 behavior diff:
-  assumes (\exists integer i_2;
-            (((0 <= i_2) && (i_2 < (count :> integer))) &&
-              (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
-                ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)));
-  ensures (_C_49 : (\exists integer i_3;
-                     (((((0 <= i_3) && (i_3 < (\at(count,Old) :> integer))) &&
-                         (\forall integer j_0;
-                           (((0 <= j_0) && (j_0 < i_3)) ==>
-                             (((\at(cs,Old) :> unsigned_charP[..]) + j_0).unsigned_charM ==
-                               ((\at(ct,Old) :> unsigned_charP[..]) + j_0).unsigned_charM)))) &&
-                        (((\at(cs,Old) :> unsigned_charP[..]) + i_3).unsigned_charM !=
-                          ((\at(ct,Old) :> unsigned_charP[..]) + i_3).unsigned_charM)) &&
+  assumes (\exists integer i_0;
+            (((0 <= i_0) && (i_0 < (count :> integer))) &&
+              (((cs :> unsigned_charP[..]) + i_0).unsigned_charM !=
+                ((ct :> unsigned_charP[..]) + i_0).unsigned_charM)));
+  ensures (_C_49 : (\exists integer i_1;
+                     (((((0 <= i_1) && (i_1 < (\at(count,Old) :> integer))) &&
+                         (\forall integer j;
+                           (((0 <= j) && (j < i_1)) ==>
+                             (((\at(cs,Old) :> unsigned_charP[..]) + j).unsigned_charM ==
+                               ((\at(ct,Old) :> unsigned_charP[..]) + j).unsigned_charM)))) &&
+                        (((\at(cs,Old) :> unsigned_charP[..]) + i_1).unsigned_charM !=
+                          ((\at(ct,Old) :> unsigned_charP[..]) + i_1).unsigned_charM)) &&
                        ((\result :> integer) ==
-                         ((((\at(cs,Old) :> unsigned_charP[..]) + i_3).unsigned_charM :> integer) -
-                           (((\at(ct,Old) :> unsigned_charP[..]) + i_3).unsigned_charM :> integer))))));
+                         ((((\at(cs,Old) :> unsigned_charP[..]) + i_1).unsigned_charM :> integer) -
+                           (((\at(ct,Old) :> unsigned_charP[..]) + i_1).unsigned_charM :> integer))))));
 {  
-   (check (disjoint_behaviors : (! ((\forall integer i_4;
-                                      (((0 <= i_4) &&
-                                         (i_4 < (count :> integer))) ==>
-                                        (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
-                                          ((ct :> unsigned_charP[..]) + i_4).unsigned_charM))) &&
-                                     (\exists integer i_2;
-                                       (((0 <= i_2) &&
-                                          (i_2 < (count :> integer))) &&
-                                         (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
-                                           ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)))))));
+   (check (disjoint_behaviors : (! ((\forall integer i_2;
+                                      (((0 <= i_2) &&
+                                         (i_2 < (count :> integer))) ==>
+                                        (((cs :> unsigned_charP[..]) + i_2).unsigned_charM ==
+                                          ((ct :> unsigned_charP[..]) + i_2).unsigned_charM))) &&
+                                     (\exists integer i_0;
+                                       (((0 <= i_0) &&
+                                          (i_0 < (count :> integer))) &&
+                                         (((cs :> unsigned_charP[..]) + i_0).unsigned_charM !=
+                                           ((ct :> unsigned_charP[..]) + i_0).unsigned_charM)))))));
    
-   (check (complete_behaviors : ((\exists integer i_2;
-                                   (((0 <= i_2) &&
-                                      (i_2 < (count :> integer))) &&
-                                     (((cs :> unsigned_charP[..]) + i_2).unsigned_charM !=
-                                       ((ct :> unsigned_charP[..]) + i_2).unsigned_charM))) ||
-                                  (\forall integer i_4;
-                                    (((0 <= i_4) &&
-                                       (i_4 < (count :> integer))) ==>
-                                      (((cs :> unsigned_charP[..]) + i_4).unsigned_charM ==
-                                        ((ct :> unsigned_charP[..]) + i_4).unsigned_charM))))));
+   (check (complete_behaviors : ((\exists integer i_0;
+                                   (((0 <= i_0) &&
+                                      (i_0 < (count :> integer))) &&
+                                     (((cs :> unsigned_charP[..]) + i_0).unsigned_charM !=
+                                       ((ct :> unsigned_charP[..]) + i_0).unsigned_charM))) ||
+                                  (\forall integer i_2;
+                                    (((0 <= i_2) &&
+                                       (i_2 < (count :> integer))) ==>
+                                      (((cs :> unsigned_charP[..]) + i_2).unsigned_charM ==
+                                        ((ct :> unsigned_charP[..]) + i_2).unsigned_charM))))));
    
    (var unsigned_charP[..] su1);
    
@@ -162,13 +162,13 @@ behavior diff:
                                        ((\at(count,Pre) :> integer) -
                                          (count :> integer))))));
       behavior default:
-        invariant (_C_8 : (\forall integer i_1;
-                            (((0 <= i_1) &&
-                               (i_1 <
+        invariant (_C_8 : (\forall integer i;
+                            (((0 <= i) &&
+                               (i <
                                  ((\at(count,Pre) :> integer) -
                                    (count :> integer)))) ==>
-                              (((cs :> unsigned_charP[..]) + i_1).unsigned_charM ==
-                                ((ct :> unsigned_charP[..]) + i_1).unsigned_charM))));
+                              (((cs :> unsigned_charP[..]) + i).unsigned_charM ==
+                                ((ct :> unsigned_charP[..]) + i).unsigned_charM))));
       behavior default:
         invariant (_C_7 : (res == (0 :> int32)));
       behavior default:

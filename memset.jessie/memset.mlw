@@ -1646,18 +1646,6 @@ module Root_voidP_unsafe
   
 end
 
-module Root_unsigned_charP_safe
-
-  use why3.Bool.Bool 
-  
-end
-
-module Root_unsigned_charP_unsafe
-
-  use why3.Bool.Bool 
-  
-end
-
 module Exceptions
 
   use why3.Bool.Bool 
@@ -1773,7 +1761,7 @@ module Function_memset_safety
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memset.jc" 24 12 730#
+   (#"memset.jc" 18 12 730#
    ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
     (instanceof voidP_s_2_tag_table s charP_tag))
    /\
@@ -1810,18 +1798,18 @@ module Function_memset_safety
       (downcast_  voidP_s_2_tag_table s (charP_tag  ) )) in
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memset.c" 5 1 5#
+      (#"/home/work/workspace/self/verker-gh/memset.c" 5 6 9#
       "expl:Pointer index bounds" true) }); _jessie_26 end));
       begin
       (ocount :=
        (let _jessie_16 = !mutable_count in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/memset.c" 6 11 17#
+       (#"/home/work/workspace/self/verker-gh/memset.c" 6 18 24#
        "expl:Pointer index bounds" true) }); _jessie_16 end));
        'Loop_2:
        loop
-       invariant { (#"memset.jc" 63 6 1987# true) }
+       invariant { (#"memset.jc" 57 6 1987# true) }
          variant { (#"/home/work/workspace/self/verker-gh/memset.c" 12 18 23#
            (Bit_uint64.to_int
            (#"/home/work/workspace/self/verker-gh/memset.c" 12 18 23#
@@ -1837,7 +1825,7 @@ module Function_memset_safety
               (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p) (0))
              /\ ((same_block p !xs) /\ ((<) (sub_pointer p !xs) (0))))) ->
              (Bit_int8.(=) (select !charP_charM_s_2 p)
-             (#"memset.jc" 88 42 54# "expl:Integer cast"
+             (#"memset.jc" 82 42 54# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
           ((#"/home/work/workspace/self/verker-gh/memset.c" 10 20 44#
@@ -1870,7 +1858,7 @@ module Function_memset_safety
           (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
           (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
           ((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 30#
-           (Bit_uint64.(<=) (#"memset.jc" 65 38 51# "expl:Integer cast"
+           (Bit_uint64.(<=) (#"memset.jc" 59 38 51# "expl:Integer cast"
            (Bit_uint64.of_int_const 0)) !mutable_count))
           /\
           (#"/home/work/workspace/self/verker-gh/memset.c" 8 25 40#
@@ -1889,7 +1877,7 @@ module Function_memset_safety
            (mutable_count :=
             (let _jessie_18 =
             (Safe_bit_uint64.(-%)  !mutable_count
-             (#"memset.jc" 94 62 75# "expl:Integer cast"
+             (#"memset.jc" 88 62 75# "expl:Integer cast"
              (Safe_bit_uint64.of_int_const 1)) ) in
             begin
             (assert {
@@ -1899,7 +1887,7 @@ module Function_memset_safety
            (if
            (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
            (Safe_bit_uint64.(<>)  !tmp_0
-            (#"memset.jc" 97 47 60# "expl:Integer cast"
+            (#"memset.jc" 91 47 60# "expl:Integer cast"
             (Safe_bit_uint64.of_int_const 0)) )) then ()
            else (raise (Goto_while_0_break_exc ())));
            begin
@@ -1914,7 +1902,7 @@ module Function_memset_safety
              (let _jessie_20 =
              (shift_typesafe  !xs
               (Safe_bit_int32.to_int 
-               (#"memset.jc" 101 45 57# "expl:Integer cast"
+               (#"memset.jc" 95 45 57# "expl:Integer cast"
                (Safe_bit_int32.of_int_const 1)) ) ) in
              begin
              (assert {
@@ -1948,14 +1936,14 @@ module Function_memset_safety
       requires { true } reads { mutable_count }
       ensures {
         (#"/home/work/workspace/self/verker-gh/memset.c" 16 12 35#
-        (Bit_uint64.(=) !mutable_count (#"memset.jc" 110 51 69#
+        (Bit_uint64.(=) !mutable_count (#"memset.jc" 104 51 69#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
        () end;
       begin
       (return :=
        (let _jessie_27 = s in
        begin
-       (assert { (#"memset.jc" 114 7 15# "expl:Pointer index bounds" true) });
+       (assert { (#"memset.jc" 108 7 15# "expl:Pointer index bounds" true) });
         _jessie_27 end)); (raise Return) end end end)))); absurd  end with
     Return -> !return end))
   
@@ -2068,7 +2056,7 @@ module Function_memset_behaviors
        ((<) i (offset_max voidP_s_2_alloc_table s))) ->
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
-   (#"memset.jc" 24 12 730#
+   (#"memset.jc" 18 12 730#
    ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
     (instanceof voidP_s_2_tag_table s charP_tag))
    /\
@@ -2089,7 +2077,7 @@ module Function_memset_behaviors
       ((=) true true))))) else ((=) true true)))))) }
    ensures {
      ("expl:Postcondition"
-     ((#"memset.jc" 37 10 66# "expl:Assigns clause"
+     ((#"memset.jc" 31 10 66# "expl:Assigns clause"
       (not_assigns voidP_s_2_alloc_table voidP_s_2_alloc_table (old
       !charP_charM_s_2) !charP_charM_s_2
       (pset_range (pset_singleton (downcast voidP_s_2_tag_table s charP_tag))
@@ -2114,7 +2102,7 @@ module Function_memset_behaviors
         (sub_pointer p_0
         (shift (downcast voidP_s_2_tag_table s charP_tag)
         (Bit_uint64.to_int count))) (0))))) ->
-        (Bit_int8.(=) (select !charP_charM_s_2 p_0) (#"memset.jc" 49 47 68#
+        (Bit_int8.(=) (select !charP_charM_s_2 p_0) (#"memset.jc" 43 47 68#
         "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c))))))
      /\
      (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
@@ -2139,7 +2127,7 @@ module Function_memset_behaviors
          { (((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
              (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
              ((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 30#
-              (Bit_uint64.(<=) (#"memset.jc" 65 38 51# "expl:Integer cast"
+              (Bit_uint64.(<=) (#"memset.jc" 59 38 51# "expl:Integer cast"
               (Bit_uint64.of_int_const 0)) !mutable_count))
              /\
              (#"/home/work/workspace/self/verker-gh/memset.c" 8 25 40#
@@ -2182,10 +2170,10 @@ module Function_memset_behaviors
                (0))
               /\ ((same_block p !xs) /\ ((<) (sub_pointer p !xs) (0))))) ->
               (Bit_int8.(=) (select !charP_charM_s_2 p)
-              (#"memset.jc" 88 42 54# "expl:Integer cast"
+              (#"memset.jc" 82 42 54# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c)))))))))
            /\
-           (#"memset.jc" 37 10 66# "expl:Assigns clause"
+           (#"memset.jc" 31 10 66# "expl:Assigns clause"
            (not_assigns voidP_s_2_alloc_table voidP_s_2_alloc_table (at
            !charP_charM_s_2 'Init) !charP_charM_s_2
            (pset_range
@@ -2202,12 +2190,12 @@ module Function_memset_behaviors
            begin
            (mutable_count :=
             (Unsafe_bit_uint64.(-%)  !mutable_count
-             (#"memset.jc" 94 62 75# "expl:Integer cast"
+             (#"memset.jc" 88 62 75# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
            (if
            (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
            (Unsafe_bit_uint64.(<>)  !tmp_0
-            (#"memset.jc" 97 47 60# "expl:Integer cast"
+            (#"memset.jc" 91 47 60# "expl:Integer cast"
             (Unsafe_bit_uint64.of_int_const 0)) )) then ()
            else (raise (Goto_while_0_break_exc ())));
            begin
@@ -2216,7 +2204,7 @@ module Function_memset_behaviors
             (xs :=
              (shift_  !xs
               (Unsafe_bit_int32.to_int 
-               (#"memset.jc" 101 45 57# "expl:Integer cast"
+               (#"memset.jc" 95 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (let _jessie_10 =
              (#"/home/work/workspace/self/verker-gh/memset.c" 15 10 23#
@@ -2237,7 +2225,7 @@ module Function_memset_behaviors
       (assert {
       (#"/home/work/workspace/self/verker-gh/memset.c" 16 12 35#
       "expl:Assertion in line 16"
-      (Bit_uint64.(=) !mutable_count (#"memset.jc" 110 51 69#
+      (Bit_uint64.(=) !mutable_count (#"memset.jc" 104 51 69#
       "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) }); ()
       end; begin (return := s); (raise Return) end end end)))); absurd  end
     with Return -> !return end))
@@ -2570,298 +2558,6 @@ module Struct_charP_safe
       ((fresh_tag_struct_charP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_charP result !voidP_tag_table) /\
       (container_of_singleton_struct_charP result !voidP_tag_table))))))) }
-  
-end
-
-theory Root_unsigned_charP
-
-  use why3.Bool.Bool 
-  
-  type unsigned_charP 
-  
-end
-
-theory Struct_unsigned_charP
-
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_tag_table 
-  
-  use import core.Jessie_tag_id 
-  
-  use import core.Jessie_tag 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import core.Jessie_alloc 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  function unsigned_charP_tag  : (tag_id
-  unsigned_charP)
-  
-  axiom Unsigned_charP_parenttag_bottom :
-  (parenttag unsigned_charP_tag bottom_tag)
-  
-  axiom Unsigned_charP_is_final :
-  (forall unsigned_charP_tag_table : (tag_table unsigned_charP).
-   (forall p : (pointer unsigned_charP).
-    ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) ->
-     ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag))))
-  
-  predicate frame_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_tag_table : (tag_table unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((tag_extends old_unsigned_charP_tag_table unsigned_charP_tag_table) /\
-     (alloc_tag_block old_unsigned_charP_tag_table unsigned_charP_tag_table
-     p))
-  
-  predicate frame_free_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((free_extends old_unsigned_charP_alloc_table unsigned_charP_alloc_table)
-     /\
-     (free_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p))
-  
-  predicate frame_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (n : int) (old_unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     ((alloc_extends old_unsigned_charP_alloc_table
-      unsigned_charP_alloc_table)
-     /\
-     (alloc_block old_unsigned_charP_alloc_table unsigned_charP_alloc_table p
-     n))
-  
-  predicate fresh_tag_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (tag_fresh unsigned_charP_tag_table p)
-  
-  predicate fresh_alloc_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = (alloc_fresh unsigned_charP_alloc_table p)
-  
-  predicate container_of_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate container_of_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = true
-  
-  predicate typeof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = ((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag)
-  
-  predicate typeof_struct_unsigned_charP (p : (pointer unsigned_charP)) (l :
-  int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     (((=) (typeof unsigned_charP_tag_table p) unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       ((=) (typeof unsigned_charP_tag_table (shift p i)) unsigned_charP_tag))))
-  
-  predicate instanceof_singleton_struct_unsigned_charP (p : (pointer
-  unsigned_charP)) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  = (instanceof unsigned_charP_tag_table p unsigned_charP_tag)
-  
-  predicate instanceof_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (l : int) (r : int) (unsigned_charP_tag_table : (tag_table unsigned_charP))
-  =
-     ((instanceof unsigned_charP_tag_table p unsigned_charP_tag) /\
-     (forall i : int.
-      ((((<=) l i) /\ ((<) i r)) ->
-       (instanceof unsigned_charP_tag_table (shift p i) unsigned_charP_tag))))
-  
-  predicate right_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((>=) (offset_max unsigned_charP_alloc_table p) b)
-  
-  predicate left_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  = ((<=) (offset_min unsigned_charP_alloc_table p) a)
-  
-  predicate valid_struct_unsigned_charP (p : (pointer unsigned_charP)) (a :
-  int) (b : int) (unsigned_charP_alloc_table : (alloc_table unsigned_charP))
-  =
-     (((<=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((>=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  predicate strict_valid_struct_unsigned_charP (p : (pointer unsigned_charP))
-  (a : int) (b : int) (unsigned_charP_alloc_table : (alloc_table
-  unsigned_charP))
-  =
-     (((=) (offset_min unsigned_charP_alloc_table p) a) /\
-     ((=) (offset_max unsigned_charP_alloc_table p) b))
-  
-  axiom Unsigned_charP_int : ((=) (int_of_tag unsigned_charP_tag) (4))
-  
-end
-
-module Struct_unsigned_charP_unsafe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_allocable 
-  
-  use import core.Jessie_alloc_table 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires {
-      (("expl:Deallocation" ((=) p null)) \/
-      (freeable !unsigned_charP_alloc_table p)) }
-    writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP_requires
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { ((>=) n (0)) } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-end
-
-module Struct_unsigned_charP_safe
-
-  use import Struct_unsigned_charP 
-  
-  use import Root_unsigned_charP 
-  
-  use import ref.Ref 
-  
-  use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_alloc_table 
-  
-  use int.Int 
-  
-  use why3.Bool.Bool 
-  
-  val safe_free_struct_unsigned_charP
-  (p : (pointer unsigned_charP)) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) : unit
-    requires { true } writes { unsigned_charP_alloc_table }
-    ensures {
-      ((((=) p null) /\
-       ((=) !unsigned_charP_alloc_table (old !unsigned_charP_alloc_table)))
-      \/
-      ((frame_free_struct_unsigned_charP p (old !unsigned_charP_alloc_table)
-       !unsigned_charP_alloc_table)
-      /\ (fresh_alloc_struct_unsigned_charP p !unsigned_charP_alloc_table)))
-      }
-  
-  val allocate_struct_unsigned_charP
-  (n : int) 
-   (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-    (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-     unsigned_charP)
-     requires { true } writes { unsigned_charP_alloc_table,
-     unsigned_charP_tag_table }
-     ensures {
-       ((strict_valid_struct_unsigned_charP result (0) (Int.(-) n (1))
-        !unsigned_charP_alloc_table)
-       /\
-       ((frame_alloc_struct_unsigned_charP result n (old
-        !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-       /\
-       ((frame_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-       /\
-       ((fresh_alloc_struct_unsigned_charP result (old
-        !unsigned_charP_alloc_table))
-       /\
-       ((fresh_tag_struct_unsigned_charP result (old
-        !unsigned_charP_tag_table))
-       /\
-       ((typeof_struct_unsigned_charP result (0) n !unsigned_charP_tag_table)
-       /\
-       (container_of_struct_unsigned_charP result (0) n
-       !unsigned_charP_tag_table))))))) }
-  
-  val allocate_singleton_struct_unsigned_charP
-  (unsigned_charP_alloc_table : ref (alloc_table unsigned_charP)) 
-   (unsigned_charP_tag_table : ref (tag_table unsigned_charP)) : (pointer
-    unsigned_charP)
-    requires { true } writes { unsigned_charP_alloc_table,
-    unsigned_charP_tag_table }
-    ensures {
-      ((strict_valid_struct_unsigned_charP result (0) (0)
-       !unsigned_charP_alloc_table)
-      /\
-      ((frame_alloc_struct_unsigned_charP result (1) (old
-       !unsigned_charP_alloc_table) !unsigned_charP_alloc_table)
-      /\
-      ((frame_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table) !unsigned_charP_tag_table)
-      /\
-      ((fresh_alloc_struct_unsigned_charP result (old
-       !unsigned_charP_alloc_table))
-      /\
-      ((fresh_tag_struct_unsigned_charP result (old
-       !unsigned_charP_tag_table))
-      /\
-      ((typeof_singleton_struct_unsigned_charP result
-       !unsigned_charP_tag_table)
-      /\
-      (container_of_singleton_struct_unsigned_charP result
-      !unsigned_charP_tag_table))))))) }
   
 end
 
@@ -7845,7 +7541,7 @@ module Function_memset
               ((<) i (offset_max voidP_s_2_alloc_table result))) ->
               (instanceof voidP_s_2_tag_table (shift result i) voidP_tag)))))
           /\
-          ((#"memset.jc" 37 10 66# "expl:Assigns clause"
+          ((#"memset.jc" 31 10 66# "expl:Assigns clause"
            (not_assigns voidP_s_2_alloc_table voidP_s_2_alloc_table (old
            !charP_charM_s_2) !charP_charM_s_2
            (pset_range
@@ -7873,7 +7569,7 @@ module Function_memset
              (shift (downcast voidP_s_2_tag_table s charP_tag)
              (Uint64.to_int count))) (0))))) ->
              (Bit_int8.(=) (select !charP_charM_s_2 p_0)
-             (#"memset.jc" 49 47 68# "expl:Integer cast"
+             (#"memset.jc" 43 47 68# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
           (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
@@ -7932,7 +7628,7 @@ module Function_memset_safe
        (voidP_s_2_tag_table : (tag_table voidP)) : (pointer voidP)
         requires {
           ("expl:Internal"
-          (#"memset.jc" 24 12 730# "expl:Requires clause"
+          (#"memset.jc" 18 12 730# "expl:Requires clause"
           ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
            "expl:Requires clause"
            (instanceof voidP_s_2_tag_table s charP_tag))
@@ -7962,7 +7658,7 @@ module Function_memset_safe
               ((<) i (offset_max voidP_s_2_alloc_table result))) ->
               (instanceof voidP_s_2_tag_table (shift result i) voidP_tag)))))
           /\
-          ((#"memset.jc" 37 10 66# "expl:Assigns clause"
+          ((#"memset.jc" 31 10 66# "expl:Assigns clause"
            (not_assigns voidP_s_2_alloc_table voidP_s_2_alloc_table (old
            !charP_charM_s_2) !charP_charM_s_2
            (pset_range
@@ -7990,7 +7686,7 @@ module Function_memset_safe
              (shift (downcast voidP_s_2_tag_table s charP_tag)
              (Uint64.to_int count))) (0))))) ->
              (Bit_int8.(=) (select !charP_charM_s_2 p_0)
-             (#"memset.jc" 49 47 68# "expl:Integer cast"
+             (#"memset.jc" 43 47 68# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
           (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
