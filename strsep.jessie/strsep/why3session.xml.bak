@@ -5,7 +5,7 @@
 <prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
 <file name="../strsep.mlw" expanded="true">
-<theory name="Function_strsep_safety" sum="a128233a774718a2dbec141eea761b3b" expanded="true">
+<theory name="Function_strsep_safety" sum="d27eb505cb6dff186039c5ee2f191670" expanded="true">
  <goal name="WP_parameter strsep" expl="Function strsep, safety" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strsep.1" expl="Pointer dereference (Validity)">
@@ -26,22 +26,20 @@
   <goal name="WP_parameter strsep.6" expl="Integer cast (integer overflow)">
   <proof prover="1"><result status="valid" time="0.03" steps="40"/></proof>
   </goal>
-  <goal name="WP_parameter strsep.7" expl="Integer cast (precondition)">
-  <proof prover="1"><result status="valid" time="0.03" steps="44"/></proof>
+  <goal name="WP_parameter strsep.7" expl="Pointer dereference (Assignment)">
+  <proof prover="0"><result status="valid" time="0.37"/></proof>
+  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   </goal>
   <goal name="WP_parameter strsep.8" expl="Pointer dereference (Assignment)">
-  <proof prover="0"><result status="valid" time="0.37"/></proof>
+  <proof prover="1"><result status="valid" time="0.02" steps="38"/></proof>
   </goal>
   <goal name="WP_parameter strsep.9" expl="Pointer dereference (Assignment)">
-  <proof prover="1"><result status="valid" time="0.02" steps="42"/></proof>
-  </goal>
-  <goal name="WP_parameter strsep.10" expl="Pointer dereference (Assignment)">
   <proof prover="1"><result status="valid" time="0.02" steps="20"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strsep_behaviors" sum="20b61fa098adf959cbb8c54b2292f0c3" expanded="true">
+<theory name="Function_strsep_behaviors" sum="e8feace4688e837fdea98505d21f94ca" expanded="true">
  <goal name="WP_parameter strsep_ensures_default" expl="Function strsep, default behavior" expanded="true">
  <proof prover="1"><result status="valid" time="0.02" steps="6"/></proof>
  </goal>
@@ -50,9 +48,10 @@
  </goal>
  <goal name="WP_parameter strsep_ensures_input_strpbrk_not_null" expl="Function strsep, behavior input_strpbrk_not_null" expanded="true">
  <proof prover="0"><result status="valid" time="0.66"/></proof>
+ <proof prover="1"><result status="timeout" time="5.01"/></proof>
  </goal>
  <goal name="WP_parameter strsep_ensures_input_strpbrk_null" expl="Function strsep, behavior input_strpbrk_null" expanded="true">
- <proof prover="1"><result status="valid" time="1.04" steps="3560"/></proof>
+ <proof prover="1"><result status="valid" time="0.45" steps="3123"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -353,15 +352,11 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
 <theory name="Root_char_xP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Root_char_xP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
  </goal>
  <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
@@ -383,7 +378,7 @@
  <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
  </goal>
 </theory>
-<theory name="Axiomatic_StrSpn" sum="3ca87d1b0bbcf362a5f585550941fa29" expanded="true">
+<theory name="Axiomatic_StrSpn" sum="7f0b127f5d1e231cd9abef10dc9d98c3" expanded="true">
  <goal name="In_array_shift1" expl="Lemma in_array_shift1" expanded="true">
  </goal>
  <goal name="In_array_true" expl="Lemma in_array_true" expanded="true">
@@ -401,7 +396,7 @@
  <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept" expanded="true">
  </goal>
 </theory>
-<theory name="Axiomatic_StrPBrk" sum="e5356860bdaffe6e27d6fe8867a8cac9" expanded="true">
+<theory name="Axiomatic_StrPBrk" sum="f18e93b9bdb21ca02ec4977a65a6b0ea" expanded="true">
  <goal name="Strpbrk_strend" expl="Lemma strpbrk_strend" expanded="true">
  </goal>
  <goal name="Strpbrk_empty_ct" expl="Lemma strpbrk_empty_ct" expanded="true">
@@ -419,11 +414,7 @@
 </theory>
 <theory name="Function_strpbrk_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Safe_int8_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
 <theory name="Function_strpbrk_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Unsafe_int8_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -440,14 +431,6 @@
 <theory name="Struct_char_xP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_char_xP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -864,6 +847,10 @@
 <theory name="Safe_bit_int8_of_Safe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_int8_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Safe_int8_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Unsafe_int8_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_bit_int8_of_Safe_bit_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

@@ -1682,11 +1682,11 @@ theory Axiomatic_Strlen
   
   
   lemma Valid_str_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+  #"/home/work/workspace/self/verker/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
   (forall voidP_s_0_9_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_0_9_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+    (#"/home/work/workspace/self/verker/strlen.h" 12 7 102#
     (forall s_0_0 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_9_at_L s_0_0)
        (#"strchrnul.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
@@ -1697,11 +1697,11 @@ theory Axiomatic_Strlen
       charP_charM_s_0_9_at_L))))))
   
   lemma Valid_str_strend
-  #"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+  #"/home/work/workspace/self/verker/strlen.h" 18 7 87#
   "expl:Lemma valid_str_strend" :
   (forall voidP_s_1_10_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_1_10_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+    (#"/home/work/workspace/self/verker/strlen.h" 18 7 87#
     (forall s_1_0 : (pointer voidP).
      (((((<=) (offset_min voidP_s_1_10_alloc_table_at_L s_1_0) (0)) /\
        (((>=) (offset_max voidP_s_1_10_alloc_table_at_L s_1_0) (0)) /\
@@ -1725,11 +1725,11 @@ theory Axiomatic_Strlen
   
   
   lemma Strlen_before_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+  #"/home/work/workspace/self/verker/strlen.h" 26 7 106#
   "expl:Lemma strlen_before_null" :
   (forall voidP_s_3_11_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_3_11_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+    (#"/home/work/workspace/self/verker/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
      (forall i : int.
       (((valid_str s_3 voidP_s_3_11_alloc_table_at_L charP_charM_s_3_11_at_L)
@@ -1739,12 +1739,11 @@ theory Axiomatic_Strlen
        (Int8.(<>) (select charP_charM_s_3_11_at_L (shift s_3 i))
        (#"strchrnul.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
-  lemma Strlen_at_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+  lemma Strlen_at_null #"/home/work/workspace/self/verker/strlen.h" 31 7 71#
   "expl:Lemma strlen_at_null" :
   (forall voidP_s_4_12_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_4_12_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+    (#"/home/work/workspace/self/verker/strlen.h" 31 7 71#
     (forall s_4 : (pointer voidP).
      ((valid_str s_4 voidP_s_4_12_alloc_table_at_L charP_charM_s_4_12_at_L)
       ->
@@ -1753,12 +1752,11 @@ theory Axiomatic_Strlen
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_12_at_L))))
       (#"strchrnul.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
-  lemma Strlen_shift
-  #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+  lemma Strlen_shift #"/home/work/workspace/self/verker/strlen.h" 35 7 125#
   "expl:Lemma strlen_shift" :
   (forall voidP_s_5_13_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_5_13_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+    (#"/home/work/workspace/self/verker/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
      (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_13_alloc_table_at_L charP_charM_s_5_13_at_L)
@@ -1770,11 +1768,11 @@ theory Axiomatic_Strlen
        (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
-  #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+  #"/home/work/workspace/self/verker/strlen.h" 41 7 126#
   "expl:Lemma strlen_shift_ex" :
   (forall voidP_s_6_14_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_6_14_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+    (#"/home/work/workspace/self/verker/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
      (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_14_alloc_table_at_L charP_charM_s_6_14_at_L)
@@ -1786,12 +1784,11 @@ theory Axiomatic_Strlen
        (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_14_at_L)
        (strlen s_6 charP_charM_s_6_14_at_L))))))))
   
-  lemma Strlen_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+  lemma Strlen_shift1 #"/home/work/workspace/self/verker/strlen.h" 47 7 103#
   "expl:Lemma strlen_shift1" :
   (forall voidP_s_7_15_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_7_15_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+    (#"/home/work/workspace/self/verker/strlen.h" 47 7 103#
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_15_alloc_table_at_L charP_charM_s_7_15_at_L)
       /\
@@ -1802,11 +1799,11 @@ theory Axiomatic_Strlen
       (Uint64.to_int (strlen (shift s_7 (1)) charP_charM_s_7_15_at_L)))))))))
   
   lemma Strlen_pointers
-  #"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+  #"/home/work/workspace/self/verker/strlen.h" 52 7 254#
   "expl:Lemma strlen_pointers" :
   (forall voidP_s_8_16_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_8_16_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+    (#"/home/work/workspace/self/verker/strlen.h" 52 7 254#
     (forall s_8 : (pointer voidP).
      (forall sc : (pointer voidP).
       (((valid_str s_8 voidP_s_8_16_alloc_table_at_L charP_charM_s_8_16_at_L)
@@ -1824,11 +1821,11 @@ theory Axiomatic_Strlen
        (Uint64.(<=) (strlen sc charP_charM_s_8_16_at_L)
        (strlen s_8 charP_charM_s_8_16_at_L))))))))
   
-  lemma Strlen_main #"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+  lemma Strlen_main #"/home/work/workspace/self/verker/strlen.h" 61 7 165#
   "expl:Lemma strlen_main" :
   (forall voidP_s_9_18_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_9_18_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+    (#"/home/work/workspace/self/verker/strlen.h" 61 7 165#
     (forall s_9 : (pointer voidP).
      (forall n_2 : Uint64.t.
       (((valid_str s_9 voidP_s_9_18_alloc_table_at_L charP_charM_s_9_18_at_L)
@@ -1844,11 +1841,11 @@ theory Axiomatic_Strlen
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_18_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
-  #"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+  #"/home/work/workspace/self/verker/strlen.h" 68 7 123#
   "expl:Lemma valid_str_shiftn" :
   (forall voidP_s_10_19_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_10_19_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+    (#"/home/work/workspace/self/verker/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
      (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_19_alloc_table_at_L
@@ -1892,11 +1889,11 @@ theory Axiomatic_Strchrnul
   
   
   lemma Strchrnul_mem
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 11 7 112#
+  #"/home/work/workspace/self/verker/strchrnul.h" 11 7 112#
   "expl:Lemma strchrnul_mem" :
   (forall voidP_str_0_21_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_0_21_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 11 7 112#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 11 7 112#
     (forall str_0 : (pointer voidP).
      (forall c_0_0 : Int8.t.
       ((valid_str str_0 voidP_str_0_21_alloc_table_at_L
@@ -1917,11 +1914,11 @@ theory Axiomatic_Strchrnul
        (0)))))))))))
   
   lemma Strchrnul_iter_one
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 15 7 134#
+  #"/home/work/workspace/self/verker/strchrnul.h" 15 7 134#
   "expl:Lemma strchrnul_iter_one" :
   (forall voidP_str_1_26_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_1_26_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 15 7 134#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 15 7 134#
     (forall str_1 : (pointer voidP).
      (forall c_1 : Int8.t.
       (((valid_str str_1 voidP_str_1_26_alloc_table_at_L
@@ -1935,11 +1932,11 @@ theory Axiomatic_Strchrnul
        (strchrnul (shift str_1 (1)) c_1 charP_charM_str_1_26_at_L))))))))
   
   lemma Strchrnul_res
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 19 7 118#
+  #"/home/work/workspace/self/verker/strchrnul.h" 19 7 118#
   "expl:Lemma strchrnul_res" :
   (forall voidP_str_2_29_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_2_29_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 19 7 118#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 19 7 118#
     (forall str_2 : (pointer voidP).
      (forall c_2 : Int8.t.
       ((valid_str str_2 voidP_str_2_29_alloc_table_at_L
@@ -1965,11 +1962,11 @@ theory Axiomatic_Strchrnul
        (#"strchrnul.jc" 161 59 70# "expl:Integer cast" (Int8.of_int (0)))))))))))))
   
   lemma Strchrnul_strlen
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 23 7 109#
+  #"/home/work/workspace/self/verker/strchrnul.h" 23 7 109#
   "expl:Lemma strchrnul_strlen" :
   (forall voidP_str_3_34_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_3_34_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 23 7 109#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 23 7 109#
     (forall str_3 : (pointer voidP).
      ((valid_str str_3 voidP_str_3_34_alloc_table_at_L
       charP_charM_str_3_34_at_L) ->
@@ -1979,11 +1976,11 @@ theory Axiomatic_Strchrnul
       (Int8.of_int (0))) charP_charM_str_3_34_at_L) str_3)))))))
   
   lemma Strchrnul_at_end
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 27 7 117#
+  #"/home/work/workspace/self/verker/strchrnul.h" 27 7 117#
   "expl:Lemma strchrnul_at_end" :
   (forall voidP_str_4_36_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_4_36_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 27 7 117#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 27 7 117#
     (forall str_4 : (pointer voidP).
      (forall c_3 : Int8.t.
       (((((<=) (offset_min voidP_str_4_36_alloc_table_at_L str_4) (0)) /\
@@ -1996,11 +1993,11 @@ theory Axiomatic_Strchrnul
        ((=) (strchrnul str_4 c_3 charP_charM_str_4_36_at_L) str_4)))))))
   
   lemma Strchrnul_defn
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 32 7 209#
+  #"/home/work/workspace/self/verker/strchrnul.h" 32 7 209#
   "expl:Lemma strchrnul_defn" :
   (forall voidP_str_5_38_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_5_38_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 32 7 209#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 32 7 209#
     (forall str_5 : (pointer voidP).
      (forall c_4 : Int8.t.
       (forall i_6 : int.
@@ -2020,11 +2017,11 @@ theory Axiomatic_Strchrnul
         (strchrnul str_5 c_4 charP_charM_str_5_38_at_L)))))))))
   
   lemma Strchrnul_skipped
-  #"/home/work/workspace/self/verker-gh/strchrnul.h" 38 7 145#
+  #"/home/work/workspace/self/verker/strchrnul.h" 38 7 145#
   "expl:Lemma strchrnul_skipped" :
   (forall voidP_str_6_40_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_str_6_40_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strchrnul.h" 38 7 145#
+    (#"/home/work/workspace/self/verker/strchrnul.h" 38 7 145#
     (forall str_6 : (pointer voidP).
      (forall c_5 : Int8.t.
       (forall i_7 : int.
@@ -2115,7 +2112,7 @@ module Exceptions
 end
 
 module Function_strchrnul_0_safety
-#"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+#"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
 "expl:strchrnul, safety"
 
   use enum.Uint64 
@@ -2170,7 +2167,7 @@ module Function_strchrnul_0_safety
   
   use why3.Bool.Bool 
   
-  let strchrnul_0 #"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+  let strchrnul_0 #"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
   "expl:Function strchrnul, safety" =
   fun
    (s_1 : (pointer voidP)) (c_0 : Int32.t) (voidP_s_7_alloc_table :
@@ -2184,7 +2181,7 @@ module Function_strchrnul_0_safety
        ((<) i (offset_max voidP_s_7_alloc_table s_1))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_1 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strchrnul.h" 54 13 25#
+   (#"/home/work/workspace/self/verker/strchrnul.h" 54 13 25#
    (valid_str s_1 voidP_s_7_alloc_table charP_charM_s_7))) }
    ensures { ("expl:Postcondition" true) }  ->
    (let mutable_s_1 = ref s_1 in
@@ -2201,20 +2198,19 @@ module Function_strchrnul_0_safety
        (let _jessie_16 = !mutable_s_1 in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strchrnul.c" 5 17 19#
+       (#"/home/work/workspace/self/verker/strchrnul.c" 5 17 19#
        "expl:Pointer index bounds" true) }); _jessie_16 end));
        'Loop_4:
        loop
        invariant { (#"strchrnul.jc" 268 6 1752# true) }
-         variant {
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 10 18 39#
+         variant { (#"/home/work/workspace/self/verker/strchrnul.c" 10 18 39#
            (Int.(-) (Uint64.to_int (strlen !os charP_charM_s_7))
            (sub_pointer !mutable_s_1 !os))) }
         begin
         any unit
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 9 20 71#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 9 20 71#
            ((=)
            (strchrnul !os (#"strchrnul.jc" 290 48 60# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
@@ -2222,7 +2218,7 @@ module Function_strchrnul_0_safety
            "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))
            charP_charM_s_7)))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 8 20 69#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 8 20 69#
            (forall p : (pointer voidP).
             (((same_block !os p) /\
              (((<=) (sub_pointer !os p) (0)) /\
@@ -2232,53 +2228,53 @@ module Function_strchrnul_0_safety
              (#"strchrnul.jc" 288 43 55# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             (same_block !os !mutable_s_1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             ((<=) (sub_pointer !os !mutable_s_1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
             (same_block !mutable_s_1
             (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
            ((<=)
            (sub_pointer !mutable_s_1
            (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))) (0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 6 20 32#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 6 20 32#
           (valid_str !mutable_s_1 voidP_s_7_alloc_table charP_charM_s_7)))))
           } ;
          try
           begin
           begin
           (if
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 8 10#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 12 8 10#
           (Safe_bit_int8.(<>) 
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 8 10#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 12 8 10#
            "expl:Pointer dereference"
            (acc  voidP_s_7_alloc_table charP_charM_s_7 !mutable_s_1 ))
            (#"strchrnul.jc" 295 57 68# "expl:Integer cast"
            (Safe_bit_int8.of_int_const 0)) ))
           then
            (if
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 35#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 35#
            (Safe_bit_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 16#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 16#
             "expl:Integer cast"
             (Safe_bit_int32_of_Safe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 16#
+             (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 16#
              "expl:Pointer dereference"
              (acc  voidP_s_7_alloc_table charP_charM_s_7 !mutable_s_1 )) ))
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
             "expl:Integer cast"
             (Safe_bit_int32_of_Safe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+             (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
              "expl:Integer cast"
              (Safe_bit_int8_of_Safe_bit_int32.cast_modulo  c_0 )) )) ))
            then () else (raise (Goto_while_0_break_exc ())))
@@ -2291,7 +2287,7 @@ module Function_strchrnul_0_safety
               (Safe_bit_int32.of_int_const 1)) ) ) in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 13 2 5#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 13 2 5#
             "expl:Pointer index bounds" true) }); _jessie_17 end)) end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2304,7 +2300,7 @@ module Function_strchrnul_0_safety
        any unit
        requires { true } reads { c_0, mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 14 12 45#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 14 12 45#
          ((Bit_int8.(=) (#"strchrnul.jc" 306 51 63# "expl:Integer cast"
           (Bit_int8_of_Bit_int32.cast_modulo c_0))
           (#"strchrnul.jc" 307 52 63# "expl:Integer cast"
@@ -2316,7 +2312,7 @@ module Function_strchrnul_0_safety
        any unit
        requires { true } reads { mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 15 12 47#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 15 12 47#
          ((Bit_int8.(=) (select charP_charM_s_7 !mutable_s_1)
           (#"strchrnul.jc" 313 62 73# "expl:Integer cast"
           (Bit_int8.of_int_const 0))) ->
@@ -2327,7 +2323,7 @@ module Function_strchrnul_0_safety
         (let _jessie_18 = !mutable_s_1 in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/strchrnul.c" 16 1 18#
+        (#"/home/work/workspace/self/verker/strchrnul.c" 16 1 18#
         "expl:Pointer index bounds" true) }); _jessie_18 end));
         begin
         (return :=
@@ -2397,7 +2393,7 @@ module Unsafe_bit_int8_of_Unsafe_bit_int32
 end
 
 module Function_strchrnul_0_behaviors
-#"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+#"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
 "expl:strchrnul, behaviors"
 
   use Unsafe_bit_int8_of_Unsafe_bit_int32 
@@ -2453,7 +2449,7 @@ module Function_strchrnul_0_behaviors
   use why3.Bool.Bool 
   
   let strchrnul_ensures_default
-  #"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+  #"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
   "expl:Function strchrnul, default behavior" =
   fun
    (s_1 : (pointer voidP)) (c_0 : Int32.t) (voidP_s_7_alloc_table :
@@ -2467,43 +2463,43 @@ module Function_strchrnul_0_behaviors
        ((<) i (offset_max voidP_s_7_alloc_table s_1))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_1 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strchrnul.h" 54 13 25#
+   (#"/home/work/workspace/self/verker/strchrnul.h" 54 13 25#
    (valid_str s_1 voidP_s_7_alloc_table charP_charM_s_7))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
       "expl:Ensures clause" (same_block result s_1))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 57 12 47#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 57 12 47#
       "expl:Ensures clause"
       ((=) result
       (strchrnul s_1 (#"strchrnul.jc" 210 49 70# "expl:Integer cast"
       (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
       "expl:Ensures clause" (same_block s_1 result))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
       "expl:Ensures clause" ((<=) (sub_pointer s_1 result) (0)))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
       "expl:Ensures clause"
       (same_block result
       (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
      "expl:Ensures clause"
      ((<=)
      (sub_pointer result
@@ -2553,29 +2549,29 @@ module Function_strchrnul_0_behaviors
        'Loop_1:
        loop
        invariant
-         { ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 6 20 32#
+         { ((#"/home/work/workspace/self/verker/strchrnul.c" 6 20 32#
             (valid_str !mutable_s_1 voidP_s_7_alloc_table charP_charM_s_7))
            &&
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-            ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+            ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
              (same_block !os !mutable_s_1))
             /\
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-            ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+            ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
              ((<=) (sub_pointer !os !mutable_s_1) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-            ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+            ((#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
              (same_block !mutable_s_1
              (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
             ((<=)
             (sub_pointer !mutable_s_1
             (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))) (0))))))))))
            &&
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 8 20 69#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 8 20 69#
             (forall p : (pointer voidP).
              (((same_block !os p) /\
               (((<=) (sub_pointer !os p) (0)) /\
@@ -2585,7 +2581,7 @@ module Function_strchrnul_0_behaviors
               (#"strchrnul.jc" 288 43 55# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
            &&
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 9 20 71#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 9 20 71#
            ((=)
            (strchrnul !os (#"strchrnul.jc" 290 48 60# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
@@ -2598,22 +2594,22 @@ module Function_strchrnul_0_behaviors
           begin
           begin
           (if
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 8 10#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 12 8 10#
           (Unsafe_bit_int8.(<>)  (acc  charP_charM_s_7 !mutable_s_1 )
            (#"strchrnul.jc" 295 57 68# "expl:Integer cast"
            (Unsafe_bit_int8.of_int_const 0)) ))
           then
            (if
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 35#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 35#
            (Unsafe_bit_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 16#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 16#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_7 !mutable_s_1 ) ))
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+             (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c_0 )) )) ))
            then () else (raise (Goto_while_0_break_exc ())))
@@ -2632,7 +2628,7 @@ module Function_strchrnul_0_behaviors
       ();
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strchrnul.c" 14 12 45#
+       (#"/home/work/workspace/self/verker/strchrnul.c" 14 12 45#
        "expl:Assertion in line 14"
        ((Bit_int8.(=) (#"strchrnul.jc" 306 51 63# "expl:Integer cast"
         (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchrnul.jc" 307 52 63#
@@ -2642,7 +2638,7 @@ module Function_strchrnul_0_behaviors
         (Bit_int8.of_int_const 0))))) }); () end;
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strchrnul.c" 15 12 47#
+       (#"/home/work/workspace/self/verker/strchrnul.c" 15 12 47#
        "expl:Assertion in line 15"
        ((Bit_int8.(=) (select charP_charM_s_7 !mutable_s_1)
         (#"strchrnul.jc" 313 62 73# "expl:Integer cast"
@@ -2655,7 +2651,7 @@ module Function_strchrnul_0_behaviors
      absurd  end with Return -> !return end))
   
   let strchrnul_ensures_exists
-  #"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+  #"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
   "expl:Function strchrnul, behavior exists" =
   fun
    (s_1 : (pointer voidP)) (c_0 : Int32.t) (voidP_s_7_alloc_table :
@@ -2676,21 +2672,21 @@ module Function_strchrnul_0_behaviors
        ((<) i (offset_max voidP_s_7_alloc_table s_1))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_1 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strchrnul.h" 54 13 25#
+   (#"/home/work/workspace/self/verker/strchrnul.h" 54 13 25#
    (valid_str s_1 voidP_s_7_alloc_table charP_charM_s_7)))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
       "expl:Ensures clause"
       (Bit_int8.(=) (select charP_charM_s_7 result)
       (#"strchrnul.jc" 233 47 68# "expl:Integer cast"
       (Bit_int8_of_Bit_int32.cast_modulo c_0))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 66 15 69#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 66 15 69#
      "expl:Ensures clause"
      (forall p_0 : (pointer voidP).
       (((same_block s_1 p_0) /\
@@ -2717,7 +2713,7 @@ module Function_strchrnul_0_behaviors
         any unit
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 9 20 71#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 9 20 71#
            ((=)
            (strchrnul !os (#"strchrnul.jc" 290 48 60# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
@@ -2725,7 +2721,7 @@ module Function_strchrnul_0_behaviors
            "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))
            charP_charM_s_7)))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 8 20 69#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 8 20 69#
            (forall p : (pointer voidP).
             (((same_block !os p) /\
              (((<=) (sub_pointer !os p) (0)) /\
@@ -2735,48 +2731,48 @@ module Function_strchrnul_0_behaviors
              (#"strchrnul.jc" 288 43 55# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             (same_block !os !mutable_s_1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             ((<=) (sub_pointer !os !mutable_s_1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
             (same_block !mutable_s_1
             (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
            ((<=)
            (sub_pointer !mutable_s_1
            (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))) (0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 6 20 32#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 6 20 32#
           (valid_str !mutable_s_1 voidP_s_7_alloc_table charP_charM_s_7)))))
           } ;
          try
           begin
           begin
           (if
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 8 10#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 12 8 10#
           (Unsafe_bit_int8.(<>)  (acc  charP_charM_s_7 !mutable_s_1 )
            (#"strchrnul.jc" 295 57 68# "expl:Integer cast"
            (Unsafe_bit_int8.of_int_const 0)) ))
           then
            (if
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 35#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 35#
            (Unsafe_bit_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 16#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 16#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_7 !mutable_s_1 ) ))
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+             (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c_0 )) )) ))
            then () else (raise (Goto_while_0_break_exc ())))
@@ -2797,7 +2793,7 @@ module Function_strchrnul_0_behaviors
        any unit
        requires { true } reads { c_0, mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 14 12 45#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 14 12 45#
          ((Bit_int8.(=) (#"strchrnul.jc" 306 51 63# "expl:Integer cast"
           (Bit_int8_of_Bit_int32.cast_modulo c_0))
           (#"strchrnul.jc" 307 52 63# "expl:Integer cast"
@@ -2809,7 +2805,7 @@ module Function_strchrnul_0_behaviors
        any unit
        requires { true } reads { mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 15 12 47#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 15 12 47#
          ((Bit_int8.(=) (select charP_charM_s_7 !mutable_s_1)
           (#"strchrnul.jc" 313 62 73# "expl:Integer cast"
           (Bit_int8.of_int_const 0))) ->
@@ -2821,7 +2817,7 @@ module Function_strchrnul_0_behaviors
      absurd  end with Return -> !return end))
   
   let strchrnul_ensures_not_exists
-  #"/home/work/workspace/self/verker-gh/strchrnul.c" 3 5 37#
+  #"/home/work/workspace/self/verker/strchrnul.c" 3 5 37#
   "expl:Function strchrnul, behavior not_exists" =
   fun
    (s_1 : (pointer voidP)) (c_0 : Int32.t) (voidP_s_7_alloc_table :
@@ -2842,19 +2838,19 @@ module Function_strchrnul_0_behaviors
        ((<) i (offset_max voidP_s_7_alloc_table s_1))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_1 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strchrnul.h" 54 13 25#
+   (#"/home/work/workspace/self/verker/strchrnul.h" 54 13 25#
    (valid_str s_1 voidP_s_7_alloc_table charP_charM_s_7)))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+     ((#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
       "expl:Ensures clause"
       ((=) result (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strchrnul.h" 62 15 31#
+     (#"/home/work/workspace/self/verker/strchrnul.h" 62 15 31#
      "expl:Ensures clause"
      (Bit_int8.(=) (select charP_charM_s_7 result)
      (#"strchrnul.jc" 228 48 59# "expl:Integer cast" (Bit_int8.of_int_const
@@ -2877,7 +2873,7 @@ module Function_strchrnul_0_behaviors
         any unit
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 9 20 71#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 9 20 71#
            ((=)
            (strchrnul !os (#"strchrnul.jc" 290 48 60# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
@@ -2885,7 +2881,7 @@ module Function_strchrnul_0_behaviors
            "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))
            charP_charM_s_7)))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 8 20 69#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 8 20 69#
            (forall p : (pointer voidP).
             (((same_block !os p) /\
              (((<=) (sub_pointer !os p) (0)) /\
@@ -2895,48 +2891,48 @@ module Function_strchrnul_0_behaviors
              (#"strchrnul.jc" 288 43 55# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
           /\
-          ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+          ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             (same_block !os !mutable_s_1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 27#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 20 27#
             ((<=) (sub_pointer !os !mutable_s_1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 20 46#
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 20 46#
+           ((#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
             (same_block !mutable_s_1
             (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 7 26 46#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 7 26 46#
            ((<=)
            (sub_pointer !mutable_s_1
            (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))) (0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 6 20 32#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 6 20 32#
           (valid_str !mutable_s_1 voidP_s_7_alloc_table charP_charM_s_7)))))
           } ;
          try
           begin
           begin
           (if
-          (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 8 10#
+          (#"/home/work/workspace/self/verker/strchrnul.c" 12 8 10#
           (Unsafe_bit_int8.(<>)  (acc  charP_charM_s_7 !mutable_s_1 )
            (#"strchrnul.jc" 295 57 68# "expl:Integer cast"
            (Unsafe_bit_int8.of_int_const 0)) ))
           then
            (if
-           (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 35#
+           (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 35#
            (Unsafe_bit_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 14 16#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 14 16#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_7 !mutable_s_1 ) ))
-            (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+            (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strchrnul.c" 12 20 35#
+             (#"/home/work/workspace/self/verker/strchrnul.c" 12 20 35#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c_0 )) )) ))
            then () else (raise (Goto_while_0_break_exc ())))
@@ -2957,7 +2953,7 @@ module Function_strchrnul_0_behaviors
        any unit
        requires { true } reads { c_0, mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 14 12 45#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 14 12 45#
          ((Bit_int8.(=) (#"strchrnul.jc" 306 51 63# "expl:Integer cast"
           (Bit_int8_of_Bit_int32.cast_modulo c_0))
           (#"strchrnul.jc" 307 52 63# "expl:Integer cast"
@@ -2969,7 +2965,7 @@ module Function_strchrnul_0_behaviors
        any unit
        requires { true } reads { mutable_s_1 }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strchrnul.c" 15 12 47#
+         (#"/home/work/workspace/self/verker/strchrnul.c" 15 12 47#
          ((Bit_int8.(=) (select charP_charM_s_7 !mutable_s_1)
           (#"strchrnul.jc" 313 62 73# "expl:Integer cast"
           (Bit_int8.of_int_const 0))) ->
@@ -8202,23 +8198,23 @@ module Function_strlen_0
     (charP_charM_s_0_4 : (memory voidP Int8.t)) : Uint64.t
      requires { true }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_0_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=)
         (select charP_charM_s_0_4 (shift s_0 (Uint64.to_int result)))
         (#"strchrnul.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -8254,27 +8250,27 @@ module Function_strlen_0_safe
     (charP_charM_s_0_4 : (memory voidP Int8.t)) : Uint64.t
      requires {
        ("expl:External"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+       (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
        "expl:Requires clause"
        (valid_str s_0 voidP_s_0_4_alloc_table charP_charM_s_0_4))) }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_0_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=)
         (select charP_charM_s_0_4 (shift s_0 (Uint64.to_int result)))
         (#"strchrnul.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -8341,17 +8337,17 @@ module Function_strchrnul_0
             (Bit_int8.(=) (select charP_charM_s_7 (shift s_1 i_8))
             (#"strchrnul.jc" 232 34 46# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)))))) ->
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           ((#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
             "expl:Ensures clause"
             (Bit_int8.(=) (select charP_charM_s_7 result)
             (#"strchrnul.jc" 233 47 68# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 66 15 69#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 66 15 69#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block s_1 p_0) /\
@@ -8368,54 +8364,54 @@ module Function_strchrnul_0
              (Bit_int8.(<>) (select charP_charM_s_7 (shift s_1 i_9))
              (#"strchrnul.jc" 224 34 46# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))) ->
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           ((#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
             "expl:Ensures clause"
             ((=) result
             (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 62 15 31#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 62 15 31#
            "expl:Ensures clause"
            (Bit_int8.(=) (select charP_charM_s_7 result)
            (#"strchrnul.jc" 228 48 59# "expl:Integer cast"
            (Bit_int8.of_int_const 0))))))))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
           "expl:Ensures clause" (same_block result s_1))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 57 12 47#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 57 12 47#
           "expl:Ensures clause"
           ((=) result
           (strchrnul s_1 (#"strchrnul.jc" 210 49 70# "expl:Integer cast"
           (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
           "expl:Ensures clause" (same_block s_1 result))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
           "expl:Ensures clause" ((<=) (sub_pointer s_1 result) (0)))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
           "expl:Ensures clause"
           (same_block result
           (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
          "expl:Ensures clause"
          ((<=)
          (sub_pointer result
@@ -8468,7 +8464,7 @@ module Function_strchrnul_0_safe
       (charP_charM_s_7 : (memory voidP Int8.t)) : (pointer voidP)
        requires {
          ("expl:Internal"
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 54 13 25#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 54 13 25#
          "expl:Requires clause"
          (valid_str s_1 voidP_s_7_alloc_table charP_charM_s_7))) }
        ensures {
@@ -8485,17 +8481,17 @@ module Function_strchrnul_0_safe
             (Bit_int8.(=) (select charP_charM_s_7 (shift s_1 i_8))
             (#"strchrnul.jc" 232 34 46# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)))))) ->
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 65 15 37#
+           ((#"/home/work/workspace/self/verker/strchrnul.h" 65 15 37#
             "expl:Ensures clause"
             (Bit_int8.(=) (select charP_charM_s_7 result)
             (#"strchrnul.jc" 233 47 68# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 66 15 69#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 66 15 69#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block s_1 p_0) /\
@@ -8512,54 +8508,54 @@ module Function_strchrnul_0_safe
              (Bit_int8.(<>) (select charP_charM_s_7 (shift s_1 i_9))
              (#"strchrnul.jc" 224 34 46# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))) ->
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 61 15 39#
+           ((#"/home/work/workspace/self/verker/strchrnul.h" 61 15 39#
             "expl:Ensures clause"
             ((=) result
             (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strchrnul.h" 62 15 31#
+           (#"/home/work/workspace/self/verker/strchrnul.h" 62 15 31#
            "expl:Ensures clause"
            (Bit_int8.(=) (select charP_charM_s_7 result)
            (#"strchrnul.jc" 228 48 59# "expl:Integer cast"
            (Bit_int8.of_int_const 0))))))))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
           "expl:Ensures clause" (same_block result s_1))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 57 12 47#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 57 12 47#
           "expl:Ensures clause"
           ((=) result
           (strchrnul s_1 (#"strchrnul.jc" 210 49 70# "expl:Integer cast"
           (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
           "expl:Ensures clause" (same_block s_1 result))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 12 24#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 12 24#
           "expl:Ensures clause" ((<=) (sub_pointer s_1 result) (0)))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 56 12 48#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 56 12 48#
          "expl:Ensures clause"
-         ((#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+         ((#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
           "expl:Ensures clause"
           (same_block result
           (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))))
          /\
-         (#"/home/work/workspace/self/verker-gh/strchrnul.h" 58 17 41#
+         (#"/home/work/workspace/self/verker/strchrnul.h" 58 17 41#
          "expl:Ensures clause"
          ((<=)
          (sub_pointer result

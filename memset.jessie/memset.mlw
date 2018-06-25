@@ -1691,7 +1691,7 @@ module Safe_bit_int8_of_Safe_bit_int32
 end
 
 module Function_memset_safety
-#"/home/work/workspace/self/verker-gh/memset.c" 3 5 42# "expl:memset, safety"
+#"/home/work/workspace/self/verker/memset.c" 3 5 42# "expl:memset, safety"
 
   use enum.Uint64 
   
@@ -1747,7 +1747,7 @@ module Function_memset_safety
   
   use why3.Bool.Bool 
   
-  let memset #"/home/work/workspace/self/verker-gh/memset.c" 3 5 42#
+  let memset #"/home/work/workspace/self/verker/memset.c" 3 5 42#
   "expl:Function memset, safety" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (count : Uint64.t) (charP_charM_s_2 :
@@ -1762,10 +1762,10 @@ module Function_memset_safety
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memset.jc" 18 12 730#
-   ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
+   ((#"/home/work/workspace/self/verker/memset.h" 15 13 40#
     (instanceof voidP_s_2_tag_table s charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memset.h" 16 13 43#
+   (#"/home/work/workspace/self/verker/memset.h" 16 13 43#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -1794,31 +1794,31 @@ module Function_memset_safety
      begin
      (xs :=
       (let _jessie_26 =
-      (#"/home/work/workspace/self/verker-gh/memset.c" 5 12 13#
+      (#"/home/work/workspace/self/verker/memset.c" 5 12 13#
       (downcast_  voidP_s_2_tag_table s (charP_tag  ) )) in
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memset.c" 5 6 9#
+      (#"/home/work/workspace/self/verker/memset.c" 5 6 9#
       "expl:Pointer index bounds" true) }); _jessie_26 end));
       begin
       (ocount :=
        (let _jessie_16 = !mutable_count in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/memset.c" 6 18 24#
+       (#"/home/work/workspace/self/verker/memset.c" 6 18 24#
        "expl:Pointer index bounds" true) }); _jessie_16 end));
        'Loop_2:
        loop
        invariant { (#"memset.jc" 57 6 1987# true) }
-         variant { (#"/home/work/workspace/self/verker-gh/memset.c" 12 18 23#
+         variant { (#"/home/work/workspace/self/verker/memset.c" 12 18 23#
            (Bit_uint64.to_int
-           (#"/home/work/workspace/self/verker-gh/memset.c" 12 18 23#
+           (#"/home/work/workspace/self/verker/memset.c" 12 18 23#
            !mutable_count))) }
         begin
         any unit
         requires { true } reads { c, charP_charM_s_2, mutable_count, s }
         ensures {
-          ((#"/home/work/workspace/self/verker-gh/memset.c" 11 20 76#
+          ((#"/home/work/workspace/self/verker/memset.c" 11 20 76#
            (forall p : (pointer voidP).
             (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
              (((<=)
@@ -1828,40 +1828,40 @@ module Function_memset_safety
              (#"memset.jc" 82 42 54# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
-          ((#"/home/work/workspace/self/verker-gh/memset.c" 10 20 44#
+          ((#"/home/work/workspace/self/verker/memset.c" 10 20 44#
            ((=) (sub_pointer !xs (downcast voidP_s_2_tag_table s charP_tag))
            (Int.(-) (Bit_uint64.to_int !ocount)
            (Bit_uint64.to_int !mutable_count))))
           /\
-          ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-           (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-           ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 35#
+          ((#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+           (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+           ((#"/home/work/workspace/self/verker/memset.c" 9 20 35#
             (same_block (downcast voidP_s_2_tag_table s charP_tag) !xs))
            /\
-           (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-           ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 35#
+           (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+           ((#"/home/work/workspace/self/verker/memset.c" 9 20 35#
             ((<=)
             (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) !xs) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-           ((#"/home/work/workspace/self/verker-gh/memset.c" 9 33 57#
+           (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+           ((#"/home/work/workspace/self/verker/memset.c" 9 33 57#
             (same_block !xs
             (shift (downcast voidP_s_2_tag_table s charP_tag)
             (Bit_uint64.to_int !ocount))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memset.c" 9 33 57#
+           (#"/home/work/workspace/self/verker/memset.c" 9 33 57#
            ((<=)
            (sub_pointer !xs
            (shift (downcast voidP_s_2_tag_table s charP_tag)
            (Bit_uint64.to_int !ocount))) (0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
-          (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
-          ((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 30#
+          (#"/home/work/workspace/self/verker/memset.c" 8 20 40#
+          (#"/home/work/workspace/self/verker/memset.c" 8 20 40#
+          ((#"/home/work/workspace/self/verker/memset.c" 8 20 30#
            (Bit_uint64.(<=) (#"memset.jc" 59 38 51# "expl:Integer cast"
            (Bit_uint64.of_int_const 0)) !mutable_count))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.c" 8 25 40#
+          (#"/home/work/workspace/self/verker/memset.c" 8 25 40#
           (Bit_uint64.(<=) !mutable_count !ocount)))))))) } ;
          try
           begin
@@ -1871,7 +1871,7 @@ module Function_memset_safety
            (let _jessie_17 = !mutable_count in
            begin
            (assert {
-           (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
+           (#"/home/work/workspace/self/verker/memset.c" 14 8 19#
            "expl:Pointer index bounds" true) }); _jessie_17 end));
            begin
            (mutable_count :=
@@ -1881,11 +1881,11 @@ module Function_memset_safety
              (Safe_bit_uint64.of_int_const 1)) ) in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
+            (#"/home/work/workspace/self/verker/memset.c" 14 8 19#
             "expl:Pointer index bounds" true) }); _jessie_18 end)); () end
           end;
            (if
-           (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
+           (#"/home/work/workspace/self/verker/memset.c" 14 8 19#
            (Safe_bit_uint64.(<>)  !tmp_0
             (#"memset.jc" 91 47 60# "expl:Integer cast"
             (Safe_bit_uint64.of_int_const 0)) )) then ()
@@ -1895,7 +1895,7 @@ module Function_memset_safety
             (let _jessie_19 = !xs in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/memset.c" 15 3 7#
+            (#"/home/work/workspace/self/verker/memset.c" 15 3 7#
             "expl:Pointer index bounds" true) }); _jessie_19 end));
             begin
             (xs :=
@@ -1906,21 +1906,21 @@ module Function_memset_safety
                (Safe_bit_int32.of_int_const 1)) ) ) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memset.c" 15 3 7#
+             (#"/home/work/workspace/self/verker/memset.c" 15 3 7#
              "expl:Pointer index bounds" true) }); _jessie_20 end));
              (let _jessie_22 =
              (let _jessie_21 =
-             (#"/home/work/workspace/self/verker-gh/memset.c" 15 10 23#
+             (#"/home/work/workspace/self/verker/memset.c" 15 10 23#
              "expl:Integer cast"
              (Safe_bit_int8_of_Safe_bit_int32.cast_modulo  c )) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memset.c" 15 2 23#
+             (#"/home/work/workspace/self/verker/memset.c" 15 2 23#
              "expl:Pointer index bounds" true) }); _jessie_21 end) in
              (let _jessie_23 = !tmp in
              (let _jessie_24 = (0) in
              (let _jessie_25 = _jessie_23 in
-             (#"/home/work/workspace/self/verker-gh/memset.c" 15 2 23#
+             (#"/home/work/workspace/self/verker/memset.c" 15 2 23#
              "expl:Pointer dereference"
              (upd  voidP_s_2_alloc_table charP_charM_s_2 _jessie_23
               _jessie_22 )))))) end end end; (raise (Loop_continue_exc ()))
@@ -1935,7 +1935,7 @@ module Function_memset_safety
       any unit
       requires { true } reads { mutable_count }
       ensures {
-        (#"/home/work/workspace/self/verker-gh/memset.c" 16 12 35#
+        (#"/home/work/workspace/self/verker/memset.c" 16 12 35#
         (Bit_uint64.(=) !mutable_count (#"memset.jc" 104 51 69#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
        () end;
@@ -1978,8 +1978,7 @@ module Unsafe_bit_int8_of_Unsafe_bit_int32
 end
 
 module Function_memset_behaviors
-#"/home/work/workspace/self/verker-gh/memset.c" 3 5 42#
-"expl:memset, behaviors"
+#"/home/work/workspace/self/verker/memset.c" 3 5 42# "expl:memset, behaviors"
 
   use Unsafe_bit_uint64 
   
@@ -2042,7 +2041,7 @@ module Function_memset_behaviors
   use why3.Bool.Bool 
   
   let memset_ensures_default
-  #"/home/work/workspace/self/verker-gh/memset.c" 3 5 42#
+  #"/home/work/workspace/self/verker/memset.c" 3 5 42#
   "expl:Function memset, default behavior" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (count : Uint64.t) (charP_charM_s_2 :
@@ -2057,10 +2056,10 @@ module Function_memset_behaviors
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memset.jc" 18 12 730#
-   ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
+   ((#"/home/work/workspace/self/verker/memset.h" 15 13 40#
     (instanceof voidP_s_2_tag_table s charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memset.h" 16 13 43#
+   (#"/home/work/workspace/self/verker/memset.h" 16 13 43#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -2083,11 +2082,11 @@ module Function_memset_behaviors
       (pset_range (pset_singleton (downcast voidP_s_2_tag_table s charP_tag))
       (0) (Int.(-) (Bit_uint64.to_int count) (1)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+     (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+     (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+     ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
       "expl:Ensures clause"
       (forall p_0 : (pointer voidP).
        (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
@@ -2105,7 +2104,7 @@ module Function_memset_behaviors
         (Bit_int8.(=) (select !charP_charM_s_2 p_0) (#"memset.jc" 43 47 68#
         "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
+     (#"/home/work/workspace/self/verker/memset.h" 20 12 24#
      "expl:Ensures clause" ((=) result s))))))) } diverges  ->
    (let mutable_count = ref count in
    'Init:
@@ -2124,45 +2123,45 @@ module Function_memset_behaviors
        'Loop_1:
        loop
        invariant
-         { (((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
-             (#"/home/work/workspace/self/verker-gh/memset.c" 8 20 40#
-             ((#"/home/work/workspace/self/verker-gh/memset.c" 8 20 30#
+         { (((#"/home/work/workspace/self/verker/memset.c" 8 20 40#
+             (#"/home/work/workspace/self/verker/memset.c" 8 20 40#
+             ((#"/home/work/workspace/self/verker/memset.c" 8 20 30#
               (Bit_uint64.(<=) (#"memset.jc" 59 38 51# "expl:Integer cast"
               (Bit_uint64.of_int_const 0)) !mutable_count))
              /\
-             (#"/home/work/workspace/self/verker-gh/memset.c" 8 25 40#
+             (#"/home/work/workspace/self/verker/memset.c" 8 25 40#
              (Bit_uint64.(<=) !mutable_count !ocount)))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-             (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-             ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 35#
+            ((#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+             (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+             ((#"/home/work/workspace/self/verker/memset.c" 9 20 35#
               (same_block (downcast voidP_s_2_tag_table s charP_tag) !xs))
              /\
-             (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-             ((#"/home/work/workspace/self/verker-gh/memset.c" 9 20 35#
+             (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+             ((#"/home/work/workspace/self/verker/memset.c" 9 20 35#
               ((<=)
               (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) !xs)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memset.c" 9 20 57#
-             ((#"/home/work/workspace/self/verker-gh/memset.c" 9 33 57#
+             (#"/home/work/workspace/self/verker/memset.c" 9 20 57#
+             ((#"/home/work/workspace/self/verker/memset.c" 9 33 57#
               (same_block !xs
               (shift (downcast voidP_s_2_tag_table s charP_tag)
               (Bit_uint64.to_int !ocount))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memset.c" 9 33 57#
+             (#"/home/work/workspace/self/verker/memset.c" 9 33 57#
              ((<=)
              (sub_pointer !xs
              (shift (downcast voidP_s_2_tag_table s charP_tag)
              (Bit_uint64.to_int !ocount))) (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/memset.c" 10 20 44#
+            ((#"/home/work/workspace/self/verker/memset.c" 10 20 44#
              ((=)
              (sub_pointer !xs (downcast voidP_s_2_tag_table s charP_tag))
              (Int.(-) (Bit_uint64.to_int !ocount)
              (Bit_uint64.to_int !mutable_count))))
             &&
-            (#"/home/work/workspace/self/verker-gh/memset.c" 11 20 76#
+            (#"/home/work/workspace/self/verker/memset.c" 11 20 76#
             (forall p : (pointer voidP).
              (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
               (((<=)
@@ -2193,7 +2192,7 @@ module Function_memset_behaviors
              (#"memset.jc" 88 62 75# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
            (if
-           (#"/home/work/workspace/self/verker-gh/memset.c" 14 8 19#
+           (#"/home/work/workspace/self/verker/memset.c" 14 8 19#
            (Unsafe_bit_uint64.(<>)  !tmp_0
             (#"memset.jc" 91 47 60# "expl:Integer cast"
             (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -2207,7 +2206,7 @@ module Function_memset_behaviors
                (#"memset.jc" 95 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (let _jessie_10 =
-             (#"/home/work/workspace/self/verker-gh/memset.c" 15 10 23#
+             (#"/home/work/workspace/self/verker/memset.c" 15 10 23#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c )) in
              (let _jessie_11 = !tmp in
@@ -2223,7 +2222,7 @@ module Function_memset_behaviors
      ();
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memset.c" 16 12 35#
+      (#"/home/work/workspace/self/verker/memset.c" 16 12 35#
       "expl:Assertion in line 16"
       (Bit_uint64.(=) !mutable_count (#"memset.jc" 104 51 69#
       "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) }); ()
@@ -7548,11 +7547,11 @@ module Function_memset
            (pset_singleton (downcast voidP_s_2_tag_table s charP_tag)) (0)
            (Int.(-) (Uint64.to_int count) (1)))))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
           "expl:Ensures clause"
-          (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
@@ -7572,7 +7571,7 @@ module Function_memset
              (#"memset.jc" 43 47 68# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
+          (#"/home/work/workspace/self/verker/memset.h" 20 12 24#
           "expl:Ensures clause" ((=) result s))))))) }
   
 end
@@ -7629,11 +7628,11 @@ module Function_memset_safe
         requires {
           ("expl:Internal"
           (#"memset.jc" 18 12 730# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memset.h" 15 13 40#
+          ((#"/home/work/workspace/self/verker/memset.h" 15 13 40#
            "expl:Requires clause"
            (instanceof voidP_s_2_tag_table s charP_tag))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.h" 16 13 43#
+          (#"/home/work/workspace/self/verker/memset.h" 16 13 43#
           "expl:Requires clause"
           (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
            (((<=)
@@ -7665,11 +7664,11 @@ module Function_memset_safe
            (pset_singleton (downcast voidP_s_2_tag_table s charP_tag)) (0)
            (Int.(-) (Uint64.to_int count) (1)))))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
           "expl:Ensures clause"
-          (#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          (#"/home/work/workspace/self/verker/memset.h" 18 12 95#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/memset.h" 18 12 95#
+          ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
@@ -7689,7 +7688,7 @@ module Function_memset_safe
              (#"memset.jc" 43 47 68# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/memset.h" 20 12 24#
+          (#"/home/work/workspace/self/verker/memset.h" 20 12 24#
           "expl:Ensures clause" ((=) result s))))))) }
   
 end

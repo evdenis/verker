@@ -1661,7 +1661,7 @@ module Exceptions
 end
 
 module Function_memcpy_safety
-#"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55# "expl:memcpy, safety"
+#"/home/work/workspace/self/verker/memcpy.c" 3 5 55# "expl:memcpy, safety"
 
   use enum.Uint64 
   
@@ -1711,7 +1711,7 @@ module Function_memcpy_safety
   
   use why3.Bool.Bool 
   
-  let memcpy #"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55#
+  let memcpy #"/home/work/workspace/self/verker/memcpy.c" 3 5 55#
   "expl:Function memcpy, safety" =
   fun
    (dest_1 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
@@ -1736,15 +1736,15 @@ module Function_memcpy_safety
        (instanceof voidP_dest_1_2_tag_table (shift dest_1 i) voidP_tag)))))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 16 13 42#
     (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 17 13 43#
     (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_src_1_3_alloc_table
@@ -1760,7 +1760,7 @@ module Function_memcpy_safety
        ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcpy.h" 19 13 46#
+   (#"/home/work/workspace/self/verker/memcpy.h" 19 13 46#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
      (offset_min voidP_dest_1_2_alloc_table
@@ -1791,42 +1791,41 @@ module Function_memcpy_safety
      begin
      (tmp :=
       (let _jessie_32 =
-      (#"/home/work/workspace/self/verker-gh/memcpy.c" 5 13 17#
+      (#"/home/work/workspace/self/verker/memcpy.c" 5 13 17#
       (downcast_  voidP_dest_1_2_tag_table dest_1 (charP_tag  ) )) in
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memcpy.c" 5 6 10#
+      (#"/home/work/workspace/self/verker/memcpy.c" 5 6 10#
       "expl:Pointer index bounds" true) }); _jessie_32 end));
       begin
       (s :=
        (let _jessie_31 =
-       (#"/home/work/workspace/self/verker-gh/memcpy.c" 6 17 20#
+       (#"/home/work/workspace/self/verker/memcpy.c" 6 17 20#
        (downcast_  voidP_src_1_3_tag_table src_1 (charP_tag  ) )) in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/memcpy.c" 6 12 14#
+       (#"/home/work/workspace/self/verker/memcpy.c" 6 12 14#
        "expl:Pointer index bounds" true) }); _jessie_31 end));
        begin
        (ocount :=
         (let _jessie_19 = !mutable_count in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memcpy.c" 7 18 24#
+        (#"/home/work/workspace/self/verker/memcpy.c" 7 18 24#
         "expl:Pointer index bounds" true) }); _jessie_19 end));
         'Loop_2:
         loop
         invariant { (#"memcpy.jc" 65 6 2950# true) }
-          variant {
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 15 18 23#
+          variant { (#"/home/work/workspace/self/verker/memcpy.c" 15 18 23#
             (Bit_uint64.to_int
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 15 18 23#
+            (#"/home/work/workspace/self/verker/memcpy.c" 15 18 23#
             !mutable_count))) }
          begin
          any unit
          requires { true } reads { charP_charM_dest_1_2, dest_1,
          mutable_count, src_1 }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/memcpy.c" 13 20 124#
+           ((#"/home/work/workspace/self/verker/memcpy.c" 13 20 124#
             (forall i : int.
              ((((<=) (0) i) /\
               ((<) i
@@ -1838,77 +1837,77 @@ module Function_memcpy_safety
               (select charP_charM_src_1_3
               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 41#
+           ((#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
+            (#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 12 20 41#
              ((=)
              (sub_pointer !tmp
              (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
              (sub_pointer !s
              (downcast voidP_src_1_3_tag_table src_1 charP_tag))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 12 34 59#
+            (#"/home/work/workspace/self/verker/memcpy.c" 12 34 59#
             ((=)
             (sub_pointer !s
             (downcast voidP_src_1_3_tag_table src_1 charP_tag))
             (Int.(-) (Bit_uint64.to_int !ocount)
             (Bit_uint64.to_int !mutable_count)))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 36#
+           ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+            (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 36#
              (same_block (downcast voidP_src_1_3_tag_table src_1 charP_tag)
              !s))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 36#
+            (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 36#
              ((<=)
              (sub_pointer (downcast voidP_src_1_3_tag_table src_1 charP_tag)
              !s) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 35 60#
+            (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 11 35 60#
              (same_block !s
              (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag)
              (Bit_uint64.to_int !ocount))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 35 60#
+            (#"/home/work/workspace/self/verker/memcpy.c" 11 35 60#
             ((<=)
             (sub_pointer !s
             (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag)
             (Bit_uint64.to_int !ocount))) (0))))))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
+           ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+            (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 39#
              (same_block (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
              !tmp))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
+            (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 39#
              ((<=)
              (sub_pointer
              (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-            ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
+            (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+            ((#"/home/work/workspace/self/verker/memcpy.c" 10 36 64#
              (same_block !tmp
              (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
              (Bit_uint64.to_int !ocount))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
+            (#"/home/work/workspace/self/verker/memcpy.c" 10 36 64#
             ((<=)
             (sub_pointer !tmp
             (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
             (Bit_uint64.to_int !ocount))) (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
-           (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
-           ((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 30#
+           (#"/home/work/workspace/self/verker/memcpy.c" 9 20 40#
+           (#"/home/work/workspace/self/verker/memcpy.c" 9 20 40#
+           ((#"/home/work/workspace/self/verker/memcpy.c" 9 20 30#
             (Bit_uint64.(<=) (#"memcpy.jc" 67 38 51# "expl:Integer cast"
             (Bit_uint64.of_int_const 0)) !mutable_count))
            /\
-           (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 25 40#
+           (#"/home/work/workspace/self/verker/memcpy.c" 9 25 40#
            (Bit_uint64.(<=) !mutable_count !ocount))))))))) } ;
           try
            begin
@@ -1918,7 +1917,7 @@ module Function_memcpy_safety
             (let _jessie_20 = !mutable_count in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
+            (#"/home/work/workspace/self/verker/memcpy.c" 17 8 19#
             "expl:Pointer index bounds" true) }); _jessie_20 end));
             begin
             (mutable_count :=
@@ -1928,11 +1927,11 @@ module Function_memcpy_safety
               (Safe_bit_uint64.of_int_const 1)) ) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
+             (#"/home/work/workspace/self/verker/memcpy.c" 17 8 19#
              "expl:Pointer index bounds" true) }); _jessie_21 end)); () end
            end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
+            (#"/home/work/workspace/self/verker/memcpy.c" 17 8 19#
             (Safe_bit_uint64.(<>)  !tmp_2
              (#"memcpy.jc" 112 47 60# "expl:Integer cast"
              (Safe_bit_uint64.of_int_const 0)) )) then ()
@@ -1942,7 +1941,7 @@ module Function_memcpy_safety
              (let _jessie_22 = !tmp in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 3 8#
+             (#"/home/work/workspace/self/verker/memcpy.c" 18 3 8#
              "expl:Pointer index bounds" true) }); _jessie_22 end));
              begin
              (tmp :=
@@ -1953,14 +1952,14 @@ module Function_memcpy_safety
                 (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 3 8#
+              (#"/home/work/workspace/self/verker/memcpy.c" 18 3 8#
               "expl:Pointer index bounds" true) }); _jessie_23 end));
               begin
               (tmp_1 :=
                (let _jessie_24 = !s in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 12 15#
+               (#"/home/work/workspace/self/verker/memcpy.c" 18 12 15#
                "expl:Pointer index bounds" true) }); _jessie_24 end));
                begin
                (s :=
@@ -1971,22 +1970,22 @@ module Function_memcpy_safety
                   (Safe_int32.of_int (1))) ) ) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 12 15#
+                (#"/home/work/workspace/self/verker/memcpy.c" 18 12 15#
                 "expl:Pointer index bounds" true) }); _jessie_25 end));
                 (let _jessie_27 =
                 (let _jessie_26 =
-                (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 11 15#
+                (#"/home/work/workspace/self/verker/memcpy.c" 18 11 15#
                 "expl:Pointer dereference"
                 (acc  voidP_src_1_3_alloc_table charP_charM_src_1_3 !tmp_1 ))
                 in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 2 15#
+                (#"/home/work/workspace/self/verker/memcpy.c" 18 2 15#
                 "expl:Pointer index bounds" true) }); _jessie_26 end) in
                 (let _jessie_28 = !tmp_0 in
                 (let _jessie_29 = (0) in
                 (let _jessie_30 = _jessie_28 in
-                (#"/home/work/workspace/self/verker-gh/memcpy.c" 18 2 15#
+                (#"/home/work/workspace/self/verker/memcpy.c" 18 2 15#
                 "expl:Pointer dereference"
                 (upd  voidP_dest_1_2_alloc_table charP_charM_dest_1_2
                  _jessie_28 _jessie_27 )))))) end end end end end;
@@ -2001,7 +2000,7 @@ module Function_memcpy_safety
       any unit
       requires { true } reads { mutable_count }
       ensures {
-        (#"/home/work/workspace/self/verker-gh/memcpy.c" 19 12 35#
+        (#"/home/work/workspace/self/verker/memcpy.c" 19 12 35#
         (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 127 51 69#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
        () end;
@@ -2016,8 +2015,7 @@ module Function_memcpy_safety
 end
 
 module Function_memcpy_behaviors
-#"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55#
-"expl:memcpy, behaviors"
+#"/home/work/workspace/self/verker/memcpy.c" 3 5 55# "expl:memcpy, behaviors"
 
   use Unsafe_int32 
   
@@ -2074,7 +2072,7 @@ module Function_memcpy_behaviors
   use why3.Bool.Bool 
   
   let memcpy_ensures_default
-  #"/home/work/workspace/self/verker-gh/memcpy.c" 3 5 55#
+  #"/home/work/workspace/self/verker/memcpy.c" 3 5 55#
   "expl:Function memcpy, default behavior" =
   fun
    (dest_1 : (pointer voidP)) (src_1 : (pointer voidP)) (count : Uint64.t)
@@ -2099,15 +2097,15 @@ module Function_memcpy_behaviors
        (instanceof voidP_dest_1_2_tag_table (shift dest_1 i) voidP_tag)))))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 16 13 42#
     (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 17 13 43#
     (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
    /\
    (#"memcpy.jc" 18 12 1572#
-   ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memcpy.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_src_1_3_alloc_table
@@ -2123,7 +2121,7 @@ module Function_memcpy_behaviors
        ((<=) __framac_tmp1 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcpy.h" 19 13 46#
+   (#"/home/work/workspace/self/verker/memcpy.h" 19 13 46#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
     (((<=)
      (offset_min voidP_dest_1_2_alloc_table
@@ -2147,7 +2145,7 @@ module Function_memcpy_behaviors
       (pset_singleton (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
       (0) (Int.(-) (Bit_uint64.to_int count) (1)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
+     (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
      "expl:Ensures clause"
      (forall i_0 : int.
       ((((<=) (0) i_0) /\ ((<) i_0 (Bit_uint64.to_int count))) ->
@@ -2178,81 +2176,81 @@ module Function_memcpy_behaviors
         'Loop_1:
         loop
         invariant
-          { (((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 40#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 9 20 30#
+          { (((#"/home/work/workspace/self/verker/memcpy.c" 9 20 40#
+              (#"/home/work/workspace/self/verker/memcpy.c" 9 20 40#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 9 20 30#
                (Bit_uint64.(<=) (#"memcpy.jc" 67 38 51# "expl:Integer cast"
                (Bit_uint64.of_int_const 0)) !mutable_count))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 9 25 40#
+              (#"/home/work/workspace/self/verker/memcpy.c" 9 25 40#
               (Bit_uint64.(<=) !mutable_count !ocount)))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
+             ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+              (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 39#
                (same_block
                (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 39#
+              (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 10 20 39#
                ((<=)
                (sub_pointer
                (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) !tmp)
                (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
+              (#"/home/work/workspace/self/verker/memcpy.c" 10 20 64#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 10 36 64#
                (same_block !tmp
                (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
                (Bit_uint64.to_int !ocount))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 10 36 64#
+              (#"/home/work/workspace/self/verker/memcpy.c" 10 36 64#
               ((<=)
               (sub_pointer !tmp
               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
               (Bit_uint64.to_int !ocount))) (0))))))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 36#
+             ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+              (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 36#
                (same_block (downcast voidP_src_1_3_tag_table src_1 charP_tag)
                !s))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 36#
+              (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 11 20 36#
                ((<=)
                (sub_pointer
                (downcast voidP_src_1_3_tag_table src_1 charP_tag) !s) (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 20 60#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 11 35 60#
+              (#"/home/work/workspace/self/verker/memcpy.c" 11 20 60#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 11 35 60#
                (same_block !s
                (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag)
                (Bit_uint64.to_int !ocount))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 11 35 60#
+              (#"/home/work/workspace/self/verker/memcpy.c" 11 35 60#
               ((<=)
               (sub_pointer !s
               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag)
               (Bit_uint64.to_int !ocount))) (0))))))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 59#
-              ((#"/home/work/workspace/self/verker-gh/memcpy.c" 12 20 41#
+             ((#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
+              (#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
+              ((#"/home/work/workspace/self/verker/memcpy.c" 12 20 41#
                ((=)
                (sub_pointer !tmp
                (downcast voidP_dest_1_2_tag_table dest_1 charP_tag))
                (sub_pointer !s
                (downcast voidP_src_1_3_tag_table src_1 charP_tag))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcpy.c" 12 34 59#
+              (#"/home/work/workspace/self/verker/memcpy.c" 12 34 59#
               ((=)
               (sub_pointer !s
               (downcast voidP_src_1_3_tag_table src_1 charP_tag))
               (Int.(-) (Bit_uint64.to_int !ocount)
               (Bit_uint64.to_int !mutable_count)))))))
              &&
-             (#"/home/work/workspace/self/verker-gh/memcpy.c" 13 20 124#
+             (#"/home/work/workspace/self/verker/memcpy.c" 13 20 124#
              (forall i : int.
               ((((<=) (0) i) /\
                ((<) i
@@ -2286,7 +2284,7 @@ module Function_memcpy_behaviors
               (#"memcpy.jc" 109 62 75# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memcpy.c" 17 8 19#
+            (#"/home/work/workspace/self/verker/memcpy.c" 17 8 19#
             (Unsafe_bit_uint64.(<>)  !tmp_2
              (#"memcpy.jc" 112 47 60# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -2322,7 +2320,7 @@ module Function_memcpy_behaviors
      ();
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/memcpy.c" 19 12 35#
+      (#"/home/work/workspace/self/verker/memcpy.c" 19 12 35#
       "expl:Assertion in line 19"
       (Bit_uint64.(=) !mutable_count (#"memcpy.jc" 127 51 69#
       "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) }); ()
@@ -7705,7 +7703,7 @@ module Function_memcpy
               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0)
               (Int.(-) (Uint64.to_int count) (1)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
+             (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
              "expl:Ensures clause"
              (forall i_0 : int.
               ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
@@ -7768,17 +7766,17 @@ module Function_memcpy_safe
            requires {
              ("expl:Internal"
              (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcpy.h" 16 13 42#
+             ((#"/home/work/workspace/self/verker/memcpy.h" 16 13 42#
               "expl:Requires clause"
               (instanceof voidP_src_1_3_tag_table src_1 charP_tag))
              /\
              (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcpy.h" 17 13 43#
+             ((#"/home/work/workspace/self/verker/memcpy.h" 17 13 43#
               "expl:Requires clause"
               (instanceof voidP_dest_1_2_tag_table dest_1 charP_tag))
              /\
              (#"memcpy.jc" 18 12 1572# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcpy.h" 18 13 45#
+             ((#"/home/work/workspace/self/verker/memcpy.h" 18 13 45#
               "expl:Requires clause"
               (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
                (((<=)
@@ -7795,7 +7793,7 @@ module Function_memcpy_safe
                  ((<=) __framac_tmp1 (Int.(-) (Uint64.to_int count) (1)))) ->
                  ((=) true true))))) else ((=) true true)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcpy.h" 19 13 46#
+             (#"/home/work/workspace/self/verker/memcpy.h" 19 13 46#
              "expl:Requires clause"
              (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
               (((<=)
@@ -7830,7 +7828,7 @@ module Function_memcpy_safe
               (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)) (0)
               (Int.(-) (Uint64.to_int count) (1)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcpy.h" 21 12 99#
+             (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
              "expl:Ensures clause"
              (forall i_0 : int.
               ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->

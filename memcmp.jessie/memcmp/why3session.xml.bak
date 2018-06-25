@@ -2,94 +2,86 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
-<file name="../strcspn.mlw" expanded="true">
-<theory name="Function_strcspn_0_safety" sum="511f6bdef947bbb7d5caff28bad7373a" expanded="true">
- <goal name="WP_parameter strcspn_0" expl="Function strcspn, safety" expanded="true">
+<prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
+<prover id="1" name="CVC4" version="1.4" alternative="noBV" timelimit="3" steplimit="0" memlimit="16000"/>
+<prover id="2" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
+<file name="../memcmp.mlw" expanded="true">
+<theory name="Function_memcmp_safety" sum="c1efa48d5391186e73e8469c987127e3" expanded="true">
+ <goal name="WP_parameter memcmp" expl="Function memcmp, safety" expanded="true">
  <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strcspn_0.1" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.02" steps="16"/></proof>
+  <goal name="WP_parameter memcmp.1" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="17"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.2" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.03" steps="42"/></proof>
+  <goal name="WP_parameter memcmp.2" expl="Downcast">
+  <proof prover="0"><result status="valid" time="0.01" steps="18"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.17"/></proof>
+  <goal name="WP_parameter memcmp.3" expl="Downcast">
+  <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.4" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.02" steps="62"/></proof>
+  <goal name="WP_parameter memcmp.4" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="53"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.5" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.32"/></proof>
+  <goal name="WP_parameter memcmp.5" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.08" steps="422"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.6" expl="Pointer dereference (Validity)">
-  <proof prover="1"><result status="valid" time="0.01" steps="72"/></proof>
+  <goal name="WP_parameter memcmp.6" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.10" steps="496"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.7" expl="Pointer dereference (Validity)">
-  <proof prover="1"><result status="valid" time="0.02" steps="74"/></proof>
+  <goal name="WP_parameter memcmp.7" expl="integer overflow">
+  <proof prover="0"><result status="valid" time="0.11" steps="520"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.8" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.05" steps="83"/></proof>
+  <goal name="WP_parameter memcmp.8" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="74"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.9" expl="loop variant decrease">
-  <proof prover="1"><result status="valid" time="0.06" steps="222"/></proof>
+  <goal name="WP_parameter memcmp.9" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.03" steps="83"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.10" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.05" steps="78"/></proof>
+  <goal name="WP_parameter memcmp.10" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.03" steps="84"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.11" expl="integer overflow">
-  <proof prover="1"><result status="valid" time="0.63" steps="2541"/></proof>
+  <goal name="WP_parameter memcmp.11" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.03" steps="93"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.12" expl="Integer cast (integer overflow)">
-  <proof prover="1"><result status="valid" time="0.04" steps="88"/></proof>
+  <goal name="WP_parameter memcmp.12" expl="integer overflow">
+  <proof prover="0"><result status="valid" time="0.12" steps="510"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_0.13" expl="loop variant decrease">
-  <proof prover="1"><result status="valid" time="0.06" steps="231"/></proof>
+  <goal name="WP_parameter memcmp.13" expl="loop variant decrease">
+  <proof prover="0"><result status="valid" time="0.03" steps="98"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcspn_0_behaviors" sum="ce4fea917b81cc9c35f234a83ff70a08" expanded="true">
- <goal name="WP_parameter strcspn_ensures_default" expl="Function strcspn, default behavior" expanded="true">
+<theory name="Function_memcmp_behaviors" sum="0fe1032a01a9d753de4bda1fb2227b1f" expanded="true">
+ <goal name="WP_parameter memcmp_ensures_default" expl="Function memcmp, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strcspn_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.02" steps="34"/></proof>
+  <goal name="WP_parameter memcmp_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.02" steps="32"/></proof>
+  <goal name="WP_parameter memcmp_ensures_default.2" expl="Behavior completeness check">
+  <proof prover="0"><result status="valid" time="0.02" steps="28"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.14" steps="671"/></proof>
+  <goal name="WP_parameter memcmp_ensures_default.3" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.10" steps="930"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.4" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.36" steps="904"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.5" expl="Assertion in line 28">
-  <proof prover="1"><result status="valid" time="3.38" steps="3502"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.6" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.73" steps="2295"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.7" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="2.26"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.8" expl="Assertion in line 31">
-  <proof prover="0"><result status="valid" time="1.58"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.9" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="1.37"/></proof>
-  </goal>
-  <goal name="WP_parameter strcspn_ensures_default.10" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="5.90" steps="4968"/></proof>
+  <goal name="WP_parameter memcmp_ensures_default.4" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="0.34" steps="2645"/></proof>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter strcspn_ensures_exists" expl="Function strcspn, behavior exists" expanded="true">
- <proof prover="0"><result status="valid" time="1.68"/></proof>
+ <goal name="WP_parameter memcmp_ensures_diff" expl="Function memcmp, behavior diff" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter memcmp_ensures_diff.1" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="timeout" time="5.01"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.20"/></proof>
+  <proof prover="2"><result status="valid" time="0.54"/></proof>
+  </goal>
+  <goal name="WP_parameter memcmp_ensures_diff.2" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.02" steps="74"/></proof>
+  </goal>
+ </transf>
  </goal>
- <goal name="WP_parameter strcspn_ensures_not_exists" expl="Function strcspn, behavior not_exists" expanded="true">
- <proof prover="0"><result status="valid" time="1.09"/></proof>
+ <goal name="WP_parameter memcmp_ensures_equal" expl="Function memcmp, behavior equal" expanded="true">
+ <proof prover="0"><result status="valid" time="0.07" steps="431"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -390,73 +382,27 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="2d6b4175d478f9d87a5a9261f53df7dd" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
- </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
- </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
- </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
- </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
- </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
- </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
- </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
- </goal>
+<theory name="Struct_voidP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrSpn" sum="7f0b127f5d1e231cd9abef10dc9d98c3" expanded="true">
- <goal name="In_array_shift1" expl="Lemma in_array_shift1" expanded="true">
- </goal>
- <goal name="In_array_true" expl="Lemma in_array_true" expanded="true">
- </goal>
- <goal name="In_array_false" expl="Lemma in_array_false" expanded="true">
- </goal>
- <goal name="Strspn_strend" expl="Lemma strspn_strend" expanded="true">
- </goal>
- <goal name="Strspn_empty_accept" expl="Lemma strspn_empty_accept" expanded="true">
- </goal>
- <goal name="Strspn_range" expl="Lemma strspn_range" expanded="true">
- </goal>
- <goal name="Strspn_shift1" expl="Lemma strspn_shift1" expanded="true">
- </goal>
- <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept" expanded="true">
- </goal>
-</theory>
-<theory name="Axiomatic_StrCSpn" sum="6bbe88b8ef3848b119dec767dfcecbf9" expanded="true">
- <goal name="Strcspn_strend" expl="Lemma strcspn_strend" expanded="true">
- </goal>
- <goal name="Strcspn_empty_reject" expl="Lemma strcspn_empty_reject" expanded="true">
- </goal>
- <goal name="Strcspn_range" expl="Lemma strcspn_range" expanded="true">
- </goal>
- <goal name="Strcspn_shift1" expl="Lemma strcspn_shift1" expanded="true">
- </goal>
- <goal name="Strcspn_stop_in_reject" expl="Lemma strcspn_stop_in_reject" expanded="true">
- </goal>
-</theory>
-<theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Safe_int32_of_Safe_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Unsafe_int32_of_Unsafe_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_voidP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -505,10 +451,6 @@
 <theory name="Safe_bit_int32_of_Safe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_int32_of_Unsafe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Safe_int32_of_Safe_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Unsafe_int32_of_Unsafe_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_bit_int16_of_Safe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -649,6 +591,10 @@
 <theory name="Safe_bit_int32_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_int32_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_bit_int16_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -906,17 +852,11 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Axiomatic_Jessie_memory_reinterpretation_predicates" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Function_memcmp" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strspn_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strcspn_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strcspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Function_memcmp_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 </file>
 </why3session>

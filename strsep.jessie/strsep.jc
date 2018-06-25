@@ -394,11 +394,11 @@ behavior not_found:
 ;
 
 charP[..] strsep(char_xP[..] s_0, charP[..] ct_0)
-  requires ((_C_91 : valid_str{Here}(ct_0)) &&
-             ((_C_92 : \at((((\offset_min(\at(s_0,Here)) <= \at(0,Here)) &&
+  requires ((_C_90 : valid_str{Here}(ct_0)) &&
+             ((_C_91 : \at((((\offset_min(\at(s_0,Here)) <= \at(0,Here)) &&
                               (\offset_max(\at(s_0,Here)) >= \at(0,Here))) &&
                              true),Here)) &&
-               (_C_93 : ((valid_str{Here}(s_0.char_xM) &&
+               (_C_92 : ((valid_str{Here}(s_0.char_xM) &&
                            (! (s_0.char_xM == null))) ||
                           ((s_0.char_xM == null) &&
                             (! valid_str{Here}(s_0.char_xM)))))));
@@ -407,25 +407,25 @@ behavior default:
 behavior input_null:
   assumes (s_0.char_xM == null);
   assigns \nothing;
-  ensures (_C_75 : (\result == null));
+  ensures (_C_74 : (\result == null));
 behavior input_strpbrk_null:
   assumes (valid_str{Here}(s_0.char_xM) &&
             (strpbrk(s_0.char_xM, ct_0) == null));
   assigns s_0.char_xM;
-  ensures (_C_76 : ((_C_77 : (\result == \at(s_0.char_xM,Old))) &&
-                     (_C_78 : (\at(s_0,Old).char_xM == null))));
+  ensures (_C_75 : ((_C_76 : (\result == \at(s_0.char_xM,Old))) &&
+                     (_C_77 : (\at(s_0,Old).char_xM == null))));
 behavior input_strpbrk_not_null:
   assumes (valid_str{Here}(s_0.char_xM) &&
             (strpbrk(s_0.char_xM, ct_0) != null));
   assigns strpbrk(\at(s_0.char_xM,Old), ct_0).charM,
   s_0.char_xM;
-  ensures (_C_79 : ((_C_80 : (\result == \at(s_0.char_xM,Old))) &&
-                     ((_C_82 : (\at(s_0,Old).char_xM ==
+  ensures (_C_78 : ((_C_79 : (\result == \at(s_0.char_xM,Old))) &&
+                     ((_C_81 : (\at(s_0,Old).char_xM ==
                                  (strpbrk(\at(s_0.char_xM,Old), \at(ct_0,Old)) +
                                    1))) &&
-                       ((_C_84 : (strpbrk(\at(s_0.char_xM,Old), \at(ct_0,Old)).charM ==
+                       ((_C_83 : (strpbrk(\at(s_0.char_xM,Old), \at(ct_0,Old)).charM ==
                                    (0 :> int8))) &&
-                         (_C_85 : valid_str{Here}(\result))))));
+                         (_C_84 : valid_str{Here}(\result))))));
 {  
    (check (disjoint_behaviors : (! ((valid_str{Here}(s_0.char_xM) &&
                                       (strpbrk(s_0.char_xM, ct_0) == null)) &&
@@ -467,13 +467,13 @@ behavior input_strpbrk_not_null:
                                                    end_0))));
          ()
       };
-      (if (_C_71 : (end_0 != null)) then 
+      (if (_C_70 : (end_0 != null)) then 
       {  (_C_65 : (tmp = end_0));
          (_C_67 : (end_0 = (_C_66 : (end_0 + (1 :> int32)))));
-         (_C_70 : ((_C_69 : tmp.charM) = (_C_68 : ((0 :> int32) :> int8))))
+         (_C_69 : ((_C_68 : tmp.charM) = (0 :> int8)))
       } else ());
-      (_C_73 : ((_C_72 : s_0.char_xM) = end_0));
-      (_C_74 : (__retres = sbegin));
+      (_C_72 : ((_C_71 : s_0.char_xM) = end_0));
+      (_C_73 : (__retres = sbegin));
       (return_label : 
       (return __retres))
    }

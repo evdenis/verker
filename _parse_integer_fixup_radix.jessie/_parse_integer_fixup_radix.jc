@@ -263,29 +263,29 @@ axiomatic IntBase {
 }
 
 charP[..] _parse_integer_fixup_radix(charP[..] s, unsigned_intP[..] base)
-  requires ((_C_107 : \at((((\offset_min(\at(s,Here)) <= \at(0,Here)) &&
+  requires ((_C_101 : \at((((\offset_min(\at(s,Here)) <= \at(0,Here)) &&
                              (\offset_max(\at(s,Here)) >= \at(2,Here))) &&
                             (true && (true && true))),Here)) &&
-             (_C_108 : \at((((\offset_min(\at(base,Here)) <= \at(0,Here)) &&
+             (_C_102 : \at((((\offset_min(\at(base,Here)) <= \at(0,Here)) &&
                               (\offset_max(\at(base,Here)) >= \at(0,Here))) &&
                              true),Here)));
 behavior default:
   assigns base.unsigned_intM;
-  ensures (_C_90 : ((\result == \at(s,Old)) || (\result == (\at(s,Old) + 2))));
+  ensures (_C_84 : ((\result == \at(s,Old)) || (\result == (\at(s,Old) + 2))));
 behavior guess:
   assumes (base.unsigned_intM == (0 :> uint32));
-  ensures (_C_91 : ((_C_92 : (is_hex{Here}(\at(s,Old)) ==>
+  ensures (_C_85 : ((_C_86 : (is_hex{Here}(\at(s,Old)) ==>
                                (\at(base,Old).unsigned_intM ==
                                  (16 :> uint32)))) &&
-                     ((_C_94 : (is_oct{Here}(\at(s,Old)) ==>
+                     ((_C_88 : (is_oct{Here}(\at(s,Old)) ==>
                                  (\at(base,Old).unsigned_intM ==
                                    (8 :> uint32)))) &&
-                       ((_C_96 : (is_dec{Here}(\at(s,Old)) ==>
+                       ((_C_90 : (is_dec{Here}(\at(s,Old)) ==>
                                    (\at(base,Old).unsigned_intM ==
                                      (10 :> uint32)))) &&
-                         ((_C_98 : (is_hex{Here}(\at(s,Old)) ==>
+                         ((_C_92 : (is_hex{Here}(\at(s,Old)) ==>
                                      (\result == (\at(s,Old) + 2)))) &&
-                           (_C_99 : ((is_oct{Here}(\at(s,Old)) ||
+                           (_C_93 : ((is_oct{Here}(\at(s,Old)) ||
                                        is_dec{Here}(\at(s,Old))) ==>
                                       (\result == \at(s,Old)))))))));
 behavior shift:
@@ -293,7 +293,7 @@ behavior shift:
              ((s + 0).charM == (48 :> int8))) &&
             (tolower(((s + 1).charM :> integer)) ==
               ((120 :> int8) :> integer)));
-  ensures (_C_100 : (\result == (\at(s,Old) + 2)));
+  ensures (_C_94 : (\result == (\at(s,Old) + 2)));
 {  
    (var int8 tmp);
    
@@ -301,71 +301,27 @@ behavior shift:
    
    (var int8 tmp_1);
    
-   {  (if (_C_74 : ((_C_73 : base.unsigned_intM) ==
-                     (_C_72 : ((0 :> int32) :> uint32)))) then (if (_C_71 : 
-                                                                   ((_C_70 : (
-                                                                    (_C_69 : 
-                                                                    (_C_68 : 
-                                                                    (s +
-                                                                    (0 :> int32))).charM) :> int32)) ==
-                                                                    (48 :> int32))) then 
-                                                               {  (_C_51 : (tmp = 
-                                                                  (_C_50 : _tolower(
-                                                                  (_C_49 : 
-                                                                  (_C_48 : 
-                                                                  (s +
-                                                                    (1 :> int32))).charM)))));
-                                                                  (if 
-                                                                  (_C_67 : 
-                                                                  ((_C_66 : (tmp :> int32)) ==
-                                                                    (120 :> int32))) then 
-                                                                  {  (_C_58 : (tmp_0 = 
-                                                                    (_C_57 : isxdigit(
-                                                                    (_C_56 : 
-                                                                    (_C_55 : 
-                                                                    (s +
+   {  (if (_C_69 : ((_C_68 : base.unsigned_intM) == (0 :> uint32))) then 
+      (if (_C_67 : ((_C_66 : ((_C_65 : (_C_64 : (s + (0 :> int32))).charM) :> int32)) ==
+                     (48 :> int32))) then 
+      {  (_C_50 : (tmp = (_C_49 : _tolower((_C_48 : (_C_47 : (s +
+                                                               (1 :> int32))).charM)))));
+         (if (_C_63 : ((_C_62 : (tmp :> int32)) == (120 :> int32))) then 
+         {  (_C_56 : (tmp_0 = (_C_55 : isxdigit((_C_54 : (_C_53 : (s +
                                                                     (2 :> int32))).charM)))));
-                                                                    (if 
-                                                                    (_C_65 : 
-                                                                    ((tmp_0 :> _bool) !=
-                                                                    (0 :> _bool))) then 
-                                                                    (_C_64 : (
-                                                                    (_C_63 : base.unsigned_intM) = 
-                                                                    (_C_62 : ((16 :> int32) :> uint32)))) else 
-                                                                    (_C_61 : (
-                                                                    (_C_60 : base.unsigned_intM) = 
-                                                                    (_C_59 : ((8 :> int32) :> uint32)))))
-                                                                  } else 
-                                                                  (_C_54 : (
-                                                                  (_C_53 : base.unsigned_intM) = 
-                                                                  (_C_52 : ((8 :> int32) :> uint32)))))
-                                                               } else 
-                                                               (_C_47 : (
-                                                               (_C_46 : base.unsigned_intM) = 
-                                                               (_C_45 : ((10 :> int32) :> uint32))))) else ());
-      (if (_C_89 : ((_C_88 : base.unsigned_intM) ==
-                     (_C_87 : ((16 :> int32) :> uint32)))) then (if (_C_86 : 
-                                                                    ((_C_85 : (
-                                                                    (_C_84 : 
-                                                                    (_C_83 : 
-                                                                    (s +
-                                                                    (0 :> int32))).charM) :> int32)) ==
-                                                                    (48 :> int32))) then 
-                                                                {  (_C_78 : (tmp_1 = 
-                                                                   (_C_77 : _tolower(
-                                                                   (_C_76 : 
-                                                                   (_C_75 : 
-                                                                   (s +
-                                                                    (1 :> int32))).charM)))));
-                                                                   (if 
-                                                                   (_C_82 : 
-                                                                   ((_C_81 : (tmp_1 :> int32)) ==
-                                                                    (120 :> int32))) then 
-                                                                   (_C_80 : (s = 
-                                                                   (_C_79 : 
-                                                                   (s +
-                                                                    (2 :> int32))))) else ())
-                                                                } else ()) else ());
+            (if (_C_61 : ((tmp_0 :> _bool) != (0 :> _bool))) then (_C_60 : (
+                                                                  (_C_59 : base.unsigned_intM) = (16 :> uint32))) else 
+            (_C_58 : ((_C_57 : base.unsigned_intM) = (8 :> uint32))))
+         } else (_C_52 : ((_C_51 : base.unsigned_intM) = (8 :> uint32))))
+      } else (_C_46 : ((_C_45 : base.unsigned_intM) = (10 :> uint32)))) else ());
+      (if (_C_83 : ((_C_82 : base.unsigned_intM) == (16 :> uint32))) then 
+      (if (_C_81 : ((_C_80 : ((_C_79 : (_C_78 : (s + (0 :> int32))).charM) :> int32)) ==
+                     (48 :> int32))) then 
+      {  (_C_73 : (tmp_1 = (_C_72 : _tolower((_C_71 : (_C_70 : (s +
+                                                                 (1 :> int32))).charM)))));
+         (if (_C_77 : ((_C_76 : (tmp_1 :> int32)) == (120 :> int32))) then 
+         (_C_75 : (s = (_C_74 : (s + (2 :> int32))))) else ())
+      } else ()) else ());
       
       (return s)
    }

@@ -7,18 +7,16 @@
 <file name="../memmove.mlw" expanded="true">
 <theory name="Function_memmove_safety" sum="3aa13d24cc76ad78255fddc8b4107c52" expanded="true">
  <goal name="WP_parameter memmove" expl="Function memmove, safety" expanded="true">
- <proof prover="0"><result status="timeout" time="5.00"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter memmove.1" expl="Pointer difference">
   <proof prover="0"><result status="timeout" time="5.00"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   <transf name="inline_all" expanded="true">
    <goal name="WP_parameter memmove.1.1" expl="Pointer difference">
    <transf name="remove_triggers" expanded="true">
     <goal name="WP_parameter memmove.1.1.1" expl="Pointer difference">
-    <proof prover="0" timelimit="15" memlimit="8000"><result status="unknown" time="19.81"/></proof>
-    <proof prover="1" timelimit="15" memlimit="8000"><result status="timeout" time="15.00"/></proof>
+    <proof prover="0" timelimit="15" memlimit="8000"><result status="unknown" time="19.71"/></proof>
+    <proof prover="1" timelimit="15" memlimit="8000"><result status="timeout" time="15.01"/></proof>
     </goal>
    </transf>
    </goal>
@@ -71,8 +69,6 @@
 </theory>
 <theory name="Function_memmove_behaviors" sum="1322f70424e7a680c954f316a2aade65" expanded="true">
  <goal name="WP_parameter memmove_ensures_default" expl="Function memmove, default behavior" expanded="true">
- <proof prover="0"><result status="timeout" time="5.00"/></proof>
- <proof prover="1"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter memmove_ensures_default.1" expl="loop invariant init">
   <proof prover="1"><result status="valid" time="1.02" steps="2693"/></proof>
@@ -81,8 +77,6 @@
   <proof prover="1"><result status="valid" time="0.49" steps="900"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.3" expl="loop invariant preservation">
-  <proof prover="0"><result status="timeout" time="5.00"/></proof>
-  <proof prover="1"><result status="timeout" time="5.00"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter memmove_ensures_default.3.1" expl="Function memmove, default behavior">
    <proof prover="1"><result status="valid" time="0.04" steps="210"/></proof>
@@ -128,7 +122,6 @@
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.15" expl="Assigns clause">
    <proof prover="0"><result status="valid" time="0.27"/></proof>
-   <proof prover="1"><result status="timeout" time="5.00"/></proof>
    </goal>
   </transf>
   </goal>
@@ -145,8 +138,6 @@
   <proof prover="1"><result status="valid" time="0.95" steps="1281"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.8" expl="loop invariant preservation">
-  <proof prover="0"><result status="timeout" time="5.00"/></proof>
-  <proof prover="1"><result status="timeout" time="5.01"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter memmove_ensures_default.8.1" expl="Function memmove, default behavior">
    <proof prover="1"><result status="valid" time="0.06" steps="210"/></proof>
@@ -191,8 +182,6 @@
    <proof prover="1"><result status="valid" time="0.23" steps="1035"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.15" expl="Assigns clause">
-   <proof prover="0"><result status="timeout" time="5.00"/></proof>
-   <proof prover="1"><result status="timeout" time="5.01"/></proof>
    <transf name="inline_all" expanded="true">
     <goal name="WP_parameter memmove_ensures_default.8.15.1" expl="Assigns clause">
     <transf name="remove_triggers" expanded="true">
@@ -518,10 +507,6 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -533,14 +518,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

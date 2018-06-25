@@ -1865,36 +1865,6 @@ theory Struct_unsigned_charP
   
 end
 
-module Safe_bit_uint64_of_Safe_bit_int32
-
-  use enum.Uint64 
-  
-  use enum.Int32 
-  
-  use Bit_uint64_of_Bit_int32 
-  
-  use enum.Bit_uint64 
-  
-  use why3.Bool.Bool 
-  
-  val cast_modulo
-  (n : Int32.t) : Uint64.t
-   requires { true }
-   ensures {
-     (((=) (Uint64.to_int result) (Bit_uint64.normalize (Int32.to_int n))) /\
-     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
-  
-  val cast
-  (n : Int32.t) : Uint64.t
-   requires {
-     ((Bit_uint64.in_bounds (Int32.to_int n)) \/
-     (Bit_uint64_of_Bit_int32.is_safe n)) }
-   ensures {
-     (((=) (Uint64.to_int result) (Int32.to_int n)) /\
-     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
-  
-end
-
 module Exceptions
 
   use why3.Bool.Bool 
@@ -1968,7 +1938,7 @@ module Safe_bit_uint8_of_Safe_bit_int32
 end
 
 module Function_memchr_safety
-#"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44# "expl:memchr, safety"
+#"/home/work/workspace/self/verker/memchr.c" 3 5 44# "expl:memchr, safety"
 
   use enum.Uint8 
   
@@ -1977,8 +1947,6 @@ module Function_memchr_safety
   use import Struct_unsigned_charP 
   
   use Safe_bit_uint8_of_Safe_bit_int32 
-  
-  use Safe_bit_uint64_of_Safe_bit_int32 
   
   use Safe_bit_uint64 
   
@@ -2028,7 +1996,7 @@ module Function_memchr_safety
   
   use why3.Bool.Bool 
   
-  let memchr #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
+  let memchr #"/home/work/workspace/self/verker/memchr.c" 3 5 44#
   "expl:Function memchr, safety" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
@@ -2043,10 +2011,10 @@ module Function_memchr_safety
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memchr.jc" 38 12 713#
-   ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
+   ((#"/home/work/workspace/self/verker/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
+   (#"/home/work/workspace/self/verker/memchr.h" 17 13 37#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -2078,25 +2046,24 @@ module Function_memchr_safety
        begin
        (p_4 :=
         (let _jessie_29 =
-        (#"/home/work/workspace/self/verker-gh/memchr.c" 5 26 27#
+        (#"/home/work/workspace/self/verker/memchr.c" 5 26 27#
         (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) )) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memchr.c" 5 21 23#
+        (#"/home/work/workspace/self/verker/memchr.c" 5 21 23#
         "expl:Pointer index bounds" true) }); _jessie_29 end));
         'Loop_4:
         loop
-        invariant { (#"memchr.jc" 157 6 2400# true) }
-          variant {
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 10 18 19#
+        invariant { (#"memchr.jc" 157 6 2379# true) }
+          variant { (#"/home/work/workspace/self/verker/memchr.c" 10 18 19#
             (Bit_uint64.to_int
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 10 18 19#
+            (#"/home/work/workspace/self/verker/memchr.c" 10 18 19#
             !mutable_n))) }
          begin
          any unit
          requires { true } reads { c, mutable_n, s }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
+           ((#"/home/work/workspace/self/verker/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
              (((same_block
                (downcast voidP_s_2_tag_table s unsigned_charP_tag) k_1)
@@ -2110,44 +2077,44 @@ module Function_memchr_safety
               (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
+           ((#"/home/work/workspace/self/verker/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
             (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
             (Bit_uint64.to_int !mutable_n))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+           ((#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              (same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              ((<=)
              (sub_pointer (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
             (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           ((#"/home/work/workspace/self/verker/memchr.c" 6 20 26#
             (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
             (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 25 40#
            (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
@@ -2157,7 +2124,7 @@ module Function_memchr_safety
             (let _jessie_30 = !mutable_n in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 16#
+            (#"/home/work/workspace/self/verker/memchr.c" 12 8 16#
             "expl:Pointer index bounds" true) }); _jessie_30 end));
             begin
             (mutable_n :=
@@ -2167,17 +2134,14 @@ module Function_memchr_safety
               (Safe_bit_uint64.of_int_const 1)) ) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 16#
+             (#"/home/work/workspace/self/verker/memchr.c" 12 8 16#
              "expl:Pointer index bounds" true) }); _jessie_31 end)); () end
            end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
+            (#"/home/work/workspace/self/verker/memchr.c" 12 8 23#
             (Safe_bit_uint64.(<>)  !tmp_0
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
-             "expl:Integer cast"
-             (Safe_bit_uint64_of_Safe_bit_int32.cast 
-              (#"memchr.jc" 191 45 57# "expl:Integer cast"
-              (Safe_bit_int32.of_int_const 0)) )) )) then ()
+             (#"memchr.jc" 191 35 48# "expl:Integer cast"
+             (Safe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
             begin
@@ -2185,7 +2149,7 @@ module Function_memchr_safety
              (let _jessie_32 = !p_4 in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 13 33 36#
+             (#"/home/work/workspace/self/verker/memchr.c" 13 33 36#
              "expl:Pointer index bounds" true) }); _jessie_32 end));
              begin
              (p_4 :=
@@ -2196,22 +2160,22 @@ module Function_memchr_safety
                 (Safe_bit_int32.of_int_const 1)) ) ) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 33 36#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 33 36#
               "expl:Pointer index bounds" true) }); _jessie_33 end)); () end
             end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
+             (#"/home/work/workspace/self/verker/memchr.c" 13 6 36#
              (Safe_bit_int32.(=) 
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
               "expl:Integer cast"
               (Safe_bit_int32_of_Safe_bit_uint8.cast 
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+               (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
                "expl:Integer cast"
                (Safe_bit_uint8_of_Safe_bit_int32.cast_modulo  c )) ))
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 32 36#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 32 36#
               "expl:Integer cast"
               (Safe_bit_int32_of_Safe_bit_uint8.cast 
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 13 32 36#
+               (#"/home/work/workspace/self/verker/memchr.c" 13 32 36#
                "expl:Pointer dereference"
                (acc  voidP_s_2_alloc_table unsigned_charP_unsigned_charM_s_2
                 !tmp )) )) ))
@@ -2226,7 +2190,7 @@ module Function_memchr_safety
                   (Safe_bit_int32.of_int_const 1)) ) ) ) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 14 3 26#
+               (#"/home/work/workspace/self/verker/memchr.c" 14 3 26#
                "expl:Pointer index bounds" true) }); _jessie_34 end));
                (raise (Return_label_exc ())) end else ()) end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
@@ -2240,7 +2204,7 @@ module Function_memchr_safety
         any unit
         requires { true } reads { mutable_n }
         ensures {
-          (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
+          (#"/home/work/workspace/self/verker/memchr.c" 17 12 31#
           (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end;
@@ -2248,7 +2212,7 @@ module Function_memchr_safety
          (let _jessie_35 = (null  ) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/memchr.c" 18 1 20#
+         (#"/home/work/workspace/self/verker/memchr.c" 18 1 20#
          "expl:Pointer index bounds" true) }); _jessie_35 end)) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
       'Return_label:
@@ -2260,34 +2224,6 @@ module Function_memchr_safety
        (assert { (#"memchr.jc" 216 7 22# "expl:Pointer index bounds" true) });
         _jessie_36 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end))
-  
-end
-
-module Unsafe_bit_uint64_of_Unsafe_bit_int32
-
-  use enum.Uint64 
-  
-  use enum.Int32 
-  
-  use Bit_uint64_of_Bit_int32 
-  
-  use enum.Bit_uint64 
-  
-  use why3.Bool.Bool 
-  
-  val cast_modulo
-  (n : Int32.t) : Uint64.t
-   requires { true }
-   ensures {
-     (((=) (Uint64.to_int result) (Bit_uint64.normalize (Int32.to_int n))) /\
-     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
-  
-  val cast
-  (n : Int32.t) : Uint64.t
-   requires { true }
-   ensures {
-     (((=) (Uint64.to_int result) (Int32.to_int n)) /\
-     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
   
 end
 
@@ -2348,12 +2284,9 @@ module Unsafe_bit_uint8_of_Unsafe_bit_int32
 end
 
 module Function_memchr_behaviors
-#"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
-"expl:memchr, behaviors"
+#"/home/work/workspace/self/verker/memchr.c" 3 5 44# "expl:memchr, behaviors"
 
   use Unsafe_bit_uint8_of_Unsafe_bit_int32 
-  
-  use Unsafe_bit_uint64_of_Unsafe_bit_int32 
   
   use Unsafe_bit_uint64 
   
@@ -2410,7 +2343,7 @@ module Function_memchr_behaviors
   use why3.Bool.Bool 
   
   let memchr_ensures_default
-  #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
+  #"/home/work/workspace/self/verker/memchr.c" 3 5 44#
   "expl:Function memchr, default behavior" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
@@ -2425,10 +2358,10 @@ module Function_memchr_behaviors
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memchr.jc" 38 12 713#
-   ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
+   ((#"/home/work/workspace/self/verker/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
+   (#"/home/work/workspace/self/verker/memchr.h" 17 13 37#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -2543,47 +2476,47 @@ module Function_memchr_behaviors
         'Loop_1:
         loop
         invariant
-          { ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-             ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
+          { ((#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+             (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+             ((#"/home/work/workspace/self/verker/memchr.c" 6 20 26#
               (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
               (Bit_uint64.of_int_const 0)) !mutable_n))
              /\
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
+             (#"/home/work/workspace/self/verker/memchr.c" 6 25 40#
              (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+             (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+             ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
               (same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag)
               !p_4))
              /\
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+             (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+             ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
               ((<=)
               (sub_pointer
               (downcast voidP_s_2_tag_table s unsigned_charP_tag) !p_4) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-             ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+             (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+             ((#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
               (same_block !p_4
               (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
               (Bit_uint64.to_int (at !mutable_n 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+             (#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
              ((<=)
              (sub_pointer !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
+            ((#"/home/work/workspace/self/verker/memchr.c" 8 20 43#
              ((=)
              (sub_pointer !p_4
              (downcast voidP_s_2_tag_table s unsigned_charP_tag))
              (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
              (Bit_uint64.to_int !mutable_n))))
             &&
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
+            (#"/home/work/workspace/self/verker/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
              (((same_block
                (downcast voidP_s_2_tag_table s unsigned_charP_tag) k_1)
@@ -2609,13 +2542,10 @@ module Function_memchr_behaviors
               (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
+            (#"/home/work/workspace/self/verker/memchr.c" 12 8 23#
             (Unsafe_bit_uint64.(<>)  !tmp_0
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
-             "expl:Integer cast"
-             (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 191 45 57# "expl:Integer cast"
-              (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
+             (#"memchr.jc" 191 35 48# "expl:Integer cast"
+             (Unsafe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
             begin
@@ -2627,15 +2557,15 @@ module Function_memchr_behaviors
                 (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
+             (#"/home/work/workspace/self/verker/memchr.c" 13 6 36#
              (Unsafe_bit_int32.(=) 
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+               (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int32.cast_modulo  c )) ))
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 32 36#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 32 36#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
                (acc  unsigned_charP_unsigned_charM_s_2 !tmp ) )) ))
@@ -2657,7 +2587,7 @@ module Function_memchr_behaviors
        ();
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
+        (#"/home/work/workspace/self/verker/memchr.c" 17 12 31#
         "expl:Assertion in line 17"
         (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
         "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) });
@@ -2668,7 +2598,7 @@ module Function_memchr_behaviors
      absurd  end with Return -> !return end))
   
   let memchr_ensures_found
-  #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
+  #"/home/work/workspace/self/verker/memchr.c" 3 5 44#
   "expl:Function memchr, behavior found" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
@@ -2702,10 +2632,10 @@ module Function_memchr_behaviors
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memchr.jc" 38 12 713#
-   ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
+   ((#"/home/work/workspace/self/verker/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
+   (#"/home/work/workspace/self/verker/memchr.h" 17 13 37#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -2722,33 +2652,33 @@ module Function_memchr_behaviors
       ((=) true true))))) else ((=) true true))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+     ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
       "expl:Ensures clause" (same_block s result))
      /\
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+     ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
       "expl:Ensures clause" ((<=) (sub_pointer s result) (0)))
      /\
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+     ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
       "expl:Ensures clause"
       (same_block result (shift s (Bit_uint64.to_int n))))
      /\
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+     ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
       "expl:Ensures clause"
       ((<=) (sub_pointer result (shift s (Bit_uint64.to_int n))) (0)))
      /\
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+     (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/memchr.h" 22 15 77#
+     ((#"/home/work/workspace/self/verker/memchr.h" 22 15 77#
       "expl:Ensures clause"
       (forall p_1 : (pointer voidP).
        (((same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag) p_1)
@@ -2767,7 +2697,7 @@ module Function_memchr_behaviors
         (#"memchr.jc" 81 37 59# "expl:Integer cast"
         (Bit_uint8_of_Bit_int32.cast_modulo c))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
+     (#"/home/work/workspace/self/verker/memchr.h" 23 15 42#
      "expl:Ensures clause"
      (Bit_uint8.(=)
      (select unsigned_charP_unsigned_charM_s_2
@@ -2791,12 +2721,12 @@ module Function_memchr_behaviors
        (p_4 := (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) ));
         'Loop_2:
         loop
-        invariant { (#"memchr.jc" 157 6 2400# true) } 
+        invariant { (#"memchr.jc" 157 6 2379# true) } 
          begin
          any unit
          requires { true } reads { c, mutable_n, s }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
+           ((#"/home/work/workspace/self/verker/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
              (((same_block
                (downcast voidP_s_2_tag_table s unsigned_charP_tag) k_1)
@@ -2810,44 +2740,44 @@ module Function_memchr_behaviors
               (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
+           ((#"/home/work/workspace/self/verker/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
             (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
             (Bit_uint64.to_int !mutable_n))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+           ((#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              (same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              ((<=)
              (sub_pointer (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
             (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           ((#"/home/work/workspace/self/verker/memchr.c" 6 20 26#
             (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
             (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 25 40#
            (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
@@ -2860,13 +2790,10 @@ module Function_memchr_behaviors
               (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
+            (#"/home/work/workspace/self/verker/memchr.c" 12 8 23#
             (Unsafe_bit_uint64.(<>)  !tmp_0
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
-             "expl:Integer cast"
-             (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 191 45 57# "expl:Integer cast"
-              (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
+             (#"memchr.jc" 191 35 48# "expl:Integer cast"
+             (Unsafe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
             begin
@@ -2878,15 +2805,15 @@ module Function_memchr_behaviors
                 (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
+             (#"/home/work/workspace/self/verker/memchr.c" 13 6 36#
              (Unsafe_bit_int32.(=) 
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+               (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int32.cast_modulo  c )) ))
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 32 36#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 32 36#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
                (acc  unsigned_charP_unsigned_charM_s_2 !tmp ) )) ))
@@ -2910,7 +2837,7 @@ module Function_memchr_behaviors
         any unit
         requires { true } reads { mutable_n }
         ensures {
-          (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
+          (#"/home/work/workspace/self/verker/memchr.c" 17 12 31#
           (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end; (__retres := (null  )) end end;
@@ -2920,7 +2847,7 @@ module Function_memchr_behaviors
      absurd  end with Return -> !return end))
   
   let memchr_ensures_not_exists
-  #"/home/work/workspace/self/verker-gh/memchr.c" 3 5 44#
+  #"/home/work/workspace/self/verker/memchr.c" 3 5 44#
   "expl:Function memchr, behavior not_exists" =
   fun
    (s : (pointer voidP)) (c : Int32.t) (n : Uint64.t) (voidP_s_2_alloc_table
@@ -2953,10 +2880,10 @@ module Function_memchr_behaviors
        (instanceof voidP_s_2_tag_table (shift s i) voidP_tag)))))
    /\
    (#"memchr.jc" 38 12 713#
-   ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
+   ((#"/home/work/workspace/self/verker/memchr.h" 16 13 38#
     (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
    /\
-   (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
+   (#"/home/work/workspace/self/verker/memchr.h" 17 13 37#
    (if ((<=) (0) (Int.(-) (Bit_uint64.to_int n) (1))) then
     (((<=)
      (offset_min voidP_s_2_alloc_table
@@ -2973,7 +2900,7 @@ module Function_memchr_behaviors
       ((=) true true))))) else ((=) true true))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
+     (#"/home/work/workspace/self/verker/memchr.h" 26 15 31#
      "expl:Ensures clause" ((=) result null))) } diverges  ->
    (let mutable_n = ref n in
    'Init:
@@ -2992,12 +2919,12 @@ module Function_memchr_behaviors
        (p_4 := (downcast_  voidP_s_2_tag_table s (unsigned_charP_tag  ) ));
         'Loop_3:
         loop
-        invariant { (#"memchr.jc" 157 6 2400# true) } 
+        invariant { (#"memchr.jc" 157 6 2379# true) } 
          begin
          any unit
          requires { true } reads { c, mutable_n, s }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 9 20 70#
+           ((#"/home/work/workspace/self/verker/memchr.c" 9 20 70#
             (forall k_1 : (pointer voidP).
              (((same_block
                (downcast voidP_s_2_tag_table s unsigned_charP_tag) k_1)
@@ -3011,44 +2938,44 @@ module Function_memchr_behaviors
               (#"memchr.jc" 182 53 66# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 8 20 43#
+           ((#"/home/work/workspace/self/verker/memchr.c" 8 20 43#
             ((=)
             (sub_pointer !p_4
             (downcast voidP_s_2_tag_table s unsigned_charP_tag))
             (Int.(-) (Bit_uint64.to_int (at !mutable_n 'Init))
             (Bit_uint64.to_int !mutable_n))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+           ((#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              (same_block (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 32#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 20 32#
              ((<=)
              (sub_pointer (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              !p_4) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 20 56#
-            ((#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 20 56#
+            ((#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
              (same_block !p_4
              (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
              (Bit_uint64.to_int (at !mutable_n 'Init)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 7 31 56#
+            (#"/home/work/workspace/self/verker/memchr.c" 7 31 56#
             ((<=)
             (sub_pointer !p_4
             (shift (downcast voidP_s_2_tag_table s unsigned_charP_tag)
             (Bit_uint64.to_int (at !mutable_n 'Init)))) (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 40#
-           ((#"/home/work/workspace/self/verker-gh/memchr.c" 6 20 26#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 20 40#
+           ((#"/home/work/workspace/self/verker/memchr.c" 6 20 26#
             (Bit_uint64.(<=) (#"memchr.jc" 159 38 51# "expl:Integer cast"
             (Bit_uint64.of_int_const 0)) !mutable_n))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.c" 6 25 40#
+           (#"/home/work/workspace/self/verker/memchr.c" 6 25 40#
            (Bit_uint64.(<=) !mutable_n (at !mutable_n 'Init))))))))) } ;
           try
            begin
@@ -3061,13 +2988,10 @@ module Function_memchr_behaviors
               (#"memchr.jc" 188 54 67# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/memchr.c" 12 8 23#
+            (#"/home/work/workspace/self/verker/memchr.c" 12 8 23#
             (Unsafe_bit_uint64.(<>)  !tmp_0
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 12 22 23#
-             "expl:Integer cast"
-             (Unsafe_bit_uint64_of_Unsafe_bit_int32.cast 
-              (#"memchr.jc" 191 45 57# "expl:Integer cast"
-              (Unsafe_bit_int32.of_int_const 0)) )) )) then ()
+             (#"memchr.jc" 191 35 48# "expl:Integer cast"
+             (Unsafe_bit_uint64.of_int_const 0)) )) then ()
             else (raise (Goto_while_0_break_exc ())));
             begin
             begin
@@ -3079,15 +3003,15 @@ module Function_memchr_behaviors
                 (#"memchr.jc" 196 46 58# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 36#
+             (#"/home/work/workspace/self/verker/memchr.c" 13 6 36#
              (Unsafe_bit_int32.(=) 
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
-               (#"/home/work/workspace/self/verker-gh/memchr.c" 13 6 28#
+               (#"/home/work/workspace/self/verker/memchr.c" 13 6 28#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int32.cast_modulo  c )) ))
-              (#"/home/work/workspace/self/verker-gh/memchr.c" 13 32 36#
+              (#"/home/work/workspace/self/verker/memchr.c" 13 32 36#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast 
                (acc  unsigned_charP_unsigned_charM_s_2 !tmp ) )) ))
@@ -3111,7 +3035,7 @@ module Function_memchr_behaviors
         any unit
         requires { true } reads { mutable_n }
         ensures {
-          (#"/home/work/workspace/self/verker-gh/memchr.c" 17 12 31#
+          (#"/home/work/workspace/self/verker/memchr.c" 17 12 31#
           (Bit_uint64.(=) !mutable_n (#"memchr.jc" 211 55 73#
           "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
          () end; (__retres := (null  )) end end;
@@ -6865,6 +6789,64 @@ module Unsafe_uint64_of_Unsafe_int64
   
 end
 
+module Safe_bit_uint64_of_Safe_bit_int32
+
+  use enum.Uint64 
+  
+  use enum.Int32 
+  
+  use Bit_uint64_of_Bit_int32 
+  
+  use enum.Bit_uint64 
+  
+  use why3.Bool.Bool 
+  
+  val cast_modulo
+  (n : Int32.t) : Uint64.t
+   requires { true }
+   ensures {
+     (((=) (Uint64.to_int result) (Bit_uint64.normalize (Int32.to_int n))) /\
+     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
+  
+  val cast
+  (n : Int32.t) : Uint64.t
+   requires {
+     ((Bit_uint64.in_bounds (Int32.to_int n)) \/
+     (Bit_uint64_of_Bit_int32.is_safe n)) }
+   ensures {
+     (((=) (Uint64.to_int result) (Int32.to_int n)) /\
+     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
+  
+end
+
+module Unsafe_bit_uint64_of_Unsafe_bit_int32
+
+  use enum.Uint64 
+  
+  use enum.Int32 
+  
+  use Bit_uint64_of_Bit_int32 
+  
+  use enum.Bit_uint64 
+  
+  use why3.Bool.Bool 
+  
+  val cast_modulo
+  (n : Int32.t) : Uint64.t
+   requires { true }
+   ensures {
+     (((=) (Uint64.to_int result) (Bit_uint64.normalize (Int32.to_int n))) /\
+     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
+  
+  val cast
+  (n : Int32.t) : Uint64.t
+   requires { true }
+   ensures {
+     (((=) (Uint64.to_int result) (Int32.to_int n)) /\
+     ((=) result (Bit_uint64_of_Bit_int32.cast_modulo n))) }
+  
+end
+
 module Safe_uint64_of_Safe_int32
 
   use enum.Uint64 
@@ -8398,7 +8380,7 @@ module Function_memchr
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p)
               (#"memchr.jc" 91 35 48# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))) ->
-            (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
+            (#"/home/work/workspace/self/verker/memchr.h" 26 15 31#
             "expl:Ensures clause" ((=) result null)))
           /\
           ((exists p_0 : (pointer voidP).
@@ -8421,33 +8403,33 @@ module Function_memchr
             (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0)
             (#"memchr.jc" 59 37 50# "expl:Integer cast"
             (Bit_uint8_of_Bit_int32.cast_modulo c)))))))) ->
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
             "expl:Ensures clause" (same_block s result))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
             "expl:Ensures clause" ((<=) (sub_pointer s result) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
             "expl:Ensures clause"
             (same_block result (shift s (Uint64.to_int n))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
             "expl:Ensures clause"
             ((<=) (sub_pointer result (shift s (Uint64.to_int n))) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 22 15 77#
+           ((#"/home/work/workspace/self/verker/memchr.h" 22 15 77#
             "expl:Ensures clause"
             (forall p_1 : (pointer voidP).
              (((same_block
@@ -8468,7 +8450,7 @@ module Function_memchr
               (#"memchr.jc" 81 37 59# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
+           (#"/home/work/workspace/self/verker/memchr.h" 23 15 42#
            "expl:Ensures clause"
            (Bit_uint8.(=)
            (select unsigned_charP_unsigned_charM_s_2
@@ -8525,11 +8507,11 @@ module Function_memchr_safe
         requires {
           ("expl:Internal"
           (#"memchr.jc" 38 12 713# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memchr.h" 16 13 38#
+          ((#"/home/work/workspace/self/verker/memchr.h" 16 13 38#
            "expl:Requires clause"
            (instanceof voidP_s_2_tag_table s unsigned_charP_tag))
           /\
-          (#"/home/work/workspace/self/verker-gh/memchr.h" 17 13 37#
+          (#"/home/work/workspace/self/verker/memchr.h" 17 13 37#
           "expl:Requires clause"
           (if ((<=) (0) (Int.(-) (Uint64.to_int n) (1))) then
            (((<=)
@@ -8572,7 +8554,7 @@ module Function_memchr_safe
               (Bit_uint8.(<>) (select unsigned_charP_unsigned_charM_s_2 p)
               (#"memchr.jc" 91 35 48# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))) ->
-            (#"/home/work/workspace/self/verker-gh/memchr.h" 26 15 31#
+            (#"/home/work/workspace/self/verker/memchr.h" 26 15 31#
             "expl:Ensures clause" ((=) result null)))
           /\
           ((exists p_0 : (pointer voidP).
@@ -8595,33 +8577,33 @@ module Function_memchr_safe
             (Bit_uint8.(=) (select unsigned_charP_unsigned_charM_s_2 p_0)
             (#"memchr.jc" 59 37 50# "expl:Integer cast"
             (Bit_uint8_of_Bit_int32.cast_modulo c)))))))) ->
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
             "expl:Ensures clause" (same_block s result))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 27#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 15 27#
             "expl:Ensures clause" ((<=) (sub_pointer s result) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
             "expl:Ensures clause"
             (same_block result (shift s (Uint64.to_int n))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 21 20 36#
+           ((#"/home/work/workspace/self/verker/memchr.h" 21 20 36#
             "expl:Ensures clause"
             ((<=) (sub_pointer result (shift s (Uint64.to_int n))) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 21 15 36#
+           (#"/home/work/workspace/self/verker/memchr.h" 21 15 36#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/memchr.h" 22 15 77#
+           ((#"/home/work/workspace/self/verker/memchr.h" 22 15 77#
             "expl:Ensures clause"
             (forall p_1 : (pointer voidP).
              (((same_block
@@ -8642,7 +8624,7 @@ module Function_memchr_safe
               (#"memchr.jc" 81 37 59# "expl:Integer cast"
               (Bit_uint8_of_Bit_int32.cast_modulo c))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/memchr.h" 23 15 42#
+           (#"/home/work/workspace/self/verker/memchr.h" 23 15 42#
            "expl:Ensures clause"
            (Bit_uint8.(=)
            (select unsigned_charP_unsigned_charM_s_2

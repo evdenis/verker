@@ -1740,30 +1740,15 @@ module Safe_int32_of_Safe_int8
   
 end
 
-module Safe_enum__bool_of_Safe_int32
-
-  use enum.Int32 
-  
-  use Enum__bool 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int32.t) : Enum__bool.t
-   requires { (Enum__bool.in_bounds (Int32.to_int n)) }
-   ensures { ((=) (Enum__bool.to_int result) (Int32.to_int n)) }
-  
-end
-
 module Function_kstrtobool_safety
-#"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+#"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
 "expl:kstrtobool, safety"
 
   use Safe_int32_of_Safe_int8 
   
   use Safe_int32 
   
-  use Safe_enum__bool_of_Safe_int32 
+  use Safe_enum__bool 
   
   use import Root__BoolP 
   
@@ -1807,7 +1792,7 @@ module Function_kstrtobool_safety
   
   use why3.Bool.Bool 
   
-  let kstrtobool #"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+  let kstrtobool #"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
   "expl:Function kstrtobool, safety" =
   fun
    (s_2 : (pointer voidP)) (res : (pointer _BoolP)) (_BoolP__BoolM_res_6 :
@@ -1824,13 +1809,13 @@ module Function_kstrtobool_safety
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
    (#"kstrtobool.jc" 44 12 435#
-   ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
+   ((#"/home/work/workspace/self/verker/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
     (((>=) (offset_max voidP_s_5_alloc_table s_2) (1)) /\
     (((=) true true) /\ ((=) true true))))))
    /\
-   (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
+   (#"/home/work/workspace/self/verker/kstrtobool.h" 34 13 24#
    (#"kstrtobool.jc" 44 12 435#
    ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
@@ -1851,7 +1836,7 @@ module Function_kstrtobool_safety
       try
        begin
        (if
-       (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 5 5 7#
+       (#"/home/work/workspace/self/verker/kstrtobool.c" 5 5 7#
        (Bool.notb 
         (#"kstrtobool.jc" 79 22 31#
         (neq_pointer  voidP_s_5_alloc_table voidP_s_5_alloc_table s_2
@@ -1864,53 +1849,50 @@ module Function_kstrtobool_safety
          (Safe_int32.of_int  (Int.(-_)  (22) ) )) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 6 2 13#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 6 2 13#
          "expl:Pointer index bounds" true) }); _jessie_95 end));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
         (let _jessie_96 =
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 8 9 13#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 8 9 13#
         "expl:Integer cast"
         (Safe_int32_of_Safe_int8.cast 
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 8 9 13#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 8 9 13#
          "expl:Pointer dereference"
          (acc  voidP_s_5_alloc_table charP_charM_s_5 s_2 )) )) in
         begin (assert { ("expl:Pointer index bounds" true) }); _jessie_96 end)
         in
         (if
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Safe_int32.of_int (49))) ))
         ||
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Safe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
         (Safe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Safe_int32.of_int (121))) ))))))
         then
          begin
          (let _jessie_118 =
          (let _jessie_117 =
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
-         "expl:Integer cast"
-         (Safe_enum__bool_of_Safe_int32.cast 
-          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
-          (Safe_int32.of_int (1))) )) in
+         (#"kstrtobool.jc" 89 42 54# "expl:Integer cast"
+         (Safe_enum__bool.of_int  (1) )) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 2 13#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 12 2 13#
          "expl:Pointer index bounds" true) }); _jessie_117 end) in
          (let _jessie_119 = res in
          (let _jessie_120 = (0) in
          (let _jessie_121 = _jessie_119 in
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 2 13#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 12 2 13#
          "expl:Pointer dereference"
          (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_119
           _jessie_118 ))))));
@@ -1921,44 +1903,41 @@ module Function_kstrtobool_safety
            (Safe_int32.of_int (0))) in
            begin
            (assert {
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 13 2 11#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 13 2 11#
            "expl:Pointer index bounds" true) }); _jessie_116 end));
            (raise (Return_label_exc ())) end end
         else
          (if
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Safe_int32.of_int (48))) ))
          ||
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Safe_int32.of_int (78))) ))
          ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
          (Safe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
           "expl:Integer cast" (Safe_int32.of_int (110))) ))))))
          then
           begin
           (let _jessie_112 =
           (let _jessie_111 =
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
-          "expl:Integer cast"
-          (Safe_enum__bool_of_Safe_int32.cast 
-           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
-           (Safe_int32.of_int (0))) )) in
+          (#"kstrtobool.jc" 97 44 56# "expl:Integer cast"
+          (Safe_enum__bool.of_int  (0) )) in
           begin
           (assert {
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 2 14#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 17 2 14#
           "expl:Pointer index bounds" true) }); _jessie_111 end) in
           (let _jessie_113 = res in
           (let _jessie_114 = (0) in
           (let _jessie_115 = _jessie_113 in
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 2 14#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 17 2 14#
           "expl:Pointer dereference"
           (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_113
            _jessie_112 ))))));
@@ -1969,21 +1948,21 @@ module Function_kstrtobool_safety
             (Safe_int32.of_int (0))) in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 18 2 11#
+            (#"/home/work/workspace/self/verker/kstrtobool.c" 18 2 11#
             "expl:Pointer index bounds" true) }); _jessie_110 end));
             (raise (Return_label_exc ())) end end
          else
           begin
           (if
           (#"kstrtobool.jc" 85 14 79#
-          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+          ((#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
            (Safe_int32.(=)  _jessie_6
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            (#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
             "expl:Integer cast" (Safe_int32.of_int (79))) ))
           ||
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
           (Safe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
            "expl:Integer cast" (Safe_int32.of_int (111))) ))))
           then
            try
@@ -1991,10 +1970,10 @@ module Function_kstrtobool_safety
             ();
              (let _jessie_4 =
              (let _jessie_97 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
              (Safe_int32_of_Safe_int8.cast 
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 21 10 14#
               "expl:Pointer dereference"
               (acc_offset_typesafe  voidP_s_5_alloc_table charP_charM_s_5 s_2
                (1) )) )) in
@@ -2003,32 +1982,29 @@ module Function_kstrtobool_safety
              in
              (if
              (#"kstrtobool.jc" 106 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+             ((#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
               (Safe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Safe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
              (Safe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
               "expl:Integer cast" (Safe_int32.of_int (110))) ))))
              then
               begin
               (let _jessie_106 =
               (let _jessie_105 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
-              "expl:Integer cast"
-              (Safe_enum__bool_of_Safe_int32.cast 
-               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
-               (Safe_int32.of_int (1))) )) in
+              (#"kstrtobool.jc" 109 49 61# "expl:Integer cast"
+              (Safe_enum__bool.of_int  (1) )) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 24 3 14#
               "expl:Pointer index bounds" true) }); _jessie_105 end) in
               (let _jessie_107 = res in
               (let _jessie_108 = (0) in
               (let _jessie_109 = _jessie_107 in
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 3 14#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 24 3 14#
               "expl:Pointer dereference"
               (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_107
                _jessie_106 ))))));
@@ -2039,38 +2015,35 @@ module Function_kstrtobool_safety
                 (Safe_int32.of_int (0))) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 25 3 12#
+                (#"/home/work/workspace/self/verker/kstrtobool.c" 25 3 12#
                 "expl:Pointer index bounds" true) }); _jessie_104 end));
                 (raise (Return_label_exc ())) end end
              else
               (if
               (#"kstrtobool.jc" 106 19 84#
-              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+              ((#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                (Safe_int32.(=)  _jessie_4
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                (#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                 "expl:Integer cast" (Safe_int32.of_int (70))) ))
               ||
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
               (Safe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
                "expl:Integer cast" (Safe_int32.of_int (102))) ))))
               then
                begin
                (let _jessie_100 =
                (let _jessie_99 =
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
-               "expl:Integer cast"
-               (Safe_enum__bool_of_Safe_int32.cast 
-                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
-                (Safe_int32.of_int (0))) )) in
+               (#"kstrtobool.jc" 116 49 61# "expl:Integer cast"
+               (Safe_enum__bool.of_int  (0) )) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 28 3 15#
                "expl:Pointer index bounds" true) }); _jessie_99 end) in
                (let _jessie_101 = res in
                (let _jessie_102 = (0) in
                (let _jessie_103 = _jessie_101 in
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 3 15#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 28 3 15#
                "expl:Pointer dereference"
                (upd  _BoolP_res_6_alloc_table _BoolP__BoolM_res_6 _jessie_101
                 _jessie_100 ))))));
@@ -2081,7 +2054,7 @@ module Function_kstrtobool_safety
                  (Safe_int32.of_int (0))) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 29 3 12#
+                 (#"/home/work/workspace/self/verker/kstrtobool.c" 29 3 12#
                  "expl:Pointer index bounds" true) }); _jessie_98 end));
                  (raise (Return_label_exc ())) end end
               else
@@ -2102,7 +2075,7 @@ module Function_kstrtobool_safety
          (Safe_int32.of_int  (Int.(-_)  (22) ) )) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 37 1 12#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 37 1 12#
          "expl:Pointer index bounds" true) }); _jessie_122 end)) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
       'Return_label:
@@ -2235,30 +2208,15 @@ module Unsafe_int32_of_Unsafe_int8
   
 end
 
-module Unsafe_enum__bool_of_Unsafe_int32
-
-  use enum.Int32 
-  
-  use Enum__bool 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int32.t) : Enum__bool.t
-   requires { true }
-   ensures { ((=) (Enum__bool.to_int result) (Int32.to_int n)) }
-  
-end
-
 module Function_kstrtobool_behaviors
-#"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+#"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
 "expl:kstrtobool, behaviors"
 
   use Unsafe_int32_of_Unsafe_int8 
   
   use Unsafe_int32 
   
-  use Unsafe_enum__bool_of_Unsafe_int32 
+  use Unsafe_enum__bool 
   
   use import Root__BoolP 
   
@@ -2311,7 +2269,7 @@ module Function_kstrtobool_behaviors
   use why3.Bool.Bool 
   
   let kstrtobool_ensures_CORRECT
-  #"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+  #"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
   "expl:Function kstrtobool, behavior CORRECT" =
   fun
    (s_2 : (pointer voidP)) (res : (pointer _BoolP)) (_BoolP__BoolM_res_6 :
@@ -2329,13 +2287,13 @@ module Function_kstrtobool_behaviors
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
    (#"kstrtobool.jc" 44 12 435#
-   ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
+   ((#"/home/work/workspace/self/verker/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
     (((>=) (offset_max voidP_s_5_alloc_table s_2) (1)) /\
     (((=) true true) /\ ((=) true true))))))
    /\
-   (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
+   (#"/home/work/workspace/self/verker/kstrtobool.h" 34 13 24#
    (#"kstrtobool.jc" 44 12 435#
    ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
@@ -2350,27 +2308,27 @@ module Function_kstrtobool_behaviors
       (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table (old
       !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 (pset_singleton res)))
      /\
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+     ((#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
       "expl:Ensures clause"
       ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
        (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
        (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
        (Enum__bool.of_int (1))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 45 15 52#
+     ((#"/home/work/workspace/self/verker/kstrtobool.h" 45 15 52#
       "expl:Ensures clause"
       ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
        (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
        (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
        (Enum__bool.of_int (0))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 46 15 27#
      "expl:Ensures clause"
      (Int32.(=) result (#"kstrtobool.jc" 67 44 56# "expl:Integer cast"
      (Int32.of_int (0)))))))))))) }  ->
@@ -2385,7 +2343,7 @@ module Function_kstrtobool_behaviors
       try
        begin
        (if
-       (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 5 5 7#
+       (#"/home/work/workspace/self/verker/kstrtobool.c" 5 5 7#
        (Bool.notb  ((<>)  s_2 (null  ) ) ))
        then
         begin
@@ -2394,7 +2352,7 @@ module Function_kstrtobool_behaviors
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 8 9 13#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 8 9 13#
         "expl:Integer cast"
         (Unsafe_int32_of_Unsafe_int8.cast 
          (acc  charP_charM_s_5
@@ -2404,29 +2362,26 @@ module Function_kstrtobool_behaviors
             (Unsafe_int32.of_int (0))) ) ) ) )) in
         (if
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
          (let _jessie_89 =
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
-         "expl:Integer cast"
-         (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
-          (Unsafe_int32.of_int (1))) )) in
+         (#"kstrtobool.jc" 89 42 54# "expl:Integer cast"
+         (Unsafe_enum__bool.of_int  (1) )) in
          (let _jessie_90 = res in
          (let _jessie_91 = (0) in
          (let _jessie_92 = _jessie_90 in
@@ -2438,29 +2393,26 @@ module Function_kstrtobool_behaviors
         else
          (if
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
           (let _jessie_83 =
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
-          "expl:Integer cast"
-          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
-           (Unsafe_int32.of_int (0))) )) in
+          (#"kstrtobool.jc" 97 44 56# "expl:Integer cast"
+          (Unsafe_enum__bool.of_int  (0) )) in
           (let _jessie_84 = res in
           (let _jessie_85 = (0) in
           (let _jessie_86 = _jessie_84 in
@@ -2474,21 +2426,21 @@ module Function_kstrtobool_behaviors
           begin
           (if
           (#"kstrtobool.jc" 85 14 79#
-          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+          ((#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
            (Unsafe_int32.(=)  _jessie_6
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            (#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
             "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
           ||
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
           then
            try
             begin
             ();
              (let _jessie_4 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_5
@@ -2498,23 +2450,20 @@ module Function_kstrtobool_behaviors
                  (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
              (#"kstrtobool.jc" 106 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+             ((#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
               "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
               (let _jessie_77 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
-              "expl:Integer cast"
-              (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (1))) )) in
+              (#"kstrtobool.jc" 109 49 61# "expl:Integer cast"
+              (Unsafe_enum__bool.of_int  (1) )) in
               (let _jessie_78 = res in
               (let _jessie_79 = (0) in
               (let _jessie_80 = _jessie_78 in
@@ -2527,23 +2476,20 @@ module Function_kstrtobool_behaviors
              else
               (if
               (#"kstrtobool.jc" 106 19 84#
-              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+              ((#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                (Unsafe_int32.(=)  _jessie_4
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                (#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                 "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
               ||
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
               then
                begin
                (let _jessie_71 =
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
-               "expl:Integer cast"
-               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
-                (Unsafe_int32.of_int (0))) )) in
+               (#"kstrtobool.jc" 116 49 61# "expl:Integer cast"
+               (Unsafe_enum__bool.of_int  (0) )) in
                (let _jessie_72 = res in
                (let _jessie_73 = (0) in
                (let _jessie_74 = _jessie_72 in
@@ -2574,7 +2520,7 @@ module Function_kstrtobool_behaviors
      absurd  end with Return -> !return end)
   
   let kstrtobool_ensures_INVAL
-  #"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+  #"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
   "expl:Function kstrtobool, behavior INVAL" =
   fun
    (s_2 : (pointer voidP)) (res : (pointer _BoolP)) (_BoolP__BoolM_res_6 :
@@ -2592,13 +2538,13 @@ module Function_kstrtobool_behaviors
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
    (#"kstrtobool.jc" 44 12 435#
-   ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
+   ((#"/home/work/workspace/self/verker/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
     (((>=) (offset_max voidP_s_5_alloc_table s_2) (1)) /\
     (((=) true true) /\ ((=) true true))))))
    /\
-   (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
+   (#"/home/work/workspace/self/verker/kstrtobool.h" 34 13 24#
    (#"kstrtobool.jc" 44 12 435#
    ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
@@ -2613,7 +2559,7 @@ module Function_kstrtobool_behaviors
       (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table (old
       !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
      /\
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 40 15 29#
      "expl:Ensures clause"
      (Int32.(=) result (#"kstrtobool.jc" 59 31 48# "expl:Integer cast"
      (Int32.of_int (Int.(-_) (22)))))))) }  ->
@@ -2628,7 +2574,7 @@ module Function_kstrtobool_behaviors
       try
        begin
        (if
-       (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 5 5 7#
+       (#"/home/work/workspace/self/verker/kstrtobool.c" 5 5 7#
        (Bool.notb  ((<>)  s_2 (null  ) ) ))
        then
         begin
@@ -2637,7 +2583,7 @@ module Function_kstrtobool_behaviors
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 8 9 13#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 8 9 13#
         "expl:Integer cast"
         (Unsafe_int32_of_Unsafe_int8.cast 
          (acc  charP_charM_s_5
@@ -2647,29 +2593,26 @@ module Function_kstrtobool_behaviors
             (Unsafe_int32.of_int (0))) ) ) ) )) in
         (if
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
          (let _jessie_60 =
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
-         "expl:Integer cast"
-         (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
-          (Unsafe_int32.of_int (1))) )) in
+         (#"kstrtobool.jc" 89 42 54# "expl:Integer cast"
+         (Unsafe_enum__bool.of_int  (1) )) in
          (let _jessie_61 = res in
          (let _jessie_62 = (0) in
          (let _jessie_63 = _jessie_61 in
@@ -2681,29 +2624,26 @@ module Function_kstrtobool_behaviors
         else
          (if
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
           (let _jessie_54 =
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
-          "expl:Integer cast"
-          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
-           (Unsafe_int32.of_int (0))) )) in
+          (#"kstrtobool.jc" 97 44 56# "expl:Integer cast"
+          (Unsafe_enum__bool.of_int  (0) )) in
           (let _jessie_55 = res in
           (let _jessie_56 = (0) in
           (let _jessie_57 = _jessie_55 in
@@ -2717,21 +2657,21 @@ module Function_kstrtobool_behaviors
           begin
           (if
           (#"kstrtobool.jc" 85 14 79#
-          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+          ((#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
            (Unsafe_int32.(=)  _jessie_6
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            (#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
             "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
           ||
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
           then
            try
             begin
             ();
              (let _jessie_4 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_5
@@ -2741,23 +2681,20 @@ module Function_kstrtobool_behaviors
                  (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
              (#"kstrtobool.jc" 106 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+             ((#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
               "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
               (let _jessie_48 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
-              "expl:Integer cast"
-              (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (1))) )) in
+              (#"kstrtobool.jc" 109 49 61# "expl:Integer cast"
+              (Unsafe_enum__bool.of_int  (1) )) in
               (let _jessie_49 = res in
               (let _jessie_50 = (0) in
               (let _jessie_51 = _jessie_49 in
@@ -2770,23 +2707,20 @@ module Function_kstrtobool_behaviors
              else
               (if
               (#"kstrtobool.jc" 106 19 84#
-              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+              ((#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                (Unsafe_int32.(=)  _jessie_4
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                (#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                 "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
               ||
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
               then
                begin
                (let _jessie_42 =
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
-               "expl:Integer cast"
-               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
-                (Unsafe_int32.of_int (0))) )) in
+               (#"kstrtobool.jc" 116 49 61# "expl:Integer cast"
+               (Unsafe_enum__bool.of_int  (0) )) in
                (let _jessie_43 = res in
                (let _jessie_44 = (0) in
                (let _jessie_45 = _jessie_43 in
@@ -2817,7 +2751,7 @@ module Function_kstrtobool_behaviors
      absurd  end with Return -> !return end)
   
   let kstrtobool_ensures_default
-  #"/home/work/workspace/self/verker-gh/kstrtobool.c" 3 4 40#
+  #"/home/work/workspace/self/verker/kstrtobool.c" 3 4 40#
   "expl:Function kstrtobool, default behavior" =
   fun
    (s_2 : (pointer voidP)) (res : (pointer _BoolP)) (_BoolP__BoolM_res_6 :
@@ -2834,13 +2768,13 @@ module Function_kstrtobool_behaviors
        ((=) (typeof voidP_s_5_tag_table (shift s_2 i)) charP_tag)))))
    /\
    (#"kstrtobool.jc" 44 12 435#
-   ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
+   ((#"/home/work/workspace/self/verker/kstrtobool.h" 33 13 43#
     (((=) s_2 null) \/
     (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
     (((>=) (offset_max voidP_s_5_alloc_table s_2) (1)) /\
     (((=) true true) /\ ((=) true true))))))
    /\
-   (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
+   (#"/home/work/workspace/self/verker/kstrtobool.h" 34 13 24#
    (#"kstrtobool.jc" 44 12 435#
    ((#"kstrtobool.jc" 44 12 435#
     ((<=) (offset_min _BoolP_res_6_alloc_table res) (0)))
@@ -2851,11 +2785,11 @@ module Function_kstrtobool_behaviors
    /\ (#"kstrtobool.jc" 44 12 435# ((=) true true)))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+     ((#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
       "expl:Ensures clause"
       ((Int32.(=) result (#"kstrtobool.jc" 52 42 54# "expl:Integer cast"
        (Int32.of_int (0))))
@@ -2863,7 +2797,7 @@ module Function_kstrtobool_behaviors
       (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
       (Int32.of_int (Int.(-_) (22)))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
+     (#"/home/work/workspace/self/verker/kstrtobool.h" 36 12 47#
      "expl:Ensures clause"
      ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
       (Int32.of_int (Int.(-_) (22))))) -> ((=) res res))))))) }  ->
@@ -2886,7 +2820,7 @@ module Function_kstrtobool_behaviors
       try
        begin
        (if
-       (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 5 5 7#
+       (#"/home/work/workspace/self/verker/kstrtobool.c" 5 5 7#
        (Bool.notb  ((<>)  s_2 (null  ) ) ))
        then
         begin
@@ -2895,7 +2829,7 @@ module Function_kstrtobool_behaviors
          (Unsafe_int32.of_int  (Int.(-_)  (22) ) )));
          (raise (Return_label_exc ())) end else ());
         (let _jessie_6 =
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 8 9 13#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 8 9 13#
         "expl:Integer cast"
         (Unsafe_int32_of_Unsafe_int8.cast 
          (acc  charP_charM_s_5
@@ -2905,29 +2839,26 @@ module Function_kstrtobool_behaviors
             (Unsafe_int32.of_int (0))) ) ) ) )) in
         (if
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 11 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 11 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (49))) ))
         ||
         (#"kstrtobool.jc" 85 14 79#
-        ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+        ((#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 10 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 10 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (89))) ))
         ||
-        (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+        (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
         (Unsafe_int32.(=)  _jessie_6
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 9 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 9 6 9#
          "expl:Integer cast" (Unsafe_int32.of_int (121))) ))))))
         then
          begin
          (let _jessie_31 =
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 12 9 13#
-         "expl:Integer cast"
-         (Unsafe_enum__bool_of_Unsafe_int32.cast 
-          (#"kstrtobool.jc" 89 51 63# "expl:Integer cast"
-          (Unsafe_int32.of_int (1))) )) in
+         (#"kstrtobool.jc" 89 42 54# "expl:Integer cast"
+         (Unsafe_enum__bool.of_int  (1) )) in
          (let _jessie_32 = res in
          (let _jessie_33 = (0) in
          (let _jessie_34 = _jessie_32 in
@@ -2939,29 +2870,26 @@ module Function_kstrtobool_behaviors
         else
          (if
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 16 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 16 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (48))) ))
          ||
          (#"kstrtobool.jc" 85 14 79#
-         ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+         ((#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 15 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 15 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
          ||
-         (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+         (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
          (Unsafe_int32.(=)  _jessie_6
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 14 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 14 6 9#
           "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))))
          then
           begin
           (let _jessie_25 =
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 17 9 14#
-          "expl:Integer cast"
-          (Unsafe_enum__bool_of_Unsafe_int32.cast 
-           (#"kstrtobool.jc" 97 54 66# "expl:Integer cast"
-           (Unsafe_int32.of_int (0))) )) in
+          (#"kstrtobool.jc" 97 44 56# "expl:Integer cast"
+          (Unsafe_enum__bool.of_int  (0) )) in
           (let _jessie_26 = res in
           (let _jessie_27 = (0) in
           (let _jessie_28 = _jessie_26 in
@@ -2975,21 +2903,21 @@ module Function_kstrtobool_behaviors
           begin
           (if
           (#"kstrtobool.jc" 85 14 79#
-          ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+          ((#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
            (Unsafe_int32.(=)  _jessie_6
-            (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 20 6 9#
+            (#"/home/work/workspace/self/verker/kstrtobool.c" 20 6 9#
             "expl:Integer cast" (Unsafe_int32.of_int (79))) ))
           ||
-          (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+          (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
           (Unsafe_int32.(=)  _jessie_6
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 19 6 9#
+           (#"/home/work/workspace/self/verker/kstrtobool.c" 19 6 9#
            "expl:Integer cast" (Unsafe_int32.of_int (111))) ))))
           then
            try
             begin
             ();
              (let _jessie_4 =
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 21 10 14#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 21 10 14#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_5
@@ -2999,23 +2927,20 @@ module Function_kstrtobool_behaviors
                  (Unsafe_int32.of_int (1))) ) ) ) )) in
              (if
              (#"kstrtobool.jc" 106 19 84#
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+             ((#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 23 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 23 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (78))) ))
              ||
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+             (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
              (Unsafe_int32.(=)  _jessie_4
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 22 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 22 7 10#
               "expl:Integer cast" (Unsafe_int32.of_int (110))) ))))
              then
               begin
               (let _jessie_19 =
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 24 10 14#
-              "expl:Integer cast"
-              (Unsafe_enum__bool_of_Unsafe_int32.cast 
-               (#"kstrtobool.jc" 109 59 71# "expl:Integer cast"
-               (Unsafe_int32.of_int (1))) )) in
+              (#"kstrtobool.jc" 109 49 61# "expl:Integer cast"
+              (Unsafe_enum__bool.of_int  (1) )) in
               (let _jessie_20 = res in
               (let _jessie_21 = (0) in
               (let _jessie_22 = _jessie_20 in
@@ -3028,23 +2953,20 @@ module Function_kstrtobool_behaviors
              else
               (if
               (#"kstrtobool.jc" 106 19 84#
-              ((#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+              ((#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                (Unsafe_int32.(=)  _jessie_4
-                (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 27 7 10#
+                (#"/home/work/workspace/self/verker/kstrtobool.c" 27 7 10#
                 "expl:Integer cast" (Unsafe_int32.of_int (70))) ))
               ||
-              (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+              (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
               (Unsafe_int32.(=)  _jessie_4
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 26 7 10#
+               (#"/home/work/workspace/self/verker/kstrtobool.c" 26 7 10#
                "expl:Integer cast" (Unsafe_int32.of_int (102))) ))))
               then
                begin
                (let _jessie_13 =
-               (#"/home/work/workspace/self/verker-gh/kstrtobool.c" 28 10 15#
-               "expl:Integer cast"
-               (Unsafe_enum__bool_of_Unsafe_int32.cast 
-                (#"kstrtobool.jc" 116 59 71# "expl:Integer cast"
-                (Unsafe_int32.of_int (0))) )) in
+               (#"kstrtobool.jc" 116 49 61# "expl:Integer cast"
+               (Unsafe_enum__bool.of_int  (0) )) in
                (let _jessie_14 = res in
                (let _jessie_15 = (0) in
                (let _jessie_16 = _jessie_14 in
@@ -6422,6 +6344,36 @@ module Unsafe_int16_of_Unsafe_int32
   
 end
 
+module Safe_enum__bool_of_Safe_int32
+
+  use enum.Int32 
+  
+  use Enum__bool 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int32.t) : Enum__bool.t
+   requires { (Enum__bool.in_bounds (Int32.to_int n)) }
+   ensures { ((=) (Enum__bool.to_int result) (Int32.to_int n)) }
+  
+end
+
+module Unsafe_enum__bool_of_Unsafe_int32
+
+  use enum.Int32 
+  
+  use Enum__bool 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int32.t) : Enum__bool.t
+   requires { true }
+   ensures { ((=) (Enum__bool.to_int result) (Int32.to_int n)) }
+  
+end
+
 theory Enum__bool_of_Int32
 
   use enum.Int32 
@@ -9311,27 +9263,27 @@ module Function_kstrtobool
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6
               (pset_singleton res)))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             ((#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
               "expl:Ensures clause"
               ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
                (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
                (Enum__bool.of_int (1))))))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 45 15 52#
+             ((#"/home/work/workspace/self/verker/kstrtobool.h" 45 15 52#
               "expl:Ensures clause"
               ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
                (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
                (Enum__bool.of_int (0))))))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 46 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"kstrtobool.jc" 67 44 56#
              "expl:Integer cast" (Int32.of_int (0))))))))))))
@@ -9342,16 +9294,16 @@ module Function_kstrtobool
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 40 15 29#
              "expl:Ensures clause"
              (Int32.(=) result (#"kstrtobool.jc" 59 31 48#
              "expl:Integer cast" (Int32.of_int (Int.(-_) (22))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           ((#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
             "expl:Ensures clause"
             ((Int32.(=) result (#"kstrtobool.jc" 52 42 54#
              "expl:Integer cast" (Int32.of_int (0))))
@@ -9359,7 +9311,7 @@ module Function_kstrtobool
             (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22)))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 36 12 47#
            "expl:Ensures clause"
            ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22))))) -> ((=) res res)))))))) }
@@ -9413,14 +9365,14 @@ module Function_kstrtobool_safe
          requires {
            ("expl:Internal"
            (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
-           ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 33 13 43#
+           ((#"/home/work/workspace/self/verker/kstrtobool.h" 33 13 43#
             "expl:Requires clause"
             (((=) s_2 null) \/
             (((<=) (offset_min voidP_s_5_alloc_table s_2) (0)) /\
             (((>=) (offset_max voidP_s_5_alloc_table s_2) (1)) /\
             (((=) true true) /\ ((=) true true))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 34 13 24#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 34 13 24#
            "expl:Requires clause"
            (#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
            ((#"kstrtobool.jc" 44 12 435# "expl:Requires clause"
@@ -9440,27 +9392,27 @@ module Function_kstrtobool_safe
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6
               (pset_singleton res)))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             ((#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
               "expl:Ensures clause"
               ((kstrtobool_fmt_true s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
                (#"kstrtobool.jc" 64 55 67# "expl:Integer cast"
                (Enum__bool.of_int (1))))))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 44 15 52#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 44 15 52#
              "expl:Ensures clause"
-             ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 45 15 52#
+             ((#"/home/work/workspace/self/verker/kstrtobool.h" 45 15 52#
               "expl:Ensures clause"
               ((kstrtobool_fmt_false s_2 charP_charM_s_5) ->
                (Enum__bool.(=) (select !_BoolP__BoolM_res_6 res)
                (#"kstrtobool.jc" 66 57 69# "expl:Integer cast"
                (Enum__bool.of_int (0))))))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 46 15 27#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 46 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"kstrtobool.jc" 67 44 56#
              "expl:Integer cast" (Int32.of_int (0))))))))))))
@@ -9471,16 +9423,16 @@ module Function_kstrtobool_safe
               (not_assigns _BoolP_res_6_alloc_table _BoolP_res_6_alloc_table
               (old !_BoolP__BoolM_res_6) !_BoolP__BoolM_res_6 pset_empty))
              /\
-             (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 40 15 29#
+             (#"/home/work/workspace/self/verker/kstrtobool.h" 40 15 29#
              "expl:Ensures clause"
              (Int32.(=) result (#"kstrtobool.jc" 59 31 48#
              "expl:Integer cast" (Int32.of_int (Int.(-_) (22))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
            "expl:Ensures clause"
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
            "expl:Ensures clause"
-           ((#"/home/work/workspace/self/verker-gh/kstrtobool.h" 35 12 42#
+           ((#"/home/work/workspace/self/verker/kstrtobool.h" 35 12 42#
             "expl:Ensures clause"
             ((Int32.(=) result (#"kstrtobool.jc" 52 42 54#
              "expl:Integer cast" (Int32.of_int (0))))
@@ -9488,7 +9440,7 @@ module Function_kstrtobool_safe
             (Int32.(=) result (#"kstrtobool.jc" 53 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22)))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/kstrtobool.h" 36 12 47#
+           (#"/home/work/workspace/self/verker/kstrtobool.h" 36 12 47#
            "expl:Ensures clause"
            ((Int32.(=) result (#"kstrtobool.jc" 54 43 60# "expl:Integer cast"
             (Int32.of_int (Int.(-_) (22))))) -> ((=) res res)))))))) }

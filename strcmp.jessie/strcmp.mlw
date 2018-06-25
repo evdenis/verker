@@ -1682,11 +1682,11 @@ theory Axiomatic_Strlen
   
   
   lemma Valid_str_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+  #"/home/work/workspace/self/verker/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
   (forall voidP_s_0_7_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_0_7_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+    (#"/home/work/workspace/self/verker/strlen.h" 12 7 102#
     (forall s_0_0 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_7_at_L s_0_0)
        (#"strcmp.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
@@ -1697,11 +1697,11 @@ theory Axiomatic_Strlen
       charP_charM_s_0_7_at_L))))))
   
   lemma Valid_str_strend
-  #"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+  #"/home/work/workspace/self/verker/strlen.h" 18 7 87#
   "expl:Lemma valid_str_strend" :
   (forall voidP_s_1_8_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_1_8_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+    (#"/home/work/workspace/self/verker/strlen.h" 18 7 87#
     (forall s_1 : (pointer voidP).
      (((((<=) (offset_min voidP_s_1_8_alloc_table_at_L s_1) (0)) /\
        (((>=) (offset_max voidP_s_1_8_alloc_table_at_L s_1) (0)) /\
@@ -1725,11 +1725,11 @@ theory Axiomatic_Strlen
   
   
   lemma Strlen_before_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+  #"/home/work/workspace/self/verker/strlen.h" 26 7 106#
   "expl:Lemma strlen_before_null" :
   (forall voidP_s_3_9_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_3_9_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+    (#"/home/work/workspace/self/verker/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
      (forall i : int.
       (((valid_str s_3 voidP_s_3_9_alloc_table_at_L charP_charM_s_3_9_at_L)
@@ -1739,12 +1739,11 @@ theory Axiomatic_Strlen
        (Int8.(<>) (select charP_charM_s_3_9_at_L (shift s_3 i))
        (#"strcmp.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
-  lemma Strlen_at_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+  lemma Strlen_at_null #"/home/work/workspace/self/verker/strlen.h" 31 7 71#
   "expl:Lemma strlen_at_null" :
   (forall voidP_s_4_10_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_4_10_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+    (#"/home/work/workspace/self/verker/strlen.h" 31 7 71#
     (forall s_4 : (pointer voidP).
      ((valid_str s_4 voidP_s_4_10_alloc_table_at_L charP_charM_s_4_10_at_L)
       ->
@@ -1753,12 +1752,11 @@ theory Axiomatic_Strlen
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_10_at_L))))
       (#"strcmp.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
-  lemma Strlen_shift
-  #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+  lemma Strlen_shift #"/home/work/workspace/self/verker/strlen.h" 35 7 125#
   "expl:Lemma strlen_shift" :
   (forall voidP_s_5_11_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_5_11_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+    (#"/home/work/workspace/self/verker/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
      (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_11_alloc_table_at_L charP_charM_s_5_11_at_L)
@@ -1770,11 +1768,11 @@ theory Axiomatic_Strlen
        (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
-  #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+  #"/home/work/workspace/self/verker/strlen.h" 41 7 126#
   "expl:Lemma strlen_shift_ex" :
   (forall voidP_s_6_12_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_6_12_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+    (#"/home/work/workspace/self/verker/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
      (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_12_alloc_table_at_L charP_charM_s_6_12_at_L)
@@ -1786,12 +1784,11 @@ theory Axiomatic_Strlen
        (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_12_at_L)
        (strlen s_6 charP_charM_s_6_12_at_L))))))))
   
-  lemma Strlen_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+  lemma Strlen_shift1 #"/home/work/workspace/self/verker/strlen.h" 47 7 103#
   "expl:Lemma strlen_shift1" :
   (forall voidP_s_7_13_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_7_13_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+    (#"/home/work/workspace/self/verker/strlen.h" 47 7 103#
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_13_alloc_table_at_L charP_charM_s_7_13_at_L)
       /\
@@ -1802,11 +1799,11 @@ theory Axiomatic_Strlen
       (Uint64.to_int (strlen (shift s_7 (1)) charP_charM_s_7_13_at_L)))))))))
   
   lemma Strlen_pointers
-  #"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+  #"/home/work/workspace/self/verker/strlen.h" 52 7 254#
   "expl:Lemma strlen_pointers" :
   (forall voidP_s_8_14_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_8_14_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+    (#"/home/work/workspace/self/verker/strlen.h" 52 7 254#
     (forall s_8 : (pointer voidP).
      (forall sc : (pointer voidP).
       (((valid_str s_8 voidP_s_8_14_alloc_table_at_L charP_charM_s_8_14_at_L)
@@ -1824,11 +1821,11 @@ theory Axiomatic_Strlen
        (Uint64.(<=) (strlen sc charP_charM_s_8_14_at_L)
        (strlen s_8 charP_charM_s_8_14_at_L))))))))
   
-  lemma Strlen_main #"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+  lemma Strlen_main #"/home/work/workspace/self/verker/strlen.h" 61 7 165#
   "expl:Lemma strlen_main" :
   (forall voidP_s_9_16_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_9_16_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+    (#"/home/work/workspace/self/verker/strlen.h" 61 7 165#
     (forall s_9 : (pointer voidP).
      (forall n_2 : Uint64.t.
       (((valid_str s_9 voidP_s_9_16_alloc_table_at_L charP_charM_s_9_16_at_L)
@@ -1844,11 +1841,11 @@ theory Axiomatic_Strlen
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_16_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
-  #"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+  #"/home/work/workspace/self/verker/strlen.h" 68 7 123#
   "expl:Lemma valid_str_shiftn" :
   (forall voidP_s_10_17_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_10_17_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+    (#"/home/work/workspace/self/verker/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
      (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_17_alloc_table_at_L
@@ -1934,7 +1931,7 @@ module Exceptions
 end
 
 module Function_strcmp_safety
-#"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42# "expl:strcmp, safety"
+#"/home/work/workspace/self/verker/strcmp.c" 3 4 42# "expl:strcmp, safety"
 
   use enum.Uint64 
   
@@ -1992,7 +1989,7 @@ module Function_strcmp_safety
   
   use why3.Bool.Bool 
   
-  let strcmp #"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42#
+  let strcmp #"/home/work/workspace/self/verker/strcmp.c" 3 4 42#
   "expl:Function strcmp, safety" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (voidP_cs_5_alloc_table :
@@ -2016,10 +2013,10 @@ module Function_strcmp_safety
        ((=) (typeof voidP_cs_5_tag_table (shift cs i)) charP_tag)))))
    /\
    (#"strcmp.jc" 128 12 74#
-   ((#"/home/work/workspace/self/verker-gh/strcmp.h" 57 13 26#
+   ((#"/home/work/workspace/self/verker/strcmp.h" 57 13 26#
     (valid_str cs voidP_cs_5_alloc_table charP_charM_cs_5))
    /\
-   (#"/home/work/workspace/self/verker-gh/strcmp.h" 58 13 26#
+   (#"/home/work/workspace/self/verker/strcmp.h" 58 13 26#
    (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6)))))) }
    ensures { ("expl:Postcondition" true) }  ->
    (let mutable_cs = ref cs in
@@ -2045,7 +2042,7 @@ module Function_strcmp_safety
        any unit
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strcmp.c" 7 14 166#
+         (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
          ((forall i_6 : int.
            ((((<=) (0) i_6) /\
             ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
@@ -2067,8 +2064,7 @@ module Function_strcmp_safety
         'Loop_4:
         loop
         invariant { (#"strcmp.jc" 218 6 6558# true) }
-          variant {
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 19 18 58#
+          variant { (#"/home/work/workspace/self/verker/strcmp.c" 19 18 58#
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) }
@@ -2076,13 +2072,13 @@ module Function_strcmp_safety
          any unit
          requires { true } reads { mutable_cs, mutable_ct }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 17 20 74#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 17 20 74#
             ((=) (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 15 20 121#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
             (forall i_9 : int.
              ((((<=) (0) i_9) /\
               ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
@@ -2090,60 +2086,60 @@ module Function_strcmp_safety
               (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
               (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 14 20 56#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
             (sub_pointer !mutable_ct (at !mutable_ct 'Init))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              (same_block (at !mutable_ct 'Init) !mutable_ct))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              ((<=) (sub_pointer (at !mutable_ct 'Init) !mutable_ct) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
              (same_block !mutable_ct
              (shift (at !mutable_ct 'Init)
              (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
             ((<=)
             (sub_pointer !mutable_ct
             (shift (at !mutable_ct 'Init)
             (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6))))
             (0))))))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              (same_block (at !mutable_cs 'Init) !mutable_cs))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              ((<=) (sub_pointer (at !mutable_cs 'Init) !mutable_cs) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
              (same_block !mutable_cs
              (shift (at !mutable_cs 'Init)
              (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
             ((<=)
             (sub_pointer !mutable_cs
             (shift (at !mutable_cs 'Init)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))))
             (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 33#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 11 20 33#
             (valid_str !mutable_cs voidP_cs_5_alloc_table charP_charM_cs_5))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 37 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 37 50#
            (valid_str !mutable_ct voidP_ct_6_alloc_table charP_charM_ct_6))))))))))
            } ;
           try
@@ -2154,7 +2150,7 @@ module Function_strcmp_safety
             (let _jessie_47 = !mutable_cs in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 46 50#
+            (#"/home/work/workspace/self/verker/strcmp.c" 22 46 50#
             "expl:Pointer index bounds" true) }); _jessie_47 end));
             begin
             (mutable_cs :=
@@ -2165,26 +2161,26 @@ module Function_strcmp_safety
                (Safe_bit_int32.of_int_const 1)) ) ) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 46 50#
+             (#"/home/work/workspace/self/verker/strcmp.c" 22 46 50#
              "expl:Pointer index bounds" true) }); _jessie_48 end));
              (c1 :=
               (let _jessie_49 =
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 23 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
               "expl:Integer cast"
               (Safe_bit_uint8_of_Safe_bit_int8.cast_modulo 
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 45 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 22 45 50#
                "expl:Pointer dereference"
                (acc  voidP_cs_5_alloc_table charP_charM_cs_5 !tmp )) )) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 2 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 22 2 50#
               "expl:Pointer index bounds" true) }); _jessie_49 end)) end end;
             begin
             (tmp_0 :=
              (let _jessie_50 = !mutable_ct in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 46 50#
+             (#"/home/work/workspace/self/verker/strcmp.c" 23 46 50#
              "expl:Pointer index bounds" true) }); _jessie_50 end));
              begin
              (mutable_ct :=
@@ -2195,38 +2191,38 @@ module Function_strcmp_safety
                 (Safe_bit_int32.of_int_const 1)) ) ) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 46 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 23 46 50#
               "expl:Pointer index bounds" true) }); _jessie_51 end));
               (c2 :=
                (let _jessie_52 =
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 23 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
                "expl:Integer cast"
                (Safe_bit_uint8_of_Safe_bit_int8.cast_modulo 
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 45 50#
+                (#"/home/work/workspace/self/verker/strcmp.c" 23 45 50#
                 "expl:Pointer dereference"
                 (acc  voidP_ct_6_alloc_table charP_charM_ct_6 !tmp_0 )) )) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 2 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 23 2 50#
                "expl:Pointer index bounds" true) }); _jessie_52 end)) end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 14#
+            (#"/home/work/workspace/self/verker/strcmp.c" 24 6 14#
             (Safe_bit_int32.(<>) 
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 8#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 6 8#
              "expl:Integer cast"
              (Safe_bit_int32_of_Safe_bit_uint8.cast  !c1 ))
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 12 14#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 12 14#
              "expl:Integer cast"
              (Safe_bit_int32_of_Safe_bit_uint8.cast  !c2 )) ))
             then
              begin
              (if
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 30#
+             (#"/home/work/workspace/self/verker/strcmp.c" 25 23 30#
              (Safe_bit_int32.(<) 
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 25#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 23 25#
               "expl:Integer cast"
               (Safe_bit_int32_of_Safe_bit_uint8.cast  !c1 ))
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 28 30#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 28 30#
               "expl:Integer cast"
               (Safe_bit_int32_of_Safe_bit_uint8.cast  !c2 )) ))
              then
@@ -2236,7 +2232,7 @@ module Function_strcmp_safety
                (Safe_bit_int32.of_int  (Int.(-_)  (1) ) )) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 39#
+               (#"/home/work/workspace/self/verker/strcmp.c" 25 23 39#
                "expl:Pointer index bounds" true) }); _jessie_54 end))
              else
               (tmp_1 :=
@@ -2245,20 +2241,20 @@ module Function_strcmp_safety
                (Safe_bit_int32.of_int_const 1)) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 39#
+               (#"/home/work/workspace/self/verker/strcmp.c" 25 23 39#
                "expl:Pointer index bounds" true) }); _jessie_53 end)));
               begin
               (res :=
                (let _jessie_56 = !tmp_1 in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 17 20#
+               (#"/home/work/workspace/self/verker/strcmp.c" 25 17 20#
                "expl:Pointer index bounds" true) }); _jessie_56 end));
                begin
                any unit
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
-                 (#"/home/work/workspace/self/verker-gh/strcmp.c" 26 14 307#
+                 (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
                  (exists i_8 : int.
                   (((<=) (0) i_8) /\
                   (((<=) i_8
@@ -2299,12 +2295,12 @@ module Function_strcmp_safety
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 17#
+               (#"/home/work/workspace/self/verker/strcmp.c" 32 10 17#
                (Safe_bit_int32.(<) 
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 12#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 10 12#
                 "expl:Integer cast"
                 (Safe_bit_int32_of_Safe_bit_uint8.cast  !c1 ))
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 15 17#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 15 17#
                 "expl:Integer cast"
                 (Safe_bit_int32_of_Safe_bit_uint8.cast  !c2 )) ))
                then
@@ -2314,7 +2310,7 @@ module Function_strcmp_safety
                  (Safe_bit_int32.of_int  (Int.(-_)  (1) ) )) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 26#
+                 (#"/home/work/workspace/self/verker/strcmp.c" 32 10 26#
                  "expl:Pointer index bounds" true) }); _jessie_58 end))
                else
                 (tmp_2 :=
@@ -2323,18 +2319,18 @@ module Function_strcmp_safety
                  (Safe_bit_int32.of_int_const 1)) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 26#
+                 (#"/home/work/workspace/self/verker/strcmp.c" 32 10 26#
                  "expl:Pointer index bounds" true) }); _jessie_57 end)));
                begin
                (__retres :=
                 (let _jessie_55 = !tmp_2 in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 3 27#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 3 27#
                 "expl:Pointer index bounds" true) }); _jessie_55 end));
                 (raise (Return_label_exc ())) end end end else ());
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 34 6 9#
+            (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Safe_bit_uint8.(<>)  !c1
               (#"strcmp.jc" 317 46 58# "expl:Integer cast"
@@ -2344,7 +2340,7 @@ module Function_strcmp_safety
             any unit
             requires { true } reads { mutable_cs, mutable_ct }
             ensures {
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 36 13 79#
+              (#"/home/work/workspace/self/verker/strcmp.c" 36 13 79#
               (Bit_int8.(=)
               (select charP_charM_cs_5
               (shift (at !mutable_cs 'Init)
@@ -2366,7 +2362,7 @@ module Function_strcmp_safety
          (Safe_bit_int32.of_int_const 0)) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/strcmp.c" 39 1 10#
+         (#"/home/work/workspace/self/verker/strcmp.c" 39 1 10#
          "expl:Pointer index bounds" true) }); _jessie_59 end)) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
       'Return_label:
@@ -2438,8 +2434,7 @@ module Unsafe_bit_int32_of_Unsafe_bit_uint8
 end
 
 module Function_strcmp_behaviors
-#"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42#
-"expl:strcmp, behaviors"
+#"/home/work/workspace/self/verker/strcmp.c" 3 4 42# "expl:strcmp, behaviors"
 
   use Unsafe_bit_uint8_of_Unsafe_bit_int8 
   
@@ -2498,7 +2493,7 @@ module Function_strcmp_behaviors
   use why3.Bool.Bool 
   
   let strcmp_ensures_default
-  #"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42#
+  #"/home/work/workspace/self/verker/strcmp.c" 3 4 42#
   "expl:Function strcmp, default behavior" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (voidP_cs_5_alloc_table :
@@ -2522,10 +2517,10 @@ module Function_strcmp_behaviors
        ((=) (typeof voidP_cs_5_tag_table (shift cs i)) charP_tag)))))
    /\
    (#"strcmp.jc" 128 12 74#
-   ((#"/home/work/workspace/self/verker-gh/strcmp.h" 57 13 26#
+   ((#"/home/work/workspace/self/verker/strcmp.h" 57 13 26#
     (valid_str cs voidP_cs_5_alloc_table charP_charM_cs_5))
    /\
-   (#"/home/work/workspace/self/verker-gh/strcmp.h" 58 13 26#
+   (#"/home/work/workspace/self/verker/strcmp.h" 58 13 26#
    (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6)))))) }
    ensures { ("expl:Postcondition" ("expl:Ensures clause" true)) } diverges 
    ->
@@ -2579,7 +2574,7 @@ module Function_strcmp_behaviors
        begin
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strcmp.c" 7 14 166#
+       (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
        "expl:Assertion in line 7"
        ((forall i_6 : int.
          ((((<=) (0) i_6) /\
@@ -2600,65 +2595,65 @@ module Function_strcmp_behaviors
         'Loop_1:
         loop
         invariant
-          { ((#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 33#
+          { ((#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+             (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 11 20 33#
               (valid_str !mutable_cs voidP_cs_5_alloc_table charP_charM_cs_5))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 37 50#
+             (#"/home/work/workspace/self/verker/strcmp.c" 11 37 50#
              (valid_str !mutable_ct voidP_ct_6_alloc_table charP_charM_ct_6)))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
               (same_block (at !mutable_cs 'Init) !mutable_cs))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+             (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
               ((<=) (sub_pointer (at !mutable_cs 'Init) !mutable_cs) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
               (same_block !mutable_cs
               (shift (at !mutable_cs 'Init)
               (Uint64.to_int
               (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
              ((<=)
              (sub_pointer !mutable_cs
              (shift (at !mutable_cs 'Init)
              (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))))
              (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
               (same_block (at !mutable_ct 'Init) !mutable_ct))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+             (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
               ((<=) (sub_pointer (at !mutable_ct 'Init) !mutable_ct) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-             ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+             ((#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
               (same_block !mutable_ct
               (shift (at !mutable_ct 'Init)
               (Uint64.to_int
               (strlen (at !mutable_ct 'Init) charP_charM_ct_6)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+             (#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
              ((<=)
              (sub_pointer !mutable_ct
              (shift (at !mutable_ct 'Init)
              (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6))))
              (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 14 20 56#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
              ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
              (sub_pointer !mutable_ct (at !mutable_ct 'Init))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 15 20 121#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
              (forall i_9 : int.
               ((((<=) (0) i_9) /\
                ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
@@ -2666,7 +2661,7 @@ module Function_strcmp_behaviors
                (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
                (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
             &&
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 17 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 17 20 74#
             ((=) (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
@@ -2686,7 +2681,7 @@ module Function_strcmp_behaviors
                (#"strcmp.jc" 263 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 23 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
               "expl:Integer cast"
               (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                (acc  charP_charM_cs_5 !tmp ) ))) end end;
@@ -2699,28 +2694,28 @@ module Function_strcmp_behaviors
                 (#"strcmp.jc" 268 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 23 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                 (acc  charP_charM_ct_6 !tmp_0 ) ))) end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 14#
+            (#"/home/work/workspace/self/verker/strcmp.c" 24 6 14#
             (Unsafe_bit_int32.(<>) 
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 8#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 6 8#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 12 14#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 12 14#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
             then
              begin
              (if
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 30#
+             (#"/home/work/workspace/self/verker/strcmp.c" 25 23 30#
              (Unsafe_bit_int32.(<) 
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 25#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 23 25#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 28 30#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 28 30#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
@@ -2735,7 +2730,7 @@ module Function_strcmp_behaviors
               (res := !tmp_1);
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 26 14 307#
+               (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
                "expl:Assertion in line 26"
                (exists i_8 : int.
                 (((<=) (0) i_8) /\
@@ -2773,12 +2768,12 @@ module Function_strcmp_behaviors
                 (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                 (1)))))))))) }); () end;
                (if
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 17#
+               (#"/home/work/workspace/self/verker/strcmp.c" 32 10 17#
                (Unsafe_bit_int32.(<) 
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 12#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 10 12#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 15 17#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 15 17#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
@@ -2792,7 +2787,7 @@ module Function_strcmp_behaviors
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 34 6 9#
+            (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
               (#"strcmp.jc" 317 46 58# "expl:Integer cast"
@@ -2800,7 +2795,7 @@ module Function_strcmp_behaviors
             then (raise (Goto_while_0_break_exc ())) else ());
             begin
             (assert {
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 36 13 79#
+            (#"/home/work/workspace/self/verker/strcmp.c" 36 13 79#
             "expl:Assertion in line 36"
             (Bit_int8.(=)
             (select charP_charM_cs_5
@@ -2826,7 +2821,7 @@ module Function_strcmp_behaviors
      absurd  end with Return -> !return end)))
   
   let strcmp_ensures_equal
-  #"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42#
+  #"/home/work/workspace/self/verker/strcmp.c" 3 4 42#
   "expl:Function strcmp, behavior equal" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (voidP_cs_5_alloc_table :
@@ -2856,14 +2851,14 @@ module Function_strcmp_behaviors
        ((=) (typeof voidP_cs_5_tag_table (shift cs i)) charP_tag)))))
    /\
    (#"strcmp.jc" 128 12 74#
-   ((#"/home/work/workspace/self/verker-gh/strcmp.h" 57 13 26#
+   ((#"/home/work/workspace/self/verker/strcmp.h" 57 13 26#
     (valid_str cs voidP_cs_5_alloc_table charP_charM_cs_5))
    /\
-   (#"/home/work/workspace/self/verker-gh/strcmp.h" 58 13 26#
+   (#"/home/work/workspace/self/verker/strcmp.h" 58 13 26#
    (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strcmp.h" 63 15 27#
+     (#"/home/work/workspace/self/verker/strcmp.h" 63 15 27#
      "expl:Ensures clause"
      (Bit_int32.(=) result (#"strcmp.jc" 136 31 43# "expl:Integer cast"
      (Bit_int32.of_int_const 0))))) } diverges  ->
@@ -2890,7 +2885,7 @@ module Function_strcmp_behaviors
        any unit
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strcmp.c" 7 14 166#
+         (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
          ((forall i_6 : int.
            ((((<=) (0) i_6) /\
             ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
@@ -2916,13 +2911,13 @@ module Function_strcmp_behaviors
          any unit
          requires { true } reads { mutable_cs, mutable_ct }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 17 20 74#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 17 20 74#
             ((=) (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 15 20 121#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
             (forall i_9 : int.
              ((((<=) (0) i_9) /\
               ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
@@ -2930,60 +2925,60 @@ module Function_strcmp_behaviors
               (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
               (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 14 20 56#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
             (sub_pointer !mutable_ct (at !mutable_ct 'Init))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              (same_block (at !mutable_ct 'Init) !mutable_ct))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              ((<=) (sub_pointer (at !mutable_ct 'Init) !mutable_ct) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
              (same_block !mutable_ct
              (shift (at !mutable_ct 'Init)
              (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
             ((<=)
             (sub_pointer !mutable_ct
             (shift (at !mutable_ct 'Init)
             (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6))))
             (0))))))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              (same_block (at !mutable_cs 'Init) !mutable_cs))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              ((<=) (sub_pointer (at !mutable_cs 'Init) !mutable_cs) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
              (same_block !mutable_cs
              (shift (at !mutable_cs 'Init)
              (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
             ((<=)
             (sub_pointer !mutable_cs
             (shift (at !mutable_cs 'Init)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))))
             (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 33#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 11 20 33#
             (valid_str !mutable_cs voidP_cs_5_alloc_table charP_charM_cs_5))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 37 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 37 50#
            (valid_str !mutable_ct voidP_ct_6_alloc_table charP_charM_ct_6))))))))))
            } ;
           try
@@ -2998,7 +2993,7 @@ module Function_strcmp_behaviors
                (#"strcmp.jc" 263 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 23 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
               "expl:Integer cast"
               (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                (acc  charP_charM_cs_5 !tmp ) ))) end end;
@@ -3011,28 +3006,28 @@ module Function_strcmp_behaviors
                 (#"strcmp.jc" 268 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 23 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                 (acc  charP_charM_ct_6 !tmp_0 ) ))) end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 14#
+            (#"/home/work/workspace/self/verker/strcmp.c" 24 6 14#
             (Unsafe_bit_int32.(<>) 
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 8#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 6 8#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 12 14#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 12 14#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
             then
              begin
              (if
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 30#
+             (#"/home/work/workspace/self/verker/strcmp.c" 25 23 30#
              (Unsafe_bit_int32.(<) 
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 25#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 23 25#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 28 30#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 28 30#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
@@ -3049,7 +3044,7 @@ module Function_strcmp_behaviors
                any unit
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
-                 (#"/home/work/workspace/self/verker-gh/strcmp.c" 26 14 307#
+                 (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
                  (exists i_8 : int.
                   (((<=) (0) i_8) /\
                   (((<=) i_8
@@ -3090,12 +3085,12 @@ module Function_strcmp_behaviors
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 17#
+               (#"/home/work/workspace/self/verker/strcmp.c" 32 10 17#
                (Unsafe_bit_int32.(<) 
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 12#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 10 12#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 15 17#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 15 17#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
@@ -3109,7 +3104,7 @@ module Function_strcmp_behaviors
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 34 6 9#
+            (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
               (#"strcmp.jc" 317 46 58# "expl:Integer cast"
@@ -3119,7 +3114,7 @@ module Function_strcmp_behaviors
             any unit
             requires { true } reads { mutable_cs, mutable_ct }
             ensures {
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 36 13 79#
+              (#"/home/work/workspace/self/verker/strcmp.c" 36 13 79#
               (Bit_int8.(=)
               (select charP_charM_cs_5
               (shift (at !mutable_cs 'Init)
@@ -3144,7 +3139,7 @@ module Function_strcmp_behaviors
      absurd  end with Return -> !return end)))
   
   let strcmp_ensures_not_equal
-  #"/home/work/workspace/self/verker-gh/strcmp.c" 3 4 42#
+  #"/home/work/workspace/self/verker/strcmp.c" 3 4 42#
   "expl:Function strcmp, behavior not_equal" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (voidP_cs_5_alloc_table :
@@ -3174,18 +3169,18 @@ module Function_strcmp_behaviors
        ((=) (typeof voidP_cs_5_tag_table (shift cs i)) charP_tag)))))
    /\
    (#"strcmp.jc" 128 12 74#
-   ((#"/home/work/workspace/self/verker-gh/strcmp.h" 57 13 26#
+   ((#"/home/work/workspace/self/verker/strcmp.h" 57 13 26#
     (valid_str cs voidP_cs_5_alloc_table charP_charM_cs_5))
    /\
-   (#"/home/work/workspace/self/verker-gh/strcmp.h" 58 13 26#
+   (#"/home/work/workspace/self/verker/strcmp.h" 58 13 26#
    (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+     (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+     (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+     ((#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
       "expl:Ensures clause"
       ((Bit_int32.(=) result (#"strcmp.jc" 141 42 58# "expl:Integer cast"
        (Bit_int32.of_int (Int.(-_) (1)))))
@@ -3193,7 +3188,7 @@ module Function_strcmp_behaviors
       (Bit_int32.(=) result (#"strcmp.jc" 142 43 55# "expl:Integer cast"
       (Bit_int32.of_int_const 1)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strcmp.h" 67 15 235#
+     (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
      "expl:Ensures clause"
      (exists i_11 : int.
       (((<=) (0) i_11) /\
@@ -3240,7 +3235,7 @@ module Function_strcmp_behaviors
        any unit
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
-         (#"/home/work/workspace/self/verker-gh/strcmp.c" 7 14 166#
+         (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
          ((forall i_6 : int.
            ((((<=) (0) i_6) /\
             ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
@@ -3266,13 +3261,13 @@ module Function_strcmp_behaviors
          any unit
          requires { true } reads { mutable_cs, mutable_ct }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 17 20 74#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 17 20 74#
             ((=) (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 15 20 121#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
             (forall i_9 : int.
              ((((<=) (0) i_9) /\
               ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
@@ -3280,60 +3275,60 @@ module Function_strcmp_behaviors
               (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
               (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 14 20 56#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
             (sub_pointer !mutable_ct (at !mutable_ct 'Init))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              (same_block (at !mutable_ct 'Init) !mutable_ct))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 20 37#
              ((<=) (sub_pointer (at !mutable_ct 'Init) !mutable_ct) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
              (same_block !mutable_ct
              (shift (at !mutable_ct 'Init)
              (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 13 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 13 35 74#
             ((<=)
             (sub_pointer !mutable_ct
             (shift (at !mutable_ct 'Init)
             (Uint64.to_int (strlen (at !mutable_ct 'Init) charP_charM_ct_6))))
             (0))))))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              (same_block (at !mutable_cs 'Init) !mutable_cs))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 37#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 20 37#
              ((<=) (sub_pointer (at !mutable_cs 'Init) !mutable_cs) (0)))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 20 74#
-            ((#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 20 74#
+            ((#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
              (same_block !mutable_cs
              (shift (at !mutable_cs 'Init)
              (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 12 35 74#
+            (#"/home/work/workspace/self/verker/strcmp.c" 12 35 74#
             ((<=)
             (sub_pointer !mutable_cs
             (shift (at !mutable_cs 'Init)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))))
             (0))))))))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 50#
-           ((#"/home/work/workspace/self/verker-gh/strcmp.c" 11 20 33#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 20 50#
+           ((#"/home/work/workspace/self/verker/strcmp.c" 11 20 33#
             (valid_str !mutable_cs voidP_cs_5_alloc_table charP_charM_cs_5))
            /\
-           (#"/home/work/workspace/self/verker-gh/strcmp.c" 11 37 50#
+           (#"/home/work/workspace/self/verker/strcmp.c" 11 37 50#
            (valid_str !mutable_ct voidP_ct_6_alloc_table charP_charM_ct_6))))))))))
            } ;
           try
@@ -3348,7 +3343,7 @@ module Function_strcmp_behaviors
                (#"strcmp.jc" 263 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 22 23 50#
+              (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
               "expl:Integer cast"
               (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                (acc  charP_charM_cs_5 !tmp ) ))) end end;
@@ -3361,28 +3356,28 @@ module Function_strcmp_behaviors
                 (#"strcmp.jc" 268 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 23 23 50#
+               (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
                "expl:Integer cast"
                (Unsafe_bit_uint8_of_Unsafe_bit_int8.cast_modulo 
                 (acc  charP_charM_ct_6 !tmp_0 ) ))) end end;
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 14#
+            (#"/home/work/workspace/self/verker/strcmp.c" 24 6 14#
             (Unsafe_bit_int32.(<>) 
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 6 8#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 6 8#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 24 12 14#
+             (#"/home/work/workspace/self/verker/strcmp.c" 24 12 14#
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
             then
              begin
              (if
-             (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 30#
+             (#"/home/work/workspace/self/verker/strcmp.c" 25 23 30#
              (Unsafe_bit_int32.(<) 
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 23 25#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 23 25#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 25 28 30#
+              (#"/home/work/workspace/self/verker/strcmp.c" 25 28 30#
               "expl:Integer cast"
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
@@ -3399,7 +3394,7 @@ module Function_strcmp_behaviors
                any unit
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
-                 (#"/home/work/workspace/self/verker-gh/strcmp.c" 26 14 307#
+                 (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
                  (exists i_8 : int.
                   (((<=) (0) i_8) /\
                   (((<=) i_8
@@ -3440,12 +3435,12 @@ module Function_strcmp_behaviors
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
-               (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 17#
+               (#"/home/work/workspace/self/verker/strcmp.c" 32 10 17#
                (Unsafe_bit_int32.(<) 
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 10 12#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 10 12#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c1 ))
-                (#"/home/work/workspace/self/verker-gh/strcmp.c" 32 15 17#
+                (#"/home/work/workspace/self/verker/strcmp.c" 32 15 17#
                 "expl:Integer cast"
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
@@ -3459,7 +3454,7 @@ module Function_strcmp_behaviors
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
             (if
-            (#"/home/work/workspace/self/verker-gh/strcmp.c" 34 6 9#
+            (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
               (#"strcmp.jc" 317 46 58# "expl:Integer cast"
@@ -3469,7 +3464,7 @@ module Function_strcmp_behaviors
             any unit
             requires { true } reads { mutable_cs, mutable_ct }
             ensures {
-              (#"/home/work/workspace/self/verker-gh/strcmp.c" 36 13 79#
+              (#"/home/work/workspace/self/verker/strcmp.c" 36 13 79#
               (Bit_int8.(=)
               (select charP_charM_cs_5
               (shift (at !mutable_cs 'Init)
@@ -8715,22 +8710,22 @@ module Function_strlen_0
     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
      requires { true }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
         (#"strcmp.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -8766,26 +8761,26 @@ module Function_strlen_0_safe
     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
      requires {
        ("expl:External"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+       (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
        "expl:Requires clause"
        (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))) }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
         (#"strcmp.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -8841,11 +8836,11 @@ module Function_strcmp
                (((<=) i_10 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
                (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_10))
                (select charP_charM_ct_6 (shift ct i_10)))))) ->
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              ((#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
                "expl:Ensures clause"
                ((Int32.(=) result (#"strcmp.jc" 141 42 58#
                 "expl:Integer cast" (Int32.of_int (Int.(-_) (1)))))
@@ -8853,7 +8848,7 @@ module Function_strcmp
                (Int32.(=) result (#"strcmp.jc" 142 43 55# "expl:Integer cast"
                (Int32.of_int (1))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 67 15 235#
+              (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
               "expl:Ensures clause"
               (exists i_11 : int.
                (((<=) (0) i_11) /\
@@ -8883,7 +8878,7 @@ module Function_strcmp
                ((<=) i_12 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
                (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_12))
                (select charP_charM_ct_6 (shift ct i_12))))) ->
-             (#"/home/work/workspace/self/verker-gh/strcmp.h" 63 15 27#
+             (#"/home/work/workspace/self/verker/strcmp.h" 63 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"strcmp.jc" 136 31 43# "expl:Integer cast"
              (Int32.of_int (0))))))) }
@@ -8932,11 +8927,11 @@ module Function_strcmp_safe
           requires {
             ("expl:Internal"
             (#"strcmp.jc" 128 12 74# "expl:Requires clause"
-            ((#"/home/work/workspace/self/verker-gh/strcmp.h" 57 13 26#
+            ((#"/home/work/workspace/self/verker/strcmp.h" 57 13 26#
              "expl:Requires clause"
              (valid_str cs voidP_cs_5_alloc_table charP_charM_cs_5))
             /\
-            (#"/home/work/workspace/self/verker-gh/strcmp.h" 58 13 26#
+            (#"/home/work/workspace/self/verker/strcmp.h" 58 13 26#
             "expl:Requires clause"
             (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6))))) }
           ensures {
@@ -8945,11 +8940,11 @@ module Function_strcmp_safe
                (((<=) i_10 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
                (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_10))
                (select charP_charM_ct_6 (shift ct i_10)))))) ->
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strcmp.h" 66 15 44#
+              ((#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
                "expl:Ensures clause"
                ((Int32.(=) result (#"strcmp.jc" 141 42 58#
                 "expl:Integer cast" (Int32.of_int (Int.(-_) (1)))))
@@ -8957,7 +8952,7 @@ module Function_strcmp_safe
                (Int32.(=) result (#"strcmp.jc" 142 43 55# "expl:Integer cast"
                (Int32.of_int (1))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strcmp.h" 67 15 235#
+              (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
               "expl:Ensures clause"
               (exists i_11 : int.
                (((<=) (0) i_11) /\
@@ -8987,7 +8982,7 @@ module Function_strcmp_safe
                ((<=) i_12 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
                (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_12))
                (select charP_charM_ct_6 (shift ct i_12))))) ->
-             (#"/home/work/workspace/self/verker-gh/strcmp.h" 63 15 27#
+             (#"/home/work/workspace/self/verker/strcmp.h" 63 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"strcmp.jc" 136 31 43# "expl:Integer cast"
              (Int32.of_int (0))))))) }

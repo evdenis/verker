@@ -35,9 +35,9 @@ tag unsigned_charP = voidP with {
 }
 
 int32 memcmp(voidP[..] cs, voidP[..] ct, uint64 count)
-  requires ((_C_52 : (cs <: unsigned_charP)) &&
-             ((_C_53 : (ct <: unsigned_charP)) &&
-               ((_C_54 : \at((if (\at(0,Here) <=
+  requires ((_C_51 : (cs <: unsigned_charP)) &&
+             ((_C_52 : (ct <: unsigned_charP)) &&
+               ((_C_53 : \at((if (\at(0,Here) <=
                                    \at(((count :> integer) - 1),Here)) then 
                              (((\offset_min(\at((cs :> unsigned_charP[..]),Here)) <=
                                  \at(0,Here)) &&
@@ -48,7 +48,7 @@ int32 memcmp(voidP[..] cs, voidP[..] ct, uint64 count)
                                     (__framac_tmp1 <=
                                       \at(((count :> integer) - 1),Here))) ==>
                                    true))) else true),Here)) &&
-                 ((_C_55 : \at((if (\at(0,Here) <=
+                 ((_C_54 : \at((if (\at(0,Here) <=
                                      \at(((count :> integer) - 1),Here)) then 
                                (((\offset_min(\at((ct :> unsigned_charP[..]),Here)) <=
                                    \at(0,Here)) &&
@@ -59,7 +59,7 @@ int32 memcmp(voidP[..] cs, voidP[..] ct, uint64 count)
                                       (__framac_tmp2 <=
                                         \at(((count :> integer) - 1),Here))) ==>
                                      true))) else true),Here)) &&
-                   (_C_56 : (((\base_block((cs :> unsigned_charP[..])) ==
+                   (_C_55 : (((\base_block((cs :> unsigned_charP[..])) ==
                                 \base_block((ct :> unsigned_charP[..]))) &&
                                (! (\base_block((cs :> unsigned_charP[..])) !=
                                     \base_block((ct :> unsigned_charP[..]))))) ||
@@ -75,13 +75,13 @@ behavior equal:
             (((0 <= i_2) && (i_2 < (count :> integer))) ==>
               (((cs :> unsigned_charP[..]) + i_2).unsigned_charM ==
                 ((ct :> unsigned_charP[..]) + i_2).unsigned_charM)));
-  ensures (_C_48 : (\result == (0 :> int32)));
+  ensures (_C_47 : (\result == (0 :> int32)));
 behavior diff:
   assumes (\exists integer i_0;
             (((0 <= i_0) && (i_0 < (count :> integer))) &&
               (((cs :> unsigned_charP[..]) + i_0).unsigned_charM !=
                 ((ct :> unsigned_charP[..]) + i_0).unsigned_charM)));
-  ensures (_C_49 : (\exists integer i_1;
+  ensures (_C_48 : (\exists integer i_1;
                      (((((0 <= i_1) && (i_1 < (\at(count,Old) :> integer))) &&
                          (\forall integer j;
                            (((0 <= j) && (j < i_1)) ==>
@@ -177,19 +177,19 @@ behavior diff:
       variant (_C_6 : count);
       while (true)
       {  
-         {  (if (_C_30 : ((_C_29 : ((0 :> int32) :> uint64)) < count)) then () else 
+         {  (if (_C_29 : ((0 :> uint64) < count)) then () else 
             (goto while_0_break));
-            (_C_37 : (res = (_C_36 : ((_C_35 : ((_C_34 : ((_C_33 : su1.unsigned_charM) :> int32)) -
-                                                 (_C_32 : ((_C_31 : su2.unsigned_charM) :> int32)))) :> int32))));
-            (if (_C_38 : (res != (0 :> int32))) then 
+            (_C_36 : (res = (_C_35 : ((_C_34 : ((_C_33 : ((_C_32 : su1.unsigned_charM) :> int32)) -
+                                                 (_C_31 : ((_C_30 : su2.unsigned_charM) :> int32)))) :> int32))));
+            (if (_C_37 : (res != (0 :> int32))) then 
             (goto while_0_break) else ());
-            (_C_40 : (su1 = (_C_39 : (su1 + (1 :> int32)))));
-            (_C_42 : (su2 = (_C_41 : (su2 + (1 :> int32)))));
-            (_C_45 : (count = (_C_44 : ((_C_43 : (count - (1 :> uint64))) :> uint64))))
+            (_C_39 : (su1 = (_C_38 : (su1 + (1 :> int32)))));
+            (_C_41 : (su2 = (_C_40 : (su2 + (1 :> int32)))));
+            (_C_44 : (count = (_C_43 : ((_C_42 : (count - (1 :> uint64))) :> uint64))))
          }
       };
       (while_0_break : ());
-      (_C_47 : (__retres = (_C_46 : (res :> int32))));
+      (_C_46 : (__retres = (_C_45 : (res :> int32))));
       
       (return __retres)
    }

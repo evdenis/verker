@@ -1682,11 +1682,11 @@ theory Axiomatic_Strlen
   
   
   lemma Valid_str_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+  #"/home/work/workspace/self/verker/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
   (forall voidP_s_0_5_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_0_5_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+    (#"/home/work/workspace/self/verker/strlen.h" 12 7 102#
     (forall s_0_0 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_5_at_L s_0_0)
        (#"strlen.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
@@ -1697,11 +1697,11 @@ theory Axiomatic_Strlen
       charP_charM_s_0_5_at_L))))))
   
   lemma Valid_str_strend
-  #"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+  #"/home/work/workspace/self/verker/strlen.h" 18 7 87#
   "expl:Lemma valid_str_strend" :
   (forall voidP_s_1_6_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_1_6_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+    (#"/home/work/workspace/self/verker/strlen.h" 18 7 87#
     (forall s_1 : (pointer voidP).
      (((((<=) (offset_min voidP_s_1_6_alloc_table_at_L s_1) (0)) /\
        (((>=) (offset_max voidP_s_1_6_alloc_table_at_L s_1) (0)) /\
@@ -1725,11 +1725,11 @@ theory Axiomatic_Strlen
   
   
   lemma Strlen_before_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+  #"/home/work/workspace/self/verker/strlen.h" 26 7 106#
   "expl:Lemma strlen_before_null" :
   (forall voidP_s_3_7_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_3_7_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+    (#"/home/work/workspace/self/verker/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
      (forall i : int.
       (((valid_str s_3 voidP_s_3_7_alloc_table_at_L charP_charM_s_3_7_at_L)
@@ -1739,12 +1739,11 @@ theory Axiomatic_Strlen
        (Int8.(<>) (select charP_charM_s_3_7_at_L (shift s_3 i))
        (#"strlen.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
-  lemma Strlen_at_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+  lemma Strlen_at_null #"/home/work/workspace/self/verker/strlen.h" 31 7 71#
   "expl:Lemma strlen_at_null" :
   (forall voidP_s_4_8_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_4_8_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+    (#"/home/work/workspace/self/verker/strlen.h" 31 7 71#
     (forall s_4 : (pointer voidP).
      ((valid_str s_4 voidP_s_4_8_alloc_table_at_L charP_charM_s_4_8_at_L) ->
       (Int8.(=)
@@ -1752,12 +1751,11 @@ theory Axiomatic_Strlen
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_8_at_L))))
       (#"strlen.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
-  lemma Strlen_shift
-  #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+  lemma Strlen_shift #"/home/work/workspace/self/verker/strlen.h" 35 7 125#
   "expl:Lemma strlen_shift" :
   (forall voidP_s_5_9_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_5_9_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+    (#"/home/work/workspace/self/verker/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
      (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_9_alloc_table_at_L charP_charM_s_5_9_at_L)
@@ -1769,11 +1767,11 @@ theory Axiomatic_Strlen
        (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
-  #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+  #"/home/work/workspace/self/verker/strlen.h" 41 7 126#
   "expl:Lemma strlen_shift_ex" :
   (forall voidP_s_6_10_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_6_10_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+    (#"/home/work/workspace/self/verker/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
      (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_10_alloc_table_at_L charP_charM_s_6_10_at_L)
@@ -1785,12 +1783,11 @@ theory Axiomatic_Strlen
        (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_10_at_L)
        (strlen s_6 charP_charM_s_6_10_at_L))))))))
   
-  lemma Strlen_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+  lemma Strlen_shift1 #"/home/work/workspace/self/verker/strlen.h" 47 7 103#
   "expl:Lemma strlen_shift1" :
   (forall voidP_s_7_11_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_7_11_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+    (#"/home/work/workspace/self/verker/strlen.h" 47 7 103#
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_11_alloc_table_at_L charP_charM_s_7_11_at_L)
       /\
@@ -1801,11 +1798,11 @@ theory Axiomatic_Strlen
       (Uint64.to_int (strlen (shift s_7 (1)) charP_charM_s_7_11_at_L)))))))))
   
   lemma Strlen_pointers
-  #"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+  #"/home/work/workspace/self/verker/strlen.h" 52 7 254#
   "expl:Lemma strlen_pointers" :
   (forall voidP_s_8_12_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_8_12_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+    (#"/home/work/workspace/self/verker/strlen.h" 52 7 254#
     (forall s_8 : (pointer voidP).
      (forall sc : (pointer voidP).
       (((valid_str s_8 voidP_s_8_12_alloc_table_at_L charP_charM_s_8_12_at_L)
@@ -1823,11 +1820,11 @@ theory Axiomatic_Strlen
        (Uint64.(<=) (strlen sc charP_charM_s_8_12_at_L)
        (strlen s_8 charP_charM_s_8_12_at_L))))))))
   
-  lemma Strlen_main #"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+  lemma Strlen_main #"/home/work/workspace/self/verker/strlen.h" 61 7 165#
   "expl:Lemma strlen_main" :
   (forall voidP_s_9_14_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_9_14_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+    (#"/home/work/workspace/self/verker/strlen.h" 61 7 165#
     (forall s_9 : (pointer voidP).
      (forall n_2 : Uint64.t.
       (((valid_str s_9 voidP_s_9_14_alloc_table_at_L charP_charM_s_9_14_at_L)
@@ -1843,11 +1840,11 @@ theory Axiomatic_Strlen
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_14_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
-  #"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+  #"/home/work/workspace/self/verker/strlen.h" 68 7 123#
   "expl:Lemma valid_str_shiftn" :
   (forall voidP_s_10_15_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_10_15_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+    (#"/home/work/workspace/self/verker/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
      (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_15_alloc_table_at_L
@@ -1889,7 +1886,7 @@ module Exceptions
 end
 
 module Function_strlen_0_safety
-#"/home/work/workspace/self/verker-gh/strlen.c" 3 7 28# "expl:strlen, safety"
+#"/home/work/workspace/self/verker/strlen.c" 3 7 28# "expl:strlen, safety"
 
   use enum.Uint64 
   
@@ -1935,7 +1932,7 @@ module Function_strlen_0_safety
   
   use why3.Bool.Bool 
   
-  let strlen_0 #"/home/work/workspace/self/verker-gh/strlen.c" 3 7 28#
+  let strlen_0 #"/home/work/workspace/self/verker/strlen.c" 3 7 28#
   "expl:Function strlen, safety" =
   fun
    (s_0 : (pointer voidP)) (voidP_s_4_alloc_table : (alloc_table voidP))
@@ -1949,7 +1946,7 @@ module Function_strlen_0_safety
        ((<) i (offset_max voidP_s_4_alloc_table s_0))) ->
        ((=) (typeof voidP_s_4_tag_table (shift s_0 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+   (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
    (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
@@ -1964,41 +1961,41 @@ module Function_strlen_0_safety
       (let _jessie_8 = s_0 in
       begin
       (assert {
-      (#"/home/work/workspace/self/verker-gh/strlen.c" 11 6 12#
+      (#"/home/work/workspace/self/verker/strlen.c" 11 6 12#
       "expl:Pointer index bounds" true) }); _jessie_8 end));
       'Loop_2:
       loop
       invariant { (#"strlen.jc" 132 6 1182# true) }
-        variant { (#"/home/work/workspace/self/verker-gh/strlen.c" 9 18 38#
+        variant { (#"/home/work/workspace/self/verker/strlen.c" 9 18 38#
           (Int.(-) (Uint64.to_int (strlen s_0 charP_charM_s_4))
           (sub_pointer !sc_0 s_0))) }
        begin
        any unit
        requires { true } reads { s_0 }
        ensures {
-         ((#"/home/work/workspace/self/verker-gh/strlen.c" 8 20 54#
+         ((#"/home/work/workspace/self/verker/strlen.c" 8 20 54#
           ((=) (Uint64.to_int (strlen s_0 charP_charM_s_4))
           (Int.(+) (Uint64.to_int (strlen !sc_0 charP_charM_s_4))
           (sub_pointer !sc_0 s_0))))
          /\
-         ((#"/home/work/workspace/self/verker-gh/strlen.c" 7 20 33#
+         ((#"/home/work/workspace/self/verker/strlen.c" 7 20 33#
           (valid_str !sc_0 voidP_s_4_alloc_table charP_charM_s_4))
          /\
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-         ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 27#
+         (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+         (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+         ((#"/home/work/workspace/self/verker/strlen.c" 6 20 27#
           (same_block s_0 !sc_0))
          /\
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-         ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 27#
+         (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+         ((#"/home/work/workspace/self/verker/strlen.c" 6 20 27#
           ((<=) (sub_pointer s_0 !sc_0) (0)))
          /\
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-         ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 25 44#
+         (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+         ((#"/home/work/workspace/self/verker/strlen.c" 6 25 44#
           (same_block !sc_0
           (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))))
          /\
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 6 25 44#
+         (#"/home/work/workspace/self/verker/strlen.c" 6 25 44#
          ((<=)
          (sub_pointer !sc_0
          (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))) (0))))))))))))
@@ -2007,12 +2004,12 @@ module Function_strlen_0_safety
          begin
          begin
          (if
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 11 14 25#
+         (#"/home/work/workspace/self/verker/strlen.c" 11 14 25#
          (Safe_int32.(<>) 
-          (#"/home/work/workspace/self/verker-gh/strlen.c" 11 14 17#
+          (#"/home/work/workspace/self/verker/strlen.c" 11 14 17#
           "expl:Integer cast"
           (Safe_int32_of_Safe_int8.cast 
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 11 14 17#
+           (#"/home/work/workspace/self/verker/strlen.c" 11 14 17#
            "expl:Pointer dereference"
            (acc  voidP_s_4_alloc_table charP_charM_s_4 !sc_0 )) ))
           (#"strlen.jc" 152 27 39# "expl:Integer cast"
@@ -2026,7 +2023,7 @@ module Function_strlen_0_safety
              (Safe_int32.of_int (1))) ) ) in
            begin
            (assert {
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 11 27 31#
+           (#"/home/work/workspace/self/verker/strlen.c" 11 27 31#
            "expl:Pointer index bounds" true) }); _jessie_9 end)) end;
           (raise (Loop_continue_exc ())) end with Loop_continue_exc _jessie_3
          -> () end end end; (raise (Goto_while_0_break_exc ())) end with
@@ -2038,14 +2035,14 @@ module Function_strlen_0_safety
       begin
       (__retres :=
        (let _jessie_10 =
-       (#"/home/work/workspace/self/verker-gh/strlen.c" 13 8 14#
+       (#"/home/work/workspace/self/verker/strlen.c" 13 8 14#
        "expl:Integer cast"
        (Safe_uint64.of_int 
-        (#"/home/work/workspace/self/verker-gh/strlen.c" 13 8 14#
+        (#"/home/work/workspace/self/verker/strlen.c" 13 8 14#
         (sub_pointer_  !sc_0 s_0 )) )) in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/strlen.c" 13 1 15#
+       (#"/home/work/workspace/self/verker/strlen.c" 13 1 15#
        "expl:Pointer index bounds" true) }); _jessie_10 end));
        begin
        (return :=
@@ -2072,8 +2069,7 @@ module Unsafe_int32_of_Unsafe_int8
 end
 
 module Function_strlen_0_behaviors
-#"/home/work/workspace/self/verker-gh/strlen.c" 3 7 28#
-"expl:strlen, behaviors"
+#"/home/work/workspace/self/verker/strlen.c" 3 7 28# "expl:strlen, behaviors"
 
   use Unsafe_uint64 
   
@@ -2120,7 +2116,7 @@ module Function_strlen_0_behaviors
   use why3.Bool.Bool 
   
   let strlen_ensures_default
-  #"/home/work/workspace/self/verker-gh/strlen.c" 3 7 28#
+  #"/home/work/workspace/self/verker/strlen.c" 3 7 28#
   "expl:Function strlen, default behavior" =
   fun
    (s_0 : (pointer voidP)) (voidP_s_4_alloc_table : (alloc_table voidP))
@@ -2134,25 +2130,25 @@ module Function_strlen_0_behaviors
        ((<) i (offset_max voidP_s_4_alloc_table s_0))) ->
        ((=) (typeof voidP_s_4_tag_table (shift s_0 i)) charP_tag)))))
    /\
-   (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+   (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
    (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+     (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+     (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+     ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
       "expl:Ensures clause" (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
      /\
-     (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+     (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+     ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
       "expl:Ensures clause"
       (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
       (#"strlen.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+     (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
      "expl:Ensures clause"
      (forall i_5 : int.
       ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -2171,29 +2167,29 @@ module Function_strlen_0_behaviors
       'Loop_1:
       loop
       invariant
-        { ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-           ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 27#
+        { ((#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+           (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+           ((#"/home/work/workspace/self/verker/strlen.c" 6 20 27#
             (same_block s_0 !sc_0))
            /\
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-           ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 27#
+           (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+           ((#"/home/work/workspace/self/verker/strlen.c" 6 20 27#
             ((<=) (sub_pointer s_0 !sc_0) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 6 20 44#
-           ((#"/home/work/workspace/self/verker-gh/strlen.c" 6 25 44#
+           (#"/home/work/workspace/self/verker/strlen.c" 6 20 44#
+           ((#"/home/work/workspace/self/verker/strlen.c" 6 25 44#
             (same_block !sc_0
             (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strlen.c" 6 25 44#
+           (#"/home/work/workspace/self/verker/strlen.c" 6 25 44#
            ((<=)
            (sub_pointer !sc_0
            (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))) (0))))))))))
           &&
-          ((#"/home/work/workspace/self/verker-gh/strlen.c" 7 20 33#
+          ((#"/home/work/workspace/self/verker/strlen.c" 7 20 33#
            (valid_str !sc_0 voidP_s_4_alloc_table charP_charM_s_4))
           &&
-          (#"/home/work/workspace/self/verker-gh/strlen.c" 8 20 54#
+          (#"/home/work/workspace/self/verker/strlen.c" 8 20 54#
           ((=) (Uint64.to_int (strlen s_0 charP_charM_s_4))
           (Int.(+) (Uint64.to_int (strlen !sc_0 charP_charM_s_4))
           (sub_pointer !sc_0 s_0)))))) } 
@@ -2203,9 +2199,9 @@ module Function_strlen_0_behaviors
          begin
          begin
          (if
-         (#"/home/work/workspace/self/verker-gh/strlen.c" 11 14 25#
+         (#"/home/work/workspace/self/verker/strlen.c" 11 14 25#
          (Unsafe_int32.(<>) 
-          (#"/home/work/workspace/self/verker-gh/strlen.c" 11 14 17#
+          (#"/home/work/workspace/self/verker/strlen.c" 11 14 17#
           "expl:Integer cast"
           (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_4 !sc_0 ) ))
           (#"strlen.jc" 152 27 39# "expl:Integer cast"
@@ -2225,10 +2221,10 @@ module Function_strlen_0_behaviors
      ();
       begin
       (__retres :=
-       (#"/home/work/workspace/self/verker-gh/strlen.c" 13 8 14#
+       (#"/home/work/workspace/self/verker/strlen.c" 13 8 14#
        "expl:Integer cast"
        (Unsafe_uint64.of_int 
-        (#"/home/work/workspace/self/verker-gh/strlen.c" 13 8 14#
+        (#"/home/work/workspace/self/verker/strlen.c" 13 8 14#
         (sub_pointer_  !sc_0 s_0 )) )));
        begin (return := !__retres); (raise Return) end end end end)); 
      absurd  end with Return -> !return end)
@@ -7544,23 +7540,23 @@ module Function_strlen_0
      (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
       requires { true }
       ensures {
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
          "expl:Ensures clause"
          (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
         /\
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+        ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
          "expl:Ensures clause"
          (Int8.(=)
          (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
          (#"strlen.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
         /\
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+        (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
         "expl:Ensures clause"
         (forall i_5 : int.
          ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -7599,27 +7595,27 @@ module Function_strlen_0_safe
      (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
       requires {
         ("expl:Internal"
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+        (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
         "expl:Requires clause"
         (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))) }
       ensures {
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
          "expl:Ensures clause"
          (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
         /\
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+        (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
-        ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+        ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
          "expl:Ensures clause"
          (Int8.(=)
          (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
          (#"strlen.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
         /\
-        (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+        (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
         "expl:Ensures clause"
         (forall i_5 : int.
          ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->

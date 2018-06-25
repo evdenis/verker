@@ -35,8 +35,8 @@ tag unsigned_charP = voidP with {
 }
 
 voidP[..] memchr(voidP[..] s, int32 c, uint64 n)
-  requires ((_C_49 : (s <: unsigned_charP)) &&
-             (_C_50 : \at((if (\at(0,Here) <= \at(((n :> integer) - 1),Here)) then 
+  requires ((_C_48 : (s <: unsigned_charP)) &&
+             (_C_49 : \at((if (\at(0,Here) <= \at(((n :> integer) - 1),Here)) then 
                           (((\offset_min(\at((s :> unsigned_charP[..]),Here)) <=
                               \at(0,Here)) &&
                              (\offset_max(\at((s :> unsigned_charP[..]),Here)) >=
@@ -57,16 +57,16 @@ behavior found:
                   \base_block(((s :> unsigned_charP[..]) + (n :> integer)))) &&
                  ((p_0 - ((s :> unsigned_charP[..]) + (n :> integer))) < 0))) &&
               (p_0.unsigned_charM == (c :%> uint8))));
-  ensures (_C_35 : ((((_C_38 : (\base_block(\at(s,Old)) ==
+  ensures (_C_34 : ((((_C_37 : (\base_block(\at(s,Old)) ==
                                  \base_block(\result))) &&
-                       (_C_39 : ((\at(s,Old) - \result) <= 0))) &&
-                      ((_C_41 : (\base_block(\result) ==
+                       (_C_38 : ((\at(s,Old) - \result) <= 0))) &&
+                      ((_C_40 : (\base_block(\result) ==
                                   \base_block((\at(s,Old) +
                                                 (\at(n,Old) :> integer))))) &&
-                        (_C_42 : ((\result -
+                        (_C_41 : ((\result -
                                     (\at(s,Old) + (\at(n,Old) :> integer))) <=
                                    0)))) &&
-                     ((_C_44 : (\forall unsigned_charP[..] p_1;
+                     ((_C_43 : (\forall unsigned_charP[..] p_1;
                                  ((((\base_block((\at(s,Old) :> unsigned_charP[..])) ==
                                       \base_block(p_1)) &&
                                      (((\at(s,Old) :> unsigned_charP[..]) -
@@ -79,7 +79,7 @@ behavior found:
                                         0))) ==>
                                    (p_1.unsigned_charM !=
                                      (\at(c,Old) :%> uint8))))) &&
-                       (_C_45 : ((\result :> unsigned_charP[..]).unsigned_charM ==
+                       (_C_44 : ((\result :> unsigned_charP[..]).unsigned_charM ==
                                   (\at(c,Old) :%> uint8))))));
 behavior not_exists:
   assumes (\forall unsigned_charP[..] p;
@@ -89,7 +89,7 @@ behavior not_exists:
                   \base_block(((s :> unsigned_charP[..]) + (n :> integer)))) &&
                  ((p - ((s :> unsigned_charP[..]) + (n :> integer))) < 0))) ==>
               (p.unsigned_charM != (c :%> uint8))));
-  ensures (_C_46 : (\result == null));
+  ensures (_C_45 : (\result == null));
 {  
    (check (disjoint_behaviors : (! ((\exists unsigned_charP[..] p_0;
                                       ((((\base_block((s :> unsigned_charP[..])) ==
@@ -188,17 +188,17 @@ behavior not_exists:
                (_C_19 : (n = (_C_18 : ((_C_17 : (n -% (1 :> uint64))) :> uint64))));
                ()
             };
-            (if (_C_21 : (tmp_0 != (_C_20 : ((0 :> int32) :> uint64)))) then () else 
+            (if (_C_20 : (tmp_0 != (0 :> uint64))) then () else 
             (goto while_0_break));
             
             {  
-               {  (_C_22 : (tmp = p));
-                  (_C_24 : (p = (_C_23 : (p + (1 :> int32)))));
+               {  (_C_21 : (tmp = p));
+                  (_C_23 : (p = (_C_22 : (p + (1 :> int32)))));
                   ()
                };
-               (if (_C_32 : ((_C_31 : ((_C_30 : (c :%> uint8)) :> int32)) ==
-                              (_C_29 : ((_C_28 : tmp.unsigned_charM) :> int32)))) then 
-               {  (_C_27 : (__retres = (_C_26 : ((_C_25 : (p - (1 :> int32))) :> voidP[..]))));
+               (if (_C_31 : ((_C_30 : ((_C_29 : (c :%> uint8)) :> int32)) ==
+                              (_C_28 : ((_C_27 : tmp.unsigned_charM) :> int32)))) then 
+               {  (_C_26 : (__retres = (_C_25 : ((_C_24 : (p - (1 :> int32))) :> voidP[..]))));
                   
                   (goto return_label)
                } else ())
@@ -208,10 +208,10 @@ behavior not_exists:
       (while_0_break : ());
       
       {  
-         (assert for default: (_C_33 : (jessie : (n == ((- 1) :%> uint64)))));
+         (assert for default: (_C_32 : (jessie : (n == ((- 1) :%> uint64)))));
          ()
       };
-      (_C_34 : (__retres = null));
+      (_C_33 : (__retres = null));
       (return_label : 
       (return __retres))
    }

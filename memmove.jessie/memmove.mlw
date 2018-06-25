@@ -1663,8 +1663,7 @@ module Exceptions
 end
 
 module Function_memmove_safety
-#"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
-"expl:memmove, safety"
+#"/home/work/workspace/self/verker/memmove.c" 3 5 56# "expl:memmove, safety"
 
   use enum.Uint64 
   
@@ -1716,7 +1715,7 @@ module Function_memmove_safety
   
   use why3.Bool.Bool 
   
-  let memmove #"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
+  let memmove #"/home/work/workspace/self/verker/memmove.c" 3 5 56#
   "expl:Function memmove, safety" =
   fun
    (dest_3 : (pointer voidP)) (src_3 : (pointer voidP)) (count : Uint64.t)
@@ -1739,15 +1738,15 @@ module Function_memmove_safety
        (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 15 13 43#
+   ((#"/home/work/workspace/self/verker/memmove.h" 15 13 43#
     (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memmove.h" 16 13 42#
     (instanceof voidP_dest_3_2_tag_table src_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 17 13 46#
+   ((#"/home/work/workspace/self/verker/memmove.h" 17 13 46#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -1764,7 +1763,7 @@ module Function_memmove_safety
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memmove.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -1780,7 +1779,7 @@ module Function_memmove_safety
        ((<=) __framac_tmp2 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memmove.h" 19 13 100#
+   (#"/home/work/workspace/self/verker/memmove.h" 19 13 100#
    (((same_block dest_3 src_3) /\ (not (not (same_block dest_3 src_3)))) \/
    ((not (same_block dest_3 src_3)) /\ (not (same_block dest_3 src_3)))))))))))))))
    } ensures { ("expl:Postcondition" true) }  ->
@@ -1801,45 +1800,44 @@ module Function_memmove_safety
      (let _jessie_91 = !mutable_count in
      begin
      (assert {
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 5 18 28#
+     (#"/home/work/workspace/self/verker/memmove.c" 5 18 28#
      "expl:Pointer index bounds" true) }); _jessie_91 end));
      (if
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 9 5 16#
+     (#"/home/work/workspace/self/verker/memmove.c" 9 5 16#
      ((<=)  (#"memmove.jc" 78 21 35# (sub_pointer_  dest_3 src_3 )) (0) ))
      then
       try
        begin
        (tmp :=
         (let _jessie_117 =
-        (#"/home/work/workspace/self/verker-gh/memmove.c" 10 8 12#
+        (#"/home/work/workspace/self/verker/memmove.c" 10 8 12#
         (downcast_  voidP_dest_3_2_tag_table dest_3 (charP_tag  ) )) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memmove.c" 10 2 12#
+        (#"/home/work/workspace/self/verker/memmove.c" 10 2 12#
         "expl:Pointer index bounds" true) }); _jessie_117 end));
         begin
         (s :=
          (let _jessie_105 =
-         (#"/home/work/workspace/self/verker-gh/memmove.c" 11 6 9#
+         (#"/home/work/workspace/self/verker/memmove.c" 11 6 9#
          (downcast_  voidP_dest_3_2_tag_table src_3 (charP_tag  ) )) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/memmove.c" 11 2 9#
+         (#"/home/work/workspace/self/verker/memmove.c" 11 2 9#
          "expl:Pointer index bounds" true) }); _jessie_105 end));
          'Loop_8:
          loop
          invariant { (#"memmove.jc" 82 9 4692# true) }
-           variant {
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 18 19 24#
+           variant { (#"/home/work/workspace/self/verker/memmove.c" 18 19 24#
              (Bit_uint64.to_int
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 18 19 24#
+             (#"/home/work/workspace/self/verker/memmove.c" 18 19 24#
              !mutable_count))) }
           begin
           any unit
           requires { true } reads { charP_charM_dest_3_2, dest_3,
           mutable_count, src_3 }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 17 21 119#
+            ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
              (forall i_0 : int.
               ((((<=) (0) i_0) /\
                ((<) i_0
@@ -1853,7 +1851,7 @@ module Function_memmove_safety
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                i_0))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 16 21 127#
+            ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
              (forall i : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
@@ -1865,77 +1863,77 @@ module Function_memmove_safety
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+            ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               (same_block (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               !s))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
               (same_block !s
               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
              ((<=)
              (sub_pointer !s
              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+            ((#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               (same_block
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
               (same_block !tmp
               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
              ((<=)
              (sub_pointer !tmp
              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 53#
+            ((#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             ((#"/home/work/workspace/self/verker/memmove.c" 13 21 53#
               ((=)
               (sub_pointer !tmp
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
               (Int.(-) (Bit_uint64.to_int !orig_count)
               (Bit_uint64.to_int !mutable_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 35 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 35 64#
              ((=)
              (Int.(-) (Bit_uint64.to_int !orig_count)
              (Bit_uint64.to_int !mutable_count))
              (sub_pointer !s
              (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 31#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            ((#"/home/work/workspace/self/verker/memmove.c" 12 21 31#
              (Bit_uint64.(<=) (#"memmove.jc" 84 41 54# "expl:Integer cast"
              (Bit_uint64.of_int_const 0)) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 26 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 26 45#
             (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
            try
             begin
@@ -1945,7 +1943,7 @@ module Function_memmove_safety
              (let _jessie_106 = !mutable_count in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+             (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
              "expl:Pointer index bounds" true) }); _jessie_106 end));
              begin
              (mutable_count :=
@@ -1955,11 +1953,11 @@ module Function_memmove_safety
                (Safe_bit_uint64.of_int_const 1)) ) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+              (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
               "expl:Pointer index bounds" true) }); _jessie_107 end)); () end
             end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+             (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
              (Safe_bit_uint64.(<>)  !tmp_2
               (#"memmove.jc" 141 50 63# "expl:Integer cast"
               (Safe_bit_uint64.of_int_const 0)) )) then ()
@@ -1970,7 +1968,7 @@ module Function_memmove_safety
               (let _jessie_108 = !tmp in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 20 4 9#
+              (#"/home/work/workspace/self/verker/memmove.c" 20 4 9#
               "expl:Pointer index bounds" true) }); _jessie_108 end));
               begin
               (tmp :=
@@ -1981,14 +1979,14 @@ module Function_memmove_safety
                  (Safe_int32.of_int (1))) ) ) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 20 4 9#
+               (#"/home/work/workspace/self/verker/memmove.c" 20 4 9#
                "expl:Pointer index bounds" true) }); _jessie_109 end));
                begin
                (tmp_1 :=
                 (let _jessie_110 = !s in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 20 13 16#
+                (#"/home/work/workspace/self/verker/memmove.c" 20 13 16#
                 "expl:Pointer index bounds" true) }); _jessie_110 end));
                 begin
                 (s :=
@@ -1999,22 +1997,22 @@ module Function_memmove_safety
                    (Safe_int32.of_int (1))) ) ) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 20 13 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 20 13 16#
                  "expl:Pointer index bounds" true) }); _jessie_111 end));
                  (let _jessie_113 =
                  (let _jessie_112 =
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 20 12 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 20 12 16#
                  "expl:Pointer dereference"
                  (acc  voidP_dest_3_2_alloc_table !charP_charM_dest_3_2
                   !tmp_1 )) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 20 3 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 20 3 16#
                  "expl:Pointer index bounds" true) }); _jessie_112 end) in
                  (let _jessie_114 = !tmp_0 in
                  (let _jessie_115 = (0) in
                  (let _jessie_116 = _jessie_114 in
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 20 3 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 20 3 16#
                  "expl:Pointer dereference"
                  (upd  voidP_dest_3_2_alloc_table charP_charM_dest_3_2
                   _jessie_114 _jessie_113 )))))) end end end end;
@@ -2023,7 +2021,7 @@ module Function_memmove_safety
               requires { true } reads { charP_charM_dest_3_2, dest_3,
               mutable_count, src_3 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 21 14 93#
+                (#"/home/work/workspace/self/verker/memmove.c" 21 14 93#
                 (Int8.(=)
                 (select !charP_charM_dest_3_2
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -2044,11 +2042,11 @@ module Function_memmove_safety
        begin
        (tmp :=
         (let _jessie_104 =
-        (#"/home/work/workspace/self/verker-gh/memmove.c" 24 8 12#
+        (#"/home/work/workspace/self/verker/memmove.c" 24 8 12#
         (downcast_  voidP_dest_3_2_tag_table dest_3 (charP_tag  ) )) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memmove.c" 24 2 12#
+        (#"/home/work/workspace/self/verker/memmove.c" 24 2 12#
         "expl:Pointer index bounds" true) }); _jessie_104 end));
         begin
         (tmp :=
@@ -2056,16 +2054,16 @@ module Function_memmove_safety
          (shift_typesafe  !tmp (Safe_bit_uint64.to_int  !mutable_count ) ) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/memmove.c" 25 2 14#
+         (#"/home/work/workspace/self/verker/memmove.c" 25 2 14#
          "expl:Pointer index bounds" true) }); _jessie_103 end));
          begin
          (s :=
           (let _jessie_102 =
-          (#"/home/work/workspace/self/verker-gh/memmove.c" 26 6 9#
+          (#"/home/work/workspace/self/verker/memmove.c" 26 6 9#
           (downcast_  voidP_dest_3_2_tag_table src_3 (charP_tag  ) )) in
           begin
           (assert {
-          (#"/home/work/workspace/self/verker-gh/memmove.c" 26 2 9#
+          (#"/home/work/workspace/self/verker/memmove.c" 26 2 9#
           "expl:Pointer index bounds" true) }); _jessie_102 end));
           begin
           (s :=
@@ -2073,22 +2071,22 @@ module Function_memmove_safety
            (shift_typesafe  !s (Safe_bit_uint64.to_int  !mutable_count ) ) in
            begin
            (assert {
-           (#"/home/work/workspace/self/verker-gh/memmove.c" 27 2 12#
+           (#"/home/work/workspace/self/verker/memmove.c" 27 2 12#
            "expl:Pointer index bounds" true) }); _jessie_92 end));
            'Loop_7:
            loop
            invariant { (#"memmove.jc" 173 9 3888# true) }
              variant {
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 34 19 24#
+               (#"/home/work/workspace/self/verker/memmove.c" 34 19 24#
                (Bit_uint64.to_int
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 34 19 24#
+               (#"/home/work/workspace/self/verker/memmove.c" 34 19 24#
                !mutable_count))) }
             begin
             any unit
             requires { true } reads { charP_charM_dest_3_2, dest_3,
             mutable_count, src_3 }
             ensures {
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 33 21 115#
+              ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
                (forall i_2 : int.
                 ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
                  ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
@@ -2100,7 +2098,7 @@ module Function_memmove_safety
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_2))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 32 21 105#
+              ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
                (forall i_1 : int.
                 ((((<=) (0) i_1) /\
                  ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
@@ -2112,75 +2110,75 @@ module Function_memmove_safety
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_1))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+              ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                 (same_block !s
                 (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                ((<=)
                (sub_pointer !s
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
                 (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                 (same_block !tmp
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                ((<=)
                (sub_pointer !tmp
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               ((#"/home/work/workspace/self/verker/memmove.c" 29 21 40#
                 ((=)
                 (sub_pointer !tmp
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
                 (Bit_uint64.to_int !mutable_count)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 35 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 35 51#
                ((=) (Bit_uint64.to_int !mutable_count)
                (sub_pointer !s
                (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 31#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              ((#"/home/work/workspace/self/verker/memmove.c" 28 21 31#
                (Bit_uint64.(<=) (#"memmove.jc" 175 41 54# "expl:Integer cast"
                (Bit_uint64.of_int_const 0)) !mutable_count))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 26 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 26 45#
               (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
              try
               begin
@@ -2190,7 +2188,7 @@ module Function_memmove_safety
                (let _jessie_93 = !mutable_count in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+               (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                "expl:Pointer index bounds" true) }); _jessie_93 end));
                begin
                (mutable_count :=
@@ -2200,11 +2198,11 @@ module Function_memmove_safety
                  (Safe_bit_uint64.of_int_const 1)) ) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+                (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                 "expl:Pointer index bounds" true) }); _jessie_94 end)); ()
                end end;
                (if
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+               (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                (Safe_bit_uint64.(<>)  !tmp_3
                 (#"memmove.jc" 225 50 63# "expl:Integer cast"
                 (Safe_bit_uint64.of_int_const 0)) )) then ()
@@ -2220,7 +2218,7 @@ module Function_memmove_safety
                    (Safe_int32.of_int (1))) ) ) ) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 36 4 9#
+                (#"/home/work/workspace/self/verker/memmove.c" 36 4 9#
                 "expl:Pointer index bounds" true) }); _jessie_95 end));
                 begin
                 (s :=
@@ -2232,22 +2230,22 @@ module Function_memmove_safety
                     (Safe_int32.of_int (1))) ) ) ) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 36 13 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 36 13 16#
                  "expl:Pointer index bounds" true) }); _jessie_96 end));
                  (let _jessie_98 =
                  (let _jessie_97 =
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 36 12 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 36 12 16#
                  "expl:Pointer dereference"
                  (acc  voidP_dest_3_2_alloc_table !charP_charM_dest_3_2 !s ))
                  in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 36 3 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 36 3 16#
                  "expl:Pointer index bounds" true) }); _jessie_97 end) in
                  (let _jessie_99 = !tmp in
                  (let _jessie_100 = (0) in
                  (let _jessie_101 = _jessie_99 in
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 36 3 16#
+                 (#"/home/work/workspace/self/verker/memmove.c" 36 3 16#
                  "expl:Pointer dereference"
                  (upd  voidP_dest_3_2_alloc_table charP_charM_dest_3_2
                   _jessie_99 _jessie_98 )))))) end end;
@@ -2256,7 +2254,7 @@ module Function_memmove_safety
                 requires { true } reads { charP_charM_dest_3_2, dest_3,
                 mutable_count, src_3 }
                 ensures {
-                  (#"/home/work/workspace/self/verker-gh/memmove.c" 37 14 59#
+                  (#"/home/work/workspace/self/verker/memmove.c" 37 14 59#
                   (Int8.(=)
                   (select !charP_charM_dest_3_2
                   (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -2273,7 +2271,7 @@ module Function_memmove_safety
      any unit
      requires { true } reads { mutable_count }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/memmove.c" 40 12 35#
+       (#"/home/work/workspace/self/verker/memmove.c" 40 12 35#
        (Bit_uint64.(=) !mutable_count (#"memmove.jc" 249 51 69#
        "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
       () end;
@@ -2288,7 +2286,7 @@ module Function_memmove_safety
 end
 
 module Function_memmove_behaviors
-#"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
+#"/home/work/workspace/self/verker/memmove.c" 3 5 56#
 "expl:memmove, behaviors"
 
   use Unsafe_int32 
@@ -2348,7 +2346,7 @@ module Function_memmove_behaviors
   use why3.Bool.Bool 
   
   let memmove_ensures_default
-  #"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
+  #"/home/work/workspace/self/verker/memmove.c" 3 5 56#
   "expl:Function memmove, default behavior" =
   fun
    (dest_3 : (pointer voidP)) (src_3 : (pointer voidP)) (count : Uint64.t)
@@ -2371,15 +2369,15 @@ module Function_memmove_behaviors
        (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 15 13 43#
+   ((#"/home/work/workspace/self/verker/memmove.h" 15 13 43#
     (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memmove.h" 16 13 42#
     (instanceof voidP_dest_3_2_tag_table src_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 17 13 46#
+   ((#"/home/work/workspace/self/verker/memmove.h" 17 13 46#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -2396,7 +2394,7 @@ module Function_memmove_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memmove.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -2412,7 +2410,7 @@ module Function_memmove_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memmove.h" 19 13 100#
+   (#"/home/work/workspace/self/verker/memmove.h" 19 13 100#
    (((same_block dest_3 src_3) /\ (not (not (same_block dest_3 src_3)))) \/
    ((not (same_block dest_3 src_3)) /\ (not (same_block dest_3 src_3)))))))))))))))
    }
@@ -2439,7 +2437,7 @@ module Function_memmove_behaviors
     begin
     (orig_count := !mutable_count);
      (if
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 9 5 16#
+     (#"/home/work/workspace/self/verker/memmove.c" 9 5 16#
      ((<=)  (#"memmove.jc" 78 21 35# (sub_pointer_  dest_3 src_3 )) (0) ))
      then
       try
@@ -2450,81 +2448,81 @@ module Function_memmove_behaviors
          'Loop_2:
          loop
          invariant
-           { (((#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 31#
+           { (((#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+               (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+               ((#"/home/work/workspace/self/verker/memmove.c" 12 21 31#
                 (Bit_uint64.(<=) (#"memmove.jc" 84 41 54# "expl:Integer cast"
                 (Bit_uint64.of_int_const 0)) !mutable_count))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 12 26 45#
+               (#"/home/work/workspace/self/verker/memmove.c" 12 26 45#
                (Bit_uint64.(<=) !mutable_count !orig_count)))))
               &&
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 53#
+              ((#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+               (#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+               ((#"/home/work/workspace/self/verker/memmove.c" 13 21 53#
                 ((=)
                 (sub_pointer !tmp
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
                 (Int.(-) (Bit_uint64.to_int !orig_count)
                 (Bit_uint64.to_int !mutable_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 13 35 64#
+               (#"/home/work/workspace/self/verker/memmove.c" 13 35 64#
                ((=)
                (Int.(-) (Bit_uint64.to_int !orig_count)
                (Bit_uint64.to_int !mutable_count))
                (sub_pointer !s
                (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
               &&
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+               (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
                 (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
                 (same_block !tmp
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
                ((<=)
                (sub_pointer !tmp
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               &&
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+              ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+               (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
                 (same_block !s
                 (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
                ((<=)
                (sub_pointer !s
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               &&
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 16 21 127#
+              ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
                (forall i : int.
                 ((((<=)
                   (Int.(-) (Bit_uint64.to_int !orig_count)
@@ -2538,7 +2536,7 @@ module Function_memmove_behaviors
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i))))))
               &&
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 17 21 119#
+              (#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
               (forall i_0 : int.
                ((((<=) (0) i_0) /\
                 ((<) i_0
@@ -2574,7 +2572,7 @@ module Function_memmove_behaviors
                (#"memmove.jc" 138 57 70# "expl:Integer cast"
                (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+             (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
              (Unsafe_bit_uint64.(<>)  !tmp_2
               (#"memmove.jc" 141 50 63# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -2604,7 +2602,7 @@ module Function_memmove_behaviors
                end end end;
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 21 14 93#
+              (#"/home/work/workspace/self/verker/memmove.c" 21 14 93#
               "expl:Assertion in line 21"
               (Int8.(=)
               (select !charP_charM_dest_3_2
@@ -2634,80 +2632,80 @@ module Function_memmove_behaviors
            'Loop_1:
            loop
            invariant
-             { (((#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 31#
+             { (((#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+                 (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 28 21 31#
                   (Bit_uint64.(<=) (#"memmove.jc" 175 41 54#
                   "expl:Integer cast" (Bit_uint64.of_int_const 0))
                   !mutable_count))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 28 26 45#
+                 (#"/home/work/workspace/self/verker/memmove.c" 28 26 45#
                  (Bit_uint64.(<=) !mutable_count !orig_count)))))
                 &&
-                ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 40#
+                ((#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+                 (#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 29 21 40#
                   ((=)
                   (sub_pointer !tmp
                   (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
                   (Bit_uint64.to_int !mutable_count)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 29 35 51#
+                 (#"/home/work/workspace/self/verker/memmove.c" 29 35 51#
                  ((=) (Bit_uint64.to_int !mutable_count)
                  (sub_pointer !s
                  (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
                 &&
-                ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+                ((#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+                 (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                   (same_block
                   (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+                 (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                   ((<=)
                   (sub_pointer
                   (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
                   (0)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+                 (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                   (same_block !tmp
                   (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                   (Bit_uint64.to_int !orig_count))))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+                 (#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                  ((<=)
                  (sub_pointer !tmp
                  (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                  (Bit_uint64.to_int !orig_count))) (0))))))))))
                 &&
-                ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+                ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+                 (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                   (same_block
                   (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+                 (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                   ((<=)
                   (sub_pointer
                   (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s)
                   (0)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-                 ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+                 (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+                 ((#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                   (same_block !s
                   (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                   (Bit_uint64.to_int !orig_count))))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+                 (#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                  ((<=)
                  (sub_pointer !s
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  (Bit_uint64.to_int !orig_count))) (0))))))))))
                 &&
-                ((#"/home/work/workspace/self/verker-gh/memmove.c" 32 21 105#
+                ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
                  (forall i_1 : int.
                   ((((<=) (0) i_1) /\
                    ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
@@ -2719,7 +2717,7 @@ module Function_memmove_behaviors
                    (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                    i_1))))))
                 &&
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 33 21 115#
+                (#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
                 (forall i_2 : int.
                  ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
                   ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
@@ -2753,7 +2751,7 @@ module Function_memmove_behaviors
                  (#"memmove.jc" 222 57 70# "expl:Integer cast"
                  (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
                (if
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+               (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                (Unsafe_bit_uint64.(<>)  !tmp_3
                 (#"memmove.jc" 225 50 63# "expl:Integer cast"
                 (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -2781,7 +2779,7 @@ module Function_memmove_behaviors
                end;
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 37 14 59#
+                (#"/home/work/workspace/self/verker/memmove.c" 37 14 59#
                 "expl:Assertion in line 37"
                 (Int8.(=)
                 (select !charP_charM_dest_3_2
@@ -2797,7 +2795,7 @@ module Function_memmove_behaviors
        'While_0_break_0: 'While_0_break_0: () end);
      begin
      (assert {
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 40 12 35#
+     (#"/home/work/workspace/self/verker/memmove.c" 40 12 35#
      "expl:Assertion in line 40"
      (Bit_uint64.(=) !mutable_count (#"memmove.jc" 249 51 69#
      "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) }); ()
@@ -2805,7 +2803,7 @@ module Function_memmove_behaviors
     end with Return -> !return end))
   
   let memmove_ensures_diff_addr
-  #"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
+  #"/home/work/workspace/self/verker/memmove.c" 3 5 56#
   "expl:Function memmove, behavior diff_addr" =
   fun
    (dest_3 : (pointer voidP)) (src_3 : (pointer voidP)) (count : Uint64.t)
@@ -2829,15 +2827,15 @@ module Function_memmove_behaviors
        (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 15 13 43#
+   ((#"/home/work/workspace/self/verker/memmove.h" 15 13 43#
     (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memmove.h" 16 13 42#
     (instanceof voidP_dest_3_2_tag_table src_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 17 13 46#
+   ((#"/home/work/workspace/self/verker/memmove.h" 17 13 46#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -2854,7 +2852,7 @@ module Function_memmove_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memmove.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -2870,13 +2868,13 @@ module Function_memmove_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memmove.h" 19 13 100#
+   (#"/home/work/workspace/self/verker/memmove.h" 19 13 100#
    (((same_block dest_3 src_3) /\ (not (not (same_block dest_3 src_3)))) \/
    ((not (same_block dest_3 src_3)) /\ (not (same_block dest_3 src_3))))))))))))))))
    }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memmove.h" 27 14 99#
+     (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
      "expl:Ensures clause"
      (forall i_3 : int.
       ((((<=) (0) i_3) /\ ((<) i_3 (Bit_uint64.to_int count))) ->
@@ -2901,7 +2899,7 @@ module Function_memmove_behaviors
     begin
     (orig_count := !mutable_count);
      (if
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 9 5 16#
+     (#"/home/work/workspace/self/verker/memmove.c" 9 5 16#
      ((<=)  (#"memmove.jc" 78 21 35# (sub_pointer_  dest_3 src_3 )) (0) ))
      then
       try
@@ -2917,7 +2915,7 @@ module Function_memmove_behaviors
           requires { true } reads { charP_charM_dest_3_2, dest_3,
           mutable_count, src_3 }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 17 21 119#
+            ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
              (forall i_0 : int.
               ((((<=) (0) i_0) /\
                ((<) i_0
@@ -2931,7 +2929,7 @@ module Function_memmove_behaviors
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                i_0))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 16 21 127#
+            ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
              (forall i : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
@@ -2943,77 +2941,77 @@ module Function_memmove_behaviors
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+            ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               (same_block (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               !s))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
               (same_block !s
               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
              ((<=)
              (sub_pointer !s
              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+            ((#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               (same_block
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
               (same_block !tmp
               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
              ((<=)
              (sub_pointer !tmp
              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 53#
+            ((#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             ((#"/home/work/workspace/self/verker/memmove.c" 13 21 53#
               ((=)
               (sub_pointer !tmp
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
               (Int.(-) (Bit_uint64.to_int !orig_count)
               (Bit_uint64.to_int !mutable_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 35 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 35 64#
              ((=)
              (Int.(-) (Bit_uint64.to_int !orig_count)
              (Bit_uint64.to_int !mutable_count))
              (sub_pointer !s
              (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 31#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            ((#"/home/work/workspace/self/verker/memmove.c" 12 21 31#
              (Bit_uint64.(<=) (#"memmove.jc" 84 41 54# "expl:Integer cast"
              (Bit_uint64.of_int_const 0)) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 26 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 26 45#
             (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
            try
             begin
@@ -3026,7 +3024,7 @@ module Function_memmove_behaviors
                (#"memmove.jc" 138 57 70# "expl:Integer cast"
                (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+             (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
              (Unsafe_bit_uint64.(<>)  !tmp_2
               (#"memmove.jc" 141 50 63# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -3059,7 +3057,7 @@ module Function_memmove_behaviors
               requires { true } reads { charP_charM_dest_3_2, dest_3,
               mutable_count, src_3 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 21 14 93#
+                (#"/home/work/workspace/self/verker/memmove.c" 21 14 93#
                 (Int8.(=)
                 (select !charP_charM_dest_3_2
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -3093,7 +3091,7 @@ module Function_memmove_behaviors
             requires { true } reads { charP_charM_dest_3_2, dest_3,
             mutable_count, src_3 }
             ensures {
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 33 21 115#
+              ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
                (forall i_2 : int.
                 ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
                  ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
@@ -3105,7 +3103,7 @@ module Function_memmove_behaviors
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_2))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 32 21 105#
+              ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
                (forall i_1 : int.
                 ((((<=) (0) i_1) /\
                  ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
@@ -3117,75 +3115,75 @@ module Function_memmove_behaviors
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_1))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+              ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                 (same_block !s
                 (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                ((<=)
                (sub_pointer !s
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
                 (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                 (same_block !tmp
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                ((<=)
                (sub_pointer !tmp
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               ((#"/home/work/workspace/self/verker/memmove.c" 29 21 40#
                 ((=)
                 (sub_pointer !tmp
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
                 (Bit_uint64.to_int !mutable_count)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 35 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 35 51#
                ((=) (Bit_uint64.to_int !mutable_count)
                (sub_pointer !s
                (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 31#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              ((#"/home/work/workspace/self/verker/memmove.c" 28 21 31#
                (Bit_uint64.(<=) (#"memmove.jc" 175 41 54# "expl:Integer cast"
                (Bit_uint64.of_int_const 0)) !mutable_count))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 26 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 26 45#
               (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
              try
               begin
@@ -3198,7 +3196,7 @@ module Function_memmove_behaviors
                  (#"memmove.jc" 222 57 70# "expl:Integer cast"
                  (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
                (if
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+               (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                (Unsafe_bit_uint64.(<>)  !tmp_3
                 (#"memmove.jc" 225 50 63# "expl:Integer cast"
                 (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -3229,7 +3227,7 @@ module Function_memmove_behaviors
                 requires { true } reads { charP_charM_dest_3_2, dest_3,
                 mutable_count, src_3 }
                 ensures {
-                  (#"/home/work/workspace/self/verker-gh/memmove.c" 37 14 59#
+                  (#"/home/work/workspace/self/verker/memmove.c" 37 14 59#
                   (Int8.(=)
                   (select !charP_charM_dest_3_2
                   (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -3246,14 +3244,14 @@ module Function_memmove_behaviors
      any unit
      requires { true } reads { mutable_count }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/memmove.c" 40 12 35#
+       (#"/home/work/workspace/self/verker/memmove.c" 40 12 35#
        (Bit_uint64.(=) !mutable_count (#"memmove.jc" 249 51 69#
        "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
       () end; begin (return := dest_3); (raise Return) end end))))))); 
      absurd  end with Return -> !return end))
   
   let memmove_ensures_same_addr
-  #"/home/work/workspace/self/verker-gh/memmove.c" 3 5 56#
+  #"/home/work/workspace/self/verker/memmove.c" 3 5 56#
   "expl:Function memmove, behavior same_addr" =
   fun
    (dest_3 : (pointer voidP)) (src_3 : (pointer voidP)) (count : Uint64.t)
@@ -3277,15 +3275,15 @@ module Function_memmove_behaviors
        (instanceof voidP_dest_3_2_tag_table (shift dest_3 i) voidP_tag)))))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 15 13 43#
+   ((#"/home/work/workspace/self/verker/memmove.h" 15 13 43#
     (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 16 13 42#
+   ((#"/home/work/workspace/self/verker/memmove.h" 16 13 42#
     (instanceof voidP_dest_3_2_tag_table src_3 charP_tag))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 17 13 46#
+   ((#"/home/work/workspace/self/verker/memmove.h" 17 13 46#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -3302,7 +3300,7 @@ module Function_memmove_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memmove.jc" 18 12 1945#
-   ((#"/home/work/workspace/self/verker-gh/memmove.h" 18 13 45#
+   ((#"/home/work/workspace/self/verker/memmove.h" 18 13 45#
     (if ((<=) (0) (Int.(-) (Bit_uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_dest_3_2_alloc_table
@@ -3318,13 +3316,13 @@ module Function_memmove_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Bit_uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memmove.h" 19 13 100#
+   (#"/home/work/workspace/self/verker/memmove.h" 19 13 100#
    (((same_block dest_3 src_3) /\ (not (not (same_block dest_3 src_3)))) \/
    ((not (same_block dest_3 src_3)) /\ (not (same_block dest_3 src_3))))))))))))))))
    }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memmove.h" 24 14 99#
+     (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
      "expl:Ensures clause"
      (forall i_4 : int.
       ((((<=) (0) i_4) /\ ((<) i_4 (Bit_uint64.to_int count))) ->
@@ -3349,7 +3347,7 @@ module Function_memmove_behaviors
     begin
     (orig_count := !mutable_count);
      (if
-     (#"/home/work/workspace/self/verker-gh/memmove.c" 9 5 16#
+     (#"/home/work/workspace/self/verker/memmove.c" 9 5 16#
      ((<=)  (#"memmove.jc" 78 21 35# (sub_pointer_  dest_3 src_3 )) (0) ))
      then
       try
@@ -3365,7 +3363,7 @@ module Function_memmove_behaviors
           requires { true } reads { charP_charM_dest_3_2, dest_3,
           mutable_count, src_3 }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 17 21 119#
+            ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
              (forall i_0 : int.
               ((((<=) (0) i_0) /\
                ((<) i_0
@@ -3379,7 +3377,7 @@ module Function_memmove_behaviors
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                i_0))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 16 21 127#
+            ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
              (forall i : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
@@ -3391,77 +3389,77 @@ module Function_memmove_behaviors
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+            ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               (same_block (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               !s))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 37#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 37#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 21 65#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
+             ((#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
               (same_block !s
               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 15 36 65#
+             (#"/home/work/workspace/self/verker/memmove.c" 15 36 65#
              ((<=)
              (sub_pointer !s
              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+            ((#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               (same_block
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 40#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 21 40#
               ((<=)
               (sub_pointer
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 21 69#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 21 69#
+             ((#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
               (same_block !tmp
               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
               (Bit_uint64.to_int !orig_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 14 37 69#
+             (#"/home/work/workspace/self/verker/memmove.c" 14 37 69#
              ((<=)
              (sub_pointer !tmp
              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
              (Bit_uint64.to_int !orig_count))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 64#
-             ((#"/home/work/workspace/self/verker-gh/memmove.c" 13 21 53#
+            ((#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 21 64#
+             ((#"/home/work/workspace/self/verker/memmove.c" 13 21 53#
               ((=)
               (sub_pointer !tmp
               (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
               (Int.(-) (Bit_uint64.to_int !orig_count)
               (Bit_uint64.to_int !mutable_count))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 13 35 64#
+             (#"/home/work/workspace/self/verker/memmove.c" 13 35 64#
              ((=)
              (Int.(-) (Bit_uint64.to_int !orig_count)
              (Bit_uint64.to_int !mutable_count))
              (sub_pointer !s
              (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 45#
-            ((#"/home/work/workspace/self/verker-gh/memmove.c" 12 21 31#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 21 45#
+            ((#"/home/work/workspace/self/verker/memmove.c" 12 21 31#
              (Bit_uint64.(<=) (#"memmove.jc" 84 41 54# "expl:Integer cast"
              (Bit_uint64.of_int_const 0)) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memmove.c" 12 26 45#
+            (#"/home/work/workspace/self/verker/memmove.c" 12 26 45#
             (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
            try
             begin
@@ -3474,7 +3472,7 @@ module Function_memmove_behaviors
                (#"memmove.jc" 138 57 70# "expl:Integer cast"
                (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
              (if
-             (#"/home/work/workspace/self/verker-gh/memmove.c" 19 9 20#
+             (#"/home/work/workspace/self/verker/memmove.c" 19 9 20#
              (Unsafe_bit_uint64.(<>)  !tmp_2
               (#"memmove.jc" 141 50 63# "expl:Integer cast"
               (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -3507,7 +3505,7 @@ module Function_memmove_behaviors
               requires { true } reads { charP_charM_dest_3_2, dest_3,
               mutable_count, src_3 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/memmove.c" 21 14 93#
+                (#"/home/work/workspace/self/verker/memmove.c" 21 14 93#
                 (Int8.(=)
                 (select !charP_charM_dest_3_2
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -3541,7 +3539,7 @@ module Function_memmove_behaviors
             requires { true } reads { charP_charM_dest_3_2, dest_3,
             mutable_count, src_3 }
             ensures {
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 33 21 115#
+              ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
                (forall i_2 : int.
                 ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
                  ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
@@ -3553,7 +3551,7 @@ module Function_memmove_behaviors
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_2))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 32 21 105#
+              ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
                (forall i_1 : int.
                 ((((<=) (0) i_1) /\
                  ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
@@ -3565,75 +3563,75 @@ module Function_memmove_behaviors
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                  i_1))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+              ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 37#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 37#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table src_3 charP_tag) !s) (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 21 65#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
+               ((#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                 (same_block !s
                 (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 31 36 65#
+               (#"/home/work/workspace/self/verker/memmove.c" 31 36 65#
                ((<=)
                (sub_pointer !s
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 (same_block
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 40#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 21 40#
                 ((<=)
                 (sub_pointer
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) !tmp)
                 (0)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 21 69#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 21 69#
+               ((#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                 (same_block !tmp
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                 (Bit_uint64.to_int !orig_count))))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 30 37 69#
+               (#"/home/work/workspace/self/verker/memmove.c" 30 37 69#
                ((<=)
                (sub_pointer !tmp
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               /\
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 51#
-               ((#"/home/work/workspace/self/verker-gh/memmove.c" 29 21 40#
+              ((#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 21 51#
+               ((#"/home/work/workspace/self/verker/memmove.c" 29 21 40#
                 ((=)
                 (sub_pointer !tmp
                 (downcast voidP_dest_3_2_tag_table dest_3 charP_tag))
                 (Bit_uint64.to_int !mutable_count)))
                /\
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 29 35 51#
+               (#"/home/work/workspace/self/verker/memmove.c" 29 35 51#
                ((=) (Bit_uint64.to_int !mutable_count)
                (sub_pointer !s
                (downcast voidP_dest_3_2_tag_table src_3 charP_tag)))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 45#
-              ((#"/home/work/workspace/self/verker-gh/memmove.c" 28 21 31#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 21 45#
+              ((#"/home/work/workspace/self/verker/memmove.c" 28 21 31#
                (Bit_uint64.(<=) (#"memmove.jc" 175 41 54# "expl:Integer cast"
                (Bit_uint64.of_int_const 0)) !mutable_count))
               /\
-              (#"/home/work/workspace/self/verker-gh/memmove.c" 28 26 45#
+              (#"/home/work/workspace/self/verker/memmove.c" 28 26 45#
               (Bit_uint64.(<=) !mutable_count !orig_count)))))))))) } ;
              try
               begin
@@ -3646,7 +3644,7 @@ module Function_memmove_behaviors
                  (#"memmove.jc" 222 57 70# "expl:Integer cast"
                  (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
                (if
-               (#"/home/work/workspace/self/verker-gh/memmove.c" 35 9 20#
+               (#"/home/work/workspace/self/verker/memmove.c" 35 9 20#
                (Unsafe_bit_uint64.(<>)  !tmp_3
                 (#"memmove.jc" 225 50 63# "expl:Integer cast"
                 (Unsafe_bit_uint64.of_int_const 0)) )) then ()
@@ -3677,7 +3675,7 @@ module Function_memmove_behaviors
                 requires { true } reads { charP_charM_dest_3_2, dest_3,
                 mutable_count, src_3 }
                 ensures {
-                  (#"/home/work/workspace/self/verker-gh/memmove.c" 37 14 59#
+                  (#"/home/work/workspace/self/verker/memmove.c" 37 14 59#
                   (Int8.(=)
                   (select !charP_charM_dest_3_2
                   (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
@@ -3694,7 +3692,7 @@ module Function_memmove_behaviors
      any unit
      requires { true } reads { mutable_count }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/memmove.c" 40 12 35#
+       (#"/home/work/workspace/self/verker/memmove.c" 40 12 35#
        (Bit_uint64.(=) !mutable_count (#"memmove.jc" 249 51 69#
        "expl:Integer cast" (Bit_uint64.of_int_modulo (Int.(-_) (1)))))) } ;
       () end; begin (return := dest_3); (raise Return) end end))))))); 
@@ -9065,7 +9063,7 @@ module Function_memmove
               voidP_tag)))))
           /\
           (((not (same_block dest_3 src_3)) ->
-            (#"/home/work/workspace/self/verker-gh/memmove.h" 27 14 99#
+            (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
             "expl:Ensures clause"
             (forall i_3 : int.
              ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int count))) ->
@@ -9077,7 +9075,7 @@ module Function_memmove
               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_3)))))))
           /\
           (((same_block dest_3 src_3) ->
-            (#"/home/work/workspace/self/verker-gh/memmove.h" 24 14 99#
+            (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
             "expl:Ensures clause"
             (forall i_4 : int.
              ((((<=) (0) i_4) /\ ((<) i_4 (Uint64.to_int count))) ->
@@ -9144,17 +9142,17 @@ module Function_memmove_safe
         requires {
           ("expl:Internal"
           (#"memmove.jc" 18 12 1945# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memmove.h" 15 13 43#
+          ((#"/home/work/workspace/self/verker/memmove.h" 15 13 43#
            "expl:Requires clause"
            (instanceof voidP_dest_3_2_tag_table dest_3 charP_tag))
           /\
           (#"memmove.jc" 18 12 1945# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memmove.h" 16 13 42#
+          ((#"/home/work/workspace/self/verker/memmove.h" 16 13 42#
            "expl:Requires clause"
            (instanceof voidP_dest_3_2_tag_table src_3 charP_tag))
           /\
           (#"memmove.jc" 18 12 1945# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memmove.h" 17 13 46#
+          ((#"/home/work/workspace/self/verker/memmove.h" 17 13 46#
            "expl:Requires clause"
            (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
             (((<=)
@@ -9172,7 +9170,7 @@ module Function_memmove_safe
               ((=) true true))))) else ((=) true true)))
           /\
           (#"memmove.jc" 18 12 1945# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/memmove.h" 18 13 45#
+          ((#"/home/work/workspace/self/verker/memmove.h" 18 13 45#
            "expl:Requires clause"
            (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
             (((<=)
@@ -9189,7 +9187,7 @@ module Function_memmove_safe
               ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
               ((=) true true))))) else ((=) true true)))
           /\
-          (#"/home/work/workspace/self/verker-gh/memmove.h" 19 13 100#
+          (#"/home/work/workspace/self/verker/memmove.h" 19 13 100#
           "expl:Requires clause"
           (((same_block dest_3 src_3) /\
            (not (not (same_block dest_3 src_3))))
@@ -9207,7 +9205,7 @@ module Function_memmove_safe
               voidP_tag)))))
           /\
           (((not (same_block dest_3 src_3)) ->
-            (#"/home/work/workspace/self/verker-gh/memmove.h" 27 14 99#
+            (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
             "expl:Ensures clause"
             (forall i_3 : int.
              ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int count))) ->
@@ -9219,7 +9217,7 @@ module Function_memmove_safe
               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_3)))))))
           /\
           (((same_block dest_3 src_3) ->
-            (#"/home/work/workspace/self/verker-gh/memmove.h" 24 14 99#
+            (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
             "expl:Ensures clause"
             (forall i_4 : int.
              ((((<=) (0) i_4) /\ ((<) i_4 (Uint64.to_int count))) ->

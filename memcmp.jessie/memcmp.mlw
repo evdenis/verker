@@ -1865,21 +1865,6 @@ theory Struct_unsigned_charP
   
 end
 
-module Safe_uint64_of_Safe_int32
-
-  use enum.Uint64 
-  
-  use enum.Int32 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int32.t) : Uint64.t
-   requires { (Uint64.in_bounds (Int32.to_int n)) }
-   ensures { ((=) (Uint64.to_int result) (Int32.to_int n)) }
-  
-end
-
 module Exceptions
 
   use why3.Bool.Bool 
@@ -1909,16 +1894,13 @@ module Safe_int32_of_Safe_uint8
 end
 
 module Function_memcmp_safety
-#"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
-"expl:memcmp, safety"
+#"/home/work/workspace/self/verker/memcmp.c" 47 40 92# "expl:memcmp, safety"
 
   use enum.Uint8 
   
   use enum.Uint64 
   
   use import Struct_unsigned_charP 
-  
-  use Safe_uint64_of_Safe_int32 
   
   use Safe_uint64 
   
@@ -1962,7 +1944,7 @@ module Function_memcmp_safety
   
   use why3.Bool.Bool 
   
-  let memcmp #"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
+  let memcmp #"/home/work/workspace/self/verker/memcmp.c" 47 40 92#
   "expl:Function memcmp, safety" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (count : Uint64.t)
@@ -1987,15 +1969,15 @@ module Function_memcmp_safety
        (instanceof voidP_cs_2_tag_table (shift cs i) voidP_tag)))))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 25 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 25 13 39#
     (instanceof voidP_cs_2_tag_table cs unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 26 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 26 13 39#
     (instanceof voidP_ct_3_tag_table ct unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 27 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 27 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_cs_2_alloc_table
@@ -2012,7 +1994,7 @@ module Function_memcmp_safety
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 28 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 28 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_ct_3_alloc_table
@@ -2028,7 +2010,7 @@ module Function_memcmp_safety
        ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcmp.c" 29 13 118#
+   (#"/home/work/workspace/self/verker/memcmp.c" 29 13 118#
    (((same_block (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
      (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
     /\
@@ -2063,43 +2045,42 @@ module Function_memcmp_safety
        in
        begin
        (assert {
-       (#"/home/work/workspace/self/verker-gh/memcmp.c" 50 5 8#
+       (#"/home/work/workspace/self/verker/memcmp.c" 50 5 8#
        "expl:Pointer index bounds" true) }); _jessie_37 end));
        begin
        (su1 :=
         (let _jessie_36 =
-        (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 12 14#
+        (#"/home/work/workspace/self/verker/memcmp.c" 66 12 14#
         (downcast_  voidP_cs_2_tag_table cs (unsigned_charP_tag  ) )) in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 6 14#
+        (#"/home/work/workspace/self/verker/memcmp.c" 66 6 14#
         "expl:Pointer index bounds" true) }); _jessie_36 end));
         begin
         (su2 :=
          (let _jessie_31 =
-         (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 22 24#
+         (#"/home/work/workspace/self/verker/memcmp.c" 66 22 24#
          (downcast_  voidP_ct_3_tag_table ct (unsigned_charP_tag  ) )) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 16 24#
+         (#"/home/work/workspace/self/verker/memcmp.c" 66 16 24#
          "expl:Pointer index bounds" true) }); _jessie_31 end));
          'Loop_4:
          loop
-         invariant { (#"memcmp.jc" 130 6 3402# true) }
-           variant {
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 64 18 23#
+         invariant { (#"memcmp.jc" 130 6 3381# true) }
+           variant { (#"/home/work/workspace/self/verker/memcmp.c" 64 18 23#
              (Uint64.to_int
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 64 18 23#
+             (#"/home/work/workspace/self/verker/memcmp.c" 64 18 23#
              !mutable_count))) }
           begin
           any unit
           requires { true } reads { cs, ct, mutable_count }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 62 20 28#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
              (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 58 20 125#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
              (forall i : int.
               ((((<=) (0) i) /\
                ((<) i
@@ -2113,116 +2094,113 @@ module Function_memcmp_safety
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 72#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 72#
               ((=)
               (sub_pointer !su1
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag))
               (sub_pointer !su2
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 56 20 80#
+             (#"/home/work/workspace/self/verker/memcmp.c" 56 20 80#
              ((=)
              (sub_pointer !su2
              (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
              (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
              (Uint64.to_int !mutable_count)))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               (same_block
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
               (same_block !su2
               (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
              ((<=)
              (sub_pointer !su2
              (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               (same_block
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
               (same_block !su1
               (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
              ((<=)
              (sub_pointer !su1
              (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 30#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
              (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 25 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
             (Uint64.(<=) !mutable_count (at !mutable_count 'Init))))))))))) } ;
            try
             begin
             begin
             (if
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 35#
+            (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Safe_uint64.(<) 
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 27#
-             "expl:Integer cast"
-             (Safe_uint64_of_Safe_int32.cast 
-              (#"memcmp.jc" 180 36 48# "expl:Integer cast"
-              (Safe_int32.of_int (0))) )) !mutable_count )) then ()
+             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (Safe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
              (res :=
               (let _jessie_32 =
               (Safe_int32.(-) 
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 13 17#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 13 17#
                "expl:Integer cast"
                (Safe_int32_of_Safe_uint8.cast 
-                (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 13 17#
+                (#"/home/work/workspace/self/verker/memcmp.c" 67 13 17#
                 "expl:Pointer dereference"
                 (acc  voidP_cs_2_alloc_table
                  unsigned_charP_unsigned_charM_cs_2 !su1 )) ))
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 20 24#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 20 24#
                "expl:Integer cast"
                (Safe_int32_of_Safe_uint8.cast 
-                (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 20 24#
+                (#"/home/work/workspace/self/verker/memcmp.c" 67 20 24#
                 "expl:Pointer dereference"
                 (acc  voidP_ct_3_alloc_table
                  unsigned_charP_unsigned_charM_ct_3 !su2 )) )) ) in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 7 24#
+              (#"/home/work/workspace/self/verker/memcmp.c" 67 7 24#
               "expl:Pointer index bounds" true) }); _jessie_32 end));
               (if
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 6 30#
+              (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Safe_int32.(<>)  !res
                (#"memcmp.jc" 184 33 45# "expl:Integer cast"
                (Safe_int32.of_int (0))) ))
@@ -2236,7 +2214,7 @@ module Function_memcmp_safety
                  (Safe_int32.of_int (1))) ) ) in
                begin
                (assert {
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 37 42#
+               (#"/home/work/workspace/self/verker/memcmp.c" 66 37 42#
                "expl:Pointer index bounds" true) }); _jessie_33 end));
                begin
                (su2 :=
@@ -2247,7 +2225,7 @@ module Function_memcmp_safety
                   (Safe_int32.of_int (1))) ) ) in
                 begin
                 (assert {
-                (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 44 49#
+                (#"/home/work/workspace/self/verker/memcmp.c" 66 44 49#
                 "expl:Pointer index bounds" true) }); _jessie_34 end));
                 (mutable_count :=
                  (let _jessie_35 =
@@ -2256,7 +2234,7 @@ module Function_memcmp_safety
                   (Safe_uint64.of_int (1))) ) in
                  begin
                  (assert {
-                 (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 51 58#
+                 (#"/home/work/workspace/self/verker/memcmp.c" 66 51 58#
                  "expl:Pointer index bounds" true) }); _jessie_35 end)) end
               end end end; (raise (Loop_continue_exc ())) end with
             Loop_continue_exc _jessie_3 -> () end end end;
@@ -2271,7 +2249,7 @@ module Function_memcmp_safety
         (let _jessie_38 = !res in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/memcmp.c" 70 1 12#
+        (#"/home/work/workspace/self/verker/memcmp.c" 70 1 12#
         "expl:Pointer index bounds" true) }); _jessie_38 end));
         begin
         (return :=
@@ -2280,21 +2258,6 @@ module Function_memcmp_safety
          (assert { (#"memcmp.jc" 194 7 22# "expl:Pointer index bounds" true)
          }); _jessie_39 end)); (raise Return) end end end end)))); absurd 
     end with Return -> !return end))
-  
-end
-
-module Unsafe_uint64_of_Unsafe_int32
-
-  use enum.Uint64 
-  
-  use enum.Int32 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int32.t) : Uint64.t
-   requires { true }
-   ensures { ((=) (Uint64.to_int result) (Int32.to_int n)) }
   
 end
 
@@ -2313,11 +2276,9 @@ module Unsafe_int32_of_Unsafe_uint8
 end
 
 module Function_memcmp_behaviors
-#"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
+#"/home/work/workspace/self/verker/memcmp.c" 47 40 92#
 "expl:memcmp, behaviors"
 
-  use Unsafe_uint64_of_Unsafe_int32 
-  
   use Unsafe_uint64 
   
   use Unsafe_int32_of_Unsafe_uint8 
@@ -2367,7 +2328,7 @@ module Function_memcmp_behaviors
   use why3.Bool.Bool 
   
   let memcmp_ensures_default
-  #"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
+  #"/home/work/workspace/self/verker/memcmp.c" 47 40 92#
   "expl:Function memcmp, default behavior" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (count : Uint64.t)
@@ -2392,15 +2353,15 @@ module Function_memcmp_behaviors
        (instanceof voidP_cs_2_tag_table (shift cs i) voidP_tag)))))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 25 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 25 13 39#
     (instanceof voidP_cs_2_tag_table cs unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 26 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 26 13 39#
     (instanceof voidP_ct_3_tag_table ct unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 27 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 27 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_cs_2_alloc_table
@@ -2417,7 +2378,7 @@ module Function_memcmp_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 28 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 28 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_ct_3_alloc_table
@@ -2433,7 +2394,7 @@ module Function_memcmp_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcmp.c" 29 13 118#
+   (#"/home/work/workspace/self/verker/memcmp.c" 29 13 118#
    (((same_block (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
      (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
     /\
@@ -2511,82 +2472,82 @@ module Function_memcmp_behaviors
          'Loop_1:
          loop
          invariant
-           { ((#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 30#
+           { ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+              (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
                (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
                (Uint64.of_int (0))) !mutable_count))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 25 48#
+              (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
               (Uint64.(<=) !mutable_count (at !mutable_count 'Init))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
                (same_block
                (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+              (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
                ((<=)
                (sub_pointer
                (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1)
                (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
                (same_block !su1
                (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
                (Uint64.to_int (at !mutable_count 'Init)))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
               ((<=)
               (sub_pointer !su1
               (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
                (same_block
                (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+              (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
                ((<=)
                (sub_pointer
                (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2)
                (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
                (same_block !su2
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                (Uint64.to_int (at !mutable_count 'Init)))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+              (#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
               ((<=)
               (sub_pointer !su2
               (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-              ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 72#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+              (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+              ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 72#
                ((=)
                (sub_pointer !su1
                (downcast voidP_cs_2_tag_table cs unsigned_charP_tag))
                (sub_pointer !su2
                (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))
               /\
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 56 20 80#
+              (#"/home/work/workspace/self/verker/memcmp.c" 56 20 80#
               ((=)
               (sub_pointer !su2
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
               (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
               (Uint64.to_int !mutable_count)))))))
              &&
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 58 20 125#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
               (forall i : int.
                ((((<=) (0) i) /\
                 ((<) i
@@ -2600,7 +2561,7 @@ module Function_memcmp_behaviors
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                 i))))))
              &&
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 62 20 28#
+             (#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
              (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))))))) } 
           begin
@@ -2609,27 +2570,24 @@ module Function_memcmp_behaviors
             begin
             begin
             (if
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 35#
+            (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 27#
-             "expl:Integer cast"
-             (Unsafe_uint64_of_Unsafe_int32.cast 
-              (#"memcmp.jc" 180 36 48# "expl:Integer cast"
-              (Unsafe_int32.of_int (0))) )) !mutable_count )) then ()
+             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
              (res :=
               (Unsafe_int32.(-) 
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 13 17#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 13 17#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_cs_2 !su1 ) ))
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 20 24#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 20 24#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_ct_3 !su2 ) )) ));
               (if
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 6 30#
+              (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
                (#"memcmp.jc" 184 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
@@ -2662,7 +2620,7 @@ module Function_memcmp_behaviors
        end end end)))); absurd  end with Return -> !return end))
   
   let memcmp_ensures_diff
-  #"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
+  #"/home/work/workspace/self/verker/memcmp.c" 47 40 92#
   "expl:Function memcmp, behavior diff" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (count : Uint64.t)
@@ -2696,15 +2654,15 @@ module Function_memcmp_behaviors
        (instanceof voidP_cs_2_tag_table (shift cs i) voidP_tag)))))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 25 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 25 13 39#
     (instanceof voidP_cs_2_tag_table cs unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 26 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 26 13 39#
     (instanceof voidP_ct_3_tag_table ct unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 27 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 27 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_cs_2_alloc_table
@@ -2721,7 +2679,7 @@ module Function_memcmp_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 28 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 28 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_ct_3_alloc_table
@@ -2737,7 +2695,7 @@ module Function_memcmp_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcmp.c" 29 13 118#
+   (#"/home/work/workspace/self/verker/memcmp.c" 29 13 118#
    (((same_block (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
      (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
     /\
@@ -2755,7 +2713,7 @@ module Function_memcmp_behaviors
    (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))))))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memcmp.c" 40 15 241#
+     (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
      "expl:Ensures clause"
      (exists i_1 : int.
       (((<=) (0) i_1) /\
@@ -2804,16 +2762,16 @@ module Function_memcmp_behaviors
         (su2 := (downcast_  voidP_ct_3_tag_table ct (unsigned_charP_tag  ) ));
          'Loop_3:
          loop
-         invariant { (#"memcmp.jc" 130 6 3402# true) } 
+         invariant { (#"memcmp.jc" 130 6 3381# true) } 
           begin
           any unit
           requires { true } reads { cs, ct, mutable_count }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 62 20 28#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
              (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 58 20 125#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
              (forall i : int.
               ((((<=) (0) i) /\
                ((<) i
@@ -2827,105 +2785,102 @@ module Function_memcmp_behaviors
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 72#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 72#
               ((=)
               (sub_pointer !su1
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag))
               (sub_pointer !su2
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 56 20 80#
+             (#"/home/work/workspace/self/verker/memcmp.c" 56 20 80#
              ((=)
              (sub_pointer !su2
              (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
              (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
              (Uint64.to_int !mutable_count)))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               (same_block
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
               (same_block !su2
               (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
              ((<=)
              (sub_pointer !su2
              (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               (same_block
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
               (same_block !su1
               (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
              ((<=)
              (sub_pointer !su1
              (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 30#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
              (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 25 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
             (Uint64.(<=) !mutable_count (at !mutable_count 'Init))))))))))) } ;
            try
             begin
             begin
             (if
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 35#
+            (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 27#
-             "expl:Integer cast"
-             (Unsafe_uint64_of_Unsafe_int32.cast 
-              (#"memcmp.jc" 180 36 48# "expl:Integer cast"
-              (Unsafe_int32.of_int (0))) )) !mutable_count )) then ()
+             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
              (res :=
               (Unsafe_int32.(-) 
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 13 17#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 13 17#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_cs_2 !su1 ) ))
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 20 24#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 20 24#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_ct_3 !su2 ) )) ));
               (if
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 6 30#
+              (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
                (#"memcmp.jc" 184 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
@@ -2958,7 +2913,7 @@ module Function_memcmp_behaviors
        end end end)))); absurd  end with Return -> !return end))
   
   let memcmp_ensures_equal
-  #"/home/work/workspace/self/verker-gh/memcmp.c" 47 40 92#
+  #"/home/work/workspace/self/verker/memcmp.c" 47 40 92#
   "expl:Function memcmp, behavior equal" =
   fun
    (cs : (pointer voidP)) (ct : (pointer voidP)) (count : Uint64.t)
@@ -2991,15 +2946,15 @@ module Function_memcmp_behaviors
        (instanceof voidP_cs_2_tag_table (shift cs i) voidP_tag)))))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 25 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 25 13 39#
     (instanceof voidP_cs_2_tag_table cs unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 26 13 39#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 26 13 39#
     (instanceof voidP_ct_3_tag_table ct unsigned_charP_tag))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 27 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 27 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_cs_2_alloc_table
@@ -3016,7 +2971,7 @@ module Function_memcmp_behaviors
        ((=) true true))))) else ((=) true true)))
    /\
    (#"memcmp.jc" 38 12 2243#
-   ((#"/home/work/workspace/self/verker-gh/memcmp.c" 28 13 44#
+   ((#"/home/work/workspace/self/verker/memcmp.c" 28 13 44#
     (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
      (((<=)
       (offset_min voidP_ct_3_alloc_table
@@ -3032,7 +2987,7 @@ module Function_memcmp_behaviors
        ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"/home/work/workspace/self/verker-gh/memcmp.c" 29 13 118#
+   (#"/home/work/workspace/self/verker/memcmp.c" 29 13 118#
    (((same_block (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
      (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
     /\
@@ -3050,7 +3005,7 @@ module Function_memcmp_behaviors
    (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))))))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/memcmp.c" 37 15 27#
+     (#"/home/work/workspace/self/verker/memcmp.c" 37 15 27#
      "expl:Ensures clause"
      (Int32.(=) result (#"memcmp.jc" 78 31 43# "expl:Integer cast"
      (Int32.of_int (0)))))) } diverges  ->
@@ -3075,16 +3030,16 @@ module Function_memcmp_behaviors
         (su2 := (downcast_  voidP_ct_3_tag_table ct (unsigned_charP_tag  ) ));
          'Loop_2:
          loop
-         invariant { (#"memcmp.jc" 130 6 3402# true) } 
+         invariant { (#"memcmp.jc" 130 6 3381# true) } 
           begin
           any unit
           requires { true } reads { cs, ct, mutable_count }
           ensures {
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 62 20 28#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
              (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 58 20 125#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
              (forall i : int.
               ((((<=) (0) i) /\
                ((<) i
@@ -3098,105 +3053,102 @@ module Function_memcmp_behaviors
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                i))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 118#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 55 20 72#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 72#
               ((=)
               (sub_pointer !su1
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag))
               (sub_pointer !su2
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 56 20 80#
+             (#"/home/work/workspace/self/verker/memcmp.c" 56 20 80#
              ((=)
              (sub_pointer !su2
              (downcast voidP_ct_3_tag_table ct unsigned_charP_tag))
              (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
              (Uint64.to_int !mutable_count)))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               (same_block
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) !su2)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
               (same_block !su2
               (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 54 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 54 32 64#
              ((<=)
              (sub_pointer !su2
              (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               (same_block
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 35#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 20 35#
               ((<=)
               (sub_pointer
               (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) !su1)
               (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 20 64#
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 20 64#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
               (same_block !su1
               (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
               (Uint64.to_int (at !mutable_count 'Init)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 53 32 64#
+             (#"/home/work/workspace/self/verker/memcmp.c" 53 32 64#
              ((<=)
              (sub_pointer !su1
              (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
              (Uint64.to_int (at !mutable_count 'Init)))) (0))))))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 48#
-            ((#"/home/work/workspace/self/verker-gh/memcmp.c" 52 20 30#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
+            ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
              (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 52 25 48#
+            (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
             (Uint64.(<=) !mutable_count (at !mutable_count 'Init))))))))))) } ;
            try
             begin
             begin
             (if
-            (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 35#
+            (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 66 26 27#
-             "expl:Integer cast"
-             (Unsafe_uint64_of_Unsafe_int32.cast 
-              (#"memcmp.jc" 180 36 48# "expl:Integer cast"
-              (Unsafe_int32.of_int (0))) )) !mutable_count )) then ()
+             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
              (res :=
               (Unsafe_int32.(-) 
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 13 17#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 13 17#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_cs_2 !su1 ) ))
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 20 24#
+               (#"/home/work/workspace/self/verker/memcmp.c" 67 20 24#
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_uint8.cast 
                 (acc  unsigned_charP_unsigned_charM_ct_3 !su2 ) )) ));
               (if
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 67 6 30#
+              (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
                (#"memcmp.jc" 184 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
@@ -7117,6 +7069,36 @@ module Unsafe_bit_uint64_of_Unsafe_bit_int32
   
 end
 
+module Safe_uint64_of_Safe_int32
+
+  use enum.Uint64 
+  
+  use enum.Int32 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int32.t) : Uint64.t
+   requires { (Uint64.in_bounds (Int32.to_int n)) }
+   ensures { ((=) (Uint64.to_int result) (Int32.to_int n)) }
+  
+end
+
+module Unsafe_uint64_of_Unsafe_int32
+
+  use enum.Uint64 
+  
+  use enum.Int32 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int32.t) : Uint64.t
+   requires { true }
+   ensures { ((=) (Uint64.to_int result) (Int32.to_int n)) }
+  
+end
+
 module Safe_bit_uint64_of_Safe_bit_int16
 
   use enum.Uint64 
@@ -8599,7 +8581,7 @@ module Function_memcmp
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                 i_0)))))) ->
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 40 15 241#
+               (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
                "expl:Ensures clause"
                (exists i_1 : int.
                 (((<=) (0) i_1) /\
@@ -8642,7 +8624,7 @@ module Function_memcmp
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                 i_2))))) ->
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 37 15 27#
+              (#"/home/work/workspace/self/verker/memcmp.c" 37 15 27#
               "expl:Ensures clause"
               (Int32.(=) result (#"memcmp.jc" 78 31 43# "expl:Integer cast"
               (Int32.of_int (0))))))) }
@@ -8691,17 +8673,17 @@ module Function_memcmp_safe
            requires {
              ("expl:Internal"
              (#"memcmp.jc" 38 12 2243# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 25 13 39#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 25 13 39#
               "expl:Requires clause"
               (instanceof voidP_cs_2_tag_table cs unsigned_charP_tag))
              /\
              (#"memcmp.jc" 38 12 2243# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 26 13 39#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 26 13 39#
               "expl:Requires clause"
               (instanceof voidP_ct_3_tag_table ct unsigned_charP_tag))
              /\
              (#"memcmp.jc" 38 12 2243# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 27 13 44#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 27 13 44#
               "expl:Requires clause"
               (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
                (((<=)
@@ -8719,7 +8701,7 @@ module Function_memcmp_safe
                  ((=) true true))))) else ((=) true true)))
              /\
              (#"memcmp.jc" 38 12 2243# "expl:Requires clause"
-             ((#"/home/work/workspace/self/verker-gh/memcmp.c" 28 13 44#
+             ((#"/home/work/workspace/self/verker/memcmp.c" 28 13 44#
               "expl:Requires clause"
               (if ((<=) (0) (Int.(-) (Uint64.to_int count) (1))) then
                (((<=)
@@ -8736,7 +8718,7 @@ module Function_memcmp_safe
                  ((<=) __framac_tmp2 (Int.(-) (Uint64.to_int count) (1)))) ->
                  ((=) true true))))) else ((=) true true)))
              /\
-             (#"/home/work/workspace/self/verker-gh/memcmp.c" 29 13 118#
+             (#"/home/work/workspace/self/verker/memcmp.c" 29 13 118#
              "expl:Requires clause"
              (((same_block
                (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
@@ -8769,7 +8751,7 @@ module Function_memcmp_safe
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                 i_0)))))) ->
-               (#"/home/work/workspace/self/verker-gh/memcmp.c" 40 15 241#
+               (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
                "expl:Ensures clause"
                (exists i_1 : int.
                 (((<=) (0) i_1) /\
@@ -8812,7 +8794,7 @@ module Function_memcmp_safe
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
                 i_2))))) ->
-              (#"/home/work/workspace/self/verker-gh/memcmp.c" 37 15 27#
+              (#"/home/work/workspace/self/verker/memcmp.c" 37 15 27#
               "expl:Ensures clause"
               (Int32.(=) result (#"memcmp.jc" 78 31 43# "expl:Integer cast"
               (Int32.of_int (0))))))) }

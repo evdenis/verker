@@ -1682,11 +1682,11 @@ theory Axiomatic_Strlen
   
   
   lemma Valid_str_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+  #"/home/work/workspace/self/verker/strlen.h" 12 7 102#
   "expl:Lemma valid_str_shift1" :
   (forall voidP_s_0_16_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_0_16_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 12 7 102#
+    (#"/home/work/workspace/self/verker/strlen.h" 12 7 102#
     (forall s_0_1 : (pointer voidP).
      (((Int8.(<>) (select charP_charM_s_0_16_at_L s_0_1)
        (#"strpbrk.jc" 35 28 39# "expl:Integer cast" (Int8.of_int (0))))
@@ -1697,11 +1697,11 @@ theory Axiomatic_Strlen
       charP_charM_s_0_16_at_L))))))
   
   lemma Valid_str_strend
-  #"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+  #"/home/work/workspace/self/verker/strlen.h" 18 7 87#
   "expl:Lemma valid_str_strend" :
   (forall voidP_s_1_17_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_1_17_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 18 7 87#
+    (#"/home/work/workspace/self/verker/strlen.h" 18 7 87#
     (forall s_1 : (pointer voidP).
      (((((<=) (offset_min voidP_s_1_17_alloc_table_at_L s_1) (0)) /\
        (((>=) (offset_max voidP_s_1_17_alloc_table_at_L s_1) (0)) /\
@@ -1725,11 +1725,11 @@ theory Axiomatic_Strlen
   
   
   lemma Strlen_before_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+  #"/home/work/workspace/self/verker/strlen.h" 26 7 106#
   "expl:Lemma strlen_before_null" :
   (forall voidP_s_3_18_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_3_18_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 26 7 106#
+    (#"/home/work/workspace/self/verker/strlen.h" 26 7 106#
     (forall s_3 : (pointer voidP).
      (forall i : int.
       (((valid_str s_3 voidP_s_3_18_alloc_table_at_L charP_charM_s_3_18_at_L)
@@ -1739,12 +1739,11 @@ theory Axiomatic_Strlen
        (Int8.(<>) (select charP_charM_s_3_18_at_L (shift s_3 i))
        (#"strpbrk.jc" 56 36 47# "expl:Integer cast" (Int8.of_int (0))))))))))
   
-  lemma Strlen_at_null
-  #"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+  lemma Strlen_at_null #"/home/work/workspace/self/verker/strlen.h" 31 7 71#
   "expl:Lemma strlen_at_null" :
   (forall voidP_s_4_19_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_4_19_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 31 7 71#
+    (#"/home/work/workspace/self/verker/strlen.h" 31 7 71#
     (forall s_4 : (pointer voidP).
      ((valid_str s_4 voidP_s_4_19_alloc_table_at_L charP_charM_s_4_19_at_L)
       ->
@@ -1753,12 +1752,11 @@ theory Axiomatic_Strlen
       (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_19_at_L))))
       (#"strpbrk.jc" 61 60 71# "expl:Integer cast" (Int8.of_int (0)))))))))
   
-  lemma Strlen_shift
-  #"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+  lemma Strlen_shift #"/home/work/workspace/self/verker/strlen.h" 35 7 125#
   "expl:Lemma strlen_shift" :
   (forall voidP_s_5_20_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_5_20_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 35 7 125#
+    (#"/home/work/workspace/self/verker/strlen.h" 35 7 125#
     (forall s_5 : (pointer voidP).
      (forall i_0 : Uint64.t.
       (((valid_str s_5 voidP_s_5_20_alloc_table_at_L charP_charM_s_5_20_at_L)
@@ -1770,11 +1768,11 @@ theory Axiomatic_Strlen
        (Uint64.to_int i_0)))))))))
   
   lemma Strlen_shift_ex
-  #"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+  #"/home/work/workspace/self/verker/strlen.h" 41 7 126#
   "expl:Lemma strlen_shift_ex" :
   (forall voidP_s_6_21_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_6_21_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 41 7 126#
+    (#"/home/work/workspace/self/verker/strlen.h" 41 7 126#
     (forall s_6 : (pointer voidP).
      (forall i_1 : Uint64.t.
       (((valid_str s_6 voidP_s_6_21_alloc_table_at_L charP_charM_s_6_21_at_L)
@@ -1786,12 +1784,11 @@ theory Axiomatic_Strlen
        (strlen (shift s_6 (Uint64.to_int i_1)) charP_charM_s_6_21_at_L)
        (strlen s_6 charP_charM_s_6_21_at_L))))))))
   
-  lemma Strlen_shift1
-  #"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+  lemma Strlen_shift1 #"/home/work/workspace/self/verker/strlen.h" 47 7 103#
   "expl:Lemma strlen_shift1" :
   (forall voidP_s_7_22_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_7_22_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 47 7 103#
+    (#"/home/work/workspace/self/verker/strlen.h" 47 7 103#
     (forall s_7 : (pointer voidP).
      (((valid_str s_7 voidP_s_7_22_alloc_table_at_L charP_charM_s_7_22_at_L)
       /\
@@ -1802,11 +1799,11 @@ theory Axiomatic_Strlen
       (Uint64.to_int (strlen (shift s_7 (1)) charP_charM_s_7_22_at_L)))))))))
   
   lemma Strlen_pointers
-  #"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+  #"/home/work/workspace/self/verker/strlen.h" 52 7 254#
   "expl:Lemma strlen_pointers" :
   (forall voidP_s_8_23_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_8_23_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 52 7 254#
+    (#"/home/work/workspace/self/verker/strlen.h" 52 7 254#
     (forall s_8 : (pointer voidP).
      (forall sc : (pointer voidP).
       (((valid_str s_8 voidP_s_8_23_alloc_table_at_L charP_charM_s_8_23_at_L)
@@ -1824,11 +1821,11 @@ theory Axiomatic_Strlen
        (Uint64.(<=) (strlen sc charP_charM_s_8_23_at_L)
        (strlen s_8 charP_charM_s_8_23_at_L))))))))
   
-  lemma Strlen_main #"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+  lemma Strlen_main #"/home/work/workspace/self/verker/strlen.h" 61 7 165#
   "expl:Lemma strlen_main" :
   (forall voidP_s_9_25_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_9_25_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 61 7 165#
+    (#"/home/work/workspace/self/verker/strlen.h" 61 7 165#
     (forall s_9 : (pointer voidP).
      (forall n_2 : Uint64.t.
       (((valid_str s_9 voidP_s_9_25_alloc_table_at_L charP_charM_s_9_25_at_L)
@@ -1844,11 +1841,11 @@ theory Axiomatic_Strlen
        -> (Uint64.(=) (strlen s_9 charP_charM_s_9_25_at_L) n_2)))))))
   
   lemma Valid_str_shiftn
-  #"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+  #"/home/work/workspace/self/verker/strlen.h" 68 7 123#
   "expl:Lemma valid_str_shiftn" :
   (forall voidP_s_10_26_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_10_26_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strlen.h" 68 7 123#
+    (#"/home/work/workspace/self/verker/strlen.h" 68 7 123#
     (forall s_10 : (pointer voidP).
      (forall i_4 : int.
       (((valid_str s_10 voidP_s_10_26_alloc_table_at_L
@@ -1898,11 +1895,11 @@ theory Axiomatic_StrSpn
   
   
   lemma In_array_shift1
-  #"/home/work/workspace/self/verker-gh/strspn.h" 17 7 129#
+  #"/home/work/workspace/self/verker/strspn.h" 17 7 129#
   "expl:Lemma in_array_shift1" :
   (forall voidP_s_12_28_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_12_28_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strspn.h" 17 7 129#
+    (#"/home/work/workspace/self/verker/strspn.h" 17 7 129#
     (forall s_12 : (pointer voidP).
      (forall c_0 : Int8.t.
       ((((valid_str s_12 voidP_s_12_28_alloc_table_at_L
@@ -1913,12 +1910,11 @@ theory Axiomatic_StrSpn
         (in_array s_12 c_0 charP_charM_s_12_28_at_L))
       <-> (in_array (shift s_12 (1)) c_0 charP_charM_s_12_28_at_L)))))))
   
-  lemma In_array_true
-  #"/home/work/workspace/self/verker-gh/strspn.h" 21 7 105#
+  lemma In_array_true #"/home/work/workspace/self/verker/strspn.h" 21 7 105#
   "expl:Lemma in_array_true" :
   (forall voidP_s_13_30_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_13_30_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strspn.h" 21 7 105#
+    (#"/home/work/workspace/self/verker/strspn.h" 21 7 105#
     (forall s_13 : (pointer voidP).
      (forall c_1 : Int8.t.
       (((valid_str s_13 voidP_s_13_30_alloc_table_at_L
@@ -1928,12 +1924,11 @@ theory Axiomatic_StrSpn
        (Int8.(=) (select charP_charM_s_13_30_at_L s_13) c_1))) ->
        (in_array s_13 c_1 charP_charM_s_13_30_at_L)))))))
   
-  lemma In_array_false
-  #"/home/work/workspace/self/verker-gh/strspn.h" 25 7 95#
+  lemma In_array_false #"/home/work/workspace/self/verker/strspn.h" 25 7 95#
   "expl:Lemma in_array_false" :
   (forall voidP_s_14_32_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_14_32_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strspn.h" 25 7 95#
+    (#"/home/work/workspace/self/verker/strspn.h" 25 7 95#
     (forall s_14 : (pointer voidP).
      (forall c_2 : Int8.t.
       (((valid_str s_14 voidP_s_14_32_alloc_table_at_L
@@ -1944,12 +1939,11 @@ theory Axiomatic_StrSpn
   function strspn (pointer voidP) (pointer voidP) : int
   
   
-  lemma Strspn_strend
-  #"/home/work/workspace/self/verker-gh/strspn.h" 32 7 106#
+  lemma Strspn_strend #"/home/work/workspace/self/verker/strspn.h" 32 7 106#
   "expl:Lemma strspn_strend" :
   (forall voidP_s_15_6_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_15_6_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strspn.h" 32 7 106#
+    (#"/home/work/workspace/self/verker/strspn.h" 32 7 106#
     (forall s_16 : (pointer voidP).
      (forall accept_0_0 : (pointer voidP).
       (((((<=) (offset_min voidP_s_15_6_alloc_table_at_L s_16) (0)) /\
@@ -1961,11 +1955,11 @@ theory Axiomatic_StrSpn
        ((=) (strspn s_16 accept_0_0) (0))))))))
   
   lemma Strspn_empty_accept
-  #"/home/work/workspace/self/verker-gh/strspn.h" 37 7 116#
+  #"/home/work/workspace/self/verker/strspn.h" 37 7 116#
   "expl:Lemma strspn_empty_accept" :
   (forall voidP_accept_7_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_accept_7_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strspn.h" 37 7 116#
+    (#"/home/work/workspace/self/verker/strspn.h" 37 7 116#
     (forall s_17 : (pointer voidP).
      (forall accept_1 : (pointer voidP).
       (((((<=) (offset_min voidP_accept_7_alloc_table_at_L accept_1) (0)) /\
@@ -1976,14 +1970,13 @@ theory Axiomatic_StrSpn
        (#"strpbrk.jc" 175 37 48# "expl:Integer cast" (Int8.of_int (0))))) ->
        ((=) (strspn s_17 accept_1) (0))))))))
   
-  lemma Strspn_range
-  #"/home/work/workspace/self/verker-gh/strspn.h" 42 7 129#
+  lemma Strspn_range #"/home/work/workspace/self/verker/strspn.h" 42 7 129#
   "expl:Lemma strspn_range" :
   (forall voidP_accept_7_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_15_6_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_accept_7_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_15_6_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strspn.h" 42 7 129#
+      (#"/home/work/workspace/self/verker/strspn.h" 42 7 129#
       (forall s_18 : (pointer voidP).
        (forall accept_2 : (pointer voidP).
         (((valid_str s_18 voidP_s_15_6_alloc_table_at_L
@@ -1995,14 +1988,13 @@ theory Axiomatic_StrSpn
          ((<=) (strspn s_18 accept_2)
          (Uint64.to_int (strlen s_18 charP_charM_s_15_6_at_L))))))))))))
   
-  lemma Strspn_shift1
-  #"/home/work/workspace/self/verker-gh/strspn.h" 47 7 188#
+  lemma Strspn_shift1 #"/home/work/workspace/self/verker/strspn.h" 47 7 188#
   "expl:Lemma strspn_shift1" :
   (forall voidP_accept_7_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_15_6_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_accept_7_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_15_6_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strspn.h" 47 7 188#
+      (#"/home/work/workspace/self/verker/strspn.h" 47 7 188#
       (forall s_19 : (pointer voidP).
        (forall accept_3 : (pointer voidP).
         (((valid_str s_19 voidP_s_15_6_alloc_table_at_L
@@ -2020,13 +2012,13 @@ theory Axiomatic_StrSpn
          (Int.(+) (strspn (shift s_19 (1)) accept_3) (1)))))))))))
   
   lemma Strspn_stop_not_in_accept
-  #"/home/work/workspace/self/verker-gh/strspn.h" 53 7 165#
+  #"/home/work/workspace/self/verker/strspn.h" 53 7 165#
   "expl:Lemma strspn_stop_not_in_accept" :
   (forall voidP_accept_7_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_15_6_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_accept_7_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_15_6_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strspn.h" 53 7 165#
+      (#"/home/work/workspace/self/verker/strspn.h" 53 7 165#
       (forall s_20 : (pointer voidP).
        (forall accept_4 : (pointer voidP).
         (((valid_str s_20 voidP_s_15_6_alloc_table_at_L
@@ -2071,11 +2063,11 @@ theory Axiomatic_StrPBrk
   
   
   lemma Strpbrk_strend
-  #"/home/work/workspace/self/verker-gh/strpbrk.h" 12 7 107#
+  #"/home/work/workspace/self/verker/strpbrk.h" 12 7 107#
   "expl:Lemma strpbrk_strend" :
   (forall voidP_cs_10_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_cs_10_at_L : (memory voidP Int8.t).
-    (#"/home/work/workspace/self/verker-gh/strpbrk.h" 12 7 107#
+    (#"/home/work/workspace/self/verker/strpbrk.h" 12 7 107#
     (forall cs_0_0 : (pointer voidP).
      (forall ct_0_0 : (pointer voidP).
       (((((<=) (offset_min voidP_cs_10_alloc_table_at_L cs_0_0) (0)) /\
@@ -2087,13 +2079,13 @@ theory Axiomatic_StrPBrk
        ((=) (strpbrk cs_0_0 ct_0_0) null)))))))
   
   lemma Strpbrk_empty_ct
-  #"/home/work/workspace/self/verker-gh/strpbrk.h" 17 7 127#
+  #"/home/work/workspace/self/verker/strpbrk.h" 17 7 127#
   "expl:Lemma strpbrk_empty_ct" :
   (forall voidP_ct_11_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_cs_10_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_ct_11_at_L : (memory voidP Int8.t).
      (forall charP_charM_cs_10_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strpbrk.h" 17 7 127#
+      (#"/home/work/workspace/self/verker/strpbrk.h" 17 7 127#
       (forall cs_1 : (pointer voidP).
        (forall ct_1 : (pointer voidP).
         (((valid_str cs_1 voidP_cs_10_alloc_table_at_L
@@ -2106,14 +2098,13 @@ theory Axiomatic_StrPBrk
          (#"strpbrk.jc" 269 33 44# "expl:Integer cast" (Int8.of_int (0))))))
          -> ((=) (strpbrk cs_1 ct_1) null)))))))))
   
-  lemma Strpbrk_range
-  #"/home/work/workspace/self/verker-gh/strpbrk.h" 22 7 174#
+  lemma Strpbrk_range #"/home/work/workspace/self/verker/strpbrk.h" 22 7 174#
   "expl:Lemma strpbrk_range" :
   (forall voidP_ct_11_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_cs_10_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_ct_11_at_L : (memory voidP Int8.t).
      (forall charP_charM_cs_10_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strpbrk.h" 22 7 174#
+      (#"/home/work/workspace/self/verker/strpbrk.h" 22 7 174#
       (forall cs_2 : (pointer voidP).
        (forall ct_2 : (pointer voidP).
         (((valid_str cs_2 voidP_cs_10_alloc_table_at_L
@@ -2145,13 +2136,13 @@ theory Axiomatic_StrPBrk
          /\ (not ((=) (strpbrk cs_2 ct_2) null)))))))))))))))
   
   lemma Strpbrk_shift1
-  #"/home/work/workspace/self/verker-gh/strpbrk.h" 28 7 173#
+  #"/home/work/workspace/self/verker/strpbrk.h" 28 7 173#
   "expl:Lemma strpbrk_shift1" :
   (forall voidP_ct_11_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_cs_10_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_ct_11_at_L : (memory voidP Int8.t).
      (forall charP_charM_cs_10_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strpbrk.h" 28 7 173#
+      (#"/home/work/workspace/self/verker/strpbrk.h" 28 7 173#
       (forall cs_3 : (pointer voidP).
        (forall ct_3 : (pointer voidP).
         (((valid_str cs_3 voidP_cs_10_alloc_table_at_L
@@ -2169,13 +2160,13 @@ theory Axiomatic_StrPBrk
          ((=) (strpbrk cs_3 ct_3) (strpbrk (shift cs_3 (1)) ct_3))))))))))
   
   lemma Strpbrk_stop_in_ct
-  #"/home/work/workspace/self/verker-gh/strpbrk.h" 34 7 155#
+  #"/home/work/workspace/self/verker/strpbrk.h" 34 7 155#
   "expl:Lemma strpbrk_stop_in_ct" :
   (forall voidP_ct_11_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_cs_10_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_ct_11_at_L : (memory voidP Int8.t).
      (forall charP_charM_cs_10_at_L : (memory voidP Int8.t).
-      (#"/home/work/workspace/self/verker-gh/strpbrk.h" 34 7 155#
+      (#"/home/work/workspace/self/verker/strpbrk.h" 34 7 155#
       (forall cs_4 : (pointer voidP).
        (forall ct_4 : (pointer voidP).
         (((valid_str cs_4 voidP_cs_10_alloc_table_at_L
@@ -2223,8 +2214,7 @@ module Exceptions
 end
 
 module Function_strpbrk_0_safety
-#"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
-"expl:strpbrk, safety"
+#"/home/work/workspace/self/verker/strpbrk.c" 3 5 45# "expl:strpbrk, safety"
 
   use enum.Uint64 
   
@@ -2270,7 +2260,7 @@ module Function_strpbrk_0_safety
   
   use why3.Bool.Bool 
   
-  let strpbrk_0 #"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
+  let strpbrk_0 #"/home/work/workspace/self/verker/strpbrk.c" 3 5 45#
   "expl:Function strpbrk, safety" =
   fun
    (cs_0 : (pointer voidP)) (ct_0 : (pointer voidP)) (voidP_cs_13_alloc_table
@@ -2294,10 +2284,10 @@ module Function_strpbrk_0_safety
        ((=) (typeof voidP_cs_13_tag_table (shift cs_0 i)) charP_tag)))))
    /\
    (#"strpbrk.jc" 313 12 76#
-   ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 47 13 26#
+   ((#"/home/work/workspace/self/verker/strpbrk.h" 47 13 26#
     (valid_str cs_0 voidP_cs_13_alloc_table charP_charM_cs_13))
    /\
-   (#"/home/work/workspace/self/verker-gh/strpbrk.h" 48 13 26#
+   (#"/home/work/workspace/self/verker/strpbrk.h" 48 13 26#
    (valid_str ct_0 voidP_ct_14_alloc_table charP_charM_ct_14)))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
@@ -2316,23 +2306,22 @@ module Function_strpbrk_0_safety
         (let _jessie_29 = cs_0 in
         begin
         (assert {
-        (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 6 14#
+        (#"/home/work/workspace/self/verker/strpbrk.c" 16 6 14#
         "expl:Pointer index bounds" true) }); _jessie_29 end));
         'Loop_7:
         loop
         invariant { (#"strpbrk.jc" 499 6 14473# true) }
-          variant {
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 14 18 41#
+          variant { (#"/home/work/workspace/self/verker/strpbrk.c" 14 18 41#
             (Int.(-) (Uint64.to_int (strlen cs_0 charP_charM_cs_13))
             (sub_pointer !sc1 cs_0))) }
          begin
          any unit
          requires { true } reads { cs_0, ct_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 13 20 55#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 13 20 55#
             ((=) (strpbrk cs_0 ct_0) (strpbrk !sc1 ct_0)))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 9 20 156#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
              (forall t_6 : (pointer voidP).
               (((same_block cs_0 p_4) /\
@@ -2351,24 +2340,24 @@ module Function_strpbrk_0_safety
                (Int8.(<>) (select charP_charM_cs_13 p_4)
                (select charP_charM_ct_14 t_6))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 8 20 34#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             (same_block cs_0 !sc1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             ((<=) (sub_pointer cs_0 !sc1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
             (same_block !sc1
             (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
            ((<=)
            (sub_pointer !sc1
            (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0)))))))))))))
@@ -2377,12 +2366,12 @@ module Function_strpbrk_0_safety
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 28#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 28#
            (Safe_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 20#
+            (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 20#
             "expl:Integer cast"
             (Safe_int32_of_Safe_int8.cast 
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 20#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 20#
              "expl:Pointer dereference"
              (acc  voidP_cs_13_alloc_table charP_charM_cs_13 !sc1 )) ))
             (#"strpbrk.jc" 535 27 39# "expl:Integer cast"
@@ -2394,26 +2383,26 @@ module Function_strpbrk_0_safety
               (let _jessie_30 = ct_0 in
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 7 15#
+              (#"/home/work/workspace/self/verker/strpbrk.c" 23 7 15#
               "expl:Pointer index bounds" true) }); _jessie_30 end));
               'Loop_8:
               loop
               invariant { (#"strpbrk.jc" 540 15 8344# true) }
                 variant {
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 21 19 42#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 21 19 42#
                   (Int.(-) (Uint64.to_int (strlen ct_0 charP_charM_ct_14))
                   (sub_pointer !sc2 ct_0))) }
                begin
                any unit
                requires { true } reads { ct_0 }
                ensures {
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 20 21 63#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 20 21 63#
                   ((in_array ct_0 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14) ->
                    (in_array !sc2 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14)))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 19 21 66#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
                   (forall t_3 : (pointer voidP).
                    (((same_block ct_0 t_3) /\
                     (((<=) (sub_pointer ct_0 t_3) (0)) /\
@@ -2422,25 +2411,25 @@ module Function_strpbrk_0_safety
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
                     (select charP_charM_ct_14 t_3)))))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 18 21 35#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   (same_block ct_0 !sc2))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   ((<=) (sub_pointer ct_0 !sc2) (0)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                   (same_block !sc2
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                  ((<=)
                  (sub_pointer !sc2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
@@ -2449,30 +2438,30 @@ module Function_strpbrk_0_safety
                  begin
                  begin
                  (if
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 29#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 29#
                  (Safe_int32.(<>) 
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 21#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                   "expl:Integer cast"
                   (Safe_int32_of_Safe_int8.cast 
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 21#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                    "expl:Pointer dereference"
                    (acc  voidP_ct_14_alloc_table charP_charM_ct_14 !sc2 )) ))
                   (#"strpbrk.jc" 571 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 19#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 19#
                   (Safe_int32.(=) 
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 11#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 11#
                    "expl:Integer cast"
                    (Safe_int32_of_Safe_int8.cast 
-                    (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 11#
+                    (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 11#
                     "expl:Pointer dereference"
                     (acc  voidP_cs_13_alloc_table charP_charM_cs_13 !sc1 )) ))
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 15 19#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 15 19#
                    "expl:Integer cast"
                    (Safe_int32_of_Safe_int8.cast 
-                    (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 15 19#
+                    (#"/home/work/workspace/self/verker/strpbrk.c" 24 15 19#
                     "expl:Pointer dereference"
                     (acc  voidP_ct_14_alloc_table charP_charM_ct_14 !sc2 )) ))
                    ))
@@ -2482,7 +2471,7 @@ module Function_strpbrk_0_safety
                    any unit
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
-                     (#"/home/work/workspace/self/verker-gh/strpbrk.c" 25 15 154#
+                     (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
                      (exists p_1 : (pointer voidP).
                       (exists t_1 : (pointer voidP).
                        ((same_block cs_0 p_1) /\
@@ -2517,7 +2506,7 @@ module Function_strpbrk_0_safety
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
-                      (#"/home/work/workspace/self/verker-gh/strpbrk.c" 31 15 112#
+                      (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
                       (forall p_2 : (pointer voidP).
                        (forall t_2 : (pointer voidP).
                         (((same_block cs_0 p_2) /\
@@ -2542,7 +2531,7 @@ module Function_strpbrk_0_safety
                      (let _jessie_31 = !sc1 in
                      begin
                      (assert {
-                     (#"/home/work/workspace/self/verker-gh/strpbrk.c" 36 4 23#
+                     (#"/home/work/workspace/self/verker/strpbrk.c" 36 4 23#
                      "expl:Pointer index bounds" true) }); _jessie_31 end));
                      (raise (Return_label_exc ())) end end else ());
                   (sc2 :=
@@ -2553,7 +2542,7 @@ module Function_strpbrk_0_safety
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 31 36#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 23 31 36#
                    "expl:Pointer index bounds" true) }); _jessie_32 end)) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -2567,7 +2556,7 @@ module Function_strpbrk_0_safety
               any unit
               requires { true } reads { ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 38 13 70#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
                 (forall t_4 : (pointer voidP).
                  (((same_block ct_0 t_4) /\
                   (((<=) (sub_pointer ct_0 t_4) (0)) /\
@@ -2586,7 +2575,7 @@ module Function_strpbrk_0_safety
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 39 13 90#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
                 (forall p_3 : (pointer voidP).
                  (forall t_5 : (pointer voidP).
                   (((same_block cs_0 p_3) /\
@@ -2614,7 +2603,7 @@ module Function_strpbrk_0_safety
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 30 35#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 16 30 35#
              "expl:Pointer index bounds" true) }); _jessie_33 end)) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2627,7 +2616,7 @@ module Function_strpbrk_0_safety
          (let _jessie_34 = (null  ) in
          begin
          (assert {
-         (#"/home/work/workspace/self/verker-gh/strpbrk.c" 41 1 20#
+         (#"/home/work/workspace/self/verker/strpbrk.c" 41 1 20#
          "expl:Pointer index bounds" true) }); _jessie_34 end)) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
       'Return_label:
@@ -2657,7 +2646,7 @@ module Unsafe_int32_of_Unsafe_int8
 end
 
 module Function_strpbrk_0_behaviors
-#"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
+#"/home/work/workspace/self/verker/strpbrk.c" 3 5 45#
 "expl:strpbrk, behaviors"
 
   use Unsafe_int32_of_Unsafe_int8 
@@ -2705,7 +2694,7 @@ module Function_strpbrk_0_behaviors
   use why3.Bool.Bool 
   
   let strpbrk_ensures_default
-  #"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
+  #"/home/work/workspace/self/verker/strpbrk.c" 3 5 45#
   "expl:Function strpbrk, default behavior" =
   fun
    (cs_0 : (pointer voidP)) (ct_0 : (pointer voidP)) (voidP_cs_13_alloc_table
@@ -2729,14 +2718,14 @@ module Function_strpbrk_0_behaviors
        ((=) (typeof voidP_cs_13_tag_table (shift cs_0 i)) charP_tag)))))
    /\
    (#"strpbrk.jc" 313 12 76#
-   ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 47 13 26#
+   ((#"/home/work/workspace/self/verker/strpbrk.h" 47 13 26#
     (valid_str cs_0 voidP_cs_13_alloc_table charP_charM_cs_13))
    /\
-   (#"/home/work/workspace/self/verker-gh/strpbrk.h" 48 13 26#
+   (#"/home/work/workspace/self/verker/strpbrk.h" 48 13 26#
    (valid_str ct_0 voidP_ct_14_alloc_table charP_charM_ct_14)))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 50 12 38#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 50 12 38#
      "expl:Ensures clause" ((=) result (strpbrk cs_0 ct_0)))) } diverges  ->
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2848,30 +2837,30 @@ module Function_strpbrk_0_behaviors
         'Loop_1:
         loop
         invariant
-          { ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-             ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+          { ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+             ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
               (same_block cs_0 !sc1))
              /\
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-             ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+             ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
               ((<=) (sub_pointer cs_0 !sc1) (0)))
              /\
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-             ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+             ((#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
               (same_block !sc1
               (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
              /\
-             (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+             (#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
              ((<=)
              (sub_pointer !sc1
              (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
              (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 8 20 34#
+            ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
              (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
             &&
-            ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 9 20 156#
+            ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
              (forall p_4 : (pointer voidP).
               (forall t_6 : (pointer voidP).
                (((same_block cs_0 p_4) /\
@@ -2890,7 +2879,7 @@ module Function_strpbrk_0_behaviors
                 (Int8.(<>) (select charP_charM_cs_13 p_4)
                 (select charP_charM_ct_14 t_6))))))
             &&
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 13 20 55#
+            (#"/home/work/workspace/self/verker/strpbrk.c" 13 20 55#
             ((=) (strpbrk cs_0 ct_0) (strpbrk !sc1 ct_0)))))) } 
          begin
          any unit requires { true } ensures { true } ;
@@ -2898,9 +2887,9 @@ module Function_strpbrk_0_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 28#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 28#
            (Unsafe_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 20#
+            (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 20#
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_cs_13 !sc1 )
              ))
@@ -2913,31 +2902,31 @@ module Function_strpbrk_0_behaviors
               'Loop_2:
               loop
               invariant
-                { ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                   ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                { ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                   ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                     (same_block ct_0 !sc2))
                    /\
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                   ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                   ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                     ((<=) (sub_pointer ct_0 !sc2) (0)))
                    /\
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                   ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                   ((#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                     (same_block !sc2
                     (shift ct_0
                     (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))))
                    /\
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                    ((<=)
                    (sub_pointer !sc2
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))))))))))
                   &&
-                  ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 18 21 35#
+                  ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                    (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
                   &&
-                  ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 19 21 66#
+                  ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
                    (forall t_3 : (pointer voidP).
                     (((same_block ct_0 t_3) /\
                      (((<=) (sub_pointer ct_0 t_3) (0)) /\
@@ -2946,7 +2935,7 @@ module Function_strpbrk_0_behaviors
                      (Int8.(<>) (select charP_charM_cs_13 !sc1)
                      (select charP_charM_ct_14 t_3)))))
                   &&
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 20 21 63#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 20 21 63#
                   ((in_array ct_0 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14) ->
                    (in_array !sc2 (select charP_charM_cs_13 !sc1)
@@ -2957,9 +2946,9 @@ module Function_strpbrk_0_behaviors
                  begin
                  begin
                  (if
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 29#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 29#
                  (Unsafe_int32.(<>) 
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 21#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
@@ -2967,13 +2956,13 @@ module Function_strpbrk_0_behaviors
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 19#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 19#
                   (Unsafe_int32.(=) 
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 11#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 11#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_cs_13 !sc1 ) ))
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 15 19#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 15 19#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_ct_14 !sc2 ) )) ))
@@ -2981,7 +2970,7 @@ module Function_strpbrk_0_behaviors
                    begin
                    begin
                    (assert {
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 25 15 154#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
                    "expl:Assertion in line 25"
                    (exists p_1 : (pointer voidP).
                     (exists t_1 : (pointer voidP).
@@ -3013,7 +3002,7 @@ module Function_strpbrk_0_behaviors
                    end;
                     begin
                     (assert {
-                    (#"/home/work/workspace/self/verker-gh/strpbrk.c" 31 15 112#
+                    (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
                     "expl:Assertion in line 31"
                     (forall p_2 : (pointer voidP).
                      (forall t_2 : (pointer voidP).
@@ -3051,7 +3040,7 @@ module Function_strpbrk_0_behaviors
              ();
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/strpbrk.c" 38 13 70#
+              (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
               "expl:Assertion in line 38"
               (forall t_4 : (pointer voidP).
                (((same_block ct_0 t_4) /\
@@ -3067,7 +3056,7 @@ module Function_strpbrk_0_behaviors
                 (select charP_charM_ct_14 t_4))))) }); () end;
               begin
               (assert {
-              (#"/home/work/workspace/self/verker-gh/strpbrk.c" 39 13 90#
+              (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
               "expl:Assertion in line 39"
               (forall p_3 : (pointer voidP).
                (forall t_5 : (pointer voidP).
@@ -3103,7 +3092,7 @@ module Function_strpbrk_0_behaviors
      absurd  end with Return -> !return end)
   
   let strpbrk_ensures_found
-  #"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
+  #"/home/work/workspace/self/verker/strpbrk.c" 3 5 45#
   "expl:Function strpbrk, behavior found" =
   fun
    (cs_0 : (pointer voidP)) (ct_0 : (pointer voidP)) (voidP_cs_13_alloc_table
@@ -3150,43 +3139,43 @@ module Function_strpbrk_0_behaviors
        ((=) (typeof voidP_cs_13_tag_table (shift cs_0 i)) charP_tag)))))
    /\
    (#"strpbrk.jc" 313 12 76#
-   ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 47 13 26#
+   ((#"/home/work/workspace/self/verker/strpbrk.h" 47 13 26#
     (valid_str cs_0 voidP_cs_13_alloc_table charP_charM_cs_13))
    /\
-   (#"/home/work/workspace/self/verker-gh/strpbrk.h" 48 13 26#
+   (#"/home/work/workspace/self/verker/strpbrk.h" 48 13 26#
    (valid_str ct_0 voidP_ct_14_alloc_table charP_charM_ct_14))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+     ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
       "expl:Ensures clause" (same_block cs_0 result))
      /\
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+     ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
       "expl:Ensures clause" ((<=) (sub_pointer cs_0 result) (0)))
      /\
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+     ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
       "expl:Ensures clause"
       (same_block result
       (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+     ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
       "expl:Ensures clause"
       ((<)
       (sub_pointer result
       (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0)))
      /\
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 57 15 76#
+     ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
       "expl:Ensures clause"
       (exists t_9 : (pointer voidP).
        ((same_block ct_0 t_9) /\
@@ -3201,7 +3190,7 @@ module Function_strpbrk_0_behaviors
        (Int8.(=) (select charP_charM_cs_13 result)
        (select charP_charM_ct_14 t_9))))))))
      /\
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 58 15 140#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
      "expl:Ensures clause"
      (forall p_7 : (pointer voidP).
       (forall t_10 : (pointer voidP).
@@ -3240,10 +3229,10 @@ module Function_strpbrk_0_behaviors
          any unit
          requires { true } reads { cs_0, ct_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 13 20 55#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 13 20 55#
             ((=) (strpbrk cs_0 ct_0) (strpbrk !sc1 ct_0)))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 9 20 156#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
              (forall t_6 : (pointer voidP).
               (((same_block cs_0 p_4) /\
@@ -3262,24 +3251,24 @@ module Function_strpbrk_0_behaviors
                (Int8.(<>) (select charP_charM_cs_13 p_4)
                (select charP_charM_ct_14 t_6))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 8 20 34#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             (same_block cs_0 !sc1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             ((<=) (sub_pointer cs_0 !sc1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
             (same_block !sc1
             (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
            ((<=)
            (sub_pointer !sc1
            (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0)))))))))))))
@@ -3288,9 +3277,9 @@ module Function_strpbrk_0_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 28#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 28#
            (Unsafe_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 20#
+            (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 20#
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_cs_13 !sc1 )
              ))
@@ -3307,13 +3296,13 @@ module Function_strpbrk_0_behaviors
                any unit
                requires { true } reads { ct_0 }
                ensures {
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 20 21 63#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 20 21 63#
                   ((in_array ct_0 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14) ->
                    (in_array !sc2 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14)))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 19 21 66#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
                   (forall t_3 : (pointer voidP).
                    (((same_block ct_0 t_3) /\
                     (((<=) (sub_pointer ct_0 t_3) (0)) /\
@@ -3322,25 +3311,25 @@ module Function_strpbrk_0_behaviors
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
                     (select charP_charM_ct_14 t_3)))))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 18 21 35#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   (same_block ct_0 !sc2))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   ((<=) (sub_pointer ct_0 !sc2) (0)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                   (same_block !sc2
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                  ((<=)
                  (sub_pointer !sc2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
@@ -3349,9 +3338,9 @@ module Function_strpbrk_0_behaviors
                  begin
                  begin
                  (if
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 29#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 29#
                  (Unsafe_int32.(<>) 
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 21#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
@@ -3359,13 +3348,13 @@ module Function_strpbrk_0_behaviors
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 19#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 19#
                   (Unsafe_int32.(=) 
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 11#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 11#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_cs_13 !sc1 ) ))
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 15 19#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 15 19#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_ct_14 !sc2 ) )) ))
@@ -3375,7 +3364,7 @@ module Function_strpbrk_0_behaviors
                    any unit
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
-                     (#"/home/work/workspace/self/verker-gh/strpbrk.c" 25 15 154#
+                     (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
                      (exists p_1 : (pointer voidP).
                       (exists t_1 : (pointer voidP).
                        ((same_block cs_0 p_1) /\
@@ -3410,7 +3399,7 @@ module Function_strpbrk_0_behaviors
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
-                      (#"/home/work/workspace/self/verker-gh/strpbrk.c" 31 15 112#
+                      (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
                       (forall p_2 : (pointer voidP).
                        (forall t_2 : (pointer voidP).
                         (((same_block cs_0 p_2) /\
@@ -3449,7 +3438,7 @@ module Function_strpbrk_0_behaviors
               any unit
               requires { true } reads { ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 38 13 70#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
                 (forall t_4 : (pointer voidP).
                  (((same_block ct_0 t_4) /\
                   (((<=) (sub_pointer ct_0 t_4) (0)) /\
@@ -3468,7 +3457,7 @@ module Function_strpbrk_0_behaviors
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 39 13 90#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
                 (forall p_3 : (pointer voidP).
                  (forall t_5 : (pointer voidP).
                   (((same_block cs_0 p_3) /\
@@ -3504,7 +3493,7 @@ module Function_strpbrk_0_behaviors
      absurd  end with Return -> !return end)
   
   let strpbrk_ensures_not_found
-  #"/home/work/workspace/self/verker-gh/strpbrk.c" 3 5 45#
+  #"/home/work/workspace/self/verker/strpbrk.c" 3 5 45#
   "expl:Function strpbrk, behavior not_found" =
   fun
    (cs_0 : (pointer voidP)) (ct_0 : (pointer voidP)) (voidP_cs_13_alloc_table
@@ -3551,14 +3540,14 @@ module Function_strpbrk_0_behaviors
        ((=) (typeof voidP_cs_13_tag_table (shift cs_0 i)) charP_tag)))))
    /\
    (#"strpbrk.jc" 313 12 76#
-   ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 47 13 26#
+   ((#"/home/work/workspace/self/verker/strpbrk.h" 47 13 26#
     (valid_str cs_0 voidP_cs_13_alloc_table charP_charM_cs_13))
    /\
-   (#"/home/work/workspace/self/verker-gh/strpbrk.h" 48 13 26#
+   (#"/home/work/workspace/self/verker/strpbrk.h" 48 13 26#
    (valid_str ct_0 voidP_ct_14_alloc_table charP_charM_ct_14))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/work/workspace/self/verker-gh/strpbrk.h" 67 15 31#
+     (#"/home/work/workspace/self/verker/strpbrk.h" 67 15 31#
      "expl:Ensures clause" ((=) result null))) } diverges  ->
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -3580,10 +3569,10 @@ module Function_strpbrk_0_behaviors
          any unit
          requires { true } reads { cs_0, ct_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 13 20 55#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 13 20 55#
             ((=) (strpbrk cs_0 ct_0) (strpbrk !sc1 ct_0)))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 9 20 156#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
              (forall t_6 : (pointer voidP).
               (((same_block cs_0 p_4) /\
@@ -3602,24 +3591,24 @@ module Function_strpbrk_0_behaviors
                (Int8.(<>) (select charP_charM_cs_13 p_4)
                (select charP_charM_ct_14 t_6))))))
            /\
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 8 20 34#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             (same_block cs_0 !sc1))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 29#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 20 29#
             ((<=) (sub_pointer cs_0 !sc1) (0)))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 20 48#
-           ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 20 48#
+           ((#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
             (same_block !sc1
             (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
            /\
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 7 26 48#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 7 26 48#
            ((<=)
            (sub_pointer !sc1
            (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0)))))))))))))
@@ -3628,9 +3617,9 @@ module Function_strpbrk_0_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 28#
+           (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 28#
            (Unsafe_int32.(<>) 
-            (#"/home/work/workspace/self/verker-gh/strpbrk.c" 16 16 20#
+            (#"/home/work/workspace/self/verker/strpbrk.c" 16 16 20#
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_cs_13 !sc1 )
              ))
@@ -3647,13 +3636,13 @@ module Function_strpbrk_0_behaviors
                any unit
                requires { true } reads { ct_0 }
                ensures {
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 20 21 63#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 20 21 63#
                   ((in_array ct_0 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14) ->
                    (in_array !sc2 (select charP_charM_cs_13 !sc1)
                    charP_charM_ct_14)))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 19 21 66#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
                   (forall t_3 : (pointer voidP).
                    (((same_block ct_0 t_3) /\
                     (((<=) (sub_pointer ct_0 t_3) (0)) /\
@@ -3662,25 +3651,25 @@ module Function_strpbrk_0_behaviors
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
                     (select charP_charM_ct_14 t_3)))))
                  /\
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 18 21 35#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   (same_block ct_0 !sc2))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 30#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 21 30#
                   ((<=) (sub_pointer ct_0 !sc2) (0)))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 21 49#
-                 ((#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 21 49#
+                 ((#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                   (same_block !sc2
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))))
                  /\
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 17 27 49#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 17 27 49#
                  ((<=)
                  (sub_pointer !sc2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
@@ -3689,9 +3678,9 @@ module Function_strpbrk_0_behaviors
                  begin
                  begin
                  (if
-                 (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 29#
+                 (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 29#
                  (Unsafe_int32.(<>) 
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 23 17 21#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
@@ -3699,13 +3688,13 @@ module Function_strpbrk_0_behaviors
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
-                  (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 19#
+                  (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 19#
                   (Unsafe_int32.(=) 
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 7 11#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 7 11#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_cs_13 !sc1 ) ))
-                   (#"/home/work/workspace/self/verker-gh/strpbrk.c" 24 15 19#
+                   (#"/home/work/workspace/self/verker/strpbrk.c" 24 15 19#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_ct_14 !sc2 ) )) ))
@@ -3715,7 +3704,7 @@ module Function_strpbrk_0_behaviors
                    any unit
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
-                     (#"/home/work/workspace/self/verker-gh/strpbrk.c" 25 15 154#
+                     (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
                      (exists p_1 : (pointer voidP).
                       (exists t_1 : (pointer voidP).
                        ((same_block cs_0 p_1) /\
@@ -3750,7 +3739,7 @@ module Function_strpbrk_0_behaviors
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
-                      (#"/home/work/workspace/self/verker-gh/strpbrk.c" 31 15 112#
+                      (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
                       (forall p_2 : (pointer voidP).
                        (forall t_2 : (pointer voidP).
                         (((same_block cs_0 p_2) /\
@@ -3789,7 +3778,7 @@ module Function_strpbrk_0_behaviors
               any unit
               requires { true } reads { ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 38 13 70#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
                 (forall t_4 : (pointer voidP).
                  (((same_block ct_0 t_4) /\
                   (((<=) (sub_pointer ct_0 t_4) (0)) /\
@@ -3808,7 +3797,7 @@ module Function_strpbrk_0_behaviors
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
-                (#"/home/work/workspace/self/verker-gh/strpbrk.c" 39 13 90#
+                (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
                 (forall p_3 : (pointer voidP).
                  (forall t_5 : (pointer voidP).
                   (((same_block cs_0 p_3) /\
@@ -9151,22 +9140,22 @@ module Function_strlen_0
     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
      requires { true }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
         (#"strpbrk.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -9202,26 +9191,26 @@ module Function_strlen_0_safe
     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
      requires {
        ("expl:External"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 80 13 25#
+       (#"/home/work/workspace/self/verker/strlen.h" 80 13 25#
        "expl:Requires clause"
        (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))) }
      ensures {
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       ((#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
         "expl:Ensures clause"
         (Uint64.(=) result (strlen s_0 charP_charM_s_4)))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 82 12 32#
+       (#"/home/work/workspace/self/verker/strlen.h" 82 12 32#
        "expl:Ensures clause"
-       ((#"/home/work/workspace/self/verker-gh/strlen.h" 83 12 30#
+       ((#"/home/work/workspace/self/verker/strlen.h" 83 12 30#
         "expl:Ensures clause"
         (Int8.(=) (select charP_charM_s_4 (shift s_0 (Uint64.to_int result)))
         (#"strpbrk.jc" 120 33 44# "expl:Integer cast" (Int8.of_int (0)))))
        /\
-       (#"/home/work/workspace/self/verker-gh/strlen.h" 84 12 64#
+       (#"/home/work/workspace/self/verker/strlen.h" 84 12 64#
        "expl:Ensures clause"
        (forall i_5 : int.
         ((((<=) (0) i_5) /\ ((<) i_5 (Uint64.to_int result))) ->
@@ -9262,24 +9251,24 @@ module Function_strspn_0
        (charP_charM_s_0_8 : (memory voidP Int8.t)) : Uint64.t
         requires { true }
         ensures {
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 24#
+          ((#"/home/work/workspace/self/verker/strspn.h" 63 12 24#
            "expl:Ensures clause"
            (Uint64.(<=) (#"strpbrk.jc" 209 31 44# "expl:Integer cast"
            (Uint64.of_int (0))) result))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 17 37#
+          ((#"/home/work/workspace/self/verker/strspn.h" 63 17 37#
            "expl:Ensures clause"
            (Uint64.(<=) result (strlen s_0_0 charP_charM_s_0_8)))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 64 12 87#
+          ((#"/home/work/workspace/self/verker/strspn.h" 64 12 87#
            "expl:Ensures clause"
            (forall t : (pointer voidP).
             (((same_block accept_0 t) /\
@@ -9297,9 +9286,9 @@ module Function_strspn_0
              (select charP_charM_s_0_8 (shift s_0_0 (Uint64.to_int result)))
              (select charP_charM_accept_9 t)))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 65 12 134#
+          ((#"/home/work/workspace/self/verker/strspn.h" 65 12 134#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block s_0_0 p_0) /\
@@ -9322,7 +9311,7 @@ module Function_strspn_0
               (Int8.(=) (select charP_charM_s_0_8 p_0)
               (select charP_charM_accept_9 t_0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 67 12 40#
+          (#"/home/work/workspace/self/verker/strspn.h" 67 12 40#
           "expl:Ensures clause"
           ((=) (Uint64.to_int result) (strspn s_0_0 accept_0)))))))))))) }
   
@@ -9360,33 +9349,33 @@ module Function_strspn_0_safe
         requires {
           ("expl:External"
           (#"strpbrk.jc" 205 12 92# "expl:Requires clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 60 13 25#
+          ((#"/home/work/workspace/self/verker/strspn.h" 60 13 25#
            "expl:Requires clause"
            (valid_str s_0_0 voidP_s_0_8_alloc_table charP_charM_s_0_8))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 61 13 30#
+          (#"/home/work/workspace/self/verker/strspn.h" 61 13 30#
           "expl:Requires clause"
           (valid_str accept_0 voidP_accept_9_alloc_table
           charP_charM_accept_9))))) }
         ensures {
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 24#
+          ((#"/home/work/workspace/self/verker/strspn.h" 63 12 24#
            "expl:Ensures clause"
            (Uint64.(<=) (#"strpbrk.jc" 209 31 44# "expl:Integer cast"
            (Uint64.of_int (0))) result))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 63 17 37#
+          ((#"/home/work/workspace/self/verker/strspn.h" 63 17 37#
            "expl:Ensures clause"
            (Uint64.(<=) result (strlen s_0_0 charP_charM_s_0_8)))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 64 12 87#
+          ((#"/home/work/workspace/self/verker/strspn.h" 64 12 87#
            "expl:Ensures clause"
            (forall t : (pointer voidP).
             (((same_block accept_0 t) /\
@@ -9404,9 +9393,9 @@ module Function_strspn_0_safe
              (select charP_charM_s_0_8 (shift s_0_0 (Uint64.to_int result)))
              (select charP_charM_accept_9 t)))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 63 12 37#
+          (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker-gh/strspn.h" 65 12 134#
+          ((#"/home/work/workspace/self/verker/strspn.h" 65 12 134#
            "expl:Ensures clause"
            (forall p_0 : (pointer voidP).
             (((same_block s_0_0 p_0) /\
@@ -9429,7 +9418,7 @@ module Function_strspn_0_safe
               (Int8.(=) (select charP_charM_s_0_8 p_0)
               (select charP_charM_accept_9 t_0))))))))))
           /\
-          (#"/home/work/workspace/self/verker-gh/strspn.h" 67 12 40#
+          (#"/home/work/workspace/self/verker/strspn.h" 67 12 40#
           "expl:Ensures clause"
           ((=) (Uint64.to_int result) (strspn s_0_0 accept_0)))))))))))) }
   
@@ -9509,7 +9498,7 @@ module Function_strpbrk_0
                  (0))))))))) ->
                  (Int8.(<>) (select charP_charM_cs_13 p_5)
                  (select charP_charM_ct_14 t_7))))) ->
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 67 15 31#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 67 15 31#
               "expl:Ensures clause" ((=) result null)))
             /\
             (((exists p_6 : (pointer voidP).
@@ -9536,37 +9525,37 @@ module Function_strpbrk_0
                 /\
                 (Int8.(=) (select charP_charM_cs_13 p_6)
                 (select charP_charM_ct_14 t_8)))))))))))) ->
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
                "expl:Ensures clause" (same_block cs_0 result))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
                "expl:Ensures clause" ((<=) (sub_pointer cs_0 result) (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
                "expl:Ensures clause"
                (same_block result
                (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
                "expl:Ensures clause"
                ((<)
                (sub_pointer result
                (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 57 15 76#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
                "expl:Ensures clause"
                (exists t_9 : (pointer voidP).
                 ((same_block ct_0 t_9) /\
@@ -9582,7 +9571,7 @@ module Function_strpbrk_0
                 (Int8.(=) (select charP_charM_cs_13 result)
                 (select charP_charM_ct_14 t_9))))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 58 15 140#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
               "expl:Ensures clause"
               (forall p_7 : (pointer voidP).
                (forall t_10 : (pointer voidP).
@@ -9603,7 +9592,7 @@ module Function_strpbrk_0
                  (Int8.(<>) (select charP_charM_cs_13 p_7)
                  (select charP_charM_ct_14 t_10))))))))))))))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strpbrk.h" 50 12 38#
+            (#"/home/work/workspace/self/verker/strpbrk.h" 50 12 38#
             "expl:Ensures clause" ((=) result (strpbrk cs_0 ct_0)))))) }
   
 end
@@ -9650,11 +9639,11 @@ module Function_strpbrk_0_safe
           requires {
             ("expl:Internal"
             (#"strpbrk.jc" 313 12 76# "expl:Requires clause"
-            ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 47 13 26#
+            ((#"/home/work/workspace/self/verker/strpbrk.h" 47 13 26#
              "expl:Requires clause"
              (valid_str cs_0 voidP_cs_13_alloc_table charP_charM_cs_13))
             /\
-            (#"/home/work/workspace/self/verker-gh/strpbrk.h" 48 13 26#
+            (#"/home/work/workspace/self/verker/strpbrk.h" 48 13 26#
             "expl:Requires clause"
             (valid_str ct_0 voidP_ct_14_alloc_table charP_charM_ct_14))))) }
           ensures {
@@ -9691,7 +9680,7 @@ module Function_strpbrk_0_safe
                  (0))))))))) ->
                  (Int8.(<>) (select charP_charM_cs_13 p_5)
                  (select charP_charM_ct_14 t_7))))) ->
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 67 15 31#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 67 15 31#
               "expl:Ensures clause" ((=) result null)))
             /\
             (((exists p_6 : (pointer voidP).
@@ -9718,37 +9707,37 @@ module Function_strpbrk_0_safe
                 /\
                 (Int8.(=) (select charP_charM_cs_13 p_6)
                 (select charP_charM_ct_14 t_8)))))))))))) ->
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
                "expl:Ensures clause" (same_block cs_0 result))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 28#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 15 28#
                "expl:Ensures clause" ((<=) (sub_pointer cs_0 result) (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
                "expl:Ensures clause"
                (same_block result
                (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 21 46#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 56 21 46#
                "expl:Ensures clause"
                ((<)
                (sub_pointer result
                (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                (0)))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 56 15 46#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
-              ((#"/home/work/workspace/self/verker-gh/strpbrk.h" 57 15 76#
+              ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
                "expl:Ensures clause"
                (exists t_9 : (pointer voidP).
                 ((same_block ct_0 t_9) /\
@@ -9764,7 +9753,7 @@ module Function_strpbrk_0_safe
                 (Int8.(=) (select charP_charM_cs_13 result)
                 (select charP_charM_ct_14 t_9))))))))
               /\
-              (#"/home/work/workspace/self/verker-gh/strpbrk.h" 58 15 140#
+              (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
               "expl:Ensures clause"
               (forall p_7 : (pointer voidP).
                (forall t_10 : (pointer voidP).
@@ -9785,7 +9774,7 @@ module Function_strpbrk_0_safe
                  (Int8.(<>) (select charP_charM_cs_13 p_7)
                  (select charP_charM_ct_14 t_10))))))))))))))))))
             /\
-            (#"/home/work/workspace/self/verker-gh/strpbrk.h" 50 12 38#
+            (#"/home/work/workspace/self/verker/strpbrk.h" 50 12 38#
             "expl:Ensures clause" ((=) result (strpbrk cs_0 ct_0)))))) }
   
 end
