@@ -37,11 +37,13 @@ int main(int argc, char *argv[])
 {
 	const char *s = "123456788889";
 	char *ptr;
+
 	ptr = strnchr(s, strlen(s), '6');
 	ptr = strnchr(s, 4, '6');
 	ptr = strnchr(s, strlen(s), '8');
 	ptr = strnchr(s, strlen(s), '\0');
 	ptr = ptr;
+
 	return 0;
 }
 #endif

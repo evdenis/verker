@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 {
 	strnlen("123456789", 5);
 	strnlen("123456789", 20);
+
 	return 0;
 }
 #endif

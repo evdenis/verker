@@ -93,12 +93,14 @@ int main(int argc, char *argv[])
 	const char *s2 = "123456789";
 	const char *s3 = "1234567899";
 	const char *s4 = "1234567890";
+
 	res = strncmp(s1, s1, strlen(s1)+10);
 	res = strncmp(s1, s1, strlen(s1) / 2);
 	res = strncmp(s1, s2, strlen(s1)+10);
 	res = strncmp(s1, s3, strlen(s1)+10);
 	res = strncmp(s1, s4, strlen(s1)+10);
 	res = res;
+
 	return 0;
 }
 #endif

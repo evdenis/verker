@@ -154,8 +154,10 @@ int main(int argc, char *argv[])
 	char s4[] = "test   ";
 	char s5[] = "   test";
 	char s6[] = "test";
+
 	strim(s1); strim(s2); strim(s3);
 	strim(s4); strim(s5); strim(s6);
+
 	return 0;
 }
 #endif

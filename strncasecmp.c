@@ -75,12 +75,14 @@ int main(int argc, char *argv[])
 	const char *s3 = "123abcdefg";
 	const char *s4 = "123abcdeff";
 	const char *s5 = "123abcdefz";
+
 	res = strncasecmp(s1, s1, strlen(s1));
 	res = strncasecmp(s1, s2, strlen(s1));
 	res = strncasecmp(s1, s3, strlen(s1));
 	res = strncasecmp(s1, s4, strlen(s1));
 	res = strncasecmp(s1, s5, strlen(s1));
 	res = res;
+
 	return 0;
 }
 #endif

@@ -89,12 +89,16 @@ int main(int argc, char *argv[])
 	int src[]  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	int dest[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	int res;
+
 	res = memcmp(dest, src, sizeof(src));
 	dest[ARRAY_SIZE(dest)-1]--;
+
 	res = memcmp(dest, src, sizeof(src));
 	dest[ARRAY_SIZE(dest)-1]+=2;
+
 	res = memcmp(dest, src, sizeof(src));
 	res = res;
+
 	return 0;
 }
 #endif

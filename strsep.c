@@ -25,11 +25,13 @@ int main(int argc, char *argv[])
 	char change[] = "abc1d2e3g4";
 	const char *sep = "1234567890";
 	char *res = change;
+
 	strsep(&res, sep);
 	strsep(&res, sep);
 	strsep(&res, sep);
 	strsep(&res, sep);
 	strsep(&res, sep);
+
 	return 0;
 }
 #endif

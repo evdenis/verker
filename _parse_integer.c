@@ -61,13 +61,15 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 int main(int argc, char *argv[])
 {
 	unsigned long long res;
-	_parse_integer("000000", 1, &res);
-	_parse_integer("101010101", 2, &res);
-	_parse_integer("101232", 4, &res);
-	_parse_integer("012345670", 8, &res);
-	_parse_integer("1234567890", 10, &res);
-	_parse_integer("0xff", 16, &res);
+
+	_parse_integer("000000",                 1, &res);
+	_parse_integer("101010101",              2, &res);
+	_parse_integer("101232",                 4, &res);
+	_parse_integer("012345670",              8, &res);
+	_parse_integer("1234567890",             10, &res);
+	_parse_integer("0xff",                   16, &res);
 	_parse_integer("0xffabcde0010fffffffff", 16, &res);
+
 	return 0;
 }
 #endif

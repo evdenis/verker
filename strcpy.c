@@ -28,7 +28,9 @@ int main(int argc, char *argv[])
 {
 	const char *s = "1234567890";
 	char d[strlen(s)];
+
 	strcpy(d, s);
+
 	return 0;
 }
 #endif

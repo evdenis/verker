@@ -60,11 +60,13 @@ int main(int argc, char *argv[])
 	const char *s2 = "123456789";
 	const char *s3 = "1234567899";
 	const char *s4 = "1234567890";
+
 	res = strcmp(s1, s1);
 	res = strcmp(s1, s2);
 	res = strcmp(s1, s3);
 	res = strcmp(s1, s4);
 	res = res;
+
 	return 0;
 }
 #endif

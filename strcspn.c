@@ -53,12 +53,14 @@ int main(int argc, char *argv[])
 {
 	size_t res;
 	const char *reject = "1234567890";
+
 	res = strcspn("abcbcd", reject);
 	res = strcspn("123456", reject);
 	res = strcspn("abc023", reject);
 	res = strcspn("",       reject);
 	res = strcspn("abcbcd", "");
 	res = res;
+
 	return 0;
 }
 #endif

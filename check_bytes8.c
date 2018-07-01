@@ -40,13 +40,16 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 #ifdef DUMMY_MAIN
 #include <string.h>
 
+#define BUFFER_SIZE 10
+
 int main(int argc, char *argv[])
 {
 	const u8 value = 3;
-	const unsigned int bytes = 10;
-	u8 start[bytes];
-	memset(start, value, bytes);
-	check_bytes8(start, value, bytes);
+	u8 start[BUFFER_SIZE];
+
+	memset(start, value, BUFFER_SIZE);
+	check_bytes8(start, value, BUFFER_SIZE);
+
 	return 0;
 }
 #endif

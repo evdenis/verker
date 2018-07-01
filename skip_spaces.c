@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 {
 	skip_spaces("   123");
 	skip_spaces("");
+
 	return 0;
 }
 #endif

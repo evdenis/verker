@@ -37,10 +37,12 @@ int main(int argc, char *argv[])
 {
 	const char *s1 = "1234567890";
 	char *ptr;
+
 	ptr = strnstr(s1, "789", strlen(s1));
 	ptr = strnstr(s1, "789", strlen(s1) / 2);
 	ptr = strnstr(s1, "000", strlen(s1));
 	ptr = ptr;
+
 	return 0;
 }
 #endif

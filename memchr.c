@@ -37,9 +37,11 @@ int main(int argc, char *argv[])
 {
 	const char *s = "1234567890";
 	void *ptr;
+
 	ptr = memchr(s, '0', 11);
 	ptr = memchr(s, 'a', 11);
 	ptr = ptr;
+
 	return 0;
 }
 #endif

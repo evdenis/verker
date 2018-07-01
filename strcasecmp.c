@@ -52,12 +52,14 @@ int main(int argc, char *argv[])
 	const char *s3 = "123abcdefg";
 	const char *s4 = "123abcdeff";
 	const char *s5 = "123abcdefz";
+
 	res = strcasecmp(s1, s1);
 	res = strcasecmp(s1, s2);
 	res = strcasecmp(s1, s3);
 	res = strcasecmp(s1, s4);
 	res = strcasecmp(s1, s5);
 	res = res;
+
 	return 0;
 }
 #endif

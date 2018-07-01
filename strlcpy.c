@@ -22,8 +22,10 @@ int main(int argc, char *argv[])
 {
 	const char *s = "1234567890";
 	char d[strlen(s)];
+
 	strlcpy(d, s, strlen(s));
 	strlcpy(d, s, strlen(s) / 2);
+
 	return 0;
 }
 #endif

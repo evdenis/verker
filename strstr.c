@@ -68,9 +68,11 @@ int main(int argc, char *argv[])
 {
 	const char *s1 = "1234567890";
 	char *ptr;
+
 	ptr = strstr(s1, "789");
 	ptr = strstr(s1, "000");
 	ptr = ptr;
+
 	return 0;
 }
 #endif

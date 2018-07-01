@@ -42,10 +42,12 @@ int main(int argc, char *argv[])
 {
 	const char *s = "123456788889";
 	char *ptr;
+
 	ptr = strrchr(s, '6');
 	ptr = strrchr(s, '8');
 	ptr = strrchr(s, '\0');
 	ptr = ptr;
+
 	return 0;
 }
 #endif
