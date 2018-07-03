@@ -49,7 +49,7 @@ extern const unsigned char *_ctype;
     predicate isodigit(integer c) = '0' <= c <= '7';
     predicate isalnum(integer c)  = isdigit(c) || isalpha(c);
     predicate isspace(integer c)  = c == ' '  || c == '\f' || c == '\n' ||
-                                    c == '\r' || c == '\t' || c == '\v';
+                                    c == '\r' || c == '\t' FRAMAC_ISSPACE_BUG;
     predicate isxdigit(integer c) = isdigit(c)        ||
                                     ('a' <= c <= 'f') ||
                                     ('A' <= c <= 'F');

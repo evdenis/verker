@@ -1,6 +1,8 @@
 #ifndef __KERNEL_DEFINITIONS_H__
 #define __KERNEL_DEFINITIONS_H__
 
+#include "acsl_syntax_extension.h"
+
 #define CONFIG_64BIT 1
 
 #define E2BIG 7
