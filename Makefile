@@ -37,17 +37,20 @@ FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model
 FRAMAC_LIBPATH   := $(shell $(FRAMAC) -print-lib-path)
 FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(FRAMAC_ESHARE) $(FRAMAC_ESHARE)/e_acsl_mmodel.c -lm -lpthread $(FRAMAC_LIBPATH)/../libeacsl-gmp.a $(FRAMAC_LIBPATH)/../libeacsl-jemalloc.a
 
-SRCFILES       := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
-FZZAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-BINAVAILFILES  := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-PROVEDFILES    := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-BINFILES       := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
-FUZZFILES      := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
-EACSLFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(BINAVAILFILES))
-RTEFILES       := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
-VALFILES       := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
-EACSLBINFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
-EACSLFUZZFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLFILES))
+SRCFILES             := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
+FZZAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+BINAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+PROVEDFILES          := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
+BINFILES             := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
+FUZZFILES            := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
+EACSLFILES           := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(BINAVAILFILES))
+EACSLPROVEDFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(PROVEDFILES))
+RTEFILES             := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
+VALFILES             := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
+EACSLBINFILES        := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
+EACSLBINPROVEDFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLPROVEDFILES))
+EACSLFUZZFILES       := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLFILES))
+EACSLFUZZPROVEDFILES := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLPROVEDFILES))
 
 all: build ## Default target
 
@@ -57,9 +60,15 @@ fuzz: $(FUZZDIR) $(FUZZFILES) ## Fuzz each program.
 
 eacsl: $(GENDIR) $(EACSLDIR) $(EACSLFILES) ## Generate E-ACSL programs.
 
+eacsl-proved: $(GENDIR) $(EACSLDIR) $(EACSLPROVEDFILES) ## Generate E-ACSL for proved programs.
+
 eacsl-build: eacsl $(GENBINDIR) $(EACSLBINDIR) $(EACSLBINFILES) ## Build generated E-ACSL programs.
 
+eacsl-proved-build: eacsl-proved $(GENBINDIR) $(EACSLBINDIR) $(EACSLBINPROVEDFILES) ## Build E-ACSL proved programs.
+
 eacsl-fuzz: eacsl $(EACSLDIR) $(FUZZDIR) $(EACSLFUZZDIR) $(EACSLFUZZFILES) ## Build generated E-ACSL programs with libfuzzer.
+
+eacsl-proved-fuzz: eacsl-proved $(EACSLDIR) $(FUZZDIR) $(EACSLFUZZDIR) $(EACSLFUZZPROVEDFILES) ## Build E-ACSL proved programs with libfuzzer.
 
 rte: $(GENDIR) $(RTEDIR) $(RTEFILES) ## Generate RTE specifications.
 
