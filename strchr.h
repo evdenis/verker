@@ -52,15 +52,15 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
-    ensures \result == strchr(s, (char %) c);
+    ensures \result == strchr(s, (char ACSL_EXT_NO_OVERFLOW) c);
     behavior not_exists:
-       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char %) c;
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char ACSL_EXT_NO_OVERFLOW) c;
        ensures \result == \null;
     behavior exists:
-       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char %) c;
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char ACSL_EXT_NO_OVERFLOW) c;
        ensures s <= \result <= s + strlen(s);
-       ensures *\result == (char %) c;
-       ensures \forall char *p; s <= p < \result ==> *p != (char %) c;
+       ensures *\result == (char ACSL_EXT_NO_OVERFLOW) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char ACSL_EXT_NO_OVERFLOW) c;
     complete behaviors;
     disjoint behaviors;
  */
