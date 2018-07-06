@@ -21,8 +21,8 @@ OPAM_EVAL        := eval $$(opam env)
 else
 OPAM_EVAL        := eval $$(opam config env)
 endif
-FRAMAC           := $(OPAM_EVAL); frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
-FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+FRAMAC           := $(OPAM_EVAL); frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_DFLAGS    := -jessie
 FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
