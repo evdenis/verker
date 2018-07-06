@@ -8,12 +8,12 @@ void *memset(void *s, int c, size_t count)
 	/*@ loop invariant 0 <= count <= ocount;
 	    loop invariant (char *)s <= xs <= (char *)s + ocount;
 	    loop invariant xs - s == ocount - count;
-	    loop invariant \forall char *p; (char *)s <= p < xs ==> *p == (char %)c;
+	    loop invariant \forall char *p; (char *)s <= p < xs ==> *p == (char ACSL_EXT_NO_OVERFLOW) c;
 	    loop variant count;
 	 */
-	while (count--/*@%*/)
-		*xs++ = (char)/*@%*/c; // CODE_CHANGE:
-	//@ assert count == (size_t %)(-1);
+	while (count-- ACSL_EXT_NO_OVERFLOW_CMNT)
+		*xs++ = (char) ACSL_EXT_NO_OVERFLOW_CMNT c; // CODE_CHANGE:
+	//@ assert count == (size_t ACSL_EXT_NO_OVERFLOW)(-1);
 	return s;
 }
 

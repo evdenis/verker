@@ -16,7 +16,7 @@
     requires \valid((char *)s+(0..count-1));
     assigns ((char *)s)[0..count-1];
     ensures \forall char *p; (char *)s <= p < (char *)s + count ==>
-            *p == (char %)c;
+            *p == (char ACSL_EXT_NO_OVERFLOW) c;
     ensures \result == s;
  */
 void *memset(void *s, int c, size_t count);
