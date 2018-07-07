@@ -252,21 +252,21 @@ behavior default:
 behavior size_is_lower_src:
   assumes (((0 :> uint64) < size_1) && (size_1 <= strlen{Here}(src_6)));
   assigns (dest_8 + [0..((size_1 :> integer) - 1)]).charM;
-  ensures (_C_41 : ((_C_42 : (\forall integer i_9;
-                               (((0 <= i_9) &&
-                                  (i_9 < ((\at(size_1,Old) :> integer) - 1))) ==>
-                                 ((\at(src_6,Old) + i_9).charM ==
-                                   (\at(dest_8,Old) + i_9).charM)))) &&
+  ensures (_C_41 : ((_C_42 : (\forall integer i_8;
+                               (((0 <= i_8) &&
+                                  (i_8 < ((\at(size_1,Old) :> integer) - 1))) ==>
+                                 ((\at(src_6,Old) + i_8).charM ==
+                                   (\at(dest_8,Old) + i_8).charM)))) &&
                      (_C_43 : valid_str{Here}(\at(dest_8,Old)))));
 behavior size_is_greater_src:
   assumes (size_1 > strlen{Here}(src_6));
   assigns (dest_8 + [0..(strlen{Old}(src_6) :> integer)]).charM;
-  ensures (_C_44 : ((_C_45 : (\forall integer i_8;
-                               (((0 <= i_8) &&
-                                  (i_8 <
+  ensures (_C_44 : ((_C_45 : (\forall integer i_7;
+                               (((0 <= i_7) &&
+                                  (i_7 <
                                     (strlen{Here}(\at(src_6,Old)) :> integer))) ==>
-                                 ((\at(src_6,Old) + i_8).charM ==
-                                   (\at(dest_8,Old) + i_8).charM)))) &&
+                                 ((\at(src_6,Old) + i_7).charM ==
+                                   (\at(dest_8,Old) + i_7).charM)))) &&
                      (_C_46 : valid_str{Here}(\at(dest_8,Old)))));
 behavior zero_size:
   assumes (size_1 == (0 :> uint64));
@@ -306,12 +306,12 @@ behavior zero_size:
          (_C_33 : memcpy_char_0(dest_8, src_6, len));
          
          {  
-            (assert for default: (_C_34 : (jessie : (\forall integer i_7;
-                                                      (((0 <= i_7) &&
-                                                         (i_7 <
+            (assert for default: (_C_34 : (jessie : (\forall integer i;
+                                                      (((0 <= i) &&
+                                                         (i <
                                                            (len :> integer))) ==>
-                                                        ((src_6 + i_7).charM ==
-                                                          (dest_8 + i_7).charM))))));
+                                                        ((src_6 + i).charM ==
+                                                          (dest_8 + i).charM))))));
             ()
          };
          (_C_37 : ((_C_36 : (_C_35 : (dest_8 + len)).charM) = (0 :> int8)));

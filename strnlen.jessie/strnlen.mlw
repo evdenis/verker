@@ -2359,7 +2359,7 @@ module Function_strnlen_0_safety
        "expl:Pointer index bounds" true) }); _jessie_22 end));
        'Loop_4:
        loop
-       invariant { (#"strnlen.jc" 358 6 2489# true) }
+       invariant { (#"strnlen.jc" 358 6 2477# true) }
          variant { (#"/home/work/workspace/self/verker/strnlen.c" 12 18 23#
            (Bit_uint64.to_int
            (#"/home/work/workspace/self/verker/strnlen.c" 12 18 23#
@@ -2369,10 +2369,10 @@ module Function_strnlen_0_safety
         requires { true } reads { mutable_count, s_0_0 }
         ensures {
           ((#"/home/work/workspace/self/verker/strnlen.c" 11 20 71#
-           (forall i_12 : int.
-            ((((<=) (0) i_12) /\ ((<) i_12 (sub_pointer !sc_0 s_0_0))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
-             (#"strnlen.jc" 387 54 65# "expl:Integer cast" (Int8.of_int
+           (forall i_15 : int.
+            ((((<=) (0) i_15) /\ ((<) i_15 (sub_pointer !sc_0 s_0_0))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+             (#"strnlen.jc" 387 51 62# "expl:Integer cast" (Int8.of_int
              (0)))))))
           /\
           ((#"/home/work/workspace/self/verker/strnlen.c" 10 20 78#
@@ -2577,9 +2577,9 @@ module Function_strnlen_0_behaviors
    (alloc_table voidP)) (voidP_s_0_7_tag_table : (tag_table voidP))
    (charP_charM_s_0_7 : (memory voidP Int8.t)) 
    requires {
-   ((forall i_13 : int.
-     ((((<=) (0) i_13) /\ ((<=) i_13 (Bit_uint64.to_int count))) ->
-      (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_13))
+   ((forall i_12 : int.
+     ((((<=) (0) i_12) /\ ((<=) i_12 (Bit_uint64.to_int count))) ->
+      (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
       (#"strnlen.jc" 329 37 48# "expl:Integer cast" (Int8.of_int (0))))))
    /\
    (((allocated voidP_s_0_7_alloc_table s_0_0) ->
@@ -2609,16 +2609,16 @@ module Function_strnlen_0_behaviors
       (sc_0 := s_0_0);
        'Loop_3:
        loop
-       invariant { (#"strnlen.jc" 358 6 2489# true) } 
+       invariant { (#"strnlen.jc" 358 6 2477# true) } 
         begin
         any unit
         requires { true } reads { mutable_count, s_0_0 }
         ensures {
           ((#"/home/work/workspace/self/verker/strnlen.c" 11 20 71#
-           (forall i_12 : int.
-            ((((<=) (0) i_12) /\ ((<) i_12 (sub_pointer !sc_0 s_0_0))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
-             (#"strnlen.jc" 387 54 65# "expl:Integer cast" (Int8.of_int
+           (forall i_15 : int.
+            ((((<=) (0) i_15) /\ ((<) i_15 (sub_pointer !sc_0 s_0_0))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+             (#"strnlen.jc" 387 51 62# "expl:Integer cast" (Int8.of_int
              (0)))))))
           /\
           ((#"/home/work/workspace/self/verker/strnlen.c" 10 20 78#
@@ -2752,30 +2752,30 @@ module Function_strnlen_0_behaviors
     (check {
     (#"strnlen.jc" 332 10 542# "expl:Behavior disjointness check"
     (not
-    ((exists i_14_0 : int.
-      (((<=) (0) i_14_0) /\
-      (((<=) i_14_0 (Bit_uint64.to_int !mutable_count)) /\
-      (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_14_0))
+    ((exists i_13_0 : int.
+      (((<=) (0) i_13_0) /\
+      (((<=) i_13_0 (Bit_uint64.to_int !mutable_count)) /\
+      (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_13_0))
       (#"strnlen.jc" 335 63 74# "expl:Integer cast" (Int8.of_int (0)))))))
     /\
-    (forall i_13_0 : int.
-     ((((<=) (0) i_13_0) /\ ((<=) i_13_0 (Bit_uint64.to_int !mutable_count)))
+    (forall i_12_0 : int.
+     ((((<=) (0) i_12_0) /\ ((<=) i_12_0 (Bit_uint64.to_int !mutable_count)))
       ->
-      (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_13_0))
+      (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12_0))
       (#"strnlen.jc" 339 64 75# "expl:Integer cast" (Int8.of_int (0)))))))))
     });
      (check {
      (#"strnlen.jc" 341 10 517# "expl:Behavior completeness check"
-     ((forall i_13_1 : int.
-       ((((<=) (0) i_13_1) /\
-        ((<=) i_13_1 (Bit_uint64.to_int !mutable_count))) ->
-        (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_13_1))
+     ((forall i_12_1 : int.
+       ((((<=) (0) i_12_1) /\
+        ((<=) i_12_1 (Bit_uint64.to_int !mutable_count))) ->
+        (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12_1))
         (#"strnlen.jc" 344 60 71# "expl:Integer cast" (Int8.of_int (0))))))
      \/
-     (exists i_14_1 : int.
-      (((<=) (0) i_14_1) /\
-      (((<=) i_14_1 (Bit_uint64.to_int !mutable_count)) /\
-      (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_14_1))
+     (exists i_13_1 : int.
+      (((<=) (0) i_13_1) /\
+      (((<=) i_13_1 (Bit_uint64.to_int !mutable_count)) /\
+      (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_13_1))
       (#"strnlen.jc" 348 61 72# "expl:Integer cast" (Int8.of_int (0)))))))))
      });
      (let sc_0 = ref (any_pointer  () : (pointer voidP)) in
@@ -2839,10 +2839,10 @@ module Function_strnlen_0_behaviors
             (sub_pointer !sc_0 s_0_0))))
            &&
            (#"/home/work/workspace/self/verker/strnlen.c" 11 20 71#
-           (forall i_12 : int.
-            ((((<=) (0) i_12) /\ ((<) i_12 (sub_pointer !sc_0 s_0_0))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
-             (#"strnlen.jc" 387 54 65# "expl:Integer cast" (Int8.of_int
+           (forall i_15 : int.
+            ((((<=) (0) i_15) /\ ((<) i_15 (sub_pointer !sc_0 s_0_0))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+             (#"strnlen.jc" 387 51 62# "expl:Integer cast" (Int8.of_int
              (0)))))))))))) } 
         begin
         any unit requires { true } ensures { true } ;
@@ -2903,10 +2903,10 @@ module Function_strnlen_0_behaviors
    (alloc_table voidP)) (voidP_s_0_7_tag_table : (tag_table voidP))
    (charP_charM_s_0_7 : (memory voidP Int8.t)) 
    requires {
-   ((exists i_14 : int.
-     (((<=) (0) i_14) /\
-     (((<=) i_14 (Bit_uint64.to_int count)) /\
-     (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_14))
+   ((exists i_13 : int.
+     (((<=) (0) i_13) /\
+     (((<=) i_13 (Bit_uint64.to_int count)) /\
+     (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_13))
      (#"strnlen.jc" 318 37 48# "expl:Integer cast" (Int8.of_int (0)))))))
    /\
    (((allocated voidP_s_0_7_alloc_table s_0_0) ->
@@ -2932,9 +2932,9 @@ module Function_strnlen_0_behaviors
      /\
      (#"/home/work/workspace/self/verker/strnlen.h" 119 15 67#
      "expl:Ensures clause"
-     (forall i_15 : int.
-      ((((<=) (0) i_15) /\ ((<) i_15 (Bit_uint64.to_int result))) ->
-       (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+     (forall i_14 : int.
+      ((((<=) (0) i_14) /\ ((<) i_14 (Bit_uint64.to_int result))) ->
+       (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_14))
        (#"strnlen.jc" 325 36 47# "expl:Integer cast" (Int8.of_int (0)))))))))))
      } diverges  ->
    (let mutable_count = ref count in
@@ -2951,16 +2951,16 @@ module Function_strnlen_0_behaviors
       (sc_0 := s_0_0);
        'Loop_2:
        loop
-       invariant { (#"strnlen.jc" 358 6 2489# true) } 
+       invariant { (#"strnlen.jc" 358 6 2477# true) } 
         begin
         any unit
         requires { true } reads { mutable_count, s_0_0 }
         ensures {
           ((#"/home/work/workspace/self/verker/strnlen.c" 11 20 71#
-           (forall i_12 : int.
-            ((((<=) (0) i_12) /\ ((<) i_12 (sub_pointer !sc_0 s_0_0))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
-             (#"strnlen.jc" 387 54 65# "expl:Integer cast" (Int8.of_int
+           (forall i_15 : int.
+            ((((<=) (0) i_15) /\ ((<) i_15 (sub_pointer !sc_0 s_0_0))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+             (#"strnlen.jc" 387 51 62# "expl:Integer cast" (Int8.of_int
              (0)))))))
           /\
           ((#"/home/work/workspace/self/verker/strnlen.c" 10 20 78#
@@ -8481,18 +8481,18 @@ module Function_strnlen_0
       (charP_charM_s_0_7 : (memory voidP Int8.t)) : Uint64.t
        requires { true }
        ensures {
-         (((forall i_13 : int.
-            ((((<=) (0) i_13) /\ ((<=) i_13 (Uint64.to_int count))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_13))
+         (((forall i_12 : int.
+            ((((<=) (0) i_12) /\ ((<=) i_12 (Uint64.to_int count))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
              (#"strnlen.jc" 329 37 48# "expl:Integer cast" (Int8.of_int
              (0)))))) ->
            (#"/home/work/workspace/self/verker/strnlen.h" 122 15 31#
            "expl:Ensures clause" (Uint64.(=) result count)))
          /\
-         (((exists i_14 : int.
-            (((<=) (0) i_14) /\
-            (((<=) i_14 (Uint64.to_int count)) /\
-            (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_14))
+         (((exists i_13 : int.
+            (((<=) (0) i_13) /\
+            (((<=) i_13 (Uint64.to_int count)) /\
+            (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_13))
             (#"strnlen.jc" 318 37 48# "expl:Integer cast" (Int8.of_int (0)))))))
            ->
            (#"/home/work/workspace/self/verker/strnlen.h" 118 15 33#
@@ -8507,9 +8507,9 @@ module Function_strnlen_0
            /\
            (#"/home/work/workspace/self/verker/strnlen.h" 119 15 67#
            "expl:Ensures clause"
-           (forall i_15 : int.
-            ((((<=) (0) i_15) /\ ((<) i_15 (Uint64.to_int result))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+           (forall i_14 : int.
+            ((((<=) (0) i_14) /\ ((<) i_14 (Uint64.to_int result))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_14))
              (#"strnlen.jc" 325 36 47# "expl:Integer cast" (Int8.of_int
              (0)))))))))))
          /\
@@ -8554,18 +8554,18 @@ module Function_strnlen_0_safe
          (valid_strn s_0_0 count voidP_s_0_7_alloc_table charP_charM_s_0_7)))
          }
        ensures {
-         (((forall i_13 : int.
-            ((((<=) (0) i_13) /\ ((<=) i_13 (Uint64.to_int count))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_13))
+         (((forall i_12 : int.
+            ((((<=) (0) i_12) /\ ((<=) i_12 (Uint64.to_int count))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_12))
              (#"strnlen.jc" 329 37 48# "expl:Integer cast" (Int8.of_int
              (0)))))) ->
            (#"/home/work/workspace/self/verker/strnlen.h" 122 15 31#
            "expl:Ensures clause" (Uint64.(=) result count)))
          /\
-         (((exists i_14 : int.
-            (((<=) (0) i_14) /\
-            (((<=) i_14 (Uint64.to_int count)) /\
-            (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_14))
+         (((exists i_13 : int.
+            (((<=) (0) i_13) /\
+            (((<=) i_13 (Uint64.to_int count)) /\
+            (Int8.(=) (select charP_charM_s_0_7 (shift s_0_0 i_13))
             (#"strnlen.jc" 318 37 48# "expl:Integer cast" (Int8.of_int (0)))))))
            ->
            (#"/home/work/workspace/self/verker/strnlen.h" 118 15 33#
@@ -8580,9 +8580,9 @@ module Function_strnlen_0_safe
            /\
            (#"/home/work/workspace/self/verker/strnlen.h" 119 15 67#
            "expl:Ensures clause"
-           (forall i_15 : int.
-            ((((<=) (0) i_15) /\ ((<) i_15 (Uint64.to_int result))) ->
-             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_15))
+           (forall i_14 : int.
+            ((((<=) (0) i_14) /\ ((<) i_14 (Uint64.to_int result))) ->
+             (Int8.(<>) (select charP_charM_s_0_7 (shift s_0_0 i_14))
              (#"strnlen.jc" 325 36 47# "expl:Integer cast" (Int8.of_int
              (0)))))))))))
          /\

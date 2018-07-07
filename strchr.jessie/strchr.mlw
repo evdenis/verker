@@ -2201,7 +2201,7 @@ module Function_strchr_0_safety
         "expl:Pointer index bounds" true) }); _jessie_20 end));
         'Loop_4:
         loop
-        invariant { (#"strchr.jc" 313 6 1864# true) }
+        invariant { (#"strchr.jc" 312 6 1864# true) }
           variant { (#"/home/work/workspace/self/verker/strchr.c" 10 18 39#
             (Int.(-) (Uint64.to_int (strlen !os charP_charM_s_7))
             (sub_pointer !mutable_s_1 !os))) }
@@ -2211,19 +2211,19 @@ module Function_strchr_0_safety
          ensures {
            ((#"/home/work/workspace/self/verker/strchr.c" 9 20 67#
             ((=)
-            (strchr !mutable_s_1 (#"strchr.jc" 335 44 56# "expl:Integer cast"
+            (strchr !mutable_s_1 (#"strchr.jc" 334 44 56# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
-            (strchr !os (#"strchr.jc" 336 46 58# "expl:Integer cast"
+            (strchr !os (#"strchr.jc" 335 46 58# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 8 20 69#
-            (forall p : (pointer voidP).
-             (((same_block !os p) /\
-              (((<=) (sub_pointer !os p) (0)) /\
-              ((same_block p !mutable_s_1) /\
-              ((<) (sub_pointer p !mutable_s_1) (0))))) ->
-              (Bit_int8.(<>) (select charP_charM_s_7 p)
-              (#"strchr.jc" 333 43 55# "expl:Integer cast"
+            (forall p_4 : (pointer voidP).
+             (((same_block !os p_4) /\
+              (((<=) (sub_pointer !os p_4) (0)) /\
+              ((same_block p_4 !mutable_s_1) /\
+              ((<) (sub_pointer p_4 !mutable_s_1) (0))))) ->
+              (Bit_int8.(<>) (select charP_charM_s_7 p_4)
+              (#"strchr.jc" 332 43 55# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 7 20 46#
@@ -2276,7 +2276,7 @@ module Function_strchr_0_safety
               (#"/home/work/workspace/self/verker/strchr.c" 13 6 8#
               "expl:Pointer dereference"
               (acc  voidP_s_7_alloc_table charP_charM_s_7 !mutable_s_1 )) ))
-             (#"strchr.jc" 344 27 39# "expl:Integer cast"
+             (#"strchr.jc" 343 27 39# "expl:Integer cast"
              (Safe_bit_int32.of_int_const 0)) ))
             then
              begin
@@ -2291,7 +2291,7 @@ module Function_strchr_0_safety
              (let _jessie_22 =
              (shift_typesafe  !mutable_s_1
               (Safe_bit_int32.to_int 
-               (#"strchr.jc" 349 40 52# "expl:Integer cast"
+               (#"strchr.jc" 348 40 52# "expl:Integer cast"
                (Safe_bit_int32.of_int_const 1)) ) ) in
              begin
              (assert {
@@ -2309,8 +2309,8 @@ module Function_strchr_0_safety
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 15 12 55#
-          ((Bit_int8.(<>) (#"strchr.jc" 355 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 356 52 63#
+          ((Bit_int8.(<>) (#"strchr.jc" 354 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 355 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((same_block !mutable_s_1
@@ -2325,8 +2325,8 @@ module Function_strchr_0_safety
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 16 12 56#
-          ((Bit_int8.(=) (#"strchr.jc" 370 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 371 52 63#
+          ((Bit_int8.(=) (#"strchr.jc" 369 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 370 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((=) !mutable_s_1
@@ -2345,7 +2345,7 @@ module Function_strchr_0_safety
       (return :=
        (let _jessie_24 = !__retres in
        begin
-       (assert { (#"strchr.jc" 380 7 22# "expl:Pointer index bounds" true) });
+       (assert { (#"strchr.jc" 379 7 22# "expl:Pointer index bounds" true) });
         _jessie_24 end)); (raise Return) end end)); absurd  end with Return
     -> !return end))
   
@@ -2491,65 +2491,65 @@ module Function_strchr_0_behaviors
    try
     begin
     (check {
-    (#"strchr.jc" 257 10 1636# "expl:Behavior disjointness check"
+    (#"strchr.jc" 257 10 1580# "expl:Behavior disjointness check"
     (not
-    ((forall p_2_0 : (pointer voidP).
-      (((same_block !mutable_s_1 p_2_0) /\
-       (((<=) (sub_pointer !mutable_s_1 p_2_0) (0)) /\
-       ((same_block p_2_0
+    ((forall p_1_0 : (pointer voidP).
+      (((same_block !mutable_s_1 p_1_0) /\
+       (((<=) (sub_pointer !mutable_s_1 p_1_0) (0)) /\
+       ((same_block p_1_0
         (shift !mutable_s_1
         (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7))))
        /\
        ((<=)
-       (sub_pointer p_2_0
+       (sub_pointer p_1_0
        (shift !mutable_s_1
        (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7)))) (0))))) ->
-       (Bit_int8.(<>) (select charP_charM_s_7 p_2_0) (#"strchr.jc" 268 54 66#
+       (Bit_int8.(<>) (select charP_charM_s_7 p_1_0) (#"strchr.jc" 268 54 66#
        "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0)))))
     /\
-    (exists p_0_0 : (pointer voidP).
-     ((same_block !mutable_s_1 p_0_0) /\
-     (((<=) (sub_pointer !mutable_s_1 p_0_0) (0)) /\
-     ((same_block p_0_0
+    (exists p_2 : (pointer voidP).
+     ((same_block !mutable_s_1 p_2) /\
+     (((<=) (sub_pointer !mutable_s_1 p_2) (0)) /\
+     ((same_block p_2
       (shift !mutable_s_1
       (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7))))
      /\
      (((<=)
-      (sub_pointer p_0_0
+      (sub_pointer p_2
       (shift !mutable_s_1
       (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7)))) (0))
      /\
-     (Bit_int8.(=) (select charP_charM_s_7 p_0_0) (#"strchr.jc" 281 55 67#
+     (Bit_int8.(=) (select charP_charM_s_7 p_2) (#"strchr.jc" 280 53 65#
      "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))))) });
      (check {
-     (#"strchr.jc" 283 10 1474# "expl:Behavior completeness check"
-     ((exists p_0_1 : (pointer voidP).
-       ((same_block !mutable_s_1 p_0_1) /\
-       (((<=) (sub_pointer !mutable_s_1 p_0_1) (0)) /\
-       ((same_block p_0_1
+     (#"strchr.jc" 282 10 1462# "expl:Behavior completeness check"
+     ((exists p_3 : (pointer voidP).
+       ((same_block !mutable_s_1 p_3) /\
+       (((<=) (sub_pointer !mutable_s_1 p_3) (0)) /\
+       ((same_block p_3
         (shift !mutable_s_1
         (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7))))
        /\
        (((<=)
-        (sub_pointer p_0_1
+        (sub_pointer p_3
         (shift !mutable_s_1
         (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7)))) (0))
        /\
-       (Bit_int8.(=) (select charP_charM_s_7 p_0_1) (#"strchr.jc" 293 51 63#
+       (Bit_int8.(=) (select charP_charM_s_7 p_3) (#"strchr.jc" 292 49 61#
        "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))
      \/
-     (forall p_2_1 : (pointer voidP).
-      (((same_block !mutable_s_1 p_2_1) /\
-       (((<=) (sub_pointer !mutable_s_1 p_2_1) (0)) /\
-       ((same_block p_2_1
+     (forall p_1_1 : (pointer voidP).
+      (((same_block !mutable_s_1 p_1_1) /\
+       (((<=) (sub_pointer !mutable_s_1 p_1_1) (0)) /\
+       ((same_block p_1_1
         (shift !mutable_s_1
         (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7))))
        /\
        ((<=)
-       (sub_pointer p_2_1
+       (sub_pointer p_1_1
        (shift !mutable_s_1
        (Uint64.to_int (strlen !mutable_s_1 charP_charM_s_7)))) (0))))) ->
-       (Bit_int8.(<>) (select charP_charM_s_7 p_2_1) (#"strchr.jc" 305 52 64#
+       (Bit_int8.(<>) (select charP_charM_s_7 p_1_1) (#"strchr.jc" 304 52 64#
        "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))) });
      (let os = ref (any_pointer  () : (pointer voidP)) in
      (let __retres = ref (any_pointer  () : (pointer voidP)) in
@@ -2584,20 +2584,20 @@ module Function_strchr_0_behaviors
              (shift !os (Uint64.to_int (strlen !os charP_charM_s_7)))) (0))))))))))
             &&
             ((#"/home/work/workspace/self/verker/strchr.c" 8 20 69#
-             (forall p : (pointer voidP).
-              (((same_block !os p) /\
-               (((<=) (sub_pointer !os p) (0)) /\
-               ((same_block p !mutable_s_1) /\
-               ((<) (sub_pointer p !mutable_s_1) (0))))) ->
-               (Bit_int8.(<>) (select charP_charM_s_7 p)
-               (#"strchr.jc" 333 43 55# "expl:Integer cast"
+             (forall p_4 : (pointer voidP).
+              (((same_block !os p_4) /\
+               (((<=) (sub_pointer !os p_4) (0)) /\
+               ((same_block p_4 !mutable_s_1) /\
+               ((<) (sub_pointer p_4 !mutable_s_1) (0))))) ->
+               (Bit_int8.(<>) (select charP_charM_s_7 p_4)
+               (#"strchr.jc" 332 43 55# "expl:Integer cast"
                (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
             &&
             (#"/home/work/workspace/self/verker/strchr.c" 9 20 67#
             ((=)
-            (strchr !mutable_s_1 (#"strchr.jc" 335 44 56# "expl:Integer cast"
+            (strchr !mutable_s_1 (#"strchr.jc" 334 44 56# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
-            (strchr !os (#"strchr.jc" 336 46 58# "expl:Integer cast"
+            (strchr !os (#"strchr.jc" 335 46 58# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))))) } 
           
          begin
@@ -2626,7 +2626,7 @@ module Function_strchr_0_behaviors
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
               (acc  charP_charM_s_7 !mutable_s_1 ) ))
-             (#"strchr.jc" 344 27 39# "expl:Integer cast"
+             (#"strchr.jc" 343 27 39# "expl:Integer cast"
              (Unsafe_bit_int32.of_int_const 0)) ))
             then
              begin (__retres := (null  )); (raise (Return_label_exc ())) end
@@ -2634,7 +2634,7 @@ module Function_strchr_0_behaviors
             (mutable_s_1 :=
              (shift_  !mutable_s_1
               (Unsafe_bit_int32.to_int 
-               (#"strchr.jc" 349 40 52# "expl:Integer cast"
+               (#"strchr.jc" 348 40 52# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2647,8 +2647,8 @@ module Function_strchr_0_behaviors
         (assert {
         (#"/home/work/workspace/self/verker/strchr.c" 15 12 55#
         "expl:Assertion in line 15"
-        ((Bit_int8.(<>) (#"strchr.jc" 355 51 63# "expl:Integer cast"
-         (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 356 52 63#
+        ((Bit_int8.(<>) (#"strchr.jc" 354 51 63# "expl:Integer cast"
+         (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 355 52 63#
          "expl:Integer cast" (Bit_int8.of_int_const 0)))
         <->
         ((same_block !mutable_s_1
@@ -2662,8 +2662,8 @@ module Function_strchr_0_behaviors
         (assert {
         (#"/home/work/workspace/self/verker/strchr.c" 16 12 56#
         "expl:Assertion in line 16"
-        ((Bit_int8.(=) (#"strchr.jc" 370 51 63# "expl:Integer cast"
-         (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 371 52 63#
+        ((Bit_int8.(=) (#"strchr.jc" 369 51 63# "expl:Integer cast"
+         (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 370 52 63#
          "expl:Integer cast" (Bit_int8.of_int_const 0)))
         <->
         ((=) !mutable_s_1
@@ -2682,17 +2682,16 @@ module Function_strchr_0_behaviors
    (alloc_table voidP)) (voidP_s_7_tag_table : (tag_table voidP))
    (charP_charM_s_7 : (memory voidP Int8.t)) 
    requires {
-   ((exists p_0 : (pointer voidP).
-     ((same_block s_1 p_0) /\
-     (((<=) (sub_pointer s_1 p_0) (0)) /\
-     ((same_block p_0
-      (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
+   ((exists p : (pointer voidP).
+     ((same_block s_1 p) /\
+     (((<=) (sub_pointer s_1 p) (0)) /\
+     ((same_block p (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
      /\
      (((<=)
-      (sub_pointer p_0
+      (sub_pointer p
       (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0))
      /\
-     (Bit_int8.(=) (select charP_charM_s_7 p_0) (#"strchr.jc" 236 28 40#
+     (Bit_int8.(=) (select charP_charM_s_7 p) (#"strchr.jc" 236 26 38#
      "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))
    /\
    (((allocated voidP_s_7_alloc_table s_1) ->
@@ -2742,11 +2741,11 @@ module Function_strchr_0_behaviors
      /\
      (#"/home/work/workspace/self/verker/strchr.h" 63 15 69#
      "expl:Ensures clause"
-     (forall p_1 : (pointer voidP).
-      (((same_block s_1 p_1) /\
-       (((<=) (sub_pointer s_1 p_1) (0)) /\
-       ((same_block p_1 result) /\ ((<) (sub_pointer p_1 result) (0))))) ->
-       (Bit_int8.(<>) (select charP_charM_s_7 p_1) (#"strchr.jc" 255 50 71#
+     (forall p_0 : (pointer voidP).
+      (((same_block s_1 p_0) /\
+       (((<=) (sub_pointer s_1 p_0) (0)) /\
+       ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0))))) ->
+       (Bit_int8.(<>) (select charP_charM_s_7 p_0) (#"strchr.jc" 255 50 71#
        "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))))))))))))
      } diverges  ->
    (let mutable_s_1 = ref s_1 in
@@ -2764,26 +2763,26 @@ module Function_strchr_0_behaviors
        (os := !mutable_s_1);
         'Loop_3:
         loop
-        invariant { (#"strchr.jc" 313 6 1864# true) } 
+        invariant { (#"strchr.jc" 312 6 1864# true) } 
          begin
          any unit
          requires { true } reads { c_0, mutable_s_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/strchr.c" 9 20 67#
             ((=)
-            (strchr !mutable_s_1 (#"strchr.jc" 335 44 56# "expl:Integer cast"
+            (strchr !mutable_s_1 (#"strchr.jc" 334 44 56# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
-            (strchr !os (#"strchr.jc" 336 46 58# "expl:Integer cast"
+            (strchr !os (#"strchr.jc" 335 46 58# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 8 20 69#
-            (forall p : (pointer voidP).
-             (((same_block !os p) /\
-              (((<=) (sub_pointer !os p) (0)) /\
-              ((same_block p !mutable_s_1) /\
-              ((<) (sub_pointer p !mutable_s_1) (0))))) ->
-              (Bit_int8.(<>) (select charP_charM_s_7 p)
-              (#"strchr.jc" 333 43 55# "expl:Integer cast"
+            (forall p_4 : (pointer voidP).
+             (((same_block !os p_4) /\
+              (((<=) (sub_pointer !os p_4) (0)) /\
+              ((same_block p_4 !mutable_s_1) /\
+              ((<) (sub_pointer p_4 !mutable_s_1) (0))))) ->
+              (Bit_int8.(<>) (select charP_charM_s_7 p_4)
+              (#"strchr.jc" 332 43 55# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 7 20 46#
@@ -2832,7 +2831,7 @@ module Function_strchr_0_behaviors
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
               (acc  charP_charM_s_7 !mutable_s_1 ) ))
-             (#"strchr.jc" 344 27 39# "expl:Integer cast"
+             (#"strchr.jc" 343 27 39# "expl:Integer cast"
              (Unsafe_bit_int32.of_int_const 0)) ))
             then
              begin (__retres := (null  )); (raise (Return_label_exc ())) end
@@ -2840,7 +2839,7 @@ module Function_strchr_0_behaviors
             (mutable_s_1 :=
              (shift_  !mutable_s_1
               (Unsafe_bit_int32.to_int 
-               (#"strchr.jc" 349 40 52# "expl:Integer cast"
+               (#"strchr.jc" 348 40 52# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2854,8 +2853,8 @@ module Function_strchr_0_behaviors
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 15 12 55#
-          ((Bit_int8.(<>) (#"strchr.jc" 355 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 356 52 63#
+          ((Bit_int8.(<>) (#"strchr.jc" 354 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 355 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((same_block !mutable_s_1
@@ -2870,8 +2869,8 @@ module Function_strchr_0_behaviors
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 16 12 56#
-          ((Bit_int8.(=) (#"strchr.jc" 370 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 371 52 63#
+          ((Bit_int8.(=) (#"strchr.jc" 369 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 370 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((=) !mutable_s_1
@@ -2890,16 +2889,16 @@ module Function_strchr_0_behaviors
    (alloc_table voidP)) (voidP_s_7_tag_table : (tag_table voidP))
    (charP_charM_s_7 : (memory voidP Int8.t)) 
    requires {
-   ((forall p_2 : (pointer voidP).
-     (((same_block s_1 p_2) /\
-      (((<=) (sub_pointer s_1 p_2) (0)) /\
-      ((same_block p_2
+   ((forall p_1 : (pointer voidP).
+     (((same_block s_1 p_1) /\
+      (((<=) (sub_pointer s_1 p_1) (0)) /\
+      ((same_block p_1
        (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
       /\
       ((<=)
-      (sub_pointer p_2
+      (sub_pointer p_1
       (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0))))) ->
-      (Bit_int8.(<>) (select charP_charM_s_7 p_2) (#"strchr.jc" 228 28 40#
+      (Bit_int8.(<>) (select charP_charM_s_7 p_1) (#"strchr.jc" 228 28 40#
       "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0)))))
    /\
    (((allocated voidP_s_7_alloc_table s_1) ->
@@ -2930,26 +2929,26 @@ module Function_strchr_0_behaviors
        (os := !mutable_s_1);
         'Loop_2:
         loop
-        invariant { (#"strchr.jc" 313 6 1864# true) } 
+        invariant { (#"strchr.jc" 312 6 1864# true) } 
          begin
          any unit
          requires { true } reads { c_0, mutable_s_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/strchr.c" 9 20 67#
             ((=)
-            (strchr !mutable_s_1 (#"strchr.jc" 335 44 56# "expl:Integer cast"
+            (strchr !mutable_s_1 (#"strchr.jc" 334 44 56# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)
-            (strchr !os (#"strchr.jc" 336 46 58# "expl:Integer cast"
+            (strchr !os (#"strchr.jc" 335 46 58# "expl:Integer cast"
             (Bit_int8_of_Bit_int32.cast_modulo c_0)) charP_charM_s_7)))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 8 20 69#
-            (forall p : (pointer voidP).
-             (((same_block !os p) /\
-              (((<=) (sub_pointer !os p) (0)) /\
-              ((same_block p !mutable_s_1) /\
-              ((<) (sub_pointer p !mutable_s_1) (0))))) ->
-              (Bit_int8.(<>) (select charP_charM_s_7 p)
-              (#"strchr.jc" 333 43 55# "expl:Integer cast"
+            (forall p_4 : (pointer voidP).
+             (((same_block !os p_4) /\
+              (((<=) (sub_pointer !os p_4) (0)) /\
+              ((same_block p_4 !mutable_s_1) /\
+              ((<) (sub_pointer p_4 !mutable_s_1) (0))))) ->
+              (Bit_int8.(<>) (select charP_charM_s_7 p_4)
+              (#"strchr.jc" 332 43 55# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c_0))))))
            /\
            ((#"/home/work/workspace/self/verker/strchr.c" 7 20 46#
@@ -2998,7 +2997,7 @@ module Function_strchr_0_behaviors
              "expl:Integer cast"
              (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
               (acc  charP_charM_s_7 !mutable_s_1 ) ))
-             (#"strchr.jc" 344 27 39# "expl:Integer cast"
+             (#"strchr.jc" 343 27 39# "expl:Integer cast"
              (Unsafe_bit_int32.of_int_const 0)) ))
             then
              begin (__retres := (null  )); (raise (Return_label_exc ())) end
@@ -3006,7 +3005,7 @@ module Function_strchr_0_behaviors
             (mutable_s_1 :=
              (shift_  !mutable_s_1
               (Unsafe_bit_int32.to_int 
-               (#"strchr.jc" 349 40 52# "expl:Integer cast"
+               (#"strchr.jc" 348 40 52# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3020,8 +3019,8 @@ module Function_strchr_0_behaviors
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 15 12 55#
-          ((Bit_int8.(<>) (#"strchr.jc" 355 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 356 52 63#
+          ((Bit_int8.(<>) (#"strchr.jc" 354 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 355 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((same_block !mutable_s_1
@@ -3036,8 +3035,8 @@ module Function_strchr_0_behaviors
         requires { true } reads { c_0, mutable_s_1 }
         ensures {
           (#"/home/work/workspace/self/verker/strchr.c" 16 12 56#
-          ((Bit_int8.(=) (#"strchr.jc" 370 51 63# "expl:Integer cast"
-           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 371 52 63#
+          ((Bit_int8.(=) (#"strchr.jc" 369 51 63# "expl:Integer cast"
+           (Bit_int8_of_Bit_int32.cast_modulo c_0)) (#"strchr.jc" 370 52 63#
            "expl:Integer cast" (Bit_int8.of_int_const 0)))
           <->
           ((=) !mutable_s_1
@@ -8403,19 +8402,19 @@ module Function_strchr_0
              ((<) i (offset_max voidP_s_7_alloc_table result))) ->
              ((=) (typeof voidP_s_7_tag_table (shift result i)) charP_tag)))))
          /\
-         (((exists p_0 : (pointer voidP).
-            ((same_block s_1 p_0) /\
-            (((<=) (sub_pointer s_1 p_0) (0)) /\
-            ((same_block p_0
+         (((exists p : (pointer voidP).
+            ((same_block s_1 p) /\
+            (((<=) (sub_pointer s_1 p) (0)) /\
+            ((same_block p
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
             /\
             (((<=)
-             (sub_pointer p_0
+             (sub_pointer p
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0))
             /\
-            (Bit_int8.(=) (select charP_charM_s_7 p_0)
-            (#"strchr.jc" 236 28 40# "expl:Integer cast"
-            (Bit_int8_of_Bit_int32.cast_modulo c_0)))))))) ->
+            (Bit_int8.(=) (select charP_charM_s_7 p) (#"strchr.jc" 236 26 38#
+            "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))
+           ->
            (#"/home/work/workspace/self/verker/strchr.h" 61 15 44#
            "expl:Ensures clause"
            (#"/home/work/workspace/self/verker/strchr.h" 61 15 44#
@@ -8453,26 +8452,26 @@ module Function_strchr_0
            /\
            (#"/home/work/workspace/self/verker/strchr.h" 63 15 69#
            "expl:Ensures clause"
-           (forall p_1 : (pointer voidP).
-            (((same_block s_1 p_1) /\
-             (((<=) (sub_pointer s_1 p_1) (0)) /\
-             ((same_block p_1 result) /\ ((<) (sub_pointer p_1 result) (0)))))
+           (forall p_0 : (pointer voidP).
+            (((same_block s_1 p_0) /\
+             (((<=) (sub_pointer s_1 p_0) (0)) /\
+             ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0)))))
              ->
-             (Bit_int8.(<>) (select charP_charM_s_7 p_1)
+             (Bit_int8.(<>) (select charP_charM_s_7 p_0)
              (#"strchr.jc" 255 50 71# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))))))))))))
          /\
-         (((forall p_2 : (pointer voidP).
-            (((same_block s_1 p_2) /\
-             (((<=) (sub_pointer s_1 p_2) (0)) /\
-             ((same_block p_2
+         (((forall p_1 : (pointer voidP).
+            (((same_block s_1 p_1) /\
+             (((<=) (sub_pointer s_1 p_1) (0)) /\
+             ((same_block p_1
               (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
              /\
              ((<=)
-             (sub_pointer p_2
+             (sub_pointer p_1
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0)))))
              ->
-             (Bit_int8.(<>) (select charP_charM_s_7 p_2)
+             (Bit_int8.(<>) (select charP_charM_s_7 p_1)
              (#"strchr.jc" 228 28 40# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))) ->
            (#"/home/work/workspace/self/verker/strchr.h" 58 15 31#
@@ -8541,19 +8540,19 @@ module Function_strchr_0_safe
              ((<) i (offset_max voidP_s_7_alloc_table result))) ->
              ((=) (typeof voidP_s_7_tag_table (shift result i)) charP_tag)))))
          /\
-         (((exists p_0 : (pointer voidP).
-            ((same_block s_1 p_0) /\
-            (((<=) (sub_pointer s_1 p_0) (0)) /\
-            ((same_block p_0
+         (((exists p : (pointer voidP).
+            ((same_block s_1 p) /\
+            (((<=) (sub_pointer s_1 p) (0)) /\
+            ((same_block p
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
             /\
             (((<=)
-             (sub_pointer p_0
+             (sub_pointer p
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0))
             /\
-            (Bit_int8.(=) (select charP_charM_s_7 p_0)
-            (#"strchr.jc" 236 28 40# "expl:Integer cast"
-            (Bit_int8_of_Bit_int32.cast_modulo c_0)))))))) ->
+            (Bit_int8.(=) (select charP_charM_s_7 p) (#"strchr.jc" 236 26 38#
+            "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))
+           ->
            (#"/home/work/workspace/self/verker/strchr.h" 61 15 44#
            "expl:Ensures clause"
            (#"/home/work/workspace/self/verker/strchr.h" 61 15 44#
@@ -8591,26 +8590,26 @@ module Function_strchr_0_safe
            /\
            (#"/home/work/workspace/self/verker/strchr.h" 63 15 69#
            "expl:Ensures clause"
-           (forall p_1 : (pointer voidP).
-            (((same_block s_1 p_1) /\
-             (((<=) (sub_pointer s_1 p_1) (0)) /\
-             ((same_block p_1 result) /\ ((<) (sub_pointer p_1 result) (0)))))
+           (forall p_0 : (pointer voidP).
+            (((same_block s_1 p_0) /\
+             (((<=) (sub_pointer s_1 p_0) (0)) /\
+             ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0)))))
              ->
-             (Bit_int8.(<>) (select charP_charM_s_7 p_1)
+             (Bit_int8.(<>) (select charP_charM_s_7 p_0)
              (#"strchr.jc" 255 50 71# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))))))))))))))))
          /\
-         (((forall p_2 : (pointer voidP).
-            (((same_block s_1 p_2) /\
-             (((<=) (sub_pointer s_1 p_2) (0)) /\
-             ((same_block p_2
+         (((forall p_1 : (pointer voidP).
+            (((same_block s_1 p_1) /\
+             (((<=) (sub_pointer s_1 p_1) (0)) /\
+             ((same_block p_1
               (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7))))
              /\
              ((<=)
-             (sub_pointer p_2
+             (sub_pointer p_1
              (shift s_1 (Uint64.to_int (strlen s_1 charP_charM_s_7)))) (0)))))
              ->
-             (Bit_int8.(<>) (select charP_charM_s_7 p_2)
+             (Bit_int8.(<>) (select charP_charM_s_7 p_1)
              (#"strchr.jc" 228 28 40# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c_0))))) ->
            (#"/home/work/workspace/self/verker/strchr.h" 58 15 31#

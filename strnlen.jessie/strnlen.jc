@@ -313,39 +313,39 @@ behavior default:
   assigns \nothing;
   ensures (_C_63 : (\result == strnlen{Here}(\at(s_0,Old), \at(count,Old))));
 behavior null_byte:
-  assumes (\exists integer i_14;
-            (((0 <= i_14) && (i_14 <= (count :> integer))) &&
-              ((s_0 + i_14).charM == (0 :> int8))));
+  assumes (\exists integer i_13;
+            (((0 <= i_13) && (i_13 <= (count :> integer))) &&
+              ((s_0 + i_13).charM == (0 :> int8))));
   ensures (_C_64 : ((_C_65 : ((\at(s_0,Old) + (\result :> integer)).charM ==
                                (0 :> int8))) &&
-                     (_C_66 : (\forall integer i_15;
-                                (((0 <= i_15) &&
-                                   (i_15 < (\result :> integer))) ==>
-                                  ((\at(s_0,Old) + i_15).charM !=
+                     (_C_66 : (\forall integer i_14;
+                                (((0 <= i_14) &&
+                                   (i_14 < (\result :> integer))) ==>
+                                  ((\at(s_0,Old) + i_14).charM !=
                                     (0 :> int8)))))));
 behavior count_len:
-  assumes (\forall integer i_13;
-            (((0 <= i_13) && (i_13 <= (count :> integer))) ==>
-              ((s_0 + i_13).charM != (0 :> int8))));
+  assumes (\forall integer i_12;
+            (((0 <= i_12) && (i_12 <= (count :> integer))) ==>
+              ((s_0 + i_12).charM != (0 :> int8))));
   ensures (_C_67 : (\result == \at(count,Old)));
 {  
-   (check (disjoint_behaviors : (! ((\exists integer i_14;
-                                      (((0 <= i_14) &&
-                                         (i_14 <= (count :> integer))) &&
-                                        ((s_0 + i_14).charM == (0 :> int8)))) &&
-                                     (\forall integer i_13;
-                                       (((0 <= i_13) &&
-                                          (i_13 <= (count :> integer))) ==>
-                                         ((s_0 + i_13).charM != (0 :> int8))))))));
+   (check (disjoint_behaviors : (! ((\exists integer i_13;
+                                      (((0 <= i_13) &&
+                                         (i_13 <= (count :> integer))) &&
+                                        ((s_0 + i_13).charM == (0 :> int8)))) &&
+                                     (\forall integer i_12;
+                                       (((0 <= i_12) &&
+                                          (i_12 <= (count :> integer))) ==>
+                                         ((s_0 + i_12).charM != (0 :> int8))))))));
    
-   (check (complete_behaviors : ((\forall integer i_13;
-                                   (((0 <= i_13) &&
-                                      (i_13 <= (count :> integer))) ==>
-                                     ((s_0 + i_13).charM != (0 :> int8)))) ||
-                                  (\exists integer i_14;
-                                    (((0 <= i_14) &&
-                                       (i_14 <= (count :> integer))) &&
-                                      ((s_0 + i_14).charM == (0 :> int8)))))));
+   (check (complete_behaviors : ((\forall integer i_12;
+                                   (((0 <= i_12) &&
+                                      (i_12 <= (count :> integer))) ==>
+                                     ((s_0 + i_12).charM != (0 :> int8)))) ||
+                                  (\exists integer i_13;
+                                    (((0 <= i_13) &&
+                                       (i_13 <= (count :> integer))) &&
+                                      ((s_0 + i_13).charM == (0 :> int8)))))));
    
    (var charP[..] sc);
    
@@ -382,9 +382,9 @@ behavior count_len:
                              ((strnlen{Here}(sc, count) :> integer) +
                                (sc - s_0))));
       behavior default:
-        invariant (_C_36 : (\forall integer i_12;
-                             (((0 <= i_12) && (i_12 < (sc - s_0))) ==>
-                               ((s_0 + i_12).charM != (0 :> int8)))));
+        invariant (_C_36 : (\forall integer i;
+                             (((0 <= i) && (i < (sc - s_0))) ==>
+                               ((s_0 + i).charM != (0 :> int8)))));
       variant (_C_35 : count);
       while (true)
       {  

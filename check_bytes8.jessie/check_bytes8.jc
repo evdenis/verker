@@ -114,13 +114,13 @@ behavior default:
                      check_bytes8{Here}(\at(start,Old), \at(value,Old),
                                         (\at(bytes,Old) :> integer))));
 behavior found:
-  assumes (\exists unsigned_charP[..] i_1;
-            ((((\base_block(start) == \base_block(i_1)) &&
-                ((start - i_1) <= 0)) &&
-               ((\base_block(i_1) ==
+  assumes (\exists unsigned_charP[..] i_0;
+            ((((\base_block(start) == \base_block(i_0)) &&
+                ((start - i_0) <= 0)) &&
+               ((\base_block(i_0) ==
                   \base_block((start + (bytes :> integer)))) &&
-                 ((i_1 - (start + (bytes :> integer))) < 0))) &&
-              (i_1.unsigned_charM != value)));
+                 ((i_0 - (start + (bytes :> integer))) < 0))) &&
+              (i_0.unsigned_charM != value)));
   ensures (_C_36 : ((((_C_39 : (\base_block(\at(start,Old)) ==
                                  \base_block((\result :> unsigned_charP[..])))) &&
                        (_C_40 : ((\at(start,Old) -
@@ -145,59 +145,56 @@ behavior found:
                                          0))) ==>
                                     (j.unsigned_charM == \at(value,Old))))))));
 behavior not_exists:
-  assumes (\forall unsigned_charP[..] i_0;
-            ((((\base_block(start) == \base_block(i_0)) &&
-                ((start - i_0) <= 0)) &&
-               ((\base_block(i_0) ==
-                  \base_block((start + (bytes :> integer)))) &&
-                 ((i_0 - (start + (bytes :> integer))) < 0))) ==>
-              (i_0.unsigned_charM == value)));
+  assumes (\forall unsigned_charP[..] i;
+            ((((\base_block(start) == \base_block(i)) && ((start - i) <= 0)) &&
+               ((\base_block(i) == \base_block((start + (bytes :> integer)))) &&
+                 ((i - (start + (bytes :> integer))) < 0))) ==>
+              (i.unsigned_charM == value)));
   ensures (_C_47 : (\result == null));
 {  
-   (check (disjoint_behaviors : (! ((\exists unsigned_charP[..] i_1;
+   (check (disjoint_behaviors : (! ((\exists unsigned_charP[..] i_0;
                                       ((((\base_block(start) ==
-                                           \base_block(i_1)) &&
-                                          ((start - i_1) <= 0)) &&
-                                         ((\base_block(i_1) ==
+                                           \base_block(i_0)) &&
+                                          ((start - i_0) <= 0)) &&
+                                         ((\base_block(i_0) ==
                                             \base_block((start +
                                                           (bytes :> integer)))) &&
-                                           ((i_1 -
+                                           ((i_0 -
                                               (start + (bytes :> integer))) <
                                              0))) &&
-                                        (i_1.unsigned_charM != value))) &&
-                                     (\forall unsigned_charP[..] i_0;
+                                        (i_0.unsigned_charM != value))) &&
+                                     (\forall unsigned_charP[..] i;
                                        ((((\base_block(start) ==
-                                            \base_block(i_0)) &&
-                                           ((start - i_0) <= 0)) &&
-                                          ((\base_block(i_0) ==
+                                            \base_block(i)) &&
+                                           ((start - i) <= 0)) &&
+                                          ((\base_block(i) ==
                                              \base_block((start +
                                                            (bytes :> integer)))) &&
-                                            ((i_0 -
+                                            ((i -
                                                (start + (bytes :> integer))) <
                                               0))) ==>
-                                         (i_0.unsigned_charM == value)))))));
+                                         (i.unsigned_charM == value)))))));
    
-   (check (complete_behaviors : ((\forall unsigned_charP[..] i_0;
-                                   ((((\base_block(start) ==
-                                        \base_block(i_0)) &&
-                                       ((start - i_0) <= 0)) &&
-                                      ((\base_block(i_0) ==
+   (check (complete_behaviors : ((\forall unsigned_charP[..] i;
+                                   ((((\base_block(start) == \base_block(i)) &&
+                                       ((start - i) <= 0)) &&
+                                      ((\base_block(i) ==
                                          \base_block((start +
                                                        (bytes :> integer)))) &&
-                                        ((i_0 - (start + (bytes :> integer))) <
+                                        ((i - (start + (bytes :> integer))) <
                                           0))) ==>
-                                     (i_0.unsigned_charM == value))) ||
-                                  (\exists unsigned_charP[..] i_1;
+                                     (i.unsigned_charM == value))) ||
+                                  (\exists unsigned_charP[..] i_0;
                                     ((((\base_block(start) ==
-                                         \base_block(i_1)) &&
-                                        ((start - i_1) <= 0)) &&
-                                       ((\base_block(i_1) ==
+                                         \base_block(i_0)) &&
+                                        ((start - i_0) <= 0)) &&
+                                       ((\base_block(i_0) ==
                                           \base_block((start +
                                                         (bytes :> integer)))) &&
-                                         ((i_1 -
+                                         ((i_0 -
                                             (start + (bytes :> integer))) <
                                            0))) &&
-                                      (i_1.unsigned_charM != value))))));
+                                      (i_0.unsigned_charM != value))))));
    
    (var unsigned_charP[..] ostart);
    

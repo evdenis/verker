@@ -29,18 +29,18 @@ voidP[..] memset(voidP[..] s, int32 c, uint64 count)
                                 true))) else true),Here)));
 behavior default:
   assigns ((s :> charP[..]) + [0..((count :> integer) - 1)]).charM;
-  ensures (_C_29 : ((_C_30 : (\forall charP[..] p_0;
+  ensures (_C_29 : ((_C_30 : (\forall charP[..] p;
                                ((((\base_block((\at(s,Old) :> charP[..])) ==
-                                    \base_block(p_0)) &&
-                                   (((\at(s,Old) :> charP[..]) - p_0) <= 0)) &&
-                                  ((\base_block(p_0) ==
+                                    \base_block(p)) &&
+                                   (((\at(s,Old) :> charP[..]) - p) <= 0)) &&
+                                  ((\base_block(p) ==
                                      \base_block(((\at(s,Old) :> charP[..]) +
                                                    (\at(count,Old) :> integer)))) &&
-                                    ((p_0 -
+                                    ((p -
                                        ((\at(s,Old) :> charP[..]) +
                                          (\at(count,Old) :> integer))) <
                                       0))) ==>
-                                 (p_0.charM == (\at(c,Old) :%> int8))))) &&
+                                 (p.charM == (\at(c,Old) :%> int8))))) &&
                      (_C_31 : (\result == \at(s,Old)))));
 {  
    (var charP[..] xs);

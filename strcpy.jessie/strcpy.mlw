@@ -2011,7 +2011,7 @@ module Function_strcpy_safety
         () end;
        'Loop_2:
        loop
-       invariant { (#"strcpy.jc" 168 6 2648# true) }
+       invariant { (#"strcpy.jc" 168 6 2638# true) }
          variant { (#"/home/work/workspace/self/verker/strcpy.c" 15 18 45#
            (Int.(-) (Uint64.to_int (strlen !osrc charP_charM_src_5_6))
            (sub_pointer !mutable_src_5 !osrc))) }
@@ -2021,11 +2021,11 @@ module Function_strcpy_safety
         mutable_src_5 }
         ensures {
           ((#"/home/work/workspace/self/verker/strcpy.c" 14 20 80#
-           (forall i_6 : int.
-            ((((<=) (0) i_6) /\ ((<) i_6 (sub_pointer !mutable_src_5 !osrc)))
+           (forall i_7 : int.
+            ((((<=) (0) i_7) /\ ((<) i_7 (sub_pointer !mutable_src_5 !osrc)))
              ->
-             (Int8.(=) (select !charP_charM_dest_7_5 (shift !tmp i_6))
-             (select charP_charM_src_5_6 (shift !osrc i_6))))))
+             (Int8.(=) (select !charP_charM_dest_7_5 (shift !tmp i_7))
+             (select charP_charM_src_5_6 (shift !osrc i_7))))))
           /\
           ((#"/home/work/workspace/self/verker/strcpy.c" 13 20 62#
            ((=) (Uint64.to_int (strlen !mutable_src_5 charP_charM_src_5_6))
@@ -2326,11 +2326,11 @@ module Function_strcpy_behaviors
      /\
      (#"/home/work/workspace/self/verker/strcpy.h" 18 12 77#
      "expl:Ensures clause"
-     (forall i_7 : int.
-      ((((<=) (0) i_7) /\
-       ((<=) i_7 (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))) ->
-       (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_7))
-       (select charP_charM_src_5_6 (shift src_5 i_7))))))))))))) } diverges 
+     (forall i_6 : int.
+      ((((<=) (0) i_6) /\
+       ((<=) i_6 (Uint64.to_int (strlen src_5 charP_charM_src_5_6)))) ->
+       (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_6))
+       (select charP_charM_src_5_6 (shift src_5 i_6))))))))))))) } diverges 
    ->
    (let mutable_dest_7 = ref dest_7 in
    (let mutable_src_5 = ref src_5 in
@@ -2412,11 +2412,11 @@ module Function_strcpy_behaviors
              (sub_pointer !mutable_src_5 !osrc))))
             &&
             (#"/home/work/workspace/self/verker/strcpy.c" 14 20 80#
-            (forall i_6 : int.
-             ((((<=) (0) i_6) /\
-              ((<) i_6 (sub_pointer !mutable_src_5 !osrc))) ->
-              (Int8.(=) (select !charP_charM_dest_7_5 (shift !tmp i_6))
-              (select charP_charM_src_5_6 (shift !osrc i_6)))))))))))
+            (forall i_7 : int.
+             ((((<=) (0) i_7) /\
+              ((<) i_7 (sub_pointer !mutable_src_5 !osrc))) ->
+              (Int8.(=) (select !charP_charM_dest_7_5 (shift !tmp i_7))
+              (select charP_charM_src_5_6 (shift !osrc i_7)))))))))))
            /\
            (#"strcpy.jc" 140 10 63# "expl:Assigns clause"
            (not_assigns voidP_dest_7_5_alloc_table voidP_dest_7_5_alloc_table
@@ -7959,12 +7959,12 @@ module Function_strcpy
             /\
             (#"/home/work/workspace/self/verker/strcpy.h" 18 12 77#
             "expl:Ensures clause"
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\
-              ((<=) i_7 (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\
+              ((<=) i_6 (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
               ->
-              (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_7))
-              (select charP_charM_src_5_6 (shift src_5 i_7))))))))))))) }
+              (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_6))
+              (select charP_charM_src_5_6 (shift src_5 i_6))))))))))))) }
   
 end
 
@@ -8069,11 +8069,11 @@ module Function_strcpy_safe
             /\
             (#"/home/work/workspace/self/verker/strcpy.h" 18 12 77#
             "expl:Ensures clause"
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\
-              ((<=) i_7 (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
+            (forall i_6 : int.
+             ((((<=) (0) i_6) /\
+              ((<=) i_6 (Uint64.to_int (strlen src_5 charP_charM_src_5_6))))
               ->
-              (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_7))
-              (select charP_charM_src_5_6 (shift src_5 i_7))))))))))))) }
+              (Int8.(=) (select !charP_charM_dest_7_5 (shift result i_6))
+              (select charP_charM_src_5_6 (shift src_5 i_6))))))))))))) }
   
 end

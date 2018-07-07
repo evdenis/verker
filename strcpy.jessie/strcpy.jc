@@ -140,12 +140,12 @@ behavior default:
   assigns (dest_7 + [0..(strlen{Old}(src_5) :> integer)]).charM;
   ensures (_C_53 : ((_C_54 : valid_str{Here}(\result)) &&
                      ((_C_56 : (\result == \at(dest_7,Old))) &&
-                       (_C_57 : (\forall integer i_7;
-                                  (((0 <= i_7) &&
-                                     (i_7 <=
+                       (_C_57 : (\forall integer i_6;
+                                  (((0 <= i_6) &&
+                                     (i_6 <=
                                        (strlen{Here}(\at(src_5,Old)) :> integer))) ==>
-                                    ((\result + i_7).charM ==
-                                      (\at(src_5,Old) + i_7).charM)))))));
+                                    ((\result + i_6).charM ==
+                                      (\at(src_5,Old) + i_6).charM)))))));
 {  
    (var charP[..] tmp);
    
@@ -199,9 +199,9 @@ behavior default:
                              ((strlen{Here}(osrc) :> integer) -
                                (src_5 - osrc))));
       behavior default:
-        invariant (_C_21 : (\forall integer i_6;
-                             (((0 <= i_6) && (i_6 < (src_5 - osrc))) ==>
-                               ((tmp + i_6).charM == (osrc + i_6).charM))));
+        invariant (_C_21 : (\forall integer i;
+                             (((0 <= i) && (i < (src_5 - osrc))) ==>
+                               ((tmp + i).charM == (osrc + i).charM))));
       variant (_C_20 : ((strlen{Here}(osrc) :> integer) - (src_5 - osrc)));
       while (true)
       {  

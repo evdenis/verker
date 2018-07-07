@@ -41,10 +41,10 @@ voidP[..] memcpy(voidP[..] dest_1, voidP[..] src_1, uint64 count)
                                     true))) else true),Here)))));
 behavior default:
   assigns ((dest_1 :> charP[..]) + [0..((count :> integer) - 1)]).charM;
-  ensures (_C_43 : (\forall integer i_0;
-                     (((0 <= i_0) && (i_0 < (\at(count,Old) :> integer))) ==>
-                       (((\at(dest_1,Old) :> charP[..]) + i_0).charM ==
-                         ((\at(src_1,Old) :> charP[..]) + i_0).charM))));
+  ensures (_C_43 : (\forall integer i;
+                     (((0 <= i) && (i < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_1,Old) :> charP[..]) + i).charM ==
+                         ((\at(src_1,Old) :> charP[..]) + i).charM))));
 {  
    (var charP[..] tmp);
    

@@ -2043,27 +2043,27 @@ module Function_strcmp_safety
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
          (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
-         ((forall i_6 : int.
-           ((((<=) (0) i_6) /\
-            ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         ((forall i_9 : int.
+           ((((<=) (0) i_9) /\
+            ((<=) i_9 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
             ->
-            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_6))
-            (select charP_charM_ct_6 (shift !mutable_ct i_6)))))
+            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_9))
+            (select charP_charM_ct_6 (shift !mutable_ct i_9)))))
          <->
-         (forall i_7 : int.
-          ((((<=) (0) i_7) /\
-           ((<=) i_7 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         (forall i_10 : int.
+          ((((<=) (0) i_10) /\
+           ((<=) i_10 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
            ->
-           (Bit_uint8.(=) (#"strcmp.jc" 213 56 84# "expl:Integer cast"
+           (Bit_uint8.(=) (#"strcmp.jc" 211 56 82# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_cs_5 (shift !mutable_cs i_7))))
-           (#"strcmp.jc" 214 57 85# "expl:Integer cast"
+           (select charP_charM_cs_5 (shift !mutable_cs i_10))))
+           (#"strcmp.jc" 212 57 83# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_ct_6 (shift !mutable_ct i_7))))))))) } ; ()
+           (select charP_charM_ct_6 (shift !mutable_ct i_10))))))))) } ; ()
        end;
         'Loop_4:
         loop
-        invariant { (#"strcmp.jc" 218 6 6558# true) }
+        invariant { (#"strcmp.jc" 216 6 6530# true) }
           variant { (#"/home/work/workspace/self/verker/strcmp.c" 19 18 58#
             (Int.(-)
             (Uint64.to_int (strlen (at !mutable_cs 'Init) charP_charM_cs_5))
@@ -2079,12 +2079,12 @@ module Function_strcmp_safety
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
-            (forall i_9 : int.
-             ((((<=) (0) i_9) /\
-              ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
+            (forall i_11 : int.
+             ((((<=) (0) i_11) /\
+              ((<) i_11 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
               (Bit_int8.(=)
-              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
-              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
+              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_11))
+              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_11))))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
@@ -2157,7 +2157,7 @@ module Function_strcmp_safety
              (let _jessie_48 =
              (shift_typesafe  !mutable_cs
               (Safe_bit_int32.to_int 
-               (#"strcmp.jc" 263 45 57# "expl:Integer cast"
+               (#"strcmp.jc" 261 45 57# "expl:Integer cast"
                (Safe_bit_int32.of_int_const 1)) ) ) in
              begin
              (assert {
@@ -2187,7 +2187,7 @@ module Function_strcmp_safety
               (let _jessie_51 =
               (shift_typesafe  !mutable_ct
                (Safe_bit_int32.to_int 
-                (#"strcmp.jc" 268 45 57# "expl:Integer cast"
+                (#"strcmp.jc" 266 45 57# "expl:Integer cast"
                 (Safe_bit_int32.of_int_const 1)) ) ) in
               begin
               (assert {
@@ -2228,7 +2228,7 @@ module Function_strcmp_safety
              then
               (tmp_1 :=
                (let _jessie_54 =
-               (#"strcmp.jc" 273 79 92# "expl:Integer cast"
+               (#"strcmp.jc" 271 79 92# "expl:Integer cast"
                (Safe_bit_int32.of_int  (Int.(-_)  (1) ) )) in
                begin
                (assert {
@@ -2237,7 +2237,7 @@ module Function_strcmp_safety
              else
               (tmp_1 :=
                (let _jessie_53 =
-               (#"strcmp.jc" 274 33 45# "expl:Integer cast"
+               (#"strcmp.jc" 272 33 45# "expl:Integer cast"
                (Safe_bit_int32.of_int_const 1)) in
                begin
                (assert {
@@ -2255,43 +2255,43 @@ module Function_strcmp_safety
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
                  (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
-                 (exists i_8 : int.
-                  (((<=) (0) i_8) /\
-                  (((<=) i_8
+                 (exists i_12 : int.
+                  (((<=) (0) i_12) /\
+                  (((<=) i_12
                    (Uint64.to_int
                    (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))
                   /\
-                  ((forall j : int.
-                    ((((<=) (0) j) /\ ((<) j i_8)) ->
+                  ((forall j_0 : int.
+                    ((((<=) (0) j_0) /\ ((<) j_0 i_12)) ->
                      (Bit_int8.(=)
                      (select charP_charM_cs_5
-                     (shift (at !mutable_cs 'Init) j))
+                     (shift (at !mutable_cs 'Init) j_0))
                      (select charP_charM_ct_6
-                     (shift (at !mutable_ct 'Init) j)))))
+                     (shift (at !mutable_ct 'Init) j_0)))))
                   /\
                   ((Bit_int8.(<>)
                    (select charP_charM_cs_5
-                   (shift (at !mutable_cs 'Init) i_8))
+                   (shift (at !mutable_cs 'Init) i_12))
                    (select charP_charM_ct_6
-                   (shift (at !mutable_ct 'Init) i_8)))
+                   (shift (at !mutable_ct 'Init) i_12)))
                   /\
                   ((if
-                    (Bit_uint8.(<) (#"strcmp.jc" 294 68 173#
+                    (Bit_uint8.(<) (#"strcmp.jc" 292 68 171#
                     "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_cs_5
-                    (shift (at !mutable_cs 'Init) i_8))))
-                    (#"strcmp.jc" 296 68 173# "expl:Integer cast"
+                    (shift (at !mutable_cs 'Init) i_12))))
+                    (#"strcmp.jc" 294 68 171# "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_ct_6
-                    (shift (at !mutable_ct 'Init) i_8))))) then
-                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 81#
+                    (shift (at !mutable_ct 'Init) i_12))))) then
+                    (Bit_int32.(=) !res (#"strcmp.jc" 297 65 81#
                     "expl:Integer cast" (Bit_int32.of_int (Int.(-_) (1)))))
                     else
-                    (Bit_int32.(=) !res (#"strcmp.jc" 301 65 77#
+                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 77#
                     "expl:Integer cast" (Bit_int32.of_int_const 1))))
                   /\
-                  ((=) i_8
+                  ((=) i_12
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
@@ -2306,7 +2306,7 @@ module Function_strcmp_safety
                then
                 (tmp_2 :=
                  (let _jessie_58 =
-                 (#"strcmp.jc" 309 79 92# "expl:Integer cast"
+                 (#"strcmp.jc" 307 79 92# "expl:Integer cast"
                  (Safe_bit_int32.of_int  (Int.(-_)  (1) ) )) in
                  begin
                  (assert {
@@ -2315,7 +2315,7 @@ module Function_strcmp_safety
                else
                 (tmp_2 :=
                  (let _jessie_57 =
-                 (#"strcmp.jc" 310 33 45# "expl:Integer cast"
+                 (#"strcmp.jc" 308 33 45# "expl:Integer cast"
                  (Safe_bit_int32.of_int_const 1)) in
                  begin
                  (assert {
@@ -2333,7 +2333,7 @@ module Function_strcmp_safety
             (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Safe_bit_uint8.(<>)  !c1
-              (#"strcmp.jc" 317 46 58# "expl:Integer cast"
+              (#"strcmp.jc" 315 46 58# "expl:Integer cast"
               (Safe_bit_uint8.of_int_const 0)) ) ))
             then (raise (Goto_while_0_break_exc ())) else ());
             begin
@@ -2358,7 +2358,7 @@ module Function_strcmp_safety
        ();
         (__retres :=
          (let _jessie_59 =
-         (#"strcmp.jc" 333 27 39# "expl:Integer cast"
+         (#"strcmp.jc" 331 27 39# "expl:Integer cast"
          (Safe_bit_int32.of_int_const 0)) in
          begin
          (assert {
@@ -2371,7 +2371,7 @@ module Function_strcmp_safety
       (return :=
        (let _jessie_60 = !__retres in
        begin
-       (assert { (#"strcmp.jc" 335 7 22# "expl:Pointer index bounds" true) });
+       (assert { (#"strcmp.jc" 333 7 22# "expl:Pointer index bounds" true) });
         _jessie_60 end)); (raise Return) end end)))))))); absurd  end with
     Return -> !return end)))
   
@@ -2531,35 +2531,32 @@ module Function_strcmp_behaviors
    try
     begin
     (check {
-    (#"strcmp.jc" 159 10 746# "expl:Behavior disjointness check"
+    (#"strcmp.jc" 159 10 736# "expl:Behavior disjointness check"
     (not
-    ((forall i_12_0 : int.
-      ((((<=) (0) i_12_0) /\
-       ((<=) i_12_0 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
-       ->
-       (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_12_0))
-       (select charP_charM_ct_6 (shift !mutable_ct i_12_0)))))
+    ((forall i_8_0 : int.
+      ((((<=) (0) i_8_0) /\
+       ((<=) i_8_0 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5)))) ->
+       (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_8_0))
+       (select charP_charM_ct_6 (shift !mutable_ct i_8_0)))))
     /\
-    (exists i_10_0 : int.
-     (((<=) (0) i_10_0) /\
-     (((<=) i_10_0 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))) /\
-     (Bit_int8.(<>) (select charP_charM_cs_5 (shift !mutable_cs i_10_0))
-     (select charP_charM_ct_6 (shift !mutable_ct i_10_0))))))))) });
+    (exists i_6_0 : int.
+     (((<=) (0) i_6_0) /\
+     (((<=) i_6_0 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))) /\
+     (Bit_int8.(<>) (select charP_charM_cs_5 (shift !mutable_cs i_6_0))
+     (select charP_charM_ct_6 (shift !mutable_ct i_6_0))))))))) });
      (check {
-     (#"strcmp.jc" 172 10 630# "expl:Behavior completeness check"
-     ((exists i_10_1 : int.
-       (((<=) (0) i_10_1) /\
-       (((<=) i_10_1 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5)))
-       /\
-       (Bit_int8.(<>) (select charP_charM_cs_5 (shift !mutable_cs i_10_1))
-       (select charP_charM_ct_6 (shift !mutable_ct i_10_1))))))
+     (#"strcmp.jc" 172 10 539# "expl:Behavior completeness check"
+     ((exists i_6_1 : int.
+       (((<=) (0) i_6_1) /\
+       (((<=) i_6_1 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))) /\
+       (Bit_int8.(<>) (select charP_charM_cs_5 (shift !mutable_cs i_6_1))
+       (select charP_charM_ct_6 (shift !mutable_ct i_6_1))))))
      \/
-     (forall i_12_1 : int.
-      ((((<=) (0) i_12_1) /\
-       ((<=) i_12_1 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
-       ->
-       (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_12_1))
-       (select charP_charM_ct_6 (shift !mutable_ct i_12_1))))))) });
+     (forall i_8_1 : int.
+      ((((<=) (0) i_8_1) /\
+       ((<=) i_8_1 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5)))) ->
+       (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_8_1))
+       (select charP_charM_ct_6 (shift !mutable_ct i_8_1))))))) });
      (let c1 = ref (Unsafe_bit_uint8.any_  () ) in
      (let c2 = ref (Unsafe_bit_uint8.any_  () ) in
      (let tmp = ref (any_pointer  () : (pointer voidP)) in
@@ -2576,22 +2573,23 @@ module Function_strcmp_behaviors
        (assert {
        (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
        "expl:Assertion in line 7"
-       ((forall i_6 : int.
-         ((((<=) (0) i_6) /\
-          ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+       ((forall i_9 : int.
+         ((((<=) (0) i_9) /\
+          ((<=) i_9 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
           ->
-          (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_6))
-          (select charP_charM_ct_6 (shift !mutable_ct i_6)))))
+          (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_9))
+          (select charP_charM_ct_6 (shift !mutable_ct i_9)))))
        <->
-       (forall i_7 : int.
-        ((((<=) (0) i_7) /\
-         ((<=) i_7 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5)))) ->
-         (Bit_uint8.(=) (#"strcmp.jc" 213 56 84# "expl:Integer cast"
+       (forall i_10 : int.
+        ((((<=) (0) i_10) /\
+         ((<=) i_10 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         ->
+         (Bit_uint8.(=) (#"strcmp.jc" 211 56 82# "expl:Integer cast"
          (Bit_uint8_of_Bit_int8.cast_modulo
-         (select charP_charM_cs_5 (shift !mutable_cs i_7))))
-         (#"strcmp.jc" 214 57 85# "expl:Integer cast"
+         (select charP_charM_cs_5 (shift !mutable_cs i_10))))
+         (#"strcmp.jc" 212 57 83# "expl:Integer cast"
          (Bit_uint8_of_Bit_int8.cast_modulo
-         (select charP_charM_ct_6 (shift !mutable_ct i_7))))))))) }); () end;
+         (select charP_charM_ct_6 (shift !mutable_ct i_10))))))))) }); () end;
         'Loop_1:
         loop
         invariant
@@ -2654,12 +2652,13 @@ module Function_strcmp_behaviors
              (sub_pointer !mutable_ct (at !mutable_ct 'Init))))
             &&
             ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
-             (forall i_9 : int.
-              ((((<=) (0) i_9) /\
-               ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
+             (forall i_11 : int.
+              ((((<=) (0) i_11) /\
+               ((<) i_11 (sub_pointer !mutable_cs (at !mutable_cs 'Init))))
+               ->
                (Bit_int8.(=)
-               (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
-               (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
+               (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_11))
+               (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_11))))))
             &&
             (#"/home/work/workspace/self/verker/strcmp.c" 17 20 74#
             ((=) (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))
@@ -2678,7 +2677,7 @@ module Function_strcmp_behaviors
             (mutable_cs :=
              (shift_  !mutable_cs
               (Unsafe_bit_int32.to_int 
-               (#"strcmp.jc" 263 45 57# "expl:Integer cast"
+               (#"strcmp.jc" 261 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
               (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
@@ -2691,7 +2690,7 @@ module Function_strcmp_behaviors
              (mutable_ct :=
               (shift_  !mutable_ct
                (Unsafe_bit_int32.to_int 
-                (#"strcmp.jc" 268 45 57# "expl:Integer cast"
+                (#"strcmp.jc" 266 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
                (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
@@ -2720,11 +2719,11 @@ module Function_strcmp_behaviors
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
               (tmp_1 :=
-               (#"strcmp.jc" 273 79 92# "expl:Integer cast"
+               (#"strcmp.jc" 271 79 92# "expl:Integer cast"
                (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
              else
               (tmp_1 :=
-               (#"strcmp.jc" 274 33 45# "expl:Integer cast"
+               (#"strcmp.jc" 272 33 45# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1))));
               begin
               (res := !tmp_1);
@@ -2732,39 +2731,43 @@ module Function_strcmp_behaviors
                (assert {
                (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
                "expl:Assertion in line 26"
-               (exists i_8 : int.
-                (((<=) (0) i_8) /\
-                (((<=) i_8
+               (exists i_12 : int.
+                (((<=) (0) i_12) /\
+                (((<=) i_12
                  (Uint64.to_int
                  (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))
                 /\
-                ((forall j : int.
-                  ((((<=) (0) j) /\ ((<) j i_8)) ->
+                ((forall j_0 : int.
+                  ((((<=) (0) j_0) /\ ((<) j_0 i_12)) ->
                    (Bit_int8.(=)
-                   (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) j))
-                   (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) j)))))
+                   (select charP_charM_cs_5
+                   (shift (at !mutable_cs 'Init) j_0))
+                   (select charP_charM_ct_6
+                   (shift (at !mutable_ct 'Init) j_0)))))
                 /\
                 ((Bit_int8.(<>)
-                 (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_8))
-                 (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_8)))
+                 (select charP_charM_cs_5
+                 (shift (at !mutable_cs 'Init) i_12))
+                 (select charP_charM_ct_6
+                 (shift (at !mutable_ct 'Init) i_12)))
                 /\
                 ((if
-                  (Bit_uint8.(<) (#"strcmp.jc" 294 68 173#
+                  (Bit_uint8.(<) (#"strcmp.jc" 292 68 171#
                   "expl:Integer cast"
                   (Bit_uint8_of_Bit_int8.cast_modulo
                   (select charP_charM_cs_5
-                  (shift (at !mutable_cs 'Init) i_8))))
-                  (#"strcmp.jc" 296 68 173# "expl:Integer cast"
+                  (shift (at !mutable_cs 'Init) i_12))))
+                  (#"strcmp.jc" 294 68 171# "expl:Integer cast"
                   (Bit_uint8_of_Bit_int8.cast_modulo
                   (select charP_charM_ct_6
-                  (shift (at !mutable_ct 'Init) i_8))))) then
-                  (Bit_int32.(=) !res (#"strcmp.jc" 299 65 81#
+                  (shift (at !mutable_ct 'Init) i_12))))) then
+                  (Bit_int32.(=) !res (#"strcmp.jc" 297 65 81#
                   "expl:Integer cast" (Bit_int32.of_int (Int.(-_) (1)))))
                   else
-                  (Bit_int32.(=) !res (#"strcmp.jc" 301 65 77#
+                  (Bit_int32.(=) !res (#"strcmp.jc" 299 65 77#
                   "expl:Integer cast" (Bit_int32.of_int_const 1))))
                 /\
-                ((=) i_8
+                ((=) i_12
                 (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                 (1)))))))))) }); () end;
                (if
@@ -2778,11 +2781,11 @@ module Function_strcmp_behaviors
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
                 (tmp_2 :=
-                 (#"strcmp.jc" 309 79 92# "expl:Integer cast"
+                 (#"strcmp.jc" 307 79 92# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
                else
                 (tmp_2 :=
-                 (#"strcmp.jc" 310 33 45# "expl:Integer cast"
+                 (#"strcmp.jc" 308 33 45# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int_const 1))));
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
@@ -2790,7 +2793,7 @@ module Function_strcmp_behaviors
             (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
-              (#"strcmp.jc" 317 46 58# "expl:Integer cast"
+              (#"strcmp.jc" 315 46 58# "expl:Integer cast"
               (Unsafe_bit_uint8.of_int_const 0)) ) ))
             then (raise (Goto_while_0_break_exc ())) else ());
             begin
@@ -2813,7 +2816,7 @@ module Function_strcmp_behaviors
        begin
        ();
         (__retres :=
-         (#"strcmp.jc" 333 27 39# "expl:Integer cast"
+         (#"strcmp.jc" 331 27 39# "expl:Integer cast"
          (Unsafe_bit_int32.of_int_const 0))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
       'Return_label:
@@ -2830,11 +2833,11 @@ module Function_strcmp_behaviors
    (tag_table voidP)) (charP_charM_cs_5 : (memory voidP Int8.t))
    (charP_charM_ct_6 : (memory voidP Int8.t)) 
    requires {
-   ((forall i_12 : int.
-     ((((<=) (0) i_12) /\
-      ((<=) i_12 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
-      (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_12))
-      (select charP_charM_ct_6 (shift ct i_12)))))
+   ((forall i_8 : int.
+     ((((<=) (0) i_8) /\
+      ((<=) i_8 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
+      (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_8))
+      (select charP_charM_ct_6 (shift ct i_8)))))
    /\
    (((allocated voidP_ct_6_alloc_table ct) ->
      (((=) (typeof voidP_ct_6_tag_table ct) charP_tag) /\
@@ -2886,27 +2889,27 @@ module Function_strcmp_behaviors
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
          (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
-         ((forall i_6 : int.
-           ((((<=) (0) i_6) /\
-            ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         ((forall i_9 : int.
+           ((((<=) (0) i_9) /\
+            ((<=) i_9 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
             ->
-            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_6))
-            (select charP_charM_ct_6 (shift !mutable_ct i_6)))))
+            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_9))
+            (select charP_charM_ct_6 (shift !mutable_ct i_9)))))
          <->
-         (forall i_7 : int.
-          ((((<=) (0) i_7) /\
-           ((<=) i_7 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         (forall i_10 : int.
+          ((((<=) (0) i_10) /\
+           ((<=) i_10 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
            ->
-           (Bit_uint8.(=) (#"strcmp.jc" 213 56 84# "expl:Integer cast"
+           (Bit_uint8.(=) (#"strcmp.jc" 211 56 82# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_cs_5 (shift !mutable_cs i_7))))
-           (#"strcmp.jc" 214 57 85# "expl:Integer cast"
+           (select charP_charM_cs_5 (shift !mutable_cs i_10))))
+           (#"strcmp.jc" 212 57 83# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_ct_6 (shift !mutable_ct i_7))))))))) } ; ()
+           (select charP_charM_ct_6 (shift !mutable_ct i_10))))))))) } ; ()
        end;
         'Loop_2:
         loop
-        invariant { (#"strcmp.jc" 218 6 6558# true) } 
+        invariant { (#"strcmp.jc" 216 6 6530# true) } 
          begin
          any unit
          requires { true } reads { mutable_cs, mutable_ct }
@@ -2918,12 +2921,12 @@ module Function_strcmp_behaviors
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
-            (forall i_9 : int.
-             ((((<=) (0) i_9) /\
-              ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
+            (forall i_11 : int.
+             ((((<=) (0) i_11) /\
+              ((<) i_11 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
               (Bit_int8.(=)
-              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
-              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
+              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_11))
+              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_11))))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
@@ -2990,7 +2993,7 @@ module Function_strcmp_behaviors
             (mutable_cs :=
              (shift_  !mutable_cs
               (Unsafe_bit_int32.to_int 
-               (#"strcmp.jc" 263 45 57# "expl:Integer cast"
+               (#"strcmp.jc" 261 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
               (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
@@ -3003,7 +3006,7 @@ module Function_strcmp_behaviors
              (mutable_ct :=
               (shift_  !mutable_ct
                (Unsafe_bit_int32.to_int 
-                (#"strcmp.jc" 268 45 57# "expl:Integer cast"
+                (#"strcmp.jc" 266 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
                (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
@@ -3032,11 +3035,11 @@ module Function_strcmp_behaviors
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
               (tmp_1 :=
-               (#"strcmp.jc" 273 79 92# "expl:Integer cast"
+               (#"strcmp.jc" 271 79 92# "expl:Integer cast"
                (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
              else
               (tmp_1 :=
-               (#"strcmp.jc" 274 33 45# "expl:Integer cast"
+               (#"strcmp.jc" 272 33 45# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1))));
               begin
               (res := !tmp_1);
@@ -3045,43 +3048,43 @@ module Function_strcmp_behaviors
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
                  (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
-                 (exists i_8 : int.
-                  (((<=) (0) i_8) /\
-                  (((<=) i_8
+                 (exists i_12 : int.
+                  (((<=) (0) i_12) /\
+                  (((<=) i_12
                    (Uint64.to_int
                    (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))
                   /\
-                  ((forall j : int.
-                    ((((<=) (0) j) /\ ((<) j i_8)) ->
+                  ((forall j_0 : int.
+                    ((((<=) (0) j_0) /\ ((<) j_0 i_12)) ->
                      (Bit_int8.(=)
                      (select charP_charM_cs_5
-                     (shift (at !mutable_cs 'Init) j))
+                     (shift (at !mutable_cs 'Init) j_0))
                      (select charP_charM_ct_6
-                     (shift (at !mutable_ct 'Init) j)))))
+                     (shift (at !mutable_ct 'Init) j_0)))))
                   /\
                   ((Bit_int8.(<>)
                    (select charP_charM_cs_5
-                   (shift (at !mutable_cs 'Init) i_8))
+                   (shift (at !mutable_cs 'Init) i_12))
                    (select charP_charM_ct_6
-                   (shift (at !mutable_ct 'Init) i_8)))
+                   (shift (at !mutable_ct 'Init) i_12)))
                   /\
                   ((if
-                    (Bit_uint8.(<) (#"strcmp.jc" 294 68 173#
+                    (Bit_uint8.(<) (#"strcmp.jc" 292 68 171#
                     "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_cs_5
-                    (shift (at !mutable_cs 'Init) i_8))))
-                    (#"strcmp.jc" 296 68 173# "expl:Integer cast"
+                    (shift (at !mutable_cs 'Init) i_12))))
+                    (#"strcmp.jc" 294 68 171# "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_ct_6
-                    (shift (at !mutable_ct 'Init) i_8))))) then
-                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 81#
+                    (shift (at !mutable_ct 'Init) i_12))))) then
+                    (Bit_int32.(=) !res (#"strcmp.jc" 297 65 81#
                     "expl:Integer cast" (Bit_int32.of_int (Int.(-_) (1)))))
                     else
-                    (Bit_int32.(=) !res (#"strcmp.jc" 301 65 77#
+                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 77#
                     "expl:Integer cast" (Bit_int32.of_int_const 1))))
                   /\
-                  ((=) i_8
+                  ((=) i_12
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
@@ -3095,11 +3098,11 @@ module Function_strcmp_behaviors
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
                 (tmp_2 :=
-                 (#"strcmp.jc" 309 79 92# "expl:Integer cast"
+                 (#"strcmp.jc" 307 79 92# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
                else
                 (tmp_2 :=
-                 (#"strcmp.jc" 310 33 45# "expl:Integer cast"
+                 (#"strcmp.jc" 308 33 45# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int_const 1))));
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
@@ -3107,7 +3110,7 @@ module Function_strcmp_behaviors
             (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
-              (#"strcmp.jc" 317 46 58# "expl:Integer cast"
+              (#"strcmp.jc" 315 46 58# "expl:Integer cast"
               (Unsafe_bit_uint8.of_int_const 0)) ) ))
             then (raise (Goto_while_0_break_exc ())) else ());
             begin
@@ -3131,7 +3134,7 @@ module Function_strcmp_behaviors
        begin
        ();
         (__retres :=
-         (#"strcmp.jc" 333 27 39# "expl:Integer cast"
+         (#"strcmp.jc" 331 27 39# "expl:Integer cast"
          (Unsafe_bit_int32.of_int_const 0))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
       'Return_label:
@@ -3148,11 +3151,11 @@ module Function_strcmp_behaviors
    (tag_table voidP)) (charP_charM_cs_5 : (memory voidP Int8.t))
    (charP_charM_ct_6 : (memory voidP Int8.t)) 
    requires {
-   ((exists i_10 : int.
-     (((<=) (0) i_10) /\
-     (((<=) i_10 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-     (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_10))
-     (select charP_charM_ct_6 (shift ct i_10))))))
+   ((exists i_6 : int.
+     (((<=) (0) i_6) /\
+     (((<=) i_6 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+     (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_6))
+     (select charP_charM_ct_6 (shift ct i_6))))))
    /\
    (((allocated voidP_ct_6_alloc_table ct) ->
      (((=) (typeof voidP_ct_6_tag_table ct) charP_tag) /\
@@ -3190,24 +3193,24 @@ module Function_strcmp_behaviors
      /\
      (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
      "expl:Ensures clause"
-     (exists i_11 : int.
-      (((<=) (0) i_11) /\
-      (((<=) i_11 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-      ((forall j_0 : int.
-        ((((<=) (0) j_0) /\ ((<) j_0 i_11)) ->
-         (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j_0))
-         (select charP_charM_ct_6 (shift ct j_0)))))
+     (exists i_7 : int.
+      (((<=) (0) i_7) /\
+      (((<=) i_7 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+      ((forall j : int.
+        ((((<=) (0) j) /\ ((<) j i_7)) ->
+         (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j))
+         (select charP_charM_ct_6 (shift ct j)))))
       /\
-      ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_11))
-       (select charP_charM_ct_6 (shift ct i_11)))
+      ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_7))
+       (select charP_charM_ct_6 (shift ct i_7)))
       /\
       (if
-       (Bit_uint8.(<) (#"strcmp.jc" 153 39 77# "expl:Integer cast"
+       (Bit_uint8.(<) (#"strcmp.jc" 153 39 76# "expl:Integer cast"
        (Bit_uint8_of_Bit_int8.cast_modulo
-       (select charP_charM_cs_5 (shift cs i_11)))) (#"strcmp.jc" 154 40 78#
+       (select charP_charM_cs_5 (shift cs i_7)))) (#"strcmp.jc" 154 40 77#
        "expl:Integer cast"
        (Bit_uint8_of_Bit_int8.cast_modulo
-       (select charP_charM_ct_6 (shift ct i_11))))) then
+       (select charP_charM_ct_6 (shift ct i_7))))) then
        (Bit_int32.(=) result (#"strcmp.jc" 156 36 52# "expl:Integer cast"
        (Bit_int32.of_int (Int.(-_) (1))))) else
        (Bit_int32.(=) result (#"strcmp.jc" 157 61 73# "expl:Integer cast"
@@ -3236,27 +3239,27 @@ module Function_strcmp_behaviors
        requires { true } reads { mutable_cs, mutable_ct }
        ensures {
          (#"/home/work/workspace/self/verker/strcmp.c" 7 14 166#
-         ((forall i_6 : int.
-           ((((<=) (0) i_6) /\
-            ((<=) i_6 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         ((forall i_9 : int.
+           ((((<=) (0) i_9) /\
+            ((<=) i_9 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
             ->
-            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_6))
-            (select charP_charM_ct_6 (shift !mutable_ct i_6)))))
+            (Bit_int8.(=) (select charP_charM_cs_5 (shift !mutable_cs i_9))
+            (select charP_charM_ct_6 (shift !mutable_ct i_9)))))
          <->
-         (forall i_7 : int.
-          ((((<=) (0) i_7) /\
-           ((<=) i_7 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
+         (forall i_10 : int.
+          ((((<=) (0) i_10) /\
+           ((<=) i_10 (Uint64.to_int (strlen !mutable_cs charP_charM_cs_5))))
            ->
-           (Bit_uint8.(=) (#"strcmp.jc" 213 56 84# "expl:Integer cast"
+           (Bit_uint8.(=) (#"strcmp.jc" 211 56 82# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_cs_5 (shift !mutable_cs i_7))))
-           (#"strcmp.jc" 214 57 85# "expl:Integer cast"
+           (select charP_charM_cs_5 (shift !mutable_cs i_10))))
+           (#"strcmp.jc" 212 57 83# "expl:Integer cast"
            (Bit_uint8_of_Bit_int8.cast_modulo
-           (select charP_charM_ct_6 (shift !mutable_ct i_7))))))))) } ; ()
+           (select charP_charM_ct_6 (shift !mutable_ct i_10))))))))) } ; ()
        end;
         'Loop_3:
         loop
-        invariant { (#"strcmp.jc" 218 6 6558# true) } 
+        invariant { (#"strcmp.jc" 216 6 6530# true) } 
          begin
          any unit
          requires { true } reads { mutable_cs, mutable_ct }
@@ -3268,12 +3271,12 @@ module Function_strcmp_behaviors
             (sub_pointer !mutable_cs (at !mutable_cs 'Init)))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 15 20 121#
-            (forall i_9 : int.
-             ((((<=) (0) i_9) /\
-              ((<) i_9 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
+            (forall i_11 : int.
+             ((((<=) (0) i_11) /\
+              ((<) i_11 (sub_pointer !mutable_cs (at !mutable_cs 'Init)))) ->
               (Bit_int8.(=)
-              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_9))
-              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_9))))))
+              (select charP_charM_cs_5 (shift (at !mutable_cs 'Init) i_11))
+              (select charP_charM_ct_6 (shift (at !mutable_ct 'Init) i_11))))))
            /\
            ((#"/home/work/workspace/self/verker/strcmp.c" 14 20 56#
             ((=) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
@@ -3340,7 +3343,7 @@ module Function_strcmp_behaviors
             (mutable_cs :=
              (shift_  !mutable_cs
               (Unsafe_bit_int32.to_int 
-               (#"strcmp.jc" 263 45 57# "expl:Integer cast"
+               (#"strcmp.jc" 261 45 57# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1)) ) ));
              (c1 :=
               (#"/home/work/workspace/self/verker/strcmp.c" 22 23 50#
@@ -3353,7 +3356,7 @@ module Function_strcmp_behaviors
              (mutable_ct :=
               (shift_  !mutable_ct
                (Unsafe_bit_int32.to_int 
-                (#"strcmp.jc" 268 45 57# "expl:Integer cast"
+                (#"strcmp.jc" 266 45 57# "expl:Integer cast"
                 (Unsafe_bit_int32.of_int_const 1)) ) ));
               (c2 :=
                (#"/home/work/workspace/self/verker/strcmp.c" 23 23 50#
@@ -3382,11 +3385,11 @@ module Function_strcmp_behaviors
               (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
              then
               (tmp_1 :=
-               (#"strcmp.jc" 273 79 92# "expl:Integer cast"
+               (#"strcmp.jc" 271 79 92# "expl:Integer cast"
                (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
              else
               (tmp_1 :=
-               (#"strcmp.jc" 274 33 45# "expl:Integer cast"
+               (#"strcmp.jc" 272 33 45# "expl:Integer cast"
                (Unsafe_bit_int32.of_int_const 1))));
               begin
               (res := !tmp_1);
@@ -3395,43 +3398,43 @@ module Function_strcmp_behaviors
                requires { true } reads { mutable_cs, mutable_ct }
                ensures {
                  (#"/home/work/workspace/self/verker/strcmp.c" 26 14 307#
-                 (exists i_8 : int.
-                  (((<=) (0) i_8) /\
-                  (((<=) i_8
+                 (exists i_12 : int.
+                  (((<=) (0) i_12) /\
+                  (((<=) i_12
                    (Uint64.to_int
                    (strlen (at !mutable_cs 'Init) charP_charM_cs_5)))
                   /\
-                  ((forall j : int.
-                    ((((<=) (0) j) /\ ((<) j i_8)) ->
+                  ((forall j_0 : int.
+                    ((((<=) (0) j_0) /\ ((<) j_0 i_12)) ->
                      (Bit_int8.(=)
                      (select charP_charM_cs_5
-                     (shift (at !mutable_cs 'Init) j))
+                     (shift (at !mutable_cs 'Init) j_0))
                      (select charP_charM_ct_6
-                     (shift (at !mutable_ct 'Init) j)))))
+                     (shift (at !mutable_ct 'Init) j_0)))))
                   /\
                   ((Bit_int8.(<>)
                    (select charP_charM_cs_5
-                   (shift (at !mutable_cs 'Init) i_8))
+                   (shift (at !mutable_cs 'Init) i_12))
                    (select charP_charM_ct_6
-                   (shift (at !mutable_ct 'Init) i_8)))
+                   (shift (at !mutable_ct 'Init) i_12)))
                   /\
                   ((if
-                    (Bit_uint8.(<) (#"strcmp.jc" 294 68 173#
+                    (Bit_uint8.(<) (#"strcmp.jc" 292 68 171#
                     "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_cs_5
-                    (shift (at !mutable_cs 'Init) i_8))))
-                    (#"strcmp.jc" 296 68 173# "expl:Integer cast"
+                    (shift (at !mutable_cs 'Init) i_12))))
+                    (#"strcmp.jc" 294 68 171# "expl:Integer cast"
                     (Bit_uint8_of_Bit_int8.cast_modulo
                     (select charP_charM_ct_6
-                    (shift (at !mutable_ct 'Init) i_8))))) then
-                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 81#
+                    (shift (at !mutable_ct 'Init) i_12))))) then
+                    (Bit_int32.(=) !res (#"strcmp.jc" 297 65 81#
                     "expl:Integer cast" (Bit_int32.of_int (Int.(-_) (1)))))
                     else
-                    (Bit_int32.(=) !res (#"strcmp.jc" 301 65 77#
+                    (Bit_int32.(=) !res (#"strcmp.jc" 299 65 77#
                     "expl:Integer cast" (Bit_int32.of_int_const 1))))
                   /\
-                  ((=) i_8
+                  ((=) i_12
                   (Int.(-) (sub_pointer !mutable_cs (at !mutable_cs 'Init))
                   (1)))))))))) } ; () end;
                (if
@@ -3445,11 +3448,11 @@ module Function_strcmp_behaviors
                 (Unsafe_bit_int32_of_Unsafe_bit_uint8.cast  !c2 )) ))
                then
                 (tmp_2 :=
-                 (#"strcmp.jc" 309 79 92# "expl:Integer cast"
+                 (#"strcmp.jc" 307 79 92# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int  (Int.(-_)  (1) ) )))
                else
                 (tmp_2 :=
-                 (#"strcmp.jc" 310 33 45# "expl:Integer cast"
+                 (#"strcmp.jc" 308 33 45# "expl:Integer cast"
                  (Unsafe_bit_int32.of_int_const 1))));
                begin (__retres := !tmp_2); (raise (Return_label_exc ())) end
               end end else ());
@@ -3457,7 +3460,7 @@ module Function_strcmp_behaviors
             (#"/home/work/workspace/self/verker/strcmp.c" 34 6 9#
             (Bool.notb 
              (Unsafe_bit_uint8.(<>)  !c1
-              (#"strcmp.jc" 317 46 58# "expl:Integer cast"
+              (#"strcmp.jc" 315 46 58# "expl:Integer cast"
               (Unsafe_bit_uint8.of_int_const 0)) ) ))
             then (raise (Goto_while_0_break_exc ())) else ());
             begin
@@ -3481,7 +3484,7 @@ module Function_strcmp_behaviors
        begin
        ();
         (__retres :=
-         (#"strcmp.jc" 333 27 39# "expl:Integer cast"
+         (#"strcmp.jc" 331 27 39# "expl:Integer cast"
          (Unsafe_bit_int32.of_int_const 0))) end end;
        (raise (Return_label_exc ())) end with Return_label_exc _jessie_2 ->
       'Return_label:
@@ -8831,11 +8834,11 @@ module Function_strcmp
          (charP_charM_cs_5 : (memory voidP Int8.t)) : Int32.t
           requires { true }
           ensures {
-            (((exists i_10 : int.
-               (((<=) (0) i_10) /\
-               (((<=) i_10 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-               (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_10))
-               (select charP_charM_ct_6 (shift ct i_10)))))) ->
+            (((exists i_6 : int.
+               (((<=) (0) i_6) /\
+               (((<=) i_6 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+               (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_6))
+               (select charP_charM_ct_6 (shift ct i_6)))))) ->
               (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
@@ -8850,34 +8853,34 @@ module Function_strcmp
               /\
               (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
               "expl:Ensures clause"
-              (exists i_11 : int.
-               (((<=) (0) i_11) /\
-               (((<=) i_11 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-               ((forall j_0 : int.
-                 ((((<=) (0) j_0) /\ ((<) j_0 i_11)) ->
-                  (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j_0))
-                  (select charP_charM_ct_6 (shift ct j_0)))))
+              (exists i_7 : int.
+               (((<=) (0) i_7) /\
+               (((<=) i_7 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+               ((forall j : int.
+                 ((((<=) (0) j) /\ ((<) j i_7)) ->
+                  (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j))
+                  (select charP_charM_ct_6 (shift ct j)))))
                /\
-               ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_11))
-                (select charP_charM_ct_6 (shift ct i_11)))
+               ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_7))
+                (select charP_charM_ct_6 (shift ct i_7)))
                /\
                (if
-                (Bit_uint8.(<) (#"strcmp.jc" 153 39 77# "expl:Integer cast"
+                (Bit_uint8.(<) (#"strcmp.jc" 153 39 76# "expl:Integer cast"
                 (Bit_uint8_of_Bit_int8.cast_modulo
-                (select charP_charM_cs_5 (shift cs i_11))))
-                (#"strcmp.jc" 154 40 78# "expl:Integer cast"
+                (select charP_charM_cs_5 (shift cs i_7))))
+                (#"strcmp.jc" 154 40 77# "expl:Integer cast"
                 (Bit_uint8_of_Bit_int8.cast_modulo
-                (select charP_charM_ct_6 (shift ct i_11))))) then
+                (select charP_charM_ct_6 (shift ct i_7))))) then
                 (Int32.(=) result (#"strcmp.jc" 156 36 52#
                 "expl:Integer cast" (Int32.of_int (Int.(-_) (1))))) else
                 (Int32.(=) result (#"strcmp.jc" 157 61 73#
                 "expl:Integer cast" (Int32.of_int (1)))))))))))))))
             /\
-            ((forall i_12 : int.
-              ((((<=) (0) i_12) /\
-               ((<=) i_12 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
-               (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_12))
-               (select charP_charM_ct_6 (shift ct i_12))))) ->
+            ((forall i_8 : int.
+              ((((<=) (0) i_8) /\
+               ((<=) i_8 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
+               (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_8))
+               (select charP_charM_ct_6 (shift ct i_8))))) ->
              (#"/home/work/workspace/self/verker/strcmp.h" 63 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"strcmp.jc" 136 31 43# "expl:Integer cast"
@@ -8935,11 +8938,11 @@ module Function_strcmp_safe
             "expl:Requires clause"
             (valid_str ct voidP_ct_6_alloc_table charP_charM_ct_6))))) }
           ensures {
-            (((exists i_10 : int.
-               (((<=) (0) i_10) /\
-               (((<=) i_10 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-               (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_10))
-               (select charP_charM_ct_6 (shift ct i_10)))))) ->
+            (((exists i_6 : int.
+               (((<=) (0) i_6) /\
+               (((<=) i_6 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+               (Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_6))
+               (select charP_charM_ct_6 (shift ct i_6)))))) ->
               (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker/strcmp.h" 66 15 44#
@@ -8954,34 +8957,34 @@ module Function_strcmp_safe
               /\
               (#"/home/work/workspace/self/verker/strcmp.h" 67 15 235#
               "expl:Ensures clause"
-              (exists i_11 : int.
-               (((<=) (0) i_11) /\
-               (((<=) i_11 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
-               ((forall j_0 : int.
-                 ((((<=) (0) j_0) /\ ((<) j_0 i_11)) ->
-                  (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j_0))
-                  (select charP_charM_ct_6 (shift ct j_0)))))
+              (exists i_7 : int.
+               (((<=) (0) i_7) /\
+               (((<=) i_7 (Uint64.to_int (strlen cs charP_charM_cs_5))) /\
+               ((forall j : int.
+                 ((((<=) (0) j) /\ ((<) j i_7)) ->
+                  (Bit_int8.(=) (select charP_charM_cs_5 (shift cs j))
+                  (select charP_charM_ct_6 (shift ct j)))))
                /\
-               ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_11))
-                (select charP_charM_ct_6 (shift ct i_11)))
+               ((Bit_int8.(<>) (select charP_charM_cs_5 (shift cs i_7))
+                (select charP_charM_ct_6 (shift ct i_7)))
                /\
                (if
-                (Bit_uint8.(<) (#"strcmp.jc" 153 39 77# "expl:Integer cast"
+                (Bit_uint8.(<) (#"strcmp.jc" 153 39 76# "expl:Integer cast"
                 (Bit_uint8_of_Bit_int8.cast_modulo
-                (select charP_charM_cs_5 (shift cs i_11))))
-                (#"strcmp.jc" 154 40 78# "expl:Integer cast"
+                (select charP_charM_cs_5 (shift cs i_7))))
+                (#"strcmp.jc" 154 40 77# "expl:Integer cast"
                 (Bit_uint8_of_Bit_int8.cast_modulo
-                (select charP_charM_ct_6 (shift ct i_11))))) then
+                (select charP_charM_ct_6 (shift ct i_7))))) then
                 (Int32.(=) result (#"strcmp.jc" 156 36 52#
                 "expl:Integer cast" (Int32.of_int (Int.(-_) (1))))) else
                 (Int32.(=) result (#"strcmp.jc" 157 61 73#
                 "expl:Integer cast" (Int32.of_int (1)))))))))))))))
             /\
-            ((forall i_12 : int.
-              ((((<=) (0) i_12) /\
-               ((<=) i_12 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
-               (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_12))
-               (select charP_charM_ct_6 (shift ct i_12))))) ->
+            ((forall i_8 : int.
+              ((((<=) (0) i_8) /\
+               ((<=) i_8 (Uint64.to_int (strlen cs charP_charM_cs_5)))) ->
+               (Bit_int8.(=) (select charP_charM_cs_5 (shift cs i_8))
+               (select charP_charM_ct_6 (shift ct i_8))))) ->
              (#"/home/work/workspace/self/verker/strcmp.h" 63 15 27#
              "expl:Ensures clause"
              (Int32.(=) result (#"strcmp.jc" 136 31 43# "expl:Integer cast"

@@ -2173,7 +2173,7 @@ module Function_strspn_0_safety
         "expl:Pointer index bounds" true) }); _jessie_17 end));
         'Loop_3:
         loop
-        invariant { (#"strspn.jc" 262 6 5854# true) }
+        invariant { (#"strspn.jc" 262 6 5786# true) }
           variant { (#"/home/work/workspace/self/verker/strspn.c" 16 18 37#
             (Int.(-) (Uint64.to_int (strlen s_0_0 charP_charM_s_0_8))
             (sub_pointer !p_1 s_0_0))) }
@@ -2189,25 +2189,25 @@ module Function_strspn_0_safety
             (valid_str !p_1 voidP_s_0_8_alloc_table charP_charM_s_0_8))
            /\
            ((#"/home/work/workspace/self/verker/strspn.c" 12 20 140#
-            (forall c_4 : (pointer voidP).
-             (((same_block s_0_0 c_4) /\
-              (((<=) (sub_pointer s_0_0 c_4) (0)) /\
-              ((same_block c_4 !p_1) /\ ((<) (sub_pointer c_4 !p_1) (0)))))
+            (forall c_3 : (pointer voidP).
+             (((same_block s_0_0 c_3) /\
+              (((<=) (sub_pointer s_0_0 c_3) (0)) /\
+              ((same_block c_3 !p_1) /\ ((<) (sub_pointer c_3 !p_1) (0)))))
               ->
-              (exists t : (pointer voidP).
-               ((same_block accept_0 t) /\
-               (((<=) (sub_pointer accept_0 t) (0)) /\
-               ((same_block t
+              (exists t_1 : (pointer voidP).
+               ((same_block accept_0 t_1) /\
+               (((<=) (sub_pointer accept_0 t_1) (0)) /\
+               ((same_block t_1
                 (shift accept_0
                 (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                /\
                (((<)
-                (sub_pointer t
+                (sub_pointer t_1
                 (shift accept_0
                 (Uint64.to_int (strlen accept_0 charP_charM_accept_9)))) (0))
                /\
-               (Int8.(=) (select charP_charM_s_0_8 c_4)
-               (select charP_charM_accept_9 t))))))))))
+               (Int8.(=) (select charP_charM_s_0_8 c_3)
+               (select charP_charM_accept_9 t_1))))))))))
            /\
            ((#"/home/work/workspace/self/verker/strspn.c" 11 20 34#
             ((=) (Uint64.to_int !count) (sub_pointer !p_1 s_0_0)))
@@ -2265,7 +2265,7 @@ module Function_strspn_0_safety
               "expl:Pointer index bounds" true) }); _jessie_18 end));
               'Loop_4:
               loop
-              invariant { (#"strspn.jc" 310 15 2377# true) }
+              invariant { (#"strspn.jc" 310 15 2321# true) }
                 variant {
                   (#"/home/work/workspace/self/verker/strspn.c" 23 19 48#
                   (Int.(-)
@@ -2286,12 +2286,12 @@ module Function_strspn_0_safety
                   charP_charM_accept_9))
                  /\
                  ((#"/home/work/workspace/self/verker/strspn.c" 20 21 66#
-                  (forall c_3 : (pointer voidP).
-                   (((same_block accept_0 c_3) /\
-                    (((<=) (sub_pointer accept_0 c_3) (0)) /\
-                    ((same_block c_3 !a) /\ ((<) (sub_pointer c_3 !a) (0)))))
+                  (forall c_4 : (pointer voidP).
+                   (((same_block accept_0 c_4) /\
+                    (((<=) (sub_pointer accept_0 c_4) (0)) /\
+                    ((same_block c_4 !a) /\ ((<) (sub_pointer c_4 !a) (0)))))
                     ->
-                    (Int8.(<>) (select charP_charM_accept_9 c_3)
+                    (Int8.(<>) (select charP_charM_accept_9 c_4)
                     (select charP_charM_s_0_8 !p_1)))))
                  /\
                  (#"/home/work/workspace/self/verker/strspn.c" 19 21 59#
@@ -2328,7 +2328,7 @@ module Function_strspn_0_safety
                    "expl:Pointer dereference"
                    (acc  voidP_accept_9_alloc_table charP_charM_accept_9 !a ))
                    ))
-                  (#"strspn.jc" 342 36 48# "expl:Integer cast"
+                  (#"strspn.jc" 341 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2352,7 +2352,7 @@ module Function_strspn_0_safety
                    (let _jessie_19 =
                    (shift_typesafe  !a
                     (Safe_int32.to_int 
-                     (#"strspn.jc" 349 49 61# "expl:Integer cast"
+                     (#"strspn.jc" 348 49 61# "expl:Integer cast"
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
@@ -2375,7 +2375,7 @@ module Function_strspn_0_safety
                 (#"/home/work/workspace/self/verker/strspn.c" 29 6 8#
                 "expl:Pointer dereference"
                 (acc  voidP_accept_9_alloc_table charP_charM_accept_9 !a )) ))
-               (#"strspn.jc" 354 30 42# "expl:Integer cast"
+               (#"strspn.jc" 353 30 42# "expl:Integer cast"
                (Safe_int32.of_int (0))) ))
               then
                begin
@@ -2405,7 +2405,7 @@ module Function_strspn_0_safety
               (count :=
                (let _jessie_21 =
                (Safe_uint64.(+)  !count
-                (#"strspn.jc" 373 61 74# "expl:Integer cast"
+                (#"strspn.jc" 372 61 74# "expl:Integer cast"
                 (Safe_uint64.of_int (1))) ) in
                begin
                (assert {
@@ -2415,7 +2415,7 @@ module Function_strspn_0_safety
              (let _jessie_22 =
              (shift_typesafe  !p_1
               (Safe_int32.to_int 
-               (#"strspn.jc" 375 40 52# "expl:Integer cast"
+               (#"strspn.jc" 374 40 52# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2441,7 +2441,7 @@ module Function_strspn_0_safety
      (return :=
       (let _jessie_25 = !__retres in
       begin
-      (assert { (#"strspn.jc" 381 7 22# "expl:Pointer index bounds" true) });
+      (assert { (#"strspn.jc" 380 7 22# "expl:Pointer index bounds" true) });
        _jessie_25 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end)
   
@@ -2561,20 +2561,20 @@ module Function_strspn_0_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/strspn.h" 64 12 87#
       "expl:Ensures clause"
-      (forall t_0 : (pointer voidP).
-       (((same_block accept_0 t_0) /\
-        (((<=) (sub_pointer accept_0 t_0) (0)) /\
-        ((same_block t_0
+      (forall t : (pointer voidP).
+       (((same_block accept_0 t) /\
+        (((<=) (sub_pointer accept_0 t) (0)) /\
+        ((same_block t
          (shift accept_0
          (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
         /\
         ((<)
-        (sub_pointer t_0
+        (sub_pointer t
         (shift accept_0
         (Uint64.to_int (strlen accept_0 charP_charM_accept_9)))) (0))))) ->
         (Int8.(<>)
         (select charP_charM_s_0_8 (shift s_0_0 (Uint64.to_int result)))
-        (select charP_charM_accept_9 t_0)))))
+        (select charP_charM_accept_9 t)))))
      /\
      (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
      "expl:Ensures clause"
@@ -2586,20 +2586,20 @@ module Function_strspn_0_behaviors
         ((same_block p_0 (shift s_0_0 (Uint64.to_int result))) /\
         ((<) (sub_pointer p_0 (shift s_0_0 (Uint64.to_int result))) (0)))))
         ->
-        (exists t_1 : (pointer voidP).
-         ((same_block accept_0 t_1) /\
-         (((<=) (sub_pointer accept_0 t_1) (0)) /\
-         ((same_block t_1
+        (exists t_0 : (pointer voidP).
+         ((same_block accept_0 t_0) /\
+         (((<=) (sub_pointer accept_0 t_0) (0)) /\
+         ((same_block t_0
           (shift accept_0
           (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
          /\
          (((<)
-          (sub_pointer t_1
+          (sub_pointer t_0
           (shift accept_0
           (Uint64.to_int (strlen accept_0 charP_charM_accept_9)))) (0))
          /\
          (Int8.(=) (select charP_charM_s_0_8 p_0)
-         (select charP_charM_accept_9 t_1))))))))))
+         (select charP_charM_accept_9 t_0))))))))))
      /\
      (#"/home/work/workspace/self/verker/strspn.h" 67 12 40#
      "expl:Ensures clause"
@@ -2658,26 +2658,26 @@ module Function_strspn_0_behaviors
              ((=) (Uint64.to_int !count) (sub_pointer !p_1 s_0_0)))
             &&
             ((#"/home/work/workspace/self/verker/strspn.c" 12 20 140#
-             (forall c_4 : (pointer voidP).
-              (((same_block s_0_0 c_4) /\
-               (((<=) (sub_pointer s_0_0 c_4) (0)) /\
-               ((same_block c_4 !p_1) /\ ((<) (sub_pointer c_4 !p_1) (0)))))
+             (forall c_3 : (pointer voidP).
+              (((same_block s_0_0 c_3) /\
+               (((<=) (sub_pointer s_0_0 c_3) (0)) /\
+               ((same_block c_3 !p_1) /\ ((<) (sub_pointer c_3 !p_1) (0)))))
                ->
-               (exists t : (pointer voidP).
-                ((same_block accept_0 t) /\
-                (((<=) (sub_pointer accept_0 t) (0)) /\
-                ((same_block t
+               (exists t_1 : (pointer voidP).
+                ((same_block accept_0 t_1) /\
+                (((<=) (sub_pointer accept_0 t_1) (0)) /\
+                ((same_block t_1
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                 /\
                 (((<)
-                 (sub_pointer t
+                 (sub_pointer t_1
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                  (0))
                 /\
-                (Int8.(=) (select charP_charM_s_0_8 c_4)
-                (select charP_charM_accept_9 t))))))))))
+                (Int8.(=) (select charP_charM_s_0_8 c_3)
+                (select charP_charM_accept_9 t_1))))))))))
             &&
             ((#"/home/work/workspace/self/verker/strspn.c" 14 20 32#
              (valid_str !p_1 voidP_s_0_8_alloc_table charP_charM_s_0_8))
@@ -2730,12 +2730,12 @@ module Function_strspn_0_behaviors
                    (0))))))))))
                   &&
                   ((#"/home/work/workspace/self/verker/strspn.c" 20 21 66#
-                   (forall c_3 : (pointer voidP).
-                    (((same_block accept_0 c_3) /\
-                     (((<=) (sub_pointer accept_0 c_3) (0)) /\
-                     ((same_block c_3 !a) /\ ((<) (sub_pointer c_3 !a) (0)))))
+                   (forall c_4 : (pointer voidP).
+                    (((same_block accept_0 c_4) /\
+                     (((<=) (sub_pointer accept_0 c_4) (0)) /\
+                     ((same_block c_4 !a) /\ ((<) (sub_pointer c_4 !a) (0)))))
                      ->
-                     (Int8.(<>) (select charP_charM_accept_9 c_3)
+                     (Int8.(<>) (select charP_charM_accept_9 c_4)
                      (select charP_charM_s_0_8 !p_1)))))
                   &&
                   ((#"/home/work/workspace/self/verker/strspn.c" 21 21 33#
@@ -2759,7 +2759,7 @@ module Function_strspn_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_accept_9 !a ) ))
-                  (#"strspn.jc" 342 36 48# "expl:Integer cast"
+                  (#"strspn.jc" 341 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2777,7 +2777,7 @@ module Function_strspn_0_behaviors
                   (a :=
                    (shift_  !a
                     (Unsafe_int32.to_int 
-                     (#"strspn.jc" 349 49 61# "expl:Integer cast"
+                     (#"strspn.jc" 348 49 61# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -2794,7 +2794,7 @@ module Function_strspn_0_behaviors
                "expl:Integer cast"
                (Unsafe_int32_of_Unsafe_int8.cast 
                 (acc  charP_charM_accept_9 !a ) ))
-               (#"strspn.jc" 354 30 42# "expl:Integer cast"
+               (#"strspn.jc" 353 30 42# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
               then
                begin
@@ -2815,12 +2815,12 @@ module Function_strspn_0_behaviors
               charP_charM_accept_9)) }); () end;
               (count :=
                (Unsafe_uint64.(+)  !count
-                (#"strspn.jc" 373 61 74# "expl:Integer cast"
+                (#"strspn.jc" 372 61 74# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end;
             (p_1 :=
              (shift_  !p_1
               (Unsafe_int32.to_int 
-               (#"strspn.jc" 375 40 52# "expl:Integer cast"
+               (#"strspn.jc" 374 40 52# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -8273,22 +8273,22 @@ module Function_strspn_0
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker/strspn.h" 64 12 87#
              "expl:Ensures clause"
-             (forall t_0 : (pointer voidP).
-              (((same_block accept_0 t_0) /\
-               (((<=) (sub_pointer accept_0 t_0) (0)) /\
-               ((same_block t_0
+             (forall t : (pointer voidP).
+              (((same_block accept_0 t) /\
+               (((<=) (sub_pointer accept_0 t) (0)) /\
+               ((same_block t
                 (shift accept_0
                 (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                /\
                ((<)
-               (sub_pointer t_0
+               (sub_pointer t
                (shift accept_0
                (Uint64.to_int (strlen accept_0 charP_charM_accept_9)))) (0)))))
                ->
                (Int8.(<>)
                (select charP_charM_s_0_8
                (shift s_0_0 (Uint64.to_int result)))
-               (select charP_charM_accept_9 t_0)))))
+               (select charP_charM_accept_9 t)))))
             /\
             (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
             "expl:Ensures clause"
@@ -8300,21 +8300,21 @@ module Function_strspn_0
                ((same_block p_0 (shift s_0_0 (Uint64.to_int result))) /\
                ((<) (sub_pointer p_0 (shift s_0_0 (Uint64.to_int result)))
                (0))))) ->
-               (exists t_1 : (pointer voidP).
-                ((same_block accept_0 t_1) /\
-                (((<=) (sub_pointer accept_0 t_1) (0)) /\
-                ((same_block t_1
+               (exists t_0 : (pointer voidP).
+                ((same_block accept_0 t_0) /\
+                (((<=) (sub_pointer accept_0 t_0) (0)) /\
+                ((same_block t_0
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                 /\
                 (((<)
-                 (sub_pointer t_1
+                 (sub_pointer t_0
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_s_0_8 p_0)
-                (select charP_charM_accept_9 t_1))))))))))
+                (select charP_charM_accept_9 t_0))))))))))
             /\
             (#"/home/work/workspace/self/verker/strspn.h" 67 12 40#
             "expl:Ensures clause"
@@ -8386,22 +8386,22 @@ module Function_strspn_0_safe
             "expl:Ensures clause"
             ((#"/home/work/workspace/self/verker/strspn.h" 64 12 87#
              "expl:Ensures clause"
-             (forall t_0 : (pointer voidP).
-              (((same_block accept_0 t_0) /\
-               (((<=) (sub_pointer accept_0 t_0) (0)) /\
-               ((same_block t_0
+             (forall t : (pointer voidP).
+              (((same_block accept_0 t) /\
+               (((<=) (sub_pointer accept_0 t) (0)) /\
+               ((same_block t
                 (shift accept_0
                 (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                /\
                ((<)
-               (sub_pointer t_0
+               (sub_pointer t
                (shift accept_0
                (Uint64.to_int (strlen accept_0 charP_charM_accept_9)))) (0)))))
                ->
                (Int8.(<>)
                (select charP_charM_s_0_8
                (shift s_0_0 (Uint64.to_int result)))
-               (select charP_charM_accept_9 t_0)))))
+               (select charP_charM_accept_9 t)))))
             /\
             (#"/home/work/workspace/self/verker/strspn.h" 63 12 37#
             "expl:Ensures clause"
@@ -8413,21 +8413,21 @@ module Function_strspn_0_safe
                ((same_block p_0 (shift s_0_0 (Uint64.to_int result))) /\
                ((<) (sub_pointer p_0 (shift s_0_0 (Uint64.to_int result)))
                (0))))) ->
-               (exists t_1 : (pointer voidP).
-                ((same_block accept_0 t_1) /\
-                (((<=) (sub_pointer accept_0 t_1) (0)) /\
-                ((same_block t_1
+               (exists t_0 : (pointer voidP).
+                ((same_block accept_0 t_0) /\
+                (((<=) (sub_pointer accept_0 t_0) (0)) /\
+                ((same_block t_0
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                 /\
                 (((<)
-                 (sub_pointer t_1
+                 (sub_pointer t_0
                  (shift accept_0
                  (Uint64.to_int (strlen accept_0 charP_charM_accept_9))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_s_0_8 p_0)
-                (select charP_charM_accept_9 t_1))))))))))
+                (select charP_charM_accept_9 t_0))))))))))
             /\
             (#"/home/work/workspace/self/verker/strspn.h" 67 12 40#
             "expl:Ensures clause"

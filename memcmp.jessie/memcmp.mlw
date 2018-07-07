@@ -2041,7 +2041,7 @@ module Function_memcmp_safety
       begin
       (res :=
        (let _jessie_37 =
-       (#"memcmp.jc" 126 21 33# "expl:Integer cast" (Safe_int32.of_int (0)))
+       (#"memcmp.jc" 125 21 33# "expl:Integer cast" (Safe_int32.of_int (0)))
        in
        begin
        (assert {
@@ -2067,7 +2067,7 @@ module Function_memcmp_safety
          "expl:Pointer index bounds" true) }); _jessie_31 end));
          'Loop_4:
          loop
-         invariant { (#"memcmp.jc" 130 6 3381# true) }
+         invariant { (#"memcmp.jc" 129 6 3381# true) }
            variant { (#"/home/work/workspace/self/verker/memcmp.c" 64 18 23#
              (Uint64.to_int
              (#"/home/work/workspace/self/verker/memcmp.c" 64 18 23#
@@ -2077,22 +2077,22 @@ module Function_memcmp_safety
           requires { true } reads { cs, ct, mutable_count }
           ensures {
             ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
-             (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
+             (Int32.(=) !res (#"memcmp.jc" 172 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
-             (forall i : int.
-              ((((<=) (0) i) /\
-               ((<) i
+             (forall i_4 : int.
+              ((((<=) (0) i_4) /\
+               ((<) i_4
                (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
                (Uint64.to_int !mutable_count)))) ->
                (Uint8.(=)
                (select unsigned_charP_unsigned_charM_cs_2
                (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-               i))
+               i_4))
                (select unsigned_charP_unsigned_charM_ct_3
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-               i))))))
+               i_4))))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
              (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
@@ -2163,7 +2163,7 @@ module Function_memcmp_safety
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
-             (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
+             (Uint64.(<=) (#"memcmp.jc" 131 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
             (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
@@ -2174,7 +2174,7 @@ module Function_memcmp_safety
             (if
             (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Safe_uint64.(<) 
-             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (#"memcmp.jc" 179 26 39# "expl:Integer cast"
              (Safe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2202,7 +2202,7 @@ module Function_memcmp_safety
               (if
               (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Safe_int32.(<>)  !res
-               (#"memcmp.jc" 184 33 45# "expl:Integer cast"
+               (#"memcmp.jc" 183 33 45# "expl:Integer cast"
                (Safe_int32.of_int (0))) ))
               then (raise (Goto_while_0_break_exc ())) else ());
               begin
@@ -2210,7 +2210,7 @@ module Function_memcmp_safety
                (let _jessie_33 =
                (shift_typesafe  !su1
                 (Safe_int32.to_int 
-                 (#"memcmp.jc" 186 44 56# "expl:Integer cast"
+                 (#"memcmp.jc" 185 44 56# "expl:Integer cast"
                  (Safe_int32.of_int (1))) ) ) in
                begin
                (assert {
@@ -2221,7 +2221,7 @@ module Function_memcmp_safety
                 (let _jessie_34 =
                 (shift_typesafe  !su2
                  (Safe_int32.to_int 
-                  (#"memcmp.jc" 187 44 56# "expl:Integer cast"
+                  (#"memcmp.jc" 186 44 56# "expl:Integer cast"
                   (Safe_int32.of_int (1))) ) ) in
                 begin
                 (assert {
@@ -2230,7 +2230,7 @@ module Function_memcmp_safety
                 (mutable_count :=
                  (let _jessie_35 =
                  (Safe_uint64.(-)  !mutable_count
-                  (#"memcmp.jc" 188 58 71# "expl:Integer cast"
+                  (#"memcmp.jc" 187 58 71# "expl:Integer cast"
                   (Safe_uint64.of_int (1))) ) in
                  begin
                  (assert {
@@ -2255,7 +2255,7 @@ module Function_memcmp_safety
         (return :=
          (let _jessie_39 = !__retres in
          begin
-         (assert { (#"memcmp.jc" 194 7 22# "expl:Pointer index bounds" true)
+         (assert { (#"memcmp.jc" 193 7 22# "expl:Pointer index bounds" true)
          }); _jessie_39 end)); (raise Return) end end end end)))); absurd 
     end with Return -> !return end))
   
@@ -2418,43 +2418,43 @@ module Function_memcmp_behaviors
    try
     begin
     (check {
-    (#"memcmp.jc" 96 10 757# "expl:Behavior disjointness check"
+    (#"memcmp.jc" 96 10 747# "expl:Behavior disjointness check"
     (not
-    ((forall i_2_0 : int.
-      ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int !mutable_count))) ->
+    ((forall i_1_0 : int.
+      ((((<=) (0) i_1_0) /\ ((<) i_1_0 (Uint64.to_int !mutable_count))) ->
        (Uint8.(=)
        (select unsigned_charP_unsigned_charM_cs_2
-       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_2_0))
+       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_1_0))
        (select unsigned_charP_unsigned_charM_ct_3
-       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_2_0)))))
+       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_1_0)))))
     /\
-    (exists i_0_0 : int.
-     (((<=) (0) i_0_0) /\
-     (((<) i_0_0 (Uint64.to_int !mutable_count)) /\
+    (exists i_2 : int.
+     (((<=) (0) i_2) /\
+     (((<) i_2 (Uint64.to_int !mutable_count)) /\
      (Uint8.(<>)
      (select unsigned_charP_unsigned_charM_cs_2
-     (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_0_0))
+     (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_2))
      (select unsigned_charP_unsigned_charM_ct_3
-     (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_0_0)))))))))
+     (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_2)))))))))
     });
      (check {
-     (#"memcmp.jc" 107 10 726# "expl:Behavior completeness check"
-     ((exists i_0_1 : int.
-       (((<=) (0) i_0_1) /\
-       (((<) i_0_1 (Uint64.to_int !mutable_count)) /\
+     (#"memcmp.jc" 107 10 678# "expl:Behavior completeness check"
+     ((exists i_3 : int.
+       (((<=) (0) i_3) /\
+       (((<) i_3 (Uint64.to_int !mutable_count)) /\
        (Uint8.(<>)
        (select unsigned_charP_unsigned_charM_cs_2
-       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_0_1))
+       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_3))
        (select unsigned_charP_unsigned_charM_ct_3
-       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_0_1))))))
+       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_3))))))
      \/
-     (forall i_2_1 : int.
-      ((((<=) (0) i_2_1) /\ ((<) i_2_1 (Uint64.to_int !mutable_count))) ->
+     (forall i_1_1 : int.
+      ((((<=) (0) i_1_1) /\ ((<) i_1_1 (Uint64.to_int !mutable_count))) ->
        (Uint8.(=)
        (select unsigned_charP_unsigned_charM_cs_2
-       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_2_1))
+       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_1_1))
        (select unsigned_charP_unsigned_charM_ct_3
-       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_2_1)))))))
+       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_1_1)))))))
      });
      (let su1 = ref (any_pointer  () : (pointer voidP)) in
      (let su2 = ref (any_pointer  () : (pointer voidP)) in
@@ -2463,7 +2463,7 @@ module Function_memcmp_behaviors
      try
       begin
       (res :=
-       (#"memcmp.jc" 126 21 33# "expl:Integer cast"
+       (#"memcmp.jc" 125 21 33# "expl:Integer cast"
        (Unsafe_int32.of_int (0))));
        begin
        (su1 := (downcast_  voidP_cs_2_tag_table cs (unsigned_charP_tag  ) ));
@@ -2475,7 +2475,7 @@ module Function_memcmp_behaviors
            { ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
               (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
               ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
-               (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
+               (Uint64.(<=) (#"memcmp.jc" 131 38 51# "expl:Integer cast"
                (Uint64.of_int (0))) !mutable_count))
               /\
               (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
@@ -2548,21 +2548,21 @@ module Function_memcmp_behaviors
               (Uint64.to_int !mutable_count)))))))
              &&
              ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
-              (forall i : int.
-               ((((<=) (0) i) /\
-                ((<) i
+              (forall i_4 : int.
+               ((((<=) (0) i_4) /\
+                ((<) i_4
                 (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
                 (Uint64.to_int !mutable_count)))) ->
                 (Uint8.(=)
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i))
+                i_4))
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i))))))
+                i_4))))))
              &&
              (#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
-             (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
+             (Int32.(=) !res (#"memcmp.jc" 172 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))))))) } 
           begin
           any unit requires { true } ensures { true } ;
@@ -2572,7 +2572,7 @@ module Function_memcmp_behaviors
             (if
             (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (#"memcmp.jc" 179 26 39# "expl:Integer cast"
              (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2589,24 +2589,24 @@ module Function_memcmp_behaviors
               (if
               (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
-               (#"memcmp.jc" 184 33 45# "expl:Integer cast"
+               (#"memcmp.jc" 183 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
               then (raise (Goto_while_0_break_exc ())) else ());
               begin
               (su1 :=
                (shift_  !su1
                 (Unsafe_int32.to_int 
-                 (#"memcmp.jc" 186 44 56# "expl:Integer cast"
+                 (#"memcmp.jc" 185 44 56# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                begin
                (su2 :=
                 (shift_  !su2
                  (Unsafe_int32.to_int 
-                  (#"memcmp.jc" 187 44 56# "expl:Integer cast"
+                  (#"memcmp.jc" 186 44 56# "expl:Integer cast"
                   (Unsafe_int32.of_int (1))) ) ));
                 (mutable_count :=
                  (Unsafe_uint64.(-)  !mutable_count
-                  (#"memcmp.jc" 188 58 71# "expl:Integer cast"
+                  (#"memcmp.jc" 187 58 71# "expl:Integer cast"
                   (Unsafe_uint64.of_int (1))) )) end end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2630,14 +2630,14 @@ module Function_memcmp_behaviors
    (unsigned_charP_unsigned_charM_cs_2 : (memory voidP Uint8.t))
    (unsigned_charP_unsigned_charM_ct_3 : (memory voidP Uint8.t)) 
    requires {
-   ((exists i_0 : int.
-     (((<=) (0) i_0) /\
-     (((<) i_0 (Uint64.to_int count)) /\
+   ((exists i : int.
+     (((<=) (0) i) /\
+     (((<) i (Uint64.to_int count)) /\
      (Uint8.(<>)
      (select unsigned_charP_unsigned_charM_cs_2
-     (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_0))
+     (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i))
      (select unsigned_charP_unsigned_charM_ct_3
-     (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_0))))))
+     (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i))))))
    /\
    (((allocated voidP_ct_3_alloc_table ct) ->
      ((instanceof voidP_ct_3_tag_table ct voidP_tag) /\
@@ -2715,11 +2715,11 @@ module Function_memcmp_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
      "expl:Ensures clause"
-     (exists i_1 : int.
-      (((<=) (0) i_1) /\
-      (((<) i_1 (Uint64.to_int count)) /\
+     (exists i_0 : int.
+      (((<=) (0) i_0) /\
+      (((<) i_0 (Uint64.to_int count)) /\
       ((forall j : int.
-        ((((<=) (0) j) /\ ((<) j i_1)) ->
+        ((((<=) (0) j) /\ ((<) j i_0)) ->
          (Uint8.(=)
          (select unsigned_charP_unsigned_charM_cs_2
          (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) j))
@@ -2728,18 +2728,18 @@ module Function_memcmp_behaviors
       /\
       ((Uint8.(<>)
        (select unsigned_charP_unsigned_charM_cs_2
-       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_1))
+       (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_0))
        (select unsigned_charP_unsigned_charM_ct_3
-       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_1)))
+       (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_0)))
       /\
       ((=) (Int32.to_int result)
       (Int.(-)
       (Uint8.to_int
       (select unsigned_charP_unsigned_charM_cs_2
-      (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_1)))
+      (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_0)))
       (Uint8.to_int
       (select unsigned_charP_unsigned_charM_ct_3
-      (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_1))))))))))))
+      (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_0))))))))))))
      } diverges  ->
    (let mutable_count = ref count in
    'Init:
@@ -2754,7 +2754,7 @@ module Function_memcmp_behaviors
      try
       begin
       (res :=
-       (#"memcmp.jc" 126 21 33# "expl:Integer cast"
+       (#"memcmp.jc" 125 21 33# "expl:Integer cast"
        (Unsafe_int32.of_int (0))));
        begin
        (su1 := (downcast_  voidP_cs_2_tag_table cs (unsigned_charP_tag  ) ));
@@ -2762,28 +2762,28 @@ module Function_memcmp_behaviors
         (su2 := (downcast_  voidP_ct_3_tag_table ct (unsigned_charP_tag  ) ));
          'Loop_3:
          loop
-         invariant { (#"memcmp.jc" 130 6 3381# true) } 
+         invariant { (#"memcmp.jc" 129 6 3381# true) } 
           begin
           any unit
           requires { true } reads { cs, ct, mutable_count }
           ensures {
             ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
-             (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
+             (Int32.(=) !res (#"memcmp.jc" 172 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
-             (forall i : int.
-              ((((<=) (0) i) /\
-               ((<) i
+             (forall i_4 : int.
+              ((((<=) (0) i_4) /\
+               ((<) i_4
                (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
                (Uint64.to_int !mutable_count)))) ->
                (Uint8.(=)
                (select unsigned_charP_unsigned_charM_cs_2
                (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-               i))
+               i_4))
                (select unsigned_charP_unsigned_charM_ct_3
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-               i))))))
+               i_4))))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
              (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
@@ -2854,7 +2854,7 @@ module Function_memcmp_behaviors
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
-             (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
+             (Uint64.(<=) (#"memcmp.jc" 131 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
             (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
@@ -2865,7 +2865,7 @@ module Function_memcmp_behaviors
             (if
             (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (#"memcmp.jc" 179 26 39# "expl:Integer cast"
              (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -2882,24 +2882,24 @@ module Function_memcmp_behaviors
               (if
               (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
-               (#"memcmp.jc" 184 33 45# "expl:Integer cast"
+               (#"memcmp.jc" 183 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
               then (raise (Goto_while_0_break_exc ())) else ());
               begin
               (su1 :=
                (shift_  !su1
                 (Unsafe_int32.to_int 
-                 (#"memcmp.jc" 186 44 56# "expl:Integer cast"
+                 (#"memcmp.jc" 185 44 56# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                begin
                (su2 :=
                 (shift_  !su2
                  (Unsafe_int32.to_int 
-                  (#"memcmp.jc" 187 44 56# "expl:Integer cast"
+                  (#"memcmp.jc" 186 44 56# "expl:Integer cast"
                   (Unsafe_int32.of_int (1))) ) ));
                 (mutable_count :=
                  (Unsafe_uint64.(-)  !mutable_count
-                  (#"memcmp.jc" 188 58 71# "expl:Integer cast"
+                  (#"memcmp.jc" 187 58 71# "expl:Integer cast"
                   (Unsafe_uint64.of_int (1))) )) end end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2923,13 +2923,13 @@ module Function_memcmp_behaviors
    (unsigned_charP_unsigned_charM_cs_2 : (memory voidP Uint8.t))
    (unsigned_charP_unsigned_charM_ct_3 : (memory voidP Uint8.t)) 
    requires {
-   ((forall i_2 : int.
-     ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int count))) ->
+   ((forall i_1 : int.
+     ((((<=) (0) i_1) /\ ((<) i_1 (Uint64.to_int count))) ->
       (Uint8.(=)
       (select unsigned_charP_unsigned_charM_cs_2
-      (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_2))
+      (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag) i_1))
       (select unsigned_charP_unsigned_charM_ct_3
-      (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_2)))))
+      (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag) i_1)))))
    /\
    (((allocated voidP_ct_3_alloc_table ct) ->
      ((instanceof voidP_ct_3_tag_table ct voidP_tag) /\
@@ -3022,7 +3022,7 @@ module Function_memcmp_behaviors
      try
       begin
       (res :=
-       (#"memcmp.jc" 126 21 33# "expl:Integer cast"
+       (#"memcmp.jc" 125 21 33# "expl:Integer cast"
        (Unsafe_int32.of_int (0))));
        begin
        (su1 := (downcast_  voidP_cs_2_tag_table cs (unsigned_charP_tag  ) ));
@@ -3030,28 +3030,28 @@ module Function_memcmp_behaviors
         (su2 := (downcast_  voidP_ct_3_tag_table ct (unsigned_charP_tag  ) ));
          'Loop_2:
          loop
-         invariant { (#"memcmp.jc" 130 6 3381# true) } 
+         invariant { (#"memcmp.jc" 129 6 3381# true) } 
           begin
           any unit
           requires { true } reads { cs, ct, mutable_count }
           ensures {
             ((#"/home/work/workspace/self/verker/memcmp.c" 62 20 28#
-             (Int32.(=) !res (#"memcmp.jc" 173 34 46# "expl:Integer cast"
+             (Int32.(=) !res (#"memcmp.jc" 172 34 46# "expl:Integer cast"
              (Int32.of_int (0)))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 58 20 125#
-             (forall i : int.
-              ((((<=) (0) i) /\
-               ((<) i
+             (forall i_4 : int.
+              ((((<=) (0) i_4) /\
+               ((<) i_4
                (Int.(-) (Uint64.to_int (at !mutable_count 'Init))
                (Uint64.to_int !mutable_count)))) ->
                (Uint8.(=)
                (select unsigned_charP_unsigned_charM_cs_2
                (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-               i))
+               i_4))
                (select unsigned_charP_unsigned_charM_ct_3
                (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-               i))))))
+               i_4))))))
             /\
             ((#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
              (#"/home/work/workspace/self/verker/memcmp.c" 55 20 118#
@@ -3122,7 +3122,7 @@ module Function_memcmp_behaviors
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             (#"/home/work/workspace/self/verker/memcmp.c" 52 20 48#
             ((#"/home/work/workspace/self/verker/memcmp.c" 52 20 30#
-             (Uint64.(<=) (#"memcmp.jc" 132 38 51# "expl:Integer cast"
+             (Uint64.(<=) (#"memcmp.jc" 131 38 51# "expl:Integer cast"
              (Uint64.of_int (0))) !mutable_count))
             /\
             (#"/home/work/workspace/self/verker/memcmp.c" 52 25 48#
@@ -3133,7 +3133,7 @@ module Function_memcmp_behaviors
             (if
             (#"/home/work/workspace/self/verker/memcmp.c" 66 26 35#
             (Unsafe_uint64.(<) 
-             (#"memcmp.jc" 180 26 39# "expl:Integer cast"
+             (#"memcmp.jc" 179 26 39# "expl:Integer cast"
              (Unsafe_uint64.of_int (0))) !mutable_count )) then ()
             else (raise (Goto_while_0_break_exc ())));
              begin
@@ -3150,24 +3150,24 @@ module Function_memcmp_behaviors
               (if
               (#"/home/work/workspace/self/verker/memcmp.c" 67 6 30#
               (Unsafe_int32.(<>)  !res
-               (#"memcmp.jc" 184 33 45# "expl:Integer cast"
+               (#"memcmp.jc" 183 33 45# "expl:Integer cast"
                (Unsafe_int32.of_int (0))) ))
               then (raise (Goto_while_0_break_exc ())) else ());
               begin
               (su1 :=
                (shift_  !su1
                 (Unsafe_int32.to_int 
-                 (#"memcmp.jc" 186 44 56# "expl:Integer cast"
+                 (#"memcmp.jc" 185 44 56# "expl:Integer cast"
                  (Unsafe_int32.of_int (1))) ) ));
                begin
                (su2 :=
                 (shift_  !su2
                  (Unsafe_int32.to_int 
-                  (#"memcmp.jc" 187 44 56# "expl:Integer cast"
+                  (#"memcmp.jc" 186 44 56# "expl:Integer cast"
                   (Unsafe_int32.of_int (1))) ) ));
                 (mutable_count :=
                  (Unsafe_uint64.(-)  !mutable_count
-                  (#"memcmp.jc" 188 58 71# "expl:Integer cast"
+                  (#"memcmp.jc" 187 58 71# "expl:Integer cast"
                   (Unsafe_uint64.of_int (1))) )) end end end end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -8571,23 +8571,23 @@ module Function_memcmp
            Int32.t
            requires { true }
            ensures {
-             (((exists i_0 : int.
-                (((<=) (0) i_0) /\
-                (((<) i_0 (Uint64.to_int count)) /\
+             (((exists i : int.
+                (((<=) (0) i) /\
+                (((<) i (Uint64.to_int count)) /\
                 (Uint8.(<>)
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_0))
+                i))
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_0)))))) ->
+                i)))))) ->
                (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
                "expl:Ensures clause"
-               (exists i_1 : int.
-                (((<=) (0) i_1) /\
-                (((<) i_1 (Uint64.to_int count)) /\
+               (exists i_0 : int.
+                (((<=) (0) i_0) /\
+                (((<) i_0 (Uint64.to_int count)) /\
                 ((forall j : int.
-                  ((((<=) (0) j) /\ ((<) j i_1)) ->
+                  ((((<=) (0) j) /\ ((<) j i_0)) ->
                    (Uint8.(=)
                    (select unsigned_charP_unsigned_charM_cs_2
                    (shift
@@ -8599,31 +8599,31 @@ module Function_memcmp
                 ((Uint8.(<>)
                  (select unsigned_charP_unsigned_charM_cs_2
                  (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                 i_1))
+                 i_0))
                  (select unsigned_charP_unsigned_charM_ct_3
                  (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                 i_1)))
+                 i_0)))
                 /\
                 ((=) (Int32.to_int result)
                 (Int.(-)
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_1)))
+                i_0)))
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_1))))))))))))
+                i_0))))))))))))
              /\
-             ((forall i_2 : int.
-               ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int count))) ->
+             ((forall i_1 : int.
+               ((((<=) (0) i_1) /\ ((<) i_1 (Uint64.to_int count))) ->
                 (Uint8.(=)
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_2))
+                i_1))
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_2))))) ->
+                i_1))))) ->
               (#"/home/work/workspace/self/verker/memcmp.c" 37 15 27#
               "expl:Ensures clause"
               (Int32.(=) result (#"memcmp.jc" 78 31 43# "expl:Integer cast"
@@ -8741,23 +8741,23 @@ module Function_memcmp_safe
              (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)))))))))))))))
              }
            ensures {
-             (((exists i_0 : int.
-                (((<=) (0) i_0) /\
-                (((<) i_0 (Uint64.to_int count)) /\
+             (((exists i : int.
+                (((<=) (0) i) /\
+                (((<) i (Uint64.to_int count)) /\
                 (Uint8.(<>)
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_0))
+                i))
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_0)))))) ->
+                i)))))) ->
                (#"/home/work/workspace/self/verker/memcmp.c" 40 15 241#
                "expl:Ensures clause"
-               (exists i_1 : int.
-                (((<=) (0) i_1) /\
-                (((<) i_1 (Uint64.to_int count)) /\
+               (exists i_0 : int.
+                (((<=) (0) i_0) /\
+                (((<) i_0 (Uint64.to_int count)) /\
                 ((forall j : int.
-                  ((((<=) (0) j) /\ ((<) j i_1)) ->
+                  ((((<=) (0) j) /\ ((<) j i_0)) ->
                    (Uint8.(=)
                    (select unsigned_charP_unsigned_charM_cs_2
                    (shift
@@ -8769,31 +8769,31 @@ module Function_memcmp_safe
                 ((Uint8.(<>)
                  (select unsigned_charP_unsigned_charM_cs_2
                  (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                 i_1))
+                 i_0))
                  (select unsigned_charP_unsigned_charM_ct_3
                  (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                 i_1)))
+                 i_0)))
                 /\
                 ((=) (Int32.to_int result)
                 (Int.(-)
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_1)))
+                i_0)))
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_1))))))))))))
+                i_0))))))))))))
              /\
-             ((forall i_2 : int.
-               ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int count))) ->
+             ((forall i_1 : int.
+               ((((<=) (0) i_1) /\ ((<) i_1 (Uint64.to_int count))) ->
                 (Uint8.(=)
                 (select unsigned_charP_unsigned_charM_cs_2
                 (shift (downcast voidP_cs_2_tag_table cs unsigned_charP_tag)
-                i_2))
+                i_1))
                 (select unsigned_charP_unsigned_charM_ct_3
                 (shift (downcast voidP_ct_3_tag_table ct unsigned_charP_tag)
-                i_2))))) ->
+                i_1))))) ->
               (#"/home/work/workspace/self/verker/memcmp.c" 37 15 27#
               "expl:Ensures clause"
               (Int32.(=) result (#"memcmp.jc" 78 31 43# "expl:Integer cast"

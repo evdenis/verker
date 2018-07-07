@@ -49,16 +49,16 @@ behavior default:
   ensures true;
 behavior same_addr:
   assumes (\base_block(dest_3) == \base_block(src_3));
-  ensures (_C_90 : (\forall integer i_4;
-                     (((0 <= i_4) && (i_4 < (\at(count,Old) :> integer))) ==>
-                       (((\at(dest_3,Old) :> charP[..]) + i_4).charM ==
-                         \at(((src_3 :> charP[..]) + i_4).charM,Old)))));
+  ensures (_C_90 : (\forall integer i_0;
+                     (((0 <= i_0) && (i_0 < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_3,Old) :> charP[..]) + i_0).charM ==
+                         \at(((src_3 :> charP[..]) + i_0).charM,Old)))));
 behavior diff_addr:
   assumes (\base_block(dest_3) != \base_block(src_3));
-  ensures (_C_91 : (\forall integer i_3;
-                     (((0 <= i_3) && (i_3 < (\at(count,Old) :> integer))) ==>
-                       (((\at(dest_3,Old) :> charP[..]) + i_3).charM ==
-                         \at(((src_3 :> charP[..]) + i_3).charM,Old)))));
+  ensures (_C_91 : (\forall integer i;
+                     (((0 <= i) && (i < (\at(count,Old) :> integer))) ==>
+                       (((\at(dest_3,Old) :> charP[..]) + i).charM ==
+                         \at(((src_3 :> charP[..]) + i).charM,Old)))));
 {  
    (var uint64 orig_count);
    
@@ -122,13 +122,13 @@ behavior diff_addr:
                                   (((src_3 :> charP[..]) + i).charM ==
                                     \at(((src_3 :> charP[..]) + i).charM,Pre)))));
          behavior default:
-           invariant (_C_51 : (\forall integer i_0;
-                                (((0 <= i_0) &&
-                                   (i_0 <
+           invariant (_C_51 : (\forall integer i;
+                                (((0 <= i) &&
+                                   (i <
                                      ((orig_count :> integer) -
                                        (count :> integer)))) ==>
-                                  (((dest_3 :> charP[..]) + i_0).charM ==
-                                    \at(((src_3 :> charP[..]) + i_0).charM,Pre)))));
+                                  (((dest_3 :> charP[..]) + i).charM ==
+                                    \at(((src_3 :> charP[..]) + i).charM,Pre)))));
          variant (_C_50 : count);
          while (true)
          {  
@@ -203,16 +203,16 @@ behavior diff_addr:
                                                 (orig_count :> integer))) <=
                                              0)))));
          behavior default:
-           invariant (_C_12 : (\forall integer i_1;
-                                (((0 <= i_1) && (i_1 < (count :> integer))) ==>
-                                  (((src_3 :> charP[..]) + i_1).charM ==
-                                    \at(((src_3 :> charP[..]) + i_1).charM,Pre)))));
+           invariant (_C_12 : (\forall integer i;
+                                (((0 <= i) && (i < (count :> integer))) ==>
+                                  (((src_3 :> charP[..]) + i).charM ==
+                                    \at(((src_3 :> charP[..]) + i).charM,Pre)))));
          behavior default:
-           invariant (_C_11 : (\forall integer i_2;
-                                ((((count :> integer) <= i_2) &&
-                                   (i_2 < (orig_count :> integer))) ==>
-                                  (((dest_3 :> charP[..]) + i_2).charM ==
-                                    \at(((src_3 :> charP[..]) + i_2).charM,Pre)))));
+           invariant (_C_11 : (\forall integer i;
+                                ((((count :> integer) <= i) &&
+                                   (i < (orig_count :> integer))) ==>
+                                  (((dest_3 :> charP[..]) + i).charM ==
+                                    \at(((src_3 :> charP[..]) + i).charM,Pre)))));
          variant (_C_10 : count);
          while (true)
          {  
