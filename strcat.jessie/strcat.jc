@@ -150,22 +150,22 @@ behavior default:
                                                  (strlen{Old}(src_5) :> integer))]).charM;
   ensures (_C_77 : ((_C_78 : (\result == \at(dest_7,Old))) &&
                      ((_C_80 : valid_str{Here}(\result)) &&
-                       ((_C_82 : (\forall integer i_11;
-                                   (((0 <= i_11) &&
-                                      (i_11 <
+                       ((_C_82 : (\forall integer i_6;
+                                   (((0 <= i_6) &&
+                                      (i_6 <
                                         (strlen{Old}(\at(dest_7,Old)) :> integer))) ==>
-                                     (\at((dest_7 + i_11).charM,Old) ==
-                                       (\result + i_11).charM)))) &&
-                         ((_C_84 : (\forall integer i_12;
+                                     (\at((dest_7 + i_6).charM,Old) ==
+                                       (\result + i_6).charM)))) &&
+                         ((_C_84 : (\forall integer i_7;
                                      ((((strlen{Old}(\at(dest_7,Old)) :> integer) <=
-                                         i_12) &&
-                                        (i_12 <
+                                         i_7) &&
+                                        (i_7 <
                                           ((strlen{Old}(\at(dest_7,Old)) :> integer) +
                                             (strlen{Here}(\at(src_5,Old)) :> integer)))) ==>
                                        ((\at(src_5,Old) +
-                                          (i_12 -
+                                          (i_7 -
                                             (strlen{Old}(\at(dest_7,Old)) :> integer))).charM ==
-                                         (\result + i_12).charM)))) &&
+                                         (\result + i_7).charM)))) &&
                            (_C_85 : ((strlen{Here}(\result) :> integer) ==
                                       ((strlen{Old}(\at(dest_7,Old)) :> integer) +
                                         (strlen{Here}(\at(src_5,Old)) :> integer)))))))));
@@ -201,9 +201,9 @@ behavior default:
       behavior default:
         invariant (_C_22 : valid_str{Here}(dest_7));
       behavior default:
-        invariant (_C_21 : (\forall integer i_6;
-                             (((0 <= i_6) && (i_6 < (dest_7 - tmp))) ==>
-                               ((tmp + i_6).charM != (0 :> int8)))));
+        invariant (_C_21 : (\forall integer i;
+                             (((0 <= i) && (i < (dest_7 - tmp))) ==>
+                               ((tmp + i).charM != (0 :> int8)))));
       variant (_C_20 : ((dest_len :> integer) - (dest_7 - tmp)));
       while (true)
       {  
@@ -265,13 +265,13 @@ behavior default:
       behavior default:
         invariant (_C_42 : valid_str{Here}(src_5));
       behavior default:
-        invariant (_C_41 : (\forall integer i_7;
-                             (((0 <= i_7) && (i_7 < (src_5 - osrc))) ==>
-                               ((mdest + i_7).charM == (osrc + i_7).charM))));
+        invariant (_C_41 : (\forall integer i;
+                             (((0 <= i) && (i < (src_5 - osrc))) ==>
+                               ((mdest + i).charM == (osrc + i).charM))));
       behavior default:
-        invariant (_C_40 : (\forall integer i_8;
-                             (((0 <= i_8) && (i_8 < (dest_7 - tmp))) ==>
-                               ((tmp + i_8).charM != (0 :> int8)))));
+        invariant (_C_40 : (\forall integer i;
+                             (((0 <= i) && (i < (dest_7 - tmp))) ==>
+                               ((tmp + i).charM != (0 :> int8)))));
       behavior default:
         
         assigns (mdest + [0..(strlen{Here}(osrc) :> integer)]).charM;
@@ -293,12 +293,12 @@ behavior default:
       (while_1_break : ());
       
       {  
-         (assert for default: (_C_70 : (jessie : (\forall integer i_9;
-                                                   (((0 <= i_9) &&
-                                                      (i_9 <
+         (assert for default: (_C_70 : (jessie : (\forall integer i;
+                                                   (((0 <= i) &&
+                                                      (i <
                                                         (dest_len :> integer))) ==>
-                                                     (\at((dest_7 + i_9).charM,Pre) ==
-                                                       (tmp + i_9).charM))))));
+                                                     (\at((dest_7 + i).charM,Pre) ==
+                                                       (tmp + i).charM))))));
          ()
       };
       
@@ -325,25 +325,24 @@ behavior default:
       };
       
       {  
-         (assert for default: (_C_74 : (jessie : (\exists uint64 n_3;
-                                                   ((((tmp +
-                                                        (n_3 :> integer)).charM ==
+         (assert for default: (_C_74 : (jessie : (\exists uint64 n;
+                                                   ((((tmp + (n :> integer)).charM ==
                                                        (0 :> int8)) &&
                                                       \at((if (\at(0,Here) <=
-                                                                \at(n_3,Here)) then 
+                                                                \at(n,Here)) then 
                                                           (((\offset_min(
                                                               \at(tmp,Here)) <=
                                                               \at(0,Here)) &&
                                                              (\offset_max(
                                                                \at(tmp,Here)) >=
-                                                               \at(n_3,Here))) &&
+                                                               \at(n,Here))) &&
                                                             (\forall integer __framac_tmp3;
                                                               (((\at(0,Here) <=
                                                                   __framac_tmp3) &&
                                                                  (__framac_tmp3 <=
-                                                                   \at(n_3,Here))) ==>
+                                                                   \at(n,Here))) ==>
                                                                 true))) else true),Here)) &&
-                                                     (n_3 ==
+                                                     (n ==
                                                        (((dest_len :> integer) +
                                                           (strlen{Here}(
                                                           osrc) :> integer)) :> uint64)))))));
@@ -357,13 +356,13 @@ behavior default:
                                                            (strlen{Here}(
                                                            osrc) :> integer)) :> uint64) :> integer)).charM ==
                                                       (0 :> int8))) &&
-                                                   (\forall integer i_10;
-                                                     (((0 <= i_10) &&
-                                                        (i_10 <
+                                                   (\forall integer i;
+                                                     (((0 <= i) &&
+                                                        (i <
                                                           ((((dest_len :> integer) +
                                                               (strlen{Here}(
                                                               osrc) :> integer)) :> uint64) :> integer))) ==>
-                                                       ((tmp + i_10).charM !=
+                                                       ((tmp + i).charM !=
                                                          (0 :> int8))))))));
          ()
       };

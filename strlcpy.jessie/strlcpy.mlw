@@ -2260,11 +2260,10 @@ module Function_strlcpy_safety
           requires { true } reads { charP_charM_dest_8_12, dest_8, src_6 }
           ensures {
             (#"/home/work/workspace/self/verker/strlcpy.c" 10 13 67#
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int !len))) ->
-              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
-              (select !charP_charM_dest_8_12 (shift dest_8 i_7)))))) } ; ()
-          end;
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int !len))) ->
+              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i))
+              (select !charP_charM_dest_8_12 (shift dest_8 i)))))) } ; () end;
           begin
           (let _jessie_71 =
           (let _jessie_70 =
@@ -2583,10 +2582,10 @@ module Function_strlcpy_behaviors
           (assert {
           (#"/home/work/workspace/self/verker/strlcpy.c" 10 13 67#
           "expl:Assertion in line 10"
-          (forall i_7 : int.
-           ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int !len))) ->
-            (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
-            (select !charP_charM_dest_8_12 (shift dest_8 i_7)))))) }); () end;
+          (forall i : int.
+           ((((<=) (0) i) /\ ((<) i (Uint64.to_int !len))) ->
+            (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i))
+            (select !charP_charM_dest_8_12 (shift dest_8 i)))))) }); () end;
           begin
           (let _jessie_11 =
           (#"strlcpy.jc" 317 62 73# "expl:Integer cast"
@@ -2661,11 +2660,11 @@ module Function_strlcpy_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/strlcpy.h" 31 15 76#
       "expl:Ensures clause"
-      (forall i_8 : int.
-       ((((<=) (0) i_8) /\
-        ((<) i_8 (Uint64.to_int (strlen src_6 charP_charM_src_6_13)))) ->
-        (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
-        (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
+      (forall i_7 : int.
+       ((((<=) (0) i_7) /\
+        ((<) i_7 (Uint64.to_int (strlen src_6 charP_charM_src_6_13)))) ->
+        (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
+        (select !charP_charM_dest_8_12 (shift dest_8 i_7))))))
      /\
      (#"/home/work/workspace/self/verker/strlcpy.h" 32 15 30#
      "expl:Ensures clause"
@@ -2718,11 +2717,10 @@ module Function_strlcpy_behaviors
           requires { true } reads { charP_charM_dest_8_12, dest_8, src_6 }
           ensures {
             (#"/home/work/workspace/self/verker/strlcpy.c" 10 13 67#
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int !len))) ->
-              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
-              (select !charP_charM_dest_8_12 (shift dest_8 i_7)))))) } ; ()
-          end;
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int !len))) ->
+              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i))
+              (select !charP_charM_dest_8_12 (shift dest_8 i)))))) } ; () end;
           begin
           (let _jessie_41 =
           (#"strlcpy.jc" 317 62 73# "expl:Integer cast"
@@ -2802,10 +2800,10 @@ module Function_strlcpy_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/strlcpy.h" 26 15 73#
       "expl:Ensures clause"
-      (forall i_9 : int.
-       ((((<=) (0) i_9) /\ ((<) i_9 (Int.(-) (Uint64.to_int size_1) (1)))) ->
-        (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_9))
-        (select !charP_charM_dest_8_12 (shift dest_8 i_9))))))
+      (forall i_8 : int.
+       ((((<=) (0) i_8) /\ ((<) i_8 (Int.(-) (Uint64.to_int size_1) (1)))) ->
+        (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
+        (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
      /\
      (#"/home/work/workspace/self/verker/strlcpy.h" 27 15 30#
      "expl:Ensures clause"
@@ -2858,11 +2856,10 @@ module Function_strlcpy_behaviors
           requires { true } reads { charP_charM_dest_8_12, dest_8, src_6 }
           ensures {
             (#"/home/work/workspace/self/verker/strlcpy.c" 10 13 67#
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int !len))) ->
-              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
-              (select !charP_charM_dest_8_12 (shift dest_8 i_7)))))) } ; ()
-          end;
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int !len))) ->
+              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i))
+              (select !charP_charM_dest_8_12 (shift dest_8 i)))))) } ; () end;
           begin
           (let _jessie_26 =
           (#"strlcpy.jc" 317 62 73# "expl:Integer cast"
@@ -2979,11 +2976,10 @@ module Function_strlcpy_behaviors
           requires { true } reads { charP_charM_dest_8_12, dest_8, src_6 }
           ensures {
             (#"/home/work/workspace/self/verker/strlcpy.c" 10 13 67#
-            (forall i_7 : int.
-             ((((<=) (0) i_7) /\ ((<) i_7 (Uint64.to_int !len))) ->
-              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
-              (select !charP_charM_dest_8_12 (shift dest_8 i_7)))))) } ; ()
-          end;
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int !len))) ->
+              (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i))
+              (select !charP_charM_dest_8_12 (shift dest_8 i)))))) } ; () end;
           begin
           (let _jessie_56 =
           (#"strlcpy.jc" 317 62 73# "expl:Integer cast"
@@ -8394,12 +8390,12 @@ module Function_strlcpy
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker/strlcpy.h" 31 15 76#
                "expl:Ensures clause"
-               (forall i_8 : int.
-                ((((<=) (0) i_8) /\
-                 ((<) i_8
+               (forall i_7 : int.
+                ((((<=) (0) i_7) /\
+                 ((<) i_7
                  (Uint64.to_int (strlen src_6 charP_charM_src_6_13)))) ->
-                 (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
-                 (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
+                 (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
+                 (select !charP_charM_dest_8_12 (shift dest_8 i_7))))))
               /\
               (#"/home/work/workspace/self/verker/strlcpy.h" 32 15 30#
               "expl:Ensures clause"
@@ -8422,11 +8418,11 @@ module Function_strlcpy
              "expl:Ensures clause"
              ((#"/home/work/workspace/self/verker/strlcpy.h" 26 15 73#
               "expl:Ensures clause"
-              (forall i_9 : int.
-               ((((<=) (0) i_9) /\
-                ((<) i_9 (Int.(-) (Uint64.to_int size_1) (1)))) ->
-                (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_9))
-                (select !charP_charM_dest_8_12 (shift dest_8 i_9))))))
+              (forall i_8 : int.
+               ((((<=) (0) i_8) /\
+                ((<) i_8 (Int.(-) (Uint64.to_int size_1) (1)))) ->
+                (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
+                (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
              /\
              (#"/home/work/workspace/self/verker/strlcpy.h" 27 15 30#
              "expl:Ensures clause"
@@ -8520,12 +8516,12 @@ module Function_strlcpy_safe
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker/strlcpy.h" 31 15 76#
                "expl:Ensures clause"
-               (forall i_8 : int.
-                ((((<=) (0) i_8) /\
-                 ((<) i_8
+               (forall i_7 : int.
+                ((((<=) (0) i_7) /\
+                 ((<) i_7
                  (Uint64.to_int (strlen src_6 charP_charM_src_6_13)))) ->
-                 (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
-                 (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
+                 (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_7))
+                 (select !charP_charM_dest_8_12 (shift dest_8 i_7))))))
               /\
               (#"/home/work/workspace/self/verker/strlcpy.h" 32 15 30#
               "expl:Ensures clause"
@@ -8548,11 +8544,11 @@ module Function_strlcpy_safe
              "expl:Ensures clause"
              ((#"/home/work/workspace/self/verker/strlcpy.h" 26 15 73#
               "expl:Ensures clause"
-              (forall i_9 : int.
-               ((((<=) (0) i_9) /\
-                ((<) i_9 (Int.(-) (Uint64.to_int size_1) (1)))) ->
-                (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_9))
-                (select !charP_charM_dest_8_12 (shift dest_8 i_9))))))
+              (forall i_8 : int.
+               ((((<=) (0) i_8) /\
+                ((<) i_8 (Int.(-) (Uint64.to_int size_1) (1)))) ->
+                (Int8.(=) (select charP_charM_src_6_13 (shift src_6 i_8))
+                (select !charP_charM_dest_8_12 (shift dest_8 i_8))))))
              /\
              (#"/home/work/workspace/self/verker/strlcpy.h" 27 15 30#
              "expl:Ensures clause"

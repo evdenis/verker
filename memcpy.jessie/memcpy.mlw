@@ -1826,16 +1826,17 @@ module Function_memcpy_safety
          mutable_count, src_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/memcpy.c" 13 20 124#
-            (forall i : int.
-             ((((<=) (0) i) /\
-              ((<) i
+            (forall i_0 : int.
+             ((((<=) (0) i_0) /\
+              ((<) i_0
               (Int.(-) (Bit_uint64.to_int !ocount)
               (Bit_uint64.to_int !mutable_count)))) ->
               (Int8.(=)
               (select !charP_charM_dest_1_2
-              (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
+              (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
+              i_0))
               (select charP_charM_src_1_3
-              (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))
+              (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))
            /\
            ((#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
             (#"/home/work/workspace/self/verker/memcpy.c" 12 20 59#
@@ -2147,14 +2148,14 @@ module Function_memcpy_behaviors
      /\
      (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
      "expl:Ensures clause"
-     (forall i_0 : int.
-      ((((<=) (0) i_0) /\ ((<) i_0 (Bit_uint64.to_int count))) ->
+     (forall i : int.
+      ((((<=) (0) i) /\ ((<) i (Bit_uint64.to_int count))) ->
        (Int8.(=)
        (select !charP_charM_dest_1_2
-       (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i_0))
+       (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
        (select charP_charM_src_1_3
-       (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
-     } diverges  ->
+       (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i)))))))) }
+   diverges  ->
    (let mutable_count = ref count in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2251,16 +2252,17 @@ module Function_memcpy_behaviors
               (Bit_uint64.to_int !mutable_count)))))))
              &&
              (#"/home/work/workspace/self/verker/memcpy.c" 13 20 124#
-             (forall i : int.
-              ((((<=) (0) i) /\
-               ((<) i
+             (forall i_0 : int.
+              ((((<=) (0) i_0) /\
+               ((<) i_0
                (Int.(-) (Bit_uint64.to_int !ocount)
                (Bit_uint64.to_int !mutable_count)))) ->
                (Int8.(=)
                (select !charP_charM_dest_1_2
-               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
+               i_0))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))))
             /\
             (#"memcpy.jc" 43 10 71# "expl:Assigns clause"
             (not_assigns voidP_dest_1_2_alloc_table
@@ -7705,14 +7707,13 @@ module Function_memcpy
              /\
              (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
              "expl:Ensures clause"
-             (forall i_0 : int.
-              ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
+             (forall i : int.
+              ((((<=) (0) i) /\ ((<) i (Uint64.to_int count))) ->
                (Int8.(=)
                (select !charP_charM_dest_1_2
-               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
-               i_0))
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))))
              }
   
 end
@@ -7830,14 +7831,13 @@ module Function_memcpy_safe
              /\
              (#"/home/work/workspace/self/verker/memcpy.h" 21 12 99#
              "expl:Ensures clause"
-             (forall i_0 : int.
-              ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
+             (forall i : int.
+              ((((<=) (0) i) /\ ((<) i (Uint64.to_int count))) ->
                (Int8.(=)
                (select !charP_charM_dest_1_2
-               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag)
-               i_0))
+               (shift (downcast voidP_dest_1_2_tag_table dest_1 charP_tag) i))
                (select charP_charM_src_1_3
-               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i_0))))))))
+               (shift (downcast voidP_src_1_3_tag_table src_1 charP_tag) i))))))))
              }
   
 end

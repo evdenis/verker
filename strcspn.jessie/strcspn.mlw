@@ -2307,7 +2307,7 @@ module Function_strcspn_0_safety
          "expl:Pointer index bounds" true) }); _jessie_35 end));
          'Loop_7:
          loop
-         invariant { (#"strcspn.jc" 485 6 5726# true) }
+         invariant { (#"strcspn.jc" 485 6 5646# true) }
            variant { (#"/home/work/workspace/self/verker/strcspn.c" 17 18 37#
              (Int.(-) (Uint64.to_int (strlen s_3 charP_charM_s_12))
              (sub_pointer !p_4 s_3))) }
@@ -2323,25 +2323,25 @@ module Function_strcspn_0_safety
              (valid_str !p_4 voidP_s_12_alloc_table charP_charM_s_12))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 12 20 145#
-             (forall c_4 : (pointer voidP).
-              (forall t_1 : (pointer voidP).
-               (((same_block s_3 c_4) /\
-                (((<=) (sub_pointer s_3 c_4) (0)) /\
-                ((same_block c_4 !p_4) /\
-                (((<) (sub_pointer c_4 !p_4) (0)) /\
-                ((same_block reject_0 t_1) /\
-                (((<=) (sub_pointer reject_0 t_1) (0)) /\
-                ((same_block t_1
+             (forall c_3 : (pointer voidP).
+              (forall t_5 : (pointer voidP).
+               (((same_block s_3 c_3) /\
+                (((<=) (sub_pointer s_3 c_3) (0)) /\
+                ((same_block c_3 !p_4) /\
+                (((<) (sub_pointer c_3 !p_4) (0)) /\
+                ((same_block reject_0 t_5) /\
+                (((<=) (sub_pointer reject_0 t_5) (0)) /\
+                ((same_block t_5
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 /\
                 ((<)
-                (sub_pointer t_1
+                (sub_pointer t_5
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 (0))))))))) ->
-                (Int8.(<>) (select charP_charM_s_12 c_4)
-                (select charP_charM_reject_13 t_1))))))
+                (Int8.(<>) (select charP_charM_s_12 c_3)
+                (select charP_charM_reject_13 t_5))))))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 11 20 34#
              ((=) (Uint64.to_int !count) (sub_pointer !p_4 s_3)))
@@ -2399,7 +2399,7 @@ module Function_strcspn_0_safety
                "expl:Pointer index bounds" true) }); _jessie_36 end));
                'Loop_8:
                loop
-               invariant { (#"strcspn.jc" 532 15 2845# true) }
+               invariant { (#"strcspn.jc" 532 15 2789# true) }
                  variant {
                    (#"/home/work/workspace/self/verker/strcspn.c" 24 19 48#
                    (Int.(-)
@@ -2420,12 +2420,12 @@ module Function_strcspn_0_safety
                    charP_charM_reject_13))
                   /\
                   ((#"/home/work/workspace/self/verker/strcspn.c" 21 21 66#
-                   (forall c_3 : (pointer voidP).
-                    (((same_block reject_0 c_3) /\
-                     (((<=) (sub_pointer reject_0 c_3) (0)) /\
-                     ((same_block c_3 !r) /\ ((<) (sub_pointer c_3 !r) (0)))))
+                   (forall c_4 : (pointer voidP).
+                    (((same_block reject_0 c_4) /\
+                     (((<=) (sub_pointer reject_0 c_4) (0)) /\
+                     ((same_block c_4 !r) /\ ((<) (sub_pointer c_4 !r) (0)))))
                      ->
-                     (Int8.(<>) (select charP_charM_reject_13 c_3)
+                     (Int8.(<>) (select charP_charM_reject_13 c_4)
                      (select charP_charM_s_12 !p_4)))))
                   /\
                   (#"/home/work/workspace/self/verker/strcspn.c" 20 21 59#
@@ -2462,7 +2462,7 @@ module Function_strcspn_0_safety
                     "expl:Pointer dereference"
                     (acc  voidP_reject_13_alloc_table charP_charM_reject_13
                      !r )) ))
-                   (#"strcspn.jc" 564 36 48# "expl:Integer cast"
+                   (#"strcspn.jc" 563 36 48# "expl:Integer cast"
                    (Safe_int32.of_int (0))) )) then ()
                   else (raise (Goto_while_1_break_exc ())));
                    (if
@@ -2502,7 +2502,7 @@ module Function_strcspn_0_safety
                     (let _jessie_38 =
                     (shift_typesafe  !r
                      (Safe_int32.to_int 
-                      (#"strcspn.jc" 582 49 61# "expl:Integer cast"
+                      (#"strcspn.jc" 581 49 61# "expl:Integer cast"
                       (Safe_int32.of_int (1))) ) ) in
                     begin
                     (assert {
@@ -2527,7 +2527,7 @@ module Function_strcspn_0_safety
                (count :=
                 (let _jessie_39 =
                 (Safe_uint64.(+)  !count
-                 (#"strcspn.jc" 592 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 591 61 74# "expl:Integer cast"
                  (Safe_uint64.of_int (1))) ) in
                 begin
                 (assert {
@@ -2538,7 +2538,7 @@ module Function_strcspn_0_safety
               (let _jessie_40 =
               (shift_typesafe  !p_4
                (Safe_int32.to_int 
-                (#"strcspn.jc" 594 40 52# "expl:Integer cast"
+                (#"strcspn.jc" 593 40 52# "expl:Integer cast"
                 (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
@@ -2564,7 +2564,7 @@ module Function_strcspn_0_safety
       (return :=
        (let _jessie_43 = !__retres in
        begin
-       (assert { (#"strcspn.jc" 600 7 22# "expl:Pointer index bounds" true)
+       (assert { (#"strcspn.jc" 599 7 22# "expl:Pointer index bounds" true)
        }); _jessie_43 end)); (raise Return) end end)))); absurd  end with
     Return -> !return end)
   
@@ -2692,24 +2692,24 @@ module Function_strcspn_0_behaviors
      (#"/home/work/workspace/self/verker/strcspn.h" 51 12 143#
      "expl:Ensures clause"
      (forall p_3 : (pointer voidP).
-      (forall t_5 : (pointer voidP).
+      (forall t_4 : (pointer voidP).
        (((same_block s_3 p_3) /\
         (((<=) (sub_pointer s_3 p_3) (0)) /\
         ((same_block p_3 (shift s_3 (Uint64.to_int result))) /\
         (((<) (sub_pointer p_3 (shift s_3 (Uint64.to_int result))) (0)) /\
-        ((same_block reject_0 t_5) /\
-        (((<=) (sub_pointer reject_0 t_5) (0)) /\
-        ((same_block t_5
+        ((same_block reject_0 t_4) /\
+        (((<=) (sub_pointer reject_0 t_4) (0)) /\
+        ((same_block t_4
          (shift reject_0
          (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
         /\
         ((<)
-        (sub_pointer t_5
+        (sub_pointer t_4
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
         ->
         (Int8.(<>) (select charP_charM_s_12 p_3)
-        (select charP_charM_reject_13 t_5)))))))))))))) } diverges  ->
+        (select charP_charM_reject_13 t_4)))))))))))))) } diverges  ->
    'Init:
    (let return = ref (Unsafe_uint64.any_  () ) in
    try
@@ -2718,7 +2718,7 @@ module Function_strcspn_0_behaviors
     (#"strcspn.jc" 372 10 3417# "expl:Behavior disjointness check"
     (not
     ((exists p_2_0 : (pointer voidP).
-      (exists t_3_0 : (pointer voidP).
+      (exists t_2_0 : (pointer voidP).
        ((same_block s_3 p_2_0) /\
        (((<=) (sub_pointer s_3 p_2_0) (0)) /\
        ((same_block p_2_0
@@ -2728,22 +2728,22 @@ module Function_strcspn_0_behaviors
         (sub_pointer p_2_0
         (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
        /\
-       ((same_block reject_0 t_3_0) /\
-       (((<=) (sub_pointer reject_0 t_3_0) (0)) /\
-       ((same_block t_3_0
+       ((same_block reject_0 t_2_0) /\
+       (((<=) (sub_pointer reject_0 t_2_0) (0)) /\
+       ((same_block t_2_0
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
        /\
        (((<)
-        (sub_pointer t_3_0
+        (sub_pointer t_2_0
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0))
        /\
        (Int8.(=) (select charP_charM_s_12 p_2_0)
-       (select charP_charM_reject_13 t_3_0))))))))))))
+       (select charP_charM_reject_13 t_2_0))))))))))))
     /\
     (forall p_1_0 : (pointer voidP).
-     (forall t_2_0 : (pointer voidP).
+     (forall t_1_0 : (pointer voidP).
       (((same_block s_3 p_1_0) /\
        (((<=) (sub_pointer s_3 p_1_0) (0)) /\
        ((same_block p_1_0
@@ -2753,23 +2753,23 @@ module Function_strcspn_0_behaviors
         (sub_pointer p_1_0
         (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
        /\
-       ((same_block reject_0 t_2_0) /\
-       (((<=) (sub_pointer reject_0 t_2_0) (0)) /\
-       ((same_block t_2_0
+       ((same_block reject_0 t_1_0) /\
+       (((<=) (sub_pointer reject_0 t_1_0) (0)) /\
+       ((same_block t_1_0
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
        /\
        ((<)
-       (sub_pointer t_2_0
+       (sub_pointer t_1_0
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
        ->
        (Int8.(<>) (select charP_charM_s_12 p_1_0)
-       (select charP_charM_reject_13 t_2_0)))))))) });
+       (select charP_charM_reject_13 t_1_0)))))))) });
      (check {
      (#"strcspn.jc" 423 10 3266# "expl:Behavior completeness check"
      ((forall p_1_1 : (pointer voidP).
-       (forall t_2_1 : (pointer voidP).
+       (forall t_1_1 : (pointer voidP).
         (((same_block s_3 p_1_1) /\
          (((<=) (sub_pointer s_3 p_1_1) (0)) /\
          ((same_block p_1_1
@@ -2779,22 +2779,22 @@ module Function_strcspn_0_behaviors
           (sub_pointer p_1_1
           (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
          /\
-         ((same_block reject_0 t_2_1) /\
-         (((<=) (sub_pointer reject_0 t_2_1) (0)) /\
-         ((same_block t_2_1
+         ((same_block reject_0 t_1_1) /\
+         (((<=) (sub_pointer reject_0 t_1_1) (0)) /\
+         ((same_block t_1_1
           (shift reject_0
           (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
          /\
          ((<)
-         (sub_pointer t_2_1
+         (sub_pointer t_1_1
          (shift reject_0
          (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
          ->
          (Int8.(<>) (select charP_charM_s_12 p_1_1)
-         (select charP_charM_reject_13 t_2_1)))))
+         (select charP_charM_reject_13 t_1_1)))))
      \/
      (exists p_2_1 : (pointer voidP).
-      (exists t_3_1 : (pointer voidP).
+      (exists t_2_1 : (pointer voidP).
        ((same_block s_3 p_2_1) /\
        (((<=) (sub_pointer s_3 p_2_1) (0)) /\
        ((same_block p_2_1
@@ -2804,19 +2804,19 @@ module Function_strcspn_0_behaviors
         (sub_pointer p_2_1
         (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
        /\
-       ((same_block reject_0 t_3_1) /\
-       (((<=) (sub_pointer reject_0 t_3_1) (0)) /\
-       ((same_block t_3_1
+       ((same_block reject_0 t_2_1) /\
+       (((<=) (sub_pointer reject_0 t_2_1) (0)) /\
+       ((same_block t_2_1
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
        /\
        (((<)
-        (sub_pointer t_3_1
+        (sub_pointer t_2_1
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0))
        /\
        (Int8.(=) (select charP_charM_s_12 p_2_1)
-       (select charP_charM_reject_13 t_3_1)))))))))))))) });
+       (select charP_charM_reject_13 t_2_1)))))))))))))) });
      (let p_4 = ref (any_pointer  () : (pointer voidP)) in
      (let r = ref (any_pointer  () : (pointer voidP)) in
      (let count = ref (Unsafe_uint64.any_  () ) in
@@ -2865,25 +2865,25 @@ module Function_strcspn_0_behaviors
               ((=) (Uint64.to_int !count) (sub_pointer !p_4 s_3)))
              &&
              ((#"/home/work/workspace/self/verker/strcspn.c" 12 20 145#
-              (forall c_4 : (pointer voidP).
-               (forall t_1 : (pointer voidP).
-                (((same_block s_3 c_4) /\
-                 (((<=) (sub_pointer s_3 c_4) (0)) /\
-                 ((same_block c_4 !p_4) /\
-                 (((<) (sub_pointer c_4 !p_4) (0)) /\
-                 ((same_block reject_0 t_1) /\
-                 (((<=) (sub_pointer reject_0 t_1) (0)) /\
-                 ((same_block t_1
+              (forall c_3 : (pointer voidP).
+               (forall t_5 : (pointer voidP).
+                (((same_block s_3 c_3) /\
+                 (((<=) (sub_pointer s_3 c_3) (0)) /\
+                 ((same_block c_3 !p_4) /\
+                 (((<) (sub_pointer c_3 !p_4) (0)) /\
+                 ((same_block reject_0 t_5) /\
+                 (((<=) (sub_pointer reject_0 t_5) (0)) /\
+                 ((same_block t_5
                   (shift reject_0
                   (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  /\
                  ((<)
-                 (sub_pointer t_1
+                 (sub_pointer t_5
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_s_12 c_4)
-                 (select charP_charM_reject_13 t_1))))))
+                 (Int8.(<>) (select charP_charM_s_12 c_3)
+                 (select charP_charM_reject_13 t_5))))))
              &&
              ((#"/home/work/workspace/self/verker/strcspn.c" 15 20 32#
               (valid_str !p_4 voidP_s_12_alloc_table charP_charM_s_12))
@@ -2936,12 +2936,12 @@ module Function_strcspn_0_behaviors
                     (0))))))))))
                    &&
                    ((#"/home/work/workspace/self/verker/strcspn.c" 21 21 66#
-                    (forall c_3 : (pointer voidP).
-                     (((same_block reject_0 c_3) /\
-                      (((<=) (sub_pointer reject_0 c_3) (0)) /\
-                      ((same_block c_3 !r) /\ ((<) (sub_pointer c_3 !r) (0)))))
+                    (forall c_4 : (pointer voidP).
+                     (((same_block reject_0 c_4) /\
+                      (((<=) (sub_pointer reject_0 c_4) (0)) /\
+                      ((same_block c_4 !r) /\ ((<) (sub_pointer c_4 !r) (0)))))
                       ->
-                      (Int8.(<>) (select charP_charM_reject_13 c_3)
+                      (Int8.(<>) (select charP_charM_reject_13 c_4)
                       (select charP_charM_s_12 !p_4)))))
                    &&
                    ((#"/home/work/workspace/self/verker/strcspn.c" 22 21 33#
@@ -2965,7 +2965,7 @@ module Function_strcspn_0_behaviors
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_reject_13 !r ) ))
-                   (#"strcspn.jc" 564 36 48# "expl:Integer cast"
+                   (#"strcspn.jc" 563 36 48# "expl:Integer cast"
                    (Unsafe_int32.of_int (0))) )) then ()
                   else (raise (Goto_while_1_break_exc ())));
                    (if
@@ -2993,7 +2993,7 @@ module Function_strcspn_0_behaviors
                    (r :=
                     (shift_  !r
                      (Unsafe_int32.to_int 
-                      (#"strcspn.jc" 582 49 61# "expl:Integer cast"
+                      (#"strcspn.jc" 581 49 61# "expl:Integer cast"
                       (Unsafe_int32.of_int (1))) ) )) end;
                    (raise (Loop_continue_exc ())) end with Loop_continue_exc
                   _jessie_5 -> () end end end;
@@ -3012,12 +3012,12 @@ module Function_strcspn_0_behaviors
                charP_charM_reject_13))) }); () end;
                (count :=
                 (Unsafe_uint64.(+)  !count
-                 (#"strcspn.jc" 592 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 591 61 74# "expl:Integer cast"
                  (Unsafe_uint64.of_int (1))) )) end end;
              (p_4 :=
               (shift_  !p_4
                (Unsafe_int32.to_int 
-                (#"strcspn.jc" 594 40 52# "expl:Integer cast"
+                (#"strcspn.jc" 593 40 52# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) )) end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3040,7 +3040,7 @@ module Function_strcspn_0_behaviors
    (charP_charM_reject_13 : (memory voidP Int8.t)) 
    requires {
    ((exists p_2 : (pointer voidP).
-     (exists t_3 : (pointer voidP).
+     (exists t_2 : (pointer voidP).
       ((same_block s_3 p_2) /\
       (((<=) (sub_pointer s_3 p_2) (0)) /\
       ((same_block p_2
@@ -3050,19 +3050,19 @@ module Function_strcspn_0_behaviors
        (sub_pointer p_2
        (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
       /\
-      ((same_block reject_0 t_3) /\
-      (((<=) (sub_pointer reject_0 t_3) (0)) /\
-      ((same_block t_3
+      ((same_block reject_0 t_2) /\
+      (((<=) (sub_pointer reject_0 t_2) (0)) /\
+      ((same_block t_2
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
       /\
       (((<)
-       (sub_pointer t_3
+       (sub_pointer t_2
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0))
       /\
       (Int8.(=) (select charP_charM_s_12 p_2)
-      (select charP_charM_reject_13 t_3))))))))))))
+      (select charP_charM_reject_13 t_2))))))))))))
    /\
    (((allocated voidP_reject_13_alloc_table reject_0) ->
      (((=) (typeof voidP_reject_13_tag_table reject_0) charP_tag) /\
@@ -3089,20 +3089,20 @@ module Function_strcspn_0_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker/strcspn.h" 60 15 89#
      "expl:Ensures clause"
-     (exists t_4 : (pointer voidP).
-      ((same_block reject_0 t_4) /\
-      (((<=) (sub_pointer reject_0 t_4) (0)) /\
-      ((same_block t_4
+     (exists t_3 : (pointer voidP).
+      ((same_block reject_0 t_3) /\
+      (((<=) (sub_pointer reject_0 t_3) (0)) /\
+      ((same_block t_3
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
       /\
       (((<)
-       (sub_pointer t_4
+       (sub_pointer t_3
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0))
       /\
       (Int8.(=) (select charP_charM_s_12 (shift s_3 (Uint64.to_int result)))
-      (select charP_charM_reject_13 t_4))))))))) } diverges  ->
+      (select charP_charM_reject_13 t_3))))))))) } diverges  ->
    'Init:
    (let return = ref (Unsafe_uint64.any_  () ) in
    try
@@ -3123,7 +3123,7 @@ module Function_strcspn_0_behaviors
         (p_4 := s_3);
          'Loop_3:
          loop
-         invariant { (#"strcspn.jc" 485 6 5726# true) } 
+         invariant { (#"strcspn.jc" 485 6 5646# true) } 
           begin
           any unit
           requires { true } reads { reject_0, s_3 }
@@ -3136,25 +3136,25 @@ module Function_strcspn_0_behaviors
              (valid_str !p_4 voidP_s_12_alloc_table charP_charM_s_12))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 12 20 145#
-             (forall c_4 : (pointer voidP).
-              (forall t_1 : (pointer voidP).
-               (((same_block s_3 c_4) /\
-                (((<=) (sub_pointer s_3 c_4) (0)) /\
-                ((same_block c_4 !p_4) /\
-                (((<) (sub_pointer c_4 !p_4) (0)) /\
-                ((same_block reject_0 t_1) /\
-                (((<=) (sub_pointer reject_0 t_1) (0)) /\
-                ((same_block t_1
+             (forall c_3 : (pointer voidP).
+              (forall t_5 : (pointer voidP).
+               (((same_block s_3 c_3) /\
+                (((<=) (sub_pointer s_3 c_3) (0)) /\
+                ((same_block c_3 !p_4) /\
+                (((<) (sub_pointer c_3 !p_4) (0)) /\
+                ((same_block reject_0 t_5) /\
+                (((<=) (sub_pointer reject_0 t_5) (0)) /\
+                ((same_block t_5
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 /\
                 ((<)
-                (sub_pointer t_1
+                (sub_pointer t_5
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 (0))))))))) ->
-                (Int8.(<>) (select charP_charM_s_12 c_4)
-                (select charP_charM_reject_13 t_1))))))
+                (Int8.(<>) (select charP_charM_s_12 c_3)
+                (select charP_charM_reject_13 t_5))))))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 11 20 34#
              ((=) (Uint64.to_int !count) (sub_pointer !p_4 s_3)))
@@ -3205,7 +3205,7 @@ module Function_strcspn_0_behaviors
               (r := reject_0);
                'Loop_4:
                loop
-               invariant { (#"strcspn.jc" 532 15 2845# true) } 
+               invariant { (#"strcspn.jc" 532 15 2789# true) } 
                 begin
                 any unit
                 requires { true } reads { reject_0 }
@@ -3221,12 +3221,12 @@ module Function_strcspn_0_behaviors
                    charP_charM_reject_13))
                   /\
                   ((#"/home/work/workspace/self/verker/strcspn.c" 21 21 66#
-                   (forall c_3 : (pointer voidP).
-                    (((same_block reject_0 c_3) /\
-                     (((<=) (sub_pointer reject_0 c_3) (0)) /\
-                     ((same_block c_3 !r) /\ ((<) (sub_pointer c_3 !r) (0)))))
+                   (forall c_4 : (pointer voidP).
+                    (((same_block reject_0 c_4) /\
+                     (((<=) (sub_pointer reject_0 c_4) (0)) /\
+                     ((same_block c_4 !r) /\ ((<) (sub_pointer c_4 !r) (0)))))
                      ->
-                     (Int8.(<>) (select charP_charM_reject_13 c_3)
+                     (Int8.(<>) (select charP_charM_reject_13 c_4)
                      (select charP_charM_s_12 !p_4)))))
                   /\
                   (#"/home/work/workspace/self/verker/strcspn.c" 20 21 59#
@@ -3260,7 +3260,7 @@ module Function_strcspn_0_behaviors
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_reject_13 !r ) ))
-                   (#"strcspn.jc" 564 36 48# "expl:Integer cast"
+                   (#"strcspn.jc" 563 36 48# "expl:Integer cast"
                    (Unsafe_int32.of_int (0))) )) then ()
                   else (raise (Goto_while_1_break_exc ())));
                    (if
@@ -3289,7 +3289,7 @@ module Function_strcspn_0_behaviors
                    (r :=
                     (shift_  !r
                      (Unsafe_int32.to_int 
-                      (#"strcspn.jc" 582 49 61# "expl:Integer cast"
+                      (#"strcspn.jc" 581 49 61# "expl:Integer cast"
                       (Unsafe_int32.of_int (1))) ) )) end;
                    (raise (Loop_continue_exc ())) end with Loop_continue_exc
                   _jessie_5 -> () end end end;
@@ -3309,12 +3309,12 @@ module Function_strcspn_0_behaviors
                  charP_charM_reject_13))) } ; () end;
                (count :=
                 (Unsafe_uint64.(+)  !count
-                 (#"strcspn.jc" 592 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 591 61 74# "expl:Integer cast"
                  (Unsafe_uint64.of_int (1))) )) end end;
              (p_4 :=
               (shift_  !p_4
                (Unsafe_int32.to_int 
-                (#"strcspn.jc" 594 40 52# "expl:Integer cast"
+                (#"strcspn.jc" 593 40 52# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) )) end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3337,7 +3337,7 @@ module Function_strcspn_0_behaviors
    (charP_charM_reject_13 : (memory voidP Int8.t)) 
    requires {
    ((forall p_1 : (pointer voidP).
-     (forall t_2 : (pointer voidP).
+     (forall t_1 : (pointer voidP).
       (((same_block s_3 p_1) /\
        (((<=) (sub_pointer s_3 p_1) (0)) /\
        ((same_block p_1
@@ -3347,19 +3347,19 @@ module Function_strcspn_0_behaviors
         (sub_pointer p_1
         (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12)))) (0))
        /\
-       ((same_block reject_0 t_2) /\
-       (((<=) (sub_pointer reject_0 t_2) (0)) /\
-       ((same_block t_2
+       ((same_block reject_0 t_1) /\
+       (((<=) (sub_pointer reject_0 t_1) (0)) /\
+       ((same_block t_1
         (shift reject_0
         (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
        /\
        ((<)
-       (sub_pointer t_2
+       (sub_pointer t_1
        (shift reject_0
        (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
        ->
        (Int8.(<>) (select charP_charM_s_12 p_1)
-       (select charP_charM_reject_13 t_2)))))
+       (select charP_charM_reject_13 t_1)))))
    /\
    (((allocated voidP_reject_13_alloc_table reject_0) ->
      (((=) (typeof voidP_reject_13_tag_table reject_0) charP_tag) /\
@@ -3407,7 +3407,7 @@ module Function_strcspn_0_behaviors
         (p_4 := s_3);
          'Loop_5:
          loop
-         invariant { (#"strcspn.jc" 485 6 5726# true) } 
+         invariant { (#"strcspn.jc" 485 6 5646# true) } 
           begin
           any unit
           requires { true } reads { reject_0, s_3 }
@@ -3420,25 +3420,25 @@ module Function_strcspn_0_behaviors
              (valid_str !p_4 voidP_s_12_alloc_table charP_charM_s_12))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 12 20 145#
-             (forall c_4 : (pointer voidP).
-              (forall t_1 : (pointer voidP).
-               (((same_block s_3 c_4) /\
-                (((<=) (sub_pointer s_3 c_4) (0)) /\
-                ((same_block c_4 !p_4) /\
-                (((<) (sub_pointer c_4 !p_4) (0)) /\
-                ((same_block reject_0 t_1) /\
-                (((<=) (sub_pointer reject_0 t_1) (0)) /\
-                ((same_block t_1
+             (forall c_3 : (pointer voidP).
+              (forall t_5 : (pointer voidP).
+               (((same_block s_3 c_3) /\
+                (((<=) (sub_pointer s_3 c_3) (0)) /\
+                ((same_block c_3 !p_4) /\
+                (((<) (sub_pointer c_3 !p_4) (0)) /\
+                ((same_block reject_0 t_5) /\
+                (((<=) (sub_pointer reject_0 t_5) (0)) /\
+                ((same_block t_5
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 /\
                 ((<)
-                (sub_pointer t_1
+                (sub_pointer t_5
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 (0))))))))) ->
-                (Int8.(<>) (select charP_charM_s_12 c_4)
-                (select charP_charM_reject_13 t_1))))))
+                (Int8.(<>) (select charP_charM_s_12 c_3)
+                (select charP_charM_reject_13 t_5))))))
             /\
             ((#"/home/work/workspace/self/verker/strcspn.c" 11 20 34#
              ((=) (Uint64.to_int !count) (sub_pointer !p_4 s_3)))
@@ -3489,7 +3489,7 @@ module Function_strcspn_0_behaviors
               (r := reject_0);
                'Loop_6:
                loop
-               invariant { (#"strcspn.jc" 532 15 2845# true) } 
+               invariant { (#"strcspn.jc" 532 15 2789# true) } 
                 begin
                 any unit
                 requires { true } reads { reject_0 }
@@ -3505,12 +3505,12 @@ module Function_strcspn_0_behaviors
                    charP_charM_reject_13))
                   /\
                   ((#"/home/work/workspace/self/verker/strcspn.c" 21 21 66#
-                   (forall c_3 : (pointer voidP).
-                    (((same_block reject_0 c_3) /\
-                     (((<=) (sub_pointer reject_0 c_3) (0)) /\
-                     ((same_block c_3 !r) /\ ((<) (sub_pointer c_3 !r) (0)))))
+                   (forall c_4 : (pointer voidP).
+                    (((same_block reject_0 c_4) /\
+                     (((<=) (sub_pointer reject_0 c_4) (0)) /\
+                     ((same_block c_4 !r) /\ ((<) (sub_pointer c_4 !r) (0)))))
                      ->
-                     (Int8.(<>) (select charP_charM_reject_13 c_3)
+                     (Int8.(<>) (select charP_charM_reject_13 c_4)
                      (select charP_charM_s_12 !p_4)))))
                   /\
                   (#"/home/work/workspace/self/verker/strcspn.c" 20 21 59#
@@ -3544,7 +3544,7 @@ module Function_strcspn_0_behaviors
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_reject_13 !r ) ))
-                   (#"strcspn.jc" 564 36 48# "expl:Integer cast"
+                   (#"strcspn.jc" 563 36 48# "expl:Integer cast"
                    (Unsafe_int32.of_int (0))) )) then ()
                   else (raise (Goto_while_1_break_exc ())));
                    (if
@@ -3573,7 +3573,7 @@ module Function_strcspn_0_behaviors
                    (r :=
                     (shift_  !r
                      (Unsafe_int32.to_int 
-                      (#"strcspn.jc" 582 49 61# "expl:Integer cast"
+                      (#"strcspn.jc" 581 49 61# "expl:Integer cast"
                       (Unsafe_int32.of_int (1))) ) )) end;
                    (raise (Loop_continue_exc ())) end with Loop_continue_exc
                   _jessie_5 -> () end end end;
@@ -3593,12 +3593,12 @@ module Function_strcspn_0_behaviors
                  charP_charM_reject_13))) } ; () end;
                (count :=
                 (Unsafe_uint64.(+)  !count
-                 (#"strcspn.jc" 592 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 591 61 74# "expl:Integer cast"
                  (Unsafe_uint64.of_int (1))) )) end end;
              (p_4 :=
               (shift_  !p_4
                (Unsafe_int32.to_int 
-                (#"strcspn.jc" 594 40 52# "expl:Integer cast"
+                (#"strcspn.jc" 593 40 52# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) )) end;
              (raise (Loop_continue_exc ())) end with Loop_continue_exc
             _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -9239,7 +9239,7 @@ module Function_strcspn_0
           requires { true }
           ensures {
             (((forall p_1 : (pointer voidP).
-               (forall t_2 : (pointer voidP).
+               (forall t_1 : (pointer voidP).
                 (((same_block s_3 p_1) /\
                  (((<=) (sub_pointer s_3 p_1) (0)) /\
                  ((same_block p_1
@@ -9250,25 +9250,25 @@ module Function_strcspn_0
                   (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12))))
                   (0))
                  /\
-                 ((same_block reject_0 t_2) /\
-                 (((<=) (sub_pointer reject_0 t_2) (0)) /\
-                 ((same_block t_2
+                 ((same_block reject_0 t_1) /\
+                 (((<=) (sub_pointer reject_0 t_1) (0)) /\
+                 ((same_block t_1
                   (shift reject_0
                   (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  /\
                  ((<)
-                 (sub_pointer t_2
+                 (sub_pointer t_1
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  (0))))))))) ->
                  (Int8.(<>) (select charP_charM_s_12 p_1)
-                 (select charP_charM_reject_13 t_2))))) ->
+                 (select charP_charM_reject_13 t_1))))) ->
               (#"/home/work/workspace/self/verker/strcspn.h" 66 15 35#
               "expl:Ensures clause"
               (Uint64.(=) result (strlen s_3 charP_charM_s_12))))
             /\
             (((exists p_2 : (pointer voidP).
-               (exists t_3 : (pointer voidP).
+               (exists t_2 : (pointer voidP).
                 ((same_block s_3 p_2) /\
                 (((<=) (sub_pointer s_3 p_2) (0)) /\
                 ((same_block p_2
@@ -9279,38 +9279,38 @@ module Function_strcspn_0
                  (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12))))
                  (0))
                 /\
-                ((same_block reject_0 t_3) /\
-                (((<=) (sub_pointer reject_0 t_3) (0)) /\
-                ((same_block t_3
+                ((same_block reject_0 t_2) /\
+                (((<=) (sub_pointer reject_0 t_2) (0)) /\
+                ((same_block t_2
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 /\
                 (((<)
-                 (sub_pointer t_3
+                 (sub_pointer t_2
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_s_12 p_2)
-                (select charP_charM_reject_13 t_3)))))))))))) ->
+                (select charP_charM_reject_13 t_2)))))))))))) ->
               (#"/home/work/workspace/self/verker/strcspn.h" 60 15 89#
               "expl:Ensures clause"
-              (exists t_4 : (pointer voidP).
-               ((same_block reject_0 t_4) /\
-               (((<=) (sub_pointer reject_0 t_4) (0)) /\
-               ((same_block t_4
+              (exists t_3 : (pointer voidP).
+               ((same_block reject_0 t_3) /\
+               (((<=) (sub_pointer reject_0 t_3) (0)) /\
+               ((same_block t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                /\
                (((<)
-                (sub_pointer t_4
+                (sub_pointer t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 (0))
                /\
                (Int8.(=)
                (select charP_charM_s_12 (shift s_3 (Uint64.to_int result)))
-               (select charP_charM_reject_13 t_4)))))))))
+               (select charP_charM_reject_13 t_3)))))))))
             /\
             (#"/home/work/workspace/self/verker/strcspn.h" 49 12 41#
             "expl:Ensures clause"
@@ -9336,26 +9336,26 @@ module Function_strcspn_0
             (#"/home/work/workspace/self/verker/strcspn.h" 51 12 143#
             "expl:Ensures clause"
             (forall p_3 : (pointer voidP).
-             (forall t_5 : (pointer voidP).
+             (forall t_4 : (pointer voidP).
               (((same_block s_3 p_3) /\
                (((<=) (sub_pointer s_3 p_3) (0)) /\
                ((same_block p_3 (shift s_3 (Uint64.to_int result))) /\
                (((<) (sub_pointer p_3 (shift s_3 (Uint64.to_int result)))
                 (0))
                /\
-               ((same_block reject_0 t_5) /\
-               (((<=) (sub_pointer reject_0 t_5) (0)) /\
-               ((same_block t_5
+               ((same_block reject_0 t_4) /\
+               (((<=) (sub_pointer reject_0 t_4) (0)) /\
+               ((same_block t_4
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                /\
                ((<)
-               (sub_pointer t_5
+               (sub_pointer t_4
                (shift reject_0
                (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
                ->
                (Int8.(<>) (select charP_charM_s_12 p_3)
-               (select charP_charM_reject_13 t_5))))))))))))))) }
+               (select charP_charM_reject_13 t_4))))))))))))))) }
   
 end
 
@@ -9405,7 +9405,7 @@ module Function_strcspn_0_safe
             charP_charM_reject_13))))) }
           ensures {
             (((forall p_1 : (pointer voidP).
-               (forall t_2 : (pointer voidP).
+               (forall t_1 : (pointer voidP).
                 (((same_block s_3 p_1) /\
                  (((<=) (sub_pointer s_3 p_1) (0)) /\
                  ((same_block p_1
@@ -9416,25 +9416,25 @@ module Function_strcspn_0_safe
                   (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12))))
                   (0))
                  /\
-                 ((same_block reject_0 t_2) /\
-                 (((<=) (sub_pointer reject_0 t_2) (0)) /\
-                 ((same_block t_2
+                 ((same_block reject_0 t_1) /\
+                 (((<=) (sub_pointer reject_0 t_1) (0)) /\
+                 ((same_block t_1
                   (shift reject_0
                   (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  /\
                  ((<)
-                 (sub_pointer t_2
+                 (sub_pointer t_1
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  (0))))))))) ->
                  (Int8.(<>) (select charP_charM_s_12 p_1)
-                 (select charP_charM_reject_13 t_2))))) ->
+                 (select charP_charM_reject_13 t_1))))) ->
               (#"/home/work/workspace/self/verker/strcspn.h" 66 15 35#
               "expl:Ensures clause"
               (Uint64.(=) result (strlen s_3 charP_charM_s_12))))
             /\
             (((exists p_2 : (pointer voidP).
-               (exists t_3 : (pointer voidP).
+               (exists t_2 : (pointer voidP).
                 ((same_block s_3 p_2) /\
                 (((<=) (sub_pointer s_3 p_2) (0)) /\
                 ((same_block p_2
@@ -9445,38 +9445,38 @@ module Function_strcspn_0_safe
                  (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_12))))
                  (0))
                 /\
-                ((same_block reject_0 t_3) /\
-                (((<=) (sub_pointer reject_0 t_3) (0)) /\
-                ((same_block t_3
+                ((same_block reject_0 t_2) /\
+                (((<=) (sub_pointer reject_0 t_2) (0)) /\
+                ((same_block t_2
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 /\
                 (((<)
-                 (sub_pointer t_3
+                 (sub_pointer t_2
                  (shift reject_0
                  (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_s_12 p_2)
-                (select charP_charM_reject_13 t_3)))))))))))) ->
+                (select charP_charM_reject_13 t_2)))))))))))) ->
               (#"/home/work/workspace/self/verker/strcspn.h" 60 15 89#
               "expl:Ensures clause"
-              (exists t_4 : (pointer voidP).
-               ((same_block reject_0 t_4) /\
-               (((<=) (sub_pointer reject_0 t_4) (0)) /\
-               ((same_block t_4
+              (exists t_3 : (pointer voidP).
+               ((same_block reject_0 t_3) /\
+               (((<=) (sub_pointer reject_0 t_3) (0)) /\
+               ((same_block t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                /\
                (((<)
-                (sub_pointer t_4
+                (sub_pointer t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                 (0))
                /\
                (Int8.(=)
                (select charP_charM_s_12 (shift s_3 (Uint64.to_int result)))
-               (select charP_charM_reject_13 t_4)))))))))
+               (select charP_charM_reject_13 t_3)))))))))
             /\
             (#"/home/work/workspace/self/verker/strcspn.h" 49 12 41#
             "expl:Ensures clause"
@@ -9502,25 +9502,25 @@ module Function_strcspn_0_safe
             (#"/home/work/workspace/self/verker/strcspn.h" 51 12 143#
             "expl:Ensures clause"
             (forall p_3 : (pointer voidP).
-             (forall t_5 : (pointer voidP).
+             (forall t_4 : (pointer voidP).
               (((same_block s_3 p_3) /\
                (((<=) (sub_pointer s_3 p_3) (0)) /\
                ((same_block p_3 (shift s_3 (Uint64.to_int result))) /\
                (((<) (sub_pointer p_3 (shift s_3 (Uint64.to_int result)))
                 (0))
                /\
-               ((same_block reject_0 t_5) /\
-               (((<=) (sub_pointer reject_0 t_5) (0)) /\
-               ((same_block t_5
+               ((same_block reject_0 t_4) /\
+               (((<=) (sub_pointer reject_0 t_4) (0)) /\
+               ((same_block t_4
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_13))))
                /\
                ((<)
-               (sub_pointer t_5
+               (sub_pointer t_4
                (shift reject_0
                (Uint64.to_int (strlen reject_0 charP_charM_reject_13)))) (0)))))))))
                ->
                (Int8.(<>) (select charP_charM_s_12 p_3)
-               (select charP_charM_reject_13 t_5))))))))))))))) }
+               (select charP_charM_reject_13 t_4))))))))))))))) }
   
 end

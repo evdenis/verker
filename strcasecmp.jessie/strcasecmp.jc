@@ -357,55 +357,54 @@ behavior default:
   assigns \nothing;
   ensures true;
 behavior equal:
-  assumes (\forall integer i_10;
-            (((0 <= i_10) && (i_10 <= (strlen{Here}(s1) :> integer))) ==>
-              (tolower(((s1 + i_10).charM :> integer)) ==
-                tolower(((s2 + i_10).charM :> integer)))));
+  assumes (\forall integer i_8;
+            (((0 <= i_8) && (i_8 <= (strlen{Here}(s1) :> integer))) ==>
+              (tolower(((s1 + i_8).charM :> integer)) ==
+                tolower(((s2 + i_8).charM :> integer)))));
   ensures (_C_109 : (\result == (0 :> int32)));
 behavior not_equal:
-  assumes (\exists integer i_8;
-            (((0 <= i_8) && (i_8 <= (strlen{Here}(s1) :> integer))) &&
-              (tolower(((s1 + i_8).charM :> integer)) !=
-                tolower(((s2 + i_8).charM :> integer)))));
+  assumes (\exists integer i_6;
+            (((0 <= i_6) && (i_6 <= (strlen{Here}(s1) :> integer))) &&
+              (tolower(((s1 + i_6).charM :> integer)) !=
+                tolower(((s2 + i_6).charM :> integer)))));
   ensures (_C_110 : ((_C_111 : (\result != (0 :> int32))) &&
-                      (_C_112 : (\exists integer i_9;
-                                  (((((0 <= i_9) &&
-                                       (i_9 <=
+                      (_C_112 : (\exists integer i_7;
+                                  (((((0 <= i_7) &&
+                                       (i_7 <=
                                          (strlen{Here}(\at(s1,Old)) :> integer))) &&
-                                      (\forall integer j_0;
-                                        (((0 <= j_0) && (j_0 < i_9)) ==>
-                                          (tolower(((\at(s1,Old) + j_0).charM :> integer)) ==
-                                            tolower(((\at(s2,Old) + j_0).charM :> integer)))))) &&
-                                     (tolower(((\at(s1,Old) + i_9).charM :> integer)) !=
-                                       tolower(((\at(s2,Old) + i_9).charM :> integer)))) &&
+                                      (\forall integer j;
+                                        (((0 <= j) && (j < i_7)) ==>
+                                          (tolower(((\at(s1,Old) + j).charM :> integer)) ==
+                                            tolower(((\at(s2,Old) + j).charM :> integer)))))) &&
+                                     (tolower(((\at(s1,Old) + i_7).charM :> integer)) !=
+                                       tolower(((\at(s2,Old) + i_7).charM :> integer)))) &&
                                     ((\result :> integer) ==
-                                      (tolower(((\at(s1,Old) + i_9).charM :> integer)) -
-                                        tolower(((\at(s2,Old) + i_9).charM :> integer)))))))));
+                                      (tolower(((\at(s1,Old) + i_7).charM :> integer)) -
+                                        tolower(((\at(s2,Old) + i_7).charM :> integer)))))))));
 {  
-   (check (disjoint_behaviors : (! ((\forall integer i_10;
-                                      (((0 <= i_10) &&
-                                         (i_10 <=
+   (check (disjoint_behaviors : (! ((\forall integer i_8;
+                                      (((0 <= i_8) &&
+                                         (i_8 <=
                                            (strlen{Here}(s1) :> integer))) ==>
-                                        (tolower(((s1 + i_10).charM :> integer)) ==
-                                          tolower(((s2 + i_10).charM :> integer))))) &&
-                                     (\exists integer i_8;
-                                       (((0 <= i_8) &&
-                                          (i_8 <=
+                                        (tolower(((s1 + i_8).charM :> integer)) ==
+                                          tolower(((s2 + i_8).charM :> integer))))) &&
+                                     (\exists integer i_6;
+                                       (((0 <= i_6) &&
+                                          (i_6 <=
                                             (strlen{Here}(s1) :> integer))) &&
-                                         (tolower(((s1 + i_8).charM :> integer)) !=
-                                           tolower(((s2 + i_8).charM :> integer)))))))));
+                                         (tolower(((s1 + i_6).charM :> integer)) !=
+                                           tolower(((s2 + i_6).charM :> integer)))))))));
    
-   (check (complete_behaviors : ((\exists integer i_8;
-                                   (((0 <= i_8) &&
-                                      (i_8 <= (strlen{Here}(s1) :> integer))) &&
-                                     (tolower(((s1 + i_8).charM :> integer)) !=
-                                       tolower(((s2 + i_8).charM :> integer))))) ||
-                                  (\forall integer i_10;
-                                    (((0 <= i_10) &&
-                                       (i_10 <=
-                                         (strlen{Here}(s1) :> integer))) ==>
-                                      (tolower(((s1 + i_10).charM :> integer)) ==
-                                        tolower(((s2 + i_10).charM :> integer))))))));
+   (check (complete_behaviors : ((\exists integer i_6;
+                                   (((0 <= i_6) &&
+                                      (i_6 <= (strlen{Here}(s1) :> integer))) &&
+                                     (tolower(((s1 + i_6).charM :> integer)) !=
+                                       tolower(((s2 + i_6).charM :> integer))))) ||
+                                  (\forall integer i_8;
+                                    (((0 <= i_8) &&
+                                       (i_8 <= (strlen{Here}(s1) :> integer))) ==>
+                                      (tolower(((s1 + i_8).charM :> integer)) ==
+                                        tolower(((s2 + i_8).charM :> integer))))))));
    
    (var int32 c1);
    
@@ -459,10 +458,10 @@ behavior not_equal:
       behavior default:
         invariant (_C_65 : ((s1 - os1) == (s2 - os2)));
       behavior default:
-        invariant (_C_64 : (\forall integer i_6;
-                             (((0 <= i_6) && (i_6 < (s1 - os1))) ==>
-                               (tolower(((os1 + i_6).charM :> integer)) ==
-                                 tolower(((os2 + i_6).charM :> integer))))));
+        invariant (_C_64 : (\forall integer i;
+                             (((0 <= i) && (i < (s1 - os1))) ==>
+                               (tolower(((os1 + i).charM :> integer)) ==
+                                 tolower(((os2 + i).charM :> integer))))));
       variant (_C_63 : ((strlen{Here}(os1) :> integer) - (s1 - os1)));
       while (true)
       {  
@@ -507,30 +506,29 @@ behavior not_equal:
       
       {  
          (assert for default: (_C_105 : (jessie : ((c1 != c2) ==>
-                                                    (\exists integer i_7;
-                                                      ((((((0 <= i_7) &&
-                                                            (i_7 <=
+                                                    (\exists integer i;
+                                                      ((((((0 <= i) &&
+                                                            (i <=
                                                               (strlen{Here}(
                                                               os1) :> integer))) &&
                                                            (\forall integer j;
                                                              (((0 <= j) &&
-                                                                (j < i_7)) ==>
+                                                                (j < i)) ==>
                                                                (tolower(
                                                                  ((os1 + j).charM :> integer)) ==
                                                                  tolower(
                                                                  ((os2 + j).charM :> integer)))))) &&
-                                                          (tolower(((os1 +
-                                                                    i_7).charM :> integer)) !=
+                                                          (tolower(((os1 + i).charM :> integer)) !=
                                                             tolower((
                                                                     (os2 +
-                                                                    i_7).charM :> integer)))) &&
+                                                                    i).charM :> integer)))) &&
                                                          ((res :> integer) ==
                                                            (tolower((
                                                                     (os1 +
-                                                                    i_7).charM :> integer)) -
+                                                                    i).charM :> integer)) -
                                                              tolower(
-                                                             ((os2 + i_7).charM :> integer))))) &&
-                                                        (i_7 ==
+                                                             ((os2 + i).charM :> integer))))) &&
+                                                        (i ==
                                                           ((s1 - os1) - 1))))))));
          ()
       };

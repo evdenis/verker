@@ -62,49 +62,47 @@ behavior default:
                                        (\at(size_1,Old) :> integer))) <=
                                     0))))));
 behavior found:
-  assumes (\exists integer i_1;
-            (((0 <= i_1) && (i_1 < (size_1 :> integer))) &&
-              ((((addr :> unsigned_charP[..]) + i_1).unsigned_charM :> integer) ==
+  assumes (\exists integer i_0;
+            (((0 <= i_0) && (i_0 < (size_1 :> integer))) &&
+              ((((addr :> unsigned_charP[..]) + i_0).unsigned_charM :> integer) ==
                 (c :> integer))));
-  ensures (_C_39 : (\exists integer i_2;
-                     (((((0 <= i_2) && (i_2 < (\at(size_1,Old) :> integer))) &&
+  ensures (_C_39 : (\exists integer i_1;
+                     (((((0 <= i_1) && (i_1 < (\at(size_1,Old) :> integer))) &&
                          (\forall integer j;
-                           (((0 <= j) && (j < i_2)) ==>
+                           (((0 <= j) && (j < i_1)) ==>
                              ((((\at(addr,Old) :> unsigned_charP[..]) + j).unsigned_charM :> integer) !=
                                (\at(c,Old) :> integer))))) &&
-                        ((((\at(addr,Old) :> unsigned_charP[..]) + i_2).unsigned_charM :> integer) ==
+                        ((((\at(addr,Old) :> unsigned_charP[..]) + i_1).unsigned_charM :> integer) ==
                           (\at(c,Old) :> integer))) &&
-                       (\result == (\at(addr,Old) + i_2)))));
+                       (\result == (\at(addr,Old) + i_1)))));
 behavior not_exists:
-  assumes (\forall integer i_0;
-            (((0 <= i_0) && (i_0 < (size_1 :> integer))) ==>
-              ((((addr :> unsigned_charP[..]) + i_0).unsigned_charM :> integer) !=
+  assumes (\forall integer i;
+            (((0 <= i) && (i < (size_1 :> integer))) ==>
+              ((((addr :> unsigned_charP[..]) + i).unsigned_charM :> integer) !=
                 (c :> integer))));
   ensures (_C_40 : (\result ==
                      (\at(addr,Old) + (\at(size_1,Old) :> integer))));
 {  
-   (check (disjoint_behaviors : (! ((\exists integer i_1;
-                                      (((0 <= i_1) &&
-                                         (i_1 < (size_1 :> integer))) &&
+   (check (disjoint_behaviors : (! ((\exists integer i_0;
+                                      (((0 <= i_0) &&
+                                         (i_0 < (size_1 :> integer))) &&
                                         ((((addr :> unsigned_charP[..]) +
-                                            i_1).unsigned_charM :> integer) ==
+                                            i_0).unsigned_charM :> integer) ==
                                           (c :> integer)))) &&
-                                     (\forall integer i_0;
-                                       (((0 <= i_0) &&
-                                          (i_0 < (size_1 :> integer))) ==>
-                                         ((((addr :> unsigned_charP[..]) +
-                                             i_0).unsigned_charM :> integer) !=
+                                     (\forall integer i;
+                                       (((0 <= i) &&
+                                          (i < (size_1 :> integer))) ==>
+                                         ((((addr :> unsigned_charP[..]) + i).unsigned_charM :> integer) !=
                                            (c :> integer))))))));
    
-   (check (complete_behaviors : ((\forall integer i_0;
-                                   (((0 <= i_0) &&
-                                      (i_0 < (size_1 :> integer))) ==>
-                                     ((((addr :> unsigned_charP[..]) + i_0).unsigned_charM :> integer) !=
+   (check (complete_behaviors : ((\forall integer i;
+                                   (((0 <= i) && (i < (size_1 :> integer))) ==>
+                                     ((((addr :> unsigned_charP[..]) + i).unsigned_charM :> integer) !=
                                        (c :> integer)))) ||
-                                  (\exists integer i_1;
-                                    (((0 <= i_1) &&
-                                       (i_1 < (size_1 :> integer))) &&
-                                      ((((addr :> unsigned_charP[..]) + i_1).unsigned_charM :> integer) ==
+                                  (\exists integer i_0;
+                                    (((0 <= i_0) &&
+                                       (i_0 < (size_1 :> integer))) &&
+                                      ((((addr :> unsigned_charP[..]) + i_0).unsigned_charM :> integer) ==
                                         (c :> integer)))))));
    
    (var unsigned_charP[..] p);

@@ -231,14 +231,13 @@ behavior exists:
             (((0 <= i_8) && (i_8 < (strlen{Here}(s) :> integer))) &&
               ((s + i_8).charM == (c :%> int8))));
   ensures (_C_62 : ((_C_63 : (\result.charM == (\at(c,Old) :%> int8))) &&
-                     (_C_64 : (\forall charP[..] p_0;
+                     (_C_64 : (\forall charP[..] p;
                                 ((((\base_block(\at(s,Old)) ==
-                                     \base_block(p_0)) &&
-                                    ((\at(s,Old) - p_0) <= 0)) &&
-                                   ((\base_block(p_0) ==
-                                      \base_block(\result)) &&
-                                     ((p_0 - \result) < 0))) ==>
-                                  (p_0.charM != (\at(c,Old) :%> int8)))))));
+                                     \base_block(p)) &&
+                                    ((\at(s,Old) - p) <= 0)) &&
+                                   ((\base_block(p) == \base_block(\result)) &&
+                                     ((p - \result) < 0))) ==>
+                                  (p.charM != (\at(c,Old) :%> int8)))))));
 {  
    (check (disjoint_behaviors : (! ((\forall integer i_9;
                                       (((0 <= i_9) &&

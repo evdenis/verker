@@ -306,7 +306,7 @@ behavior default:
                      (((_C_96 : ((0 :> uint64) <= \result)) &&
                         (_C_97 : (\result <= strlen{Here}(\at(s,Old))))) &&
                        (_C_98 : (\forall charP[..] p_3;
-                                  (\forall charP[..] t_5;
+                                  (\forall charP[..] t_4;
                                     ((((((\base_block(\at(s,Old)) ==
                                            \base_block(p_3)) &&
                                           ((\at(s,Old) - p_3) <= 0)) &&
@@ -318,59 +318,59 @@ behavior default:
                                                 (\result :> integer))) <
                                              0))) &&
                                         ((\base_block(\at(reject,Old)) ==
-                                           \base_block(t_5)) &&
-                                          ((\at(reject,Old) - t_5) <= 0))) &&
-                                       ((\base_block(t_5) ==
+                                           \base_block(t_4)) &&
+                                          ((\at(reject,Old) - t_4) <= 0))) &&
+                                       ((\base_block(t_4) ==
                                           \base_block((\at(reject,Old) +
                                                         (strlen{Here}(
                                                         \at(reject,Old)) :> integer)))) &&
-                                         ((t_5 -
+                                         ((t_4 -
                                             (\at(reject,Old) +
                                               (strlen{Here}(\at(reject,Old)) :> integer))) <
                                            0))) ==>
-                                      (p_3.charM != t_5.charM))))))));
+                                      (p_3.charM != t_4.charM))))))));
 behavior exists:
   assumes (\exists charP[..] p_2;
-            (\exists charP[..] t_3;
+            (\exists charP[..] t_2;
               ((((((\base_block(s) == \base_block(p_2)) && ((s - p_2) <= 0)) &&
                    ((\base_block(p_2) ==
                       \base_block((s + (strlen{Here}(s) :> integer)))) &&
                      ((p_2 - (s + (strlen{Here}(s) :> integer))) < 0))) &&
-                  ((\base_block(reject) == \base_block(t_3)) &&
-                    ((reject - t_3) <= 0))) &&
-                 ((\base_block(t_3) ==
-                    \base_block((reject + (strlen{Here}(reject) :> integer)))) &&
-                   ((t_3 - (reject + (strlen{Here}(reject) :> integer))) < 0))) &&
-                (p_2.charM == t_3.charM))));
-  ensures (_C_99 : (\exists charP[..] t_4;
-                     ((((\base_block(\at(reject,Old)) == \base_block(t_4)) &&
-                         ((\at(reject,Old) - t_4) <= 0)) &&
-                        ((\base_block(t_4) ==
-                           \base_block((\at(reject,Old) +
-                                         (strlen{Here}(\at(reject,Old)) :> integer)))) &&
-                          ((t_4 -
-                             (\at(reject,Old) +
-                               (strlen{Here}(\at(reject,Old)) :> integer))) <
-                            0))) &&
-                       ((\at(s,Old) + (\result :> integer)).charM ==
-                         t_4.charM))));
-behavior not_exists:
-  assumes (\forall charP[..] p_1;
-            (\forall charP[..] t_2;
-              ((((((\base_block(s) == \base_block(p_1)) && ((s - p_1) <= 0)) &&
-                   ((\base_block(p_1) ==
-                      \base_block((s + (strlen{Here}(s) :> integer)))) &&
-                     ((p_1 - (s + (strlen{Here}(s) :> integer))) < 0))) &&
                   ((\base_block(reject) == \base_block(t_2)) &&
                     ((reject - t_2) <= 0))) &&
                  ((\base_block(t_2) ==
                     \base_block((reject + (strlen{Here}(reject) :> integer)))) &&
-                   ((t_2 - (reject + (strlen{Here}(reject) :> integer))) < 0))) ==>
-                (p_1.charM != t_2.charM))));
+                   ((t_2 - (reject + (strlen{Here}(reject) :> integer))) < 0))) &&
+                (p_2.charM == t_2.charM))));
+  ensures (_C_99 : (\exists charP[..] t_3;
+                     ((((\base_block(\at(reject,Old)) == \base_block(t_3)) &&
+                         ((\at(reject,Old) - t_3) <= 0)) &&
+                        ((\base_block(t_3) ==
+                           \base_block((\at(reject,Old) +
+                                         (strlen{Here}(\at(reject,Old)) :> integer)))) &&
+                          ((t_3 -
+                             (\at(reject,Old) +
+                               (strlen{Here}(\at(reject,Old)) :> integer))) <
+                            0))) &&
+                       ((\at(s,Old) + (\result :> integer)).charM ==
+                         t_3.charM))));
+behavior not_exists:
+  assumes (\forall charP[..] p_1;
+            (\forall charP[..] t_1;
+              ((((((\base_block(s) == \base_block(p_1)) && ((s - p_1) <= 0)) &&
+                   ((\base_block(p_1) ==
+                      \base_block((s + (strlen{Here}(s) :> integer)))) &&
+                     ((p_1 - (s + (strlen{Here}(s) :> integer))) < 0))) &&
+                  ((\base_block(reject) == \base_block(t_1)) &&
+                    ((reject - t_1) <= 0))) &&
+                 ((\base_block(t_1) ==
+                    \base_block((reject + (strlen{Here}(reject) :> integer)))) &&
+                   ((t_1 - (reject + (strlen{Here}(reject) :> integer))) < 0))) ==>
+                (p_1.charM != t_1.charM))));
   ensures (_C_100 : (\result == strlen{Here}(\at(s,Old))));
 {  
    (check (disjoint_behaviors : (! ((\exists charP[..] p_2;
-                                      (\exists charP[..] t_3;
+                                      (\exists charP[..] t_2;
                                         ((((((\base_block(s) ==
                                                \base_block(p_2)) &&
                                               ((s - p_2) <= 0)) &&
@@ -383,19 +383,19 @@ behavior not_exists:
                                                     (strlen{Here}(s) :> integer))) <
                                                  0))) &&
                                             ((\base_block(reject) ==
-                                               \base_block(t_3)) &&
-                                              ((reject - t_3) <= 0))) &&
-                                           ((\base_block(t_3) ==
+                                               \base_block(t_2)) &&
+                                              ((reject - t_2) <= 0))) &&
+                                           ((\base_block(t_2) ==
                                               \base_block((reject +
                                                             (strlen{Here}(
                                                             reject) :> integer)))) &&
-                                             ((t_3 -
+                                             ((t_2 -
                                                 (reject +
                                                   (strlen{Here}(reject) :> integer))) <
                                                0))) &&
-                                          (p_2.charM == t_3.charM)))) &&
+                                          (p_2.charM == t_2.charM)))) &&
                                      (\forall charP[..] p_1;
-                                       (\forall charP[..] t_2;
+                                       (\forall charP[..] t_1;
                                          ((((((\base_block(s) ==
                                                 \base_block(p_1)) &&
                                                ((s - p_1) <= 0)) &&
@@ -408,20 +408,20 @@ behavior not_exists:
                                                      (strlen{Here}(s) :> integer))) <
                                                   0))) &&
                                              ((\base_block(reject) ==
-                                                \base_block(t_2)) &&
-                                               ((reject - t_2) <= 0))) &&
-                                            ((\base_block(t_2) ==
+                                                \base_block(t_1)) &&
+                                               ((reject - t_1) <= 0))) &&
+                                            ((\base_block(t_1) ==
                                                \base_block((reject +
                                                              (strlen{Here}(
                                                              reject) :> integer)))) &&
-                                              ((t_2 -
+                                              ((t_1 -
                                                  (reject +
                                                    (strlen{Here}(reject) :> integer))) <
                                                 0))) ==>
-                                           (p_1.charM != t_2.charM))))))));
+                                           (p_1.charM != t_1.charM))))))));
    
    (check (complete_behaviors : ((\forall charP[..] p_1;
-                                   (\forall charP[..] t_2;
+                                   (\forall charP[..] t_1;
                                      ((((((\base_block(s) ==
                                             \base_block(p_1)) &&
                                            ((s - p_1) <= 0)) &&
@@ -434,19 +434,19 @@ behavior not_exists:
                                                  (strlen{Here}(s) :> integer))) <
                                               0))) &&
                                          ((\base_block(reject) ==
-                                            \base_block(t_2)) &&
-                                           ((reject - t_2) <= 0))) &&
-                                        ((\base_block(t_2) ==
+                                            \base_block(t_1)) &&
+                                           ((reject - t_1) <= 0))) &&
+                                        ((\base_block(t_1) ==
                                            \base_block((reject +
                                                          (strlen{Here}(
                                                          reject) :> integer)))) &&
-                                          ((t_2 -
+                                          ((t_1 -
                                              (reject +
                                                (strlen{Here}(reject) :> integer))) <
                                             0))) ==>
-                                       (p_1.charM != t_2.charM)))) ||
+                                       (p_1.charM != t_1.charM)))) ||
                                   (\exists charP[..] p_2;
-                                    (\exists charP[..] t_3;
+                                    (\exists charP[..] t_2;
                                       ((((((\base_block(s) ==
                                              \base_block(p_2)) &&
                                             ((s - p_2) <= 0)) &&
@@ -459,17 +459,17 @@ behavior not_exists:
                                                   (strlen{Here}(s) :> integer))) <
                                                0))) &&
                                           ((\base_block(reject) ==
-                                             \base_block(t_3)) &&
-                                            ((reject - t_3) <= 0))) &&
-                                         ((\base_block(t_3) ==
+                                             \base_block(t_2)) &&
+                                            ((reject - t_2) <= 0))) &&
+                                         ((\base_block(t_2) ==
                                             \base_block((reject +
                                                           (strlen{Here}(
                                                           reject) :> integer)))) &&
-                                           ((t_3 -
+                                           ((t_2 -
                                               (reject +
                                                 (strlen{Here}(reject) :> integer))) <
                                              0))) &&
-                                        (p_2.charM == t_3.charM)))))));
+                                        (p_2.charM == t_2.charM)))))));
    
    (var charP[..] p);
    
@@ -499,22 +499,22 @@ behavior not_exists:
       behavior default:
         invariant (_C_47 : ((count :> integer) == (p - s)));
       behavior default:
-        invariant (_C_46 : (\forall charP[..] c_4;
-                             (\forall charP[..] t_1;
-                               ((((((\base_block(s) == \base_block(c_4)) &&
-                                     ((s - c_4) <= 0)) &&
-                                    ((\base_block(c_4) == \base_block(p)) &&
-                                      ((c_4 - p) < 0))) &&
-                                   ((\base_block(reject) == \base_block(t_1)) &&
-                                     ((reject - t_1) <= 0))) &&
-                                  ((\base_block(t_1) ==
+        invariant (_C_46 : (\forall charP[..] c;
+                             (\forall charP[..] t;
+                               ((((((\base_block(s) == \base_block(c)) &&
+                                     ((s - c) <= 0)) &&
+                                    ((\base_block(c) == \base_block(p)) &&
+                                      ((c - p) < 0))) &&
+                                   ((\base_block(reject) == \base_block(t)) &&
+                                     ((reject - t) <= 0))) &&
+                                  ((\base_block(t) ==
                                      \base_block((reject +
                                                    (strlen{Here}(reject) :> integer)))) &&
-                                    ((t_1 -
+                                    ((t -
                                        (reject +
                                          (strlen{Here}(reject) :> integer))) <
                                       0))) ==>
-                                 (c_4.charM != t_1.charM)))));
+                                 (c.charM != t.charM)))));
       behavior default:
         invariant (_C_45 : valid_str{Here}(p));
       behavior default:
@@ -543,14 +543,13 @@ behavior not_exists:
                                                       (strlen{Here}(reject) :> integer))) <=
                                                    0)))));
                behavior default:
-                 invariant (_C_65 : (\forall charP[..] c_3;
+                 invariant (_C_65 : (\forall charP[..] c;
                                       ((((\base_block(reject) ==
-                                           \base_block(c_3)) &&
-                                          ((reject - c_3) <= 0)) &&
-                                         ((\base_block(c_3) ==
-                                            \base_block(r)) &&
-                                           ((c_3 - r) < 0))) ==>
-                                        (c_3.charM != p.charM))));
+                                           \base_block(c)) &&
+                                          ((reject - c) <= 0)) &&
+                                         ((\base_block(c) == \base_block(r)) &&
+                                           ((c - r) < 0))) ==>
+                                        (c.charM != p.charM))));
                behavior default:
                  invariant (_C_64 : valid_str{Here}(r));
                behavior default:

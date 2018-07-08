@@ -173,13 +173,13 @@ behavior not_exists:
         invariant (_C_5 : ((p - (s :> unsigned_charP[..])) ==
                             ((\at(n,Pre) :> integer) - (n :> integer))));
       behavior default:
-        invariant (_C_4 : (\forall unsigned_charP[..] k_1;
+        invariant (_C_4 : (\forall unsigned_charP[..] k;
                             ((((\base_block((s :> unsigned_charP[..])) ==
-                                 \base_block(k_1)) &&
-                                (((s :> unsigned_charP[..]) - k_1) <= 0)) &&
-                               ((\base_block(k_1) == \base_block(p)) &&
-                                 ((k_1 - p) < 0))) ==>
-                              (k_1.unsigned_charM != (c :%> uint8)))));
+                                 \base_block(k)) &&
+                                (((s :> unsigned_charP[..]) - k) <= 0)) &&
+                               ((\base_block(k) == \base_block(p)) &&
+                                 ((k - p) < 0))) ==>
+                              (k.unsigned_charM != (c :%> uint8)))));
       variant (_C_3 : n);
       while (true)
       {  

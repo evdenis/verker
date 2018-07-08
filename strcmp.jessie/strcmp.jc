@@ -130,55 +130,53 @@ behavior default:
   assigns \nothing;
   ensures true;
 behavior equal:
-  assumes (\forall integer i_12;
-            (((0 <= i_12) && (i_12 <= (strlen{Here}(cs) :> integer))) ==>
-              ((cs + i_12).charM == (ct + i_12).charM)));
+  assumes (\forall integer i_8;
+            (((0 <= i_8) && (i_8 <= (strlen{Here}(cs) :> integer))) ==>
+              ((cs + i_8).charM == (ct + i_8).charM)));
   ensures (_C_70 : (\result == (0 :> int32)));
 behavior not_equal:
-  assumes (\exists integer i_10;
-            (((0 <= i_10) && (i_10 <= (strlen{Here}(cs) :> integer))) &&
-              ((cs + i_10).charM != (ct + i_10).charM)));
+  assumes (\exists integer i_6;
+            (((0 <= i_6) && (i_6 <= (strlen{Here}(cs) :> integer))) &&
+              ((cs + i_6).charM != (ct + i_6).charM)));
   ensures (_C_71 : ((_C_72 : ((\result == ((- 1) :> int32)) ||
                                (\result == (1 :> int32)))) &&
-                     (_C_73 : (\exists integer i_11;
-                                (((((0 <= i_11) &&
-                                     (i_11 <=
+                     (_C_73 : (\exists integer i_7;
+                                (((((0 <= i_7) &&
+                                     (i_7 <=
                                        (strlen{Here}(\at(cs,Old)) :> integer))) &&
-                                    (\forall integer j_0;
-                                      (((0 <= j_0) && (j_0 < i_11)) ==>
-                                        ((\at(cs,Old) + j_0).charM ==
-                                          (\at(ct,Old) + j_0).charM)))) &&
-                                   ((\at(cs,Old) + i_11).charM !=
-                                     (\at(ct,Old) + i_11).charM)) &&
-                                  (if (((\at(cs,Old) + i_11).charM :%> uint8) <
-                                        ((\at(ct,Old) + i_11).charM :%> uint8)) then 
+                                    (\forall integer j;
+                                      (((0 <= j) && (j < i_7)) ==>
+                                        ((\at(cs,Old) + j).charM ==
+                                          (\at(ct,Old) + j).charM)))) &&
+                                   ((\at(cs,Old) + i_7).charM !=
+                                     (\at(ct,Old) + i_7).charM)) &&
+                                  (if (((\at(cs,Old) + i_7).charM :%> uint8) <
+                                        ((\at(ct,Old) + i_7).charM :%> uint8)) then 
                                   (\result ==
                                     ((- 1) :> int32)) else (\result ==
                                                              (1 :> int32))))))));
 {  
-   (check (disjoint_behaviors : (! ((\forall integer i_12;
-                                      (((0 <= i_12) &&
-                                         (i_12 <=
+   (check (disjoint_behaviors : (! ((\forall integer i_8;
+                                      (((0 <= i_8) &&
+                                         (i_8 <=
                                            (strlen{Here}(cs) :> integer))) ==>
-                                        ((cs + i_12).charM ==
-                                          (ct + i_12).charM))) &&
-                                     (\exists integer i_10;
-                                       (((0 <= i_10) &&
-                                          (i_10 <=
+                                        ((cs + i_8).charM ==
+                                          (ct + i_8).charM))) &&
+                                     (\exists integer i_6;
+                                       (((0 <= i_6) &&
+                                          (i_6 <=
                                             (strlen{Here}(cs) :> integer))) &&
-                                         ((cs + i_10).charM !=
-                                           (ct + i_10).charM)))))));
+                                         ((cs + i_6).charM !=
+                                           (ct + i_6).charM)))))));
    
-   (check (complete_behaviors : ((\exists integer i_10;
-                                   (((0 <= i_10) &&
-                                      (i_10 <= (strlen{Here}(cs) :> integer))) &&
-                                     ((cs + i_10).charM != (ct + i_10).charM))) ||
-                                  (\forall integer i_12;
-                                    (((0 <= i_12) &&
-                                       (i_12 <=
-                                         (strlen{Here}(cs) :> integer))) ==>
-                                      ((cs + i_12).charM ==
-                                        (ct + i_12).charM))))));
+   (check (complete_behaviors : ((\exists integer i_6;
+                                   (((0 <= i_6) &&
+                                      (i_6 <= (strlen{Here}(cs) :> integer))) &&
+                                     ((cs + i_6).charM != (ct + i_6).charM))) ||
+                                  (\forall integer i_8;
+                                    (((0 <= i_8) &&
+                                       (i_8 <= (strlen{Here}(cs) :> integer))) ==>
+                                      ((cs + i_8).charM == (ct + i_8).charM))))));
    
    (var uint8 c1);
    
@@ -198,20 +196,20 @@ behavior not_equal:
    
    {  
       {  
-         (assert for default: (_C_17 : (jessie : ((\forall integer i_6;
-                                                    (((0 <= i_6) &&
-                                                       (i_6 <=
+         (assert for default: (_C_17 : (jessie : ((\forall integer i;
+                                                    (((0 <= i) &&
+                                                       (i <=
                                                          (strlen{Here}(
                                                          cs) :> integer))) ==>
-                                                      ((cs + i_6).charM ==
-                                                        (ct + i_6).charM))) <==>
-                                                   (\forall integer i_7;
-                                                     (((0 <= i_7) &&
-                                                        (i_7 <=
+                                                      ((cs + i).charM ==
+                                                        (ct + i).charM))) <==>
+                                                   (\forall integer i;
+                                                     (((0 <= i) &&
+                                                        (i <=
                                                           (strlen{Here}(
                                                           cs) :> integer))) ==>
-                                                       (((cs + i_7).charM :%> uint8) ==
-                                                         ((ct + i_7).charM :%> uint8))))))));
+                                                       (((cs + i).charM :%> uint8) ==
+                                                         ((ct + i).charM :%> uint8))))))));
          ()
       };
       
@@ -246,10 +244,10 @@ behavior not_equal:
       behavior default:
         invariant (_C_21 : ((cs - \at(cs,Pre)) == (ct - \at(ct,Pre))));
       behavior default:
-        invariant (_C_20 : (\forall integer i_9;
-                             (((0 <= i_9) && (i_9 < (cs - \at(cs,Pre)))) ==>
-                               ((\at(cs,Pre) + i_9).charM ==
-                                 (\at(ct,Pre) + i_9).charM))));
+        invariant (_C_20 : (\forall integer i;
+                             (((0 <= i) && (i < (cs - \at(cs,Pre)))) ==>
+                               ((\at(cs,Pre) + i).charM ==
+                                 (\at(ct,Pre) + i).charM))));
       behavior default:
         invariant (_C_19 : ((strlen{Here}(cs) :> integer) ==
                              ((strlen{Here}(\at(cs,Pre)) :> integer) -
@@ -275,31 +273,31 @@ behavior not_equal:
                (_C_56 : (res = tmp_1));
                
                {  
-                  (assert for default: (_C_57 : (jessie : (\exists integer i_8;
-                                                            ((((((0 <= i_8) &&
-                                                                  (i_8 <=
+                  (assert for default: (_C_57 : (jessie : (\exists integer i;
+                                                            ((((((0 <= i) &&
+                                                                  (i <=
                                                                     (strlen{Here}(
                                                                     \at(cs,Pre)) :> integer))) &&
                                                                  (\forall integer j;
                                                                    (((0 <= j) &&
-                                                                    (j < i_8)) ==>
+                                                                    (j < i)) ==>
                                                                     ((\at(cs,Pre) +
                                                                     j).charM ==
                                                                     (\at(ct,Pre) +
                                                                     j).charM)))) &&
                                                                 ((\at(cs,Pre) +
-                                                                   i_8).charM !=
+                                                                   i).charM !=
                                                                   (\at(ct,Pre) +
-                                                                    i_8).charM)) &&
+                                                                    i).charM)) &&
                                                                (if (((\at(cs,Pre) +
-                                                                    i_8).charM :%> uint8) <
+                                                                    i).charM :%> uint8) <
                                                                     ((\at(ct,Pre) +
-                                                                    i_8).charM :%> uint8)) then 
+                                                                    i).charM :%> uint8)) then 
                                                                (res ==
                                                                  ((- 1) :> int32)) else 
                                                                (res ==
                                                                  (1 :> int32)))) &&
-                                                              (i_8 ==
+                                                              (i ==
                                                                 ((cs -
                                                                    \at(cs,Pre)) -
                                                                   1)))))));

@@ -1819,12 +1819,14 @@ module Function_memset_safety
         requires { true } reads { c, charP_charM_s_2, mutable_count, s }
         ensures {
           ((#"/home/work/workspace/self/verker/memset.c" 11 20 76#
-           (forall p : (pointer voidP).
-            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
+           (forall p_0 : (pointer voidP).
+            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
              (((<=)
-              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p) (0))
-             /\ ((same_block p !xs) /\ ((<) (sub_pointer p !xs) (0))))) ->
-             (Bit_int8.(=) (select !charP_charM_s_2 p)
+              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p_0)
+              (0))
+             /\ ((same_block p_0 !xs) /\ ((<) (sub_pointer p_0 !xs) (0)))))
+             ->
+             (Bit_int8.(=) (select !charP_charM_s_2 p_0)
              (#"memset.jc" 82 42 54# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
@@ -2088,20 +2090,20 @@ module Function_memset_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
       "expl:Ensures clause"
-      (forall p_0 : (pointer voidP).
-       (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
-        (((<=) (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p_0)
+      (forall p : (pointer voidP).
+       (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
+        (((<=) (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p)
          (0))
         /\
-        ((same_block p_0
+        ((same_block p
          (shift (downcast voidP_s_2_tag_table s charP_tag)
          (Bit_uint64.to_int count)))
         /\
         ((<)
-        (sub_pointer p_0
+        (sub_pointer p
         (shift (downcast voidP_s_2_tag_table s charP_tag)
         (Bit_uint64.to_int count))) (0))))) ->
-        (Bit_int8.(=) (select !charP_charM_s_2 p_0) (#"memset.jc" 43 47 68#
+        (Bit_int8.(=) (select !charP_charM_s_2 p) (#"memset.jc" 43 45 66#
         "expl:Integer cast" (Bit_int8_of_Bit_int32.cast_modulo c))))))
      /\
      (#"/home/work/workspace/self/verker/memset.h" 20 12 24#
@@ -2162,13 +2164,14 @@ module Function_memset_behaviors
              (Bit_uint64.to_int !mutable_count))))
             &&
             (#"/home/work/workspace/self/verker/memset.c" 11 20 76#
-            (forall p : (pointer voidP).
-             (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
+            (forall p_0 : (pointer voidP).
+             (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
               (((<=)
-               (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p)
+               (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p_0)
                (0))
-              /\ ((same_block p !xs) /\ ((<) (sub_pointer p !xs) (0))))) ->
-              (Bit_int8.(=) (select !charP_charM_s_2 p)
+              /\ ((same_block p_0 !xs) /\ ((<) (sub_pointer p_0 !xs) (0)))))
+              ->
+              (Bit_int8.(=) (select !charP_charM_s_2 p_0)
               (#"memset.jc" 82 42 54# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c)))))))))
            /\
@@ -7553,22 +7556,21 @@ module Function_memset
           "expl:Ensures clause"
           ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
            "expl:Ensures clause"
-           (forall p_0 : (pointer voidP).
-            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
+           (forall p : (pointer voidP).
+            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
              (((<=)
-              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p_0)
-              (0))
+              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p) (0))
              /\
-             ((same_block p_0
+             ((same_block p
               (shift (downcast voidP_s_2_tag_table s charP_tag)
               (Uint64.to_int count)))
              /\
              ((<)
-             (sub_pointer p_0
+             (sub_pointer p
              (shift (downcast voidP_s_2_tag_table s charP_tag)
              (Uint64.to_int count))) (0))))) ->
-             (Bit_int8.(=) (select !charP_charM_s_2 p_0)
-             (#"memset.jc" 43 47 68# "expl:Integer cast"
+             (Bit_int8.(=) (select !charP_charM_s_2 p)
+             (#"memset.jc" 43 45 66# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
           (#"/home/work/workspace/self/verker/memset.h" 20 12 24#
@@ -7670,22 +7672,21 @@ module Function_memset_safe
           "expl:Ensures clause"
           ((#"/home/work/workspace/self/verker/memset.h" 18 12 95#
            "expl:Ensures clause"
-           (forall p_0 : (pointer voidP).
-            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p_0) /\
+           (forall p : (pointer voidP).
+            (((same_block (downcast voidP_s_2_tag_table s charP_tag) p) /\
              (((<=)
-              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p_0)
-              (0))
+              (sub_pointer (downcast voidP_s_2_tag_table s charP_tag) p) (0))
              /\
-             ((same_block p_0
+             ((same_block p
               (shift (downcast voidP_s_2_tag_table s charP_tag)
               (Uint64.to_int count)))
              /\
              ((<)
-             (sub_pointer p_0
+             (sub_pointer p
              (shift (downcast voidP_s_2_tag_table s charP_tag)
              (Uint64.to_int count))) (0))))) ->
-             (Bit_int8.(=) (select !charP_charM_s_2 p_0)
-             (#"memset.jc" 43 47 68# "expl:Integer cast"
+             (Bit_int8.(=) (select !charP_charM_s_2 p)
+             (#"memset.jc" 43 45 66# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))
           /\
           (#"/home/work/workspace/self/verker/memset.h" 20 12 24#

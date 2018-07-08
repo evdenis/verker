@@ -2001,7 +2001,7 @@ module Function_memscan_safety
         "expl:Pointer index bounds" true) }); _jessie_23 end));
         'Loop_4:
         loop
-        invariant { (#"memscan.jc" 116 6 2356# true) }
+        invariant { (#"memscan.jc" 114 6 2356# true) }
           variant { (#"/home/work/workspace/self/verker/memscan.c" 13 18 22#
             (Uint64.to_int
             (#"/home/work/workspace/self/verker/memscan.c" 13 18 22#
@@ -2011,16 +2011,16 @@ module Function_memscan_safety
          requires { true } reads { addr, c, mutable_size_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/memscan.c" 11 20 113#
-            (forall i : int.
-             ((((<=) (0) i) /\
-              ((<) i
+            (forall i_4 : int.
+             ((((<=) (0) i_4) /\
+              ((<) i_4
               (Int.(-) (Uint64.to_int (at !mutable_size_1 'Init))
               (Uint64.to_int !mutable_size_1)))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_4)))
               (Int32.to_int c)))))
            /\
            ((#"/home/work/workspace/self/verker/memscan.c" 10 20 65#
@@ -2062,7 +2062,7 @@ module Function_memscan_safety
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            ((#"/home/work/workspace/self/verker/memscan.c" 7 20 29#
-            (Uint64.(<=) (#"memscan.jc" 118 38 51# "expl:Integer cast"
+            (Uint64.(<=) (#"memscan.jc" 116 38 51# "expl:Integer cast"
             (Uint64.of_int (0))) !mutable_size_1))
            /\
            (#"/home/work/workspace/self/verker/memscan.c" 7 25 46#
@@ -2073,7 +2073,7 @@ module Function_memscan_safety
            (if
            (#"/home/work/workspace/self/verker/memscan.c" 15 8 12#
            (Safe_uint64.(<>)  !mutable_size_1
-            (#"memscan.jc" 150 48 61# "expl:Integer cast"
+            (#"memscan.jc" 148 48 61# "expl:Integer cast"
             (Safe_uint64.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2101,7 +2101,7 @@ module Function_memscan_safety
               (let _jessie_25 =
               (shift_typesafe  !p
                (Safe_int32.to_int 
-                (#"memscan.jc" 159 43 55# "expl:Integer cast"
+                (#"memscan.jc" 157 43 55# "expl:Integer cast"
                 (Safe_int32.of_int (1))) ) ) in
               begin
               (assert {
@@ -2110,7 +2110,7 @@ module Function_memscan_safety
               (mutable_size_1 :=
                (let _jessie_26 =
                (Safe_uint64.(-)  !mutable_size_1
-                (#"memscan.jc" 160 63 76# "expl:Integer cast"
+                (#"memscan.jc" 158 63 76# "expl:Integer cast"
                 (Safe_uint64.of_int (1))) ) in
                begin
                (assert {
@@ -2136,7 +2136,7 @@ module Function_memscan_safety
       (return :=
        (let _jessie_28 = !__retres in
        begin
-       (assert { (#"memscan.jc" 167 7 22# "expl:Pointer index bounds" true)
+       (assert { (#"memscan.jc" 165 7 22# "expl:Pointer index bounds" true)
        }); _jessie_28 end)); (raise Return) end end)); absurd  end with
     Return -> !return end))
   
@@ -2278,41 +2278,41 @@ module Function_memscan_behaviors
    try
     begin
     (check {
-    (#"memscan.jc" 86 10 808# "expl:Behavior disjointness check"
+    (#"memscan.jc" 86 10 755# "expl:Behavior disjointness check"
     (not
-    ((exists i_1_0 : int.
-      (((<=) (0) i_1_0) /\
-      (((<) i_1_0 (Uint64.to_int !mutable_size_1)) /\
+    ((exists i_0_0 : int.
+      (((<=) (0) i_0_0) /\
+      (((<) i_0_0 (Uint64.to_int !mutable_size_1)) /\
       ((=)
-      (Uint8.to_int
-      (select unsigned_charP_unsigned_charM_addr_2
-      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1_0)))
-      (Int32.to_int c)))))
-    /\
-    (forall i_0_0 : int.
-     ((((<=) (0) i_0_0) /\ ((<) i_0_0 (Uint64.to_int !mutable_size_1))) ->
-      ((<>)
       (Uint8.to_int
       (select unsigned_charP_unsigned_charM_addr_2
       (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0_0)))
+      (Int32.to_int c)))))
+    /\
+    (forall i_2 : int.
+     ((((<=) (0) i_2) /\ ((<) i_2 (Uint64.to_int !mutable_size_1))) ->
+      ((<>)
+      (Uint8.to_int
+      (select unsigned_charP_unsigned_charM_addr_2
+      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_2)))
       (Int32.to_int c))))))) });
      (check {
-     (#"memscan.jc" 99 10 688# "expl:Behavior completeness check"
-     ((forall i_0_1 : int.
-       ((((<=) (0) i_0_1) /\ ((<) i_0_1 (Uint64.to_int !mutable_size_1))) ->
+     (#"memscan.jc" 98 10 642# "expl:Behavior completeness check"
+     ((forall i_3 : int.
+       ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int !mutable_size_1))) ->
         ((<>)
         (Uint8.to_int
         (select unsigned_charP_unsigned_charM_addr_2
-        (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag)
-        i_0_1))) (Int32.to_int c))))
+        (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_3)))
+        (Int32.to_int c))))
      \/
-     (exists i_1_1 : int.
-      (((<=) (0) i_1_1) /\
-      (((<) i_1_1 (Uint64.to_int !mutable_size_1)) /\
+     (exists i_0_1 : int.
+      (((<=) (0) i_0_1) /\
+      (((<) i_0_1 (Uint64.to_int !mutable_size_1)) /\
       ((=)
       (Uint8.to_int
       (select unsigned_charP_unsigned_charM_addr_2
-      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1_1)))
+      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0_1)))
       (Int32.to_int c))))))) });
      (let p = ref (any_pointer  () : (pointer voidP)) in
      (let __retres = ref (any_pointer  () : (pointer voidP)) in
@@ -2328,7 +2328,7 @@ module Function_memscan_behaviors
           { ((#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
              (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
              ((#"/home/work/workspace/self/verker/memscan.c" 7 20 29#
-              (Uint64.(<=) (#"memscan.jc" 118 38 51# "expl:Integer cast"
+              (Uint64.(<=) (#"memscan.jc" 116 38 51# "expl:Integer cast"
               (Uint64.of_int (0))) !mutable_size_1))
              /\
              (#"/home/work/workspace/self/verker/memscan.c" 7 25 46#
@@ -2372,16 +2372,16 @@ module Function_memscan_behaviors
              (Uint64.to_int (at !mutable_size_1 'Init)))) (0))))))))))
             &&
             (#"/home/work/workspace/self/verker/memscan.c" 11 20 113#
-            (forall i : int.
-             ((((<=) (0) i) /\
-              ((<) i
+            (forall i_4 : int.
+             ((((<=) (0) i_4) /\
+              ((<) i_4
               (Int.(-) (Uint64.to_int (at !mutable_size_1 'Init))
               (Uint64.to_int !mutable_size_1)))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_4)))
               (Int32.to_int c))))))))) } 
          begin
          any unit requires { true } ensures { true } ;
@@ -2391,7 +2391,7 @@ module Function_memscan_behaviors
            (if
            (#"/home/work/workspace/self/verker/memscan.c" 15 8 12#
            (Unsafe_uint64.(<>)  !mutable_size_1
-            (#"memscan.jc" 150 48 61# "expl:Integer cast"
+            (#"memscan.jc" 148 48 61# "expl:Integer cast"
             (Unsafe_uint64.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2408,11 +2408,11 @@ module Function_memscan_behaviors
              (p :=
               (shift_  !p
                (Unsafe_int32.to_int 
-                (#"memscan.jc" 159 43 55# "expl:Integer cast"
+                (#"memscan.jc" 157 43 55# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ));
               (mutable_size_1 :=
                (Unsafe_uint64.(-)  !mutable_size_1
-                (#"memscan.jc" 160 63 76# "expl:Integer cast"
+                (#"memscan.jc" 158 63 76# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2432,13 +2432,13 @@ module Function_memscan_behaviors
    (tag_table voidP)) (unsigned_charP_unsigned_charM_addr_2 : (memory voidP
    Uint8.t)) 
    requires {
-   ((exists i_1 : int.
-     (((<=) (0) i_1) /\
-     (((<) i_1 (Uint64.to_int size_1)) /\
+   ((exists i_0 : int.
+     (((<=) (0) i_0) /\
+     (((<) i_0 (Uint64.to_int size_1)) /\
      ((=)
      (Uint8.to_int
      (select unsigned_charP_unsigned_charM_addr_2
-     (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1)))
+     (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0)))
      (Int32.to_int c)))))
    /\
    (((allocated voidP_addr_2_alloc_table addr) ->
@@ -2471,11 +2471,11 @@ module Function_memscan_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker/memscan.h" 23 15 199#
      "expl:Ensures clause"
-     (exists i_2 : int.
-      (((<=) (0) i_2) /\
-      (((<) i_2 (Uint64.to_int size_1)) /\
+     (exists i_1 : int.
+      (((<=) (0) i_1) /\
+      (((<) i_1 (Uint64.to_int size_1)) /\
       ((forall j : int.
-        ((((<=) (0) j) /\ ((<) j i_2)) ->
+        ((((<=) (0) j) /\ ((<) j i_1)) ->
          ((<>)
          (Uint8.to_int
          (select unsigned_charP_unsigned_charM_addr_2
@@ -2485,9 +2485,9 @@ module Function_memscan_behaviors
       (((=)
        (Uint8.to_int
        (select unsigned_charP_unsigned_charM_addr_2
-       (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_2)))
+       (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1)))
        (Int32.to_int c))
-      /\ ((=) result (shift addr i_2))))))))) } diverges  ->
+      /\ ((=) result (shift addr i_1))))))))) } diverges  ->
    (let mutable_size_1 = ref size_1 in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2504,22 +2504,22 @@ module Function_memscan_behaviors
         (downcast_  voidP_addr_2_tag_table addr (unsigned_charP_tag  ) ));
         'Loop_2:
         loop
-        invariant { (#"memscan.jc" 116 6 2356# true) } 
+        invariant { (#"memscan.jc" 114 6 2356# true) } 
          begin
          any unit
          requires { true } reads { addr, c, mutable_size_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/memscan.c" 11 20 113#
-            (forall i : int.
-             ((((<=) (0) i) /\
-              ((<) i
+            (forall i_4 : int.
+             ((((<=) (0) i_4) /\
+              ((<) i_4
               (Int.(-) (Uint64.to_int (at !mutable_size_1 'Init))
               (Uint64.to_int !mutable_size_1)))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_4)))
               (Int32.to_int c)))))
            /\
            ((#"/home/work/workspace/self/verker/memscan.c" 10 20 65#
@@ -2561,7 +2561,7 @@ module Function_memscan_behaviors
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            ((#"/home/work/workspace/self/verker/memscan.c" 7 20 29#
-            (Uint64.(<=) (#"memscan.jc" 118 38 51# "expl:Integer cast"
+            (Uint64.(<=) (#"memscan.jc" 116 38 51# "expl:Integer cast"
             (Uint64.of_int (0))) !mutable_size_1))
            /\
            (#"/home/work/workspace/self/verker/memscan.c" 7 25 46#
@@ -2572,7 +2572,7 @@ module Function_memscan_behaviors
            (if
            (#"/home/work/workspace/self/verker/memscan.c" 15 8 12#
            (Unsafe_uint64.(<>)  !mutable_size_1
-            (#"memscan.jc" 150 48 61# "expl:Integer cast"
+            (#"memscan.jc" 148 48 61# "expl:Integer cast"
             (Unsafe_uint64.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2589,11 +2589,11 @@ module Function_memscan_behaviors
              (p :=
               (shift_  !p
                (Unsafe_int32.to_int 
-                (#"memscan.jc" 159 43 55# "expl:Integer cast"
+                (#"memscan.jc" 157 43 55# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ));
               (mutable_size_1 :=
                (Unsafe_uint64.(-)  !mutable_size_1
-                (#"memscan.jc" 160 63 76# "expl:Integer cast"
+                (#"memscan.jc" 158 63 76# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2613,12 +2613,12 @@ module Function_memscan_behaviors
    (tag_table voidP)) (unsigned_charP_unsigned_charM_addr_2 : (memory voidP
    Uint8.t)) 
    requires {
-   ((forall i_0 : int.
-     ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int size_1))) ->
+   ((forall i : int.
+     ((((<=) (0) i) /\ ((<) i (Uint64.to_int size_1))) ->
       ((<>)
       (Uint8.to_int
       (select unsigned_charP_unsigned_charM_addr_2
-      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0)))
+      (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
       (Int32.to_int c))))
    /\
    (((allocated voidP_addr_2_alloc_table addr) ->
@@ -2668,22 +2668,22 @@ module Function_memscan_behaviors
         (downcast_  voidP_addr_2_tag_table addr (unsigned_charP_tag  ) ));
         'Loop_3:
         loop
-        invariant { (#"memscan.jc" 116 6 2356# true) } 
+        invariant { (#"memscan.jc" 114 6 2356# true) } 
          begin
          any unit
          requires { true } reads { addr, c, mutable_size_1 }
          ensures {
            ((#"/home/work/workspace/self/verker/memscan.c" 11 20 113#
-            (forall i : int.
-             ((((<=) (0) i) /\
-              ((<) i
+            (forall i_4 : int.
+             ((((<=) (0) i_4) /\
+              ((<) i_4
               (Int.(-) (Uint64.to_int (at !mutable_size_1 'Init))
               (Uint64.to_int !mutable_size_1)))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_4)))
               (Int32.to_int c)))))
            /\
            ((#"/home/work/workspace/self/verker/memscan.c" 10 20 65#
@@ -2725,7 +2725,7 @@ module Function_memscan_behaviors
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            (#"/home/work/workspace/self/verker/memscan.c" 7 20 46#
            ((#"/home/work/workspace/self/verker/memscan.c" 7 20 29#
-            (Uint64.(<=) (#"memscan.jc" 118 38 51# "expl:Integer cast"
+            (Uint64.(<=) (#"memscan.jc" 116 38 51# "expl:Integer cast"
             (Uint64.of_int (0))) !mutable_size_1))
            /\
            (#"/home/work/workspace/self/verker/memscan.c" 7 25 46#
@@ -2736,7 +2736,7 @@ module Function_memscan_behaviors
            (if
            (#"/home/work/workspace/self/verker/memscan.c" 15 8 12#
            (Unsafe_uint64.(<>)  !mutable_size_1
-            (#"memscan.jc" 150 48 61# "expl:Integer cast"
+            (#"memscan.jc" 148 48 61# "expl:Integer cast"
             (Unsafe_uint64.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             begin
@@ -2753,11 +2753,11 @@ module Function_memscan_behaviors
              (p :=
               (shift_  !p
                (Unsafe_int32.to_int 
-                (#"memscan.jc" 159 43 55# "expl:Integer cast"
+                (#"memscan.jc" 157 43 55# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ));
               (mutable_size_1 :=
                (Unsafe_uint64.(-)  !mutable_size_1
-                (#"memscan.jc" 160 63 76# "expl:Integer cast"
+                (#"memscan.jc" 158 63 76# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -8167,33 +8167,33 @@ module Function_memscan
               ((<) i (offset_max voidP_addr_2_alloc_table result))) ->
               (instanceof voidP_addr_2_tag_table (shift result i) voidP_tag)))))
           /\
-          (((forall i_0 : int.
-             ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int size_1))) ->
+          (((forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int size_1))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
               (Int32.to_int c)))) ->
             (#"/home/work/workspace/self/verker/memscan.h" 29 15 37#
             "expl:Ensures clause"
             ((=) result (shift addr (Uint64.to_int size_1)))))
           /\
-          (((exists i_1 : int.
-             (((<=) (0) i_1) /\
-             (((<) i_1 (Uint64.to_int size_1)) /\
+          (((exists i_0 : int.
+             (((<=) (0) i_0) /\
+             (((<) i_0 (Uint64.to_int size_1)) /\
              ((=)
              (Uint8.to_int
              (select unsigned_charP_unsigned_charM_addr_2
              (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag)
-             i_1))) (Int32.to_int c))))) ->
+             i_0))) (Int32.to_int c))))) ->
             (#"/home/work/workspace/self/verker/memscan.h" 23 15 199#
             "expl:Ensures clause"
-            (exists i_2 : int.
-             (((<=) (0) i_2) /\
-             (((<) i_2 (Uint64.to_int size_1)) /\
+            (exists i_1 : int.
+             (((<=) (0) i_1) /\
+             (((<) i_1 (Uint64.to_int size_1)) /\
              ((forall j : int.
-               ((((<=) (0) j) /\ ((<) j i_2)) ->
+               ((((<=) (0) j) /\ ((<) j i_1)) ->
                 ((<>)
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_addr_2
@@ -8205,9 +8205,9 @@ module Function_memscan
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_2)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1)))
               (Int32.to_int c))
-             /\ ((=) result (shift addr i_2)))))))))
+             /\ ((=) result (shift addr i_1)))))))))
           /\
           (#"/home/work/workspace/self/verker/memscan.h" 19 12 51#
           "expl:Ensures clause"
@@ -8310,33 +8310,33 @@ module Function_memscan_safe
               ((<) i (offset_max voidP_addr_2_alloc_table result))) ->
               (instanceof voidP_addr_2_tag_table (shift result i) voidP_tag)))))
           /\
-          (((forall i_0 : int.
-             ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int size_1))) ->
+          (((forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int size_1))) ->
               ((<>)
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_0)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i)))
               (Int32.to_int c)))) ->
             (#"/home/work/workspace/self/verker/memscan.h" 29 15 37#
             "expl:Ensures clause"
             ((=) result (shift addr (Uint64.to_int size_1)))))
           /\
-          (((exists i_1 : int.
-             (((<=) (0) i_1) /\
-             (((<) i_1 (Uint64.to_int size_1)) /\
+          (((exists i_0 : int.
+             (((<=) (0) i_0) /\
+             (((<) i_0 (Uint64.to_int size_1)) /\
              ((=)
              (Uint8.to_int
              (select unsigned_charP_unsigned_charM_addr_2
              (shift (downcast voidP_addr_2_tag_table addr unsigned_charP_tag)
-             i_1))) (Int32.to_int c))))) ->
+             i_0))) (Int32.to_int c))))) ->
             (#"/home/work/workspace/self/verker/memscan.h" 23 15 199#
             "expl:Ensures clause"
-            (exists i_2 : int.
-             (((<=) (0) i_2) /\
-             (((<) i_2 (Uint64.to_int size_1)) /\
+            (exists i_1 : int.
+             (((<=) (0) i_1) /\
+             (((<) i_1 (Uint64.to_int size_1)) /\
              ((forall j : int.
-               ((((<=) (0) j) /\ ((<) j i_2)) ->
+               ((((<=) (0) j) /\ ((<) j i_1)) ->
                 ((<>)
                 (Uint8.to_int
                 (select unsigned_charP_unsigned_charM_addr_2
@@ -8348,9 +8348,9 @@ module Function_memscan_safe
               (Uint8.to_int
               (select unsigned_charP_unsigned_charM_addr_2
               (shift
-              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_2)))
+              (downcast voidP_addr_2_tag_table addr unsigned_charP_tag) i_1)))
               (Int32.to_int c))
-             /\ ((=) result (shift addr i_2)))))))))
+             /\ ((=) result (shift addr i_1)))))))))
           /\
           (#"/home/work/workspace/self/verker/memscan.h" 19 12 51#
           "expl:Ensures clause"

@@ -2310,7 +2310,7 @@ module Function_strpbrk_0_safety
         "expl:Pointer index bounds" true) }); _jessie_29 end));
         'Loop_7:
         loop
-        invariant { (#"strpbrk.jc" 499 6 14473# true) }
+        invariant { (#"strpbrk.jc" 499 6 13762# true) }
           variant { (#"/home/work/workspace/self/verker/strpbrk.c" 14 18 41#
             (Int.(-) (Uint64.to_int (strlen cs_0 charP_charM_cs_13))
             (sub_pointer !sc1 cs_0))) }
@@ -2323,22 +2323,22 @@ module Function_strpbrk_0_safety
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
-             (forall t_6 : (pointer voidP).
+             (forall t_5 : (pointer voidP).
               (((same_block cs_0 p_4) /\
                (((<=) (sub_pointer cs_0 p_4) (0)) /\
                ((same_block p_4 !sc1) /\
                (((<) (sub_pointer p_4 !sc1) (0)) /\
-               ((same_block ct_0 t_6) /\
-               (((<=) (sub_pointer ct_0 t_6) (0)) /\
-               ((same_block t_6
+               ((same_block ct_0 t_5) /\
+               (((<=) (sub_pointer ct_0 t_5) (0)) /\
+               ((same_block t_5
                 (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                /\
                ((<)
-               (sub_pointer t_6
+               (sub_pointer t_5
                (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                (0))))))))) ->
                (Int8.(<>) (select charP_charM_cs_13 p_4)
-               (select charP_charM_ct_14 t_6))))))
+               (select charP_charM_ct_14 t_5))))))
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
@@ -2387,7 +2387,7 @@ module Function_strpbrk_0_safety
               "expl:Pointer index bounds" true) }); _jessie_30 end));
               'Loop_8:
               loop
-              invariant { (#"strpbrk.jc" 540 15 8344# true) }
+              invariant { (#"strpbrk.jc" 540 15 7829# true) }
                 variant {
                   (#"/home/work/workspace/self/verker/strpbrk.c" 21 19 42#
                   (Int.(-) (Uint64.to_int (strlen ct_0 charP_charM_ct_14))
@@ -2403,13 +2403,13 @@ module Function_strpbrk_0_safety
                    charP_charM_ct_14)))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
-                  (forall t_3 : (pointer voidP).
-                   (((same_block ct_0 t_3) /\
-                    (((<=) (sub_pointer ct_0 t_3) (0)) /\
-                    ((same_block t_3 !sc2) /\
-                    ((<) (sub_pointer t_3 !sc2) (0))))) ->
+                  (forall t_6 : (pointer voidP).
+                   (((same_block ct_0 t_6) /\
+                    (((<=) (sub_pointer ct_0 t_6) (0)) /\
+                    ((same_block t_6 !sc2) /\
+                    ((<) (sub_pointer t_6 !sc2) (0))))) ->
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                    (select charP_charM_ct_14 t_3)))))
+                    (select charP_charM_ct_14 t_6)))))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
@@ -2446,7 +2446,7 @@ module Function_strpbrk_0_safety
                    (#"/home/work/workspace/self/verker/strpbrk.c" 23 17 21#
                    "expl:Pointer dereference"
                    (acc  voidP_ct_14_alloc_table charP_charM_ct_14 !sc2 )) ))
-                  (#"strpbrk.jc" 571 36 48# "expl:Integer cast"
+                  (#"strpbrk.jc" 570 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2472,60 +2472,60 @@ module Function_strpbrk_0_safety
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
                      (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
-                     (exists p_1 : (pointer voidP).
-                      (exists t_1 : (pointer voidP).
-                       ((same_block cs_0 p_1) /\
-                       (((<=) (sub_pointer cs_0 p_1) (0)) /\
-                       ((same_block p_1
+                     (exists p_5 : (pointer voidP).
+                      (exists t_7 : (pointer voidP).
+                       ((same_block cs_0 p_5) /\
+                       (((<=) (sub_pointer cs_0 p_5) (0)) /\
+                       ((same_block p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                        /\
                        (((<)
-                        (sub_pointer p_1
+                        (sub_pointer p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                         (0))
                        /\
-                       ((same_block ct_0 t_1) /\
-                       (((<=) (sub_pointer ct_0 t_1) (0)) /\
-                       ((same_block t_1
+                       ((same_block ct_0 t_7) /\
+                       (((<=) (sub_pointer ct_0 t_7) (0)) /\
+                       ((same_block t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                        /\
                        (((<)
-                        (sub_pointer t_1
+                        (sub_pointer t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                         (0))
                        /\
-                       ((Int8.(=) (select charP_charM_cs_13 p_1)
-                        (select charP_charM_ct_14 t_1))
-                       /\ (((=) p_1 !sc1) /\ ((=) t_1 !sc2)))))))))))))) } ;
+                       ((Int8.(=) (select charP_charM_cs_13 p_5)
+                        (select charP_charM_ct_14 t_7))
+                       /\ (((=) p_5 !sc1) /\ ((=) t_7 !sc2)))))))))))))) } ;
                     () end;
                     begin
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
                       (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
-                      (forall p_2 : (pointer voidP).
-                       (forall t_2 : (pointer voidP).
-                        (((same_block cs_0 p_2) /\
-                         (((<=) (sub_pointer cs_0 p_2) (0)) /\
-                         ((same_block p_2 !sc1) /\
-                         (((<) (sub_pointer p_2 !sc1) (0)) /\
-                         ((same_block ct_0 t_2) /\
-                         (((<=) (sub_pointer ct_0 t_2) (0)) /\
-                         ((same_block t_2
+                      (forall p_6 : (pointer voidP).
+                       (forall t_8 : (pointer voidP).
+                        (((same_block cs_0 p_6) /\
+                         (((<=) (sub_pointer cs_0 p_6) (0)) /\
+                         ((same_block p_6 !sc1) /\
+                         (((<) (sub_pointer p_6 !sc1) (0)) /\
+                         ((same_block ct_0 t_8) /\
+                         (((<=) (sub_pointer ct_0 t_8) (0)) /\
+                         ((same_block t_8
                           (shift ct_0
                           (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          /\
                          ((<)
-                         (sub_pointer t_2
+                         (sub_pointer t_8
                          (shift ct_0
                          (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          (0))))))))) ->
-                         (Int8.(<>) (select charP_charM_cs_13 p_2)
-                         (select charP_charM_ct_14 t_2)))))) } ; () end;
+                         (Int8.(<>) (select charP_charM_cs_13 p_6)
+                         (select charP_charM_ct_14 t_8)))))) } ; () end;
                     begin
                     (__retres :=
                      (let _jessie_31 = !sc1 in
@@ -2538,7 +2538,7 @@ module Function_strpbrk_0_safety
                    (let _jessie_32 =
                    (shift_typesafe  !sc2
                     (Safe_int32.to_int 
-                     (#"strpbrk.jc" 660 53 65# "expl:Integer cast"
+                     (#"strpbrk.jc" 653 53 65# "expl:Integer cast"
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
@@ -2557,49 +2557,49 @@ module Function_strpbrk_0_safety
               requires { true } reads { ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
-                (forall t_4 : (pointer voidP).
-                 (((same_block ct_0 t_4) /\
-                  (((<=) (sub_pointer ct_0 t_4) (0)) /\
-                  ((same_block t_4
+                (forall t_9 : (pointer voidP).
+                 (((same_block ct_0 t_9) /\
+                  (((<=) (sub_pointer ct_0 t_9) (0)) /\
+                  ((same_block t_9
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                   /\
                   ((<)
-                  (sub_pointer t_4
+                  (sub_pointer t_9
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))
                   ->
                   (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                  (select charP_charM_ct_14 t_4))))) } ; () end;
+                  (select charP_charM_ct_14 t_9))))) } ; () end;
               begin
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
-                (forall p_3 : (pointer voidP).
-                 (forall t_5 : (pointer voidP).
-                  (((same_block cs_0 p_3) /\
-                   (((<=) (sub_pointer cs_0 p_3) (0)) /\
-                   ((same_block p_3 !sc1) /\
-                   (((<=) (sub_pointer p_3 !sc1) (0)) /\
-                   ((same_block ct_0 t_5) /\
-                   (((<=) (sub_pointer ct_0 t_5) (0)) /\
-                   ((same_block t_5
+                (forall p_7 : (pointer voidP).
+                 (forall t_10 : (pointer voidP).
+                  (((same_block cs_0 p_7) /\
+                   (((<=) (sub_pointer cs_0 p_7) (0)) /\
+                   ((same_block p_7 !sc1) /\
+                   (((<=) (sub_pointer p_7 !sc1) (0)) /\
+                   ((same_block ct_0 t_10) /\
+                   (((<=) (sub_pointer ct_0 t_10) (0)) /\
+                   ((same_block t_10
                     (shift ct_0
                     (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                    /\
                    ((<)
-                   (sub_pointer t_5
+                   (sub_pointer t_10
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
                    ->
-                   (Int8.(<>) (select charP_charM_cs_13 p_3)
-                   (select charP_charM_ct_14 t_5)))))) } ; () end end end;
+                   (Int8.(<>) (select charP_charM_cs_13 p_7)
+                   (select charP_charM_ct_14 t_10)))))) } ; () end end end;
             (sc1 :=
              (let _jessie_33 =
              (shift_typesafe  !sc1
               (Safe_int32.to_int 
-               (#"strpbrk.jc" 719 44 56# "expl:Integer cast"
+               (#"strpbrk.jc" 710 44 56# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2625,7 +2625,7 @@ module Function_strpbrk_0_safety
       (return :=
        (let _jessie_35 = !__retres in
        begin
-       (assert { (#"strpbrk.jc" 725 7 22# "expl:Pointer index bounds" true)
+       (assert { (#"strpbrk.jc" 716 7 22# "expl:Pointer index bounds" true)
        }); _jessie_35 end)); (raise Return) end end))); absurd  end with
     Return -> !return end)
   
@@ -2734,98 +2734,98 @@ module Function_strpbrk_0_behaviors
     (check {
     (#"strpbrk.jc" 389 10 3381# "expl:Behavior disjointness check"
     (not
-    ((exists p_6_0 : (pointer voidP).
-      (exists t_8_0 : (pointer voidP).
-       ((same_block cs_0 p_6_0) /\
-       (((<=) (sub_pointer cs_0 p_6_0) (0)) /\
-       ((same_block p_6_0
+    ((exists p_2_0 : (pointer voidP).
+      (exists t_2_0 : (pointer voidP).
+       ((same_block cs_0 p_2_0) /\
+       (((<=) (sub_pointer cs_0 p_2_0) (0)) /\
+       ((same_block p_2_0
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
        /\
        (((<)
-        (sub_pointer p_6_0
+        (sub_pointer p_2_0
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
        /\
-       ((same_block ct_0 t_8_0) /\
-       (((<=) (sub_pointer ct_0 t_8_0) (0)) /\
-       ((same_block t_8_0
+       ((same_block ct_0 t_2_0) /\
+       (((<=) (sub_pointer ct_0 t_2_0) (0)) /\
+       ((same_block t_2_0
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
        /\
        (((<)
-        (sub_pointer t_8_0
+        (sub_pointer t_2_0
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))
        /\
-       (Int8.(=) (select charP_charM_cs_13 p_6_0)
-       (select charP_charM_ct_14 t_8_0))))))))))))
+       (Int8.(=) (select charP_charM_cs_13 p_2_0)
+       (select charP_charM_ct_14 t_2_0))))))))))))
     /\
-    (forall p_5_0 : (pointer voidP).
-     (forall t_7_0 : (pointer voidP).
-      (((same_block cs_0 p_5_0) /\
-       (((<=) (sub_pointer cs_0 p_5_0) (0)) /\
-       ((same_block p_5_0
+    (forall p_1_0 : (pointer voidP).
+     (forall t_1_0 : (pointer voidP).
+      (((same_block cs_0 p_1_0) /\
+       (((<=) (sub_pointer cs_0 p_1_0) (0)) /\
+       ((same_block p_1_0
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
        /\
        (((<)
-        (sub_pointer p_5_0
+        (sub_pointer p_1_0
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
        /\
-       ((same_block ct_0 t_7_0) /\
-       (((<=) (sub_pointer ct_0 t_7_0) (0)) /\
-       ((same_block t_7_0
+       ((same_block ct_0 t_1_0) /\
+       (((<=) (sub_pointer ct_0 t_1_0) (0)) /\
+       ((same_block t_1_0
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
        /\
        ((<)
-       (sub_pointer t_7_0
+       (sub_pointer t_1_0
        (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
        ->
-       (Int8.(<>) (select charP_charM_cs_13 p_5_0)
-       (select charP_charM_ct_14 t_7_0)))))))) });
+       (Int8.(<>) (select charP_charM_cs_13 p_1_0)
+       (select charP_charM_ct_14 t_1_0)))))))) });
      (check {
      (#"strpbrk.jc" 440 10 3230# "expl:Behavior completeness check"
-     ((forall p_5_1 : (pointer voidP).
-       (forall t_7_1 : (pointer voidP).
-        (((same_block cs_0 p_5_1) /\
-         (((<=) (sub_pointer cs_0 p_5_1) (0)) /\
-         ((same_block p_5_1
+     ((forall p_1_1 : (pointer voidP).
+       (forall t_1_1 : (pointer voidP).
+        (((same_block cs_0 p_1_1) /\
+         (((<=) (sub_pointer cs_0 p_1_1) (0)) /\
+         ((same_block p_1_1
           (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
          /\
          (((<)
-          (sub_pointer p_5_1
+          (sub_pointer p_1_1
           (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
          /\
-         ((same_block ct_0 t_7_1) /\
-         (((<=) (sub_pointer ct_0 t_7_1) (0)) /\
-         ((same_block t_7_1
+         ((same_block ct_0 t_1_1) /\
+         (((<=) (sub_pointer ct_0 t_1_1) (0)) /\
+         ((same_block t_1_1
           (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
          /\
          ((<)
-         (sub_pointer t_7_1
+         (sub_pointer t_1_1
          (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
          ->
-         (Int8.(<>) (select charP_charM_cs_13 p_5_1)
-         (select charP_charM_ct_14 t_7_1)))))
+         (Int8.(<>) (select charP_charM_cs_13 p_1_1)
+         (select charP_charM_ct_14 t_1_1)))))
      \/
-     (exists p_6_1 : (pointer voidP).
-      (exists t_8_1 : (pointer voidP).
-       ((same_block cs_0 p_6_1) /\
-       (((<=) (sub_pointer cs_0 p_6_1) (0)) /\
-       ((same_block p_6_1
+     (exists p_2_1 : (pointer voidP).
+      (exists t_2_1 : (pointer voidP).
+       ((same_block cs_0 p_2_1) /\
+       (((<=) (sub_pointer cs_0 p_2_1) (0)) /\
+       ((same_block p_2_1
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
        /\
        (((<)
-        (sub_pointer p_6_1
+        (sub_pointer p_2_1
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
        /\
-       ((same_block ct_0 t_8_1) /\
-       (((<=) (sub_pointer ct_0 t_8_1) (0)) /\
-       ((same_block t_8_1
+       ((same_block ct_0 t_2_1) /\
+       (((<=) (sub_pointer ct_0 t_2_1) (0)) /\
+       ((same_block t_2_1
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
        /\
        (((<)
-        (sub_pointer t_8_1
+        (sub_pointer t_2_1
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))
        /\
-       (Int8.(=) (select charP_charM_cs_13 p_6_1)
-       (select charP_charM_ct_14 t_8_1)))))))))))))) });
+       (Int8.(=) (select charP_charM_cs_13 p_2_1)
+       (select charP_charM_ct_14 t_2_1)))))))))))))) });
      (let sc1 = ref (any_pointer  () : (pointer voidP)) in
      (let sc2 = ref (any_pointer  () : (pointer voidP)) in
      (let __retres = ref (any_pointer  () : (pointer voidP)) in
@@ -2862,22 +2862,22 @@ module Function_strpbrk_0_behaviors
             &&
             ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
              (forall p_4 : (pointer voidP).
-              (forall t_6 : (pointer voidP).
+              (forall t_5 : (pointer voidP).
                (((same_block cs_0 p_4) /\
                 (((<=) (sub_pointer cs_0 p_4) (0)) /\
                 ((same_block p_4 !sc1) /\
                 (((<) (sub_pointer p_4 !sc1) (0)) /\
-                ((same_block ct_0 t_6) /\
-                (((<=) (sub_pointer ct_0 t_6) (0)) /\
-                ((same_block t_6
+                ((same_block ct_0 t_5) /\
+                (((<=) (sub_pointer ct_0 t_5) (0)) /\
+                ((same_block t_5
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 ((<)
-                (sub_pointer t_6
+                (sub_pointer t_5
                 (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 (0))))))))) ->
                 (Int8.(<>) (select charP_charM_cs_13 p_4)
-                (select charP_charM_ct_14 t_6))))))
+                (select charP_charM_ct_14 t_5))))))
             &&
             (#"/home/work/workspace/self/verker/strpbrk.c" 13 20 55#
             ((=) (strpbrk cs_0 ct_0) (strpbrk !sc1 ct_0)))))) } 
@@ -2927,13 +2927,13 @@ module Function_strpbrk_0_behaviors
                    (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
                   &&
                   ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
-                   (forall t_3 : (pointer voidP).
-                    (((same_block ct_0 t_3) /\
-                     (((<=) (sub_pointer ct_0 t_3) (0)) /\
-                     ((same_block t_3 !sc2) /\
-                     ((<) (sub_pointer t_3 !sc2) (0))))) ->
+                   (forall t_6 : (pointer voidP).
+                    (((same_block ct_0 t_6) /\
+                     (((<=) (sub_pointer ct_0 t_6) (0)) /\
+                     ((same_block t_6 !sc2) /\
+                     ((<) (sub_pointer t_6 !sc2) (0))))) ->
                      (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                     (select charP_charM_ct_14 t_3)))))
+                     (select charP_charM_ct_14 t_6)))))
                   &&
                   (#"/home/work/workspace/self/verker/strpbrk.c" 20 21 63#
                   ((in_array ct_0 (select charP_charM_cs_13 !sc1)
@@ -2952,7 +2952,7 @@ module Function_strpbrk_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
-                  (#"strpbrk.jc" 571 36 48# "expl:Integer cast"
+                  (#"strpbrk.jc" 570 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2972,63 +2972,63 @@ module Function_strpbrk_0_behaviors
                    (assert {
                    (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
                    "expl:Assertion in line 25"
-                   (exists p_1 : (pointer voidP).
-                    (exists t_1 : (pointer voidP).
-                     ((same_block cs_0 p_1) /\
-                     (((<=) (sub_pointer cs_0 p_1) (0)) /\
-                     ((same_block p_1
+                   (exists p_5 : (pointer voidP).
+                    (exists t_7 : (pointer voidP).
+                     ((same_block cs_0 p_5) /\
+                     (((<=) (sub_pointer cs_0 p_5) (0)) /\
+                     ((same_block p_5
                       (shift cs_0
                       (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                      /\
                      (((<)
-                      (sub_pointer p_1
+                      (sub_pointer p_5
                       (shift cs_0
                       (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
                      /\
-                     ((same_block ct_0 t_1) /\
-                     (((<=) (sub_pointer ct_0 t_1) (0)) /\
-                     ((same_block t_1
+                     ((same_block ct_0 t_7) /\
+                     (((<=) (sub_pointer ct_0 t_7) (0)) /\
+                     ((same_block t_7
                       (shift ct_0
                       (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                      /\
                      (((<)
-                      (sub_pointer t_1
+                      (sub_pointer t_7
                       (shift ct_0
                       (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))
                      /\
-                     ((Int8.(=) (select charP_charM_cs_13 p_1)
-                      (select charP_charM_ct_14 t_1))
-                     /\ (((=) p_1 !sc1) /\ ((=) t_1 !sc2)))))))))))))) }); ()
+                     ((Int8.(=) (select charP_charM_cs_13 p_5)
+                      (select charP_charM_ct_14 t_7))
+                     /\ (((=) p_5 !sc1) /\ ((=) t_7 !sc2)))))))))))))) }); ()
                    end;
                     begin
                     (assert {
                     (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
                     "expl:Assertion in line 31"
-                    (forall p_2 : (pointer voidP).
-                     (forall t_2 : (pointer voidP).
-                      (((same_block cs_0 p_2) /\
-                       (((<=) (sub_pointer cs_0 p_2) (0)) /\
-                       ((same_block p_2 !sc1) /\
-                       (((<) (sub_pointer p_2 !sc1) (0)) /\
-                       ((same_block ct_0 t_2) /\
-                       (((<=) (sub_pointer ct_0 t_2) (0)) /\
-                       ((same_block t_2
+                    (forall p_6 : (pointer voidP).
+                     (forall t_8 : (pointer voidP).
+                      (((same_block cs_0 p_6) /\
+                       (((<=) (sub_pointer cs_0 p_6) (0)) /\
+                       ((same_block p_6 !sc1) /\
+                       (((<) (sub_pointer p_6 !sc1) (0)) /\
+                       ((same_block ct_0 t_8) /\
+                       (((<=) (sub_pointer ct_0 t_8) (0)) /\
+                       ((same_block t_8
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                        /\
                        ((<)
-                       (sub_pointer t_2
+                       (sub_pointer t_8
                        (shift ct_0
                        (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
                        ->
-                       (Int8.(<>) (select charP_charM_cs_13 p_2)
-                       (select charP_charM_ct_14 t_2)))))) }); () end;
+                       (Int8.(<>) (select charP_charM_cs_13 p_6)
+                       (select charP_charM_ct_14 t_8)))))) }); () end;
                     begin (__retres := !sc1); (raise (Return_label_exc ()))
                     end end else ());
                   (sc2 :=
                    (shift_  !sc2
                     (Unsafe_int32.to_int 
-                     (#"strpbrk.jc" 660 53 65# "expl:Integer cast"
+                     (#"strpbrk.jc" 653 53 65# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -3042,44 +3042,44 @@ module Function_strpbrk_0_behaviors
               (assert {
               (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
               "expl:Assertion in line 38"
-              (forall t_4 : (pointer voidP).
-               (((same_block ct_0 t_4) /\
-                (((<=) (sub_pointer ct_0 t_4) (0)) /\
-                ((same_block t_4
+              (forall t_9 : (pointer voidP).
+               (((same_block ct_0 t_9) /\
+                (((<=) (sub_pointer ct_0 t_9) (0)) /\
+                ((same_block t_9
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 ((<)
-                (sub_pointer t_4
+                (sub_pointer t_9
                 (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 (0))))) ->
                 (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                (select charP_charM_ct_14 t_4))))) }); () end;
+                (select charP_charM_ct_14 t_9))))) }); () end;
               begin
               (assert {
               (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
               "expl:Assertion in line 39"
-              (forall p_3 : (pointer voidP).
-               (forall t_5 : (pointer voidP).
-                (((same_block cs_0 p_3) /\
-                 (((<=) (sub_pointer cs_0 p_3) (0)) /\
-                 ((same_block p_3 !sc1) /\
-                 (((<=) (sub_pointer p_3 !sc1) (0)) /\
-                 ((same_block ct_0 t_5) /\
-                 (((<=) (sub_pointer ct_0 t_5) (0)) /\
-                 ((same_block t_5
+              (forall p_7 : (pointer voidP).
+               (forall t_10 : (pointer voidP).
+                (((same_block cs_0 p_7) /\
+                 (((<=) (sub_pointer cs_0 p_7) (0)) /\
+                 ((same_block p_7 !sc1) /\
+                 (((<=) (sub_pointer p_7 !sc1) (0)) /\
+                 ((same_block ct_0 t_10) /\
+                 (((<=) (sub_pointer ct_0 t_10) (0)) /\
+                 ((same_block t_10
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  /\
                  ((<)
-                 (sub_pointer t_5
+                 (sub_pointer t_10
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_cs_13 p_3)
-                 (select charP_charM_ct_14 t_5)))))) }); () end end end;
+                 (Int8.(<>) (select charP_charM_cs_13 p_7)
+                 (select charP_charM_ct_14 t_10)))))) }); () end end end;
             (sc1 :=
              (shift_  !sc1
               (Unsafe_int32.to_int 
-               (#"strpbrk.jc" 719 44 56# "expl:Integer cast"
+               (#"strpbrk.jc" 710 44 56# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3101,28 +3101,28 @@ module Function_strpbrk_0_behaviors
    (tag_table voidP)) (charP_charM_cs_13 : (memory voidP Int8.t))
    (charP_charM_ct_14 : (memory voidP Int8.t)) 
    requires {
-   ((exists p_6 : (pointer voidP).
-     (exists t_8 : (pointer voidP).
-      ((same_block cs_0 p_6) /\
-      (((<=) (sub_pointer cs_0 p_6) (0)) /\
-      ((same_block p_6
+   ((exists p_2 : (pointer voidP).
+     (exists t_2 : (pointer voidP).
+      ((same_block cs_0 p_2) /\
+      (((<=) (sub_pointer cs_0 p_2) (0)) /\
+      ((same_block p_2
        (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
       /\
       (((<)
-       (sub_pointer p_6
+       (sub_pointer p_2
        (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
       /\
-      ((same_block ct_0 t_8) /\
-      (((<=) (sub_pointer ct_0 t_8) (0)) /\
-      ((same_block t_8
+      ((same_block ct_0 t_2) /\
+      (((<=) (sub_pointer ct_0 t_2) (0)) /\
+      ((same_block t_2
        (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
       /\
       (((<)
-       (sub_pointer t_8
+       (sub_pointer t_2
        (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))
       /\
-      (Int8.(=) (select charP_charM_cs_13 p_6)
-      (select charP_charM_ct_14 t_8))))))))))))
+      (Int8.(=) (select charP_charM_cs_13 p_2)
+      (select charP_charM_ct_14 t_2))))))))))))
    /\
    (((allocated voidP_ct_14_alloc_table ct_0) ->
      (((=) (typeof voidP_ct_14_tag_table ct_0) charP_tag) /\
@@ -3177,38 +3177,38 @@ module Function_strpbrk_0_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
       "expl:Ensures clause"
-      (exists t_9 : (pointer voidP).
-       ((same_block ct_0 t_9) /\
-       (((<=) (sub_pointer ct_0 t_9) (0)) /\
-       ((same_block t_9
+      (exists t_3 : (pointer voidP).
+       ((same_block ct_0 t_3) /\
+       (((<=) (sub_pointer ct_0 t_3) (0)) /\
+       ((same_block t_3
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
        /\
        (((<=)
-        (sub_pointer t_9
+        (sub_pointer t_3
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0))
        /\
        (Int8.(=) (select charP_charM_cs_13 result)
-       (select charP_charM_ct_14 t_9))))))))
+       (select charP_charM_ct_14 t_3))))))))
      /\
      (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
      "expl:Ensures clause"
-     (forall p_7 : (pointer voidP).
-      (forall t_10 : (pointer voidP).
-       (((same_block cs_0 p_7) /\
-        (((<=) (sub_pointer cs_0 p_7) (0)) /\
-        ((same_block p_7 result) /\
-        (((<) (sub_pointer p_7 result) (0)) /\
-        ((same_block ct_0 t_10) /\
-        (((<=) (sub_pointer ct_0 t_10) (0)) /\
-        ((same_block t_10
+     (forall p_3 : (pointer voidP).
+      (forall t_4 : (pointer voidP).
+       (((same_block cs_0 p_3) /\
+        (((<=) (sub_pointer cs_0 p_3) (0)) /\
+        ((same_block p_3 result) /\
+        (((<) (sub_pointer p_3 result) (0)) /\
+        ((same_block ct_0 t_4) /\
+        (((<=) (sub_pointer ct_0 t_4) (0)) /\
+        ((same_block t_4
          (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
         /\
         ((<)
-        (sub_pointer t_10
+        (sub_pointer t_4
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
         ->
-        (Int8.(<>) (select charP_charM_cs_13 p_7)
-        (select charP_charM_ct_14 t_10)))))))))))))))))) } diverges  ->
+        (Int8.(<>) (select charP_charM_cs_13 p_3)
+        (select charP_charM_ct_14 t_4)))))))))))))))))) } diverges  ->
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
    try
@@ -3224,7 +3224,7 @@ module Function_strpbrk_0_behaviors
        (sc1 := cs_0);
         'Loop_3:
         loop
-        invariant { (#"strpbrk.jc" 499 6 14473# true) } 
+        invariant { (#"strpbrk.jc" 499 6 13762# true) } 
          begin
          any unit
          requires { true } reads { cs_0, ct_0 }
@@ -3234,22 +3234,22 @@ module Function_strpbrk_0_behaviors
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
-             (forall t_6 : (pointer voidP).
+             (forall t_5 : (pointer voidP).
               (((same_block cs_0 p_4) /\
                (((<=) (sub_pointer cs_0 p_4) (0)) /\
                ((same_block p_4 !sc1) /\
                (((<) (sub_pointer p_4 !sc1) (0)) /\
-               ((same_block ct_0 t_6) /\
-               (((<=) (sub_pointer ct_0 t_6) (0)) /\
-               ((same_block t_6
+               ((same_block ct_0 t_5) /\
+               (((<=) (sub_pointer ct_0 t_5) (0)) /\
+               ((same_block t_5
                 (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                /\
                ((<)
-               (sub_pointer t_6
+               (sub_pointer t_5
                (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                (0))))))))) ->
                (Int8.(<>) (select charP_charM_cs_13 p_4)
-               (select charP_charM_ct_14 t_6))))))
+               (select charP_charM_ct_14 t_5))))))
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
@@ -3291,7 +3291,7 @@ module Function_strpbrk_0_behaviors
              (sc2 := ct_0);
               'Loop_4:
               loop
-              invariant { (#"strpbrk.jc" 540 15 8344# true) } 
+              invariant { (#"strpbrk.jc" 540 15 7829# true) } 
                begin
                any unit
                requires { true } reads { ct_0 }
@@ -3303,13 +3303,13 @@ module Function_strpbrk_0_behaviors
                    charP_charM_ct_14)))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
-                  (forall t_3 : (pointer voidP).
-                   (((same_block ct_0 t_3) /\
-                    (((<=) (sub_pointer ct_0 t_3) (0)) /\
-                    ((same_block t_3 !sc2) /\
-                    ((<) (sub_pointer t_3 !sc2) (0))))) ->
+                  (forall t_6 : (pointer voidP).
+                   (((same_block ct_0 t_6) /\
+                    (((<=) (sub_pointer ct_0 t_6) (0)) /\
+                    ((same_block t_6 !sc2) /\
+                    ((<) (sub_pointer t_6 !sc2) (0))))) ->
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                    (select charP_charM_ct_14 t_3)))))
+                    (select charP_charM_ct_14 t_6)))))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
@@ -3344,7 +3344,7 @@ module Function_strpbrk_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
-                  (#"strpbrk.jc" 571 36 48# "expl:Integer cast"
+                  (#"strpbrk.jc" 570 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -3365,66 +3365,66 @@ module Function_strpbrk_0_behaviors
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
                      (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
-                     (exists p_1 : (pointer voidP).
-                      (exists t_1 : (pointer voidP).
-                       ((same_block cs_0 p_1) /\
-                       (((<=) (sub_pointer cs_0 p_1) (0)) /\
-                       ((same_block p_1
+                     (exists p_5 : (pointer voidP).
+                      (exists t_7 : (pointer voidP).
+                       ((same_block cs_0 p_5) /\
+                       (((<=) (sub_pointer cs_0 p_5) (0)) /\
+                       ((same_block p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                        /\
                        (((<)
-                        (sub_pointer p_1
+                        (sub_pointer p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                         (0))
                        /\
-                       ((same_block ct_0 t_1) /\
-                       (((<=) (sub_pointer ct_0 t_1) (0)) /\
-                       ((same_block t_1
+                       ((same_block ct_0 t_7) /\
+                       (((<=) (sub_pointer ct_0 t_7) (0)) /\
+                       ((same_block t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                        /\
                        (((<)
-                        (sub_pointer t_1
+                        (sub_pointer t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                         (0))
                        /\
-                       ((Int8.(=) (select charP_charM_cs_13 p_1)
-                        (select charP_charM_ct_14 t_1))
-                       /\ (((=) p_1 !sc1) /\ ((=) t_1 !sc2)))))))))))))) } ;
+                       ((Int8.(=) (select charP_charM_cs_13 p_5)
+                        (select charP_charM_ct_14 t_7))
+                       /\ (((=) p_5 !sc1) /\ ((=) t_7 !sc2)))))))))))))) } ;
                     () end;
                     begin
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
                       (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
-                      (forall p_2 : (pointer voidP).
-                       (forall t_2 : (pointer voidP).
-                        (((same_block cs_0 p_2) /\
-                         (((<=) (sub_pointer cs_0 p_2) (0)) /\
-                         ((same_block p_2 !sc1) /\
-                         (((<) (sub_pointer p_2 !sc1) (0)) /\
-                         ((same_block ct_0 t_2) /\
-                         (((<=) (sub_pointer ct_0 t_2) (0)) /\
-                         ((same_block t_2
+                      (forall p_6 : (pointer voidP).
+                       (forall t_8 : (pointer voidP).
+                        (((same_block cs_0 p_6) /\
+                         (((<=) (sub_pointer cs_0 p_6) (0)) /\
+                         ((same_block p_6 !sc1) /\
+                         (((<) (sub_pointer p_6 !sc1) (0)) /\
+                         ((same_block ct_0 t_8) /\
+                         (((<=) (sub_pointer ct_0 t_8) (0)) /\
+                         ((same_block t_8
                           (shift ct_0
                           (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          /\
                          ((<)
-                         (sub_pointer t_2
+                         (sub_pointer t_8
                          (shift ct_0
                          (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          (0))))))))) ->
-                         (Int8.(<>) (select charP_charM_cs_13 p_2)
-                         (select charP_charM_ct_14 t_2)))))) } ; () end;
+                         (Int8.(<>) (select charP_charM_cs_13 p_6)
+                         (select charP_charM_ct_14 t_8)))))) } ; () end;
                     begin (__retres := !sc1); (raise (Return_label_exc ()))
                     end end else ());
                   (sc2 :=
                    (shift_  !sc2
                     (Unsafe_int32.to_int 
-                     (#"strpbrk.jc" 660 53 65# "expl:Integer cast"
+                     (#"strpbrk.jc" 653 53 65# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -3439,48 +3439,48 @@ module Function_strpbrk_0_behaviors
               requires { true } reads { ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
-                (forall t_4 : (pointer voidP).
-                 (((same_block ct_0 t_4) /\
-                  (((<=) (sub_pointer ct_0 t_4) (0)) /\
-                  ((same_block t_4
+                (forall t_9 : (pointer voidP).
+                 (((same_block ct_0 t_9) /\
+                  (((<=) (sub_pointer ct_0 t_9) (0)) /\
+                  ((same_block t_9
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                   /\
                   ((<)
-                  (sub_pointer t_4
+                  (sub_pointer t_9
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))
                   ->
                   (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                  (select charP_charM_ct_14 t_4))))) } ; () end;
+                  (select charP_charM_ct_14 t_9))))) } ; () end;
               begin
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
-                (forall p_3 : (pointer voidP).
-                 (forall t_5 : (pointer voidP).
-                  (((same_block cs_0 p_3) /\
-                   (((<=) (sub_pointer cs_0 p_3) (0)) /\
-                   ((same_block p_3 !sc1) /\
-                   (((<=) (sub_pointer p_3 !sc1) (0)) /\
-                   ((same_block ct_0 t_5) /\
-                   (((<=) (sub_pointer ct_0 t_5) (0)) /\
-                   ((same_block t_5
+                (forall p_7 : (pointer voidP).
+                 (forall t_10 : (pointer voidP).
+                  (((same_block cs_0 p_7) /\
+                   (((<=) (sub_pointer cs_0 p_7) (0)) /\
+                   ((same_block p_7 !sc1) /\
+                   (((<=) (sub_pointer p_7 !sc1) (0)) /\
+                   ((same_block ct_0 t_10) /\
+                   (((<=) (sub_pointer ct_0 t_10) (0)) /\
+                   ((same_block t_10
                     (shift ct_0
                     (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                    /\
                    ((<)
-                   (sub_pointer t_5
+                   (sub_pointer t_10
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
                    ->
-                   (Int8.(<>) (select charP_charM_cs_13 p_3)
-                   (select charP_charM_ct_14 t_5)))))) } ; () end end end;
+                   (Int8.(<>) (select charP_charM_cs_13 p_7)
+                   (select charP_charM_ct_14 t_10)))))) } ; () end end end;
             (sc1 :=
              (shift_  !sc1
               (Unsafe_int32.to_int 
-               (#"strpbrk.jc" 719 44 56# "expl:Integer cast"
+               (#"strpbrk.jc" 710 44 56# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -3502,28 +3502,28 @@ module Function_strpbrk_0_behaviors
    (tag_table voidP)) (charP_charM_cs_13 : (memory voidP Int8.t))
    (charP_charM_ct_14 : (memory voidP Int8.t)) 
    requires {
-   ((forall p_5 : (pointer voidP).
-     (forall t_7 : (pointer voidP).
-      (((same_block cs_0 p_5) /\
-       (((<=) (sub_pointer cs_0 p_5) (0)) /\
-       ((same_block p_5
+   ((forall p_1 : (pointer voidP).
+     (forall t_1 : (pointer voidP).
+      (((same_block cs_0 p_1) /\
+       (((<=) (sub_pointer cs_0 p_1) (0)) /\
+       ((same_block p_1
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
        /\
        (((<)
-        (sub_pointer p_5
+        (sub_pointer p_1
         (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
        /\
-       ((same_block ct_0 t_7) /\
-       (((<=) (sub_pointer ct_0 t_7) (0)) /\
-       ((same_block t_7
+       ((same_block ct_0 t_1) /\
+       (((<=) (sub_pointer ct_0 t_1) (0)) /\
+       ((same_block t_1
         (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
        /\
        ((<)
-       (sub_pointer t_7
+       (sub_pointer t_1
        (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
        ->
-       (Int8.(<>) (select charP_charM_cs_13 p_5)
-       (select charP_charM_ct_14 t_7)))))
+       (Int8.(<>) (select charP_charM_cs_13 p_1)
+       (select charP_charM_ct_14 t_1)))))
    /\
    (((allocated voidP_ct_14_alloc_table ct_0) ->
      (((=) (typeof voidP_ct_14_tag_table ct_0) charP_tag) /\
@@ -3564,7 +3564,7 @@ module Function_strpbrk_0_behaviors
        (sc1 := cs_0);
         'Loop_5:
         loop
-        invariant { (#"strpbrk.jc" 499 6 14473# true) } 
+        invariant { (#"strpbrk.jc" 499 6 13762# true) } 
          begin
          any unit
          requires { true } reads { cs_0, ct_0 }
@@ -3574,22 +3574,22 @@ module Function_strpbrk_0_behaviors
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 9 20 156#
             (forall p_4 : (pointer voidP).
-             (forall t_6 : (pointer voidP).
+             (forall t_5 : (pointer voidP).
               (((same_block cs_0 p_4) /\
                (((<=) (sub_pointer cs_0 p_4) (0)) /\
                ((same_block p_4 !sc1) /\
                (((<) (sub_pointer p_4 !sc1) (0)) /\
-               ((same_block ct_0 t_6) /\
-               (((<=) (sub_pointer ct_0 t_6) (0)) /\
-               ((same_block t_6
+               ((same_block ct_0 t_5) /\
+               (((<=) (sub_pointer ct_0 t_5) (0)) /\
+               ((same_block t_5
                 (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                /\
                ((<)
-               (sub_pointer t_6
+               (sub_pointer t_5
                (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                (0))))))))) ->
                (Int8.(<>) (select charP_charM_cs_13 p_4)
-               (select charP_charM_ct_14 t_6))))))
+               (select charP_charM_ct_14 t_5))))))
            /\
            ((#"/home/work/workspace/self/verker/strpbrk.c" 8 20 34#
             (valid_str !sc1 voidP_cs_13_alloc_table charP_charM_cs_13))
@@ -3631,7 +3631,7 @@ module Function_strpbrk_0_behaviors
              (sc2 := ct_0);
               'Loop_6:
               loop
-              invariant { (#"strpbrk.jc" 540 15 8344# true) } 
+              invariant { (#"strpbrk.jc" 540 15 7829# true) } 
                begin
                any unit
                requires { true } reads { ct_0 }
@@ -3643,13 +3643,13 @@ module Function_strpbrk_0_behaviors
                    charP_charM_ct_14)))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 19 21 66#
-                  (forall t_3 : (pointer voidP).
-                   (((same_block ct_0 t_3) /\
-                    (((<=) (sub_pointer ct_0 t_3) (0)) /\
-                    ((same_block t_3 !sc2) /\
-                    ((<) (sub_pointer t_3 !sc2) (0))))) ->
+                  (forall t_6 : (pointer voidP).
+                   (((same_block ct_0 t_6) /\
+                    (((<=) (sub_pointer ct_0 t_6) (0)) /\
+                    ((same_block t_6 !sc2) /\
+                    ((<) (sub_pointer t_6 !sc2) (0))))) ->
                     (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                    (select charP_charM_ct_14 t_3)))))
+                    (select charP_charM_ct_14 t_6)))))
                  /\
                  ((#"/home/work/workspace/self/verker/strpbrk.c" 18 21 35#
                   (valid_str !sc2 voidP_ct_14_alloc_table charP_charM_ct_14))
@@ -3684,7 +3684,7 @@ module Function_strpbrk_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_ct_14 !sc2 ) ))
-                  (#"strpbrk.jc" 571 36 48# "expl:Integer cast"
+                  (#"strpbrk.jc" 570 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -3705,66 +3705,66 @@ module Function_strpbrk_0_behaviors
                    requires { true } reads { cs_0, ct_0 }
                    ensures {
                      (#"/home/work/workspace/self/verker/strpbrk.c" 25 15 154#
-                     (exists p_1 : (pointer voidP).
-                      (exists t_1 : (pointer voidP).
-                       ((same_block cs_0 p_1) /\
-                       (((<=) (sub_pointer cs_0 p_1) (0)) /\
-                       ((same_block p_1
+                     (exists p_5 : (pointer voidP).
+                      (exists t_7 : (pointer voidP).
+                       ((same_block cs_0 p_5) /\
+                       (((<=) (sub_pointer cs_0 p_5) (0)) /\
+                       ((same_block p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                        /\
                        (((<)
-                        (sub_pointer p_1
+                        (sub_pointer p_5
                         (shift cs_0
                         (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                         (0))
                        /\
-                       ((same_block ct_0 t_1) /\
-                       (((<=) (sub_pointer ct_0 t_1) (0)) /\
-                       ((same_block t_1
+                       ((same_block ct_0 t_7) /\
+                       (((<=) (sub_pointer ct_0 t_7) (0)) /\
+                       ((same_block t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                        /\
                        (((<)
-                        (sub_pointer t_1
+                        (sub_pointer t_7
                         (shift ct_0
                         (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                         (0))
                        /\
-                       ((Int8.(=) (select charP_charM_cs_13 p_1)
-                        (select charP_charM_ct_14 t_1))
-                       /\ (((=) p_1 !sc1) /\ ((=) t_1 !sc2)))))))))))))) } ;
+                       ((Int8.(=) (select charP_charM_cs_13 p_5)
+                        (select charP_charM_ct_14 t_7))
+                       /\ (((=) p_5 !sc1) /\ ((=) t_7 !sc2)))))))))))))) } ;
                     () end;
                     begin
                     any unit
                     requires { true } reads { cs_0, ct_0 }
                     ensures {
                       (#"/home/work/workspace/self/verker/strpbrk.c" 31 15 112#
-                      (forall p_2 : (pointer voidP).
-                       (forall t_2 : (pointer voidP).
-                        (((same_block cs_0 p_2) /\
-                         (((<=) (sub_pointer cs_0 p_2) (0)) /\
-                         ((same_block p_2 !sc1) /\
-                         (((<) (sub_pointer p_2 !sc1) (0)) /\
-                         ((same_block ct_0 t_2) /\
-                         (((<=) (sub_pointer ct_0 t_2) (0)) /\
-                         ((same_block t_2
+                      (forall p_6 : (pointer voidP).
+                       (forall t_8 : (pointer voidP).
+                        (((same_block cs_0 p_6) /\
+                         (((<=) (sub_pointer cs_0 p_6) (0)) /\
+                         ((same_block p_6 !sc1) /\
+                         (((<) (sub_pointer p_6 !sc1) (0)) /\
+                         ((same_block ct_0 t_8) /\
+                         (((<=) (sub_pointer ct_0 t_8) (0)) /\
+                         ((same_block t_8
                           (shift ct_0
                           (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          /\
                          ((<)
-                         (sub_pointer t_2
+                         (sub_pointer t_8
                          (shift ct_0
                          (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                          (0))))))))) ->
-                         (Int8.(<>) (select charP_charM_cs_13 p_2)
-                         (select charP_charM_ct_14 t_2)))))) } ; () end;
+                         (Int8.(<>) (select charP_charM_cs_13 p_6)
+                         (select charP_charM_ct_14 t_8)))))) } ; () end;
                     begin (__retres := !sc1); (raise (Return_label_exc ()))
                     end end else ());
                   (sc2 :=
                    (shift_  !sc2
                     (Unsafe_int32.to_int 
-                     (#"strpbrk.jc" 660 53 65# "expl:Integer cast"
+                     (#"strpbrk.jc" 653 53 65# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -3779,48 +3779,48 @@ module Function_strpbrk_0_behaviors
               requires { true } reads { ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 38 13 70#
-                (forall t_4 : (pointer voidP).
-                 (((same_block ct_0 t_4) /\
-                  (((<=) (sub_pointer ct_0 t_4) (0)) /\
-                  ((same_block t_4
+                (forall t_9 : (pointer voidP).
+                 (((same_block ct_0 t_9) /\
+                  (((<=) (sub_pointer ct_0 t_9) (0)) /\
+                  ((same_block t_9
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                   /\
                   ((<)
-                  (sub_pointer t_4
+                  (sub_pointer t_9
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))
                   ->
                   (Int8.(<>) (select charP_charM_cs_13 !sc1)
-                  (select charP_charM_ct_14 t_4))))) } ; () end;
+                  (select charP_charM_ct_14 t_9))))) } ; () end;
               begin
               any unit
               requires { true } reads { cs_0, ct_0 }
               ensures {
                 (#"/home/work/workspace/self/verker/strpbrk.c" 39 13 90#
-                (forall p_3 : (pointer voidP).
-                 (forall t_5 : (pointer voidP).
-                  (((same_block cs_0 p_3) /\
-                   (((<=) (sub_pointer cs_0 p_3) (0)) /\
-                   ((same_block p_3 !sc1) /\
-                   (((<=) (sub_pointer p_3 !sc1) (0)) /\
-                   ((same_block ct_0 t_5) /\
-                   (((<=) (sub_pointer ct_0 t_5) (0)) /\
-                   ((same_block t_5
+                (forall p_7 : (pointer voidP).
+                 (forall t_10 : (pointer voidP).
+                  (((same_block cs_0 p_7) /\
+                   (((<=) (sub_pointer cs_0 p_7) (0)) /\
+                   ((same_block p_7 !sc1) /\
+                   (((<=) (sub_pointer p_7 !sc1) (0)) /\
+                   ((same_block ct_0 t_10) /\
+                   (((<=) (sub_pointer ct_0 t_10) (0)) /\
+                   ((same_block t_10
                     (shift ct_0
                     (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                    /\
                    ((<)
-                   (sub_pointer t_5
+                   (sub_pointer t_10
                    (shift ct_0
                    (Uint64.to_int (strlen ct_0 charP_charM_ct_14)))) (0)))))))))
                    ->
-                   (Int8.(<>) (select charP_charM_cs_13 p_3)
-                   (select charP_charM_ct_14 t_5)))))) } ; () end end end;
+                   (Int8.(<>) (select charP_charM_cs_13 p_7)
+                   (select charP_charM_ct_14 t_10)))))) } ; () end end end;
             (sc1 :=
              (shift_  !sc1
               (Unsafe_int32.to_int 
-               (#"strpbrk.jc" 719 44 56# "expl:Integer cast"
+               (#"strpbrk.jc" 710 44 56# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -9473,58 +9473,58 @@ module Function_strpbrk_0
                 ((=) (typeof voidP_cs_13_tag_table (shift result i))
                 charP_tag)))))
             /\
-            (((forall p_5 : (pointer voidP).
-               (forall t_7 : (pointer voidP).
-                (((same_block cs_0 p_5) /\
-                 (((<=) (sub_pointer cs_0 p_5) (0)) /\
-                 ((same_block p_5
+            (((forall p_1 : (pointer voidP).
+               (forall t_1 : (pointer voidP).
+                (((same_block cs_0 p_1) /\
+                 (((<=) (sub_pointer cs_0 p_1) (0)) /\
+                 ((same_block p_1
                   (shift cs_0
                   (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                  /\
                  (((<)
-                  (sub_pointer p_5
+                  (sub_pointer p_1
                   (shift cs_0
                   (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
                  /\
-                 ((same_block ct_0 t_7) /\
-                 (((<=) (sub_pointer ct_0 t_7) (0)) /\
-                 ((same_block t_7
+                 ((same_block ct_0 t_1) /\
+                 (((<=) (sub_pointer ct_0 t_1) (0)) /\
+                 ((same_block t_1
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  /\
                  ((<)
-                 (sub_pointer t_7
+                 (sub_pointer t_1
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_cs_13 p_5)
-                 (select charP_charM_ct_14 t_7))))) ->
+                 (Int8.(<>) (select charP_charM_cs_13 p_1)
+                 (select charP_charM_ct_14 t_1))))) ->
               (#"/home/work/workspace/self/verker/strpbrk.h" 67 15 31#
               "expl:Ensures clause" ((=) result null)))
             /\
-            (((exists p_6 : (pointer voidP).
-               (exists t_8 : (pointer voidP).
-                ((same_block cs_0 p_6) /\
-                (((<=) (sub_pointer cs_0 p_6) (0)) /\
-                ((same_block p_6
+            (((exists p_2 : (pointer voidP).
+               (exists t_2 : (pointer voidP).
+                ((same_block cs_0 p_2) /\
+                (((<=) (sub_pointer cs_0 p_2) (0)) /\
+                ((same_block p_2
                  (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                 /\
                 (((<)
-                 (sub_pointer p_6
+                 (sub_pointer p_2
                  (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                  (0))
                 /\
-                ((same_block ct_0 t_8) /\
-                (((<=) (sub_pointer ct_0 t_8) (0)) /\
-                ((same_block t_8
+                ((same_block ct_0 t_2) /\
+                (((<=) (sub_pointer ct_0 t_2) (0)) /\
+                ((same_block t_2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 (((<)
-                 (sub_pointer t_8
+                 (sub_pointer t_2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))
                 /\
-                (Int8.(=) (select charP_charM_cs_13 p_6)
-                (select charP_charM_ct_14 t_8)))))))))))) ->
+                (Int8.(=) (select charP_charM_cs_13 p_2)
+                (select charP_charM_ct_14 t_2)))))))))))) ->
               (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
@@ -9557,40 +9557,40 @@ module Function_strpbrk_0
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
                "expl:Ensures clause"
-               (exists t_9 : (pointer voidP).
-                ((same_block ct_0 t_9) /\
-                (((<=) (sub_pointer ct_0 t_9) (0)) /\
-                ((same_block t_9
+               (exists t_3 : (pointer voidP).
+                ((same_block ct_0 t_3) /\
+                (((<=) (sub_pointer ct_0 t_3) (0)) /\
+                ((same_block t_3
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 (((<=)
-                 (sub_pointer t_9
+                 (sub_pointer t_3
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_cs_13 result)
-                (select charP_charM_ct_14 t_9))))))))
+                (select charP_charM_ct_14 t_3))))))))
               /\
               (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
               "expl:Ensures clause"
-              (forall p_7 : (pointer voidP).
-               (forall t_10 : (pointer voidP).
-                (((same_block cs_0 p_7) /\
-                 (((<=) (sub_pointer cs_0 p_7) (0)) /\
-                 ((same_block p_7 result) /\
-                 (((<) (sub_pointer p_7 result) (0)) /\
-                 ((same_block ct_0 t_10) /\
-                 (((<=) (sub_pointer ct_0 t_10) (0)) /\
-                 ((same_block t_10
+              (forall p_3 : (pointer voidP).
+               (forall t_4 : (pointer voidP).
+                (((same_block cs_0 p_3) /\
+                 (((<=) (sub_pointer cs_0 p_3) (0)) /\
+                 ((same_block p_3 result) /\
+                 (((<) (sub_pointer p_3 result) (0)) /\
+                 ((same_block ct_0 t_4) /\
+                 (((<=) (sub_pointer ct_0 t_4) (0)) /\
+                 ((same_block t_4
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  /\
                  ((<)
-                 (sub_pointer t_10
+                 (sub_pointer t_4
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_cs_13 p_7)
-                 (select charP_charM_ct_14 t_10))))))))))))))))))
+                 (Int8.(<>) (select charP_charM_cs_13 p_3)
+                 (select charP_charM_ct_14 t_4))))))))))))))))))
             /\
             (#"/home/work/workspace/self/verker/strpbrk.h" 50 12 38#
             "expl:Ensures clause" ((=) result (strpbrk cs_0 ct_0)))))) }
@@ -9655,58 +9655,58 @@ module Function_strpbrk_0_safe
                 ((=) (typeof voidP_cs_13_tag_table (shift result i))
                 charP_tag)))))
             /\
-            (((forall p_5 : (pointer voidP).
-               (forall t_7 : (pointer voidP).
-                (((same_block cs_0 p_5) /\
-                 (((<=) (sub_pointer cs_0 p_5) (0)) /\
-                 ((same_block p_5
+            (((forall p_1 : (pointer voidP).
+               (forall t_1 : (pointer voidP).
+                (((same_block cs_0 p_1) /\
+                 (((<=) (sub_pointer cs_0 p_1) (0)) /\
+                 ((same_block p_1
                   (shift cs_0
                   (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                  /\
                  (((<)
-                  (sub_pointer p_5
+                  (sub_pointer p_1
                   (shift cs_0
                   (Uint64.to_int (strlen cs_0 charP_charM_cs_13)))) (0))
                  /\
-                 ((same_block ct_0 t_7) /\
-                 (((<=) (sub_pointer ct_0 t_7) (0)) /\
-                 ((same_block t_7
+                 ((same_block ct_0 t_1) /\
+                 (((<=) (sub_pointer ct_0 t_1) (0)) /\
+                 ((same_block t_1
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  /\
                  ((<)
-                 (sub_pointer t_7
+                 (sub_pointer t_1
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_cs_13 p_5)
-                 (select charP_charM_ct_14 t_7))))) ->
+                 (Int8.(<>) (select charP_charM_cs_13 p_1)
+                 (select charP_charM_ct_14 t_1))))) ->
               (#"/home/work/workspace/self/verker/strpbrk.h" 67 15 31#
               "expl:Ensures clause" ((=) result null)))
             /\
-            (((exists p_6 : (pointer voidP).
-               (exists t_8 : (pointer voidP).
-                ((same_block cs_0 p_6) /\
-                (((<=) (sub_pointer cs_0 p_6) (0)) /\
-                ((same_block p_6
+            (((exists p_2 : (pointer voidP).
+               (exists t_2 : (pointer voidP).
+                ((same_block cs_0 p_2) /\
+                (((<=) (sub_pointer cs_0 p_2) (0)) /\
+                ((same_block p_2
                  (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                 /\
                 (((<)
-                 (sub_pointer p_6
+                 (sub_pointer p_2
                  (shift cs_0 (Uint64.to_int (strlen cs_0 charP_charM_cs_13))))
                  (0))
                 /\
-                ((same_block ct_0 t_8) /\
-                (((<=) (sub_pointer ct_0 t_8) (0)) /\
-                ((same_block t_8
+                ((same_block ct_0 t_2) /\
+                (((<=) (sub_pointer ct_0 t_2) (0)) /\
+                ((same_block t_2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 (((<)
-                 (sub_pointer t_8
+                 (sub_pointer t_2
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))
                 /\
-                (Int8.(=) (select charP_charM_cs_13 p_6)
-                (select charP_charM_ct_14 t_8)))))))))))) ->
+                (Int8.(=) (select charP_charM_cs_13 p_2)
+                (select charP_charM_ct_14 t_2)))))))))))) ->
               (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
               "expl:Ensures clause"
               (#"/home/work/workspace/self/verker/strpbrk.h" 56 15 46#
@@ -9739,40 +9739,40 @@ module Function_strpbrk_0_safe
               "expl:Ensures clause"
               ((#"/home/work/workspace/self/verker/strpbrk.h" 57 15 76#
                "expl:Ensures clause"
-               (exists t_9 : (pointer voidP).
-                ((same_block ct_0 t_9) /\
-                (((<=) (sub_pointer ct_0 t_9) (0)) /\
-                ((same_block t_9
+               (exists t_3 : (pointer voidP).
+                ((same_block ct_0 t_3) /\
+                (((<=) (sub_pointer ct_0 t_3) (0)) /\
+                ((same_block t_3
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                 /\
                 (((<=)
-                 (sub_pointer t_9
+                 (sub_pointer t_3
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))
                 /\
                 (Int8.(=) (select charP_charM_cs_13 result)
-                (select charP_charM_ct_14 t_9))))))))
+                (select charP_charM_ct_14 t_3))))))))
               /\
               (#"/home/work/workspace/self/verker/strpbrk.h" 58 15 140#
               "expl:Ensures clause"
-              (forall p_7 : (pointer voidP).
-               (forall t_10 : (pointer voidP).
-                (((same_block cs_0 p_7) /\
-                 (((<=) (sub_pointer cs_0 p_7) (0)) /\
-                 ((same_block p_7 result) /\
-                 (((<) (sub_pointer p_7 result) (0)) /\
-                 ((same_block ct_0 t_10) /\
-                 (((<=) (sub_pointer ct_0 t_10) (0)) /\
-                 ((same_block t_10
+              (forall p_3 : (pointer voidP).
+               (forall t_4 : (pointer voidP).
+                (((same_block cs_0 p_3) /\
+                 (((<=) (sub_pointer cs_0 p_3) (0)) /\
+                 ((same_block p_3 result) /\
+                 (((<) (sub_pointer p_3 result) (0)) /\
+                 ((same_block ct_0 t_4) /\
+                 (((<=) (sub_pointer ct_0 t_4) (0)) /\
+                 ((same_block t_4
                   (shift ct_0
                   (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  /\
                  ((<)
-                 (sub_pointer t_10
+                 (sub_pointer t_4
                  (shift ct_0 (Uint64.to_int (strlen ct_0 charP_charM_ct_14))))
                  (0))))))))) ->
-                 (Int8.(<>) (select charP_charM_cs_13 p_7)
-                 (select charP_charM_ct_14 t_10))))))))))))))))))
+                 (Int8.(<>) (select charP_charM_cs_13 p_3)
+                 (select charP_charM_ct_14 t_4))))))))))))))))))
             /\
             (#"/home/work/workspace/self/verker/strpbrk.h" 50 12 38#
             "expl:Ensures clause" ((=) result (strpbrk cs_0 ct_0)))))) }

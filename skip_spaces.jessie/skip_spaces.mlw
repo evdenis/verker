@@ -1699,7 +1699,6 @@ theory Axiomatic_Ctype
   use why3.Bool.Bool 
   
   function tolower int : int
-  with toupper int : int
   
   
   axiom A #"/home/work/workspace/self/verker/ctype.h" 59 13 32#
@@ -1988,6 +1987,9 @@ theory Axiomatic_Ctype
      ((<=) c
      (Int8.to_int (#"skip_spaces.jc" 22 46 59# "expl:Integer cast"
      (Int8.of_int (122))))))
+  
+  
+  function toupper int : int
   
   
   axiom Pu #"/home/work/workspace/self/verker/ctype.h" 70 14 64#
@@ -2428,12 +2430,12 @@ module Function_skip_spaces_0_safety
        requires { true } reads { mutable_str_0 }
        ensures {
          ((#"/home/work/workspace/self/verker/skip_spaces.c" 8 20 68#
-          (forall p : (pointer voidP).
-           (((same_block !ostr p) /\
-            (((<=) (sub_pointer !ostr p) (0)) /\
-            ((same_block p !mutable_str_0) /\
-            ((<) (sub_pointer p !mutable_str_0) (0))))) ->
-            (isspace (Int8.to_int (select charP_charM_str_7 p))))))
+          (forall p_0 : (pointer voidP).
+           (((same_block !ostr p_0) /\
+            (((<=) (sub_pointer !ostr p_0) (0)) /\
+            ((same_block p_0 !mutable_str_0) /\
+            ((<) (sub_pointer p_0 !mutable_str_0) (0))))) ->
+            (isspace (Int8.to_int (select charP_charM_str_7 p_0))))))
          /\
          ((#"/home/work/workspace/self/verker/skip_spaces.c" 7 20 54#
           (#"/home/work/workspace/self/verker/skip_spaces.c" 7 20 54#
@@ -2788,11 +2790,11 @@ module Function_skip_spaces_0_behaviors
      "expl:Ensures clause"
      ((#"/home/work/workspace/self/verker/skip_spaces.h" 58 12 63#
       "expl:Ensures clause"
-      (forall p_0 : (pointer voidP).
-       (((same_block str_0 p_0) /\
-        (((<=) (sub_pointer str_0 p_0) (0)) /\
-        ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0))))) ->
-        (isspace (Int8.to_int (select charP_charM_str_7 p_0))))))
+      (forall p : (pointer voidP).
+       (((same_block str_0 p) /\
+        (((<=) (sub_pointer str_0 p) (0)) /\
+        ((same_block p result) /\ ((<) (sub_pointer p result) (0))))) ->
+        (isspace (Int8.to_int (select charP_charM_str_7 p))))))
      /\
      (#"/home/work/workspace/self/verker/skip_spaces.h" 59 12 30#
      "expl:Ensures clause"
@@ -2837,12 +2839,12 @@ module Function_skip_spaces_0_behaviors
            (0))))))))))
           &&
           (#"/home/work/workspace/self/verker/skip_spaces.c" 8 20 68#
-          (forall p : (pointer voidP).
-           (((same_block !ostr p) /\
-            (((<=) (sub_pointer !ostr p) (0)) /\
-            ((same_block p !mutable_str_0) /\
-            ((<) (sub_pointer p !mutable_str_0) (0))))) ->
-            (isspace (Int8.to_int (select charP_charM_str_7 p)))))))) } 
+          (forall p_0 : (pointer voidP).
+           (((same_block !ostr p_0) /\
+            (((<=) (sub_pointer !ostr p_0) (0)) /\
+            ((same_block p_0 !mutable_str_0) /\
+            ((<) (sub_pointer p_0 !mutable_str_0) (0))))) ->
+            (isspace (Int8.to_int (select charP_charM_str_7 p_0)))))))) } 
         
        begin
        any unit requires { true } ensures { true } ;
@@ -9638,11 +9640,11 @@ module Function_skip_spaces_0
         "expl:Ensures clause"
         ((#"/home/work/workspace/self/verker/skip_spaces.h" 58 12 63#
          "expl:Ensures clause"
-         (forall p_0 : (pointer voidP).
-          (((same_block str_0 p_0) /\
-           (((<=) (sub_pointer str_0 p_0) (0)) /\
-           ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0)))))
-           -> (isspace (Int8.to_int (select charP_charM_str_7 p_0))))))
+         (forall p : (pointer voidP).
+          (((same_block str_0 p) /\
+           (((<=) (sub_pointer str_0 p) (0)) /\
+           ((same_block p result) /\ ((<) (sub_pointer p result) (0))))) ->
+           (isspace (Int8.to_int (select charP_charM_str_7 p))))))
         /\
         (#"/home/work/workspace/self/verker/skip_spaces.h" 59 12 30#
         "expl:Ensures clause"
@@ -9748,11 +9750,11 @@ module Function_skip_spaces_0_safe
         "expl:Ensures clause"
         ((#"/home/work/workspace/self/verker/skip_spaces.h" 58 12 63#
          "expl:Ensures clause"
-         (forall p_0 : (pointer voidP).
-          (((same_block str_0 p_0) /\
-           (((<=) (sub_pointer str_0 p_0) (0)) /\
-           ((same_block p_0 result) /\ ((<) (sub_pointer p_0 result) (0)))))
-           -> (isspace (Int8.to_int (select charP_charM_str_7 p_0))))))
+         (forall p : (pointer voidP).
+          (((same_block str_0 p) /\
+           (((<=) (sub_pointer str_0 p) (0)) /\
+           ((same_block p result) /\ ((<) (sub_pointer p result) (0))))) ->
+           (isspace (Int8.to_int (select charP_charM_str_7 p))))))
         /\
         (#"/home/work/workspace/self/verker/skip_spaces.h" 59 12 30#
         "expl:Ensures clause"

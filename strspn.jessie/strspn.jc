@@ -208,19 +208,19 @@ behavior default:
   assigns \nothing;
   ensures (_C_79 : (((_C_81 : ((0 :> uint64) <= \result)) &&
                       (_C_82 : (\result <= strlen{Here}(\at(s_0,Old))))) &&
-                     ((_C_84 : (\forall charP[..] t_0;
+                     ((_C_84 : (\forall charP[..] t;
                                  ((((\base_block(\at(accept,Old)) ==
-                                      \base_block(t_0)) &&
-                                     ((\at(accept,Old) - t_0) <= 0)) &&
-                                    ((\base_block(t_0) ==
+                                      \base_block(t)) &&
+                                     ((\at(accept,Old) - t) <= 0)) &&
+                                    ((\base_block(t) ==
                                        \base_block((\at(accept,Old) +
                                                      (strlen{Here}(\at(accept,Old)) :> integer)))) &&
-                                      ((t_0 -
+                                      ((t -
                                          (\at(accept,Old) +
                                            (strlen{Here}(\at(accept,Old)) :> integer))) <
                                         0))) ==>
                                    ((\at(s_0,Old) + (\result :> integer)).charM !=
-                                     t_0.charM)))) &&
+                                     t.charM)))) &&
                        ((_C_86 : (\forall charP[..] p_0;
                                    ((((\base_block(\at(s_0,Old)) ==
                                         \base_block(p_0)) &&
@@ -232,19 +232,19 @@ behavior default:
                                            (\at(s_0,Old) +
                                              (\result :> integer))) <
                                           0))) ==>
-                                     (\exists charP[..] t_1;
+                                     (\exists charP[..] t_0;
                                        ((((\base_block(\at(accept,Old)) ==
-                                            \base_block(t_1)) &&
-                                           ((\at(accept,Old) - t_1) <= 0)) &&
-                                          ((\base_block(t_1) ==
+                                            \base_block(t_0)) &&
+                                           ((\at(accept,Old) - t_0) <= 0)) &&
+                                          ((\base_block(t_0) ==
                                              \base_block((\at(accept,Old) +
                                                            (strlen{Here}(
                                                            \at(accept,Old)) :> integer)))) &&
-                                            ((t_1 -
+                                            ((t_0 -
                                                (\at(accept,Old) +
                                                  (strlen{Here}(\at(accept,Old)) :> integer))) <
                                               0))) &&
-                                         (p_0.charM == t_1.charM)))))) &&
+                                         (p_0.charM == t_0.charM)))))) &&
                          (_C_87 : ((\result :> integer) ==
                                     strspn(\at(s_0,Old), \at(accept,Old))))))));
 {  
@@ -277,11 +277,11 @@ behavior default:
       behavior default:
         invariant (_C_31 : ((count :> integer) == (p - s_0)));
       behavior default:
-        invariant (_C_30 : (\forall charP[..] c_4;
-                             ((((\base_block(s_0) == \base_block(c_4)) &&
-                                 ((s_0 - c_4) <= 0)) &&
-                                ((\base_block(c_4) == \base_block(p)) &&
-                                  ((c_4 - p) < 0))) ==>
+        invariant (_C_30 : (\forall charP[..] c;
+                             ((((\base_block(s_0) == \base_block(c)) &&
+                                 ((s_0 - c) <= 0)) &&
+                                ((\base_block(c) == \base_block(p)) &&
+                                  ((c - p) < 0))) ==>
                                (\exists charP[..] t;
                                  ((((\base_block(accept) == \base_block(t)) &&
                                      ((accept - t) <= 0)) &&
@@ -292,7 +292,7 @@ behavior default:
                                          (accept +
                                            (strlen{Here}(accept) :> integer))) <
                                         0))) &&
-                                   (c_4.charM == t.charM))))));
+                                   (c.charM == t.charM))))));
       behavior default:
         invariant (_C_29 : valid_str{Here}(p));
       behavior default:
@@ -321,14 +321,13 @@ behavior default:
                                                       (strlen{Here}(accept) :> integer))) <=
                                                    0)))));
                behavior default:
-                 invariant (_C_49 : (\forall charP[..] c_3;
+                 invariant (_C_49 : (\forall charP[..] c;
                                       ((((\base_block(accept) ==
-                                           \base_block(c_3)) &&
-                                          ((accept - c_3) <= 0)) &&
-                                         ((\base_block(c_3) ==
-                                            \base_block(a)) &&
-                                           ((c_3 - a) < 0))) ==>
-                                        (c_3.charM != p.charM))));
+                                           \base_block(c)) &&
+                                          ((accept - c) <= 0)) &&
+                                         ((\base_block(c) == \base_block(a)) &&
+                                           ((c - a) < 0))) ==>
+                                        (c.charM != p.charM))));
                behavior default:
                  invariant (_C_48 : valid_str{Here}(a));
                behavior default:

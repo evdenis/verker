@@ -1827,7 +1827,7 @@ module Function_memmove_safety
          "expl:Pointer index bounds" true) }); _jessie_105 end));
          'Loop_8:
          loop
-         invariant { (#"memmove.jc" 82 9 4692# true) }
+         invariant { (#"memmove.jc" 82 9 4682# true) }
            variant { (#"/home/work/workspace/self/verker/memmove.c" 18 19 24#
              (Bit_uint64.to_int
              (#"/home/work/workspace/self/verker/memmove.c" 18 19 24#
@@ -1838,30 +1838,32 @@ module Function_memmove_safety
           mutable_count, src_3 }
           ensures {
             ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
-             (forall i_0 : int.
-              ((((<=) (0) i_0) /\
-               ((<) i_0
+             (forall i_2 : int.
+              ((((<=) (0) i_2) /\
+               ((<) i_2
                (Int.(-) (Bit_uint64.to_int !orig_count)
                (Bit_uint64.to_int !mutable_count)))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_0))
+               i_2))
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-               i_0))))))
+               i_2))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
-             (forall i : int.
+             (forall i_1 : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
-                (Bit_uint64.to_int !mutable_count)) i)
-               /\ ((<) i (Bit_uint64.to_int !orig_count))) ->
+                (Bit_uint64.to_int !mutable_count)) i_1)
+               /\ ((<) i_1 (Bit_uint64.to_int !orig_count))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))
                (select (at !charP_charM_dest_3_2 'Init)
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
              (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
@@ -2075,7 +2077,7 @@ module Function_memmove_safety
            "expl:Pointer index bounds" true) }); _jessie_92 end));
            'Loop_7:
            loop
-           invariant { (#"memmove.jc" 173 9 3888# true) }
+           invariant { (#"memmove.jc" 173 9 3868# true) }
              variant {
                (#"/home/work/workspace/self/verker/memmove.c" 34 19 24#
                (Bit_uint64.to_int
@@ -2087,28 +2089,28 @@ module Function_memmove_safety
             mutable_count, src_3 }
             ensures {
               ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
-               (forall i_2 : int.
-                ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
-                 ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
+               (forall i_4 : int.
+                ((((<=) (Bit_uint64.to_int !mutable_count) i_4) /\
+                 ((<) i_4 (Bit_uint64.to_int !orig_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-                 i_2))
+                 i_4))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_2))))))
+                 i_4))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
-               (forall i_1 : int.
-                ((((<=) (0) i_1) /\
-                 ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
+               (forall i_3 : int.
+                ((((<=) (0) i_3) /\
+                 ((<) i_3 (Bit_uint64.to_int !mutable_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))
+                 i_3))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))))))
+                 i_3))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
                (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
@@ -2523,32 +2525,32 @@ module Function_memmove_behaviors
                (Bit_uint64.to_int !orig_count))) (0))))))))))
               &&
               ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
-               (forall i : int.
+               (forall i_1 : int.
                 ((((<=)
                   (Int.(-) (Bit_uint64.to_int !orig_count)
-                  (Bit_uint64.to_int !mutable_count)) i)
-                 /\ ((<) i (Bit_uint64.to_int !orig_count))) ->
+                  (Bit_uint64.to_int !mutable_count)) i_1)
+                 /\ ((<) i_1 (Bit_uint64.to_int !orig_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i))
+                 i_1))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i))))))
+                 i_1))))))
               &&
               (#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
-              (forall i_0 : int.
-               ((((<=) (0) i_0) /\
-                ((<) i_0
+              (forall i_2 : int.
+               ((((<=) (0) i_2) /\
+                ((<) i_2
                 (Int.(-) (Bit_uint64.to_int !orig_count)
                 (Bit_uint64.to_int !mutable_count)))) ->
                 (Int8.(=)
                 (select !charP_charM_dest_3_2
                 (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-                i_0))
+                i_2))
                 (select (at !charP_charM_dest_3_2 'Init)
                 (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                i_0)))))))))))
+                i_2)))))))))))
              /\
              (#"memmove.jc" 48 10 71# "expl:Assigns clause"
              (not_assigns voidP_dest_3_2_alloc_table
@@ -2706,28 +2708,28 @@ module Function_memmove_behaviors
                  (Bit_uint64.to_int !orig_count))) (0))))))))))
                 &&
                 ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
-                 (forall i_1 : int.
-                  ((((<=) (0) i_1) /\
-                   ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
+                 (forall i_3 : int.
+                  ((((<=) (0) i_3) /\
+                   ((<) i_3 (Bit_uint64.to_int !mutable_count))) ->
                    (Int8.(=)
                    (select !charP_charM_dest_3_2
                    (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                   i_1))
+                   i_3))
                    (select (at !charP_charM_dest_3_2 'Init)
                    (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                   i_1))))))
+                   i_3))))))
                 &&
                 (#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
-                (forall i_2 : int.
-                 ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
-                  ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
+                (forall i_4 : int.
+                 ((((<=) (Bit_uint64.to_int !mutable_count) i_4) /\
+                  ((<) i_4 (Bit_uint64.to_int !orig_count))) ->
                   (Int8.(=)
                   (select !charP_charM_dest_3_2
                   (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-                  i_2))
+                  i_4))
                   (select (at !charP_charM_dest_3_2 'Init)
                   (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                  i_2)))))))))))
+                  i_4)))))))))))
                /\
                (#"memmove.jc" 48 10 71# "expl:Assigns clause"
                (not_assigns voidP_dest_3_2_alloc_table
@@ -2876,14 +2878,14 @@ module Function_memmove_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
      "expl:Ensures clause"
-     (forall i_3 : int.
-      ((((<=) (0) i_3) /\ ((<) i_3 (Bit_uint64.to_int count))) ->
+     (forall i : int.
+      ((((<=) (0) i) /\ ((<) i (Bit_uint64.to_int count))) ->
        (Int8.(=)
        (select !charP_charM_dest_3_2
-       (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i_3))
+       (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i))
        (select (old !charP_charM_dest_3_2)
-       (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_3)))))))
-     } diverges  ->
+       (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))) }
+   diverges  ->
    (let mutable_count = ref count in
    'Init:
    (let return = ref (any_pointer  () : (pointer voidP)) in
@@ -2909,37 +2911,39 @@ module Function_memmove_behaviors
         (s := (downcast_  voidP_dest_3_2_tag_table src_3 (charP_tag  ) ));
          'Loop_6:
          loop
-         invariant { (#"memmove.jc" 82 9 4692# true) } 
+         invariant { (#"memmove.jc" 82 9 4682# true) } 
           begin
           any unit
           requires { true } reads { charP_charM_dest_3_2, dest_3,
           mutable_count, src_3 }
           ensures {
             ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
-             (forall i_0 : int.
-              ((((<=) (0) i_0) /\
-               ((<) i_0
+             (forall i_2 : int.
+              ((((<=) (0) i_2) /\
+               ((<) i_2
                (Int.(-) (Bit_uint64.to_int !orig_count)
                (Bit_uint64.to_int !mutable_count)))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_0))
+               i_2))
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-               i_0))))))
+               i_2))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
-             (forall i : int.
+             (forall i_1 : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
-                (Bit_uint64.to_int !mutable_count)) i)
-               /\ ((<) i (Bit_uint64.to_int !orig_count))) ->
+                (Bit_uint64.to_int !mutable_count)) i_1)
+               /\ ((<) i_1 (Bit_uint64.to_int !orig_count))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))
                (select (at !charP_charM_dest_3_2 'Init)
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
              (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
@@ -3085,35 +3089,35 @@ module Function_memmove_behaviors
           (s := (shift_  !s (Unsafe_bit_uint64.to_int  !mutable_count ) ));
            'Loop_5:
            loop
-           invariant { (#"memmove.jc" 173 9 3888# true) } 
+           invariant { (#"memmove.jc" 173 9 3868# true) } 
             begin
             any unit
             requires { true } reads { charP_charM_dest_3_2, dest_3,
             mutable_count, src_3 }
             ensures {
               ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
-               (forall i_2 : int.
-                ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
-                 ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
+               (forall i_4 : int.
+                ((((<=) (Bit_uint64.to_int !mutable_count) i_4) /\
+                 ((<) i_4 (Bit_uint64.to_int !orig_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-                 i_2))
+                 i_4))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_2))))))
+                 i_4))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
-               (forall i_1 : int.
-                ((((<=) (0) i_1) /\
-                 ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
+               (forall i_3 : int.
+                ((((<=) (0) i_3) /\
+                 ((<) i_3 (Bit_uint64.to_int !mutable_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))
+                 i_3))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))))))
+                 i_3))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
                (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
@@ -3324,13 +3328,13 @@ module Function_memmove_behaviors
      ("expl:Postcondition"
      (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
      "expl:Ensures clause"
-     (forall i_4 : int.
-      ((((<=) (0) i_4) /\ ((<) i_4 (Bit_uint64.to_int count))) ->
+     (forall i_0 : int.
+      ((((<=) (0) i_0) /\ ((<) i_0 (Bit_uint64.to_int count))) ->
        (Int8.(=)
        (select !charP_charM_dest_3_2
-       (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i_4))
+       (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i_0))
        (select (old !charP_charM_dest_3_2)
-       (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_4)))))))
+       (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_0)))))))
      } diverges  ->
    (let mutable_count = ref count in
    'Init:
@@ -3357,37 +3361,39 @@ module Function_memmove_behaviors
         (s := (downcast_  voidP_dest_3_2_tag_table src_3 (charP_tag  ) ));
          'Loop_4:
          loop
-         invariant { (#"memmove.jc" 82 9 4692# true) } 
+         invariant { (#"memmove.jc" 82 9 4682# true) } 
           begin
           any unit
           requires { true } reads { charP_charM_dest_3_2, dest_3,
           mutable_count, src_3 }
           ensures {
             ((#"/home/work/workspace/self/verker/memmove.c" 17 21 119#
-             (forall i_0 : int.
-              ((((<=) (0) i_0) /\
-               ((<) i_0
+             (forall i_2 : int.
+              ((((<=) (0) i_2) /\
+               ((<) i_2
                (Int.(-) (Bit_uint64.to_int !orig_count)
                (Bit_uint64.to_int !mutable_count)))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
                (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-               i_0))
+               i_2))
                (select (at !charP_charM_dest_3_2 'Init)
                (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-               i_0))))))
+               i_2))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 16 21 127#
-             (forall i : int.
+             (forall i_1 : int.
               ((((<=)
                 (Int.(-) (Bit_uint64.to_int !orig_count)
-                (Bit_uint64.to_int !mutable_count)) i)
-               /\ ((<) i (Bit_uint64.to_int !orig_count))) ->
+                (Bit_uint64.to_int !mutable_count)) i_1)
+               /\ ((<) i_1 (Bit_uint64.to_int !orig_count))) ->
                (Int8.(=)
                (select !charP_charM_dest_3_2
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))
                (select (at !charP_charM_dest_3_2 'Init)
-               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i))))))
+               (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
+               i_1))))))
             /\
             ((#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
              (#"/home/work/workspace/self/verker/memmove.c" 15 21 65#
@@ -3533,35 +3539,35 @@ module Function_memmove_behaviors
           (s := (shift_  !s (Unsafe_bit_uint64.to_int  !mutable_count ) ));
            'Loop_3:
            loop
-           invariant { (#"memmove.jc" 173 9 3888# true) } 
+           invariant { (#"memmove.jc" 173 9 3868# true) } 
             begin
             any unit
             requires { true } reads { charP_charM_dest_3_2, dest_3,
             mutable_count, src_3 }
             ensures {
               ((#"/home/work/workspace/self/verker/memmove.c" 33 21 115#
-               (forall i_2 : int.
-                ((((<=) (Bit_uint64.to_int !mutable_count) i_2) /\
-                 ((<) i_2 (Bit_uint64.to_int !orig_count))) ->
+               (forall i_4 : int.
+                ((((<=) (Bit_uint64.to_int !mutable_count) i_4) /\
+                 ((<) i_4 (Bit_uint64.to_int !orig_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-                 i_2))
+                 i_4))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_2))))))
+                 i_4))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 32 21 105#
-               (forall i_1 : int.
-                ((((<=) (0) i_1) /\
-                 ((<) i_1 (Bit_uint64.to_int !mutable_count))) ->
+               (forall i_3 : int.
+                ((((<=) (0) i_3) /\
+                 ((<) i_3 (Bit_uint64.to_int !mutable_count))) ->
                  (Int8.(=)
                  (select !charP_charM_dest_3_2
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))
+                 i_3))
                  (select (at !charP_charM_dest_3_2 'Init)
                  (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag)
-                 i_1))))))
+                 i_3))))))
               /\
               ((#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
                (#"/home/work/workspace/self/verker/memmove.c" 31 21 65#
@@ -9065,26 +9071,25 @@ module Function_memmove
           (((not (same_block dest_3 src_3)) ->
             (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
             "expl:Ensures clause"
-            (forall i_3 : int.
-             ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int count))) ->
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int count))) ->
               (Int8.(=)
               (select !charP_charM_dest_3_2
-              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-              i_3))
+              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i))
               (select (old !charP_charM_dest_3_2)
-              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_3)))))))
+              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i)))))))
           /\
           (((same_block dest_3 src_3) ->
             (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
             "expl:Ensures clause"
-            (forall i_4 : int.
-             ((((<=) (0) i_4) /\ ((<) i_4 (Uint64.to_int count))) ->
+            (forall i_0 : int.
+             ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
               (Int8.(=)
               (select !charP_charM_dest_3_2
               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-              i_4))
+              i_0))
               (select (old !charP_charM_dest_3_2)
-              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_4)))))))
+              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_0)))))))
           /\
           (#"memmove.jc" 48 10 71# "expl:Assigns clause"
           (not_assigns voidP_dest_3_2_alloc_table voidP_dest_3_2_alloc_table
@@ -9207,26 +9212,25 @@ module Function_memmove_safe
           (((not (same_block dest_3 src_3)) ->
             (#"/home/work/workspace/self/verker/memmove.h" 27 14 99#
             "expl:Ensures clause"
-            (forall i_3 : int.
-             ((((<=) (0) i_3) /\ ((<) i_3 (Uint64.to_int count))) ->
+            (forall i : int.
+             ((((<=) (0) i) /\ ((<) i (Uint64.to_int count))) ->
               (Int8.(=)
               (select !charP_charM_dest_3_2
-              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-              i_3))
+              (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag) i))
               (select (old !charP_charM_dest_3_2)
-              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_3)))))))
+              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i)))))))
           /\
           (((same_block dest_3 src_3) ->
             (#"/home/work/workspace/self/verker/memmove.h" 24 14 99#
             "expl:Ensures clause"
-            (forall i_4 : int.
-             ((((<=) (0) i_4) /\ ((<) i_4 (Uint64.to_int count))) ->
+            (forall i_0 : int.
+             ((((<=) (0) i_0) /\ ((<) i_0 (Uint64.to_int count))) ->
               (Int8.(=)
               (select !charP_charM_dest_3_2
               (shift (downcast voidP_dest_3_2_tag_table dest_3 charP_tag)
-              i_4))
+              i_0))
               (select (old !charP_charM_dest_3_2)
-              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_4)))))))
+              (shift (downcast voidP_dest_3_2_tag_table src_3 charP_tag) i_0)))))))
           /\
           (#"memmove.jc" 48 10 71# "expl:Assigns clause"
           (not_assigns voidP_dest_3_2_alloc_table voidP_dest_3_2_alloc_table
