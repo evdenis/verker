@@ -21,19 +21,19 @@ OPAM_EVAL        := eval $$(opam env)
 else
 OPAM_EVAL        := eval $$(opam config env)
 endif
-#FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
-FRAMAC           := $(OPAM_EVAL); frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
-FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+#FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+FRAMAC           := $(OPAM_EVAL); frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 #FRAMAC_DFLAGS    :=
 #FRAMAC_DFLAGS    := -wp
 FRAMAC_DFLAGS    := -jessie
 FRAMAC_UFLAGS    := -jessie -jessie-target update
 FRAMAC_REPLAY    := -jessie-target why3autoreplay
 FRAMAC_SPROVE    := -jessie-target why3sprove -jessie-why3-opt " --strategy proof_juicer --theory-filter axiom"
-FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
-FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
-FRAMAC_VALFLAGS  := -val -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -C -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
+FRAMAC_VALFLAGS  := -val -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_VALGEN    := -print -ocode
 FRAMAC_ESHARE    := $(shell $(FRAMAC) -print-share-path)/e-acsl
 FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model

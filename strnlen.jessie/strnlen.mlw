@@ -1999,10 +1999,10 @@ theory Axiomatic_Strnlen
        (Uint64.of_int (0))))))))))))
   
   lemma Strnlen_zero_count
-  #"/home/work/workspace/self/verker/strnlen.h" 35 7 51#
+  #"/home/work/workspace/self/verker/strnlen.h" 35 7 60#
   "expl:Lemma strnlen_zero_count" :
   (forall charP_charM_s_17_23_at_L : (memory voidP Int8.t).
-   (#"/home/work/workspace/self/verker/strnlen.h" 35 7 51#
+   (#"/home/work/workspace/self/verker/strnlen.h" 35 7 60#
    (forall s_17 : (pointer voidP).
     (Uint64.(=)
     (strnlen s_17 (#"strnlen.jc" 189 31 44# "expl:Integer cast"
@@ -2434,7 +2434,7 @@ module Function_strnlen_0_safety
            (let _jessie_23 = !mutable_count in
            begin
            (assert {
-           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
            "expl:Pointer index bounds" true) }); _jessie_23 end));
            begin
            (mutable_count :=
@@ -2444,22 +2444,22 @@ module Function_strnlen_0_safety
              (Safe_bit_uint64.of_int_const 1)) ) in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
             "expl:Pointer index bounds" true) }); _jessie_24 end)); () end
           end;
            (if
-           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
            (Safe_bit_uint64.(<>)  !tmp
             (#"strnlen.jc" 396 45 58# "expl:Integer cast"
             (Safe_bit_uint64.of_int_const 0)) ))
            then
             (if
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 31 42#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 32 43#
             (Safe_int32.(<>) 
-             (#"/home/work/workspace/self/verker/strnlen.c" 14 31 34#
+             (#"/home/work/workspace/self/verker/strnlen.c" 14 32 35#
              "expl:Integer cast"
              (Safe_int32_of_Safe_int8.cast 
-              (#"/home/work/workspace/self/verker/strnlen.c" 14 31 34#
+              (#"/home/work/workspace/self/verker/strnlen.c" 14 32 35#
               "expl:Pointer dereference"
               (acc  voidP_s_0_7_alloc_table charP_charM_s_0_7 !sc_0 )) ))
              (#"strnlen.jc" 400 68 80# "expl:Integer cast"
@@ -2474,7 +2474,7 @@ module Function_strnlen_0_safety
               (Safe_int32.of_int (1))) ) ) in
             begin
             (assert {
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 44 48#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 45 49#
             "expl:Pointer index bounds" true) }); _jessie_25 end)) end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_3 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2683,15 +2683,15 @@ module Function_strnlen_0_behaviors
              (#"strnlen.jc" 393 62 75# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
            (if
-           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
            (Unsafe_bit_uint64.(<>)  !tmp
             (#"strnlen.jc" 396 45 58# "expl:Integer cast"
             (Unsafe_bit_uint64.of_int_const 0)) ))
            then
             (if
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 31 42#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 32 43#
             (Unsafe_int32.(<>) 
-             (#"/home/work/workspace/self/verker/strnlen.c" 14 31 34#
+             (#"/home/work/workspace/self/verker/strnlen.c" 14 32 35#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_0_7 !sc_0 ) ))
@@ -2857,15 +2857,15 @@ module Function_strnlen_0_behaviors
              (#"strnlen.jc" 393 62 75# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
            (if
-           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
            (Unsafe_bit_uint64.(<>)  !tmp
             (#"strnlen.jc" 396 45 58# "expl:Integer cast"
             (Unsafe_bit_uint64.of_int_const 0)) ))
            then
             (if
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 31 42#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 32 43#
             (Unsafe_int32.(<>) 
-             (#"/home/work/workspace/self/verker/strnlen.c" 14 31 34#
+             (#"/home/work/workspace/self/verker/strnlen.c" 14 32 35#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_0_7 !sc_0 ) ))
@@ -3025,15 +3025,15 @@ module Function_strnlen_0_behaviors
              (#"strnlen.jc" 393 62 75# "expl:Integer cast"
              (Unsafe_bit_uint64.of_int_const 1)) )); () end end;
            (if
-           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 25#
+           (#"/home/work/workspace/self/verker/strnlen.c" 14 14 26#
            (Unsafe_bit_uint64.(<>)  !tmp
             (#"strnlen.jc" 396 45 58# "expl:Integer cast"
             (Unsafe_bit_uint64.of_int_const 0)) ))
            then
             (if
-            (#"/home/work/workspace/self/verker/strnlen.c" 14 31 42#
+            (#"/home/work/workspace/self/verker/strnlen.c" 14 32 43#
             (Unsafe_int32.(<>) 
-             (#"/home/work/workspace/self/verker/strnlen.c" 14 31 34#
+             (#"/home/work/workspace/self/verker/strnlen.c" 14 32 35#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
               (acc  charP_charM_s_0_7 !sc_0 ) ))

@@ -2035,7 +2035,7 @@ module Function_strrchr_safety
          any unit
          requires { true } reads { c, mutable_s_0_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 89#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 90#
             (((<>) !last null) ->
              (forall p_6 : (pointer voidP).
               (((same_block !last p_6) /\
@@ -2046,7 +2046,7 @@ module Function_strrchr_safety
                (#"strrchr.jc" 282 45 57# "expl:Integer cast"
                (Bit_int8_of_Bit_int32.cast_modulo c)))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 91#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 92#
             (((=) !last null) <->
             (forall p_5 : (pointer voidP).
              (((same_block !os p_5) /\
@@ -2068,7 +2068,7 @@ module Function_strrchr_safety
              (#"strrchr.jc" 266 45 57# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 79#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 80#
             ((((=) !last null) /\
              (not
              ((same_block !os !last) /\
@@ -2111,7 +2111,7 @@ module Function_strrchr_safety
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 25#
+           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 27#
            (Safe_bit_int32.(=) 
             (#"/home/work/workspace/self/verker/strrchr.c" 17 6 8#
             "expl:Integer cast"
@@ -2120,10 +2120,10 @@ module Function_strrchr_safety
              "expl:Pointer dereference"
              (acc  voidP_s_0_5_alloc_table charP_charM_s_0_5 !mutable_s_0_0 ))
              ))
-            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
             "expl:Integer cast"
             (Safe_bit_int32_of_Safe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
              "expl:Integer cast"
              (Safe_bit_int8_of_Safe_bit_int32.cast_modulo  c )) )) ))
            then
@@ -2451,7 +2451,7 @@ module Function_strrchr_behaviors
              (sub_pointer !mutable_s_0_0
              (shift !os (Uint64.to_int (strlen !os charP_charM_s_0_5)))) (0))))))))))
             &&
-            ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 79#
+            ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 80#
              ((((=) !last null) /\
               (not
               ((same_block !os !last) /\
@@ -2482,7 +2482,7 @@ module Function_strrchr_behaviors
               (#"strrchr.jc" 266 45 57# "expl:Integer cast"
               (Bit_int8_of_Bit_int32.cast_modulo c))))))))))
             &&
-            ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 91#
+            ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 92#
              (((=) !last null) <->
              (forall p_5 : (pointer voidP).
               (((same_block !os p_5) /\
@@ -2493,7 +2493,7 @@ module Function_strrchr_behaviors
                (#"strrchr.jc" 274 45 57# "expl:Integer cast"
                (Bit_int8_of_Bit_int32.cast_modulo c)))))))
             &&
-            (#"/home/work/workspace/self/verker/strrchr.c" 12 20 89#
+            (#"/home/work/workspace/self/verker/strrchr.c" 12 20 90#
             (((<>) !last null) ->
              (forall p_6 : (pointer voidP).
               (((same_block !last p_6) /\
@@ -2509,16 +2509,16 @@ module Function_strrchr_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 25#
+           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 27#
            (Unsafe_bit_int32.(=) 
             (#"/home/work/workspace/self/verker/strrchr.c" 17 6 8#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_0_5 !mutable_s_0_0 ) ))
-            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c )) )) ))
            then (last := !mutable_s_0_0) else ());
@@ -2641,13 +2641,13 @@ module Function_strrchr_behaviors
      /\
      (#"/home/work/workspace/self/verker/strrchr.h" 65 15 44#
      "expl:Ensures clause"
-     ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 36#
+     ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 37#
       "expl:Ensures clause"
       (Bit_int8.(=) (select charP_charM_s_0_5 result)
       (#"strrchr.jc" 149 49 70# "expl:Integer cast"
       (Bit_int8_of_Bit_int32.cast_modulo c))))
      /\
-     (#"/home/work/workspace/self/verker/strrchr.h" 67 15 95#
+     (#"/home/work/workspace/self/verker/strrchr.h" 67 15 96#
      "expl:Ensures clause"
      (forall p_1 : (pointer voidP).
       (((same_block result p_1) /\
@@ -2684,7 +2684,7 @@ module Function_strrchr_behaviors
          any unit
          requires { true } reads { c, mutable_s_0_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 89#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 90#
             (((<>) !last null) ->
              (forall p_6 : (pointer voidP).
               (((same_block !last p_6) /\
@@ -2695,7 +2695,7 @@ module Function_strrchr_behaviors
                (#"strrchr.jc" 282 45 57# "expl:Integer cast"
                (Bit_int8_of_Bit_int32.cast_modulo c)))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 91#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 92#
             (((=) !last null) <->
             (forall p_5 : (pointer voidP).
              (((same_block !os p_5) /\
@@ -2717,7 +2717,7 @@ module Function_strrchr_behaviors
              (#"strrchr.jc" 266 45 57# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 79#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 80#
             ((((=) !last null) /\
              (not
              ((same_block !os !last) /\
@@ -2760,16 +2760,16 @@ module Function_strrchr_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 25#
+           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 27#
            (Unsafe_bit_int32.(=) 
             (#"/home/work/workspace/self/verker/strrchr.c" 17 6 8#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_0_5 !mutable_s_0_0 ) ))
-            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c )) )) ))
            then (last := !mutable_s_0_0) else ());
@@ -2890,7 +2890,7 @@ module Function_strrchr_behaviors
          any unit
          requires { true } reads { c, mutable_s_0_0 }
          ensures {
-           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 89#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 12 20 90#
             (((<>) !last null) ->
              (forall p_6 : (pointer voidP).
               (((same_block !last p_6) /\
@@ -2901,7 +2901,7 @@ module Function_strrchr_behaviors
                (#"strrchr.jc" 282 45 57# "expl:Integer cast"
                (Bit_int8_of_Bit_int32.cast_modulo c)))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 91#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 11 20 92#
             (((=) !last null) <->
             (forall p_5 : (pointer voidP).
              (((same_block !os p_5) /\
@@ -2923,7 +2923,7 @@ module Function_strrchr_behaviors
              (#"strrchr.jc" 266 45 57# "expl:Integer cast"
              (Bit_int8_of_Bit_int32.cast_modulo c))))))))))
            /\
-           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 79#
+           ((#"/home/work/workspace/self/verker/strrchr.c" 9 20 80#
             ((((=) !last null) /\
              (not
              ((same_block !os !last) /\
@@ -2966,16 +2966,16 @@ module Function_strrchr_behaviors
            begin
            begin
            (if
-           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 25#
+           (#"/home/work/workspace/self/verker/strrchr.c" 17 6 27#
            (Unsafe_bit_int32.(=) 
             (#"/home/work/workspace/self/verker/strrchr.c" 17 6 8#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
              (acc  charP_charM_s_0_5 !mutable_s_0_0 ) ))
-            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+            (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
             "expl:Integer cast"
             (Unsafe_bit_int32_of_Unsafe_bit_int8.cast 
-             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 25#
+             (#"/home/work/workspace/self/verker/strrchr.c" 17 12 27#
              "expl:Integer cast"
              (Unsafe_bit_int8_of_Unsafe_bit_int32.cast_modulo  c )) )) ))
            then (last := !mutable_s_0_0) else ());
@@ -8451,13 +8451,13 @@ module Function_strrchr
           /\
           (#"/home/work/workspace/self/verker/strrchr.h" 65 15 44#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 36#
+          ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 37#
            "expl:Ensures clause"
            (Bit_int8.(=) (select charP_charM_s_0_5 result)
            (#"strrchr.jc" 149 49 70# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c))))
           /\
-          (#"/home/work/workspace/self/verker/strrchr.h" 67 15 95#
+          (#"/home/work/workspace/self/verker/strrchr.h" 67 15 96#
           "expl:Ensures clause"
           (forall p_1 : (pointer voidP).
            (((same_block result p_1) /\
@@ -8588,13 +8588,13 @@ module Function_strrchr_safe
           /\
           (#"/home/work/workspace/self/verker/strrchr.h" 65 15 44#
           "expl:Ensures clause"
-          ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 36#
+          ((#"/home/work/workspace/self/verker/strrchr.h" 66 15 37#
            "expl:Ensures clause"
            (Bit_int8.(=) (select charP_charM_s_0_5 result)
            (#"strrchr.jc" 149 49 70# "expl:Integer cast"
            (Bit_int8_of_Bit_int32.cast_modulo c))))
           /\
-          (#"/home/work/workspace/self/verker/strrchr.h" 67 15 95#
+          (#"/home/work/workspace/self/verker/strrchr.h" 67 15 96#
           "expl:Ensures clause"
           (forall p_1 : (pointer voidP).
            (((same_block result p_1) /\

@@ -31,6 +31,6 @@
 # define AENO
 # define AENOC
 
-#endif
+#endif /* ASTRAVER_TOOLCHAIN */
 
 #endif /* ACSL_SYNTAX_EXTENSION_H */
