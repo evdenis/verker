@@ -5,7 +5,7 @@ int strcmp(const char *cs, const char *ct)
 	unsigned char c1, c2;
 
    /*@ assert (\forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i]) <==>
-              (\forall integer i; 0 <= i <= strlen(cs) ==> (u8 %)cs[i] == (u8 %)ct[i]);
+              (\forall integer i; 0 <= i <= strlen(cs) ==> (u8 AENO) cs[i] == (u8 AENO) ct[i]);
     */
 
 	/*@ loop invariant valid_str(cs) && valid_str(ct);
@@ -19,14 +19,14 @@ int strcmp(const char *cs, const char *ct)
 	    loop variant strlen(\at(cs,Pre)) - (cs - \at(cs,Pre));
 	*/
 	while (1) {
-		c1 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *cs++;
-		c2 = /*CODE_CHANGE:*/(unsigned char)/*@%*/ *ct++;
+		c1 = /*CODE_CHANGE:*/(unsigned char) AENOC *cs++;
+		c2 = /*CODE_CHANGE:*/(unsigned char) AENOC *ct++;
 		if (c1 != c2)
 			//@ ghost int res = c1 < c2 ? -1 : 1;
 			/*@ assert \exists integer i; 0 <= i <= strlen(\at(cs,Pre)) &&
 			      (\forall integer j; 0 <= j < i ==> \at(cs,Pre)[j] == \at(ct,Pre)[j]) &&
 			      (\at(cs,Pre)[i] != \at(ct,Pre)[i]) &&
-			      ((u8 %)\at(cs,Pre)[i] < (u8 %)\at(ct,Pre)[i] ? res == -1 : res == 1) &&
+			      ((u8 AENO)\at(cs,Pre)[i] < (u8 AENO)\at(ct,Pre)[i] ? res == -1 : res == 1) &&
 			      i == cs - \at(cs,Pre)-1;
 			 */
 			return c1 < c2 ? -1 : 1;

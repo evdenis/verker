@@ -1,6 +1,6 @@
 #include "ctype.h"
 
-#ifndef SPEC
+#if !defined(SPEC) || !defined(ASTRAVER_TOOLCHAIN)
 const unsigned char _ctype[] = {
 _C,_C,_C,_C,_C,_C,_C,_C,				/* 0-7 */
 _C,_C|_S,_C|_S,_C|_S,_C|_S,_C|_S,_C,_C,			/* 8-15 */

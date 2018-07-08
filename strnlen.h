@@ -33,7 +33,7 @@
 
     lemma strnlen_zero_count:
        \forall char *s;
-         strnlen(s, 0) == 0;
+         strnlen(s, (size_t) 0) == 0;
 
     lemma strnlen_min_len:
       \forall char *s, size_t cnt;

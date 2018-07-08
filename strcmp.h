@@ -8,7 +8,7 @@
        a == b ? 0 : a < b ? -1 : 1;
 
     logic integer strncmp(char *cs, char *ct, integer n) =
-       n == -1 ? 0 : (cs[n] == ct[n] ? strncmp(cs+1, ct+1, n-1) : cmp((u8 %)cs[n], (u8 %)ct[n]));
+       n == -1 ? 0 : (cs[n] == ct[n] ? strncmp(cs+1, ct+1, n-1) : cmp((u8 AENO)cs[n], (u8 AENO)ct[n]));
     logic integer strcmp(char *cs, char *ct) = strncmp(cs, ct, strlen(cs));
     predicate equaln(char *cs, char *ct, size_t n) = strncmp(cs, ct, n) == 0;
     predicate equal(char *cs, char *ct) = strcmp(cs, ct) == 0;
@@ -27,13 +27,13 @@
        \forall char *cs, *ct, size_t n, k;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
        (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
-       (u8 %)cs[k] < (u8 %)ct[k] ==>
+       (u8 AENO)cs[k] < (u8 AENO)ct[k] ==>
           strncmp(cs, ct, n) == -1;
     lemma defn_greater:
        \forall char *cs, *ct, size_t n, k;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
        (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
-       (u8 %)cs[k] > (u8 %)ct[k] ==>
+       (u8 AENO)cs[k] > (u8 AENO)ct[k] ==>
           strncmp(cs, ct, n) == 1;
 
     lemma iter_one:
@@ -44,7 +44,7 @@
     lemma at_end:
        \forall char *cs, *ct;
        \valid(cs) && \valid(ct) ==>
-       strncmp(cs, ct, 0) == cmp((u8 %)*cs, (u8 %)*ct);
+       strncmp(cs, ct, 0) == cmp((u8 AENO)*cs, (u8 AENO)*ct);
     }
  */
 
@@ -67,7 +67,7 @@
        ensures \exists integer i; 0 <= i <= strlen(cs) &&
                (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
                (cs[i] != ct[i]) &&
-               ((u8 %)cs[i] < (u8 %)ct[i] ? \result == -1 : \result == 1);
+               ((u8 AENO)cs[i] < (u8 AENO)ct[i] ? \result == -1 : \result == 1);
     complete behaviors;
     disjoint behaviors;
  */

@@ -6,15 +6,15 @@ void *memchr(const void *s, int c, size_t n)
 	/*@ loop invariant 0 <= n <= \at(n,Pre);
 	    loop invariant (u8 *)s <= p <= (u8 *)s + \at(n,Pre);
 	    loop invariant p - s == \at(n,Pre) - n;
-	    loop invariant \forall u8 *k; (u8 *)s <= k < p ==> *k != (u8 ACSL_EXT_NO_OVERFLOW) c;
+	    loop invariant \forall u8 *k; (u8 *)s <= k < p ==> *k != (u8 AENO) c;
 	    loop variant n;
 	 */
-	while (n-- ACSL_EXT_NO_OVERFLOW_CMNT != 0) {
-		if ((unsigned char) ACSL_EXT_NO_OVERFLOW_CMNT c == *p++) {
+	while (n-- AENOC != 0) {
+		if ((unsigned char) AENOC c == *p++) {
 			return (void *)(p - 1);
 		}
 	}
-	//@ assert n == (size_t ACSL_EXT_NO_OVERFLOW)(-1);
+	//@ assert n == (size_t AENO)(-1);
 	return NULL;
 }
 

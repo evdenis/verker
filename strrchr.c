@@ -6,21 +6,21 @@ char *strrchr(const char *s, int c)
 	//@ ghost char *os = s;
 
 	/*@ loop invariant os <= s <= os + strlen(os);
-	    loop invariant last == \null ^^ ((os <= last < s) && (*last == (char %)c));
-	    loop invariant (last != \null) <==> (\exists char *p; os <= p < s && *p == (char %) c);
-	    loop invariant (last == \null) <==> (\forall char *p; os <= p < s ==> *p != (char %)c);
-	    loop invariant last != \null ==> (\forall char *p; last < p < s ==> *p != (char %)c);
-	    //loop invariant strrchr(s, (char %) c) == strrchr(os, (char %) c);
+	    loop invariant last == \null ^^ ((os <= last < s) && (*last == (char AENO) c));
+	    loop invariant (last != \null) <==> (\exists char *p; os <= p < s && *p == (char AENO) c);
+	    loop invariant (last == \null) <==> (\forall char *p; os <= p < s ==> *p != (char AENO) c);
+	    loop invariant last != \null ==> (\forall char *p; last < p < s ==> *p != (char AENO) c);
+	    //loop invariant strrchr(s, (char AENO) c) == strrchr(os, (char AENO) c);
 	    loop variant strlen(os) - (s - os);
 	 */
 	do {
-		if (*s == (char)/*@%*/c)
+		if (*s == (char) AENOC c)
 			last = s;
 	} while (*s++);
 	//@ assert s[-1] == '\0';
 	//@ assert s == os + strlen(os) + 1;
-	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char %) c) ==> (last != \null);
-	// assert strrchr(\at(s,Pre), (char %) c) == last;
+	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char AENO) c) ==> (last != \null);
+	// assert strrchr(\at(s,Pre), (char AENO) c) == last;
 	return (char *)last;
 }
 

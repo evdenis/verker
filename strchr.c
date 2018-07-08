@@ -5,15 +5,15 @@ char *strchr(const char *s, int c)
 	//@ ghost char *os = s;
 	/*@ loop invariant valid_str(s);
 	    loop invariant os <= s <= os + strlen(os);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char ACSL_EXT_NO_OVERFLOW) c;
-	    loop invariant strchr(s, (char ACSL_EXT_NO_OVERFLOW) c) == strchr(os, (char ACSL_EXT_NO_OVERFLOW) c);
+	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
+	    loop invariant strchr(s, (char AENO) c) == strchr(os, (char AENO) c);
 	    loop variant strlen(os) - (s - os);
 	 */
-	for (; *s != (char) ACSL_EXT_NO_OVERFLOW_CMNT c; ++s)
+	for (; *s != (char) AENOC c; ++s)
 		if (*s == '\0')
 			return NULL;
-	//@ assert (char ACSL_EXT_NO_OVERFLOW) c != '\0' <==> s < os + strlen(os);
-	//@ assert (char ACSL_EXT_NO_OVERFLOW) c == '\0' <==> s == os + strlen(os);
+	//@ assert (char AENO) c != '\0' <==> s < os + strlen(os);
+	//@ assert (char AENO) c == '\0' <==> s == os + strlen(os);
 	return (char *)s;
 }
 

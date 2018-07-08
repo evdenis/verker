@@ -37,7 +37,7 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 	    loop invariant \forall char *p; osrc <= p < src ==> isxdigit(*p);
 	    loop variant count;
 	 */
-	while (count-- ACSL_EXT_NO_OVERFLOW_CMNT) {
+	while (count-- AENOC) {
 		int hi = hex_to_bin(*src++);
 		int lo = hex_to_bin(*src++);
 
@@ -51,7 +51,7 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 		//@ assert 0 <= ((hi << 4) | lo) <= 255;
 		*dst++ = (hi << 4) | lo;
 	}
-	//@ assert count == ((size_t ACSL_EXT_NO_OVERFLOW)-1);
+	//@ assert count == ((size_t AENO)-1);
 	return 0;
 }
 
