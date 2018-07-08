@@ -5,13 +5,13 @@ char *strchrnul(const char *s, int c)
 	//@ ghost char *os = s;
 	/*@ loop invariant valid_str(s);
 	    loop invariant os <= s <= os + strlen(os);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char %) c;
-	    loop invariant strchrnul(os, (char %)c) == strchrnul(s, (char %)c);
+	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
+	    loop invariant strchrnul(os, (char AENO) c) == strchrnul(s, (char AENO) c);
 	    loop variant strlen(os) - (s - os);
 	 */
-	while (*s && *s != (char) /*@%*/ c)
+	while (*s && *s != (char) AENOC c)
 		s++;
-	//@ assert (char %) c == '\0' ==> *s == '\0';
+	//@ assert (char AENO) c == '\0' ==> *s == '\0';
 	//@ assert *s == '\0' ==> s - os == strlen(os);
 	return (char *)s;
 }

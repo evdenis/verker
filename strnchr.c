@@ -9,11 +9,11 @@ char *strnchr(const char *s, size_t count, int c)
 	    loop invariant s - os == ocount - count;
 	    loop invariant valid_strn(s, count);
 	    loop invariant strnlen(os, ocount) == s - os + strnlen(s, count);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char %) c;
+	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
 	    loop variant count;
 	 */
-	for (; count-- /*@%*/ && *s != '\0'; ++s)
-		if (*s == (char)/*@%*/c)
+	for (; count-- AENOC && *s != '\0'; ++s)
+		if (*s == (char) AENOC c)
 			return (char *)s;
 	return NULL;
 }

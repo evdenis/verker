@@ -38,8 +38,8 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 	    loop variant len;
 	 */
 	do {
-		c1 = (unsigned char) /*@%*/ *s1++; // CODE_CHANGE:
-		c2 = (unsigned char) /*@%*/ *s2++; // CODE_CHANGE:
+		c1 = (unsigned char) AENOC *s1++; // CODE_CHANGE:
+		c2 = (unsigned char) AENOC *s2++; // CODE_CHANGE:
 		if (!c1 || !c2)
 			break;
 		if (c1 == c2)

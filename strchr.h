@@ -52,15 +52,15 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
-    ensures \result == strchr(s, (char %) c);
+    ensures \result == strchr(s, (char AENO) c);
     behavior not_exists:
-       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char %) c;
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char AENO) c;
        ensures \result == \null;
     behavior exists:
-       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char %) c;
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char AENO) c;
        ensures s <= \result <= s + strlen(s);
-       ensures *\result == (char %) c;
-       ensures \forall char *p; s <= p < \result ==> *p != (char %) c;
+       ensures *\result == (char AENO) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char AENO) c;
     complete behaviors;
     disjoint behaviors;
  */

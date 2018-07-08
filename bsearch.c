@@ -38,7 +38,7 @@ void *bsearch(const void *key, const void *base, size_t num, size_t size,
 	size_t start = 0, end = num;
 	int result;
 
-	/*@ loop invariant 0 <= start;
+	/* loop invariant 0 <= start;
 	    loop invariant end <= num;
 	    loop invariant \forall integer i;
 	                      0 <= i < num && a[i] == *((char *)key) ==>

@@ -54,16 +54,16 @@
 /*@ requires valid_str(s);
     assigns \nothing;
     ensures \base_addr(\result) == \base_addr(s);
-    ensures \result == strchrnul(s, (char %) c);
+    ensures \result == strchrnul(s, (char AENO) c);
     ensures s <= \result <= s + strlen(s);
     behavior not_exists:
-       assumes \forall integer i; 0 <= i < strlen(s) ==> s[i] != (char %) c;
+       assumes \forall integer i; 0 <= i < strlen(s) ==> s[i] != (char AENO) c;
        ensures \result == s + strlen(s);
        ensures *\result == '\0';
     behavior exists:
-       assumes \exists integer i; 0 <= i < strlen(s) && s[i] == (char %) c;
-       ensures *\result == (char %) c;
-       ensures \forall char *p; s <= p < \result ==> *p != (char %) c;
+       assumes \exists integer i; 0 <= i < strlen(s) && s[i] == (char AENO) c;
+       ensures *\result == (char AENO) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char AENO) c;
     complete behaviors;
     disjoint behaviors;
  */

@@ -22,7 +22,7 @@
        ensures \exists integer i; 0 <= i < strnlen(cs, count) &&
                (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
                (cs[i] != ct[i]) &&
-               ((u8 %)cs[i] < (u8 %)ct[i] ? \result == -1 : \result == 1);
+               ((u8 AENO)cs[i] < (u8 AENO)ct[i] ? \result == -1 : \result == 1);
     complete behaviors;
     disjoint behaviors;
  */
@@ -34,7 +34,7 @@ int strncmp(const char *cs, const char *ct, size_t count)
 	//@ ghost size_t ocount = count;
 
 	/*@ assert \forall integer i; 0 <= i < strnlen(ocs, ocount) ==>
-		((cs[i] == ct[i]) <==> (((u8 %)cs[i]) == ((u8 %)ct[i])));
+		((cs[i] == ct[i]) <==> (((u8 AENO)cs[i]) == ((u8 AENO)ct[i])));
 	*/
 
 	/*@ loop invariant 0 <= count <= ocount;
@@ -48,8 +48,8 @@ int strncmp(const char *cs, const char *ct, size_t count)
 	    loop variant count;
 	*/
 	while (count) {
-		c1 = /*CODE_CHANGE:*/(unsigned char)/*@%*/*cs++;
-		c2 = /*CODE_CHANGE:*/(unsigned char)/*@%*/*ct++;
+		c1 = /*CODE_CHANGE:*/(unsigned char) AENOC *cs++;
+		c2 = /*CODE_CHANGE:*/(unsigned char) AENOC *ct++;
 		//@ assert c1 == 0 ==> valid_str(ocs) && strlen(ocs) == strnlen(ocs, ocount) == ocount - count;
 		//@ assert c2 == 0 ==> valid_str(oct) && strlen(oct) == strnlen(oct, ocount) == ocount - count;
 		if (c1 != c2)
@@ -58,7 +58,7 @@ int strncmp(const char *cs, const char *ct, size_t count)
 				assert (\exists integer i; 0 <= i < strnlen(ocs, ocount) &&
 				(\forall integer j; 0 <= j < i ==> ocs[j] == oct[j]) &&
 				(ocs[i] != oct[i]) &&
-				((u8 %)ocs[i] < (u8 %)oct[i] ? res == -1 : res == 1) &&
+				((u8 AENO)ocs[i] < (u8 AENO)oct[i] ? res == -1 : res == 1) &&
 				i == ocount - count);
 			*/
 			return c1 < c2 ? -1 : 1;

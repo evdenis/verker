@@ -11,7 +11,7 @@ size_t strnlen(const char *s, size_t count)
 	    loop invariant \forall integer i; 0 <= i < sc - s ==> s[i] != '\0';
 	    loop variant count;
 	 */
-	for (sc = s; count--/*@%*/ && *sc != '\0'; ++sc)
+	for (sc = s; count-- AENOC && *sc != '\0'; ++sc)
 		/* nothing */;
 
 	return sc - s;

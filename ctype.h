@@ -17,7 +17,7 @@
 #define _X	0x40	/* hex digit */
 #define _SP	0x80	/* hard space (0x20) */
 
-#ifndef SPEC
+#if !defined(SPEC) || !defined(ASTRAVER_TOOLCHAIN)
 extern const unsigned char _ctype[];
 #else
 extern const unsigned char *_ctype;
@@ -49,7 +49,7 @@ extern const unsigned char *_ctype;
     predicate isodigit(integer c) = '0' <= c <= '7';
     predicate isalnum(integer c)  = isdigit(c) || isalpha(c);
     predicate isspace(integer c)  = c == ' '  || c == '\f' || c == '\n' ||
-                                    c == '\r' || c == '\t' || c == '\v';
+                                    c == '\r' || c == '\t' FRAMAC_VTAB_BUG;
     predicate isxdigit(integer c) = isdigit(c)        ||
                                     ('a' <= c <= 'f') ||
                                     ('A' <= c <= 'F');
