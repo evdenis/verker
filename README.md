@@ -61,12 +61,71 @@ The specifications are developed in the [ACSL](http://frama-c.com/download/acsl-
 - A description of how to install the tools can be found [here](https://forge.ispras.ru/projects/astraver/wiki). You can run them on Linux, Windows, Mac OS X.
 - By [link](https://disk.llkl.org/f/be6ea14a2d/?dl=1) you can download the VirtualBox VM image in ova format with pre-installed and already configured tools. Image size ~ 3 gigabytes. OS: Ubuntu. Login: user. Password: 1. There are two repositories in the **workspace** directory. First one is verker, the second is [acsl-proved](https://github.com/evdenis/acsl-proved) (examples with verification protocols).
 
+### How to use the vanilla Frama-C
+
+There is the compatibility layer with the vanilla Frama-C. You can find it in the **acsl_syntax_extension.h** file. To use the unmodified Frama-C you need to comment out the line ```#define ASTRAVER_TOOLCHAIN 1``` in the acsl syntax extension header. In the **Makefile** you may want to uncomment FRAMAC line to use the gui version. If you don't want to use the deductive verification plugin you need to redefine ```FRAMAC_DFLAGS``` variable in the Makefile.
+
+In details:
+
+```diff
+diff --git a/acsl_syntax_extension.h b/acsl_syntax_extension.h
+index 7018289..ca7b7e3 100644
+--- a/acsl_syntax_extension.h
++++ b/acsl_syntax_extension.h
+@@ -5,7 +5,7 @@
+  * Comment this define if you want to use
+  * vanilla Frama-C.
+  */
+-#define ASTRAVER_TOOLCHAIN 1
++//#define ASTRAVER_TOOLCHAIN 1
+ 
+ 
+ #ifdef ASTRAVER_TOOLCHAIN /* used by default */
+```
+
+```diff
+diff --git a/Makefile b/Makefile
+index 4c6f529..0567e01 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,12 +21,12 @@ OPAM_EVAL        := eval $$(opam env)
+ else
+ OPAM_EVAL        := eval $$(opam config env)
+ endif
+-#FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+-FRAMAC           := $(OPAM_EVAL); frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
++FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
++#FRAMAC           := $(OPAM_EVAL); frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+ FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -cpp-extra-args " -C -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
+-#FRAMAC_DFLAGS    :=
++FRAMAC_DFLAGS    :=
+ #FRAMAC_DFLAGS    := -wp
+-FRAMAC_DFLAGS    := -jessie
++#FRAMAC_DFLAGS    := -jessie
+ FRAMAC_UFLAGS    := -jessie -jessie-target update
+ FRAMAC_REPLAY    := -jessie-target why3autoreplay
+ FRAMAC_SPROVE    := -jessie-target why3sprove -jessie-why3-opt " --strategy proof_juicer --theory-filter axiom"
+```
+
 ## Repository files
 
 Each library function of the Linux kernel is located in a separate \*.c file. The corresponding \*.h file contains declarations, types, and structures specific to the function.
 
 - The **kernel_definitons.h** file contains common for all functions types, macros, and other declarations.
 - In **ctype.h** there are several functions, which were initially developed as macro. For the convenience of formal verification, these macro (islower, isupper, isdigit, ...) have been rewritten as an inline functions.
+- The **acsl_syntax_extension.h** file contains the compatibility layer for the vanilla Frama-C.
+
+## How to run
+
+You can type ```make help``` to see the available options. It's recommended to start with already proved functions.
+
+### Proofs Replay
+
+To replay the proofs on your PC you need to type ```make replay-proved```. If you type ```make replay-proved-separatedly``` the instrument will try to replay proofs for functions one-by-one. ```CVC-1.4```, ```CVC-1.5```, ```Alt-Ergo-2.2.0``` solvers are required to replay proofs.
+
+### Prove
+
+To run the tools on a particular file you need to type ```make verify-<function>```. The command will run the Why3 ide with a number of verification conditions. If you type ```make verify-proved``` the instrument will be run only on the already proved functions.
 
 ### How to add a function in the repository
 
