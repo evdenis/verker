@@ -30,133 +30,524 @@ axiomatic Strlen {
                                                          \at(n_1,L))) ==>
                                                       true))) else true),L))),L)
    
-  lemma valid_str_shift1{L} :
-  (_C_1 : (\forall charP[..] s_0;
-            (((s_0.charM != (0 :> int8)) && valid_str{L}(s_0)) ==>
-              valid_str{L}((s_0 + 1)))))
-   
-  lemma valid_str_strend{L} :
-  (_C_2 : (\forall charP[..] s_1;
-            ((\at((((\offset_min(\at(s_1,L)) <= \at(0,L)) &&
-                     (\offset_max(\at(s_1,L)) >= \at(0,L))) &&
-                    true),L) &&
-               (s_1.charM == (0 :> int8))) ==>
-              valid_str{L}(s_1))))
-   
-  logic uint64 strlen{L}(charP[..] s_2) =
-  \at((if ((s_2 + 0).charM == (0 :> int8)) then (0 :> uint64) else ((1 +
+  logic uint64 strlen{L}(charP[..] s_0) =
+  \at((if ((s_0 + 0).charM == (0 :> int8)) then (0 :> uint64) else ((1 +
                                                                     (strlen{L}(
-                                                                    (s_2 + 1)) :> integer)) :> uint64)),L)
-   
-  lemma strlen_before_null{L} :
-  (_C_3 : (\forall charP[..] s_3;
-            (\forall integer i;
-              (((valid_str{L}(s_3) && (0 <= i)) &&
-                 (i < (strlen{L}(s_3) :> integer))) ==>
-                ((s_3 + i).charM != (0 :> int8))))))
-   
-  lemma strlen_at_null{L} :
-  (_C_4 : (\forall charP[..] s_4;
-            (valid_str{L}(s_4) ==>
-              ((s_4 + (strlen{L}(s_4) :> integer)).charM == (0 :> int8)))))
-   
-  lemma strlen_shift{L} :
-  (_C_5 : (\forall charP[..] s_5;
-            (\forall uint64 i_0;
-              ((valid_str{L}(s_5) && (i_0 <= strlen{L}(s_5))) ==>
-                ((strlen{L}((s_5 + (i_0 :> integer))) :> integer) ==
-                  ((strlen{L}(s_5) :> integer) - (i_0 :> integer)))))))
-   
-  lemma strlen_shift_ex{L} :
-  (_C_6 : (\forall charP[..] s_6;
-            (\forall uint64 i_1;
-              (((valid_str{L}(s_6) && ((0 :> uint64) < i_1)) &&
-                 (i_1 <= strlen{L}(s_6))) ==>
-                (strlen{L}((s_6 + (i_1 :> integer))) < strlen{L}(s_6))))))
-   
-  lemma strlen_shift1{L} :
-  (_C_7 : (\forall charP[..] s_7;
-            ((valid_str{L}(s_7) && (s_7.charM != (0 :> int8))) ==>
-              ((strlen{L}(s_7) :> integer) ==
-                (1 + (strlen{L}((s_7 + 1)) :> integer))))))
-   
-  lemma strlen_pointers{L} :
-  (_C_8 : (\forall charP[..] s_8;
-            (\forall charP[..] sc;
-              (((((valid_str{L}(s_8) && valid_str{L}(sc)) &&
-                   (\base_block(s_8) == \base_block(sc))) &&
-                  ((\base_block(s_8) == \base_block(sc)) &&
-                    ((s_8 - sc) <= 0))) &&
-                 (\forall integer i_2;
-                   (((0 <= i_2) && (i_2 <= (sc - s_8))) ==>
-                     ((s_8 + i_2).charM != (0 :> int8))))) ==>
-                (strlen{L}(sc) <= strlen{L}(s_8))))))
-   
-  lemma strlen_main{L} :
-  (_C_9 : (\forall charP[..] s_9;
-            (\forall uint64 n_2;
-              (((valid_str{L}(s_9) &&
-                  ((s_9 + (n_2 :> integer)).charM == (0 :> int8))) &&
-                 (\forall integer i_3;
-                   (((0 <= i_3) && (i_3 < (n_2 :> integer))) ==>
-                     ((s_9 + i_3).charM != (0 :> int8))))) ==>
-                (strlen{L}(s_9) == n_2)))))
-   
-  lemma valid_str_shiftn{L} :
-  (_C_10 : (\forall charP[..] s_10;
-             (\forall integer i_4;
-               (((valid_str{L}(s_10) && (0 <= i_4)) &&
-                  (i_4 < (strlen{L}(s_10) :> integer))) ==>
-                 valid_str{L}((s_10 + i_4))))))
+                                                                    (s_0 + 1)) :> integer)) :> uint64)),L)
   
 }
 
-uint64 strlen(charP[..] s)
-  requires (_C_35 : valid_str{Here}(s));
+uint64 istrlen(charP[..] s)
+  requires (_C_21 : valid_str{Here}(s));
 behavior default:
-  assigns \nothing;
-  ensures (_C_30 : ((_C_31 : (\result == strlen{Here}(\at(s,Old)))) &&
-                     ((_C_33 : ((\at(s,Old) + (\result :> integer)).charM ==
-                                 (0 :> int8))) &&
-                       (_C_34 : (\forall integer i_5;
-                                  (((0 <= i_5) &&
-                                     (i_5 < (\result :> integer))) ==>
-                                    ((\at(s,Old) + i_5).charM != (0 :> int8))))))));
+  ensures (_C_16 : ((_C_17 : ((\at(s,Old) + (\result :> integer)).charM ==
+                               (0 :> int8))) &&
+                     ((_C_19 : \at((if (\at(0,Here) <= \at(\result,Here)) then 
+                                   (((\offset_min(\at(s,Old)) <= \at(0,Here)) &&
+                                      (\offset_max(\at(s,Old)) >=
+                                        \at(\result,Here))) &&
+                                     (\forall integer __framac_tmp2;
+                                       (((\at(0,Here) <= __framac_tmp2) &&
+                                          (__framac_tmp2 <=
+                                            \at(\result,Here))) ==>
+                                         true))) else true),Here)) &&
+                       (_C_20 : (\forall uint64 j;
+                                  ((j < \result) ==>
+                                    ((\at(s,Old) + (j :> integer)).charM !=
+                                      (0 :> int8))))))));
 {  
-   (var charP[..] sc);
+   (var uint64 i_2);
    
    (var uint64 __retres);
    
-   {  (_C_11 : (sc = s));
+   {  (_C_1 : (i_2 = (0 :> uint64)));
       
       loop 
       behavior default:
-        invariant (_C_15 : (((_C_17 : (\base_block(s) == \base_block(sc))) &&
-                              (_C_18 : ((s - sc) <= 0))) &&
-                             ((_C_20 : (\base_block(sc) ==
-                                         \base_block((s +
-                                                       (strlen{Here}(
-                                                       s) :> integer))))) &&
-                               (_C_21 : ((sc -
-                                           (s + (strlen{Here}(s) :> integer))) <=
-                                          0)))));
-      behavior default:
-        invariant (_C_14 : valid_str{Here}(sc));
-      behavior default:
-        invariant (_C_13 : ((strlen{Here}(s) :> integer) ==
-                             ((strlen{Here}(sc) :> integer) + (sc - s))));
-      variant (_C_12 : ((strlen{Here}(s) :> integer) - (sc - s)));
+        invariant (_C_3 : (\forall uint64 j;
+                            ((j < i_2) ==>
+                              ((s + (j :> integer)).charM != (0 :> int8)))));
+      variant (_C_2 : (((~ (0ULL :> uint64)) :> integer) - (i_2 :> integer)));
       while (true)
       {  
-         {  (if (_C_24 : ((_C_23 : ((_C_22 : sc.charM) :> int32)) !=
-                           (0 :> int32))) then () else 
+         {  (if (_C_5 : ((_C_4 : (i_2 :> uint64)) <=
+                          (18446744073709551615 :> uint64))) then () else 
             (goto while_0_break));
-            (_C_26 : (sc = (_C_25 : (sc + (1 :> int32)))))
+            
+            {  (if (_C_10 : ((_C_9 : ((_C_8 : (_C_7 : (s + i_2)).charM) :> int32)) ==
+                              (0 :> int32))) then 
+               {  (_C_6 : (__retres = i_2));
+                  
+                  (goto return_label)
+               } else ())
+            };
+            (_C_13 : (i_2 = (_C_12 : ((_C_11 : (i_2 + (1 :> uint64))) :> uint64))))
          }
       };
       (while_0_break : ());
-      (_C_29 : (__retres = (_C_28 : ((_C_27 : (sc - s)) :> uint64))));
       
-      (return __retres)
+      {  
+         (assert for default: (_C_14 : (jessie : (missing_return : false))));
+         ()
+      };
+      (_C_15 : (__retres = (0 :> uint64)));
+      (return_label : 
+      (return __retres))
+   }
+}
+
+uint64 istrlen_full(charP[..] s_0)
+  requires (_C_48 : valid_str{Here}(s_0));
+behavior default:
+  ensures (_C_41 : ((_C_42 : ((\at(s_0,Old) + (\result :> integer)).charM ==
+                               (0 :> int8))) &&
+                     ((_C_44 : \at((if (\at(0,Here) <= \at(\result,Here)) then 
+                                   (((\offset_min(\at(s_0,Old)) <=
+                                       \at(0,Here)) &&
+                                      (\offset_max(\at(s_0,Old)) >=
+                                        \at(\result,Here))) &&
+                                     (\forall integer __framac_tmp3;
+                                       (((\at(0,Here) <= __framac_tmp3) &&
+                                          (__framac_tmp3 <=
+                                            \at(\result,Here))) ==>
+                                         true))) else true),Here)) &&
+                       ((_C_46 : (\forall uint64 j_0;
+                                   ((j_0 < \result) ==>
+                                     ((\at(s_0,Old) + (j_0 :> integer)).charM !=
+                                       (0 :> int8))))) &&
+                         (_C_47 : (strlen{Here}(\at(s_0,Old)) == \result))))));
+{  
+   (var uint64 size_1);
+   
+   (var uint64 i_3);
+   
+   (var uint64 __retres_0);
+   
+   {  (_C_23 : (size_1 = (_C_22 : istrlen(s_0))));
+      
+      {  (_C_24 : (i_3 = (0 :> uint64)));
+         
+         loop 
+         behavior default:
+           invariant (_C_29 : ((((strlen{Here}((s_0 + (i_3 :> integer))) :> integer) +
+                                  (i_3 :> integer)) <=
+                                 (size_1 :> integer)) ==>
+                                ((strlen{Here}(s_0) :> integer) ==
+                                  ((strlen{Here}((s_0 + (i_3 :> integer))) :> integer) +
+                                    (i_3 :> integer)))));
+         behavior default:
+           invariant (_C_26 : ((_C_27 : ((0 :> uint64) <= i_3)) &&
+                                (_C_28 : (i_3 <= size_1))));
+         variant (_C_25 : ((size_1 :> integer) - (i_3 :> integer)));
+         while (true)
+         {  
+            {  (if (_C_30 : (i_3 <= size_1)) then () else 
+               (goto while_0_break_0));
+               
+               {  (if (_C_35 : ((_C_34 : ((_C_33 : (_C_32 : (s_0 + i_3)).charM) :> int32)) ==
+                                 (0 :> int32))) then 
+                  {  (_C_31 : (__retres_0 = i_3));
+                     
+                     (goto return_label_0)
+                  } else ())
+               };
+               (_C_38 : (i_3 = (_C_37 : ((_C_36 : (i_3 + (1 :> uint64))) :> uint64))))
+            }
+         };
+         (while_0_break_0 : ())
+      };
+      
+      {  
+         (assert for default: (_C_39 : (jessie : (missing_return : false))));
+         ()
+      };
+      (_C_40 : (__retres_0 = (0 :> uint64)));
+      (return_label_0 : 
+      (return __retres_0))
+   }
+}
+
+unit strlen_def(charP[..] s_5)
+  requires (_C_63 : valid_str{Here}(s_5));
+behavior default:
+  ensures (_C_60 : ((_C_61 : (((\at(s_5,Old) + 0).charM == (0 :> int8)) ==>
+                               (strlen{Here}(\at(s_5,Old)) == (0 :> uint64)))) &&
+                     (_C_62 : (((\at(s_5,Old) + 0).charM != (0 :> int8)) ==>
+                                ((strlen{Here}(\at(s_5,Old)) :> integer) ==
+                                  (1 +
+                                    (strlen{Here}((\at(s_5,Old) + 1)) :> integer)))))));
+{  
+   (var uint64 size_2);
+   
+   (var uint64 size1);
+   
+   {  (if (_C_59 : ((_C_58 : ((_C_57 : (_C_56 : (s_5 + (0 :> int32))).charM) :> int32)) !=
+                     (0 :> int32))) then 
+      {  (_C_50 : (size_2 = (_C_49 : istrlen_full(s_5))));
+         (_C_53 : (size1 = (_C_52 : ((_C_51 : (size_2 - (1 :> uint64))) :> uint64))));
+         (_C_55 : istrlen_full((_C_54 : (s_5 + (1 :> int32)))))
+      } else ());
+      
+      (return ())
+   }
+}
+
+unit valid_str_shiftn(charP[..] s_7, uint64 i_1)
+  requires (_C_90 : (((_C_92 : valid_str{Here}(s_7)) &&
+                       (_C_93 : ((0 :> uint64) <= i_1))) &&
+                      (_C_94 : (i_1 < strlen{Here}(s_7)))));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_89 : valid_str{Here}((\at(s_7,Old) + (\at(i_1,Old) :> integer))));
+{  
+   (var uint64 j);
+   
+   (var uint64 size_3);
+   
+   (var uint64 size1_0);
+   
+   {  (_C_64 : istrlen_full(s_7));
+      
+      {  (_C_65 : (j = (0 :> uint64)));
+         
+         loop 
+         behavior default:
+           invariant (_C_70 : valid_str{Here}((s_7 + (j :> integer))));
+         behavior default:
+           invariant (_C_67 : ((_C_68 : ((0 :> uint64) <= j)) &&
+                                (_C_69 : (j <= i_1))));
+         variant (_C_66 : ((i_1 :> integer) - (j :> integer)));
+         while (true)
+         {  
+            {  (if (_C_71 : (j < i_1)) then () else 
+               (goto while_0_break_1));
+               
+               {  (_C_74 : (size_3 = (_C_73 : istrlen_full((_C_72 : (s_7 + j))))));
+                  (if (_C_85 : ((_C_84 : ((_C_83 : (_C_82 : ((_C_81 : 
+                                                             (s_7 +
+                                                               j)) +
+                                                              (0 :> int32))).charM) :> int32)) !=
+                                 (0 :> int32))) then 
+                  {  (_C_77 : (size1_0 = (_C_76 : ((_C_75 : (size_3 -
+                                                              (1 :> uint64))) :> uint64))));
+                     (_C_80 : istrlen_full((_C_79 : ((_C_78 : (s_7 + j)) +
+                                                      (1 :> int32)))))
+                  } else ())
+               };
+               (_C_88 : (j = (_C_87 : ((_C_86 : (j + (1 :> uint64))) :> uint64))))
+            }
+         };
+         (while_0_break_1 : ())
+      };
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__valid_str_shiftn {
+
+  axiom LF__Lemma__valid_str_shiftn{Here} :
+  (_C_95 : (\forall charP[..] s_7;
+             (\forall uint64 i_1;
+               (((valid_str{Here}(s_7) && ((0 :> uint64) <= i_1)) &&
+                  (i_1 < strlen{Here}(s_7))) ==>
+                 valid_str{Here}((s_7 + (i_1 :> integer)))))))
+   
+  predicate _LF__Predicate__valid_str_shiftn(integer x) =
+  true
+  
+}
+
+unit valid_str_shiftn_full(charP[..] s_8)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_C_110 : valid_str{Here}(s_8)));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_109 : (\forall integer i_0;
+                      (((0 <= i_0) &&
+                         (i_0 < (strlen{Here}(\at(s_8,Old)) :> integer))) ==>
+                        valid_str{Here}((\at(s_8,Old) + i_0)))));
+{  
+   (var uint64 size_4);
+   
+   (var uint64 i_4);
+   
+   {  (_C_97 : (size_4 = (_C_96 : istrlen_full(s_8))));
+      
+      {  (_C_98 : (i_4 = (0 :> uint64)));
+         
+         loop 
+         behavior default:
+           invariant (_C_101 : ((_C_102 : ((0 :> uint64) <= i_4)) &&
+                                 (_C_103 : (i_4 <= size_4))));
+         behavior default:
+           invariant (_C_100 : (\forall integer j;
+                                 (((0 <= j) && (j < (i_4 :> integer))) ==>
+                                   valid_str{Here}((s_8 + j)))));
+         variant (_C_99 : ((size_4 :> integer) - (i_4 :> integer)));
+         while (true)
+         {  
+            {  (if (_C_104 : (i_4 < size_4)) then () else 
+               (goto while_0_break_2));
+               (_C_105 : valid_str_shiftn(s_8, i_4));
+               (_C_108 : (i_4 = (_C_107 : ((_C_106 : (i_4 + (1 :> uint64))) :> uint64))))
+            }
+         };
+         (while_0_break_2 : ())
+      };
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__valid_str_shiftn_full {
+
+  axiom LF__Lemma__valid_str_shiftn_full{Here} :
+  (_C_111 : (\forall charP[..] s_8;
+              ((_LF__Predicate__valid_str_shiftn(1) && valid_str{Here}(s_8)) ==>
+                (\forall integer i_0;
+                  (((0 <= i_0) && (i_0 < (strlen{Here}(s_8) :> integer))) ==>
+                    valid_str{Here}((s_8 + i_0)))))))
+   
+  predicate _LF__Predicate__valid_str_shiftn_full(integer x_0) =
+  true
+  
+}
+
+unit strlen_before_null(charP[..] s_3, uint64 i_0)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_LF__Predicate__valid_str_shiftn_full(1) &&
+               ((_C_114 : valid_str{Here}(s_3)) &&
+                 (_C_115 : ((_C_116 : ((0 :> uint64) <= i_0)) &&
+                             (_C_117 : (i_0 < strlen{Here}(s_3))))))));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_113 : ((\at(s_3,Old) + (\at(i_0,Old) :> integer)).charM !=
+                      (0 :> int8)));
+{  
+   {  (_C_112 : istrlen_full(s_3));
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__strlen_before_null {
+
+  axiom LF__Lemma__strlen_before_null{Here} :
+  (_C_118 : (\forall charP[..] s_3;
+              (\forall uint64 i_0;
+                ((((_LF__Predicate__valid_str_shiftn(1) &&
+                     _LF__Predicate__valid_str_shiftn_full(1)) &&
+                    valid_str{Here}(s_3)) &&
+                   (((0 :> uint64) <= i_0) && (i_0 < strlen{Here}(s_3)))) ==>
+                  ((s_3 + (i_0 :> integer)).charM != (0 :> int8))))))
+   
+  predicate _LF__Predicate__strlen_before_null(integer x_1) =
+  true
+  
+}
+
+unit strlen_before_null_full(charP[..] s_4)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_LF__Predicate__valid_str_shiftn_full(1) &&
+               (_LF__Predicate__strlen_before_null(1) &&
+                 (_C_133 : valid_str{Here}(s_4)))));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_132 : (\forall integer i_1_0;
+                      (((0 <= i_1_0) &&
+                         (i_1_0 < (strlen{Here}(\at(s_4,Old)) :> integer))) ==>
+                        ((\at(s_4,Old) + i_1_0).charM != (0 :> int8)))));
+{  
+   (var uint64 size_5);
+   
+   (var uint64 i_5);
+   
+   {  (_C_120 : (size_5 = (_C_119 : istrlen_full(s_4))));
+      
+      {  (_C_121 : (i_5 = (0 :> uint64)));
+         
+         loop 
+         behavior default:
+           invariant (_C_124 : ((_C_125 : ((0 :> uint64) <= i_5)) &&
+                                 (_C_126 : (i_5 <= size_5))));
+         behavior default:
+           invariant (_C_123 : (\forall integer j;
+                                 (((0 <= j) && (j < (i_5 :> integer))) ==>
+                                   ((s_4 + j).charM != (0 :> int8)))));
+         variant (_C_122 : ((size_5 :> integer) - (i_5 :> integer)));
+         while (true)
+         {  
+            {  (if (_C_127 : (i_5 < size_5)) then () else 
+               (goto while_0_break_3));
+               (_C_128 : strlen_before_null(s_4, i_5));
+               (_C_131 : (i_5 = (_C_130 : ((_C_129 : (i_5 + (1 :> uint64))) :> uint64))))
+            }
+         };
+         (while_0_break_3 : ())
+      };
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__strlen_before_null_full {
+
+  axiom LF__Lemma__strlen_before_null_full{Here} :
+  (_C_134 : (\forall charP[..] s_4;
+              ((((_LF__Predicate__valid_str_shiftn(1) &&
+                   _LF__Predicate__valid_str_shiftn_full(1)) &&
+                  _LF__Predicate__strlen_before_null(1)) &&
+                 valid_str{Here}(s_4)) ==>
+                (\forall integer i_1_0;
+                  (((0 <= i_1_0) && (i_1_0 < (strlen{Here}(s_4) :> integer))) ==>
+                    ((s_4 + i_1_0).charM != (0 :> int8)))))))
+   
+  predicate _LF__Predicate__strlen_before_null_full(integer x_2) =
+  true
+  
+}
+
+unit strlen_at_null(charP[..] s_2, uint64 i)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_LF__Predicate__valid_str_shiftn_full(1) &&
+               (_LF__Predicate__strlen_before_null(1) &&
+                 (_LF__Predicate__strlen_before_null_full(1) &&
+                   (_C_137 : valid_str{Here}(s_2))))));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_136 : ((\at(s_2,Old) + (strlen{Here}(\at(s_2,Old)) :> integer)).charM ==
+                      (0 :> int8)));
+{  
+   {  (_C_135 : istrlen_full(s_2));
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__strlen_at_null {
+
+  axiom LF__Lemma__strlen_at_null{Here} :
+  (_C_138 : (\forall charP[..] s_2;
+              (\forall uint64 i;
+                (((((_LF__Predicate__valid_str_shiftn(1) &&
+                      _LF__Predicate__valid_str_shiftn_full(1)) &&
+                     _LF__Predicate__strlen_before_null(1)) &&
+                    _LF__Predicate__strlen_before_null_full(1)) &&
+                   valid_str{Here}(s_2)) ==>
+                  ((s_2 + (strlen{Here}(s_2) :> integer)).charM ==
+                    (0 :> int8))))))
+   
+  predicate _LF__Predicate__strlen_at_null(integer x_3) =
+  true
+  
+}
+
+unit strlen_main(charP[..] s_6, uint64 n_7)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_LF__Predicate__valid_str_shiftn_full(1) &&
+               (_LF__Predicate__strlen_before_null(1) &&
+                 (_LF__Predicate__strlen_before_null_full(1) &&
+                   (_LF__Predicate__strlen_at_null(1) &&
+                     ((_C_141 : valid_str{Here}(s_6)) &&
+                       ((_C_142 : ((s_6 + (n_7 :> integer)).charM ==
+                                    (0 :> int8))) &&
+                         (_C_143 : (\forall integer i_2_0;
+                                     (((0 <= i_2_0) &&
+                                        (i_2_0 < (n_7 :> integer))) ==>
+                                       ((s_6 + i_2_0).charM != (0 :> int8))))))))))));
+behavior default:
+  assigns \nothing;
+  allocates \nothing;
+  ensures (_C_140 : (strlen{Here}(\at(s_6,Old)) == \at(n_7,Old)));
+{  
+   {  (_C_139 : istrlen_full(s_6));
+      
+      (return ())
+   }
+}
+
+axiomatic LF__Axiomatic__strlen_main {
+
+  axiom LF__Lemma__strlen_main{Here} :
+  (_C_144 : (\forall charP[..] s_6;
+              (\forall uint64 n_7;
+                ((((((((_LF__Predicate__valid_str_shiftn(1) &&
+                         _LF__Predicate__valid_str_shiftn_full(1)) &&
+                        _LF__Predicate__strlen_before_null(1)) &&
+                       _LF__Predicate__strlen_before_null_full(1)) &&
+                      _LF__Predicate__strlen_at_null(1)) &&
+                     valid_str{Here}(s_6)) &&
+                    ((s_6 + (n_7 :> integer)).charM == (0 :> int8))) &&
+                   (\forall integer i_2_0;
+                     (((0 <= i_2_0) && (i_2_0 < (n_7 :> integer))) ==>
+                       ((s_6 + i_2_0).charM != (0 :> int8))))) ==>
+                  (strlen{Here}(s_6) == n_7)))))
+   
+  predicate _LF__Predicate__strlen_main(integer x_4) =
+  true
+  
+}
+
+uint64 strlen(charP[..] s_1)
+  requires (_LF__Predicate__valid_str_shiftn(1) &&
+             (_LF__Predicate__valid_str_shiftn_full(1) &&
+               (_LF__Predicate__strlen_before_null(1) &&
+                 (_LF__Predicate__strlen_before_null_full(1) &&
+                   (_LF__Predicate__strlen_at_null(1) &&
+                     (_LF__Predicate__strlen_main(1) &&
+                       (_C_169 : valid_str{Here}(s_1))))))));
+behavior default:
+  assigns \nothing;
+  ensures (_C_164 : ((_C_165 : (\result == strlen{Here}(\at(s_1,Old)))) &&
+                      ((_C_167 : ((\at(s_1,Old) + (\result :> integer)).charM ==
+                                   (0 :> int8))) &&
+                        (_C_168 : (\forall integer i_3;
+                                    (((0 <= i_3) &&
+                                       (i_3 < (\result :> integer))) ==>
+                                      ((\at(s_1,Old) + i_3).charM !=
+                                        (0 :> int8))))))));
+{  
+   (var charP[..] sc);
+   
+   (var uint64 __retres_1);
+   
+   {  (_C_145 : (sc = s_1));
+      
+      loop 
+      behavior default:
+        invariant (_C_149 : (((_C_151 : (\base_block(s_1) == \base_block(sc))) &&
+                               (_C_152 : ((s_1 - sc) <= 0))) &&
+                              ((_C_154 : (\base_block(sc) ==
+                                           \base_block((s_1 +
+                                                         (strlen{Here}(
+                                                         s_1) :> integer))))) &&
+                                (_C_155 : ((sc -
+                                             (s_1 +
+                                               (strlen{Here}(s_1) :> integer))) <=
+                                            0)))));
+      behavior default:
+        invariant (_C_148 : valid_str{Here}(sc));
+      behavior default:
+        invariant (_C_147 : ((strlen{Here}(s_1) :> integer) ==
+                              ((strlen{Here}(sc) :> integer) + (sc - s_1))));
+      variant (_C_146 : ((strlen{Here}(s_1) :> integer) - (sc - s_1)));
+      while (true)
+      {  
+         {  (if (_C_158 : ((_C_157 : ((_C_156 : sc.charM) :> int32)) !=
+                            (0 :> int32))) then () else 
+            (goto while_0_break_4));
+            (_C_160 : (sc = (_C_159 : (sc + (1 :> int32)))))
+         }
+      };
+      (while_0_break_4 : ());
+      (_C_163 : (__retres_1 = (_C_162 : ((_C_161 : (sc - s_1)) :> uint64))));
+      
+      (return __retres_1)
    }
 }

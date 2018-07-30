@@ -1,4 +1,4 @@
-WHYLIB is not set, using /home/work/.opam/astraver/lib/jessie as default
+WHYLIB is not set, using /home/mikhail/.opam/4.07.0/lib/jessie as default
 Parsing
 Normalization
 Typing logic labels
@@ -6,23 +6,49 @@ Typing code
 Typing axiomatic Padding
 Typing logic type declaration padding
 Typing axiomatic Strlen
+Typing axiomatic LF__Axiomatic__valid_str_shiftn
+Typing axiomatic LF__Axiomatic__valid_str_shiftn_full
+Typing axiomatic LF__Axiomatic__strlen_before_null
+Typing axiomatic LF__Axiomatic__strlen_before_null_full
+Typing axiomatic LF__Axiomatic__strlen_at_null
+Typing axiomatic LF__Axiomatic__strlen_main
 Typing axiomatic Padding
 Typing tag voidP
 Typing tag charP
 Typing axiomatic Strlen
-Typing lemma/axiom valid_str_shift1
-Typing lemma/axiom valid_str_strend
-Typing lemma/axiom strlen_before_null
-Typing lemma/axiom strlen_at_null
-Typing lemma/axiom strlen_shift
-Typing lemma/axiom strlen_shift_ex
-Typing lemma/axiom strlen_shift1
-Typing lemma/axiom strlen_pointers
-Typing lemma/axiom strlen_main
-Typing lemma/axiom valid_str_shiftn
+Typing axiomatic LF__Axiomatic__valid_str_shiftn
+Typing lemma/axiom LF__Lemma__valid_str_shiftn
+occurrences table for axiom LF__Lemma__valid_str_shiftn in axiomatic LF__Axiomatic__valid_str_shiftn:
+  143: 
+  
+Typing axiomatic LF__Axiomatic__valid_str_shiftn_full
+Typing lemma/axiom LF__Lemma__valid_str_shiftn_full
+occurrences table for axiom LF__Lemma__valid_str_shiftn_full in axiomatic LF__Axiomatic__valid_str_shiftn_full:
+  144: 
+  
+Typing axiomatic LF__Axiomatic__strlen_before_null
+Typing lemma/axiom LF__Lemma__strlen_before_null
+occurrences table for axiom LF__Lemma__strlen_before_null in axiomatic LF__Axiomatic__strlen_before_null:
+  145: 
+  
+Typing axiomatic LF__Axiomatic__strlen_before_null_full
+Typing lemma/axiom LF__Lemma__strlen_before_null_full
+occurrences table for axiom LF__Lemma__strlen_before_null_full in axiomatic LF__Axiomatic__strlen_before_null_full:
+  146: 
+  
+Typing axiomatic LF__Axiomatic__strlen_at_null
+Typing lemma/axiom LF__Lemma__strlen_at_null
+occurrences table for axiom LF__Lemma__strlen_at_null in axiomatic LF__Axiomatic__strlen_at_null:
+  147: 
+  
+Typing axiomatic LF__Axiomatic__strlen_main
+Typing lemma/axiom LF__Lemma__strlen_main
+occurrences table for axiom LF__Lemma__strlen_main in axiomatic LF__Axiomatic__strlen_main:
+  148: 
+  
 Computation of call graph
 ***********************************
-Logic call graph: has 2 components
+Logic call graph: has 8 components
 ***********************************
 Component 0:
  valid_str calls: 
@@ -30,14 +56,81 @@ Component 0:
 Component 1:
  strlen calls: strlen
 
+Component 2:
+ _LF__Predicate__valid_str_shiftn calls: 
+
+Component 3:
+ _LF__Predicate__valid_str_shiftn_full calls: 
+
+Component 4:
+ _LF__Predicate__strlen_before_null calls: 
+
+Component 5:
+ _LF__Predicate__strlen_before_null_full calls: 
+
+Component 6:
+ _LF__Predicate__strlen_at_null calls: 
+
+Component 7:
+ _LF__Predicate__strlen_main calls: 
+
 ******************************
-Call graph: has 1 components
+Call graph: has 10 components
 ******************************
 Component 0:
+ istrlen calls: 
+
+Component 1:
+ istrlen_full calls: istrlen
+
+Component 2:
+ strlen_def calls: istrlen_full,
+istrlen_full
+
+Component 3:
+ valid_str_shiftn calls: istrlen_full, istrlen_full,
+istrlen_full
+
+Component 4:
+ valid_str_shiftn_full calls: valid_str_shiftn,
+istrlen_full
+
+Component 5:
+ strlen_before_null calls: istrlen_full
+
+Component 6:
+ strlen_before_null_full calls: strlen_before_null,
+istrlen_full
+
+Component 7:
+ strlen_at_null calls: istrlen_full
+
+Component 8:
+ strlen_main calls: istrlen_full
+
+Component 9:
  strlen calls: 
 
 Adding invariants
 Computation of regions
+Separation: treating function istrlen
+Separation: treating function istrlen
+Separation: treating function istrlen_full
+Separation: treating function istrlen_full
+Separation: treating function strlen_def
+Separation: treating function strlen_def
+Separation: treating function valid_str_shiftn
+Separation: treating function valid_str_shiftn
+Separation: treating function valid_str_shiftn_full
+Separation: treating function valid_str_shiftn_full
+Separation: treating function strlen_before_null
+Separation: treating function strlen_before_null
+Separation: treating function strlen_before_null_full
+Separation: treating function strlen_before_null_full
+Separation: treating function strlen_at_null
+Separation: treating function strlen_at_null
+Separation: treating function strlen_main
+Separation: treating function strlen_main
 Separation: treating function strlen
 Separation: treating function strlen
 Computation of effects
@@ -59,25 +152,91 @@ Effects: fixpoint reached
 Effects for logic function strlen:
  alloc_table: 
  tag_table: 
- memories: (s_2_3 : mem-field "charM") at (L)
+ memories: (s_0_3 : mem-field "charM") at (L)
  raw memories: 
  precise memories: 
  globals: 
- locals: s_2 at (Here)
+ locals: s_0 at (Here)
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__valid_str_shiftn:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__valid_str_shiftn_full:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__strlen_before_null:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__strlen_before_null_full:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__strlen_at_null:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__strlen_main:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
 
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function strlen:
+Effects for function istrlen:
  reads:  alloc_table: (s_4 : alloc-root "voidP") at (Here)
          tag_table: (s_4 : voidP) at (Here)
          memories: (s_4 : mem-field "charM") at (Here)
          raw memories: (s_4 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: __retres at (Here), sc at (Here), \result at (Here),
+         locals: __retres at (Here), i_2 at (Here), \result at (Here),
                  s at (Here)
 
  writes:  alloc_table: 
@@ -86,7 +245,208 @@ Effects for function strlen:
           raw memories: 
           precise memories: 
           globals: 
-          locals: __retres at (Here), sc at (Here)
+          locals: __retres at (Here), i_2 at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function istrlen_full:
+ reads:  alloc_table: (s_0_5 : alloc-root "voidP") at (Here)
+         tag_table: (s_0_5 : voidP) at (Here)
+         memories: (s_0_5 : mem-field "charM") at (Here)
+         raw memories: (s_0_5 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: __retres_0 at (Here), i_3 at (Here), size_1 at (Here),
+                 \result at (Here), s_0 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: __retres_0 at (Here), i_3 at (Here), size_1 at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen_def:
+ reads:  alloc_table: (s_5_6 : alloc-root "voidP") at (Here)
+         tag_table: (s_5_6 : voidP) at (Here)
+         memories: (s_5_6 : mem-field "charM") at (Here)
+         raw memories: (s_5_6 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: size_2 at (Here), s_5 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: size1 at (Here), size_2 at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function valid_str_shiftn:
+ reads:  alloc_table: (s_7_7 : alloc-root "voidP") at (Here)
+         tag_table: (s_7_7 : voidP) at (Here)
+         memories: (s_7_7 : mem-field "charM") at (Here)
+         raw memories: (s_7_7 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: size_3 at (Here), j at (Here), i_1 at (Here), s_7 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: size1_0 at (Here), size_3 at (Here), j at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function valid_str_shiftn_full:
+ reads:  alloc_table: (s_8_8 : alloc-root "voidP") at (Here)
+         tag_table: (s_8_8 : voidP) at (Here)
+         memories: (s_8_8 : mem-field "charM") at (Here)
+         raw memories: (s_8_8 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: i_4 at (Here), size_4 at (Here), s_8 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: i_4 at (Here), size_4 at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen_before_null:
+ reads:  alloc_table: (s_3_9 : alloc-root "voidP") at (Here)
+         tag_table: (s_3_9 : voidP) at (Here)
+         memories: (s_3_9 : mem-field "charM") at (Here)
+         raw memories: (s_3_9 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: i_0 at (Here), s_3 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen_before_null_full:
+ reads:  alloc_table: (s_4_10 : alloc-root "voidP") at (Here)
+         tag_table: (s_4_10 : voidP) at (Here)
+         memories: (s_4_10 : mem-field "charM") at (Here)
+         raw memories: (s_4_10 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: i_5 at (Here), size_5 at (Here), s_4 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: i_5 at (Here), size_5 at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen_at_null:
+ reads:  alloc_table: (s_2_11 : alloc-root "voidP") at (Here)
+         tag_table: (s_2_11 : voidP) at (Here)
+         memories: (s_2_11 : mem-field "charM") at (Here)
+         raw memories: (s_2_11 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: s_2 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen_main:
+ reads:  alloc_table: (s_6_12 : alloc-root "voidP") at (Here)
+         tag_table: (s_6_12 : voidP) at (Here)
+         memories: (s_6_12 : mem-field "charM") at (Here)
+         raw memories: (s_6_12 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: n_7 at (Here), s_6 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen:
+ reads:  alloc_table: (s_1_13 : alloc-root "voidP") at (Here)
+         tag_table: (s_1_13 : voidP) at (Here)
+         memories: (s_1_13 : mem-field "charM") at (Here)
+         raw memories: (s_1_13 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: __retres_1 at (Here), sc at (Here), \result at (Here),
+                 s_1 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: __retres_1 at (Here), sc at (Here)
 
  raises: 
 Translate logic types
@@ -495,11 +855,41 @@ Translate dummies
 Translate standalone logic functions
 Logic function valid_str
 Logic function strlen
+Logic function _LF__Predicate__valid_str_shiftn
+Logic function _LF__Predicate__valid_str_shiftn_full
+Logic function _LF__Predicate__strlen_before_null
+Logic function _LF__Predicate__strlen_before_null_full
+Logic function _LF__Predicate__strlen_at_null
+Logic function _LF__Predicate__strlen_main
 Translate axiomatic declarations
+Axiomatic LF__Axiomatic__strlen_at_null
+Axiomatic LF__Axiomatic__strlen_before_null
+Axiomatic LF__Axiomatic__strlen_before_null_full
+Axiomatic LF__Axiomatic__strlen_main
+Axiomatic LF__Axiomatic__valid_str_shiftn
+Axiomatic LF__Axiomatic__valid_str_shiftn_full
 Axiomatic Padding
 Axiomatic Strlen
 Translate lemmas
 Translate functions
+Pre-treatement Function istrlen
+Pre-treatement Function istrlen_full
+Pre-treatement Function strlen_def
+Pre-treatement Function valid_str_shiftn
+Pre-treatement Function valid_str_shiftn_full
+Pre-treatement Function strlen_before_null
+Pre-treatement Function strlen_before_null_full
+Pre-treatement Function strlen_at_null
+Pre-treatement Function strlen_main
 Pre-treatement Function strlen
+Function istrlen
+Function istrlen_full
+Function strlen_def
+Function valid_str_shiftn
+Function valid_str_shiftn_full
+Function strlen_before_null
+Function strlen_before_null_full
+Function strlen_at_null
+Function strlen_main
 Function strlen
 Produce makefile

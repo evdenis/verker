@@ -2,27 +2,404 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="2000"/>
+<prover id="1" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../strlen.mlw" expanded="true">
-<theory name="Function_strlen_0_safety" sum="f3349db3dd2d9369b3865593bcaa3316" expanded="true">
+<theory name="Function_strlen_0_safety" sum="45e2a1e7d84558da35f84257c5ae1677" expanded="true">
  <goal name="WP_parameter strlen_0" expl="Function strlen, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.19"/></proof>
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strlen_0.1" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="27"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_0.2" expl="Pointer dereference (Validity)" expanded="true">
+  <proof prover="2"><result status="valid" time="0.13"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_0.3" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="39"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_0.4" expl="loop variant decrease">
+  <proof prover="1"><result status="valid" time="0.01" steps="82"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_0.5" expl="Pointer difference">
+  <proof prover="1"><result status="valid" time="0.01" steps="39"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_0.6" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.05" steps="335"/></proof>
+  </goal>
+ </transf>
  </goal>
 </theory>
-<theory name="Function_strlen_0_behaviors" sum="1bb27c939875c04cdc697dd0ee7d574c" expanded="true">
+<theory name="Function_strlen_0_behaviors" sum="d5f02d38eb064707e706423771095d07" expanded="true">
  <goal name="WP_parameter strlen_ensures_default" expl="Function strlen, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strlen_ensures_default.1" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.03" steps="145"/></proof>
+  <proof prover="1"><result status="valid" time="0.03" steps="151"/></proof>
   </goal>
   <goal name="WP_parameter strlen_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="2.88" steps="4621"/></proof>
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strlen_ensures_default.2.1" expl="Function strlen, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="37"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.2.2" expl="Function strlen, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="37"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.2.3" expl="Function strlen, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="37"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.2.4" expl="Function strlen, default behavior">
+   <proof prover="1"><result status="valid" time="0.18" steps="506"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.2.5" expl="Function strlen, default behavior">
+   <proof prover="2"><result status="valid" time="0.18"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.2.6" expl="Function strlen, default behavior">
+   <proof prover="1"><result status="valid" time="2.37" steps="1058"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="WP_parameter strlen_ensures_default.3" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.07" steps="572"/></proof>
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strlen_ensures_default.3.1" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.19" steps="383"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.3.2" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.03" steps="162"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_ensures_default.3.3" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.05" steps="165"/></proof>
+   </goal>
+  </transf>
   </goal>
  </transf>
+ </goal>
+</theory>
+<theory name="Function_istrlen_safety" sum="59f20c1f45d8cdba4dd1440f5b5b0b9b">
+ <goal name="WP_parameter istrlen" expl="Function istrlen, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter istrlen.1" expl="Integer cast (integer overflow)">
+  <proof prover="2"><result status="valid" time="0.07"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen.2" expl="Pointer dereference (Dereference by offset. Validity)">
+  <proof prover="2"><result status="valid" time="0.10"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen.3" expl="integer overflow">
+  <proof prover="2"><result status="valid" time="0.13"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen.4" expl="loop variant decrease">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_istrlen_behaviors" sum="b5573ca405ad31ea43599f0a34df66db">
+ <goal name="WP_parameter istrlen_ensures_default" expl="Function istrlen, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter istrlen_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.02" steps="46"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_ensures_default.2" expl="Function istrlen, default behavior">
+  <proof prover="1"><result status="valid" time="0.01" steps="43"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="1.38" steps="4554"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_ensures_default.4" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.02" steps="122"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_istrlen_full_safety" sum="ca826cc1e85875e643085fcacc848131">
+ <goal name="WP_parameter istrlen_full" expl="Function istrlen_full, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter istrlen_full.1" expl="Precondition for istrlen (Requires clause. Internal)">
+  <proof prover="2"><result status="valid" time="0.02"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.2" expl="Integer cast (integer overflow)">
+  <proof prover="2"><result status="valid" time="0.06"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.3" expl="Integer cast (integer overflow)">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.4" expl="Pointer dereference (Dereference by offset. Validity)">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.5" expl="Integer cast (integer overflow)">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.6" expl="integer overflow">
+  <proof prover="2"><result status="valid" time="0.07"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full.7" expl="loop variant decrease">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_istrlen_full_behaviors" sum="1d3d03b62a53dccb99b14d3e9d60f7cf">
+ <goal name="WP_parameter istrlen_full_ensures_default" expl="Function istrlen_full, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter istrlen_full_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.03" steps="250"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full_ensures_default.2" expl="Function istrlen_full, default behavior">
+  <proof prover="1"><result status="valid" time="0.01" steps="29"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.14" steps="829"/></proof>
+  </goal>
+  <goal name="WP_parameter istrlen_full_ensures_default.4" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter istrlen_full_ensures_default.4.1" expl="Function istrlen_full, default behavior">
+   <proof prover="2"><result status="valid" time="1.41"/></proof>
+   </goal>
+   <goal name="WP_parameter istrlen_full_ensures_default.4.2" expl="Function istrlen_full, default behavior">
+   <proof prover="2"><result status="valid" time="0.06"/></proof>
+   </goal>
+   <goal name="WP_parameter istrlen_full_ensures_default.4.3" expl="Function istrlen_full, default behavior">
+   <proof prover="2"><result status="valid" time="0.08"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strlen_def_safety" sum="54c94a9108e878b7fe880fb77a63e3be">
+ <goal name="WP_parameter strlen_def" expl="Function strlen_def, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strlen_def.1" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="13"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.2" expl="Pointer dereference (Validity)">
+  <proof prover="1"><result status="valid" time="0.01" steps="67"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.3" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.4" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="32"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.5" expl="integer overflow">
+  <proof prover="1"><result status="valid" time="0.03" steps="156"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.6" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="42"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_def.7" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <transf name="inline_goal">
+   <goal name="WP_parameter strlen_def.7.1" expl="Precondition for istrlen_full (Requires clause. Internal)">
+   <proof prover="1"><result status="valid" time="0.38" steps="1599"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strlen_def_behaviors" sum="31a19dbcd4c4e266d87831ddd7066150">
+ <goal name="WP_parameter strlen_def_ensures_default" expl="Function strlen_def, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strlen_def_ensures_default.1" expl="Ensures clause (Postcondition)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strlen_def_ensures_default.1.1" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.01" steps="43"/></proof>
+   </goal>
+   <goal name="WP_parameter strlen_def_ensures_default.1.2" expl="Ensures clause">
+   <proof prover="2"><result status="valid" time="1.86"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strlen_def_ensures_default.2" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.02" steps="112"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shiftn_safety" sum="d15548790ef4fdee083a7a28c25d98e0">
+ <goal name="WP_parameter valid_str_shiftn" expl="Function valid_str_shiftn, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter valid_str_shiftn.1" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.01" steps="14"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.2" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.3" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.01" steps="34"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.4" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="45"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.5" expl="Pointer dereference (Validity)">
+  <proof prover="1"><result status="valid" time="0.01" steps="83"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.6" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.02" steps="57"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.7" expl="integer overflow">
+  <proof prover="1"><result status="valid" time="0.03" steps="487"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.8" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="67"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.9" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.56" steps="1541"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.10" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="72"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.11" expl="integer overflow">
+  <proof prover="1"><result status="valid" time="0.21" steps="1104"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.12" expl="loop variant decrease">
+  <proof prover="1"><result status="valid" time="0.01" steps="80"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.13" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="57"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.14" expl="integer overflow">
+  <proof prover="1"><result status="valid" time="0.09" steps="220"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn.15" expl="loop variant decrease">
+  <proof prover="1"><result status="valid" time="0.01" steps="62"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shiftn_behaviors" sum="e254615583dd7f6879ae731172a736cd">
+ <goal name="WP_parameter valid_str_shiftn_ensures_default" expl="Function valid_str_shiftn, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter valid_str_shiftn_ensures_default.1" expl="loop invariant init">
+  <proof prover="2"><result status="valid" time="0.07"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_ensures_default.2" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.2.1" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="1"><result status="valid" time="0.42" steps="1793"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.2.2" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="2"><result status="valid" time="0.07"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.2.3" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="2"><result status="valid" time="0.07"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_ensures_default.3" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.3.1" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="2"><result status="valid" time="0.09"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.3.2" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="2"><result status="valid" time="0.06"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_ensures_default.3.3" expl="Function valid_str_shiftn, default behavior">
+   <proof prover="2"><result status="valid" time="0.05"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_ensures_default.4" expl="Ensures clause (Postcondition)">
+  <proof prover="2"><result status="valid" time="0.05"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shiftn_full_safety" sum="eed08c8eca2cf614d552829dab560397">
+ <goal name="WP_parameter valid_str_shiftn_full" expl="Function valid_str_shiftn_full, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter valid_str_shiftn_full.1" expl="Precondition for istrlen_full (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.01" steps="10"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full.2" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="20"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full.3" expl="Precondition for valid_str_shiftn (Requires clause. Internal)">
+  <proof prover="1"><result status="valid" time="0.01" steps="34"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full.4" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="38"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full.5" expl="integer overflow">
+  <proof prover="1"><result status="valid" time="0.03" steps="235"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full.6" expl="loop variant decrease">
+  <proof prover="1"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shiftn_full_behaviors" sum="fb0ae9167ae445affcd95aea0b587331">
+ <goal name="WP_parameter valid_str_shiftn_full_ensures_default" expl="Function valid_str_shiftn_full, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter valid_str_shiftn_full_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.02" steps="166"/></proof>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full_ensures_default.2" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter valid_str_shiftn_full_ensures_default.2.1" expl="Function valid_str_shiftn_full, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="40"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_full_ensures_default.2.2" expl="Function valid_str_shiftn_full, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="40"/></proof>
+   </goal>
+   <goal name="WP_parameter valid_str_shiftn_full_ensures_default.2.3" expl="Function valid_str_shiftn_full, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="55"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter valid_str_shiftn_full_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.01" steps="43"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strlen_before_null_safety" sum="9e2ce5f9937213b9447d099c1bcab760">
+ <goal name="WP_parameter strlen_before_null" expl="Function strlen_before_null, safety">
+ <proof prover="1"><result status="valid" time="0.01" steps="14"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_before_null_behaviors" sum="594d406d2bf178c0c38de39dbcc67c2d">
+ <goal name="WP_parameter strlen_before_null_ensures_default" expl="Function strlen_before_null, default behavior">
+ <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_before_null_full_safety" sum="a0d1100a4d511bcb6e55c4a0cb0b2ba0">
+ <goal name="WP_parameter strlen_before_null_full" expl="Function strlen_before_null_full, safety">
+ <proof prover="1"><result status="valid" time="0.45" steps="1776"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_before_null_full_behaviors" sum="d785b142814baf534b8636d41dea7ba7">
+ <goal name="WP_parameter strlen_before_null_full_ensures_default" expl="Function strlen_before_null_full, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strlen_before_null_full_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.02" steps="174"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_before_null_full_ensures_default.2" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.04" steps="200"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_before_null_full_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.01" steps="43"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strlen_at_null_safety" sum="f52ee79bf0a7b92a630e545db29c6df5">
+ <goal name="WP_parameter strlen_at_null" expl="Function strlen_at_null, safety">
+ <proof prover="1"><result status="valid" time="0.01" steps="10"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_at_null_behaviors" sum="a0ffcc9f271e3753b68e2d0dbd470e6c">
+ <goal name="WP_parameter strlen_at_null_ensures_default" expl="Function strlen_at_null, default behavior">
+ <proof prover="1"><result status="valid" time="0.01" steps="14"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_main_safety" sum="e5c9c631ff5cb4ebe7d40ed59fa5d570">
+ <goal name="WP_parameter strlen_main" expl="Function strlen_main, safety">
+ <proof prover="1"><result status="valid" time="0.01" steps="12"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_main_behaviors" sum="6d5b12c21c22549a126e1dea02a4d074">
+ <goal name="WP_parameter strlen_main_ensures_default" expl="Function strlen_main, default behavior">
+ <proof prover="1"><result status="valid" time="0.02" steps="157"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -323,37 +700,41 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Axiomatic_Strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Axiomatic_LF__Axiomatic__valid_str_shiftn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="6a31559f675ec18d15261b2641d2f42e" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
- </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
- </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
- </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
- </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
- </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
- </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
- </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
- </goal>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_shiftn_full" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strlen_before_null" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strlen_before_null_full" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strlen_at_null" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strlen_main" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_istrlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_istrlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_istrlen_full_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_istrlen_full" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shiftn_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shiftn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_before_null_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_before_null" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -364,14 +745,6 @@
 <theory name="Struct_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Root_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Struct_unsigned_charP_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -820,6 +1193,26 @@
 <theory name="Safe_int32_of_Safe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_def" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_def_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shiftn_full" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shiftn_full_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_before_null_full" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_before_null_full_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_at_null" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_at_null_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_main" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_main_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

@@ -2,7 +2,7 @@
 
 TIMEOUT ?= 10
 
-WHYLIB ?= /home/work/.opam/astraver/lib/jessie
+WHYLIB ?= /home/mikhail/.opam/4.07.0/lib/jessie
 
 USERWHYTHREEOPT=
 
