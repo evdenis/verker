@@ -101,7 +101,7 @@
   @  @ ensures \forall size_t j; j < \result ==> s[j] != '\0';
   @  @ ensures strlen(s) == \result;
   @  @/
-  @ size_t elim_valid_str_full(char *s)
+  @ size_t elim_valid_str_len(char *s)
   @ {
   @    size_t size = elim_valid_str(s);
   @    /@ loop invariant strlen(&s[i]) + i <= size ==> strlen(s) == strlen(&s[i]) + i;
@@ -115,17 +115,65 @@
   @*/
 
 /*@ ghost
+  @ /@ lemma
+  @  @ requires valid_str(s);
+  @  @ ensures s[strlen(s)] == '\0';
+  @  @ ensures \valid(s+(0..strlen(s)));
+  @  @ ensures \forall size_t j; j < strlen(s) ==> s[j] != '\0';
+  @  @/
+  @ void valid_str_len(char *s)
+  @ {
+  @   elim_valid_str_len(s);
+  @ }
+  @*/
+
+/*@ ghost
   @ /@ requires \valid(s+(0..n));
   @  @ requires s[n] == '\0';
   @  @ requires \forall size_t j; j < n ==> s[j] != '\0';
   @  @ ensures valid_str(s);
   @  @ ensures strlen(s) == n;
   @  @/
-  @  void intro_valid_str_full(char *s, size_t n)
+  @  void intro_valid_str_len(char *s, size_t n)
   @  {
   @    //@ assert valid_str(s);
-  @    elim_valid_str_full(s);
   @  }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s) && 0 <= i < strlen(s);
+  @  @ ensures valid_str(s + i);
+  @  @/
+  @ void valid_str_shiftn(char *s, size_t i)
+  @ {
+  @    /@ loop invariant valid_str(s + j);
+  @     @ loop invariant 0 <= j <= i;
+  @     @ loop variant i - j;
+  @     @/
+  @    for (size_t j = 0; j < i; j++) {
+  @      if ((s + j)[0] != '\0') {
+  @        //@ assert \forall size_t k; k < strlen(s + j) -% 1 ==> (s + j + 1)[k] == (s + j)[k +% 1];
+  @        intro_valid_str_len(s + j + 1, elim_valid_str_len(s + j) - 1);
+  @      }
+  @    }
+  @  }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires valid_str(s);
+  @  @ ensures \forall integer i; 0 <= i < strlen(s) ==> valid_str(s + i);
+  @  @/
+  @ void valid_str_shiftn_integer(char *s)
+  @ {
+  @   size_t size = elim_valid_str_len(s);
+  @   /@ loop invariant 0 <= i <= size;
+  @    @ loop invariant \forall integer j; 0 <= j < i ==> valid_str(s + j);
+  @    @ loop variant size - i;
+  @    @/
+  @   for (size_t i = 0; i < size; i++)
+  @     valid_str_shiftn(s, i);
+  @ }
   @*/
 
 /*@ ghost
@@ -135,71 +183,31 @@
   @  @/
   @ void elim_strlen(char *s)
   @ {
-  @   size_t size = elim_valid_str_full(s);
   @    if (s[0] != '\0') {
-  @      //@ assert (s + 1)[size -% 1] == '\0';
-  @      size_t size1 = elim_valid_str_full(s + 1);
-  @      //@ assert size1 >= size - 1;
-  @      //@ assert size1 <= size - 1; 
+  @      //@ assert \forall size_t k; k < strlen(s) -% 1 ==> (s + 1)[k] == s[k +% 1];
+  @      intro_valid_str_len(s + 1, elim_valid_str_len(s) - 1);
   @   }
   @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires valid_str(s) && 0 <= i < strlen(s);
-  @  @ ensures valid_str(s + i);
-  @  @ lemmafn \true;
-  @  @/
-  @  void valid_str_shiftn(char *s, size_t i) {
-  @    elim_valid_str_full(s);
-  @    /@ loop invariant valid_str(s + j);
-  @     @ loop invariant 0 <= j <= i;
-  @     @ loop variant i - j;
-  @     @/
-  @    for (size_t j = 0; j < i; j++) {
-  @      size_t size = elim_valid_str_full(s + j);
-  @      if ((s + j)[0] != '\0') {
-  @        //@ assert \forall size_t k; k < size - 1 ==> (s + j + 1)[k] == (s + j)[k +% 1];
-  @        intro_valid_str_full(s + j + 1, size - 1);
-  @      }
-  @    }
-  @  }
-  @*/
-
-/*@ ghost
-  @ /@ requires valid_str(s);
-  @  @ ensures \forall integer i; 0 <= i < strlen(s) ==> valid_str(s + i);
-  @  @ lemmafn \true;
-  @  @/
-  @  void valid_str_shiftn_full(char *s) {
-  @    size_t size = elim_valid_str_full(s);
-  @    /@ loop invariant 0 <= i <= size;
-  @     @ loop invariant \forall integer j; 0 <= j < i ==> valid_str(s + j);
-  @     @ loop variant size - i;
-  @     @/
-  @    for (size_t i = 0; i < size; i++)
-  @      valid_str_shiftn(s, i);
-  @  }
   @*/
 
 /*@ ghost
   @ /@ requires valid_str(s);
   @  @ requires 0 <= i < strlen(s); 
   @  @ ensures s[i] != '\0';
-  @  @ lemmafn \true;
   @  @/
-  @ void strlen_before_null(char *s, size_t i) {
-  @   elim_valid_str_full(s);
+  @ void strlen_before_null(char *s, size_t i)
+  @ {
   @ }
   @*/
   
 /*@ ghost
-  @ /@ requires valid_str(s);
+  @ /@ lemma
+  @  @ requires valid_str(s);
   @  @ ensures \forall integer i; 0 <= i < strlen(s) ==> s[i] != '\0';
-  @  @ lemmafn \true;
   @  @/
-  @ void strlen_before_null_full(char *s) {
-  @   size_t size = elim_valid_str_full(s);
+  @ void strlen_before_null_integer(char *s)
+  @ {
+  @   size_t size = elim_valid_str_len(s);
   @    /@ loop invariant 0 <= i <= size;
   @     @ loop invariant \forall integer j; 0 <= j < i ==> s[j] != '\0';
   @     @ loop variant size - i;
@@ -210,24 +218,24 @@
   @*/  
 
 /*@ ghost
-  @ /@ requires valid_str(s);
+  @ /@ lemma
+  @  @ requires valid_str(s);
   @  @ ensures s[strlen(s)] == '\0';
-  @  @ lemmafn \true;
   @  @/
-  @ void strlen_at_null(char *s, size_t i) {
-  @   elim_valid_str_full(s);
+  @ void strlen_at_null(char *s, size_t i)
+  @ {
   @ }
   @*/ 
 
 /*@ ghost
-  @ /@ requires valid_str(s);
+  @ /@ lemma
+  @  @ requires valid_str(s);
   @  @ requires s[n] == '\0';
   @  @ requires \forall integer i; 0 <= i < n ==> s[i] != '\0';
   @  @ ensures  strlen(s) == n;
-  @  @ lemmafn \true;
   @  @/
-  @ void strlen_main(char *s, size_t n) {
-  @   elim_valid_str_full(s);
+  @ void strlen_main(char *s, size_t n)
+  @ {
   @ }
   @*/
 

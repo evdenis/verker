@@ -6,49 +6,43 @@ Typing code
 Typing axiomatic Padding
 Typing logic type declaration padding
 Typing axiomatic Strlen
-Typing axiomatic LF__Axiomatic__valid_str_shiftn
-Typing axiomatic LF__Axiomatic__valid_str_shiftn_full
-Typing axiomatic LF__Axiomatic__strlen_before_null
-Typing axiomatic LF__Axiomatic__strlen_before_null_full
+Typing axiomatic LF__Axiomatic__valid_str_len
+Typing axiomatic LF__Axiomatic__valid_str_shiftn_integer
+Typing axiomatic LF__Axiomatic__strlen_before_null_integer
 Typing axiomatic LF__Axiomatic__strlen_at_null
 Typing axiomatic LF__Axiomatic__strlen_main
 Typing axiomatic Padding
 Typing tag voidP
 Typing tag charP
 Typing axiomatic Strlen
-Typing axiomatic LF__Axiomatic__valid_str_shiftn
-Typing lemma/axiom LF__Lemma__valid_str_shiftn
-occurrences table for axiom LF__Lemma__valid_str_shiftn in axiomatic LF__Axiomatic__valid_str_shiftn:
+Typing axiomatic LF__Axiomatic__valid_str_len
+Typing lemma/axiom LF__Lemma__valid_str_len
+occurrences table for axiom LF__Lemma__valid_str_len in axiomatic LF__Axiomatic__valid_str_len:
   143: 
   
-Typing axiomatic LF__Axiomatic__valid_str_shiftn_full
-Typing lemma/axiom LF__Lemma__valid_str_shiftn_full
-occurrences table for axiom LF__Lemma__valid_str_shiftn_full in axiomatic LF__Axiomatic__valid_str_shiftn_full:
+Typing axiomatic LF__Axiomatic__valid_str_shiftn_integer
+Typing lemma/axiom LF__Lemma__valid_str_shiftn_integer
+occurrences table for axiom LF__Lemma__valid_str_shiftn_integer in axiomatic LF__Axiomatic__valid_str_shiftn_integer:
   144: 
   
-Typing axiomatic LF__Axiomatic__strlen_before_null
-Typing lemma/axiom LF__Lemma__strlen_before_null
-occurrences table for axiom LF__Lemma__strlen_before_null in axiomatic LF__Axiomatic__strlen_before_null:
+Typing axiomatic LF__Axiomatic__strlen_before_null_integer
+Typing lemma/axiom LF__Lemma__strlen_before_null_integer
+occurrences table for axiom LF__Lemma__strlen_before_null_integer in axiomatic LF__Axiomatic__strlen_before_null_integer:
   145: 
-  
-Typing axiomatic LF__Axiomatic__strlen_before_null_full
-Typing lemma/axiom LF__Lemma__strlen_before_null_full
-occurrences table for axiom LF__Lemma__strlen_before_null_full in axiomatic LF__Axiomatic__strlen_before_null_full:
-  146: 
   
 Typing axiomatic LF__Axiomatic__strlen_at_null
 Typing lemma/axiom LF__Lemma__strlen_at_null
 occurrences table for axiom LF__Lemma__strlen_at_null in axiomatic LF__Axiomatic__strlen_at_null:
-  147: 
+  146: 
   
 Typing axiomatic LF__Axiomatic__strlen_main
 Typing lemma/axiom LF__Lemma__strlen_main
 occurrences table for axiom LF__Lemma__strlen_main in axiomatic LF__Axiomatic__strlen_main:
-  148: 
+  147: 
   
 Computation of call graph
 ***********************************
-Logic call graph: has 8 components
+Logic call graph: has 7 components
 ***********************************
 Component 0:
  valid_str calls: 
@@ -57,82 +51,83 @@ Component 1:
  strlen calls: strlen
 
 Component 2:
- _LF__Predicate__valid_str_shiftn calls: 
+ _LF__Predicate__valid_str_len calls: 
 
 Component 3:
- _LF__Predicate__valid_str_shiftn_full calls: 
+ _LF__Predicate__valid_str_shiftn_integer calls: 
 
 Component 4:
- _LF__Predicate__strlen_before_null calls: 
+ _LF__Predicate__strlen_before_null_integer calls: 
 
 Component 5:
- _LF__Predicate__strlen_before_null_full calls: 
-
-Component 6:
  _LF__Predicate__strlen_at_null calls: 
 
-Component 7:
+Component 6:
  _LF__Predicate__strlen_main calls: 
 
 ******************************
-Call graph: has 11 components
+Call graph: has 12 components
 ******************************
 Component 0:
  elim_valid_str calls: 
 
 Component 1:
- elim_valid_str_full calls: elim_valid_str
+ elim_valid_str_len calls: elim_valid_str
 
 Component 2:
- intro_valid_str_full calls: elim_valid_str_full
+ valid_str_len calls: elim_valid_str_len
 
 Component 3:
- elim_strlen calls: elim_valid_str_full,
-elim_valid_str_full
+ intro_valid_str_len calls: 
 
 Component 4:
- valid_str_shiftn calls: intro_valid_str_full,
-elim_valid_str_full,
-elim_valid_str_full
+ valid_str_shiftn calls: intro_valid_str_len,
+elim_valid_str_len
 
 Component 5:
- valid_str_shiftn_full calls: valid_str_shiftn,
-elim_valid_str_full
+ valid_str_shiftn_integer calls: valid_str_shiftn,
+elim_valid_str_len
 
 Component 6:
- strlen_before_null calls: elim_valid_str_full
+ elim_strlen calls: intro_valid_str_len,
+elim_valid_str_len
 
 Component 7:
- strlen_before_null_full calls: strlen_before_null,
-elim_valid_str_full
+ strlen_before_null calls: 
 
 Component 8:
- strlen_at_null calls: elim_valid_str_full
+ strlen_before_null_integer calls: strlen_before_null,
+elim_valid_str_len
 
 Component 9:
- strlen_main calls: elim_valid_str_full
+ strlen_at_null calls: 
 
 Component 10:
+ strlen_main calls: 
+
+Component 11:
  strlen calls: 
 
 Adding invariants
 Computation of regions
 Separation: treating function elim_valid_str
 Separation: treating function elim_valid_str
-Separation: treating function elim_valid_str_full
-Separation: treating function elim_valid_str_full
-Separation: treating function intro_valid_str_full
-Separation: treating function intro_valid_str_full
-Separation: treating function elim_strlen
-Separation: treating function elim_strlen
+Separation: treating function elim_valid_str_len
+Separation: treating function elim_valid_str_len
+Separation: treating function valid_str_len
+Separation: treating function valid_str_len
+Separation: treating function intro_valid_str_len
+Separation: treating function intro_valid_str_len
 Separation: treating function valid_str_shiftn
 Separation: treating function valid_str_shiftn
-Separation: treating function valid_str_shiftn_full
-Separation: treating function valid_str_shiftn_full
+Separation: treating function valid_str_shiftn_integer
+Separation: treating function valid_str_shiftn_integer
+Separation: treating function elim_strlen
+Separation: treating function elim_strlen
 Separation: treating function strlen_before_null
 Separation: treating function strlen_before_null
-Separation: treating function strlen_before_null_full
-Separation: treating function strlen_before_null_full
+Separation: treating function strlen_before_null_integer
+Separation: treating function strlen_before_null_integer
 Separation: treating function strlen_at_null
 Separation: treating function strlen_at_null
 Separation: treating function strlen_main
@@ -166,7 +161,7 @@ Effects for logic function strlen:
 
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function _LF__Predicate__valid_str_shiftn:
+Effects for logic function _LF__Predicate__valid_str_len:
  alloc_table: 
  tag_table: 
  memories: 
@@ -177,7 +172,7 @@ Effects for logic function _LF__Predicate__valid_str_shiftn:
 
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function _LF__Predicate__valid_str_shiftn_full:
+Effects for logic function _LF__Predicate__valid_str_shiftn_integer:
  alloc_table: 
  tag_table: 
  memories: 
@@ -188,18 +183,7 @@ Effects for logic function _LF__Predicate__valid_str_shiftn_full:
 
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function _LF__Predicate__strlen_before_null:
- alloc_table: 
- tag_table: 
- memories: 
- raw memories: 
- precise memories: 
- globals: 
- locals: 
-
-Effects: doing one iteration
-Effects: fixpoint reached
-Effects for logic function _LF__Predicate__strlen_before_null_full:
+Effects for logic function _LF__Predicate__strlen_before_null_integer:
  alloc_table: 
  tag_table: 
  memories: 
@@ -258,7 +242,7 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function elim_valid_str_full:
+Effects for function elim_valid_str_len:
  reads:  alloc_table: (s_1_5 : alloc-root "voidP") at (Here)
          tag_table: (s_1_5 : voidP) at (Here)
          memories: (s_1_5 : mem-field "charM") at (Here)
@@ -281,11 +265,34 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function intro_valid_str_full:
- reads:  alloc_table: (s_2_6 : alloc-root "voidP") at (Here)
-         tag_table: (s_2_6 : voidP) at (Here)
-         memories: (s_2_6 : mem-field "charM") at (Here)
-         raw memories: (s_2_6 : mem-field "charM") at (Here)
+Effects for function valid_str_len:
+ reads:  alloc_table: (s_8_6 : alloc-root "voidP") at (Here)
+         tag_table: (s_8_6 : voidP) at (Here)
+         memories: (s_8_6 : mem-field "charM") at (Here)
+         raw memories: (s_8_6 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: s_8 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function intro_valid_str_len:
+ reads:  alloc_table: (s_2_7 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_2_7 : mem-field "charM") at (Here)
+         raw memories: (s_2_7 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: n at (Here), s_2 at (Here)
@@ -303,36 +310,14 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function elim_strlen:
- reads:  alloc_table: (s_7 : alloc-root "voidP") at (Here)
-         tag_table: (s_7 : voidP) at (Here)
-         memories: (s_7 : mem-field "charM") at (Here)
-         raw memories: (s_7 : mem-field "charM") at (Here)
-         precise memories: 
-         globals: 
-         locals: s at (Here)
-
- writes:  alloc_table: 
-          tag_table: 
-          memories: 
-          raw memories: 
-          precise memories: 
-          globals: 
-          locals: size1 at (Here), size_2 at (Here)
-
- raises: 
-Effects: doing one iteration...
-Effects: doing one iteration...
-Effects: doing one iteration...
-Effects: fixpoint reached
 Effects for function valid_str_shiftn:
- reads:  alloc_table: (s_8_8 : alloc-root "voidP") at (Here)
-         tag_table: (s_8_8 : voidP) at (Here)
-         memories: (s_8_8 : mem-field "charM") at (Here)
-         raw memories: (s_8_8 : mem-field "charM") at (Here)
+ reads:  alloc_table: (s_9_8 : alloc-root "voidP") at (Here)
+         tag_table: (s_9_8 : voidP) at (Here)
+         memories: (s_9_8 : mem-field "charM") at (Here)
+         raw memories: (s_9_8 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: size_3 at (Here), j at (Here), i_1 at (Here), s_8 at (Here)
+         locals: tmp at (Here), j at (Here), i_1 at (Here), s_9 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -340,21 +325,21 @@ Effects for function valid_str_shiftn:
           raw memories: 
           precise memories: 
           globals: 
-          locals: size_3 at (Here), j at (Here)
+          locals: tmp at (Here), j at (Here)
 
  raises: 
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function valid_str_shiftn_full:
- reads:  alloc_table: (s_9_9 : alloc-root "voidP") at (Here)
-         tag_table: (s_9_9 : voidP) at (Here)
-         memories: (s_9_9 : mem-field "charM") at (Here)
-         raw memories: (s_9_9 : mem-field "charM") at (Here)
+Effects for function valid_str_shiftn_integer:
+ reads:  alloc_table: (s_10_9 : alloc-root "voidP") at (Here)
+         tag_table: (s_10_9 : voidP) at (Here)
+         memories: (s_10_9 : mem-field "charM") at (Here)
+         raw memories: (s_10_9 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: i_4 at (Here), size_4 at (Here), s_9 at (Here)
+         locals: i_4 at (Here), size_2 at (Here), s_10 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -362,18 +347,41 @@ Effects for function valid_str_shiftn_full:
           raw memories: 
           precise memories: 
           globals: 
-          locals: i_4 at (Here), size_4 at (Here)
+          locals: i_4 at (Here), size_2 at (Here)
 
  raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function elim_strlen:
+ reads:  alloc_table: (s_10 : alloc-root "voidP") at (Here)
+         tag_table: (s_10 : voidP) at (Here)
+         memories: (s_10 : mem-field "charM") at (Here)
+         raw memories: (s_10 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: tmp_0 at (Here), s at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: tmp_0 at (Here)
+
+ raises: 
+Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlen_before_null:
- reads:  alloc_table: (s_5_10 : alloc-root "voidP") at (Here)
-         tag_table: (s_5_10 : voidP) at (Here)
-         memories: (s_5_10 : mem-field "charM") at (Here)
-         raw memories: (s_5_10 : mem-field "charM") at (Here)
+ reads:  alloc_table: (s_5_11 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_5_11 : mem-field "charM") at (Here)
+         raw memories: (s_5_11 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: i_0 at (Here), s_5 at (Here)
@@ -391,14 +399,14 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
-Effects for function strlen_before_null_full:
- reads:  alloc_table: (s_6_11 : alloc-root "voidP") at (Here)
-         tag_table: (s_6_11 : voidP) at (Here)
-         memories: (s_6_11 : mem-field "charM") at (Here)
-         raw memories: (s_6_11 : mem-field "charM") at (Here)
+Effects for function strlen_before_null_integer:
+ reads:  alloc_table: (s_6_12 : alloc-root "voidP") at (Here)
+         tag_table: (s_6_12 : voidP) at (Here)
+         memories: (s_6_12 : mem-field "charM") at (Here)
+         raw memories: (s_6_12 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
-         locals: i_5 at (Here), size_5 at (Here), s_6 at (Here)
+         locals: i_5 at (Here), size_3 at (Here), s_6 at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -406,18 +414,19 @@ Effects for function strlen_before_null_full:
           raw memories: 
           precise memories: 
           globals: 
-          locals: i_5 at (Here), size_5 at (Here)
+          locals: i_5 at (Here), size_3 at (Here)
 
  raises: 
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
+Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlen_at_null:
- reads:  alloc_table: (s_4_12 : alloc-root "voidP") at (Here)
-         tag_table: (s_4_12 : voidP) at (Here)
-         memories: (s_4_12 : mem-field "charM") at (Here)
-         raw memories: (s_4_12 : mem-field "charM") at (Here)
+ reads:  alloc_table: (s_4_13 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_4_13 : mem-field "charM") at (Here)
+         raw memories: (s_4_13 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: s_4 at (Here)
@@ -434,12 +443,13 @@ Effects for function strlen_at_null:
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
+Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlen_main:
- reads:  alloc_table: (s_7_13 : alloc-root "voidP") at (Here)
-         tag_table: (s_7_13 : voidP) at (Here)
-         memories: (s_7_13 : mem-field "charM") at (Here)
-         raw memories: (s_7_13 : mem-field "charM") at (Here)
+ reads:  alloc_table: (s_7_14 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_7_14 : mem-field "charM") at (Here)
+         raw memories: (s_7_14 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: n_8 at (Here), s_7 at (Here)
@@ -459,10 +469,10 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strlen:
- reads:  alloc_table: (s_3_14 : alloc-root "voidP") at (Here)
-         tag_table: (s_3_14 : voidP) at (Here)
-         memories: (s_3_14 : mem-field "charM") at (Here)
-         raw memories: (s_3_14 : mem-field "charM") at (Here)
+ reads:  alloc_table: (s_3_15 : alloc-root "voidP") at (Here)
+         tag_table: (s_3_15 : voidP) at (Here)
+         memories: (s_3_15 : mem-field "charM") at (Here)
+         raw memories: (s_3_15 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: __retres_1 at (Here), sc at (Here), \result at (Here),
@@ -883,42 +893,42 @@ Translate dummies
 Translate standalone logic functions
 Logic function valid_str
 Logic function strlen
-Logic function _LF__Predicate__valid_str_shiftn
-Logic function _LF__Predicate__valid_str_shiftn_full
-Logic function _LF__Predicate__strlen_before_null
-Logic function _LF__Predicate__strlen_before_null_full
+Logic function _LF__Predicate__valid_str_len
+Logic function _LF__Predicate__valid_str_shiftn_integer
+Logic function _LF__Predicate__strlen_before_null_integer
 Logic function _LF__Predicate__strlen_at_null
 Logic function _LF__Predicate__strlen_main
 Translate axiomatic declarations
 Axiomatic LF__Axiomatic__strlen_at_null
-Axiomatic LF__Axiomatic__strlen_before_null
-Axiomatic LF__Axiomatic__strlen_before_null_full
+Axiomatic LF__Axiomatic__strlen_before_null_integer
 Axiomatic LF__Axiomatic__strlen_main
-Axiomatic LF__Axiomatic__valid_str_shiftn
-Axiomatic LF__Axiomatic__valid_str_shiftn_full
+Axiomatic LF__Axiomatic__valid_str_len
+Axiomatic LF__Axiomatic__valid_str_shiftn_integer
 Axiomatic Padding
 Axiomatic Strlen
 Translate lemmas
 Translate functions
 Pre-treatement Function elim_valid_str
-Pre-treatement Function elim_valid_str_full
-Pre-treatement Function intro_valid_str_full
-Pre-treatement Function elim_strlen
+Pre-treatement Function elim_valid_str_len
+Pre-treatement Function valid_str_len
+Pre-treatement Function intro_valid_str_len
 Pre-treatement Function valid_str_shiftn
-Pre-treatement Function valid_str_shiftn_full
+Pre-treatement Function valid_str_shiftn_integer
+Pre-treatement Function elim_strlen
 Pre-treatement Function strlen_before_null
-Pre-treatement Function strlen_before_null_full
+Pre-treatement Function strlen_before_null_integer
 Pre-treatement Function strlen_at_null
 Pre-treatement Function strlen_main
 Pre-treatement Function strlen
 Function elim_valid_str
-Function elim_valid_str_full
-Function intro_valid_str_full
-Function elim_strlen
+Function elim_valid_str_len
+Function valid_str_len
+Function intro_valid_str_len
 Function valid_str_shiftn
-Function valid_str_shiftn_full
+Function valid_str_shiftn_integer
+Function elim_strlen
 Function strlen_before_null
-Function strlen_before_null_full
+Function strlen_before_null_integer
 Function strlen_at_null
 Function strlen_main
 Function strlen
