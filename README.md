@@ -8,7 +8,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 ## Papers
 
 - [D. Efremov, M. Mandrykin, Formal Verification of Linux Kernel Library Functions (in Russian)](http://www.ispras.ru/proceedings/isp_29_2017_6/isp_29_2017_6_49/) [PDF](http://www.ispras.ru/proceedings/docs/2017/29/6/isp_29_2017_6_49.pdf)
-- D. Efremov, M. Mandrykin, A. Khoroshilov, Deductive Verification of Unmodified Linux Kernel Library Functions (will be published soon)
+- D. Efremov, M. Mandrykin, A. Khoroshilov, Deductive Verification of Unmodified Linux Kernel Library Functions (to appear on ISoLA18)
 
 ## Proofs Status
 
