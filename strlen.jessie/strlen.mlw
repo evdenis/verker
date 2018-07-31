@@ -1714,19 +1714,19 @@ theory Axiomatic_LF__Axiomatic__valid_str_shiftn
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__valid_str_shiftn #"strlen.jc" 250 2 293#
+  axiom LF__Lemma__valid_str_shiftn #"strlen.jc" 324 2 298#
   "expl:Axiom LF__Lemma__valid_str_shiftn" :
-  (forall voidP_s_7_14_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_7_14 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 137 10 45#
-    (forall s_7_0 : (pointer voidP).
+  (forall voidP_s_8_15_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_8_15 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 153 10 45#
+    (forall s_8_0 : (pointer voidP).
      (forall i_1_0 : Uint64.t.
-      (((valid_str s_7_0 voidP_s_7_14_alloc_table charP_charM_s_7_14) /\
-       ((Uint64.(<=) (#"strlen.jc" 253 43 56# "expl:Integer cast"
+      (((valid_str s_8_0 voidP_s_8_15_alloc_table charP_charM_s_8_15) /\
+       ((Uint64.(<=) (#"strlen.jc" 327 44 57# "expl:Integer cast"
         (Uint64.of_int (0))) i_1_0)
-       /\ (Uint64.(<) i_1_0 (strlen s_7_0 charP_charM_s_7_14)))) ->
-       (valid_str (shift s_7_0 (Uint64.to_int i_1_0))
-       voidP_s_7_14_alloc_table charP_charM_s_7_14)))))))
+       /\ (Uint64.(<) i_1_0 (strlen s_8_0 charP_charM_s_8_15)))) ->
+       (valid_str (shift s_8_0 (Uint64.to_int i_1_0))
+       voidP_s_8_15_alloc_table charP_charM_s_8_15)))))))
   
   predicate _LF__Predicate__valid_str_shiftn (x : int) = ((=) true true)
   
@@ -1755,19 +1755,19 @@ theory Axiomatic_LF__Axiomatic__valid_str_shiftn_full
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__valid_str_shiftn_full #"strlen.jc" 307 2 335#
+  axiom LF__Lemma__valid_str_shiftn_full #"strlen.jc" 381 2 335#
   "expl:Axiom LF__Lemma__valid_str_shiftn_full" :
-  (forall voidP_s_8_15_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_8_15 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 158 10 40#
-    (forall s_8_0 : (pointer voidP).
+  (forall voidP_s_9_16_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_9_16 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 174 10 40#
+    (forall s_9_0 : (pointer voidP).
      (((_LF__Predicate__valid_str_shiftn (1)) /\
-      (valid_str s_8_0 voidP_s_8_15_alloc_table charP_charM_s_8_15)) ->
+      (valid_str s_9_0 voidP_s_9_16_alloc_table charP_charM_s_9_16)) ->
       (forall i_0_1 : int.
        ((((<=) (0) i_0_1) /\
-        ((<) i_0_1 (Uint64.to_int (strlen s_8_0 charP_charM_s_8_15)))) ->
-        (valid_str (shift s_8_0 i_0_1) voidP_s_8_15_alloc_table
-        charP_charM_s_8_15))))))))
+        ((<) i_0_1 (Uint64.to_int (strlen s_9_0 charP_charM_s_9_16)))) ->
+        (valid_str (shift s_9_0 i_0_1) voidP_s_9_16_alloc_table
+        charP_charM_s_9_16))))))))
   
   predicate _LF__Predicate__valid_str_shiftn_full (x_0 : int)
   = ((=) true true)
@@ -1797,22 +1797,22 @@ theory Axiomatic_LF__Axiomatic__strlen_before_null
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__strlen_before_null #"strlen.jc" 339 2 434#
+  axiom LF__Lemma__strlen_before_null #"strlen.jc" 413 2 434#
   "expl:Axiom LF__Lemma__strlen_before_null" :
-  (forall voidP_s_3_16_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_3_16 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 175 9 46#
-    (forall s_3_0 : (pointer voidP).
+  (forall voidP_s_5_17_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_5_17 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 191 9 46#
+    (forall s_5_0 : (pointer voidP).
      (forall i_0_2 : Uint64.t.
       (((_LF__Predicate__valid_str_shiftn (1)) /\
        ((_LF__Predicate__valid_str_shiftn_full (1)) /\
-       ((valid_str s_3_0 voidP_s_3_16_alloc_table charP_charM_s_3_16) /\
-       ((Uint64.(<=) (#"strlen.jc" 345 21 34# "expl:Integer cast"
+       ((valid_str s_5_0 voidP_s_5_17_alloc_table charP_charM_s_5_17) /\
+       ((Uint64.(<=) (#"strlen.jc" 419 21 34# "expl:Integer cast"
         (Uint64.of_int (0))) i_0_2)
-       /\ (Uint64.(<) i_0_2 (strlen s_3_0 charP_charM_s_3_16)))))) ->
+       /\ (Uint64.(<) i_0_2 (strlen s_5_0 charP_charM_s_5_17)))))) ->
        (Int8.(<>)
-       (select charP_charM_s_3_16 (shift s_3_0 (Uint64.to_int i_0_2)))
-       (#"strlen.jc" 346 53 64# "expl:Integer cast" (Int8.of_int (0))))))))))
+       (select charP_charM_s_5_17 (shift s_5_0 (Uint64.to_int i_0_2)))
+       (#"strlen.jc" 420 53 64# "expl:Integer cast" (Int8.of_int (0))))))))))
   
   predicate _LF__Predicate__strlen_before_null (x_1 : int) = ((=) true true)
   
@@ -1845,21 +1845,21 @@ theory Axiomatic_LF__Axiomatic__strlen_before_null_full
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__strlen_before_null_full #"strlen.jc" 400 2 494#
+  axiom LF__Lemma__strlen_before_null_full #"strlen.jc" 474 2 494#
   "expl:Axiom LF__Lemma__strlen_before_null_full" :
-  (forall voidP_s_4_17_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_4_17 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 185 9 41#
-    (forall s_4_0 : (pointer voidP).
+  (forall voidP_s_6_18_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_6_18 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 201 9 41#
+    (forall s_6_0 : (pointer voidP).
      (((_LF__Predicate__valid_str_shiftn (1)) /\
       ((_LF__Predicate__valid_str_shiftn_full (1)) /\
       ((_LF__Predicate__strlen_before_null (1)) /\
-      (valid_str s_4_0 voidP_s_4_17_alloc_table charP_charM_s_4_17)))) ->
+      (valid_str s_6_0 voidP_s_6_18_alloc_table charP_charM_s_6_18)))) ->
       (forall i_1_0_1 : int.
        ((((<=) (0) i_1_0_1) /\
-        ((<) i_1_0_1 (Uint64.to_int (strlen s_4_0 charP_charM_s_4_17)))) ->
-        (Int8.(<>) (select charP_charM_s_4_17 (shift s_4_0 i_1_0_1))
-        (#"strlen.jc" 408 44 55# "expl:Integer cast" (Int8.of_int (0)))))))))))
+        ((<) i_1_0_1 (Uint64.to_int (strlen s_6_0 charP_charM_s_6_18)))) ->
+        (Int8.(<>) (select charP_charM_s_6_18 (shift s_6_0 i_1_0_1))
+        (#"strlen.jc" 482 44 55# "expl:Integer cast" (Int8.of_int (0)))))))))))
   
   predicate _LF__Predicate__strlen_before_null_full (x_2 : int)
   = ((=) true true)
@@ -1893,22 +1893,22 @@ theory Axiomatic_LF__Axiomatic__strlen_at_null
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__strlen_at_null #"strlen.jc" 435 2 516#
+  axiom LF__Lemma__strlen_at_null #"strlen.jc" 509 2 516#
   "expl:Axiom LF__Lemma__strlen_at_null" :
-  (forall voidP_s_2_18_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_2_18 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 201 9 42#
-    (forall s_2_0 : (pointer voidP).
+  (forall voidP_s_4_19_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_4_19 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 217 9 42#
+    (forall s_4_0 : (pointer voidP).
      (forall i_6 : Uint64.t.
       (((_LF__Predicate__valid_str_shiftn (1)) /\
        ((_LF__Predicate__valid_str_shiftn_full (1)) /\
        ((_LF__Predicate__strlen_before_null (1)) /\
        ((_LF__Predicate__strlen_before_null_full (1)) /\
-       (valid_str s_2_0 voidP_s_2_18_alloc_table charP_charM_s_2_18))))) ->
+       (valid_str s_4_0 voidP_s_4_19_alloc_table charP_charM_s_4_19))))) ->
        (Int8.(=)
-       (select charP_charM_s_2_18
-       (shift s_2_0 (Uint64.to_int (strlen s_2_0 charP_charM_s_2_18))))
-       (#"strlen.jc" 444 20 31# "expl:Integer cast" (Int8.of_int (0))))))))))
+       (select charP_charM_s_4_19
+       (shift s_4_0 (Uint64.to_int (strlen s_4_0 charP_charM_s_4_19))))
+       (#"strlen.jc" 518 20 31# "expl:Integer cast" (Int8.of_int (0))))))))))
   
   predicate _LF__Predicate__strlen_at_null (x_3 : int) = ((=) true true)
   
@@ -1945,28 +1945,28 @@ theory Axiomatic_LF__Axiomatic__strlen_main
   
   use why3.Bool.Bool 
   
-  axiom LF__Lemma__strlen_main #"strlen.jc" 477 2 786#
+  axiom LF__Lemma__strlen_main #"strlen.jc" 551 2 786#
   "expl:Axiom LF__Lemma__strlen_main" :
-  (forall voidP_s_6_19_alloc_table : (alloc_table voidP).
-   (forall charP_charM_s_6_19 : (memory voidP Int8.t).
-    (#"/home/mikhail/repos/verker/strlen.h" 213 9 39#
-    (forall s_6_0 : (pointer voidP).
-     (forall n_7_0 : Uint64.t.
+  (forall voidP_s_7_20_alloc_table : (alloc_table voidP).
+   (forall charP_charM_s_7_20 : (memory voidP Int8.t).
+    (#"/home/mikhail/repos/verker/strlen.h" 229 9 39#
+    (forall s_7_0 : (pointer voidP).
+     (forall n_8_0 : Uint64.t.
       (((_LF__Predicate__valid_str_shiftn (1)) /\
        ((_LF__Predicate__valid_str_shiftn_full (1)) /\
        ((_LF__Predicate__strlen_before_null (1)) /\
        ((_LF__Predicate__strlen_before_null_full (1)) /\
        ((_LF__Predicate__strlen_at_null (1)) /\
-       ((valid_str s_6_0 voidP_s_6_19_alloc_table charP_charM_s_6_19) /\
+       ((valid_str s_7_0 voidP_s_7_20_alloc_table charP_charM_s_7_20) /\
        ((Int8.(=)
-        (select charP_charM_s_6_19 (shift s_6_0 (Uint64.to_int n_7_0)))
-        (#"strlen.jc" 486 55 66# "expl:Integer cast" (Int8.of_int (0))))
+        (select charP_charM_s_7_20 (shift s_7_0 (Uint64.to_int n_8_0)))
+        (#"strlen.jc" 560 55 66# "expl:Integer cast" (Int8.of_int (0))))
        /\
        (forall i_2_0_0 : int.
-        ((((<=) (0) i_2_0_0) /\ ((<) i_2_0_0 (Uint64.to_int n_7_0))) ->
-         (Int8.(<>) (select charP_charM_s_6_19 (shift s_6_0 i_2_0_0))
-         (#"strlen.jc" 489 47 58# "expl:Integer cast" (Int8.of_int (0)))))))))))))
-       -> (Uint64.(=) (strlen s_6_0 charP_charM_s_6_19) n_7_0)))))))
+        ((((<=) (0) i_2_0_0) /\ ((<) i_2_0_0 (Uint64.to_int n_8_0))) ->
+         (Int8.(<>) (select charP_charM_s_7_20 (shift s_7_0 i_2_0_0))
+         (#"strlen.jc" 563 47 58# "expl:Integer cast" (Int8.of_int (0)))))))))))))
+       -> (Uint64.(=) (strlen s_7_0 charP_charM_s_7_20) n_8_0)))))))
   
   predicate _LF__Predicate__strlen_main (x_4 : int) = ((=) true true)
   
@@ -2075,32 +2075,32 @@ module Function_strlen_0_safety
   let strlen_0 #"/home/mikhail/repos/verker/strlen.c" 3 7 28#
   "expl:Function strlen, safety" =
   fun
-   (s_1_0 : (pointer voidP)) (voidP_s_1_13_alloc_table : (alloc_table voidP))
-   (voidP_s_1_13_tag_table : (tag_table voidP)) (charP_charM_s_1_13 : (memory
+   (s_3_0 : (pointer voidP)) (voidP_s_3_14_alloc_table : (alloc_table voidP))
+   (voidP_s_3_14_tag_table : (tag_table voidP)) (charP_charM_s_3_14 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_1_13_alloc_table s_1_0) ->
-     (((=) (typeof voidP_s_1_13_tag_table s_1_0) charP_tag) /\
+   (((allocated voidP_s_3_14_alloc_table s_3_0) ->
+     (((=) (typeof voidP_s_3_14_tag_table s_3_0) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_1_13_alloc_table s_1_0) i) /\
-       ((<) i (offset_max voidP_s_1_13_alloc_table s_1_0))) ->
-       ((=) (typeof voidP_s_1_13_tag_table (shift s_1_0 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_3_14_alloc_table s_3_0) i) /\
+       ((<) i (offset_max voidP_s_3_14_alloc_table s_3_0))) ->
+       ((=) (typeof voidP_s_3_14_tag_table (shift s_3_0 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_at_null (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_main (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 218 13 25#
-   (valid_str s_1_0 voidP_s_1_13_alloc_table charP_charM_s_1_13)))))))))))))))
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_at_null (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_main (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 234 13 25#
+   (valid_str s_3_0 voidP_s_3_14_alloc_table charP_charM_s_3_14)))))))))))))))
    } ensures { ("expl:Postcondition" true) }  ->
    'Init:
    (let return = ref (Safe_uint64.any_  () ) in
@@ -2111,47 +2111,47 @@ module Function_strlen_0_safety
     try
      begin
      (sc :=
-      (let _jessie_113 = s_1_0 in
+      (let _jessie_113 = s_3_0 in
       begin
       (assert {
       (#"/home/mikhail/repos/verker/strlen.c" 11 6 12#
       "expl:Pointer index bounds" true) }); _jessie_113 end));
       'Loop_12:
       loop
-      invariant { (#"strlen.jc" 522 6 1279# true) }
+      invariant { (#"strlen.jc" 596 6 1279# true) }
         variant { (#"/home/mikhail/repos/verker/strlen.c" 9 18 38#
-          (Int.(-) (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13))
-          (sub_pointer !sc s_1_0))) }
+          (Int.(-) (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14))
+          (sub_pointer !sc s_3_0))) }
        begin
        any unit
-       requires { true } reads { s_1_0 }
+       requires { true } reads { s_3_0 }
        ensures {
          ((#"/home/mikhail/repos/verker/strlen.c" 8 20 54#
-          ((=) (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13))
-          (Int.(+) (Uint64.to_int (strlen !sc charP_charM_s_1_13))
-          (sub_pointer !sc s_1_0))))
+          ((=) (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14))
+          (Int.(+) (Uint64.to_int (strlen !sc charP_charM_s_3_14))
+          (sub_pointer !sc s_3_0))))
          /\
          ((#"/home/mikhail/repos/verker/strlen.c" 7 20 33#
-          (valid_str !sc voidP_s_1_13_alloc_table charP_charM_s_1_13))
+          (valid_str !sc voidP_s_3_14_alloc_table charP_charM_s_3_14))
          /\
          (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
          (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
          ((#"/home/mikhail/repos/verker/strlen.c" 6 20 27#
-          (same_block s_1_0 !sc))
+          (same_block s_3_0 !sc))
          /\
          (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
          ((#"/home/mikhail/repos/verker/strlen.c" 6 20 27#
-          ((<=) (sub_pointer s_1_0 !sc) (0)))
+          ((<=) (sub_pointer s_3_0 !sc) (0)))
          /\
          (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
          ((#"/home/mikhail/repos/verker/strlen.c" 6 25 44#
           (same_block !sc
-          (shift s_1_0 (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13)))))
+          (shift s_3_0 (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14)))))
          /\
          (#"/home/mikhail/repos/verker/strlen.c" 6 25 44#
          ((<=)
          (sub_pointer !sc
-         (shift s_1_0 (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13))))
+         (shift s_3_0 (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14))))
          (0)))))))))))) } ;
         try
          begin
@@ -2164,15 +2164,15 @@ module Function_strlen_0_safety
           (Safe_int32_of_Safe_int8.cast 
            (#"/home/mikhail/repos/verker/strlen.c" 11 14 17#
            "expl:Pointer dereference"
-           (acc  voidP_s_1_13_alloc_table charP_charM_s_1_13 !sc )) ))
-          (#"strlen.jc" 543 28 40# "expl:Integer cast"
+           (acc  voidP_s_3_14_alloc_table charP_charM_s_3_14 !sc )) ))
+          (#"strlen.jc" 617 28 40# "expl:Integer cast"
           (Safe_int32.of_int (0))) )) then ()
          else (raise (Goto_while_0_break_4_exc ())));
           (sc :=
            (let _jessie_114 =
            (shift_typesafe  !sc
             (Safe_int32.to_int 
-             (#"strlen.jc" 545 44 56# "expl:Integer cast"
+             (#"strlen.jc" 619 44 56# "expl:Integer cast"
              (Safe_int32.of_int (1))) ) ) in
            begin
            (assert {
@@ -2191,7 +2191,7 @@ module Function_strlen_0_safety
        (#"/home/mikhail/repos/verker/strlen.c" 13 8 14# "expl:Integer cast"
        (Safe_uint64.of_int 
         (#"/home/mikhail/repos/verker/strlen.c" 13 8 14#
-        (sub_pointer_  !sc s_1_0 )) )) in
+        (sub_pointer_  !sc s_3_0 )) )) in
        begin
        (assert {
        (#"/home/mikhail/repos/verker/strlen.c" 13 1 15#
@@ -2200,7 +2200,7 @@ module Function_strlen_0_safety
        (return :=
         (let _jessie_116 = !__retres_1 in
         begin
-        (assert { (#"strlen.jc" 551 7 24# "expl:Pointer index bounds" true)
+        (assert { (#"strlen.jc" 625 7 24# "expl:Pointer index bounds" true)
         }); _jessie_116 end)); (raise Return) end end end end)); absurd  end
     with Return -> !return end)
   
@@ -2282,53 +2282,53 @@ module Function_strlen_0_behaviors
   let strlen_ensures_default #"/home/mikhail/repos/verker/strlen.c" 3 7 28#
   "expl:Function strlen, default behavior" =
   fun
-   (s_1_0 : (pointer voidP)) (voidP_s_1_13_alloc_table : (alloc_table voidP))
-   (voidP_s_1_13_tag_table : (tag_table voidP)) (charP_charM_s_1_13 : (memory
+   (s_3_0 : (pointer voidP)) (voidP_s_3_14_alloc_table : (alloc_table voidP))
+   (voidP_s_3_14_tag_table : (tag_table voidP)) (charP_charM_s_3_14 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_1_13_alloc_table s_1_0) ->
-     (((=) (typeof voidP_s_1_13_tag_table s_1_0) charP_tag) /\
+   (((allocated voidP_s_3_14_alloc_table s_3_0) ->
+     (((=) (typeof voidP_s_3_14_tag_table s_3_0) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_1_13_alloc_table s_1_0) i) /\
-       ((<) i (offset_max voidP_s_1_13_alloc_table s_1_0))) ->
-       ((=) (typeof voidP_s_1_13_tag_table (shift s_1_0 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_3_14_alloc_table s_3_0) i) /\
+       ((<) i (offset_max voidP_s_3_14_alloc_table s_3_0))) ->
+       ((=) (typeof voidP_s_3_14_tag_table (shift s_3_0 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_at_null (1))) /\
-   (#"strlen.jc" 498 12 402#
-   ((#"strlen.jc" 498 12 402# (_LF__Predicate__strlen_main (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 218 13 25#
-   (valid_str s_1_0 voidP_s_1_13_alloc_table charP_charM_s_1_13)))))))))))))))
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_at_null (1))) /\
+   (#"strlen.jc" 572 12 402#
+   ((#"strlen.jc" 572 12 402# (_LF__Predicate__strlen_main (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 234 13 25#
+   (valid_str s_3_0 voidP_s_3_14_alloc_table charP_charM_s_3_14)))))))))))))))
    }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 220 12 32# "expl:Ensures clause"
-     (#"/home/mikhail/repos/verker/strlen.h" 220 12 32# "expl:Ensures clause"
-     ((#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+     (#"/home/mikhail/repos/verker/strlen.h" 236 12 32# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 236 12 32# "expl:Ensures clause"
+     ((#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
       "expl:Ensures clause"
-      (Uint64.(=) result (strlen s_1_0 charP_charM_s_1_13)))
+      (Uint64.(=) result (strlen s_3_0 charP_charM_s_3_14)))
      /\
-     (#"/home/mikhail/repos/verker/strlen.h" 220 12 32# "expl:Ensures clause"
-     ((#"/home/mikhail/repos/verker/strlen.h" 221 12 30#
+     (#"/home/mikhail/repos/verker/strlen.h" 236 12 32# "expl:Ensures clause"
+     ((#"/home/mikhail/repos/verker/strlen.h" 237 12 30#
       "expl:Ensures clause"
       (Int8.(=)
-      (select charP_charM_s_1_13 (shift s_1_0 (Uint64.to_int result)))
-      (#"strlen.jc" 509 35 46# "expl:Integer cast" (Int8.of_int (0)))))
+      (select charP_charM_s_3_14 (shift s_3_0 (Uint64.to_int result)))
+      (#"strlen.jc" 583 35 46# "expl:Integer cast" (Int8.of_int (0)))))
      /\
-     (#"/home/mikhail/repos/verker/strlen.h" 222 12 64# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 238 12 64# "expl:Ensures clause"
      (forall i_3_0 : int.
       ((((<=) (0) i_3_0) /\ ((<) i_3_0 (Uint64.to_int result))) ->
-       (Int8.(<>) (select charP_charM_s_1_13 (shift s_1_0 i_3_0))
-       (#"strlen.jc" 514 40 51# "expl:Integer cast" (Int8.of_int (0)))))))))))))
+       (Int8.(<>) (select charP_charM_s_3_14 (shift s_3_0 i_3_0))
+       (#"strlen.jc" 588 40 51# "expl:Integer cast" (Int8.of_int (0)))))))))))))
      } diverges  ->
    'Init:
    (let return = ref (Unsafe_uint64.any_  () ) in
@@ -2338,37 +2338,37 @@ module Function_strlen_0_behaviors
     (let __retres_1 = ref (Unsafe_uint64.any_  () ) in
     try
      begin
-     (sc := s_1_0);
+     (sc := s_3_0);
       'Loop_11:
       loop
       invariant
         { ((#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
            (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
            ((#"/home/mikhail/repos/verker/strlen.c" 6 20 27#
-            (same_block s_1_0 !sc))
+            (same_block s_3_0 !sc))
            /\
            (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
            ((#"/home/mikhail/repos/verker/strlen.c" 6 20 27#
-            ((<=) (sub_pointer s_1_0 !sc) (0)))
+            ((<=) (sub_pointer s_3_0 !sc) (0)))
            /\
            (#"/home/mikhail/repos/verker/strlen.c" 6 20 44#
            ((#"/home/mikhail/repos/verker/strlen.c" 6 25 44#
             (same_block !sc
-            (shift s_1_0 (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13)))))
+            (shift s_3_0 (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14)))))
            /\
            (#"/home/mikhail/repos/verker/strlen.c" 6 25 44#
            ((<=)
            (sub_pointer !sc
-           (shift s_1_0 (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13))))
+           (shift s_3_0 (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14))))
            (0))))))))))
           &&
           ((#"/home/mikhail/repos/verker/strlen.c" 7 20 33#
-           (valid_str !sc voidP_s_1_13_alloc_table charP_charM_s_1_13))
+           (valid_str !sc voidP_s_3_14_alloc_table charP_charM_s_3_14))
           &&
           (#"/home/mikhail/repos/verker/strlen.c" 8 20 54#
-          ((=) (Uint64.to_int (strlen s_1_0 charP_charM_s_1_13))
-          (Int.(+) (Uint64.to_int (strlen !sc charP_charM_s_1_13))
-          (sub_pointer !sc s_1_0)))))) } 
+          ((=) (Uint64.to_int (strlen s_3_0 charP_charM_s_3_14))
+          (Int.(+) (Uint64.to_int (strlen !sc charP_charM_s_3_14))
+          (sub_pointer !sc s_3_0)))))) } 
        begin
        any unit requires { true } ensures { true } ;
         try
@@ -2379,14 +2379,14 @@ module Function_strlen_0_behaviors
          (Unsafe_int32.(<>) 
           (#"/home/mikhail/repos/verker/strlen.c" 11 14 17#
           "expl:Integer cast"
-          (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_1_13 !sc ) ))
-          (#"strlen.jc" 543 28 40# "expl:Integer cast"
+          (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_3_14 !sc ) ))
+          (#"strlen.jc" 617 28 40# "expl:Integer cast"
           (Unsafe_int32.of_int (0))) )) then ()
          else (raise (Goto_while_0_break_4_exc ())));
           (sc :=
            (shift_  !sc
             (Unsafe_int32.to_int 
-             (#"strlen.jc" 545 44 56# "expl:Integer cast"
+             (#"strlen.jc" 619 44 56# "expl:Integer cast"
              (Unsafe_int32.of_int (1))) ) )) end;
           (raise (Loop_continue_exc ())) end with Loop_continue_exc
          _jessie_20 -> () end end end; (raise (Goto_while_0_break_4_exc ()))
@@ -2400,14 +2400,15 @@ module Function_strlen_0_behaviors
        (#"/home/mikhail/repos/verker/strlen.c" 13 8 14# "expl:Integer cast"
        (Unsafe_uint64.of_int 
         (#"/home/mikhail/repos/verker/strlen.c" 13 8 14#
-        (sub_pointer_  !sc s_1_0 )) )));
+        (sub_pointer_  !sc s_3_0 )) )));
        begin (return := !__retres_1); (raise Return) end end end end));
      absurd  end with Return -> !return end)
   
 end
 
-module Function_istrlen_safety
-#"/home/mikhail/repos/verker/strlen.h" 86 11 27# "expl:istrlen, safety"
+module Function_elim_valid_str_safety
+#"/home/mikhail/repos/verker/strlen.h" 86 11 34#
+"expl:elim_valid_str, safety"
 
   use enum.Uint64 
   
@@ -2449,22 +2450,22 @@ module Function_istrlen_safety
   
   use why3.Bool.Bool 
   
-  let istrlen #"/home/mikhail/repos/verker/strlen.h" 86 11 27#
-  "expl:Function istrlen, safety" =
+  let elim_valid_str #"/home/mikhail/repos/verker/strlen.h" 86 11 34#
+  "expl:Function elim_valid_str, safety" =
   fun
-   (s_1 : (pointer voidP)) (voidP_s_4_alloc_table : (alloc_table voidP))
-   (voidP_s_4_tag_table : (tag_table voidP)) (charP_charM_s_4 : (memory voidP
-   Int8.t)) 
+   (s_0_0 : (pointer voidP)) (voidP_s_0_4_alloc_table : (alloc_table voidP))
+   (voidP_s_0_4_tag_table : (tag_table voidP)) (charP_charM_s_0_4 : (memory
+   voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_4_alloc_table s_1) ->
-     (((=) (typeof voidP_s_4_tag_table s_1) charP_tag) /\
+   (((allocated voidP_s_0_4_alloc_table s_0_0) ->
+     (((=) (typeof voidP_s_0_4_tag_table s_0_0) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_4_alloc_table s_1) i) /\
-       ((<) i (offset_max voidP_s_4_alloc_table s_1))) ->
-       ((=) (typeof voidP_s_4_tag_table (shift s_1 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_0_4_alloc_table s_0_0) i) /\
+       ((<) i (offset_max voidP_s_0_4_alloc_table s_0_0))) ->
+       ((=) (typeof voidP_s_0_4_tag_table (shift s_0_0 i)) charP_tag)))))
    /\
    (#"/home/mikhail/repos/verker/strlen.h" 81 16 28#
-   (valid_str s_1 voidP_s_4_alloc_table charP_charM_s_4))) }
+   (valid_str s_0_0 voidP_s_0_4_alloc_table charP_charM_s_0_4))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    (let return = ref (Safe_bit_uint64.any_  () ) in
@@ -2478,7 +2479,7 @@ module Function_istrlen_safety
       begin
       (i_2 :=
        (let _jessie_26 =
-       (#"strlen.jc" 63 21 34# "expl:Integer cast"
+       (#"strlen.jc" 64 21 34# "expl:Integer cast"
        (Safe_bit_uint64.of_int_const 0)) in
        begin
        (assert {
@@ -2486,22 +2487,22 @@ module Function_istrlen_safety
        "expl:Pointer index bounds" true) }); _jessie_26 end));
        'Loop_2:
        loop
-       invariant { (#"strlen.jc" 65 6 868# true) }
+       invariant { (#"strlen.jc" 66 6 872# true) }
          variant { (#"/home/mikhail/repos/verker/strlen.h" 89 23 34#
            (Int.(-)
            (Bit_uint64.to_int
-           (Bit_uint64.(~_) (#"strlen.jc" 70 27 43# "expl:Integer cast"
+           (Bit_uint64.(~_) (#"strlen.jc" 71 27 43# "expl:Integer cast"
            (Bit_uint64.of_int_const 0)))) (Bit_uint64.to_int !i_2))) }
         begin
         any unit
-        requires { true } reads { s_1 }
+        requires { true } reads { s_0_0 }
         ensures {
           (#"/home/mikhail/repos/verker/strlen.h" 88 25 65#
           (forall j_0 : Uint64.t.
            ((Bit_uint64.(<) j_0 !i_2) ->
             (Int8.(<>)
-            (select charP_charM_s_4 (shift s_1 (Bit_uint64.to_int j_0)))
-            (#"strlen.jc" 69 61 72# "expl:Integer cast" (Int8.of_int (0)))))))
+            (select charP_charM_s_0_4 (shift s_0_0 (Bit_uint64.to_int j_0)))
+            (#"strlen.jc" 70 63 74# "expl:Integer cast" (Int8.of_int (0)))))))
           } ;
          try
           begin
@@ -2509,7 +2510,7 @@ module Function_istrlen_safety
           (if
           (#"/home/mikhail/repos/verker/strlen.h" 91 26 38#
           (Safe_bit_uint64.(<=)  !i_2
-           (#"strlen.jc" 74 26 58# "expl:Integer cast"
+           (#"strlen.jc" 75 26 58# "expl:Integer cast"
            (Safe_bit_uint64.of_int_const 18446744073709551615)) )) then ()
           else (raise (Goto_while_0_break_exc ())));
            (if
@@ -2520,9 +2521,9 @@ module Function_istrlen_safety
             (Safe_int32_of_Safe_int8.cast 
              (#"/home/mikhail/repos/verker/strlen.h" 92 13 17#
              "expl:Pointer dereference"
-             (acc_offset_typesafe  voidP_s_4_alloc_table charP_charM_s_4 s_1
-              (Safe_bit_uint64.to_int  !i_2 ) )) ))
-            (#"strlen.jc" 78 30 42# "expl:Integer cast"
+             (acc_offset_typesafe  voidP_s_0_4_alloc_table charP_charM_s_0_4
+              s_0_0 (Safe_bit_uint64.to_int  !i_2 ) )) ))
+            (#"strlen.jc" 79 30 42# "expl:Integer cast"
             (Safe_int32.of_int (0))) ))
            then
             begin
@@ -2536,7 +2537,7 @@ module Function_istrlen_safety
            (i_2 :=
             (let _jessie_28 =
             (Safe_bit_uint64.(+)  !i_2
-             (#"strlen.jc" 84 54 67# "expl:Integer cast"
+             (#"strlen.jc" 85 54 67# "expl:Integer cast"
              (Safe_bit_uint64.of_int_const 1)) ) in
             begin
             (assert {
@@ -2557,7 +2558,7 @@ module Function_istrlen_safety
         () end;
        (__retres :=
         (let _jessie_29 =
-        (#"strlen.jc" 93 27 40# "expl:Integer cast"
+        (#"strlen.jc" 94 27 40# "expl:Integer cast"
         (Safe_bit_uint64.of_int_const 0)) in
         begin
         (assert {
@@ -2570,14 +2571,15 @@ module Function_istrlen_safety
      (return :=
       (let _jessie_30 = !__retres in
       begin
-      (assert { (#"strlen.jc" 95 7 22# "expl:Pointer index bounds" true) });
+      (assert { (#"strlen.jc" 96 7 22# "expl:Pointer index bounds" true) });
        _jessie_30 end)); (raise Return) end end)); absurd  end with Return ->
     !return end)
   
 end
 
-module Function_istrlen_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 86 11 27# "expl:istrlen, behaviors"
+module Function_elim_valid_str_behaviors
+#"/home/mikhail/repos/verker/strlen.h" 86 11 34#
+"expl:elim_valid_str, behaviors"
 
   use Unsafe_uint64 
   
@@ -2619,36 +2621,38 @@ module Function_istrlen_behaviors
   
   use why3.Bool.Bool 
   
-  let istrlen_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 86 11 27#
-  "expl:Function istrlen, default behavior" =
+  let elim_valid_str_ensures_default
+  #"/home/mikhail/repos/verker/strlen.h" 86 11 34#
+  "expl:Function elim_valid_str, default behavior" =
   fun
-   (s_1 : (pointer voidP)) (voidP_s_4_alloc_table : (alloc_table voidP))
-   (voidP_s_4_tag_table : (tag_table voidP)) (charP_charM_s_4 : (memory voidP
-   Int8.t)) 
+   (s_0_0 : (pointer voidP)) (voidP_s_0_4_alloc_table : (alloc_table voidP))
+   (voidP_s_0_4_tag_table : (tag_table voidP)) (charP_charM_s_0_4 : (memory
+   voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_4_alloc_table s_1) ->
-     (((=) (typeof voidP_s_4_tag_table s_1) charP_tag) /\
+   (((allocated voidP_s_0_4_alloc_table s_0_0) ->
+     (((=) (typeof voidP_s_0_4_tag_table s_0_0) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_4_alloc_table s_1) i) /\
-       ((<) i (offset_max voidP_s_4_alloc_table s_1))) ->
-       ((=) (typeof voidP_s_4_tag_table (shift s_1 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_0_4_alloc_table s_0_0) i) /\
+       ((<) i (offset_max voidP_s_0_4_alloc_table s_0_0))) ->
+       ((=) (typeof voidP_s_0_4_tag_table (shift s_0_0 i)) charP_tag)))))
    /\
    (#"/home/mikhail/repos/verker/strlen.h" 81 16 28#
-   (valid_str s_1 voidP_s_4_alloc_table charP_charM_s_4))) }
+   (valid_str s_0_0 voidP_s_0_4_alloc_table charP_charM_s_0_4))) }
    ensures {
      ("expl:Postcondition"
      (#"/home/mikhail/repos/verker/strlen.h" 82 15 33# "expl:Ensures clause"
      (#"/home/mikhail/repos/verker/strlen.h" 82 15 33# "expl:Ensures clause"
      ((#"/home/mikhail/repos/verker/strlen.h" 82 15 33# "expl:Ensures clause"
-      (Int8.(=) (select charP_charM_s_4 (shift s_1 (Uint64.to_int result)))
+      (Int8.(=)
+      (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int result)))
       (#"strlen.jc" 44 31 42# "expl:Integer cast" (Int8.of_int (0)))))
      /\
      (#"/home/mikhail/repos/verker/strlen.h" 82 15 33# "expl:Ensures clause"
      ((#"/home/mikhail/repos/verker/strlen.h" 83 15 37# "expl:Ensures clause"
       (if ((<=) (0) (Uint64.to_int result)) then
-       (((<=) (offset_min voidP_s_4_alloc_table s_1) (0)) /\
-       (((>=) (offset_max voidP_s_4_alloc_table s_1) (Uint64.to_int result))
+       (((<=) (offset_min voidP_s_0_4_alloc_table s_0_0) (0)) /\
+       (((>=) (offset_max voidP_s_0_4_alloc_table s_0_0)
+        (Uint64.to_int result))
        /\
        (forall __framac_tmp2 : int.
         ((((<=) (0) __framac_tmp2) /\
@@ -2658,8 +2662,8 @@ module Function_istrlen_behaviors
      (#"/home/mikhail/repos/verker/strlen.h" 84 15 61# "expl:Ensures clause"
      (forall j : Uint64.t.
       ((Uint64.(<) j result) ->
-       (Int8.(<>) (select charP_charM_s_4 (shift s_1 (Uint64.to_int j)))
-       (#"strlen.jc" 57 38 49# "expl:Integer cast" (Int8.of_int (0)))))))))))))
+       (Int8.(<>) (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int j)))
+       (#"strlen.jc" 58 38 49# "expl:Integer cast" (Int8.of_int (0)))))))))))))
      } diverges  ->
    'Init:
    (let return = ref (Unsafe_uint64.any_  () ) in
@@ -2672,7 +2676,7 @@ module Function_istrlen_behaviors
      try
       begin
       (i_2 :=
-       (#"strlen.jc" 63 21 34# "expl:Integer cast"
+       (#"strlen.jc" 64 21 34# "expl:Integer cast"
        (Unsafe_uint64.of_int (0))));
        'Loop_1:
        loop
@@ -2681,8 +2685,8 @@ module Function_istrlen_behaviors
            (forall j_0 : Uint64.t.
             ((Uint64.(<) j_0 !i_2) ->
              (Int8.(<>)
-             (select charP_charM_s_4 (shift s_1 (Uint64.to_int j_0)))
-             (#"strlen.jc" 69 61 72# "expl:Integer cast" (Int8.of_int (0))))))) }
+             (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int j_0)))
+             (#"strlen.jc" 70 63 74# "expl:Integer cast" (Int8.of_int (0))))))) }
          
         begin
         any unit requires { true } ensures { true } ;
@@ -2692,7 +2696,7 @@ module Function_istrlen_behaviors
           (if
           (#"/home/mikhail/repos/verker/strlen.h" 91 26 38#
           (Unsafe_uint64.(<=)  !i_2
-           (#"strlen.jc" 74 26 58# "expl:Integer cast"
+           (#"strlen.jc" 75 26 58# "expl:Integer cast"
            (Unsafe_uint64.of_int (18446744073709551615))) )) then ()
           else (raise (Goto_while_0_break_exc ())));
            (if
@@ -2701,15 +2705,15 @@ module Function_istrlen_behaviors
             (#"/home/mikhail/repos/verker/strlen.h" 92 13 17#
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast 
-             (acc  charP_charM_s_4
-              (shift_  s_1 (Unsafe_uint64.to_int  !i_2 ) ) ) ))
-            (#"strlen.jc" 78 30 42# "expl:Integer cast"
+             (acc  charP_charM_s_0_4
+              (shift_  s_0_0 (Unsafe_uint64.to_int  !i_2 ) ) ) ))
+            (#"strlen.jc" 79 30 42# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) ))
            then begin (__retres := !i_2); (raise (Return_label_exc ())) end
            else ());
            (i_2 :=
             (Unsafe_uint64.(+)  !i_2
-             (#"strlen.jc" 84 54 67# "expl:Integer cast"
+             (#"strlen.jc" 85 54 67# "expl:Integer cast"
              (Unsafe_uint64.of_int (1))) )) end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_4 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -2723,7 +2727,7 @@ module Function_istrlen_behaviors
        (#"/home/mikhail/repos/verker/strlen.h" 94 4 5#
        "expl:Assertion in line 94" ((=) false true)) }); () end;
        (__retres :=
-        (#"strlen.jc" 93 27 40# "expl:Integer cast"
+        (#"strlen.jc" 94 27 40# "expl:Integer cast"
         (Unsafe_uint64.of_int (0)))) end end; (raise (Return_label_exc ()))
      end with Return_label_exc _jessie_2 ->
      'Return_label:
@@ -2732,7 +2736,7 @@ module Function_istrlen_behaviors
   
 end
 
-module Function_istrlen_safe
+module Function_elim_valid_str_safe
 
   use enum.Uint64 
   
@@ -2756,16 +2760,16 @@ module Function_istrlen_safe
   
   use why3.Bool.Bool 
   
-  val istrlen
-  (s_1 : (pointer voidP)) 
-   (voidP_s_4_alloc_table : (alloc_table voidP)) 
-    (voidP_s_4_tag_table : (tag_table voidP)) 
-     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
+  val elim_valid_str
+  (s_0_0 : (pointer voidP)) 
+   (voidP_s_0_4_alloc_table : (alloc_table voidP)) 
+    (voidP_s_0_4_tag_table : (tag_table voidP)) 
+     (charP_charM_s_0_4 : (memory voidP Int8.t)) : Uint64.t
       requires {
         ("expl:Internal"
         (#"/home/mikhail/repos/verker/strlen.h" 81 16 28#
         "expl:Requires clause"
-        (valid_str s_1 voidP_s_4_alloc_table charP_charM_s_4))) }
+        (valid_str s_0_0 voidP_s_0_4_alloc_table charP_charM_s_0_4))) }
       ensures {
         (#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
         "expl:Ensures clause"
@@ -2774,7 +2778,7 @@ module Function_istrlen_safe
         ((#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_4 (shift s_1 (Uint64.to_int result)))
+         (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int result)))
          (#"strlen.jc" 44 31 42# "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
@@ -2782,8 +2786,8 @@ module Function_istrlen_safe
         ((#"/home/mikhail/repos/verker/strlen.h" 83 15 37#
          "expl:Ensures clause"
          (if ((<=) (0) (Uint64.to_int result)) then
-          (((<=) (offset_min voidP_s_4_alloc_table s_1) (0)) /\
-          (((>=) (offset_max voidP_s_4_alloc_table s_1)
+          (((<=) (offset_min voidP_s_0_4_alloc_table s_0_0) (0)) /\
+          (((>=) (offset_max voidP_s_0_4_alloc_table s_0_0)
            (Uint64.to_int result))
           /\
           (forall __framac_tmp2 : int.
@@ -2795,14 +2799,16 @@ module Function_istrlen_safe
         "expl:Ensures clause"
         (forall j : Uint64.t.
          ((Uint64.(<) j result) ->
-          (Int8.(<>) (select charP_charM_s_4 (shift s_1 (Uint64.to_int j)))
-          (#"strlen.jc" 57 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))))
+          (Int8.(<>)
+          (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int j)))
+          (#"strlen.jc" 58 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))))
         }
   
 end
 
-module Function_istrlen_full_safety
-#"/home/mikhail/repos/verker/strlen.h" 104 11 32# "expl:istrlen_full, safety"
+module Function_elim_valid_str_full_safety
+#"/home/mikhail/repos/verker/strlen.h" 104 11 39#
+"expl:elim_valid_str_full, safety"
 
   use enum.Uint64 
   
@@ -2836,7 +2842,7 @@ module Function_istrlen_full_safety
   
   use import int.Int 
   
-  use Function_istrlen_safe 
+  use Function_elim_valid_str_safe 
   
   use import Exceptions 
   
@@ -2844,22 +2850,22 @@ module Function_istrlen_full_safety
   
   use why3.Bool.Bool 
   
-  let istrlen_full #"/home/mikhail/repos/verker/strlen.h" 104 11 32#
-  "expl:Function istrlen_full, safety" =
+  let elim_valid_str_full #"/home/mikhail/repos/verker/strlen.h" 104 11 39#
+  "expl:Function elim_valid_str_full, safety" =
   fun
-   (s_0_0 : (pointer voidP)) (voidP_s_0_5_alloc_table : (alloc_table voidP))
-   (voidP_s_0_5_tag_table : (tag_table voidP)) (charP_charM_s_0_5 : (memory
+   (s_1 : (pointer voidP)) (voidP_s_1_5_alloc_table : (alloc_table voidP))
+   (voidP_s_1_5_tag_table : (tag_table voidP)) (charP_charM_s_1_5 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_0_5_alloc_table s_0_0) ->
-     (((=) (typeof voidP_s_0_5_tag_table s_0_0) charP_tag) /\
+   (((allocated voidP_s_1_5_alloc_table s_1) ->
+     (((=) (typeof voidP_s_1_5_tag_table s_1) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_0_5_alloc_table s_0_0) i) /\
-       ((<) i (offset_max voidP_s_0_5_alloc_table s_0_0))) ->
-       ((=) (typeof voidP_s_0_5_tag_table (shift s_0_0 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_1_5_alloc_table s_1) i) /\
+       ((<) i (offset_max voidP_s_1_5_alloc_table s_1))) ->
+       ((=) (typeof voidP_s_1_5_tag_table (shift s_1 i)) charP_tag)))))
    /\
    (#"/home/mikhail/repos/verker/strlen.h" 98 16 28#
-   (valid_str s_0_0 voidP_s_0_5_alloc_table charP_charM_s_0_5))) }
+   (valid_str s_1 voidP_s_1_5_alloc_table charP_charM_s_1_5))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    (let return = ref (Safe_uint64.any_  () ) in
@@ -2872,20 +2878,20 @@ module Function_istrlen_full_safety
      begin
      (size_1 :=
       (let _jessie_39 =
-      (let _jessie_40 = s_0_0 in
-      (#"/home/mikhail/repos/verker/strlen.h" 106 21 31#
-      "expl:Precondition for istrlen"
-      (Function_istrlen_safe.istrlen  _jessie_40 voidP_s_0_5_alloc_table
-       voidP_s_0_5_tag_table charP_charM_s_0_5 ))) in
+      (let _jessie_40 = s_1 in
+      (#"/home/mikhail/repos/verker/strlen.h" 106 21 38#
+      "expl:Precondition for elim_valid_str"
+      (Function_elim_valid_str_safe.elim_valid_str  _jessie_40
+       voidP_s_1_5_alloc_table voidP_s_1_5_tag_table charP_charM_s_1_5 ))) in
       begin
       (assert {
-      (#"/home/mikhail/repos/verker/strlen.h" 106 21 31#
+      (#"/home/mikhail/repos/verker/strlen.h" 106 21 38#
       "expl:Pointer index bounds" true) }); _jessie_39 end));
       try
        begin
        (i_3 :=
         (let _jessie_41 =
-        (#"strlen.jc" 128 25 38# "expl:Integer cast"
+        (#"strlen.jc" 129 25 38# "expl:Integer cast"
         (Safe_uint64.of_int (0))) in
         begin
         (assert {
@@ -2893,17 +2899,17 @@ module Function_istrlen_full_safety
         "expl:Pointer index bounds" true) }); _jessie_41 end));
         'Loop_4:
         loop
-        invariant { (#"strlen.jc" 130 9 1252# true) }
+        invariant { (#"strlen.jc" 131 9 1252# true) }
           variant { (#"/home/mikhail/repos/verker/strlen.h" 109 23 31#
             (Int.(-) (Uint64.to_int !size_1) (Uint64.to_int !i_3))) }
          begin
          any unit
-         requires { true } reads { s_0_0 }
+         requires { true } reads { s_1 }
          ensures {
            ((#"/home/mikhail/repos/verker/strlen.h" 108 25 39#
             (#"/home/mikhail/repos/verker/strlen.h" 108 25 39#
             ((#"/home/mikhail/repos/verker/strlen.h" 108 25 31#
-             (Uint64.(<=) (#"strlen.jc" 139 41 54# "expl:Integer cast"
+             (Uint64.(<=) (#"strlen.jc" 140 41 54# "expl:Integer cast"
              (Uint64.of_int (0))) !i_3))
             /\
             (#"/home/mikhail/repos/verker/strlen.h" 108 30 39#
@@ -2913,12 +2919,12 @@ module Function_istrlen_full_safety
            (((<=)
             (Int.(+)
             (Uint64.to_int
-            (strlen (shift s_0_0 (Uint64.to_int !i_3)) charP_charM_s_0_5))
+            (strlen (shift s_1 (Uint64.to_int !i_3)) charP_charM_s_1_5))
             (Uint64.to_int !i_3)) (Uint64.to_int !size_1)) ->
-            ((=) (Uint64.to_int (strlen s_0_0 charP_charM_s_0_5))
+            ((=) (Uint64.to_int (strlen s_1 charP_charM_s_1_5))
             (Int.(+)
             (Uint64.to_int
-            (strlen (shift s_0_0 (Uint64.to_int !i_3)) charP_charM_s_0_5))
+            (strlen (shift s_1 (Uint64.to_int !i_3)) charP_charM_s_1_5))
             (Uint64.to_int !i_3)))))) } ;
           try
            begin
@@ -2935,9 +2941,9 @@ module Function_istrlen_full_safety
              (Safe_int32_of_Safe_int8.cast 
               (#"/home/mikhail/repos/verker/strlen.h" 112 13 17#
               "expl:Pointer dereference"
-              (acc_offset_typesafe  voidP_s_0_5_alloc_table charP_charM_s_0_5
-               s_0_0 (Safe_uint64.to_int  !i_3 ) )) ))
-             (#"strlen.jc" 148 33 45# "expl:Integer cast"
+              (acc_offset_typesafe  voidP_s_1_5_alloc_table charP_charM_s_1_5
+               s_1 (Safe_uint64.to_int  !i_3 ) )) ))
+             (#"strlen.jc" 149 33 45# "expl:Integer cast"
              (Safe_int32.of_int (0))) ))
             then
              begin
@@ -2951,7 +2957,7 @@ module Function_istrlen_full_safety
             (i_3 :=
              (let _jessie_43 =
              (Safe_uint64.(+)  !i_3
-              (#"strlen.jc" 154 57 70# "expl:Integer cast"
+              (#"strlen.jc" 155 57 70# "expl:Integer cast"
               (Safe_uint64.of_int (1))) ) in
              begin
              (assert {
@@ -2970,7 +2976,7 @@ module Function_istrlen_full_safety
       begin
       (__retres_0 :=
        (let _jessie_38 =
-       (#"strlen.jc" 164 29 42# "expl:Integer cast" (Safe_uint64.of_int (0)))
+       (#"strlen.jc" 165 29 42# "expl:Integer cast" (Safe_uint64.of_int (0)))
        in
        begin
        (assert {
@@ -2984,13 +2990,13 @@ module Function_istrlen_full_safety
      (return :=
       (let _jessie_44 = !__retres_0 in
       begin
-      (assert { (#"strlen.jc" 166 7 24# "expl:Pointer index bounds" true) });
+      (assert { (#"strlen.jc" 167 7 24# "expl:Pointer index bounds" true) });
        _jessie_44 end)); (raise Return) end end))); absurd  end with Return
     -> !return end)
   
 end
 
-module Function_istrlen
+module Function_elim_valid_str
 
   use enum.Uint64 
   
@@ -3012,11 +3018,11 @@ module Function_istrlen
   
   use why3.Bool.Bool 
   
-  val istrlen
-  (s_1 : (pointer voidP)) 
-   (voidP_s_4_alloc_table : (alloc_table voidP)) 
-    (voidP_s_4_tag_table : (tag_table voidP)) 
-     (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
+  val elim_valid_str
+  (s_0_0 : (pointer voidP)) 
+   (voidP_s_0_4_alloc_table : (alloc_table voidP)) 
+    (voidP_s_0_4_tag_table : (tag_table voidP)) 
+     (charP_charM_s_0_4 : (memory voidP Int8.t)) : Uint64.t
       requires { true }
       ensures {
         (#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
@@ -3026,7 +3032,7 @@ module Function_istrlen
         ((#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_4 (shift s_1 (Uint64.to_int result)))
+         (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int result)))
          (#"strlen.jc" 44 31 42# "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 82 15 33#
@@ -3034,8 +3040,8 @@ module Function_istrlen
         ((#"/home/mikhail/repos/verker/strlen.h" 83 15 37#
          "expl:Ensures clause"
          (if ((<=) (0) (Uint64.to_int result)) then
-          (((<=) (offset_min voidP_s_4_alloc_table s_1) (0)) /\
-          (((>=) (offset_max voidP_s_4_alloc_table s_1)
+          (((<=) (offset_min voidP_s_0_4_alloc_table s_0_0) (0)) /\
+          (((>=) (offset_max voidP_s_0_4_alloc_table s_0_0)
            (Uint64.to_int result))
           /\
           (forall __framac_tmp2 : int.
@@ -3047,15 +3053,16 @@ module Function_istrlen
         "expl:Ensures clause"
         (forall j : Uint64.t.
          ((Uint64.(<) j result) ->
-          (Int8.(<>) (select charP_charM_s_4 (shift s_1 (Uint64.to_int j)))
-          (#"strlen.jc" 57 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))))
+          (Int8.(<>)
+          (select charP_charM_s_0_4 (shift s_0_0 (Uint64.to_int j)))
+          (#"strlen.jc" 58 38 49# "expl:Integer cast" (Int8.of_int (0))))))))))))
         }
   
 end
 
-module Function_istrlen_full_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 104 11 32#
-"expl:istrlen_full, behaviors"
+module Function_elim_valid_str_full_behaviors
+#"/home/mikhail/repos/verker/strlen.h" 104 11 39#
+"expl:elim_valid_str_full, behaviors"
 
   use Unsafe_uint64 
   
@@ -3091,7 +3098,7 @@ module Function_istrlen_full_behaviors
   
   use import int.Int 
   
-  use Function_istrlen 
+  use Function_elim_valid_str 
   
   use import Exceptions 
   
@@ -3099,38 +3106,37 @@ module Function_istrlen_full_behaviors
   
   use why3.Bool.Bool 
   
-  let istrlen_full_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 104 11 32#
-  "expl:Function istrlen_full, default behavior" =
+  let elim_valid_str_full_ensures_default
+  #"/home/mikhail/repos/verker/strlen.h" 104 11 39#
+  "expl:Function elim_valid_str_full, default behavior" =
   fun
-   (s_0_0 : (pointer voidP)) (voidP_s_0_5_alloc_table : (alloc_table voidP))
-   (voidP_s_0_5_tag_table : (tag_table voidP)) (charP_charM_s_0_5 : (memory
+   (s_1 : (pointer voidP)) (voidP_s_1_5_alloc_table : (alloc_table voidP))
+   (voidP_s_1_5_tag_table : (tag_table voidP)) (charP_charM_s_1_5 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_0_5_alloc_table s_0_0) ->
-     (((=) (typeof voidP_s_0_5_tag_table s_0_0) charP_tag) /\
+   (((allocated voidP_s_1_5_alloc_table s_1) ->
+     (((=) (typeof voidP_s_1_5_tag_table s_1) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_0_5_alloc_table s_0_0) i) /\
-       ((<) i (offset_max voidP_s_0_5_alloc_table s_0_0))) ->
-       ((=) (typeof voidP_s_0_5_tag_table (shift s_0_0 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_1_5_alloc_table s_1) i) /\
+       ((<) i (offset_max voidP_s_1_5_alloc_table s_1))) ->
+       ((=) (typeof voidP_s_1_5_tag_table (shift s_1 i)) charP_tag)))))
    /\
    (#"/home/mikhail/repos/verker/strlen.h" 98 16 28#
-   (valid_str s_0_0 voidP_s_0_5_alloc_table charP_charM_s_0_5))) }
+   (valid_str s_1 voidP_s_1_5_alloc_table charP_charM_s_1_5))) }
    ensures {
      ("expl:Postcondition"
      (#"/home/mikhail/repos/verker/strlen.h" 99 15 33# "expl:Ensures clause"
      (#"/home/mikhail/repos/verker/strlen.h" 99 15 33# "expl:Ensures clause"
      ((#"/home/mikhail/repos/verker/strlen.h" 99 15 33# "expl:Ensures clause"
-      (Int8.(=)
-      (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int result)))
-      (#"strlen.jc" 103 31 42# "expl:Integer cast" (Int8.of_int (0)))))
+      (Int8.(=) (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int result)))
+      (#"strlen.jc" 104 31 42# "expl:Integer cast" (Int8.of_int (0)))))
      /\
      (#"/home/mikhail/repos/verker/strlen.h" 99 15 33# "expl:Ensures clause"
      ((#"/home/mikhail/repos/verker/strlen.h" 100 15 37#
       "expl:Ensures clause"
       (if ((<=) (0) (Uint64.to_int result)) then
-       (((<=) (offset_min voidP_s_0_5_alloc_table s_0_0) (0)) /\
-       (((>=) (offset_max voidP_s_0_5_alloc_table s_0_0)
+       (((<=) (offset_min voidP_s_1_5_alloc_table s_1) (0)) /\
+       (((>=) (offset_max voidP_s_1_5_alloc_table s_1)
         (Uint64.to_int result))
        /\
        (forall __framac_tmp3 : int.
@@ -3144,12 +3150,12 @@ module Function_istrlen_full_behaviors
       (forall j_0_0 : Uint64.t.
        ((Uint64.(<) j_0_0 result) ->
         (Int8.(<>)
-        (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int j_0_0)))
-        (#"strlen.jc" 117 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
+        (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int j_0_0)))
+        (#"strlen.jc" 118 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
      /\
      (#"/home/mikhail/repos/verker/strlen.h" 102 15 35# "expl:Ensures clause"
-     (Uint64.(=) (strlen s_0_0 charP_charM_s_0_5) result)))))))))) } diverges
-    ->
+     (Uint64.(=) (strlen s_1 charP_charM_s_1_5) result)))))))))) } diverges 
+   ->
    'Init:
    (let return = ref (Unsafe_uint64.any_  () ) in
    try
@@ -3160,15 +3166,15 @@ module Function_istrlen_full_behaviors
     try
      begin
      (size_1 :=
-      (let _jessie_33 = s_0_0 in
-      (#"/home/mikhail/repos/verker/strlen.h" 106 21 31#
-      "expl:Precondition for istrlen"
-      (Function_istrlen.istrlen  _jessie_33 voidP_s_0_5_alloc_table
-       voidP_s_0_5_tag_table charP_charM_s_0_5 ))));
+      (let _jessie_33 = s_1 in
+      (#"/home/mikhail/repos/verker/strlen.h" 106 21 38#
+      "expl:Precondition for elim_valid_str"
+      (Function_elim_valid_str.elim_valid_str  _jessie_33
+       voidP_s_1_5_alloc_table voidP_s_1_5_tag_table charP_charM_s_1_5 ))));
       try
        begin
        (i_3 :=
-        (#"strlen.jc" 128 25 38# "expl:Integer cast"
+        (#"strlen.jc" 129 25 38# "expl:Integer cast"
         (Unsafe_uint64.of_int (0))));
         'Loop_3:
         loop
@@ -3177,18 +3183,18 @@ module Function_istrlen_full_behaviors
              (((<=)
               (Int.(+)
               (Uint64.to_int
-              (strlen (shift s_0_0 (Uint64.to_int !i_3)) charP_charM_s_0_5))
+              (strlen (shift s_1 (Uint64.to_int !i_3)) charP_charM_s_1_5))
               (Uint64.to_int !i_3)) (Uint64.to_int !size_1)) ->
-              ((=) (Uint64.to_int (strlen s_0_0 charP_charM_s_0_5))
+              ((=) (Uint64.to_int (strlen s_1 charP_charM_s_1_5))
               (Int.(+)
               (Uint64.to_int
-              (strlen (shift s_0_0 (Uint64.to_int !i_3)) charP_charM_s_0_5))
+              (strlen (shift s_1 (Uint64.to_int !i_3)) charP_charM_s_1_5))
               (Uint64.to_int !i_3)))))
             &&
             (#"/home/mikhail/repos/verker/strlen.h" 108 25 39#
             (#"/home/mikhail/repos/verker/strlen.h" 108 25 39#
             ((#"/home/mikhail/repos/verker/strlen.h" 108 25 31#
-             (Uint64.(<=) (#"strlen.jc" 139 41 54# "expl:Integer cast"
+             (Uint64.(<=) (#"strlen.jc" 140 41 54# "expl:Integer cast"
              (Uint64.of_int (0))) !i_3))
             /\
             (#"/home/mikhail/repos/verker/strlen.h" 108 30 39#
@@ -3208,16 +3214,16 @@ module Function_istrlen_full_behaviors
              (#"/home/mikhail/repos/verker/strlen.h" 112 13 17#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
-              (acc  charP_charM_s_0_5
-               (shift_  s_0_0 (Unsafe_uint64.to_int  !i_3 ) ) ) ))
-             (#"strlen.jc" 148 33 45# "expl:Integer cast"
+              (acc  charP_charM_s_1_5
+               (shift_  s_1 (Unsafe_uint64.to_int  !i_3 ) ) ) ))
+             (#"strlen.jc" 149 33 45# "expl:Integer cast"
              (Unsafe_int32.of_int (0))) ))
             then
              begin (__retres_0 := !i_3); (raise (Goto_return_label_0_exc ()))
              end else ());
             (i_3 :=
              (Unsafe_uint64.(+)  !i_3
-              (#"strlen.jc" 154 57 70# "expl:Integer cast"
+              (#"strlen.jc" 155 57 70# "expl:Integer cast"
               (Unsafe_uint64.of_int (1))) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_8 -> () end end end; (raise (Goto_while_0_break_0_exc ()))
@@ -3229,7 +3235,7 @@ module Function_istrlen_full_behaviors
       "expl:Assertion in line 114" ((=) false true)) }); () end;
       begin
       (__retres_0 :=
-       (#"strlen.jc" 164 29 42# "expl:Integer cast"
+       (#"strlen.jc" 165 29 42# "expl:Integer cast"
        (Unsafe_uint64.of_int (0)))); (raise (Goto_return_label_0_exc ())) end
      end with Goto_return_label_0_exc _jessie_6 ->
      'Return_label_0:
@@ -3238,7 +3244,7 @@ module Function_istrlen_full_behaviors
   
 end
 
-module Function_istrlen_full_safe
+module Function_elim_valid_str_full_safe
 
   use enum.Uint64 
   
@@ -3262,16 +3268,16 @@ module Function_istrlen_full_safe
   
   use why3.Bool.Bool 
   
-  val istrlen_full
-  (s_0_0 : (pointer voidP)) 
-   (voidP_s_0_5_alloc_table : (alloc_table voidP)) 
-    (voidP_s_0_5_tag_table : (tag_table voidP)) 
-     (charP_charM_s_0_5 : (memory voidP Int8.t)) : Uint64.t
+  val elim_valid_str_full
+  (s_1 : (pointer voidP)) 
+   (voidP_s_1_5_alloc_table : (alloc_table voidP)) 
+    (voidP_s_1_5_tag_table : (tag_table voidP)) 
+     (charP_charM_s_1_5 : (memory voidP Int8.t)) : Uint64.t
       requires {
         ("expl:Internal"
         (#"/home/mikhail/repos/verker/strlen.h" 98 16 28#
         "expl:Requires clause"
-        (valid_str s_0_0 voidP_s_0_5_alloc_table charP_charM_s_0_5))) }
+        (valid_str s_1 voidP_s_1_5_alloc_table charP_charM_s_1_5))) }
       ensures {
         (#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
         "expl:Ensures clause"
@@ -3280,16 +3286,16 @@ module Function_istrlen_full_safe
         ((#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int result)))
-         (#"strlen.jc" 103 31 42# "expl:Integer cast" (Int8.of_int (0)))))
+         (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int result)))
+         (#"strlen.jc" 104 31 42# "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
         "expl:Ensures clause"
         ((#"/home/mikhail/repos/verker/strlen.h" 100 15 37#
          "expl:Ensures clause"
          (if ((<=) (0) (Uint64.to_int result)) then
-          (((<=) (offset_min voidP_s_0_5_alloc_table s_0_0) (0)) /\
-          (((>=) (offset_max voidP_s_0_5_alloc_table s_0_0)
+          (((<=) (offset_min voidP_s_1_5_alloc_table s_1) (0)) /\
+          (((>=) (offset_max voidP_s_1_5_alloc_table s_1)
            (Uint64.to_int result))
           /\
           (forall __framac_tmp3 : int.
@@ -3304,31 +3310,26 @@ module Function_istrlen_full_safe
          (forall j_0_0 : Uint64.t.
           ((Uint64.(<) j_0_0 result) ->
            (Int8.(<>)
-           (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int j_0_0)))
-           (#"strlen.jc" 117 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
+           (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int j_0_0)))
+           (#"strlen.jc" 118 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 102 15 35#
         "expl:Ensures clause"
-        (Uint64.(=) (strlen s_0_0 charP_charM_s_0_5) result))))))))) }
+        (Uint64.(=) (strlen s_1 charP_charM_s_1_5) result))))))))) }
   
 end
 
-module Function_strlen_def_safety
-#"/home/mikhail/repos/verker/strlen.h" 122 9 28# "expl:strlen_def, safety"
+module Function_intro_valid_str_full_safety
+#"/home/mikhail/repos/verker/strlen.h" 124 10 49#
+"expl:intro_valid_str_full, safety"
 
-  use Safe_uint64 
-  
-  use Safe_int32_of_Safe_int8 
-  
-  use Safe_int32 
+  use enum.Uint64 
   
   use import ref.Ref 
   
   use import core.Jessie_voidp 
   
   use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_shift_safe 
   
   use import core.Jessie_return 
   
@@ -3342,89 +3343,71 @@ module Function_strlen_def_safety
   
   use import core.Jessie_alloc_table 
   
-  use import core.Jessie_acc_safe 
-  
   use enum.Int8 
   
   use import int.Int 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Axiomatic_Strlen 
   
   use why3.Bool.Bool 
   
-  let strlen_def #"/home/mikhail/repos/verker/strlen.h" 122 9 28#
-  "expl:Function strlen_def, safety" =
+  let intro_valid_str_full #"/home/mikhail/repos/verker/strlen.h" 124 10 49#
+  "expl:Function intro_valid_str_full, safety" =
   fun
-   (s_5 : (pointer voidP)) (voidP_s_5_6_alloc_table : (alloc_table voidP))
-   (voidP_s_5_6_tag_table : (tag_table voidP)) (charP_charM_s_5_6 : (memory
-   voidP Int8.t)) 
+   (s_2 : (pointer voidP)) (n : Uint64.t) (voidP_s_2_6_alloc_table :
+   (alloc_table voidP)) (voidP_s_2_6_tag_table : (tag_table voidP))
+   (charP_charM_s_2_6 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_5_6_alloc_table s_5) ->
-     (((=) (typeof voidP_s_5_6_tag_table s_5) charP_tag) /\
+   (((allocated voidP_s_2_6_alloc_table s_2) ->
+     (((=) (typeof voidP_s_2_6_tag_table s_2) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_5_6_alloc_table s_5) i) /\
-       ((<) i (offset_max voidP_s_5_6_alloc_table s_5))) ->
-       ((=) (typeof voidP_s_5_6_tag_table (shift s_5 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_2_6_alloc_table s_2) i) /\
+       ((<) i (offset_max voidP_s_2_6_alloc_table s_2))) ->
+       ((=) (typeof voidP_s_2_6_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 118 16 28#
-   (valid_str s_5 voidP_s_5_6_alloc_table charP_charM_s_5_6))) }
-   ensures { ("expl:Postcondition" true) }  ->
+   (#"strlen.jc" 172 12 1273#
+   ((#"/home/mikhail/repos/verker/strlen.h" 118 16 32#
+    (if ((<=) (0) (Uint64.to_int n)) then
+     (((<=) (offset_min voidP_s_2_6_alloc_table s_2) (0)) /\
+     (((>=) (offset_max voidP_s_2_6_alloc_table s_2) (Uint64.to_int n)) /\
+     (forall __framac_tmp4 : int.
+      ((((<=) (0) __framac_tmp4) /\ ((<=) __framac_tmp4 (Uint64.to_int n)))
+       -> ((=) true true))))) else ((=) true true)))
+   /\
+   (#"strlen.jc" 172 12 1273#
+   ((#"/home/mikhail/repos/verker/strlen.h" 119 16 28#
+    (Int8.(=) (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int n)))
+    (#"strlen.jc" 184 56 67# "expl:Integer cast" (Int8.of_int (0)))))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 120 16 56#
+   (forall j_1 : Uint64.t.
+    ((Uint64.(<) j_1 n) ->
+     (Int8.(<>) (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int j_1)))
+     (#"strlen.jc" 187 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))
+   } ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
     begin
-    (let size_2 = ref (Safe_uint64.any_  () ) in
-    (let size1 = ref (Safe_uint64.any_  () ) in
     begin
-    (if
-    (#"/home/mikhail/repos/verker/strlen.h" 124 10 22#
-    (Safe_int32.(<>) 
-     (#"/home/mikhail/repos/verker/strlen.h" 124 10 14# "expl:Integer cast"
-     (Safe_int32_of_Safe_int8.cast 
-      (#"/home/mikhail/repos/verker/strlen.h" 124 10 14#
-      "expl:Pointer dereference"
-      (acc  voidP_s_5_6_alloc_table charP_charM_s_5_6 s_5 )) ))
-     (#"strlen.jc" 185 21 33# "expl:Integer cast" (Safe_int32.of_int (0))) ))
-    then
-     (let _jessie_54 =
+    any unit
+    requires { true } reads { s_2 }
+    ensures {
+      (#"/home/mikhail/repos/verker/strlen.h" 126 18 30#
+      (valid_str s_2 voidP_s_2_6_alloc_table charP_charM_s_2_6)) } ; () end;
      begin
-     (size_2 :=
-      (let _jessie_52 =
-      (let _jessie_53 = s_5 in
-      (#"/home/mikhail/repos/verker/strlen.h" 125 22 37#
-      "expl:Precondition for istrlen_full"
-      (Function_istrlen_full_safe.istrlen_full  _jessie_53
-       voidP_s_5_6_alloc_table voidP_s_5_6_tag_table charP_charM_s_5_6 ))) in
-      begin
-      (assert {
-      (#"/home/mikhail/repos/verker/strlen.h" 125 22 37#
-      "expl:Pointer index bounds" true) }); _jessie_52 end));
-      begin
-      (size1 :=
-       (let _jessie_51 =
-       (Safe_uint64.(-)  !size_2
-        (#"strlen.jc" 187 56 69# "expl:Integer cast"
-        (Safe_uint64.of_int (1))) ) in
-       begin
-       (assert {
-       (#"/home/mikhail/repos/verker/strlen.h" 126 15 20#
-       "expl:Pointer index bounds" true) }); _jessie_51 end));
-       (let _jessie_50 =
-       (shift_typesafe  s_5
-        (Safe_int32.to_int 
-         (#"strlen.jc" 188 47 59# "expl:Integer cast"
-         (Safe_int32.of_int (1))) ) ) in
-       (#"/home/mikhail/repos/verker/strlen.h" 127 8 27#
-       "expl:Precondition for istrlen_full"
-       (Function_istrlen_full_safe.istrlen_full  _jessie_50
-        voidP_s_5_6_alloc_table voidP_s_5_6_tag_table charP_charM_s_5_6 )))
-      end end in ()) else ()); (raise Return) end)); (raise Return) end with
-    Return -> () end
+     (let _jessie_48 =
+     (let _jessie_47 = s_2 in
+     (#"/home/mikhail/repos/verker/strlen.h" 127 7 29#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_47
+      voidP_s_2_6_alloc_table voidP_s_2_6_tag_table charP_charM_s_2_6 ))) in
+     ()); (raise Return) end; (raise Return) end with Return -> () end
   
 end
 
-module Function_istrlen_full
+module Function_elim_valid_str_full
 
   use enum.Uint64 
   
@@ -3448,11 +3431,11 @@ module Function_istrlen_full
   
   use why3.Bool.Bool 
   
-  val istrlen_full
-  (s_0_0 : (pointer voidP)) 
-   (voidP_s_0_5_alloc_table : (alloc_table voidP)) 
-    (voidP_s_0_5_tag_table : (tag_table voidP)) 
-     (charP_charM_s_0_5 : (memory voidP Int8.t)) : Uint64.t
+  val elim_valid_str_full
+  (s_1 : (pointer voidP)) 
+   (voidP_s_1_5_alloc_table : (alloc_table voidP)) 
+    (voidP_s_1_5_tag_table : (tag_table voidP)) 
+     (charP_charM_s_1_5 : (memory voidP Int8.t)) : Uint64.t
       requires { true }
       ensures {
         (#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
@@ -3462,16 +3445,16 @@ module Function_istrlen_full
         ((#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int result)))
-         (#"strlen.jc" 103 31 42# "expl:Integer cast" (Int8.of_int (0)))))
+         (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int result)))
+         (#"strlen.jc" 104 31 42# "expl:Integer cast" (Int8.of_int (0)))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 99 15 33#
         "expl:Ensures clause"
         ((#"/home/mikhail/repos/verker/strlen.h" 100 15 37#
          "expl:Ensures clause"
          (if ((<=) (0) (Uint64.to_int result)) then
-          (((<=) (offset_min voidP_s_0_5_alloc_table s_0_0) (0)) /\
-          (((>=) (offset_max voidP_s_0_5_alloc_table s_0_0)
+          (((<=) (offset_min voidP_s_1_5_alloc_table s_1) (0)) /\
+          (((>=) (offset_max voidP_s_1_5_alloc_table s_1)
            (Uint64.to_int result))
           /\
           (forall __framac_tmp3 : int.
@@ -3486,24 +3469,19 @@ module Function_istrlen_full
          (forall j_0_0 : Uint64.t.
           ((Uint64.(<) j_0_0 result) ->
            (Int8.(<>)
-           (select charP_charM_s_0_5 (shift s_0_0 (Uint64.to_int j_0_0)))
-           (#"strlen.jc" 117 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
+           (select charP_charM_s_1_5 (shift s_1 (Uint64.to_int j_0_0)))
+           (#"strlen.jc" 118 39 50# "expl:Integer cast" (Int8.of_int (0)))))))
         /\
         (#"/home/mikhail/repos/verker/strlen.h" 102 15 35#
         "expl:Ensures clause"
-        (Uint64.(=) (strlen s_0_0 charP_charM_s_0_5) result))))))))) }
+        (Uint64.(=) (strlen s_1 charP_charM_s_1_5) result))))))))) }
   
 end
 
-module Function_strlen_def_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 122 9 28# "expl:strlen_def, behaviors"
+module Function_intro_valid_str_full_behaviors
+#"/home/mikhail/repos/verker/strlen.h" 124 10 49#
+"expl:intro_valid_str_full, behaviors"
 
-  use Unsafe_uint64 
-  
-  use Unsafe_int32_of_Unsafe_int8 
-  
-  use Unsafe_int32 
-  
   use enum.Uint64 
   
   use import ref.Ref 
@@ -3511,8 +3489,6 @@ module Function_strlen_def_behaviors
   use import core.Jessie_voidp 
   
   use import core.Jessie_tag_table_type 
-  
-  use import core.Jessie_shift_unsafe 
   
   use import core.Jessie_return 
   
@@ -3526,110 +3502,88 @@ module Function_strlen_def_behaviors
   
   use import core.Jessie_alloc_table 
   
-  use import core.Jessie_acc_unsafe 
-  
   use enum.Int8 
   
   use import int.Int 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Axiomatic_Strlen 
   
   use why3.Bool.Bool 
   
-  let strlen_def_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 122 9 28#
-  "expl:Function strlen_def, default behavior" =
+  let intro_valid_str_full_ensures_default
+  #"/home/mikhail/repos/verker/strlen.h" 124 10 49#
+  "expl:Function intro_valid_str_full, default behavior" =
   fun
-   (s_5 : (pointer voidP)) (voidP_s_5_6_alloc_table : (alloc_table voidP))
-   (voidP_s_5_6_tag_table : (tag_table voidP)) (charP_charM_s_5_6 : (memory
-   voidP Int8.t)) 
+   (s_2 : (pointer voidP)) (n : Uint64.t) (voidP_s_2_6_alloc_table :
+   (alloc_table voidP)) (voidP_s_2_6_tag_table : (tag_table voidP))
+   (charP_charM_s_2_6 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_5_6_alloc_table s_5) ->
-     (((=) (typeof voidP_s_5_6_tag_table s_5) charP_tag) /\
+   (((allocated voidP_s_2_6_alloc_table s_2) ->
+     (((=) (typeof voidP_s_2_6_tag_table s_2) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_5_6_alloc_table s_5) i) /\
-       ((<) i (offset_max voidP_s_5_6_alloc_table s_5))) ->
-       ((=) (typeof voidP_s_5_6_tag_table (shift s_5 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_2_6_alloc_table s_2) i) /\
+       ((<) i (offset_max voidP_s_2_6_alloc_table s_2))) ->
+       ((=) (typeof voidP_s_2_6_tag_table (shift s_2 i)) charP_tag)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 118 16 28#
-   (valid_str s_5 voidP_s_5_6_alloc_table charP_charM_s_5_6))) }
+   (#"strlen.jc" 172 12 1273#
+   ((#"/home/mikhail/repos/verker/strlen.h" 118 16 32#
+    (if ((<=) (0) (Uint64.to_int n)) then
+     (((<=) (offset_min voidP_s_2_6_alloc_table s_2) (0)) /\
+     (((>=) (offset_max voidP_s_2_6_alloc_table s_2) (Uint64.to_int n)) /\
+     (forall __framac_tmp4 : int.
+      ((((<=) (0) __framac_tmp4) /\ ((<=) __framac_tmp4 (Uint64.to_int n)))
+       -> ((=) true true))))) else ((=) true true)))
+   /\
+   (#"strlen.jc" 172 12 1273#
+   ((#"/home/mikhail/repos/verker/strlen.h" 119 16 28#
+    (Int8.(=) (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int n)))
+    (#"strlen.jc" 184 56 67# "expl:Integer cast" (Int8.of_int (0)))))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 120 16 56#
+   (forall j_1 : Uint64.t.
+    ((Uint64.(<) j_1 n) ->
+     (Int8.(<>) (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int j_1)))
+     (#"strlen.jc" 187 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))
+   }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 119 15 46# "expl:Ensures clause"
-     (#"/home/mikhail/repos/verker/strlen.h" 119 15 46# "expl:Ensures clause"
-     ((#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+     (#"/home/mikhail/repos/verker/strlen.h" 121 15 27# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 121 15 27# "expl:Ensures clause"
+     ((#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
       "expl:Ensures clause"
-      ((Int8.(=) (select charP_charM_s_5_6 (shift s_5 (0)))
-       (#"strlen.jc" 173 59 70# "expl:Integer cast" (Int8.of_int (0)))) ->
-       (Uint64.(=) (strlen s_5 charP_charM_s_5_6) (#"strlen.jc" 174 62 75#
-       "expl:Integer cast" (Uint64.of_int (0))))))
+      (valid_str s_2 voidP_s_2_6_alloc_table charP_charM_s_2_6))
      /\
-     (#"/home/mikhail/repos/verker/strlen.h" 120 15 62# "expl:Ensures clause"
-     ((Int8.(<>) (select charP_charM_s_5_6 (shift s_5 (0)))
-      (#"strlen.jc" 175 60 71# "expl:Integer cast" (Int8.of_int (0)))) ->
-      ((=) (Uint64.to_int (strlen s_5 charP_charM_s_5_6))
-      (Int.(+) (1)
-      (Uint64.to_int (strlen (shift s_5 (1)) charP_charM_s_5_6)))))))))) } 
-   ->
+     (#"/home/mikhail/repos/verker/strlen.h" 122 15 29# "expl:Ensures clause"
+     (Uint64.(=) (strlen s_2 charP_charM_s_2_6) n)))))) }  ->
    'Init:
    try
     begin
-    (let size_2 = ref (Unsafe_uint64.any_  () ) in
-    (let size1 = ref (Unsafe_uint64.any_  () ) in
     begin
-    (if
-    (#"/home/mikhail/repos/verker/strlen.h" 124 10 22#
-    (Unsafe_int32.(<>) 
-     (#"/home/mikhail/repos/verker/strlen.h" 124 10 14# "expl:Integer cast"
-     (Unsafe_int32_of_Unsafe_int8.cast 
-      (acc  charP_charM_s_5_6
-       (shift_  s_5
-        (Unsafe_int32.to_int 
-         (#"strlen.jc" 184 55 67# "expl:Integer cast"
-         (Unsafe_int32.of_int (0))) ) ) ) ))
-     (#"strlen.jc" 185 21 33# "expl:Integer cast" (Unsafe_int32.of_int (0)))
-     ))
-    then
-     (let _jessie_49 =
+    (assert {
+    (#"/home/mikhail/repos/verker/strlen.h" 126 18 30#
+    "expl:Assertion in line 126"
+    (valid_str s_2 voidP_s_2_6_alloc_table charP_charM_s_2_6)) }); () end;
      begin
-     (size_2 :=
-      (let _jessie_48 = s_5 in
-      (#"/home/mikhail/repos/verker/strlen.h" 125 22 37#
-      "expl:Precondition for istrlen_full"
-      (Function_istrlen_full.istrlen_full  _jessie_48 voidP_s_5_6_alloc_table
-       voidP_s_5_6_tag_table charP_charM_s_5_6 ))));
-      begin
-      (size1 :=
-       (Unsafe_uint64.(-)  !size_2
-        (#"strlen.jc" 187 56 69# "expl:Integer cast"
-        (Unsafe_uint64.of_int (1))) ));
-       (let _jessie_45 =
-       (shift_  s_5
-        (Unsafe_int32.to_int 
-         (#"strlen.jc" 188 47 59# "expl:Integer cast"
-         (Unsafe_int32.of_int (1))) ) ) in
-       (#"/home/mikhail/repos/verker/strlen.h" 127 8 27#
-       "expl:Precondition for istrlen_full"
-       (Function_istrlen_full.istrlen_full  _jessie_45
-        voidP_s_5_6_alloc_table voidP_s_5_6_tag_table charP_charM_s_5_6 )))
-      end end in ()) else ()); (raise Return) end)); (raise Return) end with
-    Return -> () end
+     (let _jessie_46 =
+     (let _jessie_45 = s_2 in
+     (#"/home/mikhail/repos/verker/strlen.h" 127 7 29#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full.elim_valid_str_full  _jessie_45
+      voidP_s_2_6_alloc_table voidP_s_2_6_tag_table charP_charM_s_2_6 ))) in
+     ()); (raise Return) end; (raise Return) end with Return -> () end
   
 end
 
-module Function_valid_str_shiftn_safety
-#"/home/mikhail/repos/verker/strlen.h" 137 10 45#
-"expl:valid_str_shiftn, safety"
+module Function_elim_strlen_safety
+#"/home/mikhail/repos/verker/strlen.h" 136 9 29# "expl:elim_strlen, safety"
 
-  use enum.Uint64 
-  
-  use Safe_uint64 
-  
   use Safe_int32_of_Safe_int8 
   
   use Safe_int32 
+  
+  use Safe_bit_uint64 
   
   use import ref.Ref 
   
@@ -3657,168 +3611,578 @@ module Function_valid_str_shiftn_safety
   
   use import int.Int 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
-  use import Exceptions 
+  use enum.Bit_uint64 
   
   use import Axiomatic_Strlen 
   
   use why3.Bool.Bool 
   
-  let valid_str_shiftn #"/home/mikhail/repos/verker/strlen.h" 137 10 45#
-  "expl:Function valid_str_shiftn, safety" =
+  let elim_strlen #"/home/mikhail/repos/verker/strlen.h" 136 9 29#
+  "expl:Function elim_strlen, safety" =
   fun
-   (s_7 : (pointer voidP)) (i_1 : Uint64.t) (voidP_s_7_7_alloc_table :
-   (alloc_table voidP)) (voidP_s_7_7_tag_table : (tag_table voidP))
-   (charP_charM_s_7_7 : (memory voidP Int8.t)) 
+   (s_3 : (pointer voidP)) (voidP_s_7_alloc_table : (alloc_table voidP))
+   (voidP_s_7_tag_table : (tag_table voidP)) (charP_charM_s_7 : (memory voidP
+   Int8.t)) 
    requires {
-   (((allocated voidP_s_7_7_alloc_table s_7) ->
-     (((=) (typeof voidP_s_7_7_tag_table s_7) charP_tag) /\
+   (((allocated voidP_s_7_alloc_table s_3) ->
+     (((=) (typeof voidP_s_7_tag_table s_3) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_7_7_alloc_table s_7) i) /\
-       ((<) i (offset_max voidP_s_7_7_alloc_table s_7))) ->
-       ((=) (typeof voidP_s_7_7_tag_table (shift s_7 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_7_alloc_table s_3) i) /\
+       ((<) i (offset_max voidP_s_7_alloc_table s_3))) ->
+       ((=) (typeof voidP_s_7_tag_table (shift s_3 i)) charP_tag)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   ((#"/home/mikhail/repos/verker/strlen.h" 133 16 28#
-    (valid_str s_7 voidP_s_7_7_alloc_table charP_charM_s_7_7))
-   /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   ((#"/home/mikhail/repos/verker/strlen.h" 133 32 38#
-    (Uint64.(<=) (#"strlen.jc" 197 33 46# "expl:Integer cast" (Uint64.of_int
-    (0))) i_1))
-   /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 37 50#
-   (Uint64.(<) i_1 (strlen s_7 charP_charM_s_7_7))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 132 16 28#
+   (valid_str s_3 voidP_s_7_alloc_table charP_charM_s_7))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
     begin
-    (let j_1 = ref (Safe_uint64.any_  () ) in
-    (let size_3 = ref (Safe_uint64.any_  () ) in
-    (let size1_0 = ref (Safe_uint64.any_  () ) in
+    (let size_2 = ref (Safe_bit_uint64.any_  () ) in
+    (let size1 = ref (Safe_bit_uint64.any_  () ) in
     begin
-    (let _jessie_65 =
-    (let _jessie_64 = s_7 in
-    (#"/home/mikhail/repos/verker/strlen.h" 138 7 22#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full_safe.istrlen_full  _jessie_64
-     voidP_s_7_7_alloc_table voidP_s_7_7_tag_table charP_charM_s_7_7 ))) in
+    (size_2 :=
+     (let _jessie_53 =
+     (let _jessie_54 = s_3 in
+     (#"/home/mikhail/repos/verker/strlen.h" 138 20 42#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_54
+      voidP_s_7_alloc_table voidP_s_7_tag_table charP_charM_s_7 ))) in
+     begin
+     (assert {
+     (#"/home/mikhail/repos/verker/strlen.h" 138 20 42#
+     "expl:Pointer index bounds" true) }); _jessie_53 end));
+     (if
+     (#"/home/mikhail/repos/verker/strlen.h" 139 11 23#
+     (Safe_int32.(<>) 
+      (#"/home/mikhail/repos/verker/strlen.h" 139 11 15# "expl:Integer cast"
+      (Safe_int32_of_Safe_int8.cast 
+       (#"/home/mikhail/repos/verker/strlen.h" 139 11 15#
+       "expl:Pointer dereference"
+       (acc  voidP_s_7_alloc_table charP_charM_s_7 s_3 )) ))
+      (#"strlen.jc" 219 21 33# "expl:Integer cast" (Safe_int32.of_int (0))) ))
+     then
+      begin
+      begin
+      any unit
+      requires { true } reads { s_3 }
+      ensures {
+        (#"/home/mikhail/repos/verker/strlen.h" 140 20 46#
+        (Int8.(=)
+        (select charP_charM_s_7
+        (shift (shift s_3 (1))
+        (Bit_uint64.to_int
+        (Bit_uint64.(-%) !size_2 (#"strlen.jc" 224 58 71# "expl:Integer cast"
+        (Bit_uint64.of_int_const 1)))))) (#"strlen.jc" 225 54 65#
+        "expl:Integer cast" (Int8.of_int (0))))) } ; () end;
+       begin
+       (size1 :=
+        (let _jessie_55 =
+        (let _jessie_56 =
+        (shift_typesafe  s_3
+         (Safe_int32.to_int 
+          (#"strlen.jc" 229 67 79# "expl:Integer cast"
+          (Safe_int32.of_int (1))) ) ) in
+        (#"/home/mikhail/repos/verker/strlen.h" 141 24 50#
+        "expl:Precondition for elim_valid_str_full"
+        (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_56
+         voidP_s_7_alloc_table voidP_s_7_tag_table charP_charM_s_7 ))) in
+        begin
+        (assert {
+        (#"/home/mikhail/repos/verker/strlen.h" 141 24 50#
+        "expl:Pointer index bounds" true) }); _jessie_55 end));
+        begin
+        any unit
+        requires { true }
+        ensures {
+          (#"/home/mikhail/repos/verker/strlen.h" 142 20 37#
+          ((>=) (Bit_uint64.to_int !size1)
+          (Int.(-) (Bit_uint64.to_int !size_2) (1)))) } ; () end;
+        begin
+        any unit
+        requires { true }
+        ensures {
+          (#"/home/mikhail/repos/verker/strlen.h" 143 20 37#
+          ((<=) (Bit_uint64.to_int !size1)
+          (Int.(-) (Bit_uint64.to_int !size_2) (1)))) } ; () end end end
+     else ()); (raise Return) end)); (raise Return) end with Return -> () end
+  
+end
+
+module Function_elim_strlen_behaviors
+#"/home/mikhail/repos/verker/strlen.h" 136 9 29#
+"expl:elim_strlen, behaviors"
+
+  use Unsafe_int32_of_Unsafe_int8 
+  
+  use Unsafe_int32 
+  
+  use Unsafe_bit_uint64 
+  
+  use import ref.Ref 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_shift_unsafe 
+  
+  use import core.Jessie_return 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_charp_tag_id 
+  
+  use import core.Jessie_allocable 
+  
+  use import core.Jessie_alloc_table 
+  
+  use import core.Jessie_acc_unsafe 
+  
+  use enum.Int8 
+  
+  use import int.Int 
+  
+  use Function_elim_valid_str_full 
+  
+  use enum.Bit_uint64 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  let elim_strlen_ensures_default
+  #"/home/mikhail/repos/verker/strlen.h" 136 9 29#
+  "expl:Function elim_strlen, default behavior" =
+  fun
+   (s_3 : (pointer voidP)) (voidP_s_7_alloc_table : (alloc_table voidP))
+   (voidP_s_7_tag_table : (tag_table voidP)) (charP_charM_s_7 : (memory voidP
+   Int8.t)) 
+   requires {
+   (((allocated voidP_s_7_alloc_table s_3) ->
+     (((=) (typeof voidP_s_7_tag_table s_3) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_s_7_alloc_table s_3) i) /\
+       ((<) i (offset_max voidP_s_7_alloc_table s_3))) ->
+       ((=) (typeof voidP_s_7_tag_table (shift s_3 i)) charP_tag)))))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 132 16 28#
+   (valid_str s_3 voidP_s_7_alloc_table charP_charM_s_7))) }
+   ensures {
+     ("expl:Postcondition"
+     (#"/home/mikhail/repos/verker/strlen.h" 133 15 46# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 133 15 46# "expl:Ensures clause"
+     ((#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
+      "expl:Ensures clause"
+      ((Int8.(=) (select charP_charM_s_7 (shift s_3 (0)))
+       (#"strlen.jc" 206 57 68# "expl:Integer cast" (Int8.of_int (0)))) ->
+       (Bit_uint64.(=) (strlen s_3 charP_charM_s_7) (#"strlen.jc" 207 60 73#
+       "expl:Integer cast" (Bit_uint64.of_int_const 0)))))
+     /\
+     (#"/home/mikhail/repos/verker/strlen.h" 134 15 62# "expl:Ensures clause"
+     ((Int8.(<>) (select charP_charM_s_7 (shift s_3 (0)))
+      (#"strlen.jc" 208 58 69# "expl:Integer cast" (Int8.of_int (0)))) ->
+      ((=) (Bit_uint64.to_int (strlen s_3 charP_charM_s_7))
+      (Int.(+) (1)
+      (Bit_uint64.to_int (strlen (shift s_3 (1)) charP_charM_s_7)))))))))) } 
+   ->
+   'Init:
+   try
+    begin
+    (let size_2 = ref (Unsafe_bit_uint64.any_  () ) in
+    (let size1 = ref (Unsafe_bit_uint64.any_  () ) in
+    begin
+    (size_2 :=
+     (let _jessie_50 = s_3 in
+     (#"/home/mikhail/repos/verker/strlen.h" 138 20 42#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full.elim_valid_str_full  _jessie_50
+      voidP_s_7_alloc_table voidP_s_7_tag_table charP_charM_s_7 ))));
+     (if
+     (#"/home/mikhail/repos/verker/strlen.h" 139 11 23#
+     (Unsafe_int32.(<>) 
+      (#"/home/mikhail/repos/verker/strlen.h" 139 11 15# "expl:Integer cast"
+      (Unsafe_int32_of_Unsafe_int8.cast 
+       (acc  charP_charM_s_7
+        (shift_  s_3
+         (Unsafe_int32.to_int 
+          (#"strlen.jc" 218 53 65# "expl:Integer cast"
+          (Unsafe_int32.of_int (0))) ) ) ) ))
+      (#"strlen.jc" 219 21 33# "expl:Integer cast" (Unsafe_int32.of_int (0)))
+      ))
+     then
+      begin
+      begin
+      (assert {
+      (#"/home/mikhail/repos/verker/strlen.h" 140 20 46#
+      "expl:Assertion in line 140"
+      (Int8.(=)
+      (select charP_charM_s_7
+      (shift (shift s_3 (1))
+      (Bit_uint64.to_int
+      (Bit_uint64.(-%) !size_2 (#"strlen.jc" 224 58 71# "expl:Integer cast"
+      (Bit_uint64.of_int_const 1)))))) (#"strlen.jc" 225 54 65#
+      "expl:Integer cast" (Int8.of_int (0))))) }); () end;
+       begin
+       (size1 :=
+        (let _jessie_52 =
+        (shift_  s_3
+         (Unsafe_int32.to_int 
+          (#"strlen.jc" 229 67 79# "expl:Integer cast"
+          (Unsafe_int32.of_int (1))) ) ) in
+        (#"/home/mikhail/repos/verker/strlen.h" 141 24 50#
+        "expl:Precondition for elim_valid_str_full"
+        (Function_elim_valid_str_full.elim_valid_str_full  _jessie_52
+         voidP_s_7_alloc_table voidP_s_7_tag_table charP_charM_s_7 ))));
+        begin
+        (assert {
+        (#"/home/mikhail/repos/verker/strlen.h" 142 20 37#
+        "expl:Assertion in line 142"
+        ((>=) (Bit_uint64.to_int !size1)
+        (Int.(-) (Bit_uint64.to_int !size_2) (1)))) }); () end;
+        begin
+        (assert {
+        (#"/home/mikhail/repos/verker/strlen.h" 143 20 37#
+        "expl:Assertion in line 143"
+        ((<=) (Bit_uint64.to_int !size1)
+        (Int.(-) (Bit_uint64.to_int !size_2) (1)))) }); () end end end
+     else ()); (raise Return) end)); (raise Return) end with Return -> () end
+  
+end
+
+module Function_intro_valid_str_full_safe
+
+  use enum.Uint64 
+  
+  use import ref.Ref 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int8 
+  
+  use import int.Int 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  val intro_valid_str_full
+  (s_2 : (pointer voidP)) 
+   (n : Uint64.t) 
+    (voidP_s_2_6_alloc_table : (alloc_table voidP)) 
+     (voidP_s_2_6_tag_table : (tag_table voidP)) 
+      (charP_charM_s_2_6 : (memory voidP Int8.t)) : unit
+       requires {
+         ("expl:Internal"
+         (#"strlen.jc" 172 12 1273# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 118 16 32#
+          "expl:Requires clause"
+          (if ((<=) (0) (Uint64.to_int n)) then
+           (((<=) (offset_min voidP_s_2_6_alloc_table s_2) (0)) /\
+           (((>=) (offset_max voidP_s_2_6_alloc_table s_2) (Uint64.to_int n))
+           /\
+           (forall __framac_tmp4 : int.
+            ((((<=) (0) __framac_tmp4) /\
+             ((<=) __framac_tmp4 (Uint64.to_int n))) -> ((=) true true)))))
+           else ((=) true true)))
+         /\
+         (#"strlen.jc" 172 12 1273# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 119 16 28#
+          "expl:Requires clause"
+          (Int8.(=) (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int n)))
+          (#"strlen.jc" 184 56 67# "expl:Integer cast" (Int8.of_int (0)))))
+         /\
+         (#"/home/mikhail/repos/verker/strlen.h" 120 16 56#
+         "expl:Requires clause"
+         (forall j_1 : Uint64.t.
+          ((Uint64.(<) j_1 n) ->
+           (Int8.(<>)
+           (select charP_charM_s_2_6 (shift s_2 (Uint64.to_int j_1)))
+           (#"strlen.jc" 187 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))
+         }
+       ensures {
+         (#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+         "expl:Ensures clause"
+         (#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+         "expl:Ensures clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+          "expl:Ensures clause"
+          (valid_str s_2 voidP_s_2_6_alloc_table charP_charM_s_2_6))
+         /\
+         (#"/home/mikhail/repos/verker/strlen.h" 122 15 29#
+         "expl:Ensures clause" (Uint64.(=) (strlen s_2 charP_charM_s_2_6) n)))))
+         }
+  
+end
+
+module Function_valid_str_shiftn_safety
+#"/home/mikhail/repos/verker/strlen.h" 153 10 45#
+"expl:valid_str_shiftn, safety"
+
+  use enum.Uint64 
+  
+  use Safe_int32_of_Safe_int8 
+  
+  use Safe_int32 
+  
+  use Safe_bit_uint64 
+  
+  use import ref.Ref 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_shift_safe 
+  
+  use import core.Jessie_return 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_charp_tag_id 
+  
+  use import core.Jessie_allocable 
+  
+  use import core.Jessie_alloc_table 
+  
+  use import core.Jessie_acc_safe 
+  
+  use enum.Int8 
+  
+  use import int.Int 
+  
+  use Function_intro_valid_str_full_safe 
+  
+  use Function_elim_valid_str_full_safe 
+  
+  use import Exceptions 
+  
+  use enum.Bit_uint64 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  let valid_str_shiftn #"/home/mikhail/repos/verker/strlen.h" 153 10 45#
+  "expl:Function valid_str_shiftn, safety" =
+  fun
+   (s_8 : (pointer voidP)) (i_1 : Uint64.t) (voidP_s_8_8_alloc_table :
+   (alloc_table voidP)) (voidP_s_8_8_tag_table : (tag_table voidP))
+   (charP_charM_s_8_8 : (memory voidP Int8.t)) 
+   requires {
+   (((allocated voidP_s_8_8_alloc_table s_8) ->
+     (((=) (typeof voidP_s_8_8_tag_table s_8) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_s_8_8_alloc_table s_8) i) /\
+       ((<) i (offset_max voidP_s_8_8_alloc_table s_8))) ->
+       ((=) (typeof voidP_s_8_8_tag_table (shift s_8 i)) charP_tag)))))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   ((#"/home/mikhail/repos/verker/strlen.h" 149 16 28#
+    (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   ((#"/home/mikhail/repos/verker/strlen.h" 149 32 38#
+    (Bit_uint64.(<=) (#"strlen.jc" 252 34 47# "expl:Integer cast"
+    (Bit_uint64.of_int_const 0)) i_1))
+   /\
+   (#"/home/mikhail/repos/verker/strlen.h" 149 37 50#
+   (Bit_uint64.(<) i_1 (strlen s_8 charP_charM_s_8_8))))))))) }
+   ensures { ("expl:Postcondition" true) }  ->
+   'Init:
+   try
+    begin
+    (let j_2 = ref (Safe_bit_uint64.any_  () ) in
+    (let size_3 = ref (Safe_bit_uint64.any_  () ) in
+    begin
+    (let _jessie_66 =
+    (let _jessie_65 = s_8 in
+    (#"/home/mikhail/repos/verker/strlen.h" 154 7 29#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_65
+     voidP_s_8_8_alloc_table voidP_s_8_8_tag_table charP_charM_s_8_8 ))) in
     ());
      try
       begin
-      (j_1 :=
-       (let _jessie_66 =
-       (#"strlen.jc" 212 23 36# "expl:Integer cast" (Safe_uint64.of_int (0)))
-       in
+      (j_2 :=
+       (let _jessie_67 =
+       (#"strlen.jc" 265 23 36# "expl:Integer cast"
+       (Safe_bit_uint64.of_int_const 0)) in
        begin
        (assert {
-       (#"/home/mikhail/repos/verker/strlen.h" 143 19 20#
-       "expl:Pointer index bounds" true) }); _jessie_66 end));
+       (#"/home/mikhail/repos/verker/strlen.h" 159 19 20#
+       "expl:Pointer index bounds" true) }); _jessie_67 end));
        'Loop_6:
        loop
-       invariant { (#"strlen.jc" 214 9 1377# true) }
-         variant { (#"/home/mikhail/repos/verker/strlen.h" 141 23 28#
-           (Int.(-) (Uint64.to_int i_1) (Uint64.to_int !j_1))) }
+       invariant { (#"strlen.jc" 267 9 2840# true) }
+         variant { (#"/home/mikhail/repos/verker/strlen.h" 157 23 28#
+           (Int.(-) (Bit_uint64.to_int i_1) (Bit_uint64.to_int !j_2))) }
         begin
         any unit
-        requires { true } reads { i_1, s_7 }
+        requires { true } reads { i_1, s_8 }
         ensures {
-          ((#"/home/mikhail/repos/verker/strlen.h" 140 25 36#
-           (#"/home/mikhail/repos/verker/strlen.h" 140 25 36#
-           ((#"/home/mikhail/repos/verker/strlen.h" 140 25 31#
-            (Uint64.(<=) (#"strlen.jc" 218 41 54# "expl:Integer cast"
-            (Uint64.of_int (0))) !j_1))
+          ((#"/home/mikhail/repos/verker/strlen.h" 156 25 36#
+           (#"/home/mikhail/repos/verker/strlen.h" 156 25 36#
+           ((#"/home/mikhail/repos/verker/strlen.h" 156 25 31#
+            (Bit_uint64.(<=) (#"strlen.jc" 271 41 54# "expl:Integer cast"
+            (Bit_uint64.of_int_const 0)) !j_2))
            /\
-           (#"/home/mikhail/repos/verker/strlen.h" 140 30 36#
-           (Uint64.(<=) !j_1 i_1)))))
+           (#"/home/mikhail/repos/verker/strlen.h" 156 30 36#
+           (Bit_uint64.(<=) !j_2 i_1)))))
           /\
-          (#"/home/mikhail/repos/verker/strlen.h" 139 25 41#
-          (valid_str (shift s_7 (Uint64.to_int !j_1)) voidP_s_7_7_alloc_table
-          charP_charM_s_7_7))) } ;
+          (#"/home/mikhail/repos/verker/strlen.h" 155 25 41#
+          (valid_str (shift s_8 (Bit_uint64.to_int !j_2))
+          voidP_s_8_8_alloc_table charP_charM_s_8_8))) } ;
          try
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 143 26 31#
-          (Safe_uint64.(<)  !j_1 i_1 )) then ()
+          (#"/home/mikhail/repos/verker/strlen.h" 159 26 31#
+          (Safe_bit_uint64.(<)  !j_2 i_1 )) then ()
           else (raise (Goto_while_0_break_1_exc ())));
            begin
            (size_3 :=
-            (let _jessie_67 =
             (let _jessie_68 =
-            (shift_typesafe  s_7 (Safe_uint64.to_int  !j_1 ) ) in
-            (#"/home/mikhail/repos/verker/strlen.h" 144 23 42#
-            "expl:Precondition for istrlen_full"
-            (Function_istrlen_full_safe.istrlen_full  _jessie_68
-             voidP_s_7_7_alloc_table voidP_s_7_7_tag_table charP_charM_s_7_7
-             ))) in
+            (let _jessie_69 =
+            (shift_typesafe  s_8 (Safe_bit_uint64.to_int  !j_2 ) ) in
+            (#"/home/mikhail/repos/verker/strlen.h" 160 23 49#
+            "expl:Precondition for elim_valid_str_full"
+            (Function_elim_valid_str_full_safe.elim_valid_str_full 
+             _jessie_69 voidP_s_8_8_alloc_table voidP_s_8_8_tag_table
+             charP_charM_s_8_8 ))) in
             begin
             (assert {
-            (#"/home/mikhail/repos/verker/strlen.h" 144 23 42#
-            "expl:Pointer index bounds" true) }); _jessie_67 end));
+            (#"/home/mikhail/repos/verker/strlen.h" 160 23 49#
+            "expl:Pointer index bounds" true) }); _jessie_68 end));
             (if
-            (#"/home/mikhail/repos/verker/strlen.h" 145 13 31#
+            (#"/home/mikhail/repos/verker/strlen.h" 161 13 31#
             (Safe_int32.(<>) 
-             (#"/home/mikhail/repos/verker/strlen.h" 145 13 23#
+             (#"/home/mikhail/repos/verker/strlen.h" 161 13 23#
              "expl:Integer cast"
              (Safe_int32_of_Safe_int8.cast 
-              (#"/home/mikhail/repos/verker/strlen.h" 145 13 23#
+              (#"/home/mikhail/repos/verker/strlen.h" 161 13 23#
               "expl:Pointer dereference"
-              (acc  voidP_s_7_7_alloc_table charP_charM_s_7_7
-               (shift_typesafe  s_7 (Safe_uint64.to_int  !j_1 ) ) )) ))
-             (#"strlen.jc" 231 33 45# "expl:Integer cast"
+              (acc  voidP_s_8_8_alloc_table charP_charM_s_8_8
+               (shift_typesafe  s_8 (Safe_bit_uint64.to_int  !j_2 ) ) )) ))
+             (#"strlen.jc" 286 33 45# "expl:Integer cast"
              (Safe_int32.of_int (0))) ))
             then
-             (let _jessie_71 =
              begin
-             (size1_0 :=
-              (let _jessie_70 =
-              (Safe_uint64.(-)  !size_3
-               (#"strlen.jc" 233 62 75# "expl:Integer cast"
-               (Safe_uint64.of_int (1))) ) in
-              begin
-              (assert {
-              (#"/home/mikhail/repos/verker/strlen.h" 146 18 23#
-              "expl:Pointer index bounds" true) }); _jessie_70 end));
-              (let _jessie_69 =
+             begin
+             any unit
+             requires { true } reads { s_8 }
+             ensures {
+               (#"/home/mikhail/repos/verker/strlen.h" 162 22 90#
+               (forall k : Uint64.t.
+                (((<) (Bit_uint64.to_int k)
+                 (Int.(-) (Bit_uint64.to_int !size_3) (1))) ->
+                 (Int8.(=)
+                 (select charP_charM_s_8_8
+                 (shift (shift (shift s_8 (Bit_uint64.to_int !j_2)) (1))
+                 (Bit_uint64.to_int k)))
+                 (select charP_charM_s_8_8
+                 (shift (shift s_8 (Bit_uint64.to_int !j_2))
+                 (Bit_uint64.to_int
+                 (Bit_uint64.(+%) k (#"strlen.jc" 300 68 81#
+                 "expl:Integer cast" (Bit_uint64.of_int_const 1)))))))))) } ;
+              () end;
+              (let _jessie_71 =
               (shift_typesafe 
-               (shift_typesafe  s_7 (Safe_uint64.to_int  !j_1 ) )
+               (shift_typesafe  s_8 (Safe_bit_uint64.to_int  !j_2 ) )
                (Safe_int32.to_int 
-                (#"strlen.jc" 235 54 66# "expl:Integer cast"
+                (#"strlen.jc" 306 62 74# "expl:Integer cast"
                 (Safe_int32.of_int (1))) ) ) in
-              (#"/home/mikhail/repos/verker/strlen.h" 147 11 36#
-              "expl:Precondition for istrlen_full"
-              (Function_istrlen_full_safe.istrlen_full  _jessie_69
-               voidP_s_7_7_alloc_table voidP_s_7_7_tag_table
-               charP_charM_s_7_7 ))) end in ()) else ()) end;
-           (j_1 :=
+              (let _jessie_70 =
+              (Safe_bit_uint64.(-)  !size_3
+               (#"strlen.jc" 309 63 76# "expl:Integer cast"
+               (Safe_bit_uint64.of_int_const 1)) ) in
+              (#"/home/mikhail/repos/verker/strlen.h" 163 11 52#
+              "expl:Precondition for intro_valid_str_full"
+              (Function_intro_valid_str_full_safe.intro_valid_str_full 
+               _jessie_71 _jessie_70 voidP_s_8_8_alloc_table
+               voidP_s_8_8_tag_table charP_charM_s_8_8 )))) end else ()) end;
+           (j_2 :=
             (let _jessie_72 =
-            (Safe_uint64.(+)  !j_1
-             (#"strlen.jc" 238 53 66# "expl:Integer cast"
-             (Safe_uint64.of_int (1))) ) in
+            (Safe_bit_uint64.(+)  !j_2
+             (#"strlen.jc" 312 53 66# "expl:Integer cast"
+             (Safe_bit_uint64.of_int_const 1)) ) in
             begin
             (assert {
-            (#"/home/mikhail/repos/verker/strlen.h" 143 33 36#
+            (#"/home/mikhail/repos/verker/strlen.h" 159 33 36#
             "expl:Pointer index bounds" true) }); _jessie_72 end)) end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_11 -> () end end end; (raise (Goto_while_0_break_1_exc ()))
       end with Goto_while_0_break_1_exc _jessie_9 ->
-      'While_0_break_1: 'While_0_break_1: () end; (raise Return) end)));
+      'While_0_break_1: 'While_0_break_1: () end; (raise Return) end));
      (raise Return) end with Return -> () end
   
 end
 
+module Function_intro_valid_str_full
+
+  use enum.Uint64 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int8 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  val intro_valid_str_full
+  (s_2 : (pointer voidP)) 
+   (n : Uint64.t) 
+    (voidP_s_2_6_alloc_table : (alloc_table voidP)) 
+     (voidP_s_2_6_tag_table : (tag_table voidP)) 
+      (charP_charM_s_2_6 : (memory voidP Int8.t)) : unit
+       requires { true }
+       ensures {
+         (#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+         "expl:Ensures clause"
+         (#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+         "expl:Ensures clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 121 15 27#
+          "expl:Ensures clause"
+          (valid_str s_2 voidP_s_2_6_alloc_table charP_charM_s_2_6))
+         /\
+         (#"/home/mikhail/repos/verker/strlen.h" 122 15 29#
+         "expl:Ensures clause" (Uint64.(=) (strlen s_2 charP_charM_s_2_6) n)))))
+         }
+  
+end
+
 module Function_valid_str_shiftn_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 137 10 45#
+#"/home/mikhail/repos/verker/strlen.h" 153 10 45#
 "expl:valid_str_shiftn, behaviors"
 
-  use Unsafe_uint64 
-  
   use Unsafe_int32_of_Unsafe_int8 
   
   use Unsafe_int32 
+  
+  use Unsafe_bit_uint64 
   
   use enum.Uint64 
   
@@ -3848,134 +4212,155 @@ module Function_valid_str_shiftn_behaviors
   
   use import int.Int 
   
-  use Function_istrlen_full 
+  use Function_intro_valid_str_full 
+  
+  use Function_elim_valid_str_full 
   
   use import Exceptions 
+  
+  use enum.Bit_uint64 
   
   use import Axiomatic_Strlen 
   
   use why3.Bool.Bool 
   
   let valid_str_shiftn_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 137 10 45#
+  #"/home/mikhail/repos/verker/strlen.h" 153 10 45#
   "expl:Function valid_str_shiftn, default behavior" =
   fun
-   (s_7 : (pointer voidP)) (i_1 : Uint64.t) (voidP_s_7_7_alloc_table :
-   (alloc_table voidP)) (voidP_s_7_7_tag_table : (tag_table voidP))
-   (charP_charM_s_7_7 : (memory voidP Int8.t)) 
+   (s_8 : (pointer voidP)) (i_1 : Uint64.t) (voidP_s_8_8_alloc_table :
+   (alloc_table voidP)) (voidP_s_8_8_tag_table : (tag_table voidP))
+   (charP_charM_s_8_8 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_7_7_alloc_table s_7) ->
-     (((=) (typeof voidP_s_7_7_tag_table s_7) charP_tag) /\
+   (((allocated voidP_s_8_8_alloc_table s_8) ->
+     (((=) (typeof voidP_s_8_8_tag_table s_8) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_7_7_alloc_table s_7) i) /\
-       ((<) i (offset_max voidP_s_7_7_alloc_table s_7))) ->
-       ((=) (typeof voidP_s_7_7_tag_table (shift s_7 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_8_8_alloc_table s_8) i) /\
+       ((<) i (offset_max voidP_s_8_8_alloc_table s_8))) ->
+       ((=) (typeof voidP_s_8_8_tag_table (shift s_8 i)) charP_tag)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   ((#"/home/mikhail/repos/verker/strlen.h" 133 16 28#
-    (valid_str s_7 voidP_s_7_7_alloc_table charP_charM_s_7_7))
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   ((#"/home/mikhail/repos/verker/strlen.h" 149 16 28#
+    (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
-   ((#"/home/mikhail/repos/verker/strlen.h" 133 32 38#
-    (Uint64.(<=) (#"strlen.jc" 197 33 46# "expl:Integer cast" (Uint64.of_int
-    (0))) i_1))
+   (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
+   ((#"/home/mikhail/repos/verker/strlen.h" 149 32 38#
+    (Bit_uint64.(<=) (#"strlen.jc" 252 34 47# "expl:Integer cast"
+    (Bit_uint64.of_int_const 0)) i_1))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 133 37 50#
-   (Uint64.(<) i_1 (strlen s_7 charP_charM_s_7_7))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 149 37 50#
+   (Bit_uint64.(<) i_1 (strlen s_8 charP_charM_s_8_8))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 134 15 31# "expl:Ensures clause"
-     (valid_str (shift s_7 (Uint64.to_int i_1)) voidP_s_7_7_alloc_table
-     charP_charM_s_7_7))) } diverges  ->
+     (#"/home/mikhail/repos/verker/strlen.h" 150 15 31# "expl:Ensures clause"
+     (valid_str (shift s_8 (Bit_uint64.to_int i_1)) voidP_s_8_8_alloc_table
+     charP_charM_s_8_8))) } diverges  ->
    'Init:
    try
     begin
-    (let j_1 = ref (Unsafe_uint64.any_  () ) in
-    (let size_3 = ref (Unsafe_uint64.any_  () ) in
-    (let size1_0 = ref (Unsafe_uint64.any_  () ) in
+    (let j_2 = ref (Unsafe_bit_uint64.any_  () ) in
+    (let size_3 = ref (Unsafe_bit_uint64.any_  () ) in
     begin
-    (let _jessie_56 =
-    (let _jessie_55 = s_7 in
-    (#"/home/mikhail/repos/verker/strlen.h" 138 7 22#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full.istrlen_full  _jessie_55 voidP_s_7_7_alloc_table
-     voidP_s_7_7_tag_table charP_charM_s_7_7 ))) in ());
+    (let _jessie_58 =
+    (let _jessie_57 = s_8 in
+    (#"/home/mikhail/repos/verker/strlen.h" 154 7 29#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full.elim_valid_str_full  _jessie_57
+     voidP_s_8_8_alloc_table voidP_s_8_8_tag_table charP_charM_s_8_8 ))) in
+    ());
      try
       begin
-      (j_1 :=
-       (#"strlen.jc" 212 23 36# "expl:Integer cast"
-       (Unsafe_uint64.of_int (0))));
+      (j_2 :=
+       (#"strlen.jc" 265 23 36# "expl:Integer cast"
+       (Unsafe_bit_uint64.of_int_const 0)));
        'Loop_5:
        loop
        invariant
-         { ((#"/home/mikhail/repos/verker/strlen.h" 139 25 41#
-            (valid_str (shift s_7 (Uint64.to_int !j_1))
-            voidP_s_7_7_alloc_table charP_charM_s_7_7))
+         { ((#"/home/mikhail/repos/verker/strlen.h" 155 25 41#
+            (valid_str (shift s_8 (Bit_uint64.to_int !j_2))
+            voidP_s_8_8_alloc_table charP_charM_s_8_8))
            &&
-           (#"/home/mikhail/repos/verker/strlen.h" 140 25 36#
-           (#"/home/mikhail/repos/verker/strlen.h" 140 25 36#
-           ((#"/home/mikhail/repos/verker/strlen.h" 140 25 31#
-            (Uint64.(<=) (#"strlen.jc" 218 41 54# "expl:Integer cast"
-            (Uint64.of_int (0))) !j_1))
+           (#"/home/mikhail/repos/verker/strlen.h" 156 25 36#
+           (#"/home/mikhail/repos/verker/strlen.h" 156 25 36#
+           ((#"/home/mikhail/repos/verker/strlen.h" 156 25 31#
+            (Bit_uint64.(<=) (#"strlen.jc" 271 41 54# "expl:Integer cast"
+            (Bit_uint64.of_int_const 0)) !j_2))
            /\
-           (#"/home/mikhail/repos/verker/strlen.h" 140 30 36#
-           (Uint64.(<=) !j_1 i_1)))))) } 
+           (#"/home/mikhail/repos/verker/strlen.h" 156 30 36#
+           (Bit_uint64.(<=) !j_2 i_1)))))) } 
         begin
         any unit requires { true } ensures { true } ;
          try
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 143 26 31#
-          (Unsafe_uint64.(<)  !j_1 i_1 )) then ()
+          (#"/home/mikhail/repos/verker/strlen.h" 159 26 31#
+          (Unsafe_bit_uint64.(<)  !j_2 i_1 )) then ()
           else (raise (Goto_while_0_break_1_exc ())));
            begin
            (size_3 :=
-            (let _jessie_59 = (shift_  s_7 (Unsafe_uint64.to_int  !j_1 ) ) in
-            (#"/home/mikhail/repos/verker/strlen.h" 144 23 42#
-            "expl:Precondition for istrlen_full"
-            (Function_istrlen_full.istrlen_full  _jessie_59
-             voidP_s_7_7_alloc_table voidP_s_7_7_tag_table charP_charM_s_7_7
+            (let _jessie_61 =
+            (shift_  s_8 (Unsafe_bit_uint64.to_int  !j_2 ) ) in
+            (#"/home/mikhail/repos/verker/strlen.h" 160 23 49#
+            "expl:Precondition for elim_valid_str_full"
+            (Function_elim_valid_str_full.elim_valid_str_full  _jessie_61
+             voidP_s_8_8_alloc_table voidP_s_8_8_tag_table charP_charM_s_8_8
              ))));
             (if
-            (#"/home/mikhail/repos/verker/strlen.h" 145 13 31#
+            (#"/home/mikhail/repos/verker/strlen.h" 161 13 31#
             (Unsafe_int32.(<>) 
-             (#"/home/mikhail/repos/verker/strlen.h" 145 13 23#
+             (#"/home/mikhail/repos/verker/strlen.h" 161 13 23#
              "expl:Integer cast"
              (Unsafe_int32_of_Unsafe_int8.cast 
-              (acc  charP_charM_s_7_7
-               (shift_  (shift_  s_7 (Unsafe_uint64.to_int  !j_1 ) )
+              (acc  charP_charM_s_8_8
+               (shift_  (shift_  s_8 (Unsafe_bit_uint64.to_int  !j_2 ) )
                 (Unsafe_int32.to_int 
-                 (#"strlen.jc" 230 62 74# "expl:Integer cast"
+                 (#"strlen.jc" 285 62 74# "expl:Integer cast"
                  (Unsafe_int32.of_int (0))) ) ) ) ))
-             (#"strlen.jc" 231 33 45# "expl:Integer cast"
+             (#"strlen.jc" 286 33 45# "expl:Integer cast"
              (Unsafe_int32.of_int (0))) ))
             then
-             (let _jessie_62 =
              begin
-             (size1_0 :=
-              (Unsafe_uint64.(-)  !size_3
-               (#"strlen.jc" 233 62 75# "expl:Integer cast"
-               (Unsafe_uint64.of_int (1))) ));
-              (let _jessie_60 =
-              (shift_  (shift_  s_7 (Unsafe_uint64.to_int  !j_1 ) )
+             begin
+             (assert {
+             (#"/home/mikhail/repos/verker/strlen.h" 162 22 90#
+             "expl:Assertion in line 162"
+             (forall k : Uint64.t.
+              (((<) (Bit_uint64.to_int k)
+               (Int.(-) (Bit_uint64.to_int !size_3) (1))) ->
+               (Int8.(=)
+               (select charP_charM_s_8_8
+               (shift (shift (shift s_8 (Bit_uint64.to_int !j_2)) (1))
+               (Bit_uint64.to_int k)))
+               (select charP_charM_s_8_8
+               (shift (shift s_8 (Bit_uint64.to_int !j_2))
+               (Bit_uint64.to_int
+               (Bit_uint64.(+%) k (#"strlen.jc" 300 68 81#
+               "expl:Integer cast" (Bit_uint64.of_int_const 1)))))))))) });
+              () end;
+              (let _jessie_63 =
+              (shift_  (shift_  s_8 (Unsafe_bit_uint64.to_int  !j_2 ) )
                (Unsafe_int32.to_int 
-                (#"strlen.jc" 235 54 66# "expl:Integer cast"
+                (#"strlen.jc" 306 62 74# "expl:Integer cast"
                 (Unsafe_int32.of_int (1))) ) ) in
-              (#"/home/mikhail/repos/verker/strlen.h" 147 11 36#
-              "expl:Precondition for istrlen_full"
-              (Function_istrlen_full.istrlen_full  _jessie_60
-               voidP_s_7_7_alloc_table voidP_s_7_7_tag_table
-               charP_charM_s_7_7 ))) end in ()) else ()) end;
-           (j_1 :=
-            (Unsafe_uint64.(+)  !j_1
-             (#"strlen.jc" 238 53 66# "expl:Integer cast"
-             (Unsafe_uint64.of_int (1))) )) end;
+              (let _jessie_62 =
+              (Unsafe_bit_uint64.(-)  !size_3
+               (#"strlen.jc" 309 63 76# "expl:Integer cast"
+               (Unsafe_bit_uint64.of_int_const 1)) ) in
+              (#"/home/mikhail/repos/verker/strlen.h" 163 11 52#
+              "expl:Precondition for intro_valid_str_full"
+              (Function_intro_valid_str_full.intro_valid_str_full  _jessie_63
+               _jessie_62 voidP_s_8_8_alloc_table voidP_s_8_8_tag_table
+               charP_charM_s_8_8 )))) end else ()) end;
+           (j_2 :=
+            (Unsafe_bit_uint64.(+)  !j_2
+             (#"strlen.jc" 312 53 66# "expl:Integer cast"
+             (Unsafe_bit_uint64.of_int_const 1)) )) end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_11 -> () end end end; (raise (Goto_while_0_break_1_exc ()))
       end with Goto_while_0_break_1_exc _jessie_9 ->
-      'While_0_break_1: 'While_0_break_1: () end; (raise Return) end)));
+      'While_0_break_1: 'While_0_break_1: () end; (raise Return) end));
      (raise Return) end with Return -> () end
   
 end
@@ -4001,41 +4386,41 @@ module Function_valid_str_shiftn_safe
   use why3.Bool.Bool 
   
   val valid_str_shiftn
-  (s_7 : (pointer voidP)) 
+  (s_8 : (pointer voidP)) 
    (i_1 : Uint64.t) 
-    (voidP_s_7_7_alloc_table : (alloc_table voidP)) 
-     (voidP_s_7_7_tag_table : (tag_table voidP)) 
-      (charP_charM_s_7_7 : (memory voidP Int8.t)) : unit
+    (voidP_s_8_8_alloc_table : (alloc_table voidP)) 
+     (voidP_s_8_8_tag_table : (tag_table voidP)) 
+      (charP_charM_s_8_8 : (memory voidP Int8.t)) : unit
        requires {
          ("expl:Internal"
-         (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
+         (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
          "expl:Requires clause"
-         (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
+         (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
          "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 133 16 28#
+         ((#"/home/mikhail/repos/verker/strlen.h" 149 16 28#
           "expl:Requires clause"
-          (valid_str s_7 voidP_s_7_7_alloc_table charP_charM_s_7_7))
+          (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))
          /\
-         (#"/home/mikhail/repos/verker/strlen.h" 133 16 50#
+         (#"/home/mikhail/repos/verker/strlen.h" 149 16 50#
          "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 133 32 38#
+         ((#"/home/mikhail/repos/verker/strlen.h" 149 32 38#
           "expl:Requires clause"
-          (Uint64.(<=) (#"strlen.jc" 197 33 46# "expl:Integer cast"
+          (Uint64.(<=) (#"strlen.jc" 252 34 47# "expl:Integer cast"
           (Uint64.of_int (0))) i_1))
          /\
-         (#"/home/mikhail/repos/verker/strlen.h" 133 37 50#
+         (#"/home/mikhail/repos/verker/strlen.h" 149 37 50#
          "expl:Requires clause"
-         (Uint64.(<) i_1 (strlen s_7 charP_charM_s_7_7))))))))) }
+         (Uint64.(<) i_1 (strlen s_8 charP_charM_s_8_8))))))))) }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 134 15 31#
+         (#"/home/mikhail/repos/verker/strlen.h" 150 15 31#
          "expl:Ensures clause"
-         (valid_str (shift s_7 (Uint64.to_int i_1)) voidP_s_7_7_alloc_table
-         charP_charM_s_7_7)) }
+         (valid_str (shift s_8 (Uint64.to_int i_1)) voidP_s_8_8_alloc_table
+         charP_charM_s_8_8)) }
   
 end
 
 module Function_valid_str_shiftn_full_safety
-#"/home/mikhail/repos/verker/strlen.h" 158 10 40#
+#"/home/mikhail/repos/verker/strlen.h" 174 10 40#
 "expl:valid_str_shiftn_full, safety"
 
   use enum.Uint64 
@@ -4066,7 +4451,7 @@ module Function_valid_str_shiftn_full_safety
   
   use Function_valid_str_shiftn_safe 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Exceptions 
   
@@ -4076,24 +4461,24 @@ module Function_valid_str_shiftn_full_safety
   
   use why3.Bool.Bool 
   
-  let valid_str_shiftn_full #"/home/mikhail/repos/verker/strlen.h" 158 10 40#
+  let valid_str_shiftn_full #"/home/mikhail/repos/verker/strlen.h" 174 10 40#
   "expl:Function valid_str_shiftn_full, safety" =
   fun
-   (s_8 : (pointer voidP)) (voidP_s_8_8_alloc_table : (alloc_table voidP))
-   (voidP_s_8_8_tag_table : (tag_table voidP)) (charP_charM_s_8_8 : (memory
+   (s_9 : (pointer voidP)) (voidP_s_9_9_alloc_table : (alloc_table voidP))
+   (voidP_s_9_9_tag_table : (tag_table voidP)) (charP_charM_s_9_9 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_8_8_alloc_table s_8) ->
-     (((=) (typeof voidP_s_8_8_tag_table s_8) charP_tag) /\
+   (((allocated voidP_s_9_9_alloc_table s_9) ->
+     (((=) (typeof voidP_s_9_9_tag_table s_9) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_8_8_alloc_table s_8) i) /\
-       ((<) i (offset_max voidP_s_8_8_alloc_table s_8))) ->
-       ((=) (typeof voidP_s_8_8_tag_table (shift s_8 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_9_9_alloc_table s_9) i) /\
+       ((<) i (offset_max voidP_s_9_9_alloc_table s_9))) ->
+       ((=) (typeof voidP_s_9_9_tag_table (shift s_9 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 263 12 95#
-   ((#"strlen.jc" 263 12 95# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 154 16 28#
-   (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))))) }
+   (#"strlen.jc" 337 12 95#
+   ((#"strlen.jc" 337 12 95# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
+   (valid_str s_9 voidP_s_9_9_alloc_table charP_charM_s_9_9))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
@@ -4103,71 +4488,71 @@ module Function_valid_str_shiftn_full_safety
     begin
     (size_4 :=
      (let _jessie_79 =
-     (let _jessie_80 = s_8 in
-     (#"/home/mikhail/repos/verker/strlen.h" 159 21 36#
-     "expl:Precondition for istrlen_full"
-     (Function_istrlen_full_safe.istrlen_full  _jessie_80
-      voidP_s_8_8_alloc_table voidP_s_8_8_tag_table charP_charM_s_8_8 ))) in
+     (let _jessie_80 = s_9 in
+     (#"/home/mikhail/repos/verker/strlen.h" 175 21 43#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_80
+      voidP_s_9_9_alloc_table voidP_s_9_9_tag_table charP_charM_s_9_9 ))) in
      begin
      (assert {
-     (#"/home/mikhail/repos/verker/strlen.h" 159 21 36#
+     (#"/home/mikhail/repos/verker/strlen.h" 175 21 43#
      "expl:Pointer index bounds" true) }); _jessie_79 end));
      try
       begin
       (i_4 :=
        (let _jessie_81 =
-       (#"strlen.jc" 279 25 38# "expl:Integer cast" (Safe_uint64.of_int (0)))
+       (#"strlen.jc" 353 26 39# "expl:Integer cast" (Safe_uint64.of_int (0)))
        in
        begin
        (assert {
-       (#"/home/mikhail/repos/verker/strlen.h" 164 19 20#
+       (#"/home/mikhail/repos/verker/strlen.h" 180 19 20#
        "expl:Pointer index bounds" true) }); _jessie_81 end));
        'Loop_8:
        loop
-       invariant { (#"strlen.jc" 281 9 764# true) }
-         variant { (#"/home/mikhail/repos/verker/strlen.h" 162 23 31#
+       invariant { (#"strlen.jc" 355 9 765# true) }
+         variant { (#"/home/mikhail/repos/verker/strlen.h" 178 23 31#
            (Int.(-) (Uint64.to_int !size_4) (Uint64.to_int !i_4))) }
         begin
         any unit
-        requires { true } reads { s_8 }
+        requires { true } reads { s_9 }
         ensures {
-          ((#"/home/mikhail/repos/verker/strlen.h" 161 25 75#
-           (forall j_2 : int.
-            ((((<=) (0) j_2) /\ ((<) j_2 (Uint64.to_int !i_4))) ->
-             (valid_str (shift s_8 j_2) voidP_s_8_8_alloc_table
-             charP_charM_s_8_8))))
+          ((#"/home/mikhail/repos/verker/strlen.h" 177 25 75#
+           (forall j_3 : int.
+            ((((<=) (0) j_3) /\ ((<) j_3 (Uint64.to_int !i_4))) ->
+             (valid_str (shift s_9 j_3) voidP_s_9_9_alloc_table
+             charP_charM_s_9_9))))
           /\
-          (#"/home/mikhail/repos/verker/strlen.h" 160 25 39#
-          (#"/home/mikhail/repos/verker/strlen.h" 160 25 39#
-          ((#"/home/mikhail/repos/verker/strlen.h" 160 25 31#
-           (Uint64.(<=) (#"strlen.jc" 283 43 56# "expl:Integer cast"
+          (#"/home/mikhail/repos/verker/strlen.h" 176 25 39#
+          (#"/home/mikhail/repos/verker/strlen.h" 176 25 39#
+          ((#"/home/mikhail/repos/verker/strlen.h" 176 25 31#
+           (Uint64.(<=) (#"strlen.jc" 357 43 56# "expl:Integer cast"
            (Uint64.of_int (0))) !i_4))
           /\
-          (#"/home/mikhail/repos/verker/strlen.h" 160 30 39#
+          (#"/home/mikhail/repos/verker/strlen.h" 176 30 39#
           (Uint64.(<=) !i_4 !size_4)))))) } ;
          try
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 164 26 34#
+          (#"/home/mikhail/repos/verker/strlen.h" 180 26 34#
           (Safe_uint64.(<)  !i_4 !size_4 )) then ()
           else (raise (Goto_while_0_break_2_exc ())));
            begin
-           (let _jessie_83 = s_8 in
+           (let _jessie_83 = s_9 in
            (let _jessie_82 = !i_4 in
-           (#"/home/mikhail/repos/verker/strlen.h" 165 9 31#
+           (#"/home/mikhail/repos/verker/strlen.h" 181 9 31#
            "expl:Precondition for valid_str_shiftn"
            (Function_valid_str_shiftn_safe.valid_str_shiftn  _jessie_83
-            _jessie_82 voidP_s_8_8_alloc_table voidP_s_8_8_tag_table
-            charP_charM_s_8_8 ))));
+            _jessie_82 voidP_s_9_9_alloc_table voidP_s_9_9_tag_table
+            charP_charM_s_9_9 ))));
             (i_4 :=
              (let _jessie_84 =
              (Safe_uint64.(+)  !i_4
-              (#"strlen.jc" 295 60 73# "expl:Integer cast"
+              (#"strlen.jc" 369 60 73# "expl:Integer cast"
               (Safe_uint64.of_int (1))) ) in
              begin
              (assert {
-             (#"/home/mikhail/repos/verker/strlen.h" 164 36 39#
+             (#"/home/mikhail/repos/verker/strlen.h" 180 36 39#
              "expl:Pointer index bounds" true) }); _jessie_84 end)) end end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_14 -> () end end end; (raise (Goto_while_0_break_2_exc ()))
@@ -4198,22 +4583,22 @@ module Function_valid_str_shiftn
   use why3.Bool.Bool 
   
   val valid_str_shiftn
-  (s_7 : (pointer voidP)) 
+  (s_8 : (pointer voidP)) 
    (i_1 : Uint64.t) 
-    (voidP_s_7_7_alloc_table : (alloc_table voidP)) 
-     (voidP_s_7_7_tag_table : (tag_table voidP)) 
-      (charP_charM_s_7_7 : (memory voidP Int8.t)) : unit
+    (voidP_s_8_8_alloc_table : (alloc_table voidP)) 
+     (voidP_s_8_8_tag_table : (tag_table voidP)) 
+      (charP_charM_s_8_8 : (memory voidP Int8.t)) : unit
        requires { true }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 134 15 31#
+         (#"/home/mikhail/repos/verker/strlen.h" 150 15 31#
          "expl:Ensures clause"
-         (valid_str (shift s_7 (Uint64.to_int i_1)) voidP_s_7_7_alloc_table
-         charP_charM_s_7_7)) }
+         (valid_str (shift s_8 (Uint64.to_int i_1)) voidP_s_8_8_alloc_table
+         charP_charM_s_8_8)) }
   
 end
 
 module Function_valid_str_shiftn_full_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 158 10 40#
+#"/home/mikhail/repos/verker/strlen.h" 174 10 40#
 "expl:valid_str_shiftn_full, behaviors"
 
   use Unsafe_uint64 
@@ -4244,7 +4629,7 @@ module Function_valid_str_shiftn_full_behaviors
   
   use Function_valid_str_shiftn 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Exceptions 
   
@@ -4255,32 +4640,32 @@ module Function_valid_str_shiftn_full_behaviors
   use why3.Bool.Bool 
   
   let valid_str_shiftn_full_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 158 10 40#
+  #"/home/mikhail/repos/verker/strlen.h" 174 10 40#
   "expl:Function valid_str_shiftn_full, default behavior" =
   fun
-   (s_8 : (pointer voidP)) (voidP_s_8_8_alloc_table : (alloc_table voidP))
-   (voidP_s_8_8_tag_table : (tag_table voidP)) (charP_charM_s_8_8 : (memory
+   (s_9 : (pointer voidP)) (voidP_s_9_9_alloc_table : (alloc_table voidP))
+   (voidP_s_9_9_tag_table : (tag_table voidP)) (charP_charM_s_9_9 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_8_8_alloc_table s_8) ->
-     (((=) (typeof voidP_s_8_8_tag_table s_8) charP_tag) /\
+   (((allocated voidP_s_9_9_alloc_table s_9) ->
+     (((=) (typeof voidP_s_9_9_tag_table s_9) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_8_8_alloc_table s_8) i) /\
-       ((<) i (offset_max voidP_s_8_8_alloc_table s_8))) ->
-       ((=) (typeof voidP_s_8_8_tag_table (shift s_8 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_9_9_alloc_table s_9) i) /\
+       ((<) i (offset_max voidP_s_9_9_alloc_table s_9))) ->
+       ((=) (typeof voidP_s_9_9_tag_table (shift s_9 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 263 12 95#
-   ((#"strlen.jc" 263 12 95# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 154 16 28#
-   (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))))) }
+   (#"strlen.jc" 337 12 95#
+   ((#"strlen.jc" 337 12 95# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
+   (valid_str s_9 voidP_s_9_9_alloc_table charP_charM_s_9_9))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 155 15 73# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 171 15 73# "expl:Ensures clause"
      (forall i_0_0 : int.
       ((((<=) (0) i_0_0) /\
-       ((<) i_0_0 (Uint64.to_int (strlen s_8 charP_charM_s_8_8)))) ->
-       (valid_str (shift s_8 i_0_0) voidP_s_8_8_alloc_table
-       charP_charM_s_8_8))))) } diverges  ->
+       ((<) i_0_0 (Uint64.to_int (strlen s_9 charP_charM_s_9_9)))) ->
+       (valid_str (shift s_9 i_0_0) voidP_s_9_9_alloc_table
+       charP_charM_s_9_9))))) } diverges  ->
    'Init:
    try
     begin
@@ -4288,52 +4673,52 @@ module Function_valid_str_shiftn_full_behaviors
     (let i_4 = ref (Unsafe_uint64.any_  () ) in
     begin
     (size_4 :=
-     (let _jessie_74 = s_8 in
-     (#"/home/mikhail/repos/verker/strlen.h" 159 21 36#
-     "expl:Precondition for istrlen_full"
-     (Function_istrlen_full.istrlen_full  _jessie_74 voidP_s_8_8_alloc_table
-      voidP_s_8_8_tag_table charP_charM_s_8_8 ))));
+     (let _jessie_74 = s_9 in
+     (#"/home/mikhail/repos/verker/strlen.h" 175 21 43#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full.elim_valid_str_full  _jessie_74
+      voidP_s_9_9_alloc_table voidP_s_9_9_tag_table charP_charM_s_9_9 ))));
      try
       begin
       (i_4 :=
-       (#"strlen.jc" 279 25 38# "expl:Integer cast"
+       (#"strlen.jc" 353 26 39# "expl:Integer cast"
        (Unsafe_uint64.of_int (0))));
        'Loop_7:
        loop
        invariant
-         { ((#"/home/mikhail/repos/verker/strlen.h" 160 25 39#
-            (#"/home/mikhail/repos/verker/strlen.h" 160 25 39#
-            ((#"/home/mikhail/repos/verker/strlen.h" 160 25 31#
-             (Uint64.(<=) (#"strlen.jc" 283 43 56# "expl:Integer cast"
+         { ((#"/home/mikhail/repos/verker/strlen.h" 176 25 39#
+            (#"/home/mikhail/repos/verker/strlen.h" 176 25 39#
+            ((#"/home/mikhail/repos/verker/strlen.h" 176 25 31#
+             (Uint64.(<=) (#"strlen.jc" 357 43 56# "expl:Integer cast"
              (Uint64.of_int (0))) !i_4))
             /\
-            (#"/home/mikhail/repos/verker/strlen.h" 160 30 39#
+            (#"/home/mikhail/repos/verker/strlen.h" 176 30 39#
             (Uint64.(<=) !i_4 !size_4)))))
            &&
-           (#"/home/mikhail/repos/verker/strlen.h" 161 25 75#
-           (forall j_2 : int.
-            ((((<=) (0) j_2) /\ ((<) j_2 (Uint64.to_int !i_4))) ->
-             (valid_str (shift s_8 j_2) voidP_s_8_8_alloc_table
-             charP_charM_s_8_8))))) } 
+           (#"/home/mikhail/repos/verker/strlen.h" 177 25 75#
+           (forall j_3 : int.
+            ((((<=) (0) j_3) /\ ((<) j_3 (Uint64.to_int !i_4))) ->
+             (valid_str (shift s_9 j_3) voidP_s_9_9_alloc_table
+             charP_charM_s_9_9))))) } 
         begin
         any unit requires { true } ensures { true } ;
          try
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 164 26 34#
+          (#"/home/mikhail/repos/verker/strlen.h" 180 26 34#
           (Unsafe_uint64.(<)  !i_4 !size_4 )) then ()
           else (raise (Goto_while_0_break_2_exc ())));
            begin
-           (let _jessie_77 = s_8 in
+           (let _jessie_77 = s_9 in
            (let _jessie_76 = !i_4 in
-           (#"/home/mikhail/repos/verker/strlen.h" 165 9 31#
+           (#"/home/mikhail/repos/verker/strlen.h" 181 9 31#
            "expl:Precondition for valid_str_shiftn"
            (Function_valid_str_shiftn.valid_str_shiftn  _jessie_77 _jessie_76
-            voidP_s_8_8_alloc_table voidP_s_8_8_tag_table charP_charM_s_8_8 ))));
+            voidP_s_9_9_alloc_table voidP_s_9_9_tag_table charP_charM_s_9_9 ))));
             (i_4 :=
              (Unsafe_uint64.(+)  !i_4
-              (#"strlen.jc" 295 60 73# "expl:Integer cast"
+              (#"strlen.jc" 369 60 73# "expl:Integer cast"
               (Unsafe_uint64.of_int (1))) )) end end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_14 -> () end end end; (raise (Goto_while_0_break_2_exc ()))
@@ -4344,7 +4729,7 @@ module Function_valid_str_shiftn_full_behaviors
 end
 
 module Function_strlen_before_null_safety
-#"/home/mikhail/repos/verker/strlen.h" 175 9 46#
+#"/home/mikhail/repos/verker/strlen.h" 191 9 46#
 "expl:strlen_before_null, safety"
 
   use enum.Uint64 
@@ -4371,7 +4756,7 @@ module Function_strlen_before_null_safety
   
   use import int.Int 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Axiomatic_Strlen 
   
@@ -4381,51 +4766,51 @@ module Function_strlen_before_null_safety
   
   use why3.Bool.Bool 
   
-  let strlen_before_null #"/home/mikhail/repos/verker/strlen.h" 175 9 46#
+  let strlen_before_null #"/home/mikhail/repos/verker/strlen.h" 191 9 46#
   "expl:Function strlen_before_null, safety" =
   fun
-   (s_3 : (pointer voidP)) (i_0 : Uint64.t) (voidP_s_3_9_alloc_table :
-   (alloc_table voidP)) (voidP_s_3_9_tag_table : (tag_table voidP))
-   (charP_charM_s_3_9 : (memory voidP Int8.t)) 
+   (s_5 : (pointer voidP)) (i_0 : Uint64.t) (voidP_s_5_10_alloc_table :
+   (alloc_table voidP)) (voidP_s_5_10_tag_table : (tag_table voidP))
+   (charP_charM_s_5_10 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_3_9_alloc_table s_3) ->
-     (((=) (typeof voidP_s_3_9_tag_table s_3) charP_tag) /\
+   (((allocated voidP_s_5_10_alloc_table s_5) ->
+     (((=) (typeof voidP_s_5_10_tag_table s_5) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_3_9_alloc_table s_3) i) /\
-       ((<) i (offset_max voidP_s_3_9_alloc_table s_3))) ->
-       ((=) (typeof voidP_s_3_9_tag_table (shift s_3 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_5_10_alloc_table s_5) i) /\
+       ((<) i (offset_max voidP_s_5_10_alloc_table s_5))) ->
+       ((=) (typeof voidP_s_5_10_tag_table (shift s_5 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 320 12 294#
-   ((#"strlen.jc" 320 12 294# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 320 12 294#
-   ((#"strlen.jc" 320 12 294# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 320 12 294#
-   ((#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
-    (valid_str s_3 voidP_s_3_9_alloc_table charP_charM_s_3_9))
+   (#"strlen.jc" 394 12 294#
+   ((#"strlen.jc" 394 12 294# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 394 12 294#
+   ((#"strlen.jc" 394 12 294# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 394 12 294#
+   ((#"/home/mikhail/repos/verker/strlen.h" 186 16 28#
+    (valid_str s_5 voidP_s_5_10_alloc_table charP_charM_s_5_10))
    /\
-   (#"strlen.jc" 320 12 294#
-   ((#"/home/mikhail/repos/verker/strlen.h" 171 16 22#
-    (Uint64.(<=) (#"strlen.jc" 323 39 52# "expl:Integer cast" (Uint64.of_int
+   (#"strlen.jc" 394 12 294#
+   ((#"/home/mikhail/repos/verker/strlen.h" 187 16 22#
+    (Uint64.(<=) (#"strlen.jc" 397 39 52# "expl:Integer cast" (Uint64.of_int
     (0))) i_0))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 171 21 34#
-   (Uint64.(<) i_0 (strlen s_3 charP_charM_s_3_9)))))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 187 21 34#
+   (Uint64.(<) i_0 (strlen s_5 charP_charM_s_5_10)))))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
     begin
     (let _jessie_88 =
-    (let _jessie_87 = s_3 in
-    (#"/home/mikhail/repos/verker/strlen.h" 176 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full_safe.istrlen_full  _jessie_87
-     voidP_s_3_9_alloc_table voidP_s_3_9_tag_table charP_charM_s_3_9 ))) in
-    ()); (raise Return); (raise Return) end with Return -> () end
+    (let _jessie_87 = s_5 in
+    (#"/home/mikhail/repos/verker/strlen.h" 192 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_87
+     voidP_s_5_10_alloc_table voidP_s_5_10_tag_table charP_charM_s_5_10 )))
+    in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
 module Function_strlen_before_null_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 175 9 46#
+#"/home/mikhail/repos/verker/strlen.h" 191 9 46#
 "expl:strlen_before_null, behaviors"
 
   use enum.Uint64 
@@ -4452,7 +4837,7 @@ module Function_strlen_before_null_behaviors
   
   use import int.Int 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Axiomatic_Strlen 
   
@@ -4463,50 +4848,50 @@ module Function_strlen_before_null_behaviors
   use why3.Bool.Bool 
   
   let strlen_before_null_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 175 9 46#
+  #"/home/mikhail/repos/verker/strlen.h" 191 9 46#
   "expl:Function strlen_before_null, default behavior" =
   fun
-   (s_3 : (pointer voidP)) (i_0 : Uint64.t) (voidP_s_3_9_alloc_table :
-   (alloc_table voidP)) (voidP_s_3_9_tag_table : (tag_table voidP))
-   (charP_charM_s_3_9 : (memory voidP Int8.t)) 
+   (s_5 : (pointer voidP)) (i_0 : Uint64.t) (voidP_s_5_10_alloc_table :
+   (alloc_table voidP)) (voidP_s_5_10_tag_table : (tag_table voidP))
+   (charP_charM_s_5_10 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_3_9_alloc_table s_3) ->
-     (((=) (typeof voidP_s_3_9_tag_table s_3) charP_tag) /\
+   (((allocated voidP_s_5_10_alloc_table s_5) ->
+     (((=) (typeof voidP_s_5_10_tag_table s_5) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_3_9_alloc_table s_3) i) /\
-       ((<) i (offset_max voidP_s_3_9_alloc_table s_3))) ->
-       ((=) (typeof voidP_s_3_9_tag_table (shift s_3 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_5_10_alloc_table s_5) i) /\
+       ((<) i (offset_max voidP_s_5_10_alloc_table s_5))) ->
+       ((=) (typeof voidP_s_5_10_tag_table (shift s_5 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 320 12 294#
-   ((#"strlen.jc" 320 12 294# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 320 12 294#
-   ((#"strlen.jc" 320 12 294# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 320 12 294#
-   ((#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
-    (valid_str s_3 voidP_s_3_9_alloc_table charP_charM_s_3_9))
+   (#"strlen.jc" 394 12 294#
+   ((#"strlen.jc" 394 12 294# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 394 12 294#
+   ((#"strlen.jc" 394 12 294# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 394 12 294#
+   ((#"/home/mikhail/repos/verker/strlen.h" 186 16 28#
+    (valid_str s_5 voidP_s_5_10_alloc_table charP_charM_s_5_10))
    /\
-   (#"strlen.jc" 320 12 294#
-   ((#"/home/mikhail/repos/verker/strlen.h" 171 16 22#
-    (Uint64.(<=) (#"strlen.jc" 323 39 52# "expl:Integer cast" (Uint64.of_int
+   (#"strlen.jc" 394 12 294#
+   ((#"/home/mikhail/repos/verker/strlen.h" 187 16 22#
+    (Uint64.(<=) (#"strlen.jc" 397 39 52# "expl:Integer cast" (Uint64.of_int
     (0))) i_0))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 171 21 34#
-   (Uint64.(<) i_0 (strlen s_3 charP_charM_s_3_9)))))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 187 21 34#
+   (Uint64.(<) i_0 (strlen s_5 charP_charM_s_5_10)))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 172 15 27# "expl:Ensures clause"
-     (Int8.(<>) (select charP_charM_s_3_9 (shift s_3 (Uint64.to_int i_0)))
-     (#"strlen.jc" 329 22 33# "expl:Integer cast" (Int8.of_int (0)))))) }  ->
+     (#"/home/mikhail/repos/verker/strlen.h" 188 15 27# "expl:Ensures clause"
+     (Int8.(<>) (select charP_charM_s_5_10 (shift s_5 (Uint64.to_int i_0)))
+     (#"strlen.jc" 403 22 33# "expl:Integer cast" (Int8.of_int (0)))))) }  ->
    'Init:
    try
     begin
     (let _jessie_86 =
-    (let _jessie_85 = s_3 in
-    (#"/home/mikhail/repos/verker/strlen.h" 176 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full.istrlen_full  _jessie_85 voidP_s_3_9_alloc_table
-     voidP_s_3_9_tag_table charP_charM_s_3_9 ))) in ()); (raise Return);
-     (raise Return) end with Return -> () end
+    (let _jessie_85 = s_5 in
+    (#"/home/mikhail/repos/verker/strlen.h" 192 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full.elim_valid_str_full  _jessie_85
+     voidP_s_5_10_alloc_table voidP_s_5_10_tag_table charP_charM_s_5_10 )))
+    in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
@@ -4535,46 +4920,46 @@ module Function_strlen_before_null_safe
   use why3.Bool.Bool 
   
   val strlen_before_null
-  (s_3 : (pointer voidP)) 
+  (s_5 : (pointer voidP)) 
    (i_0 : Uint64.t) 
-    (voidP_s_3_9_alloc_table : (alloc_table voidP)) 
-     (voidP_s_3_9_tag_table : (tag_table voidP)) 
-      (charP_charM_s_3_9 : (memory voidP Int8.t)) : unit
+    (voidP_s_5_10_alloc_table : (alloc_table voidP)) 
+     (voidP_s_5_10_tag_table : (tag_table voidP)) 
+      (charP_charM_s_5_10 : (memory voidP Int8.t)) : unit
        requires {
          ("expl:Internal"
-         (#"strlen.jc" 320 12 294# "expl:Requires clause"
-         ((#"strlen.jc" 320 12 294# "expl:Requires clause"
+         (#"strlen.jc" 394 12 294# "expl:Requires clause"
+         ((#"strlen.jc" 394 12 294# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn (1)))
          /\
-         (#"strlen.jc" 320 12 294# "expl:Requires clause"
-         ((#"strlen.jc" 320 12 294# "expl:Requires clause"
+         (#"strlen.jc" 394 12 294# "expl:Requires clause"
+         ((#"strlen.jc" 394 12 294# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn_full (1)))
          /\
-         (#"strlen.jc" 320 12 294# "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
+         (#"strlen.jc" 394 12 294# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 186 16 28#
           "expl:Requires clause"
-          (valid_str s_3 voidP_s_3_9_alloc_table charP_charM_s_3_9))
+          (valid_str s_5 voidP_s_5_10_alloc_table charP_charM_s_5_10))
          /\
-         (#"strlen.jc" 320 12 294# "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 171 16 22#
+         (#"strlen.jc" 394 12 294# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 187 16 22#
           "expl:Requires clause"
-          (Uint64.(<=) (#"strlen.jc" 323 39 52# "expl:Integer cast"
+          (Uint64.(<=) (#"strlen.jc" 397 39 52# "expl:Integer cast"
           (Uint64.of_int (0))) i_0))
          /\
-         (#"/home/mikhail/repos/verker/strlen.h" 171 21 34#
+         (#"/home/mikhail/repos/verker/strlen.h" 187 21 34#
          "expl:Requires clause"
-         (Uint64.(<) i_0 (strlen s_3 charP_charM_s_3_9)))))))))))) }
+         (Uint64.(<) i_0 (strlen s_5 charP_charM_s_5_10)))))))))))) }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 172 15 27#
+         (#"/home/mikhail/repos/verker/strlen.h" 188 15 27#
          "expl:Ensures clause"
          (Int8.(<>)
-         (select charP_charM_s_3_9 (shift s_3 (Uint64.to_int i_0)))
-         (#"strlen.jc" 329 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
+         (select charP_charM_s_5_10 (shift s_5 (Uint64.to_int i_0)))
+         (#"strlen.jc" 403 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
   
 end
 
 module Function_strlen_before_null_full_safety
-#"/home/mikhail/repos/verker/strlen.h" 185 9 41#
+#"/home/mikhail/repos/verker/strlen.h" 201 9 41#
 "expl:strlen_before_null_full, safety"
 
   use enum.Uint64 
@@ -4605,7 +4990,7 @@ module Function_strlen_before_null_full_safety
   
   use Function_strlen_before_null_safe 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Exceptions 
   
@@ -4620,28 +5005,28 @@ module Function_strlen_before_null_full_safety
   use why3.Bool.Bool 
   
   let strlen_before_null_full
-  #"/home/mikhail/repos/verker/strlen.h" 185 9 41#
+  #"/home/mikhail/repos/verker/strlen.h" 201 9 41#
   "expl:Function strlen_before_null_full, safety" =
   fun
-   (s_4 : (pointer voidP)) (voidP_s_4_10_alloc_table : (alloc_table voidP))
-   (voidP_s_4_10_tag_table : (tag_table voidP)) (charP_charM_s_4_10 : (memory
+   (s_6 : (pointer voidP)) (voidP_s_6_11_alloc_table : (alloc_table voidP))
+   (voidP_s_6_11_tag_table : (tag_table voidP)) (charP_charM_s_6_11 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_4_10_alloc_table s_4) ->
-     (((=) (typeof voidP_s_4_10_tag_table s_4) charP_tag) /\
+   (((allocated voidP_s_6_11_alloc_table s_6) ->
+     (((=) (typeof voidP_s_6_11_tag_table s_6) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_4_10_alloc_table s_4) i) /\
-       ((<) i (offset_max voidP_s_4_10_alloc_table s_4))) ->
-       ((=) (typeof voidP_s_4_10_tag_table (shift s_4 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_6_11_alloc_table s_6) i) /\
+       ((<) i (offset_max voidP_s_6_11_alloc_table s_6))) ->
+       ((=) (typeof voidP_s_6_11_tag_table (shift s_6 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 181 16 28#
-   (valid_str s_4 voidP_s_4_10_alloc_table charP_charM_s_4_10))))))))) }
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
+   (valid_str s_6 voidP_s_6_11_alloc_table charP_charM_s_6_11))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
@@ -4651,72 +5036,72 @@ module Function_strlen_before_null_full_safety
     begin
     (size_5 :=
      (let _jessie_95 =
-     (let _jessie_96 = s_4 in
-     (#"/home/mikhail/repos/verker/strlen.h" 186 20 35#
-     "expl:Precondition for istrlen_full"
-     (Function_istrlen_full_safe.istrlen_full  _jessie_96
-      voidP_s_4_10_alloc_table voidP_s_4_10_tag_table charP_charM_s_4_10 )))
+     (let _jessie_96 = s_6 in
+     (#"/home/mikhail/repos/verker/strlen.h" 202 20 42#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_96
+      voidP_s_6_11_alloc_table voidP_s_6_11_tag_table charP_charM_s_6_11 )))
      in
      begin
      (assert {
-     (#"/home/mikhail/repos/verker/strlen.h" 186 20 35#
+     (#"/home/mikhail/repos/verker/strlen.h" 202 20 42#
      "expl:Pointer index bounds" true) }); _jessie_95 end));
      try
       begin
       (i_5 :=
        (let _jessie_97 =
-       (#"strlen.jc" 372 26 39# "expl:Integer cast" (Safe_uint64.of_int (0)))
+       (#"strlen.jc" 446 26 39# "expl:Integer cast" (Safe_uint64.of_int (0)))
        in
        begin
        (assert {
-       (#"/home/mikhail/repos/verker/strlen.h" 191 19 20#
+       (#"/home/mikhail/repos/verker/strlen.h" 207 19 20#
        "expl:Pointer index bounds" true) }); _jessie_97 end));
        'Loop_10:
        loop
-       invariant { (#"strlen.jc" 374 9 773# true) }
-         variant { (#"/home/mikhail/repos/verker/strlen.h" 189 23 31#
+       invariant { (#"strlen.jc" 448 9 773# true) }
+         variant { (#"/home/mikhail/repos/verker/strlen.h" 205 23 31#
            (Int.(-) (Uint64.to_int !size_5) (Uint64.to_int !i_5))) }
         begin
         any unit
-        requires { true } reads { s_4 }
+        requires { true } reads { s_6 }
         ensures {
-          ((#"/home/mikhail/repos/verker/strlen.h" 188 25 71#
-           (forall j_3 : int.
-            ((((<=) (0) j_3) /\ ((<) j_3 (Uint64.to_int !i_5))) ->
-             (Int8.(<>) (select charP_charM_s_4_10 (shift s_4 j_3))
-             (#"strlen.jc" 381 55 66# "expl:Integer cast" (Int8.of_int (0)))))))
+          ((#"/home/mikhail/repos/verker/strlen.h" 204 25 71#
+           (forall j_4 : int.
+            ((((<=) (0) j_4) /\ ((<) j_4 (Uint64.to_int !i_5))) ->
+             (Int8.(<>) (select charP_charM_s_6_11 (shift s_6 j_4))
+             (#"strlen.jc" 455 55 66# "expl:Integer cast" (Int8.of_int (0)))))))
           /\
-          (#"/home/mikhail/repos/verker/strlen.h" 187 25 39#
-          (#"/home/mikhail/repos/verker/strlen.h" 187 25 39#
-          ((#"/home/mikhail/repos/verker/strlen.h" 187 25 31#
-           (Uint64.(<=) (#"strlen.jc" 376 43 56# "expl:Integer cast"
+          (#"/home/mikhail/repos/verker/strlen.h" 203 25 39#
+          (#"/home/mikhail/repos/verker/strlen.h" 203 25 39#
+          ((#"/home/mikhail/repos/verker/strlen.h" 203 25 31#
+           (Uint64.(<=) (#"strlen.jc" 450 43 56# "expl:Integer cast"
            (Uint64.of_int (0))) !i_5))
           /\
-          (#"/home/mikhail/repos/verker/strlen.h" 187 30 39#
+          (#"/home/mikhail/repos/verker/strlen.h" 203 30 39#
           (Uint64.(<=) !i_5 !size_5)))))) } ;
          try
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 191 26 34#
+          (#"/home/mikhail/repos/verker/strlen.h" 207 26 34#
           (Safe_uint64.(<)  !i_5 !size_5 )) then ()
           else (raise (Goto_while_0_break_3_exc ())));
            begin
-           (let _jessie_99 = s_4 in
+           (let _jessie_99 = s_6 in
            (let _jessie_98 = !i_5 in
-           (#"/home/mikhail/repos/verker/strlen.h" 192 9 33#
+           (#"/home/mikhail/repos/verker/strlen.h" 208 9 33#
            "expl:Precondition for strlen_before_null"
            (Function_strlen_before_null_safe.strlen_before_null  _jessie_99
-            _jessie_98 voidP_s_4_10_alloc_table voidP_s_4_10_tag_table
-            charP_charM_s_4_10 ))));
+            _jessie_98 voidP_s_6_11_alloc_table voidP_s_6_11_tag_table
+            charP_charM_s_6_11 ))));
             (i_5 :=
              (let _jessie_100 =
              (Safe_uint64.(+)  !i_5
-              (#"strlen.jc" 388 60 73# "expl:Integer cast"
+              (#"strlen.jc" 462 60 73# "expl:Integer cast"
               (Safe_uint64.of_int (1))) ) in
              begin
              (assert {
-             (#"/home/mikhail/repos/verker/strlen.h" 191 36 39#
+             (#"/home/mikhail/repos/verker/strlen.h" 207 36 39#
              "expl:Pointer index bounds" true) }); _jessie_100 end)) end end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_17 -> () end end end; (raise (Goto_while_0_break_3_exc ()))
@@ -4745,23 +5130,23 @@ module Function_strlen_before_null
   use why3.Bool.Bool 
   
   val strlen_before_null
-  (s_3 : (pointer voidP)) 
+  (s_5 : (pointer voidP)) 
    (i_0 : Uint64.t) 
-    (voidP_s_3_9_alloc_table : (alloc_table voidP)) 
-     (voidP_s_3_9_tag_table : (tag_table voidP)) 
-      (charP_charM_s_3_9 : (memory voidP Int8.t)) : unit
+    (voidP_s_5_10_alloc_table : (alloc_table voidP)) 
+     (voidP_s_5_10_tag_table : (tag_table voidP)) 
+      (charP_charM_s_5_10 : (memory voidP Int8.t)) : unit
        requires { true }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 172 15 27#
+         (#"/home/mikhail/repos/verker/strlen.h" 188 15 27#
          "expl:Ensures clause"
          (Int8.(<>)
-         (select charP_charM_s_3_9 (shift s_3 (Uint64.to_int i_0)))
-         (#"strlen.jc" 329 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
+         (select charP_charM_s_5_10 (shift s_5 (Uint64.to_int i_0)))
+         (#"strlen.jc" 403 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
   
 end
 
 module Function_strlen_before_null_full_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 185 9 41#
+#"/home/mikhail/repos/verker/strlen.h" 201 9 41#
 "expl:strlen_before_null_full, behaviors"
 
   use Unsafe_uint64 
@@ -4792,7 +5177,7 @@ module Function_strlen_before_null_full_behaviors
   
   use Function_strlen_before_null 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Exceptions 
   
@@ -4807,36 +5192,36 @@ module Function_strlen_before_null_full_behaviors
   use why3.Bool.Bool 
   
   let strlen_before_null_full_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 185 9 41#
+  #"/home/mikhail/repos/verker/strlen.h" 201 9 41#
   "expl:Function strlen_before_null_full, default behavior" =
   fun
-   (s_4 : (pointer voidP)) (voidP_s_4_10_alloc_table : (alloc_table voidP))
-   (voidP_s_4_10_tag_table : (tag_table voidP)) (charP_charM_s_4_10 : (memory
+   (s_6 : (pointer voidP)) (voidP_s_6_11_alloc_table : (alloc_table voidP))
+   (voidP_s_6_11_tag_table : (tag_table voidP)) (charP_charM_s_6_11 : (memory
    voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_4_10_alloc_table s_4) ->
-     (((=) (typeof voidP_s_4_10_tag_table s_4) charP_tag) /\
+   (((allocated voidP_s_6_11_alloc_table s_6) ->
+     (((=) (typeof voidP_s_6_11_tag_table s_6) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_4_10_alloc_table s_4) i) /\
-       ((<) i (offset_max voidP_s_4_10_alloc_table s_4))) ->
-       ((=) (typeof voidP_s_4_10_tag_table (shift s_4 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_6_11_alloc_table s_6) i) /\
+       ((<) i (offset_max voidP_s_6_11_alloc_table s_6))) ->
+       ((=) (typeof voidP_s_6_11_tag_table (shift s_6 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 354 12 216#
-   ((#"strlen.jc" 354 12 216# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"/home/mikhail/repos/verker/strlen.h" 181 16 28#
-   (valid_str s_4 voidP_s_4_10_alloc_table charP_charM_s_4_10))))))))) }
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 428 12 216#
+   ((#"strlen.jc" 428 12 216# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
+   (valid_str s_6 voidP_s_6_11_alloc_table charP_charM_s_6_11))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 182 15 69# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 198 15 69# "expl:Ensures clause"
      (forall i_1_0_0 : int.
       ((((<=) (0) i_1_0_0) /\
-       ((<) i_1_0_0 (Uint64.to_int (strlen s_4 charP_charM_s_4_10)))) ->
-       (Int8.(<>) (select charP_charM_s_4_10 (shift s_4 i_1_0_0))
-       (#"strlen.jc" 364 57 68# "expl:Integer cast" (Int8.of_int (0)))))))) }
+       ((<) i_1_0_0 (Uint64.to_int (strlen s_6 charP_charM_s_6_11)))) ->
+       (Int8.(<>) (select charP_charM_s_6_11 (shift s_6 i_1_0_0))
+       (#"strlen.jc" 438 57 68# "expl:Integer cast" (Int8.of_int (0)))))))) }
    diverges  ->
    'Init:
    try
@@ -4845,33 +5230,33 @@ module Function_strlen_before_null_full_behaviors
     (let i_5 = ref (Unsafe_uint64.any_  () ) in
     begin
     (size_5 :=
-     (let _jessie_90 = s_4 in
-     (#"/home/mikhail/repos/verker/strlen.h" 186 20 35#
-     "expl:Precondition for istrlen_full"
-     (Function_istrlen_full.istrlen_full  _jessie_90 voidP_s_4_10_alloc_table
-      voidP_s_4_10_tag_table charP_charM_s_4_10 ))));
+     (let _jessie_90 = s_6 in
+     (#"/home/mikhail/repos/verker/strlen.h" 202 20 42#
+     "expl:Precondition for elim_valid_str_full"
+     (Function_elim_valid_str_full.elim_valid_str_full  _jessie_90
+      voidP_s_6_11_alloc_table voidP_s_6_11_tag_table charP_charM_s_6_11 ))));
      try
       begin
       (i_5 :=
-       (#"strlen.jc" 372 26 39# "expl:Integer cast"
+       (#"strlen.jc" 446 26 39# "expl:Integer cast"
        (Unsafe_uint64.of_int (0))));
        'Loop_9:
        loop
        invariant
-         { ((#"/home/mikhail/repos/verker/strlen.h" 187 25 39#
-            (#"/home/mikhail/repos/verker/strlen.h" 187 25 39#
-            ((#"/home/mikhail/repos/verker/strlen.h" 187 25 31#
-             (Uint64.(<=) (#"strlen.jc" 376 43 56# "expl:Integer cast"
+         { ((#"/home/mikhail/repos/verker/strlen.h" 203 25 39#
+            (#"/home/mikhail/repos/verker/strlen.h" 203 25 39#
+            ((#"/home/mikhail/repos/verker/strlen.h" 203 25 31#
+             (Uint64.(<=) (#"strlen.jc" 450 43 56# "expl:Integer cast"
              (Uint64.of_int (0))) !i_5))
             /\
-            (#"/home/mikhail/repos/verker/strlen.h" 187 30 39#
+            (#"/home/mikhail/repos/verker/strlen.h" 203 30 39#
             (Uint64.(<=) !i_5 !size_5)))))
            &&
-           (#"/home/mikhail/repos/verker/strlen.h" 188 25 71#
-           (forall j_3 : int.
-            ((((<=) (0) j_3) /\ ((<) j_3 (Uint64.to_int !i_5))) ->
-             (Int8.(<>) (select charP_charM_s_4_10 (shift s_4 j_3))
-             (#"strlen.jc" 381 55 66# "expl:Integer cast" (Int8.of_int (0)))))))) }
+           (#"/home/mikhail/repos/verker/strlen.h" 204 25 71#
+           (forall j_4 : int.
+            ((((<=) (0) j_4) /\ ((<) j_4 (Uint64.to_int !i_5))) ->
+             (Int8.(<>) (select charP_charM_s_6_11 (shift s_6 j_4))
+             (#"strlen.jc" 455 55 66# "expl:Integer cast" (Int8.of_int (0)))))))) }
          
         begin
         any unit requires { true } ensures { true } ;
@@ -4879,20 +5264,20 @@ module Function_strlen_before_null_full_behaviors
           begin
           begin
           (if
-          (#"/home/mikhail/repos/verker/strlen.h" 191 26 34#
+          (#"/home/mikhail/repos/verker/strlen.h" 207 26 34#
           (Unsafe_uint64.(<)  !i_5 !size_5 )) then ()
           else (raise (Goto_while_0_break_3_exc ())));
            begin
-           (let _jessie_93 = s_4 in
+           (let _jessie_93 = s_6 in
            (let _jessie_92 = !i_5 in
-           (#"/home/mikhail/repos/verker/strlen.h" 192 9 33#
+           (#"/home/mikhail/repos/verker/strlen.h" 208 9 33#
            "expl:Precondition for strlen_before_null"
            (Function_strlen_before_null.strlen_before_null  _jessie_93
-            _jessie_92 voidP_s_4_10_alloc_table voidP_s_4_10_tag_table
-            charP_charM_s_4_10 ))));
+            _jessie_92 voidP_s_6_11_alloc_table voidP_s_6_11_tag_table
+            charP_charM_s_6_11 ))));
             (i_5 :=
              (Unsafe_uint64.(+)  !i_5
-              (#"strlen.jc" 388 60 73# "expl:Integer cast"
+              (#"strlen.jc" 462 60 73# "expl:Integer cast"
               (Unsafe_uint64.of_int (1))) )) end end;
            (raise (Loop_continue_exc ())) end with Loop_continue_exc
           _jessie_17 -> () end end end; (raise (Goto_while_0_break_3_exc ()))
@@ -4903,7 +5288,7 @@ module Function_strlen_before_null_full_behaviors
 end
 
 module Function_strlen_at_null_safety
-#"/home/mikhail/repos/verker/strlen.h" 201 9 42#
+#"/home/mikhail/repos/verker/strlen.h" 217 9 42#
 "expl:strlen_at_null, safety"
 
   use enum.Uint64 
@@ -4930,7 +5315,7 @@ module Function_strlen_at_null_safety
   
   use import int.Int 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Axiomatic_Strlen 
   
@@ -4944,47 +5329,47 @@ module Function_strlen_at_null_safety
   
   use why3.Bool.Bool 
   
-  let strlen_at_null #"/home/mikhail/repos/verker/strlen.h" 201 9 42#
+  let strlen_at_null #"/home/mikhail/repos/verker/strlen.h" 217 9 42#
   "expl:Function strlen_at_null, safety" =
   fun
-   (s_2 : (pointer voidP)) (i : Uint64.t) (voidP_s_2_11_alloc_table :
-   (alloc_table voidP)) (voidP_s_2_11_tag_table : (tag_table voidP))
-   (charP_charM_s_2_11 : (memory voidP Int8.t)) 
+   (s_4 : (pointer voidP)) (i : Uint64.t) (voidP_s_4_12_alloc_table :
+   (alloc_table voidP)) (voidP_s_4_12_tag_table : (tag_table voidP))
+   (charP_charM_s_4_12 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_2_11_alloc_table s_2) ->
-     (((=) (typeof voidP_s_2_11_tag_table s_2) charP_tag) /\
+   (((allocated voidP_s_4_12_alloc_table s_4) ->
+     (((=) (typeof voidP_s_4_12_tag_table s_4) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_2_11_alloc_table s_2) i) /\
-       ((<) i (offset_max voidP_s_2_11_alloc_table s_2))) ->
-       ((=) (typeof voidP_s_2_11_tag_table (shift s_2 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_4_12_alloc_table s_4) i) /\
+       ((<) i (offset_max voidP_s_4_12_alloc_table s_4))) ->
+       ((=) (typeof voidP_s_4_12_tag_table (shift s_4 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
-   (valid_str s_2 voidP_s_2_11_alloc_table charP_charM_s_2_11))))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 213 16 28#
+   (valid_str s_4 voidP_s_4_12_alloc_table charP_charM_s_4_12))))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
     begin
     (let _jessie_104 =
-    (let _jessie_103 = s_2 in
-    (#"/home/mikhail/repos/verker/strlen.h" 202 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full_safe.istrlen_full  _jessie_103
-     voidP_s_2_11_alloc_table voidP_s_2_11_tag_table charP_charM_s_2_11 )))
+    (let _jessie_103 = s_4 in
+    (#"/home/mikhail/repos/verker/strlen.h" 218 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_103
+     voidP_s_4_12_alloc_table voidP_s_4_12_tag_table charP_charM_s_4_12 )))
     in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
 module Function_strlen_at_null_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 201 9 42#
+#"/home/mikhail/repos/verker/strlen.h" 217 9 42#
 "expl:strlen_at_null, behaviors"
 
   use enum.Uint64 
@@ -5011,7 +5396,7 @@ module Function_strlen_at_null_behaviors
   
   use import int.Int 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Axiomatic_Strlen 
   
@@ -5026,53 +5411,53 @@ module Function_strlen_at_null_behaviors
   use why3.Bool.Bool 
   
   let strlen_at_null_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 201 9 42#
+  #"/home/mikhail/repos/verker/strlen.h" 217 9 42#
   "expl:Function strlen_at_null, default behavior" =
   fun
-   (s_2 : (pointer voidP)) (i : Uint64.t) (voidP_s_2_11_alloc_table :
-   (alloc_table voidP)) (voidP_s_2_11_tag_table : (tag_table voidP))
-   (charP_charM_s_2_11 : (memory voidP Int8.t)) 
+   (s_4 : (pointer voidP)) (i : Uint64.t) (voidP_s_4_12_alloc_table :
+   (alloc_table voidP)) (voidP_s_4_12_tag_table : (tag_table voidP))
+   (charP_charM_s_4_12 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_2_11_alloc_table s_2) ->
-     (((=) (typeof voidP_s_2_11_tag_table s_2) charP_tag) /\
+   (((allocated voidP_s_4_12_alloc_table s_4) ->
+     (((=) (typeof voidP_s_4_12_tag_table s_4) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_2_11_alloc_table s_2) i) /\
-       ((<) i (offset_max voidP_s_2_11_alloc_table s_2))) ->
-       ((=) (typeof voidP_s_2_11_tag_table (shift s_2 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_4_12_alloc_table s_4) i) /\
+       ((<) i (offset_max voidP_s_4_12_alloc_table s_4))) ->
+       ((=) (typeof voidP_s_4_12_tag_table (shift s_4 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 416 12 283#
-   ((#"strlen.jc" 416 12 283# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 490 12 283#
+   ((#"strlen.jc" 490 12 283# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
-   (valid_str s_2 voidP_s_2_11_alloc_table charP_charM_s_2_11))))))))))) }
+   (#"/home/mikhail/repos/verker/strlen.h" 213 16 28#
+   (valid_str s_4 voidP_s_4_12_alloc_table charP_charM_s_4_12))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 198 15 35# "expl:Ensures clause"
+     (#"/home/mikhail/repos/verker/strlen.h" 214 15 35# "expl:Ensures clause"
      (Int8.(=)
-     (select charP_charM_s_2_11
-     (shift s_2 (Uint64.to_int (strlen s_2 charP_charM_s_2_11))))
-     (#"strlen.jc" 425 22 33# "expl:Integer cast" (Int8.of_int (0)))))) }  ->
+     (select charP_charM_s_4_12
+     (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_12))))
+     (#"strlen.jc" 499 22 33# "expl:Integer cast" (Int8.of_int (0)))))) }  ->
    'Init:
    try
     begin
     (let _jessie_102 =
-    (let _jessie_101 = s_2 in
-    (#"/home/mikhail/repos/verker/strlen.h" 202 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full.istrlen_full  _jessie_101 voidP_s_2_11_alloc_table
-     voidP_s_2_11_tag_table charP_charM_s_2_11 ))) in ()); (raise Return);
-     (raise Return) end with Return -> () end
+    (let _jessie_101 = s_4 in
+    (#"/home/mikhail/repos/verker/strlen.h" 218 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full.elim_valid_str_full  _jessie_101
+     voidP_s_4_12_alloc_table voidP_s_4_12_tag_table charP_charM_s_4_12 )))
+    in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
 module Function_strlen_main_safety
-#"/home/mikhail/repos/verker/strlen.h" 213 9 39# "expl:strlen_main, safety"
+#"/home/mikhail/repos/verker/strlen.h" 229 9 39# "expl:strlen_main, safety"
 
   use enum.Uint64 
   
@@ -5098,7 +5483,7 @@ module Function_strlen_main_safety
   
   use import int.Int 
   
-  use Function_istrlen_full_safe 
+  use Function_elim_valid_str_full_safe 
   
   use import Axiomatic_Strlen 
   
@@ -5114,61 +5499,61 @@ module Function_strlen_main_safety
   
   use why3.Bool.Bool 
   
-  let strlen_main #"/home/mikhail/repos/verker/strlen.h" 213 9 39#
+  let strlen_main #"/home/mikhail/repos/verker/strlen.h" 229 9 39#
   "expl:Function strlen_main, safety" =
   fun
-   (s_6 : (pointer voidP)) (n_7 : Uint64.t) (voidP_s_6_12_alloc_table :
-   (alloc_table voidP)) (voidP_s_6_12_tag_table : (tag_table voidP))
-   (charP_charM_s_6_12 : (memory voidP Int8.t)) 
+   (s_7 : (pointer voidP)) (n_8 : Uint64.t) (voidP_s_7_13_alloc_table :
+   (alloc_table voidP)) (voidP_s_7_13_tag_table : (tag_table voidP))
+   (charP_charM_s_7_13 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_6_12_alloc_table s_6) ->
-     (((=) (typeof voidP_s_6_12_tag_table s_6) charP_tag) /\
+   (((allocated voidP_s_7_13_alloc_table s_7) ->
+     (((=) (typeof voidP_s_7_13_tag_table s_7) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_6_12_alloc_table s_6) i) /\
-       ((<) i (offset_max voidP_s_6_12_alloc_table s_6))) ->
-       ((=) (typeof voidP_s_6_12_tag_table (shift s_6 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_7_13_alloc_table s_7) i) /\
+       ((<) i (offset_max voidP_s_7_13_alloc_table s_7))) ->
+       ((=) (typeof voidP_s_7_13_tag_table (shift s_7 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_at_null (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"/home/mikhail/repos/verker/strlen.h" 207 16 28#
-    (valid_str s_6 voidP_s_6_12_alloc_table charP_charM_s_6_12))
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_at_null (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"/home/mikhail/repos/verker/strlen.h" 223 16 28#
+    (valid_str s_7 voidP_s_7_13_alloc_table charP_charM_s_7_13))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"/home/mikhail/repos/verker/strlen.h" 208 16 28#
-    (Int8.(=) (select charP_charM_s_6_12 (shift s_6 (Uint64.to_int n_7)))
-    (#"strlen.jc" 459 36 47# "expl:Integer cast" (Int8.of_int (0)))))
+   (#"strlen.jc" 526 12 736#
+   ((#"/home/mikhail/repos/verker/strlen.h" 224 16 28#
+    (Int8.(=) (select charP_charM_s_7_13 (shift s_7 (Uint64.to_int n_8)))
+    (#"strlen.jc" 533 36 47# "expl:Integer cast" (Int8.of_int (0)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 209 16 62#
+   (#"/home/mikhail/repos/verker/strlen.h" 225 16 62#
    (forall i_2_0 : int.
-    ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_7))) ->
-     (Int8.(<>) (select charP_charM_s_6_12 (shift s_6 i_2_0))
-     (#"strlen.jc" 463 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
+    ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_8))) ->
+     (Int8.(<>) (select charP_charM_s_7_13 (shift s_7 i_2_0))
+     (#"strlen.jc" 537 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
    } ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
     begin
     (let _jessie_108 =
-    (let _jessie_107 = s_6 in
-    (#"/home/mikhail/repos/verker/strlen.h" 214 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full_safe.istrlen_full  _jessie_107
-     voidP_s_6_12_alloc_table voidP_s_6_12_tag_table charP_charM_s_6_12 )))
+    (let _jessie_107 = s_7 in
+    (#"/home/mikhail/repos/verker/strlen.h" 230 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full_safe.elim_valid_str_full  _jessie_107
+     voidP_s_7_13_alloc_table voidP_s_7_13_tag_table charP_charM_s_7_13 )))
     in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
 module Function_strlen_main_behaviors
-#"/home/mikhail/repos/verker/strlen.h" 213 9 39#
+#"/home/mikhail/repos/verker/strlen.h" 229 9 39#
 "expl:strlen_main, behaviors"
 
   use enum.Uint64 
@@ -5195,7 +5580,7 @@ module Function_strlen_main_behaviors
   
   use import int.Int 
   
-  use Function_istrlen_full 
+  use Function_elim_valid_str_full 
   
   use import Axiomatic_Strlen 
   
@@ -5212,60 +5597,60 @@ module Function_strlen_main_behaviors
   use why3.Bool.Bool 
   
   let strlen_main_ensures_default
-  #"/home/mikhail/repos/verker/strlen.h" 213 9 39#
+  #"/home/mikhail/repos/verker/strlen.h" 229 9 39#
   "expl:Function strlen_main, default behavior" =
   fun
-   (s_6 : (pointer voidP)) (n_7 : Uint64.t) (voidP_s_6_12_alloc_table :
-   (alloc_table voidP)) (voidP_s_6_12_tag_table : (tag_table voidP))
-   (charP_charM_s_6_12 : (memory voidP Int8.t)) 
+   (s_7 : (pointer voidP)) (n_8 : Uint64.t) (voidP_s_7_13_alloc_table :
+   (alloc_table voidP)) (voidP_s_7_13_tag_table : (tag_table voidP))
+   (charP_charM_s_7_13 : (memory voidP Int8.t)) 
    requires {
-   (((allocated voidP_s_6_12_alloc_table s_6) ->
-     (((=) (typeof voidP_s_6_12_tag_table s_6) charP_tag) /\
+   (((allocated voidP_s_7_13_alloc_table s_7) ->
+     (((=) (typeof voidP_s_7_13_tag_table s_7) charP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min voidP_s_6_12_alloc_table s_6) i) /\
-       ((<) i (offset_max voidP_s_6_12_alloc_table s_6))) ->
-       ((=) (typeof voidP_s_6_12_tag_table (shift s_6 i)) charP_tag)))))
+      ((((<=) (offset_min voidP_s_7_13_alloc_table s_7) i) /\
+       ((<) i (offset_max voidP_s_7_13_alloc_table s_7))) ->
+       ((=) (typeof voidP_s_7_13_tag_table (shift s_7 i)) charP_tag)))))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__valid_str_shiftn (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__valid_str_shiftn_full (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_before_null (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_before_null_full (1)))
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__valid_str_shiftn (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__valid_str_shiftn_full (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_before_null (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_before_null_full (1)))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"strlen.jc" 452 12 736# (_LF__Predicate__strlen_at_null (1))) /\
-   (#"strlen.jc" 452 12 736#
-   ((#"/home/mikhail/repos/verker/strlen.h" 207 16 28#
-    (valid_str s_6 voidP_s_6_12_alloc_table charP_charM_s_6_12))
+   (#"strlen.jc" 526 12 736#
+   ((#"strlen.jc" 526 12 736# (_LF__Predicate__strlen_at_null (1))) /\
+   (#"strlen.jc" 526 12 736#
+   ((#"/home/mikhail/repos/verker/strlen.h" 223 16 28#
+    (valid_str s_7 voidP_s_7_13_alloc_table charP_charM_s_7_13))
    /\
-   (#"strlen.jc" 452 12 736#
-   ((#"/home/mikhail/repos/verker/strlen.h" 208 16 28#
-    (Int8.(=) (select charP_charM_s_6_12 (shift s_6 (Uint64.to_int n_7)))
-    (#"strlen.jc" 459 36 47# "expl:Integer cast" (Int8.of_int (0)))))
+   (#"strlen.jc" 526 12 736#
+   ((#"/home/mikhail/repos/verker/strlen.h" 224 16 28#
+    (Int8.(=) (select charP_charM_s_7_13 (shift s_7 (Uint64.to_int n_8)))
+    (#"strlen.jc" 533 36 47# "expl:Integer cast" (Int8.of_int (0)))))
    /\
-   (#"/home/mikhail/repos/verker/strlen.h" 209 16 62#
+   (#"/home/mikhail/repos/verker/strlen.h" 225 16 62#
    (forall i_2_0 : int.
-    ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_7))) ->
-     (Int8.(<>) (select charP_charM_s_6_12 (shift s_6 i_2_0))
-     (#"strlen.jc" 463 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
+    ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_8))) ->
+     (Int8.(<>) (select charP_charM_s_7_13 (shift s_7 i_2_0))
+     (#"strlen.jc" 537 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
    }
    ensures {
      ("expl:Postcondition"
-     (#"/home/mikhail/repos/verker/strlen.h" 210 16 30# "expl:Ensures clause"
-     (Uint64.(=) (strlen s_6 charP_charM_s_6_12) n_7))) }  ->
+     (#"/home/mikhail/repos/verker/strlen.h" 226 16 30# "expl:Ensures clause"
+     (Uint64.(=) (strlen s_7 charP_charM_s_7_13) n_8))) }  ->
    'Init:
    try
     begin
     (let _jessie_106 =
-    (let _jessie_105 = s_6 in
-    (#"/home/mikhail/repos/verker/strlen.h" 214 6 21#
-    "expl:Precondition for istrlen_full"
-    (Function_istrlen_full.istrlen_full  _jessie_105 voidP_s_6_12_alloc_table
-     voidP_s_6_12_tag_table charP_charM_s_6_12 ))) in ()); (raise Return);
-     (raise Return) end with Return -> () end
+    (let _jessie_105 = s_7 in
+    (#"/home/mikhail/repos/verker/strlen.h" 230 6 28#
+    "expl:Precondition for elim_valid_str_full"
+    (Function_elim_valid_str_full.elim_valid_str_full  _jessie_105
+     voidP_s_7_13_alloc_table voidP_s_7_13_tag_table charP_charM_s_7_13 )))
+    in ()); (raise Return); (raise Return) end with Return -> () end
   
 end
 
@@ -10549,7 +10934,7 @@ module Unsafe_int32_of_Unsafe_int16
   
 end
 
-module Function_strlen_def
+module Function_elim_strlen
 
   use enum.Uint64 
   
@@ -10571,35 +10956,35 @@ module Function_strlen_def
   
   use why3.Bool.Bool 
   
-  val strlen_def
-  (s_5 : (pointer voidP)) 
-   (voidP_s_5_6_alloc_table : (alloc_table voidP)) 
-    (voidP_s_5_6_tag_table : (tag_table voidP)) 
-     (charP_charM_s_5_6 : (memory voidP Int8.t)) : unit
+  val elim_strlen
+  (s_3 : (pointer voidP)) 
+   (voidP_s_7_alloc_table : (alloc_table voidP)) 
+    (voidP_s_7_tag_table : (tag_table voidP)) 
+     (charP_charM_s_7 : (memory voidP Int8.t)) : unit
       requires { true }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        (#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
         "expl:Ensures clause"
-        (#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        (#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        ((#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
          "expl:Ensures clause"
-         ((Int8.(=) (select charP_charM_s_5_6 (shift s_5 (0)))
-          (#"strlen.jc" 173 59 70# "expl:Integer cast" (Int8.of_int (0)))) ->
-          (Uint64.(=) (strlen s_5 charP_charM_s_5_6) (#"strlen.jc" 174 62 75#
+         ((Int8.(=) (select charP_charM_s_7 (shift s_3 (0)))
+          (#"strlen.jc" 206 57 68# "expl:Integer cast" (Int8.of_int (0)))) ->
+          (Uint64.(=) (strlen s_3 charP_charM_s_7) (#"strlen.jc" 207 60 73#
           "expl:Integer cast" (Uint64.of_int (0))))))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 120 15 62#
+        (#"/home/mikhail/repos/verker/strlen.h" 134 15 62#
         "expl:Ensures clause"
-        ((Int8.(<>) (select charP_charM_s_5_6 (shift s_5 (0)))
-         (#"strlen.jc" 175 60 71# "expl:Integer cast" (Int8.of_int (0)))) ->
-         ((=) (Uint64.to_int (strlen s_5 charP_charM_s_5_6))
+        ((Int8.(<>) (select charP_charM_s_7 (shift s_3 (0)))
+         (#"strlen.jc" 208 58 69# "expl:Integer cast" (Int8.of_int (0)))) ->
+         ((=) (Uint64.to_int (strlen s_3 charP_charM_s_7))
          (Int.(+) (1)
-         (Uint64.to_int (strlen (shift s_5 (1)) charP_charM_s_5_6))))))))) }
+         (Uint64.to_int (strlen (shift s_3 (1)) charP_charM_s_7))))))))) }
   
 end
 
-module Function_strlen_def_safe
+module Function_elim_strlen_safe
 
   use enum.Uint64 
   
@@ -10621,35 +11006,35 @@ module Function_strlen_def_safe
   
   use why3.Bool.Bool 
   
-  val strlen_def
-  (s_5 : (pointer voidP)) 
-   (voidP_s_5_6_alloc_table : (alloc_table voidP)) 
-    (voidP_s_5_6_tag_table : (tag_table voidP)) 
-     (charP_charM_s_5_6 : (memory voidP Int8.t)) : unit
+  val elim_strlen
+  (s_3 : (pointer voidP)) 
+   (voidP_s_7_alloc_table : (alloc_table voidP)) 
+    (voidP_s_7_tag_table : (tag_table voidP)) 
+     (charP_charM_s_7 : (memory voidP Int8.t)) : unit
       requires {
         ("expl:Internal"
-        (#"/home/mikhail/repos/verker/strlen.h" 118 16 28#
+        (#"/home/mikhail/repos/verker/strlen.h" 132 16 28#
         "expl:Requires clause"
-        (valid_str s_5 voidP_s_5_6_alloc_table charP_charM_s_5_6))) }
+        (valid_str s_3 voidP_s_7_alloc_table charP_charM_s_7))) }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        (#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
         "expl:Ensures clause"
-        (#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        (#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 119 15 46#
+        ((#"/home/mikhail/repos/verker/strlen.h" 133 15 46#
          "expl:Ensures clause"
-         ((Int8.(=) (select charP_charM_s_5_6 (shift s_5 (0)))
-          (#"strlen.jc" 173 59 70# "expl:Integer cast" (Int8.of_int (0)))) ->
-          (Uint64.(=) (strlen s_5 charP_charM_s_5_6) (#"strlen.jc" 174 62 75#
+         ((Int8.(=) (select charP_charM_s_7 (shift s_3 (0)))
+          (#"strlen.jc" 206 57 68# "expl:Integer cast" (Int8.of_int (0)))) ->
+          (Uint64.(=) (strlen s_3 charP_charM_s_7) (#"strlen.jc" 207 60 73#
           "expl:Integer cast" (Uint64.of_int (0))))))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 120 15 62#
+        (#"/home/mikhail/repos/verker/strlen.h" 134 15 62#
         "expl:Ensures clause"
-        ((Int8.(<>) (select charP_charM_s_5_6 (shift s_5 (0)))
-         (#"strlen.jc" 175 60 71# "expl:Integer cast" (Int8.of_int (0)))) ->
-         ((=) (Uint64.to_int (strlen s_5 charP_charM_s_5_6))
+        ((Int8.(<>) (select charP_charM_s_7 (shift s_3 (0)))
+         (#"strlen.jc" 208 58 69# "expl:Integer cast" (Int8.of_int (0)))) ->
+         ((=) (Uint64.to_int (strlen s_3 charP_charM_s_7))
          (Int.(+) (1)
-         (Uint64.to_int (strlen (shift s_5 (1)) charP_charM_s_5_6))))))))) }
+         (Uint64.to_int (strlen (shift s_3 (1)) charP_charM_s_7))))))))) }
   
 end
 
@@ -10676,19 +11061,19 @@ module Function_valid_str_shiftn_full
   use why3.Bool.Bool 
   
   val valid_str_shiftn_full
-  (s_8 : (pointer voidP)) 
-   (voidP_s_8_8_alloc_table : (alloc_table voidP)) 
-    (voidP_s_8_8_tag_table : (tag_table voidP)) 
-     (charP_charM_s_8_8 : (memory voidP Int8.t)) : unit
+  (s_9 : (pointer voidP)) 
+   (voidP_s_9_9_alloc_table : (alloc_table voidP)) 
+    (voidP_s_9_9_tag_table : (tag_table voidP)) 
+     (charP_charM_s_9_9 : (memory voidP Int8.t)) : unit
       requires { true }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 155 15 73#
+        (#"/home/mikhail/repos/verker/strlen.h" 171 15 73#
         "expl:Ensures clause"
         (forall i_0_0 : int.
          ((((<=) (0) i_0_0) /\
-          ((<) i_0_0 (Uint64.to_int (strlen s_8 charP_charM_s_8_8)))) ->
-          (valid_str (shift s_8 i_0_0) voidP_s_8_8_alloc_table
-          charP_charM_s_8_8)))) }
+          ((<) i_0_0 (Uint64.to_int (strlen s_9 charP_charM_s_9_9)))) ->
+          (valid_str (shift s_9 i_0_0) voidP_s_9_9_alloc_table
+          charP_charM_s_9_9)))) }
   
 end
 
@@ -10717,27 +11102,27 @@ module Function_valid_str_shiftn_full_safe
   use why3.Bool.Bool 
   
   val valid_str_shiftn_full
-  (s_8 : (pointer voidP)) 
-   (voidP_s_8_8_alloc_table : (alloc_table voidP)) 
-    (voidP_s_8_8_tag_table : (tag_table voidP)) 
-     (charP_charM_s_8_8 : (memory voidP Int8.t)) : unit
+  (s_9 : (pointer voidP)) 
+   (voidP_s_9_9_alloc_table : (alloc_table voidP)) 
+    (voidP_s_9_9_tag_table : (tag_table voidP)) 
+     (charP_charM_s_9_9 : (memory voidP Int8.t)) : unit
       requires {
         ("expl:Internal"
-        (#"strlen.jc" 263 12 95# "expl:Requires clause"
-        ((#"strlen.jc" 263 12 95# "expl:Requires clause"
+        (#"strlen.jc" 337 12 95# "expl:Requires clause"
+        ((#"strlen.jc" 337 12 95# "expl:Requires clause"
          (_LF__Predicate__valid_str_shiftn (1)))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 154 16 28#
+        (#"/home/mikhail/repos/verker/strlen.h" 170 16 28#
         "expl:Requires clause"
-        (valid_str s_8 voidP_s_8_8_alloc_table charP_charM_s_8_8))))) }
+        (valid_str s_9 voidP_s_9_9_alloc_table charP_charM_s_9_9))))) }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 155 15 73#
+        (#"/home/mikhail/repos/verker/strlen.h" 171 15 73#
         "expl:Ensures clause"
         (forall i_0_0 : int.
          ((((<=) (0) i_0_0) /\
-          ((<) i_0_0 (Uint64.to_int (strlen s_8 charP_charM_s_8_8)))) ->
-          (valid_str (shift s_8 i_0_0) voidP_s_8_8_alloc_table
-          charP_charM_s_8_8)))) }
+          ((<) i_0_0 (Uint64.to_int (strlen s_9 charP_charM_s_9_9)))) ->
+          (valid_str (shift s_9 i_0_0) voidP_s_9_9_alloc_table
+          charP_charM_s_9_9)))) }
   
 end
 
@@ -10764,19 +11149,19 @@ module Function_strlen_before_null_full
   use why3.Bool.Bool 
   
   val strlen_before_null_full
-  (s_4 : (pointer voidP)) 
-   (voidP_s_4_10_alloc_table : (alloc_table voidP)) 
-    (voidP_s_4_10_tag_table : (tag_table voidP)) 
-     (charP_charM_s_4_10 : (memory voidP Int8.t)) : unit
+  (s_6 : (pointer voidP)) 
+   (voidP_s_6_11_alloc_table : (alloc_table voidP)) 
+    (voidP_s_6_11_tag_table : (tag_table voidP)) 
+     (charP_charM_s_6_11 : (memory voidP Int8.t)) : unit
       requires { true }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 182 15 69#
+        (#"/home/mikhail/repos/verker/strlen.h" 198 15 69#
         "expl:Ensures clause"
         (forall i_1_0_0 : int.
          ((((<=) (0) i_1_0_0) /\
-          ((<) i_1_0_0 (Uint64.to_int (strlen s_4 charP_charM_s_4_10)))) ->
-          (Int8.(<>) (select charP_charM_s_4_10 (shift s_4 i_1_0_0))
-          (#"strlen.jc" 364 57 68# "expl:Integer cast" (Int8.of_int (0)))))))
+          ((<) i_1_0_0 (Uint64.to_int (strlen s_6 charP_charM_s_6_11)))) ->
+          (Int8.(<>) (select charP_charM_s_6_11 (shift s_6 i_1_0_0))
+          (#"strlen.jc" 438 57 68# "expl:Integer cast" (Int8.of_int (0)))))))
         }
   
 end
@@ -10810,35 +11195,35 @@ module Function_strlen_before_null_full_safe
   use why3.Bool.Bool 
   
   val strlen_before_null_full
-  (s_4 : (pointer voidP)) 
-   (voidP_s_4_10_alloc_table : (alloc_table voidP)) 
-    (voidP_s_4_10_tag_table : (tag_table voidP)) 
-     (charP_charM_s_4_10 : (memory voidP Int8.t)) : unit
+  (s_6 : (pointer voidP)) 
+   (voidP_s_6_11_alloc_table : (alloc_table voidP)) 
+    (voidP_s_6_11_tag_table : (tag_table voidP)) 
+     (charP_charM_s_6_11 : (memory voidP Int8.t)) : unit
       requires {
         ("expl:Internal"
-        (#"strlen.jc" 354 12 216# "expl:Requires clause"
-        ((#"strlen.jc" 354 12 216# "expl:Requires clause"
+        (#"strlen.jc" 428 12 216# "expl:Requires clause"
+        ((#"strlen.jc" 428 12 216# "expl:Requires clause"
          (_LF__Predicate__valid_str_shiftn (1)))
         /\
-        (#"strlen.jc" 354 12 216# "expl:Requires clause"
-        ((#"strlen.jc" 354 12 216# "expl:Requires clause"
+        (#"strlen.jc" 428 12 216# "expl:Requires clause"
+        ((#"strlen.jc" 428 12 216# "expl:Requires clause"
          (_LF__Predicate__valid_str_shiftn_full (1)))
         /\
-        (#"strlen.jc" 354 12 216# "expl:Requires clause"
-        ((#"strlen.jc" 354 12 216# "expl:Requires clause"
+        (#"strlen.jc" 428 12 216# "expl:Requires clause"
+        ((#"strlen.jc" 428 12 216# "expl:Requires clause"
          (_LF__Predicate__strlen_before_null (1)))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 181 16 28#
+        (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
         "expl:Requires clause"
-        (valid_str s_4 voidP_s_4_10_alloc_table charP_charM_s_4_10))))))))) }
+        (valid_str s_6 voidP_s_6_11_alloc_table charP_charM_s_6_11))))))))) }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 182 15 69#
+        (#"/home/mikhail/repos/verker/strlen.h" 198 15 69#
         "expl:Ensures clause"
         (forall i_1_0_0 : int.
          ((((<=) (0) i_1_0_0) /\
-          ((<) i_1_0_0 (Uint64.to_int (strlen s_4 charP_charM_s_4_10)))) ->
-          (Int8.(<>) (select charP_charM_s_4_10 (shift s_4 i_1_0_0))
-          (#"strlen.jc" 364 57 68# "expl:Integer cast" (Int8.of_int (0)))))))
+          ((<) i_1_0_0 (Uint64.to_int (strlen s_6 charP_charM_s_6_11)))) ->
+          (Int8.(<>) (select charP_charM_s_6_11 (shift s_6 i_1_0_0))
+          (#"strlen.jc" 438 57 68# "expl:Integer cast" (Int8.of_int (0)))))))
         }
   
 end
@@ -10864,19 +11249,19 @@ module Function_strlen_at_null
   use why3.Bool.Bool 
   
   val strlen_at_null
-  (s_2 : (pointer voidP)) 
+  (s_4 : (pointer voidP)) 
    (i : Uint64.t) 
-    (voidP_s_2_11_alloc_table : (alloc_table voidP)) 
-     (voidP_s_2_11_tag_table : (tag_table voidP)) 
-      (charP_charM_s_2_11 : (memory voidP Int8.t)) : unit
+    (voidP_s_4_12_alloc_table : (alloc_table voidP)) 
+     (voidP_s_4_12_tag_table : (tag_table voidP)) 
+      (charP_charM_s_4_12 : (memory voidP Int8.t)) : unit
        requires { true }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 198 15 35#
+         (#"/home/mikhail/repos/verker/strlen.h" 214 15 35#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_2_11
-         (shift s_2 (Uint64.to_int (strlen s_2 charP_charM_s_2_11))))
-         (#"strlen.jc" 425 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
+         (select charP_charM_s_4_12
+         (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_12))))
+         (#"strlen.jc" 499 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
   
 end
 
@@ -10909,40 +11294,40 @@ module Function_strlen_at_null_safe
   use why3.Bool.Bool 
   
   val strlen_at_null
-  (s_2 : (pointer voidP)) 
+  (s_4 : (pointer voidP)) 
    (i : Uint64.t) 
-    (voidP_s_2_11_alloc_table : (alloc_table voidP)) 
-     (voidP_s_2_11_tag_table : (tag_table voidP)) 
-      (charP_charM_s_2_11 : (memory voidP Int8.t)) : unit
+    (voidP_s_4_12_alloc_table : (alloc_table voidP)) 
+     (voidP_s_4_12_tag_table : (tag_table voidP)) 
+      (charP_charM_s_4_12 : (memory voidP Int8.t)) : unit
        requires {
          ("expl:Internal"
-         (#"strlen.jc" 416 12 283# "expl:Requires clause"
-         ((#"strlen.jc" 416 12 283# "expl:Requires clause"
+         (#"strlen.jc" 490 12 283# "expl:Requires clause"
+         ((#"strlen.jc" 490 12 283# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn (1)))
          /\
-         (#"strlen.jc" 416 12 283# "expl:Requires clause"
-         ((#"strlen.jc" 416 12 283# "expl:Requires clause"
+         (#"strlen.jc" 490 12 283# "expl:Requires clause"
+         ((#"strlen.jc" 490 12 283# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn_full (1)))
          /\
-         (#"strlen.jc" 416 12 283# "expl:Requires clause"
-         ((#"strlen.jc" 416 12 283# "expl:Requires clause"
+         (#"strlen.jc" 490 12 283# "expl:Requires clause"
+         ((#"strlen.jc" 490 12 283# "expl:Requires clause"
           (_LF__Predicate__strlen_before_null (1)))
          /\
-         (#"strlen.jc" 416 12 283# "expl:Requires clause"
-         ((#"strlen.jc" 416 12 283# "expl:Requires clause"
+         (#"strlen.jc" 490 12 283# "expl:Requires clause"
+         ((#"strlen.jc" 490 12 283# "expl:Requires clause"
           (_LF__Predicate__strlen_before_null_full (1)))
          /\
-         (#"/home/mikhail/repos/verker/strlen.h" 197 16 28#
+         (#"/home/mikhail/repos/verker/strlen.h" 213 16 28#
          "expl:Requires clause"
-         (valid_str s_2 voidP_s_2_11_alloc_table charP_charM_s_2_11)))))))))))
+         (valid_str s_4 voidP_s_4_12_alloc_table charP_charM_s_4_12)))))))))))
          }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 198 15 35#
+         (#"/home/mikhail/repos/verker/strlen.h" 214 15 35#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_2_11
-         (shift s_2 (Uint64.to_int (strlen s_2 charP_charM_s_2_11))))
-         (#"strlen.jc" 425 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
+         (select charP_charM_s_4_12
+         (shift s_4 (Uint64.to_int (strlen s_4 charP_charM_s_4_12))))
+         (#"strlen.jc" 499 22 33# "expl:Integer cast" (Int8.of_int (0))))) }
   
 end
 
@@ -10967,16 +11352,16 @@ module Function_strlen_main
   use why3.Bool.Bool 
   
   val strlen_main
-  (s_6 : (pointer voidP)) 
-   (n_7 : Uint64.t) 
-    (voidP_s_6_12_alloc_table : (alloc_table voidP)) 
-     (voidP_s_6_12_tag_table : (tag_table voidP)) 
-      (charP_charM_s_6_12 : (memory voidP Int8.t)) : unit
+  (s_7 : (pointer voidP)) 
+   (n_8 : Uint64.t) 
+    (voidP_s_7_13_alloc_table : (alloc_table voidP)) 
+     (voidP_s_7_13_tag_table : (tag_table voidP)) 
+      (charP_charM_s_7_13 : (memory voidP Int8.t)) : unit
        requires { true }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 210 16 30#
+         (#"/home/mikhail/repos/verker/strlen.h" 226 16 30#
          "expl:Ensures clause"
-         (Uint64.(=) (strlen s_6 charP_charM_s_6_12) n_7)) }
+         (Uint64.(=) (strlen s_7 charP_charM_s_7_13) n_8)) }
   
 end
 
@@ -11013,56 +11398,56 @@ module Function_strlen_main_safe
   use why3.Bool.Bool 
   
   val strlen_main
-  (s_6 : (pointer voidP)) 
-   (n_7 : Uint64.t) 
-    (voidP_s_6_12_alloc_table : (alloc_table voidP)) 
-     (voidP_s_6_12_tag_table : (tag_table voidP)) 
-      (charP_charM_s_6_12 : (memory voidP Int8.t)) : unit
+  (s_7 : (pointer voidP)) 
+   (n_8 : Uint64.t) 
+    (voidP_s_7_13_alloc_table : (alloc_table voidP)) 
+     (voidP_s_7_13_tag_table : (tag_table voidP)) 
+      (charP_charM_s_7_13 : (memory voidP Int8.t)) : unit
        requires {
          ("expl:Internal"
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"strlen.jc" 452 12 736# "expl:Requires clause"
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"strlen.jc" 526 12 736# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn (1)))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"strlen.jc" 452 12 736# "expl:Requires clause"
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"strlen.jc" 526 12 736# "expl:Requires clause"
           (_LF__Predicate__valid_str_shiftn_full (1)))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"strlen.jc" 452 12 736# "expl:Requires clause"
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"strlen.jc" 526 12 736# "expl:Requires clause"
           (_LF__Predicate__strlen_before_null (1)))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"strlen.jc" 452 12 736# "expl:Requires clause"
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"strlen.jc" 526 12 736# "expl:Requires clause"
           (_LF__Predicate__strlen_before_null_full (1)))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"strlen.jc" 452 12 736# "expl:Requires clause"
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"strlen.jc" 526 12 736# "expl:Requires clause"
           (_LF__Predicate__strlen_at_null (1)))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 207 16 28#
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 223 16 28#
           "expl:Requires clause"
-          (valid_str s_6 voidP_s_6_12_alloc_table charP_charM_s_6_12))
+          (valid_str s_7 voidP_s_7_13_alloc_table charP_charM_s_7_13))
          /\
-         (#"strlen.jc" 452 12 736# "expl:Requires clause"
-         ((#"/home/mikhail/repos/verker/strlen.h" 208 16 28#
+         (#"strlen.jc" 526 12 736# "expl:Requires clause"
+         ((#"/home/mikhail/repos/verker/strlen.h" 224 16 28#
           "expl:Requires clause"
           (Int8.(=)
-          (select charP_charM_s_6_12 (shift s_6 (Uint64.to_int n_7)))
-          (#"strlen.jc" 459 36 47# "expl:Integer cast" (Int8.of_int (0)))))
+          (select charP_charM_s_7_13 (shift s_7 (Uint64.to_int n_8)))
+          (#"strlen.jc" 533 36 47# "expl:Integer cast" (Int8.of_int (0)))))
          /\
-         (#"/home/mikhail/repos/verker/strlen.h" 209 16 62#
+         (#"/home/mikhail/repos/verker/strlen.h" 225 16 62#
          "expl:Requires clause"
          (forall i_2_0 : int.
-          ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_7))) ->
-           (Int8.(<>) (select charP_charM_s_6_12 (shift s_6 i_2_0))
-           (#"strlen.jc" 463 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
+          ((((<=) (0) i_2_0) /\ ((<) i_2_0 (Uint64.to_int n_8))) ->
+           (Int8.(<>) (select charP_charM_s_7_13 (shift s_7 i_2_0))
+           (#"strlen.jc" 537 63 74# "expl:Integer cast" (Int8.of_int (0))))))))))))))))))))))
          }
        ensures {
-         (#"/home/mikhail/repos/verker/strlen.h" 210 16 30#
+         (#"/home/mikhail/repos/verker/strlen.h" 226 16 30#
          "expl:Ensures clause"
-         (Uint64.(=) (strlen s_6 charP_charM_s_6_12) n_7)) }
+         (Uint64.(=) (strlen s_7 charP_charM_s_7_13) n_8)) }
   
 end
 
@@ -11089,34 +11474,34 @@ module Function_strlen_0
   use why3.Bool.Bool 
   
   val strlen_0
-  (s_1_0 : (pointer voidP)) 
-   (voidP_s_1_13_alloc_table : (alloc_table voidP)) 
-    (voidP_s_1_13_tag_table : (tag_table voidP)) 
-     (charP_charM_s_1_13 : (memory voidP Int8.t)) : Uint64.t
+  (s_3_0 : (pointer voidP)) 
+   (voidP_s_3_14_alloc_table : (alloc_table voidP)) 
+    (voidP_s_3_14_tag_table : (tag_table voidP)) 
+     (charP_charM_s_3_14 : (memory voidP Int8.t)) : Uint64.t
       requires { true }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        ((#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
          "expl:Ensures clause"
-         (Uint64.(=) result (strlen s_1_0 charP_charM_s_1_13)))
+         (Uint64.(=) result (strlen s_3_0 charP_charM_s_3_14)))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 221 12 30#
+        ((#"/home/mikhail/repos/verker/strlen.h" 237 12 30#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_1_13 (shift s_1_0 (Uint64.to_int result)))
-         (#"strlen.jc" 509 35 46# "expl:Integer cast" (Int8.of_int (0)))))
+         (select charP_charM_s_3_14 (shift s_3_0 (Uint64.to_int result)))
+         (#"strlen.jc" 583 35 46# "expl:Integer cast" (Int8.of_int (0)))))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 222 12 64#
+        (#"/home/mikhail/repos/verker/strlen.h" 238 12 64#
         "expl:Ensures clause"
         (forall i_3_0 : int.
          ((((<=) (0) i_3_0) /\ ((<) i_3_0 (Uint64.to_int result))) ->
-          (Int8.(<>) (select charP_charM_s_1_13 (shift s_1_0 i_3_0))
-          (#"strlen.jc" 514 40 51# "expl:Integer cast" (Int8.of_int (0))))))))))))
+          (Int8.(<>) (select charP_charM_s_3_14 (shift s_3_0 i_3_0))
+          (#"strlen.jc" 588 40 51# "expl:Integer cast" (Int8.of_int (0))))))))))))
         }
   
 end
@@ -11156,63 +11541,63 @@ module Function_strlen_0_safe
   use why3.Bool.Bool 
   
   val strlen_0
-  (s_1_0 : (pointer voidP)) 
-   (voidP_s_1_13_alloc_table : (alloc_table voidP)) 
-    (voidP_s_1_13_tag_table : (tag_table voidP)) 
-     (charP_charM_s_1_13 : (memory voidP Int8.t)) : Uint64.t
+  (s_3_0 : (pointer voidP)) 
+   (voidP_s_3_14_alloc_table : (alloc_table voidP)) 
+    (voidP_s_3_14_tag_table : (tag_table voidP)) 
+     (charP_charM_s_3_14 : (memory voidP Int8.t)) : Uint64.t
       requires {
         ("expl:Internal"
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__valid_str_shiftn (1)))
         /\
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__valid_str_shiftn_full (1)))
         /\
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__strlen_before_null (1)))
         /\
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__strlen_before_null_full (1)))
         /\
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__strlen_at_null (1)))
         /\
-        (#"strlen.jc" 498 12 402# "expl:Requires clause"
-        ((#"strlen.jc" 498 12 402# "expl:Requires clause"
+        (#"strlen.jc" 572 12 402# "expl:Requires clause"
+        ((#"strlen.jc" 572 12 402# "expl:Requires clause"
          (_LF__Predicate__strlen_main (1)))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 218 13 25#
+        (#"/home/mikhail/repos/verker/strlen.h" 234 13 25#
         "expl:Requires clause"
-        (valid_str s_1_0 voidP_s_1_13_alloc_table charP_charM_s_1_13)))))))))))))))
+        (valid_str s_3_0 voidP_s_3_14_alloc_table charP_charM_s_3_14)))))))))))))))
         }
       ensures {
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        ((#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
          "expl:Ensures clause"
-         (Uint64.(=) result (strlen s_1_0 charP_charM_s_1_13)))
+         (Uint64.(=) result (strlen s_3_0 charP_charM_s_3_14)))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 220 12 32#
+        (#"/home/mikhail/repos/verker/strlen.h" 236 12 32#
         "expl:Ensures clause"
-        ((#"/home/mikhail/repos/verker/strlen.h" 221 12 30#
+        ((#"/home/mikhail/repos/verker/strlen.h" 237 12 30#
          "expl:Ensures clause"
          (Int8.(=)
-         (select charP_charM_s_1_13 (shift s_1_0 (Uint64.to_int result)))
-         (#"strlen.jc" 509 35 46# "expl:Integer cast" (Int8.of_int (0)))))
+         (select charP_charM_s_3_14 (shift s_3_0 (Uint64.to_int result)))
+         (#"strlen.jc" 583 35 46# "expl:Integer cast" (Int8.of_int (0)))))
         /\
-        (#"/home/mikhail/repos/verker/strlen.h" 222 12 64#
+        (#"/home/mikhail/repos/verker/strlen.h" 238 12 64#
         "expl:Ensures clause"
         (forall i_3_0 : int.
          ((((<=) (0) i_3_0) /\ ((<) i_3_0 (Uint64.to_int result))) ->
-          (Int8.(<>) (select charP_charM_s_1_13 (shift s_1_0 i_3_0))
-          (#"strlen.jc" 514 40 51# "expl:Integer cast" (Int8.of_int (0))))))))))))
+          (Int8.(<>) (select charP_charM_s_3_14 (shift s_3_0 i_3_0))
+          (#"strlen.jc" 588 40 51# "expl:Integer cast" (Int8.of_int (0))))))))))))
         }
   
 end
