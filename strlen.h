@@ -20,11 +20,11 @@
     //         valid_str(s);
 
     logic size_t strlen(char *s) =
-       s[0] == '\0' ? (size_t) 0 : (size_t) ((size_t)1 + strlen(s + 1));
+       s[0] == '\0' ? (size_t) 0 : (size_t)(1 + strlen(s + 1));
 
     //lemma strlen_before_null:
     //   \forall char* s, integer i;
-    //      valid_str(s) &&                        // <-- should be `==>' (!)
+    //      valid_str(s) &&
     //      0 <= i < strlen(s) ==> s[i] != '\0';
 
     // lemma strlen_at_null:
@@ -81,14 +81,14 @@
   @ /@ requires valid_str(s);
   @  @ ensures s[\result] == '\0';
   @  @ ensures \valid(s+(0..\result));
-  @  @ ensures \forall size_t j; j < \result ==> s[j] != '\0';
+  @  @ ensures \forall integer j; 0 <= j < \result ==> s[j] != '\0';
   @  @/
   @ size_t elim_valid_str(char *s)
   @ {
-  @    /@ loop invariant \forall size_t j; j < i ==> s[j] != '\0';
-  @     @ loop variant ULLONG_MAX - i;
+  @    /@ loop invariant \forall integer j; 0 <= j < i ==> s[j] != '\0';
+  @     @ loop variant SIZE_MAX - i;
   @     @/ 
-  @    for (size_t i = 0; i <= ULLONG_MAX; i++) {
+  @    for (size_t i = 0; i <= SIZE_MAX; i++) {
   @      if (s[i] == '\0') return i;
   @    }
   @ }
@@ -98,18 +98,19 @@
   @ /@ requires valid_str(s);
   @  @ ensures s[\result] == '\0';
   @  @ ensures \valid(s+(0..\result));
-  @  @ ensures \forall size_t j; j < \result ==> s[j] != '\0';
+  @  @ ensures \forall integer j; 0 <= j < \result ==> s[j] != '\0';
   @  @ ensures strlen(s) == \result;
   @  @/
   @ size_t elim_valid_str_len(char *s)
   @ {
   @    size_t size = elim_valid_str(s);
-  @    /@ loop invariant strlen(&s[i]) + i <= size ==> strlen(s) == strlen(&s[i]) + i;
+  @    /@ loop invariant strlen(s + i) + i <= size ==> strlen(s) == strlen(s + i) + i;
   @     @ loop invariant 0 <= i <= size;
   @     @ loop variant size - i;
   @     @/ 
   @    for (size_t i = 0; i <= size; i++) {
   @      if (s[i] == '\0') return i;
+  @      //@ assert strlen(s + i) == (size_t)(strlen(s + i + 1) + 1);
   @    }
   @ }
   @*/
@@ -119,7 +120,7 @@
   @  @ requires valid_str(s);
   @  @ ensures s[strlen(s)] == '\0';
   @  @ ensures \valid(s+(0..strlen(s)));
-  @  @ ensures \forall size_t j; j < strlen(s) ==> s[j] != '\0';
+  @  @ ensures \forall integer j; 0 <= j < strlen(s) ==> s[j] != '\0';
   @  @/
   @ void valid_str_len(char *s)
   @ {
@@ -130,50 +131,26 @@
 /*@ ghost
   @ /@ requires \valid(s+(0..n));
   @  @ requires s[n] == '\0';
-  @  @ requires \forall size_t j; j < n ==> s[j] != '\0';
+  @  @ requires \forall integer j; 0 <= j < n ==> s[j] != '\0';
   @  @ ensures valid_str(s);
   @  @ ensures strlen(s) == n;
   @  @/
   @  void intro_valid_str_len(char *s, size_t n)
   @  {
-  @    //@ assert valid_str(s);
-  @  }
-  @*/
-
-/*@ ghost
-  @ /@ requires valid_str(s) && 0 <= i < strlen(s);
-  @  @ ensures valid_str(s + i);
-  @  @/
-  @ void valid_str_shiftn(char *s, size_t i)
-  @ {
-  @    /@ loop invariant valid_str(s + j);
-  @     @ loop invariant 0 <= j <= i;
-  @     @ loop variant i - j;
-  @     @/
-  @    for (size_t j = 0; j < i; j++) {
-  @      if ((s + j)[0] != '\0') {
-  @        //@ assert \forall size_t k; k < strlen(s + j) -% 1 ==> (s + j + 1)[k] == (s + j)[k +% 1];
-  @        intro_valid_str_len(s + j + 1, elim_valid_str_len(s + j) - 1);
-  @      }
-  @    }
   @  }
   @*/
 
 /*@ ghost
   @ /@ lemma
   @  @ requires valid_str(s);
-  @  @ ensures \forall integer i; 0 <= i < strlen(s) ==> valid_str(s + i);
+  @  @ requires s[0] != '\0';
+  @  @ ensures valid_str(s + 1);
+  @  @ ensures strlen(s + 1) == strlen(s) - 1;
   @  @/
-  @ void valid_str_shiftn_integer(char *s)
-  @ {
-  @   size_t size = elim_valid_str_len(s);
-  @   /@ loop invariant 0 <= i <= size;
-  @    @ loop invariant \forall integer j; 0 <= j < i ==> valid_str(s + j);
-  @    @ loop variant size - i;
-  @    @/
-  @   for (size_t i = 0; i < size; i++)
-  @     valid_str_shiftn(s, i);
-  @ }
+  @  void valid_str_shift(char *s)
+  @  {
+  @    intro_valid_str_len(s + 1, elim_valid_str_len(s) - 1);
+  @  }
   @*/
 
 /*@ ghost
@@ -184,58 +161,8 @@
   @ void elim_strlen(char *s)
   @ {
   @    if (s[0] != '\0') {
-  @      //@ assert \forall size_t k; k < strlen(s) -% 1 ==> (s + 1)[k] == s[k +% 1];
   @      intro_valid_str_len(s + 1, elim_valid_str_len(s) - 1);
   @   }
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires valid_str(s);
-  @  @ requires 0 <= i < strlen(s); 
-  @  @ ensures s[i] != '\0';
-  @  @/
-  @ void strlen_before_null(char *s, size_t i)
-  @ {
-  @ }
-  @*/
-  
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ ensures \forall integer i; 0 <= i < strlen(s) ==> s[i] != '\0';
-  @  @/
-  @ void strlen_before_null_integer(char *s)
-  @ {
-  @   size_t size = elim_valid_str_len(s);
-  @    /@ loop invariant 0 <= i <= size;
-  @     @ loop invariant \forall integer j; 0 <= j < i ==> s[j] != '\0';
-  @     @ loop variant size - i;
-  @     @/
-  @    for (size_t i = 0; i < size; i++)
-  @      strlen_before_null(s, i);
-  @ }
-  @*/  
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ ensures s[strlen(s)] == '\0';
-  @  @/
-  @ void strlen_at_null(char *s, size_t i)
-  @ {
-  @ }
-  @*/ 
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ requires s[n] == '\0';
-  @  @ requires \forall integer i; 0 <= i < n ==> s[i] != '\0';
-  @  @ ensures  strlen(s) == n;
-  @  @/
-  @ void strlen_main(char *s, size_t n)
-  @ {
   @ }
   @*/
 
