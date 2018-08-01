@@ -234,7 +234,7 @@ sprove-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
 
 clean: ## Remove all binary and generated files.
-	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.o *.pp.c
+	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.o *.pp.c *.pp.h
 
 .PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean
 
