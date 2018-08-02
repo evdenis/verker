@@ -12,7 +12,8 @@ before_install:
   - sudo apt-get install ocaml aspcud libgnomecanvas2-dev libgtk2.0-dev libgtksourceview2.0-dev
   - sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.4-x86_64-linux-opt -O /usr/local/bin/cvc4-1.4 || true
   - sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.5-x86_64-linux-opt -O /usr/local/bin/cvc4-1.5 || true
-  - sudo chmod +x /usr/local/bin/cvc4-1.4 /usr/local/bin/cvc4-1.5
+  - sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt -O /usr/local/bin/cvc4-1.6 || true
+  - sudo chmod +x /usr/local/bin/cvc4-1.4 /usr/local/bin/cvc4-1.5 /usr/local/bin/cvc4-1.6
   - wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.06.1
   - opam install depext
 
@@ -20,7 +21,7 @@ install:
   - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
   - opam update
   - opam upgrade --yes -j1
-  - opam depext --yes --noninteractive --install -j1 frama-c jessie2 why3 alt-ergo.2.2.0
+  - opam depext --yes --noninteractive --install -j1 frama-c+lemma_functions jessie2+lemma_functions why3 alt-ergo.2.2.0
   - rm -fr ~/.opam/log
   - eval $(opam config env); why3 config --detect
 
