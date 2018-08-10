@@ -3,81 +3,109 @@
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
-<file name="../strchrnul_c.mlw">
-<theory name="Function_strchrnul_0_safety" sum="213bd685cde941966c28d70be8549b78">
- <goal name="WP_parameter strchrnul_0" expl="Function strchrnul, safety">
- <proof prover="0"><result status="valid" time="0.49" steps="1296"/></proof>
+<file name="../strchrnul_h.mlw">
+<theory name="Function_strchrnul_mem_safety" sum="6ab458c56e7eb74711210ad4a03b4796">
+ <goal name="WP_parameter strchrnul_mem" expl="Function strchrnul_mem, safety">
+ <proof prover="0"><result status="valid" time="0.10" steps="508"/></proof>
  </goal>
 </theory>
-<theory name="Function_strchrnul_0_behaviors" sum="3a8ea0b60ad0eb446e460a2d97acb6d0">
- <goal name="WP_parameter strchrnul_ensures_default" expl="Function strchrnul, default behavior">
+<theory name="Function_strchrnul_mem_behaviors" sum="0c820396fa9ba33ec8eec5ce4c9ba3d3">
+ <goal name="WP_parameter strchrnul_mem_ensures_default" expl="Function strchrnul_mem, default behavior">
+ <proof prover="0"><result status="valid" time="1.31" steps="2925"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_res_safety" sum="150c704e7408cd3451f671fb0894c9a8">
+ <goal name="WP_parameter strchrnul_res" expl="Function strchrnul_res, safety">
+ <proof prover="0"><result status="valid" time="0.14" steps="514"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_res_behaviors" sum="4a3b5324e2c67645403b9d55114a898c">
+ <goal name="WP_parameter strchrnul_res_ensures_default" expl="Function strchrnul_res, default behavior">
+ <proof prover="0"><result status="valid" time="0.28" steps="1102"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_strlen_safety" sum="f64006cafa14cbf0110f2383ff5dc9e0">
+ <goal name="WP_parameter strchrnul_strlen" expl="Function strchrnul_strlen, safety">
+ <proof prover="0"><result status="valid" time="0.13" steps="467"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_strlen_behaviors" sum="0091b886977e8839d9ba8e03d0b2353d">
+ <goal name="WP_parameter strchrnul_strlen_ensures_default" expl="Function strchrnul_strlen, default behavior">
+ <proof prover="0"><result status="valid" time="0.06" steps="395"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_defn_safety" sum="71ae08a40b5eae890193ab55ef7da96e">
+ <goal name="WP_parameter strchrnul_defn" expl="Function strchrnul_defn, safety">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strchrnul_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="151"/></proof>
+  <goal name="WP_parameter strchrnul_defn.1" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="19"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="149"/></proof>
+  <goal name="WP_parameter strchrnul_defn.2" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.02" steps="151"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.14" steps="504"/></proof>
+  <goal name="WP_parameter strchrnul_defn.3" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.4" expl="loop invariant preservation">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strchrnul_ensures_default.4.1" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.14" steps="429"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.2" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.06" steps="177"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.3" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.06" steps="177"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.4" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.05" steps="177"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.5" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.07" steps="352"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.6" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.21" steps="590"/></proof>
-   </goal>
-   <goal name="WP_parameter strchrnul_ensures_default.4.7" expl="Function strchrnul, default behavior">
-   <proof prover="0"><result status="valid" time="0.06" steps="402"/></proof>
-   </goal>
-  </transf>
+  <goal name="WP_parameter strchrnul_defn.4" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="37"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.5" expl="Assertion in line 14">
-  <proof prover="0"><result status="valid" time="0.05" steps="171"/></proof>
+  <goal name="WP_parameter strchrnul_defn.5" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="41"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.6" expl="Assertion in line 15">
-  <proof prover="0"><result status="valid" time="0.06" steps="170"/></proof>
+  <goal name="WP_parameter strchrnul_defn.6" expl="integer overflow">
+  <proof prover="0"><result status="valid" time="0.05" steps="362"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.7" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.08" steps="178"/></proof>
+  <goal name="WP_parameter strchrnul_defn.7" expl="check">
+  <proof prover="0"><result status="valid" time="0.04" steps="193"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.8" expl="Assertion in line 14">
-  <proof prover="0"><result status="valid" time="0.04" steps="162"/></proof>
-  </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.9" expl="Assertion in line 15">
-  <proof prover="0"><result status="valid" time="0.10" steps="358"/></proof>
-  </goal>
-  <goal name="WP_parameter strchrnul_ensures_default.10" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.06" steps="354"/></proof>
+  <goal name="WP_parameter strchrnul_defn.8" expl="Precondition for strchrnul_defn (Requires clause. Internal)">
+  <proof prover="0"><result status="valid" time="0.60" steps="2230"/></proof>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter strchrnul_ensures_exists" expl="Function strchrnul, behavior exists">
+</theory>
+<theory name="Function_strchrnul_defn_behaviors" sum="cc181e0b8a757ae841b2060913ab6988">
+ <goal name="WP_parameter strchrnul_defn_ensures_default" expl="Function strchrnul_defn, default behavior">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strchrnul_ensures_exists.1" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.13" steps="454"/></proof>
+  <goal name="WP_parameter strchrnul_defn_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.07" steps="487"/></proof>
   </goal>
-  <goal name="WP_parameter strchrnul_ensures_exists.2" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="1.92" steps="3250"/></proof>
+  <goal name="WP_parameter strchrnul_defn_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.05" steps="305"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_defn_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.10" steps="475"/></proof>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter strchrnul_ensures_not_exists" expl="Function strchrnul, behavior not_exists">
- <proof prover="0"><result status="valid" time="0.56" steps="1770"/></proof>
+</theory>
+<theory name="Function_strchrnul_skipped_safety" sum="a4b2724730721747082841b3b1879e2f">
+ <goal name="WP_parameter strchrnul_skipped" expl="Function strchrnul_skipped, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchrnul_skipped.1" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="17"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_skipped.2" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="25"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_skipped.3" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="29"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_skipped.4" expl="integer overflow">
+  <proof prover="0"><result status="valid" time="0.02" steps="98"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_skipped.5" expl="check">
+  <proof prover="0"><result status="valid" time="0.01" steps="37"/></proof>
+  </goal>
+  <goal name="WP_parameter strchrnul_skipped.6" expl="Precondition for strchrnul_skipped (Requires clause. Internal)">
+  <proof prover="0"><result status="valid" time="0.07" steps="477"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchrnul_skipped_behaviors" sum="f4b87a9592b5f1d8a8ccc54a949b93fb">
+ <goal name="WP_parameter strchrnul_skipped_ensures_default" expl="Function strchrnul_skipped, default behavior">
+ <proof prover="0"><result status="valid" time="2.50" steps="2264"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e">
@@ -388,23 +416,37 @@
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__strchrnul_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
+<theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_mem_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
 <theory name="Axiomatic_LF__Axiomatic__strchrnul_res" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_res_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_res" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__strchrnul_strlen" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
+<theory name="Function_strchrnul_strlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_strlen" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
 <theory name="Axiomatic_LF__Axiomatic__strchrnul_defn" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_defn_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchrnul_defn" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__strchrnul_skipped" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Safe_bit_int32_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Function_strchrnul_skipped_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Safe_bit_int8_of_Safe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Unsafe_bit_int32_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Unsafe_bit_int8_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Function_strchrnul_skipped" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -419,6 +461,8 @@
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Struct_voidP_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Safe_bit_uint64_of_Safe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -604,9 +648,9 @@
 </theory>
 <theory name="Unsafe_int64_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Safe_bit_int32_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Unsafe_bit_int32_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Safe_bit_int16_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -824,6 +868,10 @@
 </theory>
 <theory name="Unsafe_int8_of_Unsafe_int64" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
+<theory name="Safe_bit_int8_of_Safe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Unsafe_bit_int8_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
 <theory name="Safe_int8_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Unsafe_int8_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e">
@@ -887,26 +935,6 @@
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_mem_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_res" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_res_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_strlen" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_strlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_defn" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_defn_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_skipped" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchrnul_skipped_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strchrnul_0" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>

@@ -44,7 +44,7 @@ SRCFILES             := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp
 FZZAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 BINAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
 PROVEDFILES          := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-PROVEDFILES          += ./strlen.h ./strspn.h
+PROVEDFILES          += ./strlen.h ./strspn.h ./strchrnul.h
 BINFILES             := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
 FUZZFILES            := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
 EACSLFILES           := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(BINAVAILFILES))
@@ -202,10 +202,10 @@ verify-proved-separatedly: ## Run Frama-C on each file consequently. Only comple
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
 
 verify-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $*
 
 update-%:
-	@$(FRAMAC) $(FRAMAC_UFLAGS) $*.c
+	@$(FRAMAC) $(FRAMAC_UFLAGS) $*
 
 replay: ## Replay proofs simultaiously. You can also type replay-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(SRCFILES)
@@ -220,7 +220,7 @@ replay-proved-separatedly: ## Replay proved functions consequently.
 	@FAIL=0; for i in $(PROVEDFILES); do $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*
 
 sprove: ## Replay proofs simultaiously. You can also type sprove-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(SRCFILES)
@@ -232,7 +232,7 @@ sprove-proved: ## Run sprove strategy on proved functions.
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
 sprove-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*
 
 clean: ## Remove all binary and generated files.
 	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.o *.pp.c *.pp.h
