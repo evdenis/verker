@@ -3,63 +3,64 @@
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../strcspn_h.mlw">
-<theory name="Function_strcspn_strend_safety" sum="ba3e8359bc7b61ebeb3a47e0acef5863">
+<theory name="Function_strcspn_strend_safety" sum="cc041e5d1eecc778da1fc0d924565f69">
  <goal name="WP_parameter strcspn_strend" expl="Function strcspn_strend, safety">
  <proof prover="0"><result status="valid" time="0.01" steps="0"/></proof>
  </goal>
 </theory>
-<theory name="Function_strcspn_strend_behaviors" sum="ffd2153b9d462e57853bc377b21e619a">
+<theory name="Function_strcspn_strend_behaviors" sum="956b9c6997f933e985d18e8e8878c050">
  <goal name="WP_parameter strcspn_strend_ensures_default" expl="Function strcspn_strend, default behavior">
- <proof prover="0"><result status="valid" time="0.01" steps="33"/></proof>
+ <proof prover="0"><result status="valid" time="0.01" steps="34"/></proof>
  </goal>
 </theory>
-<theory name="Function_strcspn_empty_accept_safety" sum="683c3040b5b92025f0cf1474a070711e">
+<theory name="Function_strcspn_empty_accept_safety" sum="925b0980711ffb1fc7829d768741e2fb">
  <goal name="WP_parameter strcspn_empty_accept" expl="Function strcspn_empty_accept, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcspn_empty_accept.1" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.01" steps="19"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_empty_accept.2" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.03" steps="213"/></proof>
+  <proof prover="0"><result status="valid" time="0.03" steps="230"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_empty_accept.3" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.02" steps="31"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_empty_accept.4" expl="check">
-  <proof prover="0"><result status="valid" time="0.03" steps="184"/></proof>
+  <proof prover="0"><result status="valid" time="0.03" steps="203"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_empty_accept.5" expl="Precondition for strcspn_empty_accept (Internal. Requires clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="90"/></proof>
+  <goal name="WP_parameter strcspn_empty_accept.5" expl="Precondition for strcspn_empty_accept (Requires clause. Internal)">
+  <proof prover="0"><result status="valid" time="0.01" steps="97"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcspn_empty_accept_behaviors" sum="70f6f26ac70b0be5672ffcf9f1be64a4">
+<theory name="Function_strcspn_empty_accept_behaviors" sum="87fd12b227712294105f041e83fd5626">
  <goal name="WP_parameter strcspn_empty_accept_ensures_default" expl="Function strcspn_empty_accept, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcspn_empty_accept_ensures_default.1" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.81" steps="2720"/></proof>
+  <proof prover="1"><result status="valid" time="0.07"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_empty_accept_ensures_default.2" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.03" steps="191"/></proof>
+  <proof prover="0"><result status="valid" time="0.03" steps="162"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcspn_range_safety" sum="acea8b37939233305499a6c73a6b3f8f">
+<theory name="Function_strcspn_range_safety" sum="c2df58dd47d7111b7d595609cc60553b">
  <goal name="WP_parameter strcspn_range" expl="Function strcspn_range, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcspn_range.1" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.02" steps="15"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_range.2" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.05" steps="317"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="339"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_range.3" expl="Pointer dereference (Validity)">
   <proof prover="0"><result status="valid" time="0.01" steps="24"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_range.4" expl="Precondition for in_array (Requires clause. External)">
+  <goal name="WP_parameter strcspn_range.4" expl="Precondition for in_array (External. Requires clause)">
   <proof prover="0"><result status="valid" time="0.01" steps="24"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_range.5" expl="Integer cast (integer overflow)">
@@ -69,17 +70,17 @@
   <proof prover="0"><result status="valid" time="0.01" steps="35"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_range.7" expl="check">
-  <proof prover="0"><result status="valid" time="0.10" steps="425"/></proof>
+  <proof prover="0"><result status="valid" time="0.10" steps="751"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_range.8" expl="Precondition for strcspn_range (Internal. Requires clause)">
-  <proof prover="0"><result status="valid" time="0.11" steps="638"/></proof>
+  <goal name="WP_parameter strcspn_range.8" expl="Precondition for strcspn_range (Requires clause. Internal)">
+  <proof prover="0"><result status="valid" time="0.11" steps="822"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcspn_range_behaviors" sum="b036108ba4a1a59380be650cc51c2020">
+<theory name="Function_strcspn_range_behaviors" sum="12b886fd972636e0a951c646fed13c85">
  <goal name="WP_parameter strcspn_range_ensures_default" expl="Function strcspn_range, default behavior">
- <proof prover="0"><result status="valid" time="0.26" steps="1892"/></proof>
+ <proof prover="0"><result status="valid" time="0.26" steps="1722"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e">

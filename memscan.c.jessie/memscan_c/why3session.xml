@@ -4,7 +4,7 @@
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../memscan_c.mlw">
-<theory name="Function_memscan_safety" sum="c283dc51812ab0c969e71faa64b2540a">
+<theory name="Function_memscan_safety" sum="d99e16b3197d5db1c66c4f76cff31000">
  <goal name="WP_parameter memscan" expl="Function memscan, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memscan.1" expl="Downcast">
@@ -14,7 +14,7 @@
   <proof prover="0"><result status="valid" time="0.01" steps="32"/></proof>
   </goal>
   <goal name="WP_parameter memscan.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.04" steps="220"/></proof>
+  <proof prover="0"><result status="valid" time="0.04" steps="226"/></proof>
   </goal>
   <goal name="WP_parameter memscan.4" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.02" steps="46"/></proof>
@@ -23,7 +23,7 @@
   <proof prover="0"><result status="valid" time="0.02" steps="52"/></proof>
   </goal>
   <goal name="WP_parameter memscan.6" expl="integer overflow">
-  <proof prover="0"><result status="valid" time="0.04" steps="210"/></proof>
+  <proof prover="0"><result status="valid" time="0.04" steps="310"/></proof>
   </goal>
   <goal name="WP_parameter memscan.7" expl="loop variant decrease">
   <proof prover="0"><result status="valid" time="0.02" steps="62"/></proof>
@@ -31,7 +31,7 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_memscan_behaviors" sum="5a1e812af9548c38895d742b9a088de9">
+<theory name="Function_memscan_behaviors" sum="efec9abda7158ba42f8725e58d92d369">
  <goal name="WP_parameter memscan_ensures_default" expl="Function memscan, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memscan_ensures_default.1" expl="Behavior disjointness check">
@@ -41,23 +41,23 @@
   <proof prover="0"><result status="valid" time="0.01" steps="21"/></proof>
   </goal>
   <goal name="WP_parameter memscan_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.05" steps="337"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="356"/></proof>
   </goal>
   <goal name="WP_parameter memscan_ensures_default.4" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.03" steps="138"/></proof>
+  <proof prover="0"><result status="valid" time="0.03" steps="146"/></proof>
   </goal>
   <goal name="WP_parameter memscan_ensures_default.5" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.10" steps="445"/></proof>
+  <proof prover="0"><result status="valid" time="0.10" steps="671"/></proof>
   </goal>
   <goal name="WP_parameter memscan_ensures_default.6" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.02" steps="128"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="134"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter memscan_ensures_found" expl="Function memscan, behavior found">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memscan_ensures_found.1" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.35" steps="376"/></proof>
+  <proof prover="0"><result status="valid" time="0.35" steps="399"/></proof>
   </goal>
   <goal name="WP_parameter memscan_ensures_found.2" expl="Ensures clause (Postcondition)">
   <proof prover="0"><result status="valid" time="0.01" steps="49"/></proof>
@@ -65,7 +65,7 @@
  </transf>
  </goal>
  <goal name="WP_parameter memscan_ensures_not_exists" expl="Function memscan, behavior not_exists">
- <proof prover="0"><result status="valid" time="0.05" steps="281"/></proof>
+ <proof prover="0"><result status="valid" time="0.05" steps="345"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e">

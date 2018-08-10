@@ -3,18 +3,18 @@
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="1" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.4" alternative="noBV" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../memset_c.mlw">
-<theory name="Function_memset_safety" sum="4220af7093d4b0dd61bd038a4f1083fd">
+<theory name="Function_memset_safety" sum="cf7a2b37a7665d8eeae53b23129a3ffe">
  <goal name="WP_parameter memset" expl="Function memset, safety">
- <proof prover="0"><result status="valid" time="0.12" steps="555"/></proof>
+ <proof prover="0"><result status="valid" time="0.36" steps="1154"/></proof>
  </goal>
 </theory>
-<theory name="Function_memset_behaviors" sum="8a63b4e885f7b5d37c5c85674e10c2c6">
+<theory name="Function_memset_behaviors" sum="fa49c489de37c604f6891f2822d05926">
  <goal name="WP_parameter memset_ensures_default" expl="Function memset, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memset_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.36" steps="1490"/></proof>
+  <proof prover="0"><result status="valid" time="0.36" steps="1595"/></proof>
   </goal>
   <goal name="WP_parameter memset_ensures_default.2" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -37,21 +37,21 @@
    <proof prover="0"><result status="valid" time="0.05" steps="193"/></proof>
    </goal>
    <goal name="WP_parameter memset_ensures_default.2.7" expl="Function memset, default behavior">
-   <proof prover="0"><result status="valid" time="0.18" steps="494"/></proof>
+   <proof prover="0"><result status="valid" time="0.18" steps="523"/></proof>
    </goal>
    <goal name="WP_parameter memset_ensures_default.2.8" expl="Function memset, default behavior">
-   <proof prover="0"><result status="valid" time="0.27" steps="563"/></proof>
+   <proof prover="0"><result status="valid" time="0.27" steps="592"/></proof>
    </goal>
    <goal name="WP_parameter memset_ensures_default.2.9" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.34" steps="59655"/></proof>
+   <proof prover="2"><result status="valid" time="0.11"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter memset_ensures_default.3" expl="Assertion in line 16">
-  <proof prover="0"><result status="valid" time="0.09" steps="298"/></proof>
+  <proof prover="0"><result status="valid" time="0.09" steps="306"/></proof>
   </goal>
   <goal name="WP_parameter memset_ensures_default.4" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="0.08" steps="412"/></proof>
+  <proof prover="0"><result status="valid" time="0.08" steps="433"/></proof>
   </goal>
  </transf>
  </goal>

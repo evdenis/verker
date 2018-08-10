@@ -4,8 +4,9 @@
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
 <prover id="1" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.4" alternative="noBV" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../memmove_c.mlw" expanded="true">
-<theory name="Function_memmove_safety" sum="f128d199bacdde11968a321ac2e39912">
+<theory name="Function_memmove_safety" sum="999979915ed15859ae54f2a243221aa4">
  <goal name="WP_parameter memmove" expl="Function memmove, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memmove.1" expl="Pointer difference">
@@ -23,13 +24,13 @@
   <proof prover="0"><result status="valid" time="0.05" steps="199"/></proof>
   </goal>
   <goal name="WP_parameter memmove.6" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.31" steps="836"/></proof>
+  <proof prover="0"><result status="valid" time="0.31" steps="783"/></proof>
   </goal>
   <goal name="WP_parameter memmove.7" expl="Pointer dereference (Assignment)">
-  <proof prover="0"><result status="valid" time="0.38" steps="850"/></proof>
+  <proof prover="0"><result status="valid" time="0.22" steps="797"/></proof>
   </goal>
   <goal name="WP_parameter memmove.8" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.09" steps="295"/></proof>
+  <proof prover="0"><result status="valid" time="0.09" steps="301"/></proof>
   </goal>
   <goal name="WP_parameter memmove.9" expl="Downcast">
   <proof prover="0"><result status="valid" time="0.04" steps="149"/></proof>
@@ -44,25 +45,25 @@
   <proof prover="0"><result status="valid" time="0.04" steps="199"/></proof>
   </goal>
   <goal name="WP_parameter memmove.13" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.49" steps="917"/></proof>
+  <proof prover="0"><result status="valid" time="0.32" steps="862"/></proof>
   </goal>
   <goal name="WP_parameter memmove.14" expl="Pointer dereference (Assignment)">
-  <proof prover="0"><result status="valid" time="0.39" steps="1064"/></proof>
+  <proof prover="0"><result status="valid" time="0.39" steps="882"/></proof>
   </goal>
   <goal name="WP_parameter memmove.15" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.05" steps="304"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="310"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_memmove_behaviors" sum="4dc0487476a9900673b59703e82a149e">
+<theory name="Function_memmove_behaviors" sum="b77eb6e2334f66285ea9f9d878248234">
  <goal name="WP_parameter memmove_ensures_default" expl="Function memmove, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memmove_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="1.05" steps="2693"/></proof>
+  <proof prover="0"><result status="valid" time="1.05" steps="2517"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.2" expl="Assertion in line 21">
-  <proof prover="0"><result status="valid" time="0.56" steps="900"/></proof>
+  <proof prover="0"><result status="valid" time="0.56" steps="892"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.3" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -73,10 +74,10 @@
    <proof prover="0"><result status="valid" time="0.05" steps="210"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.3" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.42" steps="721"/></proof>
+   <proof prover="0"><result status="valid" time="0.42" steps="759"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.4" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.28" steps="649"/></proof>
+   <proof prover="0"><result status="valid" time="0.28" steps="681"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.5" expl="Function memmove, default behavior">
    <proof prover="0"><result status="valid" time="0.08" steps="218"/></proof>
@@ -103,27 +104,27 @@
    <proof prover="0"><result status="valid" time="0.09" steps="226"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.13" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.94" steps="1595"/></proof>
+   <proof prover="0"><result status="valid" time="0.74" steps="1624"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.14" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.19" steps="1005"/></proof>
+   <proof prover="0"><result status="valid" time="0.19" steps="1040"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.3.15" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.64" steps="93073"/></proof>
+   <proof prover="2"><result status="valid" time="0.17"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.4" expl="Assertion in line 40">
-  <proof prover="0"><result status="valid" time="0.12" steps="377"/></proof>
+  <proof prover="0"><result status="valid" time="0.12" steps="385"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.5" expl="Assigns clause (Postcondition)">
   <proof prover="0"><result status="valid" time="0.05" steps="193"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.6" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="1.10" steps="3920"/></proof>
+  <proof prover="0"><result status="valid" time="0.75" steps="2409"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.7" expl="Assertion in line 37">
-  <proof prover="0"><result status="valid" time="0.74" steps="1281"/></proof>
+  <proof prover="0"><result status="valid" time="0.74" steps="1434"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.8" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -134,10 +135,10 @@
    <proof prover="0"><result status="valid" time="0.05" steps="210"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.3" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.31" steps="746"/></proof>
+   <proof prover="0"><result status="valid" time="0.47" steps="703"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.4" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.27" steps="671"/></proof>
+   <proof prover="0"><result status="valid" time="0.27" steps="785"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.5" expl="Function memmove, default behavior">
    <proof prover="0"><result status="valid" time="0.05" steps="218"/></proof>
@@ -164,18 +165,18 @@
    <proof prover="0"><result status="valid" time="0.06" steps="226"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.13" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.96" steps="1632"/></proof>
+   <proof prover="0"><result status="valid" time="0.96" steps="2182"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.14" expl="Function memmove, default behavior">
-   <proof prover="0"><result status="valid" time="0.17" steps="1035"/></proof>
+   <proof prover="0"><result status="valid" time="0.17" steps="1071"/></proof>
    </goal>
    <goal name="WP_parameter memmove_ensures_default.8.15" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.34" steps="59833"/></proof>
+   <proof prover="1"><result status="valid" time="0.60" steps="87042"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.9" expl="Assertion in line 40">
-  <proof prover="0"><result status="valid" time="0.09" steps="395"/></proof>
+  <proof prover="0"><result status="valid" time="0.09" steps="403"/></proof>
   </goal>
   <goal name="WP_parameter memmove_ensures_default.10" expl="Assigns clause (Postcondition)">
   <proof prover="0"><result status="valid" time="0.03" steps="197"/></proof>
@@ -183,7 +184,7 @@
  </transf>
  </goal>
  <goal name="WP_parameter memmove_ensures_diff_addr" expl="Function memmove, behavior diff_addr">
- <proof prover="0"><result status="valid" time="1.94" steps="7445"/></proof>
+ <proof prover="0"><result status="valid" time="1.94" steps="6593"/></proof>
  </goal>
  <goal name="WP_parameter memmove_ensures_same_addr" expl="Function memmove, behavior same_addr">
  <transf name="split_goal_wp">

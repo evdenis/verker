@@ -5,7 +5,7 @@
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
 <prover id="1" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../strcpy_c.mlw">
-<theory name="Function_strcpy_safety" sum="7aad90e001d09a98f19cc09d2ef8a896">
+<theory name="Function_strcpy_safety" sum="7481d3f4c24554cee41cbf846d7f84cc">
  <goal name="WP_parameter strcpy" expl="Function strcpy, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcpy.1" expl="Integer cast (integer overflow)">
@@ -15,28 +15,28 @@
   <proof prover="0"><result status="valid" time="0.01" steps="49"/></proof>
   </goal>
   <goal name="WP_parameter strcpy.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.05" steps="352"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="368"/></proof>
   </goal>
   <goal name="WP_parameter strcpy.4" expl="Pointer dereference (Assignment)">
-  <proof prover="0"><result status="valid" time="0.60" steps="1963"/></proof>
+  <proof prover="0"><result status="valid" time="0.19" steps="952"/></proof>
   </goal>
   <goal name="WP_parameter strcpy.5" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.02" steps="70"/></proof>
   </goal>
   <goal name="WP_parameter strcpy.6" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.05" steps="254"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="268"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcpy_behaviors" sum="6b76c160b5e1c931ad0ae090bad30791">
+<theory name="Function_strcpy_behaviors" sum="45a23b57f0698044ee8f6bcad5bf06c3">
  <goal name="WP_parameter strcpy_ensures_default" expl="Function strcpy, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcpy_ensures_default.1" expl="Assertion in line 7">
   <proof prover="0"><result status="valid" time="0.01" steps="16"/></proof>
   </goal>
   <goal name="WP_parameter strcpy_ensures_default.2" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.21" steps="975"/></proof>
+  <proof prover="0"><result status="valid" time="0.21" steps="997"/></proof>
   </goal>
   <goal name="WP_parameter strcpy_ensures_default.3" expl="loop invariant preservation">
   <transf name="split_goal_wp">
@@ -50,7 +50,7 @@
    <proof prover="0"><result status="valid" time="0.02" steps="68"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.4" expl="Function strcpy, default behavior">
-   <proof prover="0"><result status="valid" time="0.96" steps="1132"/></proof>
+   <proof prover="0"><result status="valid" time="1.73" steps="3396"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.5" expl="Function strcpy, default behavior">
    <proof prover="0"><result status="valid" time="0.02" steps="76"/></proof>
@@ -62,35 +62,35 @@
    <proof prover="0"><result status="valid" time="0.04" steps="76"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.8" expl="Function strcpy, default behavior">
-   <proof prover="0"><result status="valid" time="0.09" steps="463"/></proof>
+   <proof prover="0"><result status="valid" time="0.09" steps="487"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.9" expl="Function strcpy, default behavior">
-   <proof prover="0"><result status="valid" time="0.23" steps="574"/></proof>
+   <proof prover="0"><result status="valid" time="0.23" steps="596"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.10" expl="Function strcpy, default behavior">
    <proof prover="0"><result status="valid" time="0.05" steps="86"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.11" expl="Function strcpy, default behavior">
-   <proof prover="0"><result status="valid" time="0.26" steps="614"/></proof>
+   <proof prover="0"><result status="valid" time="0.26" steps="640"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.12" expl="Function strcpy, default behavior">
-   <proof prover="0"><result status="valid" time="0.23" steps="676"/></proof>
+   <proof prover="0"><result status="valid" time="0.23" steps="700"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.3.13" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.14" steps="34214"/></proof>
+   <proof prover="1"><result status="valid" time="0.26" steps="33554"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter strcpy_ensures_default.4" expl="Assertion in line 19">
-  <proof prover="0"><result status="valid" time="0.24" steps="1019"/></proof>
+  <proof prover="0"><result status="valid" time="0.24" steps="1066"/></proof>
   </goal>
   <goal name="WP_parameter strcpy_ensures_default.5" expl="Assertion in line 20">
-  <proof prover="0"><result status="valid" time="0.24" steps="446"/></proof>
+  <proof prover="0"><result status="valid" time="0.56" steps="1569"/></proof>
   </goal>
   <goal name="WP_parameter strcpy_ensures_default.6" expl="Postcondition">
   <transf name="split_goal_wp">
    <goal name="WP_parameter strcpy_ensures_default.6.1" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.31" steps="51506"/></proof>
+   <proof prover="1"><result status="valid" time="0.31" steps="46658"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.6.2" expl="Ensures clause">
    <proof prover="0"><result status="valid" time="0.02" steps="71"/></proof>
@@ -99,7 +99,7 @@
    <proof prover="0"><result status="valid" time="0.01" steps="71"/></proof>
    </goal>
    <goal name="WP_parameter strcpy_ensures_default.6.4" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="0.84" steps="2037"/></proof>
+   <proof prover="0"><result status="valid" time="0.84" steps="2038"/></proof>
    </goal>
   </transf>
   </goal>

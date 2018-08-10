@@ -5,14 +5,14 @@
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
 <prover id="1" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
 <file name="../strcmp_c.mlw">
-<theory name="Function_strcmp_safety" sum="d43e1797b0214dee923c39f077db0c7b">
+<theory name="Function_strcmp_safety" sum="93e27f6f997ed7c194a7be5e0b050682">
  <goal name="WP_parameter strcmp" expl="Function strcmp, safety">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcmp.1" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.07" steps="542"/></proof>
+  <proof prover="0"><result status="valid" time="0.07" steps="552"/></proof>
   </goal>
   <goal name="WP_parameter strcmp.2" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.28" steps="1403"/></proof>
+  <proof prover="0"><result status="valid" time="0.28" steps="1610"/></proof>
   </goal>
   <goal name="WP_parameter strcmp.3" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.05" steps="213"/></proof>
@@ -24,12 +24,12 @@
   <proof prover="0"><result status="valid" time="0.04" steps="219"/></proof>
   </goal>
   <goal name="WP_parameter strcmp.6" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.05" steps="293"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="300"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strcmp_behaviors" sum="a064f32d71597981941960f37792bf79">
+<theory name="Function_strcmp_behaviors" sum="34c565940f1a9729edd0973249f1ff60">
  <goal name="WP_parameter strcmp_ensures_default" expl="Function strcmp, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strcmp_ensures_default.1" expl="Behavior disjointness check">
@@ -39,27 +39,27 @@
   <proof prover="0"><result status="valid" time="0.03" steps="153"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.3" expl="Assertion in line 7">
-  <proof prover="1"><result status="valid" time="0.08" steps="25698"/></proof>
+  <proof prover="1"><result status="valid" time="0.08" steps="25157"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.4" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.12" steps="769"/></proof>
+  <proof prover="0"><result status="valid" time="0.12" steps="793"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.5" expl="Assertion in line 26">
-  <proof prover="0"><result status="valid" time="1.14" steps="2915"/></proof>
+  <proof prover="0"><result status="valid" time="1.97" steps="4321"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.6" expl="Assertion in line 26">
-  <proof prover="0"><result status="valid" time="1.32" steps="3311"/></proof>
+  <proof prover="0"><result status="valid" time="0.78" steps="2581"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.7" expl="Assertion in line 36">
-  <proof prover="0"><result status="valid" time="0.94" steps="1918"/></proof>
+  <proof prover="0"><result status="valid" time="0.94" steps="1917"/></proof>
   </goal>
   <goal name="WP_parameter strcmp_ensures_default.8" expl="loop invariant preservation">
   <transf name="split_goal_wp">
    <goal name="WP_parameter strcmp_ensures_default.8.1" expl="Function strcmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.90" steps="113776"/></proof>
+   <proof prover="1"><result status="valid" time="0.90" steps="103589"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.2" expl="Function strcmp, default behavior">
-   <proof prover="1"><result status="valid" time="1.08" steps="123337"/></proof>
+   <proof prover="1"><result status="valid" time="1.08" steps="109483"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.3" expl="Function strcmp, default behavior">
    <proof prover="0"><result status="valid" time="0.06" steps="209"/></proof>
@@ -71,7 +71,7 @@
    <proof prover="0"><result status="valid" time="0.06" steps="209"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.6" expl="Function strcmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.99" steps="125052"/></proof>
+   <proof prover="1"><result status="valid" time="0.99" steps="111584"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.7" expl="Function strcmp, default behavior">
    <proof prover="0"><result status="valid" time="0.06" steps="217"/></proof>
@@ -83,7 +83,7 @@
    <proof prover="0"><result status="valid" time="0.09" steps="217"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.10" expl="Function strcmp, default behavior">
-   <proof prover="0"><result status="valid" time="0.29" steps="844"/></proof>
+   <proof prover="0"><result status="valid" time="0.29" steps="894"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.11" expl="Function strcmp, default behavior">
    <proof prover="0"><result status="valid" time="0.11" steps="225"/></proof>
@@ -92,7 +92,7 @@
    <proof prover="0"><result status="valid" time="0.11" steps="231"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_default.8.13" expl="Function strcmp, default behavior">
-   <proof prover="0"><result status="valid" time="0.31" steps="954"/></proof>
+   <proof prover="0"><result status="valid" time="0.31" steps="998"/></proof>
    </goal>
   </transf>
   </goal>
@@ -109,7 +109,7 @@
    <proof prover="0"><result status="valid" time="0.04" steps="229"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_not_equal.1.2" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="4.85" steps="2759"/></proof>
+   <proof prover="0"><result status="valid" time="10.93" steps="4936"/></proof>
    </goal>
   </transf>
   </goal>
@@ -125,17 +125,17 @@
    <proof prover="0"><result status="valid" time="0.04" steps="225"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_not_equal.4.2" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="4.65" steps="3042"/></proof>
+   <proof prover="0"><result status="valid" time="9.78" steps="5667"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter strcmp_ensures_not_equal.5" expl="Ensures clause (Postcondition)">
   <transf name="split_goal_wp">
    <goal name="WP_parameter strcmp_ensures_not_equal.5.1" expl="Ensures clause">
-   <proof prover="1"><result status="valid" time="0.86" steps="97649"/></proof>
+   <proof prover="1"><result status="valid" time="0.86" steps="99006"/></proof>
    </goal>
    <goal name="WP_parameter strcmp_ensures_not_equal.5.2" expl="Ensures clause">
-   <proof prover="1"><result status="valid" time="0.98" steps="113736"/></proof>
+   <proof prover="1"><result status="valid" time="0.98" steps="114609"/></proof>
    </goal>
   </transf>
   </goal>
