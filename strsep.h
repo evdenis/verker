@@ -35,8 +35,8 @@
        assigns *strpbrk(\old(*s), ct);
        assigns *s;
        ensures \result == \old(*s);
-       ensures *s == strpbrk(\old(*s), ct) + 1;
-       ensures *strpbrk(\old(*s), ct) == '\0';
+       ensures *s == strpbrk{Old}(\old(*s), ct) + 1;
+       ensures *strpbrk{Old}(\old(*s), ct) == '\0';
        ensures valid_str(\result);
        //ensures strlen(\result) == strpbrk(\old(*s), ct) - \old(*s);
     complete behaviors;

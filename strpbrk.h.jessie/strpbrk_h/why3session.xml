@@ -3,146 +3,142 @@
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="1" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
-<file name="../strpbrk_c.mlw">
-<theory name="Function_strpbrk_0_safety" sum="4038f8fee7fa438971c3cfa98621a87e">
- <goal name="WP_parameter strpbrk_0" expl="Function strpbrk, safety">
+<file name="../strpbrk_h.mlw" expanded="true">
+<theory name="Function_strpbrk_range_safety" sum="3147bd19489e3ca2512e3e96c890f79c">
+ <goal name="WP_parameter strpbrk_range" expl="Function strpbrk_range, safety">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strpbrk_0.1" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
+  <goal name="WP_parameter strpbrk_range.1" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="15"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.2" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.08" steps="497"/></proof>
+  <goal name="WP_parameter strpbrk_range.2" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.07" steps="339"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.3" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="50"/></proof>
+  <goal name="WP_parameter strpbrk_range.3" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.02" steps="24"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.4" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.19" steps="909"/></proof>
+  <goal name="WP_parameter strpbrk_range.4" expl="Precondition for in_array (Requires clause. External)">
+  <proof prover="0"><result status="valid" time="0.02" steps="24"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.5" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="60"/></proof>
+  <goal name="WP_parameter strpbrk_range.5" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="26"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.6" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.03" steps="62"/></proof>
+  <goal name="WP_parameter strpbrk_range.6" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="35"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.7" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.03" steps="71"/></proof>
+  <goal name="WP_parameter strpbrk_range.7" expl="check">
+  <proof prover="0"><result status="valid" time="0.15" steps="891"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_0.8" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.06" steps="145"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_0.9" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.03" steps="65"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_0.10" expl="loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.05" steps="135"/></proof>
+  <goal name="WP_parameter strpbrk_range.8" expl="Precondition for strpbrk_range (Internal. Requires clause)">
+  <proof prover="0"><result status="valid" time="0.12" steps="759"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strpbrk_0_behaviors" sum="a6fae42ca6c6970a5a1d33fb86668c52">
- <goal name="WP_parameter strpbrk_ensures_default" expl="Function strpbrk, default behavior">
+<theory name="Function_strpbrk_range_behaviors" sum="a6dad456c0aace84607f68b24e790939">
+ <goal name="WP_parameter strpbrk_range_ensures_default" expl="Function strpbrk_range, default behavior">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strpbrk_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="34"/></proof>
+  <goal name="WP_parameter strpbrk_range_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.13" steps="855"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="32"/></proof>
+  <goal name="WP_parameter strpbrk_range_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.37" steps="2111"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.14" steps="460"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.4" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.25" steps="854"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.5" expl="Assertion in line 25">
-  <proof prover="0"><result status="valid" time="3.94" steps="7325"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.6" expl="Assertion in line 31">
-  <proof prover="0"><result status="valid" time="0.03" steps="83"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.7" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.22" steps="878"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.8" expl="loop invariant preservation">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strpbrk_ensures_default.8.1" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="65"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.2" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="65"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.3" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="65"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.4" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="2.56" steps="5011"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.5" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="2.25" steps="2780"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.6" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.41" steps="1387"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.8.7" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.04" steps="78"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.9" expl="Assertion in line 38">
-  <proof prover="0"><result status="valid" time="0.30" steps="985"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.10" expl="Assertion in line 39">
-  <proof prover="0"><result status="valid" time="0.08" steps="366"/></proof>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.11" expl="loop invariant preservation">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strpbrk_ensures_default.11.1" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="59"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.2" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="59"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.3" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.03" steps="59"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.4" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.04" steps="370"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.5" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.23" steps="582"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.6" expl="Function strpbrk, default behavior">
-   <proof prover="0"><result status="valid" time="0.29" steps="874"/></proof>
-   </goal>
-   <goal name="WP_parameter strpbrk_ensures_default.11.7" expl="Function strpbrk, default behavior">
-   <proof prover="1"><result status="valid" time="0.10" steps="27906"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strpbrk_ensures_default.12" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.13" steps="40"/></proof>
+  <goal name="WP_parameter strpbrk_range_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.04" steps="182"/></proof>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter strpbrk_ensures_found" expl="Function strpbrk, behavior found">
+</theory>
+<theory name="Function_strpbrk_frame_safety" sum="c47e010ccfa4370fc6ea16b02622e3cd">
+ <goal name="WP_parameter strpbrk_frame" expl="Function strpbrk_frame, safety">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strpbrk_ensures_found.1" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.67" steps="2206"/></proof>
+  <goal name="WP_parameter strpbrk_frame.1" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="22"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_ensures_found.2" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="1.21" steps="1536"/></proof>
+  <goal name="WP_parameter strpbrk_frame.2" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.04" steps="233"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.3" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.4" expl="Precondition for in_array (Requires clause. External)">
+  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.5" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="32"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.6" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="42"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.7" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="40"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.8" expl="check">
+  <proof prover="0"><result status="valid" time="0.05" steps="469"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame.9" expl="Precondition for strpbrk_frame (Internal. Requires clause)">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strpbrk_frame.9.1" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.2" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.3" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.4" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.5" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.6" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.7" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.8" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.9" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.10" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.05" steps="215"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.11" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.05" steps="215"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.12" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.09" steps="442"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.13" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.03" steps="42"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.14" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.02" steps="56"/></proof>
+   </goal>
+   <goal name="WP_parameter strpbrk_frame.9.15" expl="Requires clause">
+   <proof prover="0"><result status="valid" time="0.14" steps="736"/></proof>
+   </goal>
+  </transf>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter strpbrk_ensures_not_found" expl="Function strpbrk, behavior not_found">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strpbrk_ensures_not_found.1" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.03" steps="71"/></proof>
+</theory>
+<theory name="Function_strpbrk_frame_behaviors" sum="41d3619afd0ead9602c1588dc1c35195" expanded="true">
+ <goal name="WP_parameter strpbrk_frame_ensures_default" expl="Function strpbrk_frame, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strpbrk_frame_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.50" steps="3391"/></proof>
   </goal>
-  <goal name="WP_parameter strpbrk_ensures_not_found.2" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.02" steps="36"/></proof>
+  <goal name="WP_parameter strpbrk_frame_ensures_default.2" expl="Postcondition (Ensures clause)" expanded="true">
+  <proof prover="0"><result status="valid" time="1.96" steps="11292"/></proof>
+  </goal>
+  <goal name="WP_parameter strpbrk_frame_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="27"/></proof>
   </goal>
  </transf>
  </goal>
@@ -469,13 +465,23 @@
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__strpbrk_range" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Axiomatic_LF__Axiomatic__strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
 <theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Function_in_array_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strpbrk_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_in_array_0" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strpbrk_range" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strpbrk_frame_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -490,6 +496,8 @@
 <theory name="Struct_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Struct_voidP_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Safe_bit_uint64_of_Safe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -983,10 +991,6 @@
 </theory>
 <theory name="Function_strspn_empty_accept_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Function_in_array_0" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_in_array_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
 <theory name="Function_strspn_range" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strspn_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
@@ -994,14 +998,6 @@
 <theory name="Function_strspn_0" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strpbrk_range" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strpbrk_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strpbrk_frame_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strpbrk_0" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
