@@ -257,7 +257,7 @@ behavior default:
 
 axiomatic StrPBrk {
 
-  logic charP[..] strpbrk(charP[..] cs, charP[..] ct)
+  logic charP[..] strpbrk{L}(charP[..] cs, charP[..] ct)
    
   lemma strpbrk_strend{L} :
   (_C_36 : (\forall charP[..] cs_0;
@@ -266,36 +266,37 @@ axiomatic StrPBrk {
                         (\offset_max(\at(cs_0,L)) >= \at(0,L))) &&
                        true),L) &&
                   (cs_0.charM == (0 :> int8))) ==>
-                 (strpbrk(cs_0, ct_0) == null)))))
+                 (strpbrk{L}(cs_0, ct_0) == null)))))
    
   lemma strpbrk_empty_ct{L} :
   (_C_37 : (\forall charP[..] cs_1;
              (\forall charP[..] ct_1;
                (((valid_str{L}(cs_1) && valid_str{L}(ct_1)) &&
                   (ct_1.charM == (0 :> int8))) ==>
-                 (strpbrk(cs_1, ct_1) == null)))))
+                 (strpbrk{L}(cs_1, ct_1) == null)))))
    
   lemma strpbrk_range{L} :
   (_C_38 : (\forall charP[..] cs_2;
              (\forall charP[..] ct_2;
                ((valid_str{L}(cs_2) && valid_str{L}(ct_2)) ==>
-                 (((strpbrk(cs_2, ct_2) == null) &&
+                 (((strpbrk{L}(cs_2, ct_2) == null) &&
                     (! (((\base_block(cs_2) ==
-                           \base_block(strpbrk(cs_2, ct_2))) &&
-                          ((cs_2 - strpbrk(cs_2, ct_2)) <= 0)) &&
-                         ((\base_block(strpbrk(cs_2, ct_2)) ==
+                           \base_block(strpbrk{L}(cs_2, ct_2))) &&
+                          ((cs_2 - strpbrk{L}(cs_2, ct_2)) <= 0)) &&
+                         ((\base_block(strpbrk{L}(cs_2, ct_2)) ==
                             \base_block((cs_2 + (strlen{L}(cs_2) :> integer)))) &&
-                           ((strpbrk(cs_2, ct_2) -
+                           ((strpbrk{L}(cs_2, ct_2) -
                               (cs_2 + (strlen{L}(cs_2) :> integer))) <
                              0))))) ||
-                   ((((\base_block(cs_2) == \base_block(strpbrk(cs_2, ct_2))) &&
-                       ((cs_2 - strpbrk(cs_2, ct_2)) <= 0)) &&
-                      ((\base_block(strpbrk(cs_2, ct_2)) ==
+                   ((((\base_block(cs_2) ==
+                        \base_block(strpbrk{L}(cs_2, ct_2))) &&
+                       ((cs_2 - strpbrk{L}(cs_2, ct_2)) <= 0)) &&
+                      ((\base_block(strpbrk{L}(cs_2, ct_2)) ==
                          \base_block((cs_2 + (strlen{L}(cs_2) :> integer)))) &&
-                        ((strpbrk(cs_2, ct_2) -
+                        ((strpbrk{L}(cs_2, ct_2) -
                            (cs_2 + (strlen{L}(cs_2) :> integer))) <
                           0))) &&
-                     (! (strpbrk(cs_2, ct_2) == null))))))))
+                     (! (strpbrk{L}(cs_2, ct_2) == null))))))))
    
   lemma strpbrk_shift1{L} :
   (_C_39 : (\forall charP[..] cs_3;
@@ -303,7 +304,7 @@ axiomatic StrPBrk {
                ((((valid_str{L}(cs_3) && valid_str{L}(ct_3)) &&
                    (cs_3.charM != (0 :> int8))) &&
                   (! in_array{L}(ct_3, cs_3.charM))) ==>
-                 (strpbrk(cs_3, ct_3) == strpbrk((cs_3 + 1), ct_3))))))
+                 (strpbrk{L}(cs_3, ct_3) == strpbrk{L}((cs_3 + 1), ct_3))))))
    
   lemma strpbrk_stop_in_ct{L} :
   (_C_40 : (\forall charP[..] cs_4;
@@ -311,7 +312,7 @@ axiomatic StrPBrk {
                ((((valid_str{L}(cs_4) && valid_str{L}(ct_4)) &&
                    (cs_4.charM != (0 :> int8))) &&
                   in_array{L}(ct_4, cs_4.charM)) ==>
-                 (strpbrk(cs_4, ct_4) == cs_4)))))
+                 (strpbrk{L}(cs_4, ct_4) == cs_4)))))
   
 }
 
@@ -319,7 +320,7 @@ charP[..] strpbrk(charP[..] cs, charP[..] ct)
   requires ((_C_56 : valid_str{Here}(cs)) && (_C_57 : valid_str{Here}(ct)));
 behavior default:
   assigns \nothing;
-  ensures (_C_41 : (\result == strpbrk(\at(cs,Old), \at(ct,Old))));
+  ensures (_C_41 : (\result == strpbrk{Here}(\at(cs,Old), \at(ct,Old))));
 behavior found:
   assumes (\exists charP[..] p_2;
             (\exists charP[..] t_2;
@@ -410,40 +411,47 @@ behavior input_null:
   ensures (_C_74 : (\result == null));
 behavior input_strpbrk_null:
   assumes (valid_str{Here}(s_0.char_xM) &&
-            (strpbrk(s_0.char_xM, ct_0) == null));
+            (strpbrk{Here}(s_0.char_xM, ct_0) == null));
   assigns s_0.char_xM;
   ensures (_C_75 : ((_C_76 : (\result == \at(s_0.char_xM,Old))) &&
                      (_C_77 : (\at(s_0,Old).char_xM == null))));
 behavior input_strpbrk_not_null:
   assumes (valid_str{Here}(s_0.char_xM) &&
-            (strpbrk(s_0.char_xM, ct_0) != null));
-  assigns strpbrk(\at(s_0.char_xM,Old), ct_0).charM,
+            (strpbrk{Here}(s_0.char_xM, ct_0) != null));
+  assigns strpbrk{Old}(\at(s_0.char_xM,Old), ct_0).charM,
   s_0.char_xM;
   ensures (_C_78 : ((_C_79 : (\result == \at(s_0.char_xM,Old))) &&
                      ((_C_81 : (\at(s_0,Old).char_xM ==
-                                 (strpbrk(\at(s_0.char_xM,Old), \at(ct_0,Old)) +
+                                 (strpbrk{Old}(\at(s_0.char_xM,Old),
+                                               \at(ct_0,Old)) +
                                    1))) &&
-                       ((_C_83 : (strpbrk(\at(s_0.char_xM,Old), \at(ct_0,Old)).charM ==
+                       ((_C_83 : (strpbrk{Old}(\at(s_0.char_xM,Old),
+                                               \at(ct_0,Old)).charM ==
                                    (0 :> int8))) &&
                          (_C_84 : valid_str{Here}(\result))))));
 {  
    (check (disjoint_behaviors : (! ((valid_str{Here}(s_0.char_xM) &&
-                                      (strpbrk(s_0.char_xM, ct_0) == null)) &&
+                                      (strpbrk{Here}(s_0.char_xM, ct_0) ==
+                                        null)) &&
                                      (valid_str{Here}(s_0.char_xM) &&
-                                       (strpbrk(s_0.char_xM, ct_0) != null))))));
+                                       (strpbrk{Here}(s_0.char_xM, ct_0) !=
+                                         null))))));
    
    (check (disjoint_behaviors : (! ((s_0.char_xM == null) &&
                                      (valid_str{Here}(s_0.char_xM) &&
-                                       (strpbrk(s_0.char_xM, ct_0) == null))))));
+                                       (strpbrk{Here}(s_0.char_xM, ct_0) ==
+                                         null))))));
    
    (check (disjoint_behaviors : (! ((s_0.char_xM == null) &&
                                      (valid_str{Here}(s_0.char_xM) &&
-                                       (strpbrk(s_0.char_xM, ct_0) != null))))));
+                                       (strpbrk{Here}(s_0.char_xM, ct_0) !=
+                                         null))))));
    
    (check (complete_behaviors : ((valid_str{Here}(s_0.char_xM) &&
-                                   (strpbrk(s_0.char_xM, ct_0) != null)) ||
+                                   (strpbrk{Here}(s_0.char_xM, ct_0) != null)) ||
                                   ((valid_str{Here}(s_0.char_xM) &&
-                                     (strpbrk(s_0.char_xM, ct_0) == null)) ||
+                                     (strpbrk{Here}(s_0.char_xM, ct_0) ==
+                                       null)) ||
                                     (s_0.char_xM == null)))));
    
    (var charP[..] sbegin);
@@ -463,7 +471,7 @@ behavior input_strpbrk_not_null:
       (_C_63 : (end_0 = (_C_62 : strpbrk(sbegin, ct_0))));
       
       {  
-         (assert for default: (_C_64 : (jessie : (strpbrk(sbegin, ct_0) ==
+         (assert for default: (_C_64 : (jessie : (strpbrk{Here}(sbegin, ct_0) ==
                                                    end_0))));
          ()
       };

@@ -6,7 +6,7 @@
 #include "strspn.h"
 
 /*@ axiomatic StrPBrk {
-    logic char *strpbrk(char *cs, char *ct);
+    logic char *strpbrk{L}(char *cs, char *ct);
 
     lemma strpbrk_strend:
        \forall char *cs, *ct;
