@@ -51,7 +51,7 @@
   @       valid_str(s) && s[0] != '\0' ==>
   @       valid_str(s + 1) && strlen(s + 1) == strlen(s) - 1;
   @   lemma Strchr_same_block:
-  @     \forall char *s, c; strchr(s, c) != \null ==> \base_addr(strchr(s, c)) == \base_addr(s);
+  @     \forall char *s, c; valid_str(s) && strchr(s, c) != \null ==> \base_addr(strchr(s, c)) == \base_addr(s);
   @   lemma Strchr_skipped:
   @     \forall char *str, char c, size_t i;
   @       valid_str(str) &&

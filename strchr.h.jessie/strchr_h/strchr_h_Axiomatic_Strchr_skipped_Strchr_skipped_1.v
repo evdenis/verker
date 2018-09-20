@@ -59,45 +59,47 @@ Axiom strchr_def : forall (str:(Jessie_pointer.pointer Jessie_voidp.voidP))
   charP_charM_str_11_at_L) = (strchr (Jessie_pointer.shift str 1%Z) c
   charP_charM_str_11_at_L))))).
 
-Axiom Valid_str_shift : forall (voidP_s_3_81_alloc_table_at_L:(Jessie_alloc_table.alloc_table
-  Jessie_voidp.voidP)), forall (charP_charM_s_3_81_at_L:(map.Map.map
+Axiom Valid_str_shift : forall (voidP_s_3_25_alloc_table_at_L:(Jessie_alloc_table.alloc_table
+  Jessie_voidp.voidP)), forall (charP_charM_s_3_25_at_L:(map.Map.map
   (Jessie_pointer.pointer Jessie_voidp.voidP) Int8.t)),
   forall (s_3_1:(Jessie_pointer.pointer Jessie_voidp.voidP)), ((valid_str
-  s_3_1 voidP_s_3_81_alloc_table_at_L charP_charM_s_3_81_at_L) /\
-  ~ ((map.Map.get charP_charM_s_3_81_at_L (Jessie_pointer.shift s_3_1
+  s_3_1 voidP_s_3_25_alloc_table_at_L charP_charM_s_3_25_at_L) /\
+  ~ ((map.Map.get charP_charM_s_3_25_at_L (Jessie_pointer.shift s_3_1
   0%Z)) = (Int8.of_int 0%Z))) -> ((valid_str (Jessie_pointer.shift s_3_1 1%Z)
-  voidP_s_3_81_alloc_table_at_L charP_charM_s_3_81_at_L) /\
+  voidP_s_3_25_alloc_table_at_L charP_charM_s_3_25_at_L) /\
   ((Uint64.to_int (strlen (Jessie_pointer.shift s_3_1 1%Z)
-  charP_charM_s_3_81_at_L)) = ((Uint64.to_int (strlen s_3_1
-  charP_charM_s_3_81_at_L)) - 1%Z)%Z)).
+  charP_charM_s_3_25_at_L)) = ((Uint64.to_int (strlen s_3_1
+  charP_charM_s_3_25_at_L)) - 1%Z)%Z)).
 
-Axiom Strchr_same_block : forall (charP_charM_s_4_82_at_L:(map.Map.map
+Axiom Strchr_same_block : forall (voidP_s_4_26_alloc_table_at_L:(Jessie_alloc_table.alloc_table
+  Jessie_voidp.voidP)), forall (charP_charM_s_4_26_at_L:(map.Map.map
   (Jessie_pointer.pointer Jessie_voidp.voidP) Int8.t)),
   forall (s_4_0:(Jessie_pointer.pointer Jessie_voidp.voidP)),
-  forall (c_4_0:Int8.t), (~ ((strchr s_4_0 c_4_0
-  charP_charM_s_4_82_at_L) = (Jessie_pointer.null : (Jessie_pointer.pointer
-  Jessie_voidp.voidP)))) -> (Jessie_pointer.same_block (strchr s_4_0 c_4_0
-  charP_charM_s_4_82_at_L) s_4_0).
+  forall (c_0_0:Int8.t), ((valid_str s_4_0 voidP_s_4_26_alloc_table_at_L
+  charP_charM_s_4_26_at_L) /\ ~ ((strchr s_4_0 c_0_0
+  charP_charM_s_4_26_at_L) = (Jessie_pointer.null : (Jessie_pointer.pointer
+  Jessie_voidp.voidP)))) -> (Jessie_pointer.same_block (strchr s_4_0 c_0_0
+  charP_charM_s_4_26_at_L) s_4_0).
 
 (* Why3 goal *)
-Theorem Strchr_skipped : forall (voidP_str_4_86_alloc_table_at_L:(Jessie_alloc_table.alloc_table
-  Jessie_voidp.voidP)), forall (charP_charM_str_4_86_at_L:(map.Map.map
+Theorem Strchr_skipped : forall (voidP_str_0_30_alloc_table_at_L:(Jessie_alloc_table.alloc_table
+  Jessie_voidp.voidP)), forall (charP_charM_str_0_30_at_L:(map.Map.map
   (Jessie_pointer.pointer Jessie_voidp.voidP) Int8.t)),
-  forall (str_4:(Jessie_pointer.pointer Jessie_voidp.voidP)),
-  forall (c_5:Int8.t), forall (i_1:Uint64.t), ((valid_str str_4
-  voidP_str_4_86_alloc_table_at_L charP_charM_str_4_86_at_L) /\
-  ((~ ((strchr str_4 c_5
-  charP_charM_str_4_86_at_L) = (Jessie_pointer.null : (Jessie_pointer.pointer
-  Jessie_voidp.voidP)))) /\ ((Uint64.infix_lseq (Uint64.of_int 0%Z) i_1) /\
-  (((Uint64.to_int i_1) < (Jessie_pointer.sub_pointer (strchr str_4 c_5
-  charP_charM_str_4_86_at_L) str_4))%Z /\
-  ((Jessie_pointer.sub_pointer (strchr str_4 c_5 charP_charM_str_4_86_at_L)
-  str_4) <= (Uint64.to_int (strlen str_4
-  charP_charM_str_4_86_at_L)))%Z)))) ->
-  ~ ((map.Map.get charP_charM_str_4_86_at_L (Jessie_pointer.shift str_4
-  (Uint64.to_int i_1))) = c_5).
-(* Why3 intros voidP_str_4_86_alloc_table_at_L charP_charM_str_4_86_at_L
-        str_4 c_5 i_1 (h1,(h2,(h3,(h4,h5)))). *)
+  forall (str_0_0:(Jessie_pointer.pointer Jessie_voidp.voidP)),
+  forall (c_1_0:Int8.t), forall (i_0_0:Uint64.t), ((valid_str str_0_0
+  voidP_str_0_30_alloc_table_at_L charP_charM_str_0_30_at_L) /\
+  ((~ ((strchr str_0_0 c_1_0
+  charP_charM_str_0_30_at_L) = (Jessie_pointer.null : (Jessie_pointer.pointer
+  Jessie_voidp.voidP)))) /\ ((Uint64.infix_lseq (Uint64.of_int 0%Z) i_0_0) /\
+  (((Uint64.to_int i_0_0) < (Jessie_pointer.sub_pointer (strchr str_0_0 c_1_0
+  charP_charM_str_0_30_at_L) str_0_0))%Z /\
+  ((Jessie_pointer.sub_pointer (strchr str_0_0 c_1_0
+  charP_charM_str_0_30_at_L) str_0_0) <= (Uint64.to_int (strlen str_0_0
+  charP_charM_str_0_30_at_L)))%Z)))) ->
+  ~ ((map.Map.get charP_charM_str_0_30_at_L (Jessie_pointer.shift str_0_0
+  (Uint64.to_int i_0_0))) = c_1_0).
+(* Why3 intros voidP_str_0_30_alloc_table_at_L charP_charM_str_0_30_at_L
+        str_0_0 c_1_0 i_0_0 (h1,(h2,(h3,(h4,h5)))). *)
 intros voidP_str_4_82_alloc_table_at_L charP_charM_str_4_82_at_L str_4 c_4_0
 i_1 (h1,(h2,(h3,(h4,h5)))).
 Definition P (i : int) :=
@@ -135,12 +137,13 @@ assert (forall z : int, (0 < z)%Z -> P (Z.pred z) -> P z) as Step.
   assert (Jessie_pointer.shift (Jessie_pointer.shift s 1%Z) (z - 1)%Z =
           Jessie_pointer.shift s z) as Same.
     rewrite Jessie_pointer.Shift_def1.
-    assert (1 + (z - 1) = z)%Z as H. omega. rewrite H. trivial.
+    assert (1 + (z - 1) = z)%Z as H. omega.
+    rewrite H. trivial.
   rewrite <- Same.
   unfold P in Pred.
-  specialize Pred with
-   (a := a) (m := m).
-  assert (z - 1 = Z.pred z)%Z as H. omega. rewrite H.
+  specialize Pred with (a := a) (m := m).
+  assert (z - 1 = Z.pred z)%Z as H. omega.
+  rewrite H.
   apply Pred.
   assert (~ (map.Map.get m s) = c) as Neqc.
     unfold not.
@@ -156,35 +159,35 @@ assert (forall z : int, (0 < z)%Z -> P (Z.pred z) -> P z) as Step.
       (str := s) (c := c) (charP_charM_str_11_at_L := m) as Def.
     destruct Def as [Eqc' Neqc'].
     assert (strchr s c m = Jessie_pointer.null) as Contr.
-      apply Neqc'. assumption. assumption.
-    destruct Valid as [_ [Nonnull _]]. auto.
+      apply Neqc'. tauto. tauto.
+    tauto.
   split.
   apply Valid_str_shift.
-    split. destruct Valid as [Valid Range]. assumption.
+    split. tauto.
     rewrite Jessie_pointer.Shift_def2. assumption.
   assert (strchr s c m = strchr (Jessie_pointer.shift s 1) c m) as Next.
     specialize strchr_def with
       (str := s) (c := c) (charP_charM_str_11_at_L := m)  as Def.
     destruct Def as [Eqc' Neqc']. lapply Neqc'.
-    intros [Z' Nonz']. lapply Nonz'. auto. assumption. assumption.
+    intros [Z' Nonz']. lapply Nonz'. 1-3:tauto.
   rewrite* <- Next. split.
   tauto.
   split.
   omega.
   split.
   rewrite Jessie_pointer.Sub_pointer_shift_right. omega.
-  apply Strchr_same_block. tauto.
+  apply Strchr_same_block with (voidP_s_4_26_alloc_table_at_L := a). tauto.
   rewrite Jessie_pointer.Sub_pointer_shift_right.
   specialize Valid_str_shift with
-   (voidP_s_3_81_alloc_table_at_L := a)
-   (charP_charM_s_3_81_at_L := m)
+   (voidP_s_3_25_alloc_table_at_L := a)
+   (charP_charM_s_3_25_at_L := m)
    (s_3_1 := s) as Shift.
   lapply Shift. omega.
   split.
   tauto. rewrite Jessie_pointer.Shift_def2. tauto.
-  apply Strchr_same_block. tauto.
+  apply Strchr_same_block with (voidP_s_4_26_alloc_table_at_L := a). tauto.
 assert (forall z : int, (0 <= z)%Z -> P z) as Lemma.
-  apply Ind. tauto. tauto.
+  apply Ind. 1,2:tauto.
 unfold P in Lemma.
 apply Lemma with (a := voidP_str_4_82_alloc_table_at_L).
   unfold Uint64.infix_lseq in h3. rewrite Uint64.Of_int in h3. omega.
