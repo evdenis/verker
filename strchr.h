@@ -44,6 +44,56 @@
     }
  */
 
+/*@ axiomatic Strchr_skipped {
+  @   // Lemmas from the lemma functions won't be imported, so defining them explicitly
+  @   lemma Valid_str_shift:
+  @     \forall char *s;
+  @       valid_str(s) && s[0] != '\0' ==>
+  @       valid_str(s + 1) && strlen(s + 1) == strlen(s) - 1;
+  @   lemma Strchr_same_block:
+  @     \forall char *s, c; strchr(s, c) != \null ==> \base_addr(strchr(s, c)) == \base_addr(s);
+  @   lemma Strchr_skipped:
+  @     \forall char *str, char c, size_t i;
+  @       valid_str(str) &&
+  @       strchr(str, c) != \null && 
+  @       0 <= i < strchr(str, c) - str <= strlen(str) ==>
+  @       str[i] != c;
+  @ }
+  @*/
+
+// Lemmas from the axiomatic won't be imported as there are no used
+// symbols defined in the axiomatic
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(s);
+  @  @ requires  strchr(s, c) != \null;
+  @  @ decreases strlen(s);
+  @  @ ensures   \base_addr(strchr(s, c)) == \base_addr(s);
+  @  @/
+  @  void strchr_same_block(char *s, char c)
+  @  {
+  @    if (*s != c && *s != '\0')
+  @     strchr_same_block(s + 1, c);
+  @  }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ requires  strchr(str, c) != \null;
+  @  @ requires  0 <= i < strchr(str, c) - str <= strlen(str);
+  @  @ decreases i;
+  @  @ ensures   str[i] != c;
+  @  @/
+  @ void strchr_skipped(char *str, char c, size_t i)
+  @ {
+  @   if (i > 0 && *str != '\0' && *str != c) {
+  @     strchr_skipped(str + 1, c, i - 1);
+  @  }
+  @ }
+  @*/
+
 /*@ ghost
   @ /@ lemma
   @  @ requires  valid_str(str);
@@ -103,7 +153,7 @@
   @ }
   @*/
 
-/*@ ghost
+/* ghost
   @ /@ lemma
   @  @ requires  valid_str(str);
   @  @ requires  strchr(str, c) != \null;

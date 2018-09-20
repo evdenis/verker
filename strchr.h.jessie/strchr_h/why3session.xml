@@ -3,161 +3,54 @@
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
 <prover id="0" name="Alt-Ergo" version="2.2.0" timelimit="5" steplimit="0" memlimit="1000"/>
-<file name="../strchr_h.mlw">
-<theory name="Function_strchr_mem_safety" sum="cdc4e78119fe73a82b83a10e3a0e1806">
- <goal name="WP_parameter strchr_mem" expl="Function strchr_mem, safety">
+<prover id="1" name="CVC4" version="1.4" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="Z3" version="4.7.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.4" alternative="noBV" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="4" name="Coq" version="8.8.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<file name="../strchr_h.mlw" expanded="true">
+<theory name="Function_strchr_same_block_safety" sum="e54c6ac7dc91d072fd630ff915ff18b2" expanded="true">
+ <goal name="WP_parameter strchr_same_block" expl="Function strchr_same_block, safety">
+ <proof prover="0"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_mem.1" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="172"/></proof>
+  <goal name="WP_parameter strchr_same_block.1" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.03" steps="261"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_mem.2" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="23"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.01" steps="24"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem.4" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="31"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem.5" expl="check">
-  <proof prover="0"><result status="valid" time="0.06" steps="283"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem.6" expl="Precondition for strchr_mem (Requires clause. Internal)">
-  <proof prover="0"><result status="valid" time="0.04" steps="398"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_strchr_mem_behaviors" sum="ea852c41c89ca588e399ffefc21bc31b">
- <goal name="WP_parameter strchr_mem_ensures_default" expl="Function strchr_mem, default behavior">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_mem_ensures_default.1" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.37" steps="1595"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem_ensures_default.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.07" steps="556"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_mem_ensures_default.3" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.13" steps="499"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_strchr_res_safety" sum="cad37b49d42dcc378d7a68049c32dd73">
- <goal name="WP_parameter strchr_res" expl="Function strchr_res, safety">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_res.1" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.03" steps="243"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_res.2" expl="Integer cast (integer overflow)">
+  <goal name="WP_parameter strchr_same_block.2" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.01" steps="25"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="26"/></proof>
+  <goal name="WP_parameter strchr_same_block.3" expl="Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.01" steps="26"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res.4" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="33"/></proof>
+  <goal name="WP_parameter strchr_same_block.4" expl="Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.01" steps="33"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res.5" expl="check">
-  <proof prover="0"><result status="valid" time="0.07" steps="238"/></proof>
+  <goal name="WP_parameter strchr_same_block.5" expl="check">
+  <proof prover="0"><result status="valid" time="0.03" steps="240"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res.6" expl="Precondition for strchr_res (Requires clause. Internal)">
-  <proof prover="0"><result status="valid" time="0.05" steps="117"/></proof>
+  <goal name="WP_parameter strchr_same_block.6" expl="Precondition for strchr_same_block (Requires clause. Internal)">
+  <proof prover="0"><result status="valid" time="0.03" steps="212"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strchr_res_behaviors" sum="7b1b273a9ea459bb3a439569cd08fc62">
- <goal name="WP_parameter strchr_res_ensures_default" expl="Function strchr_res, default behavior">
+<theory name="Function_strchr_same_block_behaviors" sum="56290acc9c124d98a96a281abc16d743">
+ <goal name="WP_parameter strchr_same_block_ensures_default" expl="Function strchr_same_block, default behavior">
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_res_ensures_default.1" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.05" steps="207"/></proof>
+  <goal name="WP_parameter strchr_same_block_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="236"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res_ensures_default.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.08" steps="97"/></proof>
+  <goal name="WP_parameter strchr_same_block_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="85"/></proof>
   </goal>
-  <goal name="WP_parameter strchr_res_ensures_default.3" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="357"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_strchr_defn_safety" sum="6303d6deb2da997bc36db4b6d9a20303">
- <goal name="WP_parameter strchr_defn" expl="Function strchr_defn, safety">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_defn.1" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.03" steps="165"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.2" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="29"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.4" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="37"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.5" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="41"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.6" expl="integer overflow">
-  <proof prover="0"><result status="valid" time="0.05" steps="352"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.7" expl="check">
-  <proof prover="0"><result status="valid" time="0.04" steps="192"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn.8" expl="Precondition for strchr_defn (Requires clause. Internal)">
-  <proof prover="0"><result status="valid" time="0.62" steps="1233"/></proof>
+  <goal name="WP_parameter strchr_same_block_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="73"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strchr_defn_behaviors" sum="b0dbd4069b96b735a894db8523519d68">
- <goal name="WP_parameter strchr_defn_ensures_default" expl="Function strchr_defn, default behavior">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_defn_ensures_default.1" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.09" steps="463"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn_ensures_default.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.10" steps="215"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_defn_ensures_default.3" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.05" steps="378"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_strchr_not_null_safety" sum="816a59d2019a33c0991a0d35114fc354">
- <goal name="WP_parameter strchr_not_null" expl="Function strchr_not_null, safety">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strchr_not_null.1" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.01" steps="51"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_not_null.2" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="35"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_not_null.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.01" steps="36"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_not_null.4" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="43"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_not_null.5" expl="check">
-  <proof prover="0"><result status="valid" time="0.03" steps="199"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_not_null.6" expl="Precondition for strchr_not_null (Requires clause. Internal)">
-  <proof prover="0"><result status="valid" time="1.50" steps="2566"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_strchr_not_null_behaviors" sum="8035780f7333e8916bd3f9e5f6b2d9b9">
- <goal name="WP_parameter strchr_not_null_ensures_default" expl="Function strchr_not_null, default behavior">
- <proof prover="0"><result status="valid" time="0.77" steps="1409"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_skipped_safety" sum="40e73c28cf4cb545cb4562178506d83d">
+<theory name="Function_strchr_skipped_safety" sum="ece2a6818317ca436430ec8e6326a4de">
  <goal name="WP_parameter strchr_skipped" expl="Function strchr_skipped, safety">
+ <proof prover="0"><result status="timeout" time="5.01"/></proof>
  <transf name="split_goal_wp">
   <goal name="WP_parameter strchr_skipped.1" expl="Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.01" steps="21"/></proof>
@@ -166,79 +59,197 @@
   <proof prover="0"><result status="valid" time="0.01" steps="29"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.3" expl="Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="34"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="34"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.4" expl="Pointer dereference (Validity)">
   <proof prover="0"><result status="valid" time="0.01" steps="40"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.5" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="47"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="47"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.6" expl="Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="51"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="51"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.7" expl="integer overflow">
-  <proof prover="0"><result status="valid" time="0.03" steps="179"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="171"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.8" expl="check">
-  <proof prover="0"><result status="valid" time="0.02" steps="59"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="59"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped.9" expl="Precondition for strchr_skipped (Requires clause. Internal)">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strchr_skipped.9.1" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.2" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.3" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.4" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.5" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.6" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="8"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.7" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.02" steps="63"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.8" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.02" steps="190"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.9" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.02" steps="63"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.10" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.06" steps="219"/></proof>
-   </goal>
-   <goal name="WP_parameter strchr_skipped.9.11" expl="Requires clause">
-   <proof prover="0"><result status="valid" time="0.07" steps="242"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="0.03" steps="284"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_strchr_skipped_behaviors" sum="96bda125968cf3a9adcf22a6362cd9fb">
+<theory name="Function_strchr_skipped_behaviors" sum="e8f473f1e2b7eb13c784e2ae8d3c0905">
  <goal name="WP_parameter strchr_skipped_ensures_default" expl="Function strchr_skipped, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strchr_skipped_ensures_default.1" expl="Postcondition (Ensures clause)">
   <proof prover="0"><result status="valid" time="0.01" steps="47"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped_ensures_default.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="187"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="178"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped_ensures_default.3" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.08" steps="157"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="151"/></proof>
   </goal>
   <goal name="WP_parameter strchr_skipped_ensures_default.4" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.03" steps="288"/></proof>
+  <proof prover="0"><result status="valid" time="0.03" steps="192"/></proof>
   </goal>
  </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_mem_safety" sum="186af15bc33ce53cadf0169a2c8bce48">
+ <goal name="WP_parameter strchr_mem" expl="Function strchr_mem, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_mem.1" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="172"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem.2" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="23"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem.3" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="24"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem.4" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="31"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem.5" expl="check">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.06" steps="283"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem.6" expl="Precondition for strchr_mem (Requires clause. Internal)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.04" steps="398"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_mem_behaviors" sum="59e88966dcf2c418240ef205944060f2">
+ <goal name="WP_parameter strchr_mem_ensures_default" expl="Function strchr_mem, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_mem_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.32" steps="1924"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.08" steps="556"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_mem_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.07" steps="499"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_res_safety" sum="fd7169a975652ba541f4538504b5a077">
+ <goal name="WP_parameter strchr_res" expl="Function strchr_res, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_res.1" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="243"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res.2" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="25"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res.3" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="26"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res.4" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="33"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res.5" expl="check">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.07" steps="238"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res.6" expl="Precondition for strchr_res (Requires clause. Internal)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.05" steps="117"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_res_behaviors" sum="4ee07c3b5fa1b575906a7cf0b3156f91">
+ <goal name="WP_parameter strchr_res_ensures_default" expl="Function strchr_res, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_res_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="207"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.05" steps="358"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_res_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.08" steps="97"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_defn_safety" sum="1468ef52309fe1eda9eeb3fe16ac1917">
+ <goal name="WP_parameter strchr_defn" expl="Function strchr_defn, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_defn.1" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="165"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.2" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="29"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.3" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="30"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.4" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="37"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.5" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="41"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.6" expl="integer overflow">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.05" steps="352"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.7" expl="check">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.04" steps="192"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn.8" expl="Precondition for strchr_defn (Requires clause. Internal)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.38" steps="1233"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_defn_behaviors" sum="bdc2576d6526c6a7766fb6a21c2c3ecc">
+ <goal name="WP_parameter strchr_defn_ensures_default" expl="Function strchr_defn, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_defn_ensures_default.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.09" steps="548"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn_ensures_default.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.10" steps="215"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_defn_ensures_default.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.05" steps="382"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_not_null_safety" sum="f1da769fb6ec4f9bec9f77fbbc063f20">
+ <goal name="WP_parameter strchr_not_null" expl="Function strchr_not_null, safety">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strchr_not_null.1" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="51"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_not_null.2" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="35"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_not_null.3" expl="Pointer dereference (Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="36"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_not_null.4" expl="Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.01" steps="43"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_not_null.5" expl="check">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="199"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_not_null.6" expl="Precondition for strchr_not_null (Requires clause. Internal)">
+  <proof prover="0" obsolete="true"><result status="valid" time="1.50" steps="2566"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_strchr_not_null_behaviors" sum="ea6821aac4ace1b1296297b50c45eef4">
+ <goal name="WP_parameter strchr_not_null_ensures_default" expl="Function strchr_not_null, default behavior">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.32" steps="1438"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e">
@@ -541,19 +552,46 @@
 </theory>
 <theory name="Axiomatic_Strlen" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
+<theory name="Axiomatic_Strchr" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Axiomatic_Strchr_skipped" sum="91d93b53c79c55aaaeebabdfadcfc120" expanded="true">
+ <goal name="Valid_str_shift" expl="Lemma Valid_str_shift" expanded="true">
+ <proof prover="0"><result status="timeout" time="5.01"/></proof>
+ <proof prover="1"><result status="unknown" time="4.89"/></proof>
+ </goal>
+ <goal name="Strchr_same_block" expl="Lemma Strchr_same_block" expanded="true">
+ </goal>
+ <goal name="Strchr_skipped" expl="Lemma Strchr_skipped" expanded="true">
+ <proof prover="0" obsolete="true"><result status="timeout" time="5.01"/></proof>
+ <proof prover="1" obsolete="true"><result status="unknown" time="4.89"/></proof>
+ <proof prover="2" obsolete="true"><result status="timeout" time="5.00"/></proof>
+ <proof prover="3" obsolete="true"><result status="unknown" time="4.86"/></proof>
+ <proof prover="4" edited="strchr_h_Axiomatic_Strchr_skipped_Strchr_skipped_1.v"><result status="valid" time="0.54"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_LF__Axiomatic__valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Axiomatic_Strchr" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Axiomatic_LF__Axiomatic__strchr_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Axiomatic_LF__Axiomatic__strchr_same_block" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
-<theory name="Function_strchr_mem_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
+<theory name="Function_strchr_same_block_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchr_same_block" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strchr_skipped" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strchr_skipped_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strchr_skipped" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strchr_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
+</theory>
+<theory name="Function_strchr_mem_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strchr_mem" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
@@ -574,12 +612,6 @@
 <theory name="Function_strchr_not_null_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Function_strchr_not_null" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Axiomatic_LF__Axiomatic__strchr_skipped" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchr_skipped_safe" sum="d41d8cd98f00b204e9800998ecf8427e">
-</theory>
-<theory name="Function_strchr_skipped" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e">
 </theory>
