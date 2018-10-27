@@ -1,7 +1,7 @@
 # VerKer
 [![Replay Status](https://travis-ci.org/evdenis/verker.svg?branch=master)](https://travis-ci.org/evdenis/verker)
 
-ACSL cпецикации к библиотечным функциям ядра Linux
+ACSL cпецификации к библиотечным функциям ядра Linux
 
 Проект по разработке спецификаций и формальному доказательству корректности библиотечных функций ядра Linux.
 
