@@ -7,8 +7,9 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 
 ## Papers
 
-- [D. Efremov, M. Mandrykin, Formal Verification of Linux Kernel Library Functions (in Russian)](http://www.ispras.ru/en/proceedings/isp_29_2017_6/isp_29_2017_6_49/) [[PDF]](http://www.ispras.ru/proceedings/docs/2017/29/6/isp_29_2017_6_49.pdf)
-- [D. Efremov, M. Mandrykin, A. Khoroshilov, Deductive Verification of Unmodified Linux Kernel Library Functions (to appear on ISoLA18)](https://arxiv.org/abs/1809.00626) [[PDF]](https://arxiv.org/pdf/1809.00626.pdf)
+- [D. V. Efremov, M. U. Mandrykin (2017) Formal verification of Linux kernel library functions In: Proceedings of ISP RAS, 29:6 (2017), 49–76 (in Russian)](http://www.ispras.ru/en/proceedings/isp_29_2017_6/isp_29_2017_6_49/) [[PDF]](http://www.ispras.ru/proceedings/docs/2017/29/6/isp_29_2017_6_49.pdf)
+- [Efremov D., Mandrykin M., Khoroshilov A. (2018) Deductive Verification of Unmodified Linux Kernel Library Functions. In: Margaria T., Steffen B. (eds) Leveraging Applications of Formal Methods, Verification and Validation. Verification. ISoLA 2018. Lecture Notes in Computer Science, vol 11245. Springer, Cham](https://link.springer.com/chapter/10.1007%2F978-3-030-03421-4_15) [[ArXiv PDF]](https://arxiv.org/pdf/1809.00626.pdf)
+- [Volkov G., Mandrykin M., Efremov D. (2018) Lemma Functions for Frama-C: C Programs as Proofs, ArXiv e-prints 1811.05879](https://arxiv.org/abs/1811.05879) [[ArXiv PDF](https://arxiv.org/pdf/1811.05879.pdf)]
 
 ## Proofs Status
 
