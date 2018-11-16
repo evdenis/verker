@@ -32,7 +32,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 16 | strncasecmp   |        |                | yes       |         |
 | 17 | strncat       |        | not required   |           |         |
 | 18 | strnchr       | proved |                | yes       |         |
-| 19 | strncmp       |        |                | yes       |         |
+| 19 | strncmp       | proved |                | yes       |         |
 | 20 | strncpy       |        | not required   |           |         |
 | 21 | strnlen       | proved | proved         | yes       |         |
 | 22 | strnstr       |        |                | yes       |         |
