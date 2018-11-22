@@ -122,7 +122,7 @@ You can type ```make help``` to see the available options. It's recommended to s
 
 ### Proofs Replay
 
-To replay the proofs on your PC you need to type ```make replay-proved```. If you type ```make replay-proved-separatedly``` the instrument will try to replay proofs for functions one-by-one. ```CVC-1.4```, ```CVC-1.5```, ```Alt-Ergo-2.2.0``` solvers are required to replay proofs.
+To replay the proofs on your PC you need to type ```make replay-proved```. If you type ```make replay-proved-separatedly``` the instrument will try to replay proofs for functions one-by-one. ```CVC-1.4```, ```CVC-1.6```, ```Alt-Ergo-2.2.0``` solvers are required to replay proofs.
 
 ### Prove
 
