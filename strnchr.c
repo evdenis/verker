@@ -10,6 +10,7 @@ char *strnchr(const char *s, size_t count, int c)
 	    loop invariant valid_strn(s, count);
 	    loop invariant strnlen(os, ocount) == s - os + strnlen(s, count);
 	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
+	    loop assigns count, s;
 	    loop variant count;
 	 */
 	for (; count-- AENOC && *s != '\0'; ++s)

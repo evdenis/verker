@@ -129,6 +129,7 @@ char *strim(char *s)
 
 	/*@ loop invariant s - 1 <= end <= oend;
 	    loop invariant \forall char *p; end < p <= oend ==> isspace(*p);
+	    loop assigns end;
 	    loop variant end - s;
 	 */
 	while (end >= s && isspace(*end))

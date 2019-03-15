@@ -6,6 +6,7 @@ size_t strlen(const char *s)
 	/*@ loop invariant s <= sc <= s + strlen(s);
 	    loop invariant valid_str(sc);
 	    loop invariant strlen(s) == strlen(sc) + (sc - s);
+	    loop assigns sc;
 	    loop variant strlen(s) - (sc - s);
 	 */
 	for (sc = s; *sc != '\0'; ++sc)

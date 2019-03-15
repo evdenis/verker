@@ -7,6 +7,7 @@ char *strchrnul(const char *s, int c)
 	    loop invariant os <= s <= os + strlen(os);
 	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
 	    loop invariant strchrnul(os, (char AENO) c) == strchrnul(s, (char AENO) c);
+	    loop assigns s;
 	    loop variant strlen(os) - (s - os);
 	 */
 	while (*s && *s != (char) AENOC c)

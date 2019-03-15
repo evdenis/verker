@@ -11,6 +11,7 @@ char *strpbrk(const char *cs, const char *ct)
 	                   ct <= t < ct + strlen(ct) ==>
 	                   *p != *t;
 	    loop invariant strpbrk(cs, ct) == strpbrk(sc1, ct);
+	    loop assigns sc1, sc2;
 	    loop variant strlen(cs) - (sc1 - cs);
 	 */
 	for (sc1 = cs; *sc1 != '\0'; ++sc1) {
@@ -18,6 +19,7 @@ char *strpbrk(const char *cs, const char *ct)
 		    loop invariant valid_str(sc2);
 		    loop invariant \forall char *t; ct <= t < sc2 ==> *sc1 != *t;
 		    loop invariant in_array(ct, *sc1) ==> in_array(sc2, *sc1);
+		    loop assigns sc2;
 		    loop variant strlen(ct) - (sc2 - ct);
 		 */
 		for (sc2 = ct; *sc2 != '\0'; ++sc2) {

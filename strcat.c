@@ -8,6 +8,7 @@ char *strcat(char *dest, const char *src)
 	/*@ loop invariant tmp <= dest <= tmp + dest_len;
 	    loop invariant valid_str(dest);
 	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
+	    loop assigns dest;
 	    loop variant dest_len - (dest - tmp);
 	 */
 	while (*dest)

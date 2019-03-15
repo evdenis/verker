@@ -38,6 +38,7 @@ char *strstr(const char *s1, const char *s2)
 	    loop invariant os1 <= s1 <= os1 + strlen(os1);
 	    loop invariant valid_str(s1);
 	    loop invariant \forall char *s; os1 <= s < s1 ==> !strmatch(s, s2);
+	    loop assigns l1, s1;
 	    loop variant l1;
 	 */
 	while (l1 >= l2) {

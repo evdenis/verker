@@ -6,6 +6,7 @@ char *skip_spaces(const char *str)
 	/*@ loop invariant valid_str(str);
 	    loop invariant ostr <= str <= ostr + strlen(ostr);
 	    loop invariant \forall char *p; ostr <= p < str ==> isspace(*p);
+	    loop assigns str;
 	    loop variant strlen(ostr) - (str - ostr);
 	 */
 	while (isspace(*str))

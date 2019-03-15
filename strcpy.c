@@ -12,6 +12,7 @@ char *strcpy(char *dest, const char *src)
 	    loop invariant dest - tmp == src - osrc;
 	    loop invariant strlen(src) == strlen(osrc) - (src - osrc);
 	    loop invariant \forall integer i; 0 <= i < src - osrc ==> tmp[i] == osrc[i];
+	    loop assigns src, dest, tmp[0..strlen(osrc)];
 	    loop variant strlen(osrc) - (src - osrc);
 	*/
 	while ((*dest++ = *src++) != '\0')

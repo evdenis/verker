@@ -13,6 +13,7 @@ size_t strspn(const char *s, const char *accept)
 	                   (\exists char *t; accept <= t < accept + strlen(accept) && *c == *t);
 	    loop invariant valid_str(p);
 	    loop invariant strspn(s, accept) == strspn(p, accept) + count;
+	    loop assigns p, a, count;
 	    loop variant strlen(s) - (p - s);
 	 */
 	for (p = s; *p != '\0'; ++p) {
@@ -20,6 +21,7 @@ size_t strspn(const char *s, const char *accept)
 		    loop invariant \forall char *c; accept <= c < a ==> *c != *p;
 		    loop invariant valid_str(a);
 		    loop invariant in_array(accept, *p) ==> in_array(a, *p);
+		    loop assigns a;
 		    loop variant strlen(accept) - (a - accept);
 		 */
 		for (a = accept; *a != '\0'; ++a) {

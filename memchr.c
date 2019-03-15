@@ -7,6 +7,7 @@ void *memchr(const void *s, int c, size_t n)
 	    loop invariant (u8 *)s <= p <= (u8 *)s + \at(n,Pre);
 	    loop invariant p - s == \at(n,Pre) - n;
 	    loop invariant \forall u8 *k; (u8 *)s <= k < p ==> *k != (u8 AENO) c;
+	    loop assigns n, p;
 	    loop variant n;
 	 */
 	while (n-- AENOC != 0) {

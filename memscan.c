@@ -10,6 +10,7 @@ void *memscan(void *addr, int c, size_t size)
 	    loop invariant (u8 *)addr <= p <= (u8 *)addr + \at(size,Pre);
 	    loop invariant \forall integer i; 0 <= i < \at(size,Pre) - size ==>
 	                   ((u8 *)addr)[i] != c;
+	    loop assigns p, size;
 	    loop variant size;
 	 */
 	while (size) {

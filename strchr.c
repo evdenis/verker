@@ -7,6 +7,7 @@ char *strchr(const char *s, int c)
 	    loop invariant os <= s <= os + strlen(os);
 	    loop invariant \forall char *p; os <= p < s ==> *p != (char AENO) c;
 	    loop invariant strchr(s, (char AENO) c) == strchr(os, (char AENO) c);
+	    loop assigns s;
 	    loop variant strlen(os) - (s - os);
 	 */
 	for (; *s != (char) AENOC c; ++s)

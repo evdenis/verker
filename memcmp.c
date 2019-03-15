@@ -60,7 +60,7 @@ __visible int memcmp(const void *cs, const void *ct, size_t count)
 	    //loop invariant memcmp((char *)cs, (char *)ct, \at(count,Pre)) ==
 	    //               memcmp((char *)su1, (char *)su2, count);
 	    loop invariant res == 0;
-	    loop assigns res;
+	    loop assigns su1, su2, count, res;
 	    loop variant count;
 	 */
 	for (su1 = cs, su2 = ct; 0 < count; ++su1, ++su2, count--)

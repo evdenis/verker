@@ -12,6 +12,7 @@ void *memcpy(void *dest, const void *src, size_t count)
 	    loop invariant tmp - dest == s - src == ocount - count;
 	    loop invariant \forall integer i; 0 <= i < ocount - count ==>
 	                   ((char *)dest)[i] == ((char *)src)[i];
+	    loop assigns count, tmp, s, dest[0..count-1];
 	    loop variant count;
 	 */
 	while (count-- AENOC)

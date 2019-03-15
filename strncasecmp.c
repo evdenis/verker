@@ -35,6 +35,7 @@ int strncasecmp(const char *s1, const char *s2, size_t len)
 	    loop invariant strnlen(os2, olen) == strnlen(s2, len) - (olen - len);
 	    loop invariant \forall integer i; 0 <= i < (olen - len) ==>
 	                   tolower(os1[i]) == tolower(os2[i]);
+	    loop assigns s1, s2, len;
 	    loop variant len;
 	 */
 	do {

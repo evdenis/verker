@@ -28,6 +28,7 @@ int match_string(const char * const *array, size_t n, const char *string)
 	/*@ loop invariant 0 <= index;
 	    loop invariant null_terminator(array) ==> index <= null_at(array);
 	    loop invariant !null_terminator(array) ==> index <= n;
+	    loop assigns index;
 	    loop variant n - index;
 	 */
 	for (index = 0; index < n; index++) {

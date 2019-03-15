@@ -1,5 +1,6 @@
 #include "check_bytes8.h"
 
+
 static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 {
 	//@ ghost u8 *ostart = start;
@@ -10,6 +11,7 @@ static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 	    loop invariant start - ostart == obytes - bytes;
 	    loop invariant \forall u8 *i; ostart <= i < start ==> *i == value;
 	    loop invariant check_bytes8(ostart, value, obytes) == check_bytes8(start, value, bytes);
+	    loop assigns start, bytes;
 	    loop variant bytes;
 	 */
 	while (bytes) {

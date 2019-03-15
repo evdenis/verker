@@ -25,6 +25,7 @@ char *strncat(char *dest, const char *src, size_t count)
 
 		/*@ loop invariant tmp <= dest <= tmp + dest_len;
 		    loop invariant valid_str(dest);
+		    loop assigns dest;
 		    loop variant dest_len - (dest - tmp);
 		 */
 		while (*dest)
@@ -40,7 +41,7 @@ char *strncat(char *dest, const char *src, size_t count)
 		    loop invariant src - osrc == dest - mdest == ocount - count;
 		    loop invariant \forall integer i; 0 <= i < src - osrc ==>
 		                   mdest[i] == osrc[i];
-		    loop assigns mdest[0..src_len];
+		    loop assigns count, mdest[0..src_len];
 		    loop variant count;
 		 */
 		while ((*dest++ = *src++) != 0) {

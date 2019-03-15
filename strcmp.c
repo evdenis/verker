@@ -4,9 +4,9 @@ int strcmp(const char *cs, const char *ct)
 {
 	unsigned char c1, c2;
 
-   /*@ assert (\forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i]) <==>
+	/*@ assert (\forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i]) <==>
               (\forall integer i; 0 <= i <= strlen(cs) ==> (u8 AENO) cs[i] == (u8 AENO) ct[i]);
-    */
+	 */
 
 	/*@ loop invariant valid_str(cs) && valid_str(ct);
 	    loop invariant \at(cs,Pre) <= cs <= \at(cs,Pre) + strlen(\at(cs,Pre));
@@ -16,6 +16,7 @@ int strcmp(const char *cs, const char *ct)
 	                   \at(cs,Pre)[i] == \at(ct,Pre)[i];
 	    loop invariant strlen(cs) == strlen(\at(cs,Pre)) - (cs - \at(cs,Pre));
 	    //loop invariant strcmp(\at(cs,Pre), \at(ct,Pre)) == strcmp(cs, ct);
+	    loop assigns cs, ct;
 	    loop variant strlen(\at(cs,Pre)) - (cs - \at(cs,Pre));
 	*/
 	while (1) {

@@ -20,7 +20,7 @@ char *strreplace(char *s, char old, char new)
 	    loop invariant \forall char *p;
 	       os <= p < os + strlen(os) && \at(*p,Pre) != old ==>
 	          \at(*p,Pre) == *p;
-	    loop assigns os[0..strlen(os)];
+	    loop assigns s, os[0..strlen(os)];
 	    loop variant strlen(os) - (s - os);
 	 */
 	for (; *s; ++s)

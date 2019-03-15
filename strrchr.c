@@ -11,6 +11,7 @@ char *strrchr(const char *s, int c)
 	    loop invariant (last == \null) <==> (\forall char *p; os <= p < s ==> *p != (char AENO) c);
 	    loop invariant last != \null ==> (\forall char *p; last < p < s ==> *p != (char AENO) c);
 	    //loop invariant strrchr(s, (char AENO) c) == strrchr(os, (char AENO) c);
+	    loop assigns s;
 	    loop variant strlen(os) - (s - os);
 	 */
 	do {

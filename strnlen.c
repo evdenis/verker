@@ -9,6 +9,7 @@ size_t strnlen(const char *s, size_t count)
 	    loop invariant valid_strn(sc, count);
 	    loop invariant strnlen(s,\at(count,Pre)) == strnlen(sc, count) + (sc - s);
 	    loop invariant \forall integer i; 0 <= i < sc - s ==> s[i] != '\0';
+	    loop assigns count, sc;
 	    loop variant count;
 	 */
 	for (sc = s; count-- AENOC && *sc != '\0'; ++sc)

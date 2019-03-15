@@ -12,7 +12,7 @@ int hex_to_bin(char ch)
 
 /*@ requires \valid(dst+(0..count));
     requires \valid(src+(0..2*count));
-    assigns dst[0..count];
+    assigns dst[0..count-1];
     //ensures \forall char *p; src <= p < src + 2*count ==> isxdigit(*p);
     behavior err_ok:
        assumes \forall char *p; src <= p < src + 2*count ==> isxdigit(*p);
@@ -35,6 +35,7 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 	    loop invariant odst <= dst <= dst + count;
 	    loop invariant ocount - count == dst - odst == (src - osrc) / 2;
 	    loop invariant \forall char *p; osrc <= p < src ==> isxdigit(*p);
+	    loop assigns count, src, src, odts[0..ocount-1];
 	    loop variant count;
 	 */
 	while (count-- AENOC) {

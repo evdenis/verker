@@ -45,6 +45,7 @@ int strncmp(const char *cs, const char *ct, size_t count)
 	    loop invariant strnlen(cs, count) == strnlen(ocs, ocount) - (cs - ocs);
 	    loop invariant strnlen(ct, count) == strnlen(oct, ocount) - (ct - oct);
 	    loop invariant \forall integer i; 0 <= i < ocount - count ==> ocs[i] == oct[i];
+	    loop assigns cs, ct, count;
 	    loop variant count;
 	*/
 	while (count) {

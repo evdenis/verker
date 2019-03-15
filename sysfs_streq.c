@@ -23,6 +23,7 @@ bool sysfs_streq(const char *s1, const char *s2)
 	    loop invariant s1 - os1 == s2 - os2;
 	    loop invariant valid_str(s1) && valid_str(s2);
 	    loop invariant \forall integer i; 0 <= i < s1 - os1 ==> os1[i] == os2[i];
+	    loop assigns s1, s2;
 	    loop variant strlen(os1) - (s1 - os1);
 	 */
 	while (*s1 && *s1 == *s2) {
