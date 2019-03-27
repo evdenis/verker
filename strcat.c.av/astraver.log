@@ -1,0 +1,762 @@
+WHYLIB is not set, using /home/mikhail/.opam/astraver/lib/astraver as default
+Parsing
+Normalization
+Typing logic labels
+Typing code
+Typing axiomatic Padding
+Typing logic type declaration padding
+Typing axiomatic Strlen
+Typing axiomatic LF__Axiomatic__valid_str_len
+Typing axiomatic LF__Axiomatic__valid_str_shift
+Typing axiomatic Padding
+Typing tag voidP
+Typing tag charP
+Typing axiomatic Strlen
+Typing axiomatic LF__Axiomatic__valid_str_len
+Typing lemma/axiom LF__Lemma__valid_str_len
+Typing axiomatic LF__Axiomatic__valid_str_shift
+Typing lemma/axiom LF__Lemma__valid_str_shift
+Computation of call graph
+***********************************
+Logic call graph: has 4 components
+***********************************
+Component 0:
+ valid_str calls: 
+
+Component 1:
+ strlen calls: strlen
+
+Component 2:
+ _LF__Predicate__valid_str_len calls: 
+
+Component 3:
+ _LF__Predicate__valid_str_shift calls: 
+
+******************************
+Call graph: has 8 components
+******************************
+Component 0:
+ elim_valid_str calls: 
+
+Component 1:
+ elim_valid_str_len calls: 
+
+Component 2:
+ valid_str_len calls: 
+
+Component 3:
+ intro_valid_str_len calls: 
+
+Component 4:
+ valid_str_shift calls: 
+
+Component 5:
+ elim_strlen calls: 
+
+Component 6:
+ strlen calls: 
+
+Component 7:
+ strcat calls: strlen
+
+Adding invariants
+Computation of regions
+Separation: treating function elim_valid_str
+Separation: treating function elim_valid_str
+Separation: treating function elim_valid_str_len
+Separation: treating function elim_valid_str_len
+Separation: treating function valid_str_len
+Separation: treating function valid_str_len
+Separation: treating function intro_valid_str_len
+Separation: treating function intro_valid_str_len
+Separation: treating function valid_str_shift
+Separation: treating function valid_str_shift
+Separation: treating function elim_strlen
+Separation: treating function elim_strlen
+Separation: treating function strlen
+Separation: treating function strlen
+Separation: treating function strcat
+Separation: treating function strcat
+Computation of effects
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function valid_str:
+ alloc_table: (s_2 : alloc-root "voidP") at (L)
+ tag_table: 
+ memories: (s_2 : mem-field "charM") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: s at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function strlen:
+ alloc_table: 
+ tag_table: 
+ memories: (s_0_3 : mem-field "charM") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: s_0 at (Here)
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__valid_str_len:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__valid_str_shift:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function elim_valid_str:
+ reads:  alloc_table: (s_0_4 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_0_4 : mem-field "charM") at (Here)
+         raw memories: (s_0_4 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: \result at (Here), s_0 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function elim_valid_str_len:
+ reads:  alloc_table: (s_1_5 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_1_5 : mem-field "charM") at (Here)
+         raw memories: (s_1_5 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: \result at (Here), s_1 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function valid_str_len:
+ reads:  alloc_table: (s_4_6 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_4_6 : mem-field "charM") at (Here)
+         raw memories: (s_4_6 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: s_4 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function intro_valid_str_len:
+ reads:  alloc_table: (s_2_7 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_2_7 : mem-field "charM") at (Here)
+         raw memories: (s_2_7 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: n_1 at (Here), s_2 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function valid_str_shift:
+ reads:  alloc_table: (s_5_8 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_5_8 : mem-field "charM") at (Here)
+         raw memories: (s_5_8 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: s_5 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function elim_strlen:
+ reads:  alloc_table: (s_9 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_9 : mem-field "charM") at (Here)
+         raw memories: (s_9 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: s at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strlen:
+ reads:  alloc_table: (s_3_10 : alloc-root "voidP") at (Here)
+         tag_table: 
+         memories: (s_3_10 : mem-field "charM") at (Here)
+         raw memories: (s_3_10 : mem-field "charM") at (Here)
+         precise memories: 
+         globals: 
+         locals: \result at (Here), s_3 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function strcat:
+ reads:  alloc_table: (src_7_12 : alloc-root "voidP") at (Here),
+                      (dest_9_11 : alloc-root "voidP") at (Here, Old)
+         tag_table: (src_7_12 : voidP) at (Here),
+                    (dest_9_11 : voidP) at (Here)
+         memories: (src_7_12 : mem-field "charM") at (Here, Old),
+                   (dest_9_11 : mem-field "charM") at (Here, Pre, Old)
+         raw memories: (src_7_12 : mem-field "charM") at (Here),
+                       (dest_9_11 : mem-field "charM") at (Here, Pre, Old)
+         precise memories: 
+         globals: 
+         locals: tmp_3 at (Here), tmp_2 at (Here), tmp_1 at (Here),
+                 tmp at (Here), \result at (Here), src_7 at (Here, Old),
+                 dest_9 at (Here, Pre, Old)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: (dest_9_11 : mem-field "charM") at (Here, Old)
+          raw memories: (dest_9_11 : mem-field "charM") at (Here, Old)
+          precise memories: 
+          globals: 
+          locals: tmp_3 at (Here), tmp_2 at (Here), tmp_1 at (Here),
+                  mdest at (Here), osrc at (Here), dest_len at (Here),
+                  tmp at (Here), src_7 at (Here), dest_9 at (Here)
+
+ raises: 
+Translate logic types
+Translate structures
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+Translate variants
+Translate global regions
+Translate exceptions
+Translate enumerated types
+Translate dummies
+Translate standalone logic functions
+Logic function valid_str
+Logic function strlen
+Logic function _LF__Predicate__valid_str_len
+Logic function _LF__Predicate__valid_str_shift
+Translate axiomatic declarations
+Axiomatic LF__Axiomatic__valid_str_len
+Axiomatic LF__Axiomatic__valid_str_shift
+Axiomatic Padding
+Axiomatic Strlen
+Translate lemmas
+Translate functions
+Pre-treatement Function elim_valid_str
+Pre-treatement Function elim_valid_str_len
+Pre-treatement Function valid_str_len
+Pre-treatement Function intro_valid_str_len
+Pre-treatement Function valid_str_shift
+Pre-treatement Function elim_strlen
+Pre-treatement Function strlen
+Pre-treatement Function strcat
+Function elim_valid_str
+Function elim_valid_str_len
+Function valid_str_len
+Function intro_valid_str_len
+Function valid_str_shift
+Function elim_strlen
+Function strlen
+Function strcat
+Produce makefile
