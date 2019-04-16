@@ -7,8 +7,8 @@
 
 
 /*@ axiomatic SkipSpaces {
-    logic char *skip_spaces(char *str) ;//=
-       //isspace(*str) ? skip_spaces(str + 1) : str;
+    logic char *skip_spaces(char *str) =
+       isspace(*str) ? skip_spaces(str + 1) : str;
     lemma skip_spaces_defn{L}:
        \forall char *str, size_t i;
        valid_str(str) && i <= strlen(str) &&
