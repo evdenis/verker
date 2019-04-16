@@ -56,11 +56,11 @@ int strncmp(const char *cs, const char *ct, size_t count)
 		if (c1 != c2)
 			//@ ghost int res = c1 < c2 ? -1 : 1;
 			/*@ for not_equal:
-				assert (\exists integer i; 0 <= i < strnlen(ocs, ocount) &&
+				assert \exists integer i; 0 <= i < strnlen(ocs, ocount) &&
 				(\forall integer j; 0 <= j < i ==> ocs[j] == oct[j]) &&
 				(ocs[i] != oct[i]) &&
 				((u8 AENO)ocs[i] < (u8 AENO)oct[i] ? res == -1 : res == 1) &&
-				i == ocount - count);
+				((size_t) i) == ocount - count && i == ocount - count;
 			*/
 			return c1 < c2 ? -1 : 1;
 		if (!c1)
