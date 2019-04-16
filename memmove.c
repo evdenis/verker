@@ -2,37 +2,37 @@
 
 void *memmove(void *dest, const void *src, size_t count)
 {
-	//@ ghost size_t orig_count = count;
+	//@ ghost size_t ocount = count;
 	char *tmp;
 	const char *s;
 
 	if (dest <= src) {
 		tmp = dest;
 		s = src;
-		/*@ loop invariant 0 <= count <= orig_count;
-		    loop invariant tmp - dest == orig_count - count == s - src;
-		    loop invariant (char *)dest <= tmp <= (char *)dest + orig_count;
-		    loop invariant (char *)src <= s <= (char *)src + orig_count;
-		    loop invariant \forall integer i; orig_count - count <= i < orig_count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
-		    loop invariant \forall integer i; 0 <= i < orig_count - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
-		    loop assigns count, s, dest[0..count-1];
+		/*@ loop invariant 0 <= count <= ocount;
+		    loop invariant tmp - dest == ocount - count == s - src;
+		    loop invariant (char *)dest <= tmp <= (char *)dest + ocount;
+		    loop invariant (char *)src <= s <= (char *)src + ocount;
+		    loop invariant \forall integer i; ocount - count <= i < ocount ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
+		    loop invariant \forall integer i; 0 <= i < ocount - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop assigns count, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
 		while (count-- AENOC) {
 			*tmp++ = *s++;
-			//@ assert ((char *)dest)[orig_count - count - 1] == ((char *)src)[orig_count - count - 1];
+			//@ assert ((char *)dest)[ocount - count - 1] == ((char *)src)[ocount - count - 1];
 		}
 	} else {
 		tmp = dest;
 		tmp += count;
 		s = src;
 		s += count;
-		/*@ loop invariant 0 <= count <= orig_count;
+		/*@ loop invariant 0 <= count <= ocount;
 		    loop invariant tmp - dest == count == s - src;
-		    loop invariant (char *)dest <= tmp <= (char *)dest + orig_count;
-		    loop invariant (char *)src <= s <= (char *)src + orig_count;
+		    loop invariant (char *)dest <= tmp <= (char *)dest + ocount;
+		    loop invariant (char *)src <= s <= (char *)src + ocount;
 		    loop invariant \forall integer i; 0 <= i < count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
-		    loop invariant \forall integer i; count <= i < orig_count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
-		    loop assigns count, s, dest[0..count-1];
+		    loop invariant \forall integer i; count <= i < ocount ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop assigns count, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
 		while (count-- AENOC) {
 			*--tmp = *--s;

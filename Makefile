@@ -26,10 +26,10 @@ FRAMAC           := $(OPAM_EVAL); frama-c -c11 -pp-annot -cpp-extra-args " -CC -
 FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 #FRAMAC_DFLAGS    :=
 #FRAMAC_DFLAGS    := -wp
-FRAMAC_DFLAGS    := -jessie
-FRAMAC_UFLAGS    := -jessie -jessie-target update
-FRAMAC_REPLAY    := -jessie-target why3autoreplay
-FRAMAC_SPROVE    := -jessie-target why3sprove -jessie-why3-opt " --strategy proof_juicer --theory-filter axiom"
+FRAMAC_DFLAGS    := -av
+FRAMAC_UFLAGS    := -av -av-target update
+FRAMAC_REPLAY    := -av-target why3autoreplay
+FRAMAC_SPROVE    := -av-target why3sprove -av-why3-opt " --strategy proof_juicer --theory-filter axiom"
 FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
 FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
@@ -234,7 +234,7 @@ sprove-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
 
 clean: ## Remove all binary and generated files.
-	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.jessie *.o *.pp.c
+	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.av *.o *.pp.c *.pp.h *.jessie
 
 .PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean
 
