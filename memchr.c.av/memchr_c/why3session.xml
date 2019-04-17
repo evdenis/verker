@@ -2,27 +2,101 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.3.0" timelimit="40" steplimit="0" memlimit="4000"/>
 <file name="../memchr_c.mlw" expanded="true">
-<theory name="Function_memchr_safety" sum="56fd3df110e5406974eb63224b1a6f79" expanded="true">
+<theory name="Function_memchr_safety" sum="f8a4fcb178c8ff862872b9a5dd416200" expanded="true">
  <goal name="WP_parameter memchr" expl="Function memchr, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.17" steps="840"/></proof>
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter memchr.1" expl="Downcast">
+  <proof prover="0"><result status="valid" time="0.03" steps="143"/></proof>
+  </goal>
+  <goal name="WP_parameter memchr.2" expl="Pointer dereference (Validity)" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr.2.1" expl="Function memchr, safety">
+   <proof prover="0"><result status="valid" time="0.09" steps="366"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr.2.2" expl="Function memchr, safety">
+   <proof prover="0"><result status="valid" time="0.11" steps="366"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter memchr.3" expl="loop variant decrease" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr.3.1" expl="Function memchr, safety">
+   <proof prover="0"><result status="valid" time="0.04" steps="193"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr.3.2" expl="Function memchr, safety">
+   <proof prover="0"><result status="valid" time="0.05" steps="193"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
  </goal>
 </theory>
-<theory name="Function_memchr_behaviors" sum="f941d6086496f452f877bc751a186426" expanded="true">
+<theory name="Function_memchr_behaviors" sum="93c88b4fac7532b3fc4f993e2862a69b" expanded="true">
  <goal name="WP_parameter memchr_ensures_default" expl="Function memchr, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter memchr_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="157"/></proof>
+  <proof prover="0"><result status="valid" time="0.04" steps="157"/></proof>
   </goal>
   <goal name="WP_parameter memchr_ensures_default.2" expl="Behavior completeness check">
   <proof prover="0"><result status="valid" time="0.04" steps="155"/></proof>
   </goal>
-  <goal name="WP_parameter memchr_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.36" steps="1788"/></proof>
+  <goal name="WP_parameter memchr_ensures_default.3" expl="loop invariant init" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr_ensures_default.3.1" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.05" steps="237"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.2" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.03" steps="149"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.3" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.03" steps="192"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.4" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="187"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.5" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.03" steps="153"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.6" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="202"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.7" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="161"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.3.8" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.03" steps="171"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="WP_parameter memchr_ensures_default.4" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.36" steps="1304"/></proof>
+  <goal name="WP_parameter memchr_ensures_default.4" expl="loop invariant preservation" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr_ensures_default.4.1" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="189"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.2" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.05" steps="189"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.3" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="193"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.4" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="193"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.5" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.05" steps="193"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.6" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.04" steps="193"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.7" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.17" steps="528"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_default.4.8" expl="Function memchr, default behavior">
+   <proof prover="0"><result status="valid" time="0.20" steps="594"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="WP_parameter memchr_ensures_default.5" expl="Assertion in line 18">
   <proof prover="0"><result status="valid" time="0.05" steps="290"/></proof>
@@ -30,10 +104,62 @@
  </transf>
  </goal>
  <goal name="WP_parameter memchr_ensures_found" expl="Function memchr, behavior found" expanded="true">
- <proof prover="0"><result status="valid" time="0.65" steps="2722"/></proof>
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter memchr_ensures_found.1" expl="Ensures clause (Postcondition)" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr_ensures_found.1.1" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.13" steps="513"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.1.2" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.14" steps="506"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.1.3" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.10" steps="526"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.1.4" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.13" steps="516"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.1.5" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.35" steps="1071"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.1.6" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.23" steps="1043"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter memchr_ensures_found.2" expl="Ensures clause (Postcondition)" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter memchr_ensures_found.2.1" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.05" steps="408"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.2.2" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.05" steps="402"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.2.3" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.06" steps="421"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.2.4" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.06" steps="409"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.2.5" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.07" steps="460"/></proof>
+   </goal>
+   <goal name="WP_parameter memchr_ensures_found.2.6" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.06" steps="404"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
  </goal>
  <goal name="WP_parameter memchr_ensures_not_exists" expl="Function memchr, behavior not_exists" expanded="true">
- <proof prover="0"><result status="valid" time="0.07" steps="426"/></proof>
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter memchr_ensures_not_exists.1" expl="Ensures clause (Postcondition)" expanded="true">
+  <proof prover="0"><result status="valid" time="0.06" steps="434"/></proof>
+  </goal>
+  <goal name="WP_parameter memchr_ensures_not_exists.2" expl="Ensures clause (Postcondition)" expanded="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="177"/></proof>
+  </goal>
+ </transf>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
