@@ -1,3 +1,6 @@
+export TIMEOUT   ?= 10
+export PROCESSES ?= 4
+
 CC               := gcc
 CFLAGS           := -Wall -Werror
 CLANG            := clang
@@ -29,7 +32,7 @@ FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args "
 FRAMAC_DFLAGS    := -av
 FRAMAC_UFLAGS    := -av -av-target update
 FRAMAC_REPLAY    := -av-target why3autoreplay
-FRAMAC_SPROVE    := -av-target why3sprove -av-why3-opt " --strategy proof_juicer --theory-filter axiom"
+FRAMAC_SPROVE    := -av-target why3sprove -av-why3-opt " --strategy verker --theory-filter axiom"
 FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
 FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -rte-all -rte-precond -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
@@ -221,22 +224,59 @@ replay-proved-separatedly: ## Replay proved functions consequently.
 replay-%:
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
 
-sprove: ## Replay proofs simultaiously. You can also type sprove-<target>.
+AV_WHY3_CONF := astraver.why3.conf
+
+define av_why3conf
+[main]
+running_provers_max = $(PROCESSES)
+
+[strategy]
+code = "
+start:
+  c Alt-Ergo,, 2 2000
+  c CVC4,,noBV 2 2000
+  c CVC4,, 2 2000
+  c Eprover,, 2 2000
+  t split_goal_wp start
+  t introduce_premises next1
+next1:
+  t inline_all next2
+next2:
+  t eliminate_if next3
+next3:
+  t remove_triggers start
+  c Alt-Ergo,, $(TIMEOUT) 8000
+  c CVC4,,noBV $(TIMEOUT) 8000
+  c CVC4,, $(TIMEOUT) 8000
+  c Eprover,, $(TIMEOUT) 8000"
+desc = "Strategy for Verker examples"
+name = "verker"
+endef
+export av_why3conf
+
+$(AV_WHY3_CONF):
+	@if [ -f $@ ]; then                          \
+		tfile=$(shell mktemp);               \
+		echo "$$av_why3conf" > $$tfile;      \
+		diff -q $@ $$tfile > /dev/null || mv $$tfile $@; \
+	else echo "$$av_why3conf" > $@; fi
+
+sprove: $(AV_WHY3_CONF) ## Replay proofs simultaiously. You can also type sprove-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(SRCFILES)
 
-sprove-separatedly: ## Replay proofs consequently.
+sprove-separatedly: $(AV_WHY3_CONF) ## Replay proofs consequently.
 	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
-sprove-proved: ## Run sprove strategy on proved functions.
+sprove-proved: $(AV_WHY3_CONF) ## Run sprove strategy on proved functions.
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
-sprove-%:
+sprove-%: $(AV_WHY3_CONF)
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
 
 clean: ## Remove all binary and generated files.
-	-rm -fr $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.av *.o *.pp.c *.pp.h *.jessie
+	-rm -fr $(AV_WHY3_CONF) $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.av *.o *.pp.c *.pp.h *.jessie
 
-.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean
+.PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean $(AV_WHY3_CONF)
 
 #COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
