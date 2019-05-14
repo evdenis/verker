@@ -43,16 +43,16 @@ FRAMAC_EMSHARE   := $(shell $(FRAMAC) -print-share-path)/e-acsl/memory_model
 FRAMAC_LIBPATH   := $(shell $(FRAMAC) -print-lib-path)
 FRAMAC_EACSL_LIB := -DE_ACSL_SEGMENT_MMODEL -DE_ACSL_IDENTIFY -std=c99 -m64 -I$(FRAMAC_ESHARE) $(FRAMAC_ESHARE)/e_acsl_mmodel.c -lm -lpthread $(FRAMAC_LIBPATH)/../libeacsl-gmp.a $(FRAMAC_LIBPATH)/../libeacsl-jemalloc.a
 
-SRCFILES             := $(sort $(shell find . -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
-FZZAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-BINAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-PROVEDFILES          := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./!'))
-BINFILES             := $(patsubst ./%.c, $(BINDIR)/%,     $(BINAVAILFILES))
-FUZZFILES            := $(patsubst ./%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
-EACSLFILES           := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(BINAVAILFILES))
-EACSLPROVEDFILES     := $(patsubst ./%.c, $(EACSLDIR)/%.c, $(PROVEDFILES))
-RTEFILES             := $(patsubst ./%.c, $(RTEDIR)/%.c,   $(SRCFILES))
-VALFILES             := $(patsubst ./%.c, $(VALDIR)/%.c,   $(SRCFILES))
+SRCFILES             := $(sort $(shell find ./src -maxdepth 1 -type f \! -name '*.pp.c' -name '*.c'))
+FZZAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,6 | grep yes | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./src/!'))
+BINAVAILFILES        := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./src/!'))
+PROVEDFILES          := $(sort $(shell grep -nre '|[[:space:]]\+[[:digit:]]\+[[:space:]]\+|' ./README.md | cut -d '|' -f 3,4 | grep proved | cut -d '|' -f 1 | tr -d ' \\' | sed -e 's/$$/.c/' -e 's!^!./src/!'))
+BINFILES             := $(patsubst ./src/%.c, $(BINDIR)/%,     $(BINAVAILFILES))
+FUZZFILES            := $(patsubst ./src/%.c, $(FUZZDIR)/%,    $(FZZAVAILFILES))
+EACSLFILES           := $(patsubst ./src/%.c, $(EACSLDIR)/%.c, $(BINAVAILFILES))
+EACSLPROVEDFILES     := $(patsubst ./src/%.c, $(EACSLDIR)/%.c, $(PROVEDFILES))
+RTEFILES             := $(patsubst ./src/%.c, $(RTEDIR)/%.c,   $(SRCFILES))
+VALFILES             := $(patsubst ./src/%.c, $(VALDIR)/%.c,   $(SRCFILES))
 EACSLBINFILES        := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLFILES))
 EACSLBINPROVEDFILES  := $(patsubst $(EACSLDIR)/%.c, $(EACSLBINDIR)/%, $(EACSLPROVEDFILES))
 EACSLFUZZFILES       := $(patsubst $(EACSLDIR)/%.c, $(EACSLFUZZDIR)/%, $(EACSLFILES))
@@ -107,64 +107,64 @@ $(EACSLBINDIR):
 $(EACSLFUZZDIR):
 	@-mkdir -p $(EACSLFUZZDIR)
 
-$(BINDIR)/skip_spaces: $(BINDIR)/ctype.o skip_spaces.c
+$(BINDIR)/skip_spaces: $(BINDIR)/ctype.o src/skip_spaces.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/strlcpy: $(BINDIR)/memcpy.o strlcpy.c
+$(BINDIR)/strlcpy: $(BINDIR)/memcpy.o src/strlcpy.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/strim: $(BINDIR)/skip_spaces.o $(BINDIR)/ctype.o strim.c
+$(BINDIR)/strim: $(BINDIR)/skip_spaces.o $(BINDIR)/ctype.o src/strim.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/_parse_integer_fixup_radix: $(BINDIR)/ctype.o _parse_integer_fixup_radix.c
+$(BINDIR)/_parse_integer_fixup_radix: $(BINDIR)/ctype.o src/_parse_integer_fixup_radix.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/strcasecmp: $(BINDIR)/ctype.o strcasecmp.c
+$(BINDIR)/strcasecmp: $(BINDIR)/ctype.o src/strcasecmp.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/strncasecmp: $(BINDIR)/ctype.o strncasecmp.c
+$(BINDIR)/strncasecmp: $(BINDIR)/ctype.o src/strncasecmp.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/strnstr: $(BINDIR)/memcmp.o $(BINDIR)/strlen.o strnstr.c
+$(BINDIR)/strnstr: $(BINDIR)/memcmp.o $(BINDIR)/strlen.o src/strnstr.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
-$(BINDIR)/%.o: %.c %.h
+$(BINDIR)/%.o: src/%.c src/%.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BINDIR)/%: %.c %.h
+$(BINDIR)/%: src/%.c src/%.h
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $< -o $@
 
-$(FUZZDIR)/%.o: %.c %.h
+$(FUZZDIR)/%.o: src/%.c src/%.h
 	$(CLANG) $(CLANGFLAGS) -c $< -o $@
 
-$(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o skip_spaces.c
+$(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o src/skip_spaces.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/_parse_integer_fixup_radix: $(FUZZDIR)/ctype.o _parse_integer_fixup_radix.c
+$(FUZZDIR)/_parse_integer_fixup_radix: $(FUZZDIR)/ctype.o src/_parse_integer_fixup_radix.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/strcasecmp: $(FUZZDIR)/ctype.o strcasecmp.c
+$(FUZZDIR)/strcasecmp: $(FUZZDIR)/ctype.o src/strcasecmp.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/strncasecmp: $(FUZZDIR)/ctype.o strncasecmp.c
+$(FUZZDIR)/strncasecmp: $(FUZZDIR)/ctype.o src/strncasecmp.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/strstr: $(FUZZDIR)/memcmp.o strstr.c
+$(FUZZDIR)/strstr: $(FUZZDIR)/memcmp.o src/strstr.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/strnstr: $(FUZZDIR)/memcmp.o $(FUZZDIR)/strlen.o strnstr.c
+$(FUZZDIR)/strnstr: $(FUZZDIR)/memcmp.o $(FUZZDIR)/strlen.o src/strnstr.c
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
 
-$(FUZZDIR)/%: %.c %.h
+$(FUZZDIR)/%: src/%.c src/%.h
 	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $< -o $@
 
-$(EACSLDIR)/%.c: %.c
+$(EACSLDIR)/%.c: src/%.c
 	$(FRAMAC) $(FRAMAC_EFLAGS) $< $(FRAMAC_EGEN) $@
 
-$(RTEDIR)/%.c: %.c
+$(RTEDIR)/%.c: src/%.c
 	$(FRAMAC) $(FRAMAC_RTEFLAGS) $< $(FRAMAC_RTEGEN) $@
 
-$(VALDIR)/%.c: %.c
+$(VALDIR)/%.c: src/%.c
 	$(FRAMAC) $(FRAMAC_VALFLAGS) $< $(FRAMAC_VALGEN) $@
 
 $(GENBINDIR)/%: $(GENDIR)/%.c
@@ -204,10 +204,10 @@ verify-proved-separatedly: ## Run Frama-C on each file consequently. Only comple
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
 
 verify-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) src/$*.c
 
 update-%:
-	@$(FRAMAC) $(FRAMAC_UFLAGS) $*.c
+	@$(FRAMAC) $(FRAMAC_UFLAGS) src/$*.c
 
 replay: ## Replay proofs simultaiously. You can also type replay-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(SRCFILES)
@@ -222,7 +222,7 @@ replay-proved-separatedly: ## Replay proved functions consequently.
 	@FAIL=0; for i in $(PROVEDFILES); do $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$*.c
 
 AV_WHY3_CONF := astraver.why3.conf
 
@@ -271,10 +271,10 @@ sprove-proved: $(AV_WHY3_CONF) ## Run sprove strategy on proved functions.
 	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
 
 sprove-%: $(AV_WHY3_CONF)
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) src/$*.c
 
 clean: ## Remove all binary and generated files.
-	-rm -fr $(AV_WHY3_CONF) $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) *.av *.o *.pp.c *.pp.h *.jessie
+	-rm -fr $(AV_WHY3_CONF) $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) src/*.av src/*.o src/*.pp.c src/*.pp.h src/*.jessie
 
 .PHONY: all build fuzz eacsl eacsl-build rte val run eacsl-run verify verify-separatedly verify-proved verify-proved-separatedly sprove-proved replay replay-separatedly replay-proved replay-proved-separatedly sprove sprove-separatedly clean $(AV_WHY3_CONF)
 
