@@ -101,11 +101,11 @@ index 4c6f529..0567e01 100644
 -#FRAMAC_DFLAGS    :=
 +FRAMAC_DFLAGS    :=
  #FRAMAC_DFLAGS    := -wp
--FRAMAC_DFLAGS    := -jessie
-+#FRAMAC_DFLAGS    := -jessie
- FRAMAC_UFLAGS    := -jessie -jessie-target update
- FRAMAC_REPLAY    := -jessie-target why3autoreplay
- FRAMAC_SPROVE    := -jessie-target why3sprove -jessie-why3-opt " --strategy proof_juicer --theory-filter axiom"
+-FRAMAC_DFLAGS    := -av
++#FRAMAC_DFLAGS    := -av
+ FRAMAC_UFLAGS    := -av -av-target update
+ FRAMAC_REPLAY    := -av-target why3autoreplay
+ FRAMAC_SPROVE    := -av-target why3sprove -av-why3-opt " --strategy proof_juicer --theory-filter axiom"
 ```
 
 ## Repository files
@@ -161,15 +161,15 @@ Criteria to develop a logical function:
 1. It is possible to write a logical function only for a pure C function;
 2. It is rational to write logical functions if they are useful for developing specifications of other functions. For example, in the memcpy contract, you can express the equality of src and dest by calling the memcmp logical function.
 
-Full verification protocols (solver launches) are included (\*.jessie folders) in the repository for the [proved funtions](#proofs-status).
+Full verification protocols (solver launches) are included (\*.av folders) in the repository for the [proved funtions](#proofs-status).
 
 At the given stage, the correctness of the lemmas in the specifications is not proved in any way. Thus, they can contain contradictions. The lemmas will be proved at the second project stage by means of Coq or lemma functions.
 
 ## How to run the instruments
 
 ```bash
-$ frama-c -jessie <func>.c
-$ frama-c -jessie check_bytes8.c
+$ frama-c -av <func>.c
+$ frama-c -av check_bytes8.c
 ```
 Or
 ```bash
