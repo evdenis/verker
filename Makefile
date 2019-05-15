@@ -32,7 +32,8 @@ FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args "
 FRAMAC_DFLAGS    := -av
 FRAMAC_UFLAGS    := -av -av-target update
 FRAMAC_REPLAY    := -av-target why3autoreplay
-FRAMAC_SPROVE    := -av-target why3sprove -av-why3-opt " --strategy verker --theory-filter axiom"
+SPROVE_ARGS      = ''
+FRAMAC_SPROVE    = -av-target why3sprove -av-why3-opt " --strategy verker --theory-filter axiom $(SPROVE_ARGS)"
 FRAMAC_EFLAGS    := -e-acsl -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
 FRAMAC_EGEN      := -then-last -print -ocode
 FRAMAC_RTEFLAGS  := -rte -main LLVMFuzzerTestOneInput -pp-annot -cpp-extra-args " -CC -E -x c $(FUZZ_CFLAGS) "
@@ -193,37 +194,37 @@ eacsl-fuzz-%: $(FUZZDIR) $(GENDIR) $(EACSLDIR) $(EACSLFUZZDIR) $(EACSLFUZZDIR)/%
 	$(EACSLFUZZDIR)/$*
 
 verify: ## Run Frama-C on all files simultaneously. You can also type verify-<target>.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(SRCFILES)
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(SRCFILES) -av-out sessions/all.av
 
 verify-separatedly: ## Run Frama-C on each file consequently.
-	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
+	@for i in $(SRCFILES); do i=$$(basename $$i); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) src/$$i -av-out sessions/$$i.av; done
 
 verify-proved: ## Run Frama-C on each file consequently. Only completely proved functions.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(PROVEDFILES)
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(PROVEDFILES) -av-out sessions/proved.av
 
 verify-proved-separatedly: ## Run Frama-C on each file consequently. Only completely proved functions.
-	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $$i; done
+	@for i in $(PROVEDFILES); do i=$$(basename $$i); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) src/$$i -av-out sessions/$$i.av; done
 
 verify-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) src/$*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) src/$*.c -av-out sessions/$*.c.av
 
 update-%:
-	@$(FRAMAC) $(FRAMAC_UFLAGS) src/$*.c
+	@$(FRAMAC) $(FRAMAC_UFLAGS) src/$*.c -av-out sessions/$*.c.av
 
 replay: ## Replay proofs simultaiously. You can also type replay-<target>.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(SRCFILES)
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(SRCFILES) -av-out sessions/all.av
 
 replay-separatedly: ## Replay proofs consequently.
-	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i; done
+	@for i in $(SRCFILES); do i=$$(basename $$i); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$$i -av-out sessions/$$i.av; done
 
 replay-proved: ## Replay proofs for completely proved functions.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(PROVEDFILES)
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $(PROVEDFILES) -av-out sessions/proved.av
 
 replay-proved-separatedly: ## Replay proved functions consequently.
-	@FAIL=0; for i in $(PROVEDFILES); do $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) $$i > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
+	@FAIL=0; for i in $(PROVEDFILES); do i=$$(basename $$i); $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$$i -av-out sessions/$$i.av > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$*.c -av-out sessions/$*.av.c
 
 AV_WHY3_CONF := astraver.why3.conf
 
@@ -262,17 +263,23 @@ $(AV_WHY3_CONF):
 		diff -q $@ $$tfile > /dev/null || mv $$tfile $@; \
 	else echo "$$av_why3conf" > $@; fi
 
+SPROVE_ARGS = --session $(PWD)/sessions/all.av
 sprove: $(AV_WHY3_CONF) ## Replay proofs simultaiously. You can also type sprove-<target>.
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(SRCFILES)
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(SRCFILES) -av-out sessions/all.av
 
 sprove-separatedly: $(AV_WHY3_CONF) ## Replay proofs consequently.
-	@for i in $(SRCFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
+	@for i in $(SRCFILES); do i=$$(basename $$i .c); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) -av-target why3sprove -av-why3-opt " --strategy verker --theory-filter axiom --session $(PWD)/sessions/$$i.c.av/$${i}_c" src/$$i.c -av-out sessions/$$i.c.av; done
 
+SPROVE_ARGS = --session $(PWD)/sessions/proved.av
 sprove-proved: $(AV_WHY3_CONF) ## Run sprove strategy on proved functions.
-	@for i in $(PROVEDFILES); do echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $$i; done
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) $(PROVEDFILES) -av-out sessions/proved.av
 
+sprove-proved-separatedly: $(AV_WHY3_CONF) ## Run sprove strategy on proved functions separatedly.
+	@for i in $(PROVEDFILES); do i=$$(basename $$i .c); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) -av-target why3sprove -av-why3-opt " --strategy verker --theory-filter axiom --session $(PWD)/sessions/$$i.c.av/$${i}_c" src/$$i.c -av-out sessions/$$i.c.av; done
+
+SPROVE_ARGS = --session $(PWD)/sessions/$*.c.av/$*_c
 sprove-%: $(AV_WHY3_CONF)
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) src/$*.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_SPROVE) src/$*.c -av-out sessions/$*.c.av
 
 clean: ## Remove all binary and generated files.
 	-rm -fr $(AV_WHY3_CONF) $(GENBINDIR) $(RTEDIR) $(VALDIR) $(EACSLDIR) $(BINDIR) $(GENDIR) $(FUZZDIR) src/*.av src/*.o src/*.pp.c src/*.pp.h src/*.jessie
