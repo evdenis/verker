@@ -219,7 +219,7 @@ replay-proved-separatedly: ## Replay proved functions consequently.
 	@FAIL=0; for i in $(PROVEDFILES); do i=$$(basename $$i); $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$$i -av-out sessions/$$i.av > /dev/null 2>&1 && echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; if [ $$FAIL -eq 1 ]; then exit 1; fi
 
 replay-%:
-	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$*.c -av-out sessions/$*.av.c
+	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_REPLAY) src/$*.c -av-out sessions/$*.c.av
 
 AV_WHY3_CONF := astraver.why3.conf
 
