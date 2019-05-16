@@ -47,7 +47,7 @@ char *strncpy(char *dest, const char *src, size_t count)
 	    loop invariant valid_str(src);
 	    //loop invariant strnlen(src, count) == strnlen(osrc, ocount) - (src - osrc);
 	    loop invariant \forall integer i; 0 <= i < src - osrc ==> dest[i] == osrc[i];
-	    loop assigns count, src, tmp, dest[0..strnlen(sec, count)];
+	    loop assigns count, src, tmp, dest[0..strnlen(osrc, count)];
 	    loop variant count;
 	*/
 	while (count) {
