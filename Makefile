@@ -10,7 +10,7 @@ FUZZ_CFLAGS      := -fsanitize=fuzzer,address -DFUZZ_MAIN
 EXT_CFLAGS       := -DDUMMY_MAIN
 SPEC_CFLAGS      := -DSPEC
 BINDIR           := bin
-FUZZDIR          := fzz
+FUZZDIR          := fuzz
 GENDIR           := gen
 EACSLDIR         := $(GENDIR)/eacsl
 RTEDIR           := $(GENDIR)/rte
