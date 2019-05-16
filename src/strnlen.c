@@ -33,9 +33,11 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 
 int main(int argc, char *argv[])
 {
-	strnlen("123456789", 5);
-	strnlen("123456789", 20);
+	size_t l;
 
-	return 0;
+	l  = strnlen("123456789", 5);
+	l += strnlen("123456789", 20);
+
+	return l;
 }
 #endif
