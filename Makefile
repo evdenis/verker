@@ -18,12 +18,7 @@ VALDIR           := $(GENDIR)/val
 GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
 EACSLFUZZDIR     := $(FUZZDIR)/eacsl
-OPAM_VERSION     := $(shell opam --version | grep -q '^2.' && echo 2 || echo 1)
-ifeq ($(OPAM_VERSION), 2)
-OPAM_EVAL        := eval $$(opam env)
-else
 OPAM_EVAL        := eval $$(opam config env)
-endif
 #FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC           := $(OPAM_EVAL); frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
