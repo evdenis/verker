@@ -25,7 +25,11 @@
 
 #define __max(t1,t2,max1,max2,x,y) ({ t1 max1 = (x); t2 max2 = (y); (void) (&max1 == &max2); max1 > max2 ? max1 : max2; })
 
-#define __visible __attribute__((externally_visible))
+#if __has_attribute(__externally_visible__)
+# define __visible                      __attribute__((__externally_visible__))
+#else
+# define __visible
+#endif
 
 #define annotate_unreachable()
 

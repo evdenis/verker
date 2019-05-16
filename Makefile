@@ -4,9 +4,9 @@ export PROCESSES ?= 4
 CC               := gcc
 CFLAGS           := -Wall -Werror
 CLANG            := clang
-CLANGFLAGS       := -g -fsanitize=address -fsanitize-coverage=trace-pc-guard
+CLANGFLAGS       := -g -O1
 GEN_CFLAGS       := -w
-FUZZ_CFLAGS      := -DFUZZ_MAIN
+FUZZ_CFLAGS      := -fsanitize=fuzzer,address -DFUZZ_MAIN
 EXT_CFLAGS       := -DDUMMY_MAIN
 SPEC_CFLAGS      := -DSPEC
 BINDIR           := bin
@@ -140,25 +140,25 @@ $(FUZZDIR)/%.o: src/%.c src/%.h
 	$(CLANG) $(CLANGFLAGS) -c $< -o $@
 
 $(FUZZDIR)/skip_spaces: $(FUZZDIR)/ctype.o src/skip_spaces.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/_parse_integer_fixup_radix: $(FUZZDIR)/ctype.o src/_parse_integer_fixup_radix.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/strcasecmp: $(FUZZDIR)/ctype.o src/strcasecmp.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/strncasecmp: $(FUZZDIR)/ctype.o src/strncasecmp.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/strstr: $(FUZZDIR)/memcmp.o src/strstr.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/strnstr: $(FUZZDIR)/memcmp.o $(FUZZDIR)/strlen.o src/strnstr.c
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $^ -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $^ -o $@
 
 $(FUZZDIR)/%: src/%.c src/%.h
-	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) libFuzzer.a -lstdc++ $< -o $@
+	$(CLANG) $(CLANGFLAGS) $(FUZZ_CFLAGS) $< -o $@
 
 $(EACSLDIR)/%.c: src/%.c
 	$(FRAMAC) $(FRAMAC_EFLAGS) $< $(FRAMAC_EGEN) $@
@@ -173,7 +173,7 @@ $(GENBINDIR)/%: $(GENDIR)/%.c
 	$(CC) $(GEN_CFLAGS) $(FRAMAC_EACSL_LIB) $< -o $@
 
 $(EACSLFUZZDIR)/%: $(EACSLDIR)/%.c
-	$(CLANG) $(CLANGFLAGS) $(GEN_CFLAGS) $(FUZZ_CFLAGS) $(FRAMAC_EACSL_LIB) libFuzzer.a -lstdc++ $< -o $@
+	$(CLANG) $(CLANGFLAGS) $(GEN_CFLAGS) $(FUZZ_CFLAGS) $(FRAMAC_EACSL_LIB) $< -o $@
 
 fuzz-%: $(FUZZDIR) $(FUZZDIR)/%
 	$(FUZZDIR)/$*
