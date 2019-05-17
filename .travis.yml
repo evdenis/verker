@@ -24,6 +24,7 @@ before_install:
   - sudo chmod +x /usr/local/bin/opam
   - opam init --auto-setup --disable-sandboxing --compiler=4.07.1
   - opam install --yes depext
+  - which eprover || ( wget https://github.com/eprover/eprover/archive/E-2.3.tar.gz && tar xzvf E-2.3.tar.gz && cd eprover-E-2.3 && ./configure --prefix=/usr/local && make -j2 && sudo make install )
 
 install:
   - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
