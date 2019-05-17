@@ -5,26 +5,6 @@
 <prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../strlen_c.mlw" expanded="true">
-<theory name="Function_strlen_0_safety" sum="574364310d3cac2500daef6557143881">
- <goal name="WP_parameter strlen_0" expl="Function strlen, safety">
- <proof prover="0"><result status="valid" time="0.14"/></proof>
- </goal>
-</theory>
-<theory name="Function_strlen_0_behaviors" sum="70b64c5315ceb147476444d10f2d9614">
- <goal name="WP_parameter strlen_ensures_default" expl="Function strlen, default behavior">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter strlen_ensures_default.1" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.03" steps="146"/></proof>
-  </goal>
-  <goal name="WP_parameter strlen_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.21"/></proof>
-  </goal>
-  <goal name="WP_parameter strlen_ensures_default.3" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="224"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -812,6 +792,26 @@
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strlen_0_safety" sum="574364310d3cac2500daef6557143881">
+ <goal name="WP_parameter strlen_0" expl="Function strlen, safety">
+ <proof prover="0"><result status="valid" time="0.14"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strlen_0_behaviors" sum="70b64c5315ceb147476444d10f2d9614">
+ <goal name="WP_parameter strlen_ensures_default" expl="Function strlen, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strlen_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.04" steps="146"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_ensures_default.2" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="0.21"/></proof>
+  </goal>
+  <goal name="WP_parameter strlen_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.04" steps="224"/></proof>
+  </goal>
+ </transf>
+ </goal>
 </theory>
 </file>
 </why3session>
