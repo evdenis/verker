@@ -21,7 +21,7 @@
     }
  */
 
-/*@ requires \valid(start+(0..bytes-1));
+/*@ requires \valid_read(start+(0..bytes-1));
     assigns \nothing;
     ensures \result == check_bytes8(start, value, bytes);
     behavior found:

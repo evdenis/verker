@@ -14,7 +14,7 @@
  */
 
 /*@ requires \typeof(s) <: \type(u8 *);
-    requires \valid((u8 *)s+(0..n-1));
+    requires \valid_read((u8 *)s+(0..n-1));
     assigns \nothing;
     behavior found:
        assumes \exists u8 *p; (u8 *)s <= p < (u8 *)s + n && *p == (u8 AENO) c;

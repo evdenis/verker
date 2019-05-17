@@ -10,7 +10,7 @@
     }
  */
 
-/*@ requires \valid(s+(0..2));
+/*@ requires \valid_read(s+(0..2));
     requires \valid(base);
     assigns *base;
     ensures \result == s || \result == s + 2;

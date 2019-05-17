@@ -11,7 +11,7 @@ int hex_to_bin(char ch)
 }
 
 /*@ requires \valid(dst+(0..count));
-    requires \valid(src+(0..2*count));
+    requires \valid_read(src+(0..2*count));
     assigns dst[0..count-1];
     //ensures \forall char *p; src <= p < src + 2*count ==> isxdigit(*p);
     behavior err_ok:

@@ -24,8 +24,8 @@
 
 /*@ requires \typeof(cs) <: \type(u8 *);
     requires \typeof(ct) <: \type(u8 *);
-    requires \valid(((u8 *)cs)+(0..count-1));
-    requires \valid(((u8 *)ct)+(0..count-1));
+    requires \valid_read(((u8 *)cs)+(0..count-1));
+    requires \valid_read(((u8 *)ct)+(0..count-1));
     requires \base_addr((u8 *)cs) == \base_addr((u8 *)ct) ^^
              \base_addr((u8 *)cs) != \base_addr((u8 *)ct);
     assigns \nothing;

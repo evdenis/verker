@@ -13,10 +13,10 @@
     requires n <= INT_MAX;
     requires (null_terminator(array) &&
              null_at(array) <= n     &&
-             \valid(array + (0 .. null_at(array))) &&
+             \valid_read(array + (0 .. null_at(array))) &&
              (\forall integer i; 0 <= i < null_at(array) ==> valid_str(array[i])))
              ||
-             (\valid(array + (0 .. n - 1)) &&
+             (\valid_read(array + (0 .. n - 1)) &&
              (\forall integer i; 0 <= i < n ==> valid_str(array[i])));
     assigns \nothing;
  */

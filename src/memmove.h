@@ -15,7 +15,7 @@
 /*@ requires \typeof(dest) <: \type(char *);
     requires \typeof(src) <: \type(char *);
     requires \valid((char *)dest+(0..count-1));
-    requires \valid((char *)src+(0..count-1));
+    requires \valid_read((char *)src+(0..count-1));
     requires \base_addr(dest) == \base_addr(src) ^^
              \base_addr(dest) != \base_addr(src);
     assigns ((char *)dest)[0..count-1];

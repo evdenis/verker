@@ -30,7 +30,7 @@
  * pointed to by res is updated upon finding a match.
  */
 
-/*@ requires s == \null || \valid(s+(0..1));
+/*@ requires s == \null || \valid_read(s+(0..1));
     requires \valid(res);
     ensures \result == 0 || \result == -EINVAL;
     ensures \result == -EINVAL ==> res == \old(res);
