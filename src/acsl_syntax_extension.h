@@ -25,6 +25,8 @@
 # define AENO %
 # define AENOC /*@%*/
 
+# define LEMMA_FUNCTIONS 1
+
 #else /* !ASTRAVER_TOOLCHAIN */
 
 # define FRAMAC_VTAB_BUG
