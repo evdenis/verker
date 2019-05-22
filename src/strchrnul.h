@@ -3,6 +3,8 @@
 
 #include "strlen.h"
 
+#ifndef LEMMA_FUNCTIONS
+
 /*@ axiomatic Strchrnul {
     logic char *strchrnul(char *str, char c) =
        *str == c ? str : ((*str == '\0') ? str : strchrnul(str+1, c));
@@ -41,6 +43,86 @@
           str[i] != c;
     }
  */
+
+#else
+
+/*@ axiomatic Strchrnul {
+    logic char *strchrnul(char *str, char c) =
+       *str == c ? str : ((*str == '\0') ? str : strchrnul(str+1, c));
+    }
+ */
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ decreases strlen(str);
+  @  @ ensures   str <= strchrnul(str, c) <= str + strlen(str);
+  @  @/
+  @ void strchrnul_mem(char *str, char c)
+  @ {
+  @   if (*str != '\0' && *str != c)
+  @     strchrnul_mem(str + 1, c);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ requires  c != '\0';
+  @  @ decreases strlen(str);
+  @  @ ensures   *strchrnul(str, c) == '\0' ^^ *strchrnul(str, c) == c;
+  @  @/
+  @ void strchrnul_res(char *str, char c)
+  @ {
+  @   if (*str != '\0' && *str != c)
+  @     strchrnul_res(str + 1, c);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ decreases strlen(str);
+  @  @ ensures   strlen(str) == strchrnul(str, (char)'\0') - str;
+  @  @/
+  @ void strchrnul_strlen(char *str)
+  @ {
+  @   if (*str != '\0')
+  @     strchrnul_strlen(str + 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ requires  0 <= i <= strlen(str);
+  @  @ requires  \forall integer j; 0 <= j < i ==> str[j] != c;
+  @  @ requires  str[i] == c;
+  @  @ decreases strlen(str);
+  @  @ ensures   strchrnul(str, c) == str + i;
+  @  @/
+  @ void strchrnul_defn(char *str, char c, size_t i)
+  @ {
+  @   if (*str != '\0' && *str != c)
+  @     strchrnul_defn(str + 1, c, i - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires  valid_str(str);
+  @  @ requires  0 <= i < strchrnul(str, c) - str;
+  @  @ decreases i;
+  @  @ ensures   str[i] != c;
+  @  @/
+  @ void strchrnul_skipped(char *str, char c, size_t i)
+  @ {
+  @   if (i > 0)
+  @     strchrnul_skipped(str + 1, c, i - 1);
+  @ }
+  @*/
+
+#endif /* LEMMA_FUNCTIONS */
 
 /**
  * strchrnul - Find and return a character in a string, or end of string
