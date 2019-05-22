@@ -5,6 +5,35 @@
 <prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strnchr_safety" sum="c168e9f35a056ad31fa702e981902121" expanded="true">
+ <goal name="WP_parameter strnchr" expl="Function strnchr, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.24"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strnchr_behaviors" sum="c4298ef4fcfd71d30858f5858e390f24" expanded="true">
+ <goal name="WP_parameter strnchr_ensures_default" expl="Function strnchr, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strnchr_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="1"><result status="valid" time="0.05" steps="156"/></proof>
+  </goal>
+  <goal name="WP_parameter strnchr_ensures_default.2" expl="Behavior completeness check">
+  <proof prover="1"><result status="valid" time="0.04" steps="154"/></proof>
+  </goal>
+  <goal name="WP_parameter strnchr_ensures_default.3" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.11" steps="688"/></proof>
+  </goal>
+  <goal name="WP_parameter strnchr_ensures_default.4" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="0.92"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strnchr_ensures_exists" expl="Function strnchr, behavior exists" expanded="true">
+ <proof prover="0"><result status="valid" time="0.13"/></proof>
+ </goal>
+ <goal name="WP_parameter strnchr_ensures_not_exists" expl="Function strnchr, behavior not_exists" expanded="true">
+ <proof prover="1"><result status="valid" time="1.03" steps="1542"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -303,63 +332,25 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="cf19c4e3aed28e93a7ba6bce4d831087" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
- </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
- </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
- </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
- </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
- </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
- </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
- </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
- </goal>
+<theory name="Axiomatic_Strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strnlen" sum="a0ce556681dce34173d13188cd8ad83d" expanded="true">
- <goal name="Valid_strn_shift1" expl="Lemma valid_strn_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_to_valid_strn" expl="Lemma valid_str_to_valid_strn" expanded="true">
- </goal>
- <goal name="Strnlen_range" expl="Lemma strnlen_range" expanded="true">
- </goal>
- <goal name="Strnlen_null" expl="Lemma strnlen_null" expanded="true">
- </goal>
- <goal name="Strnlen_zero_count" expl="Lemma strnlen_zero_count" expanded="true">
- </goal>
- <goal name="Strnlen_min_len" expl="Lemma strnlen_min_len" expanded="true">
- </goal>
- <goal name="Strnlen_before_zero" expl="Lemma strnlen_before_zero" expanded="true">
- </goal>
- <goal name="Strnlen_at_zero" expl="Lemma strnlen_at_zero" expanded="true">
- </goal>
- <goal name="Strnlen_at_cnt" expl="Lemma strnlen_at_cnt" expanded="true">
- </goal>
- <goal name="Strnlen_zero" expl="Lemma strnlen_zero" expanded="true">
- </goal>
- <goal name="Strnlen_cnt" expl="Lemma strnlen_cnt" expanded="true">
- </goal>
- <goal name="Strnlen_shift" expl="Lemma strnlen_shift" expanded="true">
- </goal>
- <goal name="Strnlen_shift_ex" expl="Lemma strnlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strnlen_shift1" expl="Lemma strnlen_shift1" expanded="true">
- </goal>
- <goal name="Strnlen_cmp" expl="Lemma strnlen_cmp" expanded="true">
- </goal>
- <goal name="Strnlen_less" expl="Lemma strnlen_less" expanded="true">
- </goal>
- <goal name="Valid_str_strn" expl="Lemma valid_str_strn" expanded="true">
- </goal>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_Strnlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_strn_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_strn_shift1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strnlen_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_to_valid_strn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strnlen_min_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strnlen_at_cnt" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_bit_int32_of_Safe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -825,9 +816,69 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
+<theory name="Function_elim_valid_str" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_strn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_strn_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_strn_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_strn_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_strn_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_strn_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_strn_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_strn_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_strn_shift1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_strn_shift1_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_to_valid_strn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_to_valid_strn_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_min_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_min_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_at_cnt" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strnlen_at_cnt_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strnlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -836,35 +887,6 @@
 <theory name="Function_strnchr" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strnchr_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strnchr_safety" sum="604181ea4b86145c1c6ca4b30f5d0fc4" expanded="true">
- <goal name="WP_parameter strnchr" expl="Function strnchr, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.24"/></proof>
- </goal>
-</theory>
-<theory name="Function_strnchr_behaviors" sum="55ec3207856da19fc542ef47aab3c77a" expanded="true">
- <goal name="WP_parameter strnchr_ensures_default" expl="Function strnchr, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strnchr_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.05" steps="156"/></proof>
-  </goal>
-  <goal name="WP_parameter strnchr_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.04" steps="154"/></proof>
-  </goal>
-  <goal name="WP_parameter strnchr_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.11" steps="552"/></proof>
-  </goal>
-  <goal name="WP_parameter strnchr_ensures_default.4" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="1.23"/></proof>
-  </goal>
- </transf>
- </goal>
- <goal name="WP_parameter strnchr_ensures_exists" expl="Function strnchr, behavior exists" expanded="true">
- <proof prover="0"><result status="valid" time="0.13"/></proof>
- </goal>
- <goal name="WP_parameter strnchr_ensures_not_exists" expl="Function strnchr, behavior not_exists" expanded="true">
- <proof prover="1"><result status="valid" time="1.35" steps="2333"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>

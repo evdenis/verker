@@ -303,33 +303,29 @@
 </theory>
 <theory name="Root_voidP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="cf19c4e3aed28e93a7ba6bce4d831087" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
- </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
- </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
- </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
- </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
- </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
- </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
- </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
- </goal>
+<theory name="Axiomatic_Strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -789,28 +785,116 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
+<theory name="Function_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strlen_0_safety" sum="574364310d3cac2500daef6557143881" expanded="true">
+<theory name="Function_strlen_0_safety" sum="570301969ce8d8909b335606df02d5b0" expanded="true">
  <goal name="WP_parameter strlen_0" expl="Function strlen, safety" expanded="true">
  <proof prover="0"><result status="valid" time="0.15"/></proof>
  </goal>
 </theory>
-<theory name="Function_strlen_0_behaviors" sum="70b64c5315ceb147476444d10f2d9614" expanded="true">
+<theory name="Function_strlen_0_behaviors" sum="8f39c270df0aa83adc03e3473c207e2b" expanded="true">
  <goal name="WP_parameter strlen_ensures_default" expl="Function strlen, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strlen_ensures_default.1" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.03" steps="146"/></proof>
+  <proof prover="1"><result status="valid" time="0.03" steps="157"/></proof>
   </goal>
   <goal name="WP_parameter strlen_ensures_default.2" expl="loop invariant preservation">
   <proof prover="0"><result status="valid" time="0.19"/></proof>
   </goal>
   <goal name="WP_parameter strlen_ensures_default.3" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="224"/></proof>
+  <proof prover="1"><result status="valid" time="0.16" steps="857"/></proof>
   </goal>
  </transf>
+ </goal>
+</theory>
+<theory name="Function_elim_valid_str_safety" sum="05c2c8b6417adb8aa9a50ca38859c9ad" expanded="true">
+ <goal name="WP_parameter elim_valid_str" expl="Function elim_valid_str, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.47" steps="1368"/></proof>
+ </goal>
+</theory>
+<theory name="Function_elim_valid_str_behaviors" sum="29a6603b097f2cb81700c808150826d9" expanded="true">
+ <goal name="WP_parameter elim_valid_str_ensures_default" expl="Function elim_valid_str, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.12"/></proof>
+ </goal>
+</theory>
+<theory name="Function_elim_valid_str_len_safety" sum="d392ba7a4d3c622d5b4da9a031fcad11" expanded="true">
+ <goal name="WP_parameter elim_valid_str_len" expl="Function elim_valid_str_len, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.07"/></proof>
+ </goal>
+</theory>
+<theory name="Function_elim_valid_str_len_behaviors" sum="9ff80edaf683e39026d58f4930a35961" expanded="true">
+ <goal name="WP_parameter elim_valid_str_len_ensures_default" expl="Function elim_valid_str_len, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter elim_valid_str_len_ensures_default.1" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.03" steps="268"/></proof>
+  </goal>
+  <goal name="WP_parameter elim_valid_str_len_ensures_default.2" expl="Function elim_valid_str_len, default behavior">
+  <proof prover="1"><result status="valid" time="0.01" steps="29"/></proof>
+  </goal>
+  <goal name="WP_parameter elim_valid_str_len_ensures_default.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.06" steps="535"/></proof>
+  </goal>
+  <goal name="WP_parameter elim_valid_str_len_ensures_default.4" expl="Assertion in line 122">
+  <proof prover="1"><result status="valid" time="0.04" steps="453"/></proof>
+  </goal>
+  <goal name="WP_parameter elim_valid_str_len_ensures_default.5" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.14" steps="1235"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_valid_str_len_safety" sum="82333dda4e5a2ee5095915e36d81051b" expanded="true">
+ <goal name="WP_parameter valid_str_len" expl="Function valid_str_len, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.01" steps="10"/></proof>
+ </goal>
+</theory>
+<theory name="Function_valid_str_len_behaviors" sum="a61e3fda9c53b295fd7a67a3c44f4fc2" expanded="true">
+ <goal name="WP_parameter valid_str_len_ensures_default" expl="Function valid_str_len, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.03" steps="102"/></proof>
+ </goal>
+</theory>
+<theory name="Function_intro_valid_str_len_safety" sum="3253855aa396b94a4fda8259ba7f06f3" expanded="true">
+ <goal name="WP_parameter intro_valid_str_len" expl="Function intro_valid_str_len, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_intro_valid_str_len_behaviors" sum="5f2d97428acb8d9cc4c59c851ab8785d" expanded="true">
+ <goal name="WP_parameter intro_valid_str_len_ensures_default" expl="Function intro_valid_str_len, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.04" steps="311"/></proof>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shift_safety" sum="5f4139563faa19555c0a1aa136c938cb" expanded="true">
+ <goal name="WP_parameter valid_str_shift" expl="Function valid_str_shift, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.07"/></proof>
+ </goal>
+</theory>
+<theory name="Function_valid_str_shift_behaviors" sum="8f7c25fca13856a2353bfc63c2637baf" expanded="true">
+ <goal name="WP_parameter valid_str_shift_ensures_default" expl="Function valid_str_shift, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.01" steps="28"/></proof>
+ </goal>
+</theory>
+<theory name="Function_elim_strlen_safety" sum="88332a12d4f7a9f70d85705f474d5768" expanded="true">
+ <goal name="WP_parameter elim_strlen" expl="Function elim_strlen, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.08"/></proof>
+ </goal>
+</theory>
+<theory name="Function_elim_strlen_behaviors" sum="440b2287e199f9bea34d49c1842e26c1" expanded="true">
+ <goal name="WP_parameter elim_strlen_ensures_default" expl="Function elim_strlen, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.08" steps="464"/></proof>
  </goal>
 </theory>
 </file>
