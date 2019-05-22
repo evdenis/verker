@@ -5,6 +5,25 @@
 <prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strsep_safety" sum="e771097e25110f7ef908ebd7c8b4cdec" expanded="true">
+ <goal name="WP_parameter strsep" expl="Function strsep, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.66"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strsep_behaviors" sum="ca185819471ab23d315e754c0b8e62f8" expanded="true">
+ <goal name="WP_parameter strsep_ensures_default" expl="Function strsep, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.01" steps="6"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_null" expl="Function strsep, behavior input_null" expanded="true">
+ <proof prover="1"><result status="valid" time="0.01" steps="14"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_strpbrk_not_null" expl="Function strsep, behavior input_strpbrk_not_null" expanded="true">
+ <proof prover="0"><result status="valid" time="0.28"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_strpbrk_null" expl="Function strsep, behavior input_strpbrk_null" expanded="true">
+ <proof prover="1"><result status="valid" time="1.83" steps="3587"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -307,57 +326,31 @@
 </theory>
 <theory name="Root_char_xP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_Strlen" sum="cf19c4e3aed28e93a7ba6bce4d831087" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
- </goal>
- <goal name="Valid_str_strend" expl="Lemma valid_str_strend" expanded="true">
- </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
- </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
- </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
- </goal>
- <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex" expanded="true">
- </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
- </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
- </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
- </goal>
- <goal name="Valid_str_shiftn" expl="Lemma valid_str_shiftn" expanded="true">
- </goal>
+<theory name="Axiomatic_Strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrSpn" sum="807b2bf055ec483a8670144c3a49d873" expanded="true">
- <goal name="In_array_shift1" expl="Lemma in_array_shift1" expanded="true">
- </goal>
- <goal name="In_array_true" expl="Lemma in_array_true" expanded="true">
- </goal>
- <goal name="In_array_false" expl="Lemma in_array_false" expanded="true">
- </goal>
- <goal name="Strspn_strend" expl="Lemma strspn_strend" expanded="true">
- </goal>
- <goal name="Strspn_empty_accept" expl="Lemma strspn_empty_accept" expanded="true">
- </goal>
- <goal name="Strspn_range" expl="Lemma strspn_range" expanded="true">
- </goal>
- <goal name="Strspn_shift1" expl="Lemma strspn_shift1" expanded="true">
- </goal>
- <goal name="Strspn_stop_not_in_accept" expl="Lemma strspn_stop_not_in_accept" expanded="true">
- </goal>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrPBrk" sum="291ae2b0b387a83f8239da23e058c53f" expanded="true">
- <goal name="Strpbrk_strend" expl="Lemma strpbrk_strend" expanded="true">
- </goal>
- <goal name="Strpbrk_empty_ct" expl="Lemma strpbrk_empty_ct" expanded="true">
- </goal>
- <goal name="Strpbrk_range" expl="Lemma strpbrk_range" expanded="true">
- </goal>
- <goal name="Strpbrk_shift1" expl="Lemma strpbrk_shift1" expanded="true">
- </goal>
- <goal name="Strpbrk_stop_in_ct" expl="Lemma strpbrk_stop_in_ct" expanded="true">
- </goal>
+<theory name="Axiomatic_LF__Axiomatic__valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_StrSpn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__in_array_shift1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__in_array_true" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__in_array_false" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strspn_strend" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strspn_empty_accept" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strspn_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_StrPBrk" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strpbrk_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Root_char_xP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -835,36 +828,77 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
+<theory name="Function_elim_valid_str" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_intro_valid_str_len_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_valid_str_shift_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_elim_strlen_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_shift1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_shift1_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_true" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_true_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_false" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_false_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_strend" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_strend_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_empty_accept" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_empty_accept_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_in_array_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strspn_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strspn_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
+<theory name="Function_strpbrk_range" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strpbrk_range_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strpbrk_frame" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_strpbrk_frame_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
 <theory name="Function_strsep" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strsep_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strsep_safety" sum="e264af7c800806b7e431f215e555ff44" expanded="true">
- <goal name="WP_parameter strsep" expl="Function strsep, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.66"/></proof>
- </goal>
-</theory>
-<theory name="Function_strsep_behaviors" sum="81cda102e55ae5e1a106d0c8a98207a8" expanded="true">
- <goal name="WP_parameter strsep_ensures_default" expl="Function strsep, default behavior" expanded="true">
- <proof prover="1"><result status="valid" time="0.01" steps="6"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_null" expl="Function strsep, behavior input_null" expanded="true">
- <proof prover="1"><result status="valid" time="0.01" steps="14"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_strpbrk_not_null" expl="Function strsep, behavior input_strpbrk_not_null" expanded="true">
- <proof prover="0"><result status="valid" time="0.15"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_strpbrk_null" expl="Function strsep, behavior input_strpbrk_null" expanded="true">
- <proof prover="1"><result status="valid" time="0.52" steps="2427"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>
