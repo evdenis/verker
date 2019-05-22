@@ -5,14 +5,11 @@
 #include "strspn.h"
 #include "strlen.h"
 
-/**
- * strcspn - Calculate the length of the initial substring of @s which does not contain letters in @reject
- * @s: The string to be searched
- * @reject: The string to avoid
- */
+#ifndef LEMMA_FUNCTIONS
 
 /*@ axiomatic StrCSpn {
-    logic integer strcspn(char *s, char *reject);
+    logic integer strcspn(char *s, char *reject) =
+      *s == '\0' || in_array(reject, *s) ? 0 : 1 + strcspn(s + 1, reject);
 
     lemma strcspn_strend:
        \forall char *s, *reject;
@@ -41,6 +38,63 @@
           in_array(reject, *s) ==>
              strcspn(s, reject) == 0;
     }
+ */
+
+#else
+
+/*@ axiomatic StrCSpn {
+    logic integer strcspn(char *s, char *reject) =
+      *s == '\0' || in_array(reject, *s) ? 0 : 1 + strcspn(s + 1, reject);
+    }
+ */
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires \valid(s);
+  @  @ requires *s == '\0';
+  @  @ ensures strcspn(s, reject) == 0;
+  @  @/
+  @ void strcspn_strend(char *s, char *reject)
+  @ {
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires valid_str(s);
+  @  @ requires \valid(reject);
+  @  @ requires *reject == '\0';
+  @  @ decreases strlen(s);
+  @  @ ensures strcspn(s, reject) == strlen(s);
+  @  @/
+  @ void strcspn_empty_accept(char *s, char *reject)
+  @ {
+  @  if (*s != '\0')
+  @    strcspn_empty_accept(s + 1, reject);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ lemma
+  @  @ requires valid_str(s) ;
+  @  @ requires valid_str(reject);
+  @  @ decreases strlen(s);
+  @  @ ensures 0 <= strcspn(s, reject) <= strlen(s);
+  @  @/
+  @ void strcspn_range(char *s, char *reject)
+  @ {
+  @   if (*s != '\0' && !in_array(reject, *s)) {
+  @     strcspn_range(s + 1, reject);
+  @   }
+  @ }
+  @*/
+
+#endif /* LEMMA_FUNCTIONS */
+
+/**
+ * strcspn - Calculate the length of the initial substring of @s which does not contain letters in @reject
+ * @s: The string to be searched
+ * @reject: The string to avoid
  */
 
 /*@ requires valid_str(s);
