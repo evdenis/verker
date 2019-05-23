@@ -193,19 +193,19 @@ eacsl-run-%: $(GENDIR) $(GENBINDIR) $(GENBINDIR)/%
 eacsl-fuzz-%: $(FUZZDIR) $(GENDIR) $(EACSLDIR) $(EACSLFUZZDIR) $(EACSLFUZZDIR)/%
 	$(EACSLFUZZDIR)/$*
 
-verify: ## Run Frama-C on all files simultaneously. You can also type verify-<target>.
+verify: $(AV_WHY3_CONF) ## Run Frama-C on all files simultaneously. You can also type verify-<target>.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_VFLAGS) $(SRCFILES) $(SRCFILES_H) -av-out sessions/all.av
 
-verify-separatedly: ## Run Frama-C on each file consequently.
+verify-separatedly: $(AV_WHY3_CONF) ## Run Frama-C on each file consequently.
 	@for i in $(SRCFILES); do i=$$(basename $$i .c); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_VFLAGS) src/$$i.c src/$$i.h -av-out sessions/$$i.av; done
 
-verify-proved: ## Run Frama-C on each file consequently. Only completely proved functions.
+verify-proved: $(AV_WHY3_CONF) ## Run Frama-C on each file consequently. Only completely proved functions.
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_VFLAGS) $(PROVEDFILES) $(PROVEDFILES_H) -av-out sessions/proved.av
 
-verify-proved-separatedly: ## Run Frama-C on each file consequently. Only completely proved functions.
+verify-proved-separatedly: $(AV_WHY3_CONF) ## Run Frama-C on each file consequently. Only completely proved functions.
 	@for i in $(PROVEDFILES); do i=$$(basename $$i .c); echo $$i; $(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_VFLAGS) src/$$i.c src/$$i.h -av-out sessions/$$i.av; done
 
-verify-%:
+verify-%: $(AV_WHY3_CONF)
 	@$(FRAMAC) $(FRAMAC_DFLAGS) $(FRAMAC_VFLAGS) src/$*.c src/$*.h -av-out sessions/$*.av
 
 update-%:
