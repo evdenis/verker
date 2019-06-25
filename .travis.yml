@@ -18,13 +18,22 @@ cache:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt -O /usr/local/bin/cvc4 || true
+  - which cvc4 || (
+      sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt
+                -O /usr/local/bin/cvc4
+    )
   - sudo chmod +x /usr/local/bin/cvc4
-  - sudo wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.4/opam-2.0.4-x86_64-linux -O /usr/local/bin/opam || true
+  - which opam || (
+      sudo wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.4/opam-2.0.4-x86_64-linux
+                -O /usr/local/bin/opam
+    )
   - sudo chmod +x /usr/local/bin/opam
   - opam init --auto-setup --disable-sandboxing --compiler=4.07.1
   - opam install --yes depext
-  - which eprover || ( wget https://github.com/eprover/eprover/archive/E-2.3.tar.gz && tar xzvf E-2.3.tar.gz && cd eprover-E-2.3 && ./configure --prefix=/usr/local && make -j2 && sudo make install )
+  - which eprover || ( wget https://github.com/eprover/eprover/archive/E-2.3.tar.gz &&
+                       tar xzvf E-2.3.tar.gz && cd eprover-E-2.3                    &&
+                       ./configure --prefix=/usr/local && make -j2                  &&
+                       sudo make install )
 
 install:
   - opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
