@@ -18,12 +18,12 @@ cache:
 
 before_install:
   - sudo apt-get update -qq
-  - which cvc4 || (
+  - test -s /usr/local/bin/cvc4 || (
       sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt
                 -O /usr/local/bin/cvc4
     )
   - sudo chmod +x /usr/local/bin/cvc4
-  - which opam || (
+  - test -s /usr/local/bin/opam || (
       sudo wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.4/opam-2.0.4-x86_64-linux
                 -O /usr/local/bin/opam
     )
