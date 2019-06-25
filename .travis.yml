@@ -14,25 +14,27 @@ addons:
 cache:
   directories:
     - $HOME/.opam
-    - /usr/local/bin
+    - $HOME/bin
 
 before_install:
+  - mkdir -p $HOME/bin
+  - export PATH="${PATH}:${HOME}/bin"
   - sudo apt-get update -qq
-  - test -s /usr/local/bin/cvc4 || (
-      sudo wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt
-                -O /usr/local/bin/cvc4
+  - which cvc4 || (
+      wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.6-x86_64-linux-opt
+           -O $HOME/bin/cvc4 &&
+      chmod +x $HOME/bin/cvc4
     )
-  - sudo chmod +x /usr/local/bin/cvc4
-  - test -s /usr/local/bin/opam || (
-      sudo wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.4/opam-2.0.4-x86_64-linux
-                -O /usr/local/bin/opam
+  - which opam || (
+      wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.4/opam-2.0.4-x86_64-linux
+           -O $HOME/bin/opam &&
+      chmod +x $HOME/bin/opam
     )
-  - sudo chmod +x /usr/local/bin/opam
   - opam init --auto-setup --disable-sandboxing --compiler=4.07.1
   - opam install --yes depext
   - which eprover || ( wget https://github.com/eprover/eprover/archive/E-2.3.tar.gz &&
                        tar xzvf E-2.3.tar.gz && cd eprover-E-2.3                    &&
-                       ./configure --prefix=/usr/local && make -j2                  &&
+                       ./configure --prefix=$HOME && make -j2                       &&
                        sudo make install )
 
 install:
