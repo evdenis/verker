@@ -26,3 +26,24 @@ int match_string(const char * const *array, size_t n, const char *string)
 
 	return -EINVAL;
 }
+
+#ifdef DUMMY_MAIN	
+
+ int main(int argc, char *argv[])	
+{	
+	const char *str = "12345";	
+	const char *list[] = {	
+		"TEST",	
+		"TST",	
+		"TS",	
+		"T",	
+		"12345",	
+		NULL	
+	};	
+
+ 	match_string(list, -1, str);	
+	match_string(list, 3, str);	
+
+ 	return 0;	
+}	
+#endif

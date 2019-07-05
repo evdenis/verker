@@ -3,7 +3,8 @@
 
 #include "strlen.h"
 
-/* axiomatic StrCmp {
+
+/*@ axiomatic StrCmp {
     logic integer cmp(unsigned char a, unsigned char b) =
        a == b ? 0 : a < b ? -1 : 1;
 

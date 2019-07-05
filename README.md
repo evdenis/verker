@@ -16,7 +16,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | ID | Function      | Status | Logic function | libfuzzer | Comment |
 |----|---------------|--------|----------------|-----------|---------|
 | 1  | check\_bytes8 | proved | proved         | yes       |         |
-| 2  | match\_string |        | not required   |           |         |
+| 2  | match\_string | proved | not required   |           |         |
 | 3  | memchr        | proved |                | yes       |         |
 | 4  | memcmp        | proved |                | yes       |         |
 | 5  | memscan       | proved | not required   | yes       |         |
