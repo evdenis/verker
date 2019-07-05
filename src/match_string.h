@@ -20,7 +20,7 @@
     requires n <= INT_MAX;
     requires
         (
-            n == -1 && (
+            n == (size_t AENO)(-1) && (
                 \exists integer end;
                     array[end] == NULL &&
                     (
