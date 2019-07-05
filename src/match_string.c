@@ -6,6 +6,8 @@ int match_string(const char * const *array, size_t n, const char *string)
 	int index;
 	const char *item;
 
+	/*@ assert 0 == 1; */
+
     /*@
         loop invariant 0 <= index <= n;
         loop invariant \forall integer k; 0 <= k < index ==>

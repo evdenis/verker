@@ -15,46 +15,44 @@
  */
 
 /*@
-    requires \valid_read(array + (0..n-1));
-    requires valid_str(string);
-    requires n <= INT_MAX;
-    requires
-        (
-            n == (size_t AENO)(-1) && (
-                \exists integer end;
-                    array[end] == NULL &&
-                    (
-                        \forall integer k;
-                            0 < k < end && array[k] != NULL
-                    ) &&
-                    (
-                        \forall integer k;
-                            0 < k < end && valid_str(array[k])
-                    )
-            )
-                
-        ) ||
-        (
-            n >= 0 && (
-                \forall integer i;
-                    0 <= i < n && valid_str(array[i])
-            )
+    logic size_t _real_len(char **array, size_t n) =
+        array[0] == NULL
+        ? (size_t) 0
+        : (
+            n > 0
+            ? (size_t) (1 + _real_len(array + 1, (size_t)(n - 1)))
+            : 0
         );
+*/
 
-    assigns   \nothing;
+/*@
+    requires _real_len(array, n) <= SIZE_MAX;
+    requires \valid_read(array + (0.._real_len(array, n)-1));
+    requires valid_str(string);
+
+    requires \forall integer i;
+        0 <= i < _real_len(array, n) &&
+        valid_str(array[i]);
+
+    assigns \nothing;
 
     behavior exists:
-        assumes  \exists integer i;
-            0 <= i < n && strcmp(array[i], string) == 0;
-        ensures  0 <= \result < n;
-        ensures  strcmp(array[\result], string) == 0;
-        ensures  \forall integer i; 0 <= i < \result ==>
+        assumes \exists integer i;
+            0 <= i < _real_len(array, n) &&
+            strcmp(array[i], string) == 0;
+
+        ensures 0 <= \result < _real_len(array, n);
+        ensures strcmp(array[\result], string) == 0;
+        ensures \forall integer k;
+            0 <= k < \result &&
             strcmp(array[\result], string) != 0;
 
     behavior missing:
-        assumes  \forall integer i; 0 <= i < n ==>
+        assumes \forall integer i;
+            0 <= i < _real_len(array, n) &&
             strcmp(array[i], string) != 0;
-        ensures  \result == -EINVAL;
+
+        ensures \result == -EINVAL;
 
     complete behaviors;
     disjoint behaviors;
