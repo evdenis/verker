@@ -2,22 +2,57 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.6" timelimit="20" steplimit="0" memlimit="4000"/>
+<prover id="0" name="Alt-Ergo" version="2.3.0" timelimit="15" steplimit="0" memlimit="4000"/>
+<prover id="1" name="CVC4" version="1.6" timelimit="15" steplimit="0" memlimit="4000"/>
 <file name="../match_string_c.mlw" expanded="true">
-<theory name="Function_match_string_safety" sum="371a6c8b2373609fa5ceb675be765237" expanded="true">
+<theory name="Function_match_string_safety" sum="b86f74d4c70a0ec59734d9cfb326ad6a" expanded="true">
  <goal name="WP_parameter match_string" expl="Function match_string, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.17" steps="43261"/></proof>
+ <proof prover="1"><result status="valid" time="0.71" steps="84698"/></proof>
  </goal>
 </theory>
-<theory name="Function_match_string_behaviors" sum="5b84dda6ed3b19aec562e919287068e5" expanded="true">
+<theory name="Function_match_string_behaviors" sum="e9a8487a5845a16116ef184ad0f7ef9e" expanded="true">
  <goal name="WP_parameter match_string_ensures_default" expl="Function match_string, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.20" steps="44459"/></proof>
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter match_string_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="1"><result status="valid" time="0.37" steps="40246"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.2" expl="Behavior completeness check">
+  <proof prover="1"><result status="valid" time="0.35" steps="40250"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.3" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="1.16" steps="116128"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.4" expl="Assertion in line 53">
+  <proof prover="1"><result status="valid" time="0.62" steps="53702"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.5" expl="Assertion in line 31">
+  <proof prover="1"><result status="valid" time="0.89" steps="69214"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.6" expl="Assertion in line 42">
+  <proof prover="1"><result status="valid" time="0.62" steps="59006"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.7" expl="Assertion in line 48">
+  <proof prover="1"><result status="valid" time="0.52" steps="46943"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.8" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.73" steps="67603"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.9" expl="Assertion in line 33">
+  <proof prover="0"><result status="valid" time="0.89" steps="3052"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.10" expl="Assertion in line 35">
+  <proof prover="1"><result status="valid" time="0.55" steps="55666"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_default.11" expl="Assertion in line 53">
+  <proof prover="1"><result status="valid" time="0.31" steps="43642"/></proof>
+  </goal>
+ </transf>
  </goal>
  <goal name="WP_parameter match_string_ensures_exists" expl="Function match_string, behavior exists" expanded="true">
- <proof prover="0"><result status="valid" time="0.21" steps="44887"/></proof>
+ <proof prover="1"><result status="valid" time="5.37" steps="475910"/></proof>
  </goal>
  <goal name="WP_parameter match_string_ensures_missing" expl="Function match_string, behavior missing" expanded="true">
- <proof prover="0"><result status="valid" time="0.18" steps="43283"/></proof>
+ <proof prover="0"><result status="valid" time="0.30" steps="1206"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -332,7 +367,7 @@
 </theory>
 <theory name="Axiomatic_LF__Axiomatic__valid_str_shift" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Axiomatic_StrCmp" sum="31d2bae0e747e626a0077db141676c67" expanded="true">
+<theory name="Axiomatic_StrCmp" sum="cee16887b1887da38f5c627e43221b7c" expanded="true">
  <goal name="Range" expl="Lemma range" expanded="true">
  </goal>
  <goal name="Defn_equal" expl="Lemma defn_equal" expanded="true">
@@ -346,13 +381,25 @@
  <goal name="At_end" expl="Lemma at_end" expanded="true">
  </goal>
 </theory>
-<theory name="Safe_bit_uint64_of_Safe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Axiomatic_MatchString" sum="d8754ca9cc049dbbfef27b01ad97e44c" expanded="true">
+ <goal name="Real_len_not_nulls" expl="Lemma real_len_not_nulls" expanded="true">
+ </goal>
+ <goal name="Real_len_terminate" expl="Lemma real_len_terminate" expanded="true">
+ </goal>
+ <goal name="Real_len_maximum" expl="Lemma real_len_maximum" expanded="true">
+ </goal>
+ <goal name="Match_string_definition" expl="Lemma match_string_definition" expanded="true">
+ </goal>
+ <goal name="Strcmp_corollary" expl="Lemma strcmp_corollary" expanded="true">
+ </goal>
+</theory>
+<theory name="Safe_uint64_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strcmp_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Unsafe_bit_uint64_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Unsafe_uint64_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strcmp_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -686,9 +733,9 @@
 </theory>
 <theory name="Unsafe_uint64_of_Unsafe_int64" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Safe_uint64_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Safe_bit_uint64_of_Safe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Unsafe_uint64_of_Unsafe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Unsafe_bit_uint64_of_Unsafe_bit_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_bit_uint64_of_Safe_bit_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>

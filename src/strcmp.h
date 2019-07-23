@@ -3,13 +3,12 @@
 
 #include "strlen.h"
 
-
 /*@ axiomatic StrCmp {
     logic integer cmp(unsigned char a, unsigned char b) =
        a == b ? 0 : a < b ? -1 : 1;
 
     logic integer strncmp(char *cs, char *ct, integer n) =
-       n == -1 ? 0 : (cs[n] == ct[n] ? strncmp(cs+1, ct+1, n-1) : cmp((u8 AENO)cs[n], (u8 AENO)ct[n]));
+       n == -1 ? 0 : (cs[0] == ct[0] ? strncmp(cs+1, ct+1, n-1) : cmp((u8 AENO)cs[0], (u8 AENO)ct[0]));
     logic integer strcmp(char *cs, char *ct) = strncmp(cs, ct, strlen(cs));
     predicate equaln(char *cs, char *ct, size_t n) = strncmp(cs, ct, n) == 0;
     predicate equal(char *cs, char *ct) = strcmp(cs, ct) == 0;
@@ -58,7 +57,7 @@
 /*@ requires valid_str(cs);
     requires valid_str(ct);
     assigns \nothing;
-    //ensures \result == strcmp(cs, ct);
+    ensures \result == strcmp(cs, ct);
     behavior equal:
        assumes \forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i];
        ensures \result == 0;
