@@ -43,7 +43,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 26 | strsep        | proved | not required   | !const    |         |
 | 27 | strspn        | proved | proved         | yes       |         |
 | 28 | strstr        |        |                | yes       |         |
-| 29 | sysfs\_streq  |        |                | yes       |         |
+| 29 | sysfs\_streq  | proved |                | yes       |         |
 | 30 | strlcat       |        | not required   |           |         |
 | 31 | strlcpy       | proved | not required   |           | use strncmp lf in ensures |
 | 32 | memmove       | proved\*| not required   |           | use memcmp logic function at ensures |
