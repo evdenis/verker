@@ -59,13 +59,12 @@
     assigns \nothing;
 
     behavior nulls:
-       assumes sysfs_strlen(s1) == 0;
-       assumes sysfs_strlen(s2) == 0;
-       ensures \result == true;
+       assumes sysfs_strlen(s1) == 0 && sysfs_strlen(s2) == 0;
+       ensures \result;
 
     behavior trivial:
        assumes sysfs_strlen(s1) == 0 ^^ sysfs_strlen(s2) == 0;
-       ensures \result == false;
+       ensures !\result;
 
     behavior not_trivial:
        assumes sysfs_strlen(s1) != 0 && sysfs_strlen(s2) != 0;
