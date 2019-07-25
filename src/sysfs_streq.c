@@ -9,22 +9,13 @@ bool sysfs_streq(const char *s1, const char *s2)
 
 	/*@ loop invariant s1 == old_s1 + index;
 	    loop invariant s2 == old_s2 + index;
-
-	    loop invariant \valid(s1);
-	    loop invariant \valid(s2);
-
+	    loop invariant \valid(s1) && \valid(s2);
 	    loop invariant index <= strlen(old_s1);
 	    loop invariant index <= strlen(old_s2);
-
 	    loop invariant \forall size_t i; 0 <= i < index ==> old_s1[i] == old_s2[i];
-
 	    loop invariant strncmp(old_s1, old_s2, index);
-
-	    loop assigns s1;
-	    loop assigns s2;
-	    loop assigns index;
-
-	    loop variant \max(strlen(old_s1), strlen(old_s2)) - index;
+	    loop assigns s1, s2, index;
+	    loop variant SIZE_MAX - index;
 	*/
 	while (*s1 && *s1 == *s2) {
 		//@ ghost index++;
