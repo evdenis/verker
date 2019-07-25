@@ -26,7 +26,7 @@
 
     lemma sysfs_strlen_n_equal:
        \forall char *s1, char *s2, size_t n;
-          valid_str(s1) &&
+          valid_str(s1) ==>
           valid_str(s2) ==>
           (\exists size_t i;
 	     (0 <= i < \min(sysfs_strlen(s1), sysfs_strlen(s2))) &&
@@ -35,18 +35,18 @@
 
     lemma sysfs_strlen_bsn:
        \forall char *s, size_t n;
-          valid_str(s) &&
-          (\forall size_t i; 0 <= i < n ==> s[i] != '\0') &&
-          s[n] == '\n' &&
+          valid_str(s) ==>
+          (\forall size_t i; 0 <= i < n ==> s[i] != '\0') ==>
+          s[n] == '\n' ==>
           s[n + 1] == '\0' ==>
           sysfs_strlen(s) == n;
 
     lemma sysfs_strlen_equal:
        \forall char* s1, char* s2, size_t n;
-          valid_str(s1) &&
-          valid_str(s2) &&
-          (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) &&
-          s1[n] == '\0' &&
+          valid_str(s1) ==>
+          valid_str(s2) ==>
+          (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
+          s1[n] == '\0' ==>
           s2[n] == '\0' ==>
 	  (sysfs_strlen(s1) == sysfs_strlen(s2) &&
            strn_eq(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
