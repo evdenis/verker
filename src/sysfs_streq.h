@@ -31,7 +31,7 @@
           (\exists size_t i;
 	     (0 <= i < \min(sysfs_strlen(s1), sysfs_strlen(s2))) &&
 	     (s1[i] != s2[i])) ==>
-          strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))) == (bool)false;
+          !strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
 
     lemma sysfs_strlen_bsn:
        \forall char *s, size_t n;
@@ -49,7 +49,7 @@
           s1[n] == '\0' &&
           s2[n] == '\0' ==>
 	  (sysfs_strlen(s1) == sysfs_strlen(s2) &&
-           strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))) == (bool)true);
+           strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
     }
  */
 
