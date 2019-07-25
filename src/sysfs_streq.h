@@ -3,6 +3,7 @@
 
 #include "kernel_definitions.h"
 #include "strlen.h"
+#include "strncmp.h"
 
 /**
  * sysfs_streq - return true if strings are equal, modulo trailing newline
@@ -15,7 +16,6 @@
  * with newlines but are compared against values without newlines.
  */
 
-
 /*@ axiomatic SysfsStr {
     logic size_t sysfs_strlen(char *s) =
        ((s[0] == '\0') ||
@@ -23,30 +23,6 @@
         0
 	:
 	(size_t)(1 + sysfs_strlen(s));
-
-    logic bool strncmp(char *s1, char *s2, size_t n) =
-       n <= 0 ?
-          (bool)true
-       :
-          (s1[0] == s2[0] ?
-	     (s1[0] == '\0' ? (bool)true : strncmp(s1 + 1, s2 + 1, (size_t)(n - 1)))
-          :
-	     (bool)false);
-
-    lemma strncmp_shift:
-       \forall char *s1, char *s2, size_t n;
-          valid_str(s1) &&
-          valid_str(s2) &&
-          n > 0 ==>
-          strncmp(s1, s2, n) ==>
-          strncmp(s1 + 1, s2 + 1, (size_t)(n - 1));
-
-    lemma strncmp_definition:
-       \forall char *s1, char *s2, size_t n;
-          valid_str(s1) &&
-          valid_str(s2) ==>
-          (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
-          strncmp(s1, s2, n);
 
     lemma sysfs_strlen_n_equal:
        \forall char *s1, char *s2, size_t n;
