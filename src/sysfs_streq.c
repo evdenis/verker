@@ -9,7 +9,7 @@ bool sysfs_streq(const char *s1, const char *s2)
 
 	/*@ loop invariant s1 == old_s1 + index;
 	    loop invariant s2 == old_s2 + index;
-	    loop invariant \valid(s1) && \valid(s2);
+	    loop invariant valid_str(s1) && valid_str(s2);
 	    loop invariant index <= strlen(old_s1);
 	    loop invariant index <= strlen(old_s2);
 	    loop invariant \forall size_t i; 0 <= i < index ==> old_s1[i] == old_s2[i];

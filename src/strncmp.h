@@ -26,16 +26,16 @@
 
     lemma strncmp_shift1:
        \forall char *s1, char *s2, size_t n;
-          valid_str(s1) ==>
-          valid_str(s2) ==>
+          valid_strn(s1, n) ==>
+          valid_strn(s2, n) ==>
           n > 0 ==>
           strn_eq(s1, s2, n) ==>
           strn_eq(s1 + 1, s2 + 1, (size_t)(n - 1));
 
     lemma strncmp_equal:
        \forall char *s1, char *s2, size_t n;
-          valid_str(s1) ==>
-          valid_str(s2) ==>
+          valid_strn(s1, n) ==>
+          valid_strn(s2, n) ==>
           (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
           strn_eq(s1, s2, n);
     }
