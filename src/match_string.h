@@ -89,9 +89,9 @@
           0 <= k < real_len(array, n) ==> strcmp(array[k], string) != 0;
        ensures \result == -EINVAL;
 
-  complete behaviors;
-  disjoint behaviors;
+    complete behaviors;
+    disjoint behaviors;
 */
-int match_string(const char* const* array, size_t n, const char* string);
+int match_string(const char * const *array, size_t n, const char *string);
 
 #endif // __MATCH_STRING_H__
