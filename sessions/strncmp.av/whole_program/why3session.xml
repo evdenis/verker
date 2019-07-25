@@ -6,6 +6,161 @@
 <prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="2" name="CVC4" version="1.6" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strncmp_0_safety" sum="a0ed73d0ae6401a3d2cf4011904d2fe6" expanded="true">
+ <goal name="WP_parameter strncmp_0" expl="Function strncmp, safety">
+ <proof prover="0"><result status="valid" time="0.16"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strncmp_0_behaviors" sum="fb4b9fc0334fe7419a366c0dd63369e0" expanded="true">
+ <goal name="WP_parameter strncmp_ensures_default" expl="Function strncmp, default behavior">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="1"><result status="valid" time="0.04" steps="159"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.2" expl="Behavior disjointness check">
+  <proof prover="1"><result status="valid" time="0.04" steps="153"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.3" expl="Behavior disjointness check">
+  <proof prover="1"><result status="valid" time="0.03" steps="161"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.4" expl="Behavior completeness check">
+  <proof prover="1"><result status="valid" time="0.06" steps="470"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.5" expl="Assertion in line 36">
+  <proof prover="2"><result status="valid" time="0.04" steps="24626"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.6" expl="loop invariant init">
+  <proof prover="1"><result status="valid" time="0.24" steps="1535"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.7" expl="Assertion in line 54">
+  <proof prover="0"><result status="valid" time="1.34"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.8" expl="Assertion in line 55">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.8.1" expl="Assertion in line 55">
+   <proof prover="0"><result status="valid" time="0.60"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.8.2" expl="Assertion in line 55">
+   <proof prover="0"><result status="valid" time="1.14"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.8.3" expl="Assertion in line 55">
+   <proof prover="0"><result status="valid" time="0.49"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.9" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.03" steps="233"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.10" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.03" steps="227"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.11" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.04" steps="223"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.12" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.04" steps="229"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.13" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.04" steps="227"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.14" expl="Assertion in line 69">
+  <proof prover="1"><result status="valid" time="0.92" steps="2972"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.15" expl="loop invariant preservation">
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strncmp_ensures_default.15.1" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="228"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.2" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.07" steps="228"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.3" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="232"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.4" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="232"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.5" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.07" steps="232"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.6" expl="Function strncmp, default behavior">
+   <proof prover="0"><result status="valid" time="0.37"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.7" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.07" steps="240"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.8" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="240"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.9" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.07" steps="240"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.10" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.34" steps="962"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.11" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="248"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.12" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.06" steps="248"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.13" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.76" steps="3525"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.14" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.47" steps="1077"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.15" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="1.14" steps="3344"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.16" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.54" steps="1149"/></proof>
+   </goal>
+   <goal name="WP_parameter strncmp_ensures_default.15.17" expl="Function strncmp, default behavior">
+   <proof prover="1"><result status="valid" time="0.09" steps="264"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_default.16" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.03" steps="193"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_equal" expl="Function strncmp, behavior equal">
+ <proof prover="0"><result status="valid" time="0.52"/></proof>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_len_diff" expl="Function strncmp, behavior len_diff">
+ <proof prover="0"><result status="valid" time="0.45"/></proof>
+ </goal>
+ <goal name="WP_parameter strncmp_ensures_not_equal" expl="Function strncmp, behavior not_equal">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter strncmp_ensures_not_equal.1" expl="Assertion in line 59">
+  <proof prover="1"><result status="valid" time="0.89" steps="2656"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.2" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.59"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.3" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.03" steps="245"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.4" expl="Assertion in line 59">
+  <proof prover="1"><result status="valid" time="1.08" steps="3145"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.5" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.03" steps="241"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.6" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.59"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.7" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.06" steps="240"/></proof>
+  </goal>
+  <goal name="WP_parameter strncmp_ensures_not_equal.8" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.19" steps="687"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -333,6 +488,12 @@
 <theory name="Unsafe_bit_uint8_of_Unsafe_bit_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Unsafe_bit_int32_of_Unsafe_bit_uint8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_StrnCmp" sum="793d634c9791fb6ae64e54558f5dbe06" expanded="true">
+ <goal name="Strncmp_shift" expl="Lemma strncmp_shift" expanded="true">
+ </goal>
+ <goal name="Strncmp_definition" expl="Lemma strncmp_definition" expanded="true">
+ </goal>
 </theory>
 <theory name="Logic_type_padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -856,164 +1017,9 @@
 </theory>
 <theory name="Function_strnlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strncmp" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Function_strncmp_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strncmp_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strncmp_safety" sum="f3e5554bf907d099a65cd93660ef8f9c" expanded="true">
- <goal name="WP_parameter strncmp" expl="Function strncmp, safety" expanded="true">
- <proof prover="2"><result status="valid" time="0.57" steps="78860"/></proof>
- </goal>
-</theory>
-<theory name="Function_strncmp_behaviors" sum="5a30e2e460e379babbad1815f6e2f6ff" expanded="true">
- <goal name="WP_parameter strncmp_ensures_default" expl="Function strncmp, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strncmp_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.03" steps="159"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.2" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.03" steps="153"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.3" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.04" steps="161"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.4" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.07" steps="336"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.5" expl="Assertion in line 36">
-  <proof prover="2"><result status="valid" time="0.05" steps="24494"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.6" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.74" steps="1535"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.7" expl="Assertion in line 54">
-  <proof prover="0"><result status="valid" time="3.29"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.8" expl="Assertion in line 55">
-  <transf name="split_goal_wp" expanded="true">
-   <goal name="WP_parameter strncmp_ensures_default.8.1" expl="Assertion in line 55">
-   <proof prover="0"><result status="valid" time="0.64"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.8.2" expl="Assertion in line 55">
-   <proof prover="0"><result status="valid" time="1.13"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.8.3" expl="Assertion in line 55">
-   <proof prover="0"><result status="valid" time="0.51"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.9" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="233"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.10" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="227"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.11" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.03" steps="223"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.12" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="229"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.13" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.05" steps="227"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.14" expl="Assertion in line 69">
-  <proof prover="1"><result status="valid" time="1.76" steps="1418"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.15" expl="loop invariant preservation">
-  <transf name="split_goal_wp" expanded="true">
-   <goal name="WP_parameter strncmp_ensures_default.15.1" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.24" steps="228"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.2" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.29" steps="228"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.3" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.28" steps="232"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.4" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.25" steps="232"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.5" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.22" steps="232"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.6" expl="Function strncmp, default behavior">
-   <proof prover="0"><result status="valid" time="1.31"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.7" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.24" steps="240"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.8" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.26" steps="240"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.9" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.29" steps="240"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.10" expl="Function strncmp, default behavior">
-   <proof prover="0"><result status="valid" time="0.41"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.11" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.32" steps="248"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.12" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.07" steps="248"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.13" expl="Function strncmp, default behavior">
-   <proof prover="2"><result status="valid" time="1.49" steps="186668"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.14" expl="Function strncmp, default behavior">
-   <proof prover="2"><result status="valid" time="1.83" steps="187108"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.15" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="1.39" steps="3346"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.16" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.69" steps="1156"/></proof>
-   </goal>
-   <goal name="WP_parameter strncmp_ensures_default.15.17" expl="Function strncmp, default behavior">
-   <proof prover="1"><result status="valid" time="0.08" steps="264"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_default.16" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.03" steps="193"/></proof>
-  </goal>
- </transf>
- </goal>
- <goal name="WP_parameter strncmp_ensures_equal" expl="Function strncmp, behavior equal" expanded="true">
- <proof prover="0"><result status="valid" time="0.54"/></proof>
- </goal>
- <goal name="WP_parameter strncmp_ensures_len_diff" expl="Function strncmp, behavior len_diff" expanded="true">
- <proof prover="0"><result status="valid" time="1.80"/></proof>
- </goal>
- <goal name="WP_parameter strncmp_ensures_not_equal" expl="Function strncmp, behavior not_equal" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strncmp_ensures_not_equal.1" expl="Assertion in line 59">
-  <proof prover="1"><result status="valid" time="1.09" steps="2574"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.2" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.61"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.3" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.04" steps="245"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.4" expl="Assertion in line 59">
-  <proof prover="1"><result status="valid" time="2.99" steps="3424"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.5" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.16" steps="241"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.6" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="1.99"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.7" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.16" steps="240"/></proof>
-  </goal>
-  <goal name="WP_parameter strncmp_ensures_not_equal.8" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.54" steps="687"/></proof>
-  </goal>
- </transf>
- </goal>
+<theory name="Function_strncmp_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 </file>
 </why3session>
