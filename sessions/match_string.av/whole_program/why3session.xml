@@ -2,57 +2,57 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.0" timelimit="15" steplimit="0" memlimit="4000"/>
-<prover id="1" name="CVC4" version="1.6" timelimit="15" steplimit="0" memlimit="4000"/>
-<file name="../match_string_c.mlw" expanded="true">
+<prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
+<file name="../whole_program.mlw" expanded="true">
 <theory name="Function_match_string_safety" sum="b86f74d4c70a0ec59734d9cfb326ad6a" expanded="true">
  <goal name="WP_parameter match_string" expl="Function match_string, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.71" steps="84698"/></proof>
+ <proof prover="0"><result status="valid" time="0.15"/></proof>
  </goal>
 </theory>
 <theory name="Function_match_string_behaviors" sum="e9a8487a5845a16116ef184ad0f7ef9e" expanded="true">
  <goal name="WP_parameter match_string_ensures_default" expl="Function match_string, default behavior" expanded="true">
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter match_string_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.37" steps="40246"/></proof>
+  <proof prover="1"><result status="valid" time="0.05" steps="151"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.35" steps="40250"/></proof>
+  <proof prover="1"><result status="valid" time="0.05" steps="149"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="1.16" steps="116128"/></proof>
+  <proof prover="0"><result status="valid" time="0.27"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.4" expl="Assertion in line 53">
-  <proof prover="1"><result status="valid" time="0.62" steps="53702"/></proof>
+  <proof prover="0"><result status="valid" time="0.17"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.5" expl="Assertion in line 31">
-  <proof prover="1"><result status="valid" time="0.89" steps="69214"/></proof>
+  <proof prover="1"><result status="valid" time="0.18" steps="912"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.6" expl="Assertion in line 42">
-  <proof prover="1"><result status="valid" time="0.62" steps="59006"/></proof>
+  <proof prover="1"><result status="valid" time="0.38" steps="1355"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.7" expl="Assertion in line 48">
-  <proof prover="1"><result status="valid" time="0.52" steps="46943"/></proof>
+  <proof prover="1"><result status="valid" time="0.07" steps="190"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.8" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.73" steps="67603"/></proof>
+  <proof prover="1"><result status="valid" time="0.53" steps="3187"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.9" expl="Assertion in line 33">
-  <proof prover="0"><result status="valid" time="0.89" steps="3052"/></proof>
+  <proof prover="1"><result status="valid" time="0.61" steps="3052"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.10" expl="Assertion in line 35">
-  <proof prover="1"><result status="valid" time="0.55" steps="55666"/></proof>
+  <proof prover="1"><result status="valid" time="0.16" steps="1196"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.11" expl="Assertion in line 53">
-  <proof prover="1"><result status="valid" time="0.31" steps="43642"/></proof>
+  <proof prover="1"><result status="valid" time="0.03" steps="165"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter match_string_ensures_exists" expl="Function match_string, behavior exists" expanded="true">
- <proof prover="1"><result status="valid" time="5.37" steps="475910"/></proof>
+ <proof prover="1"><result status="valid" time="1.69" steps="9082"/></proof>
  </goal>
  <goal name="WP_parameter match_string_ensures_missing" expl="Function match_string, behavior missing" expanded="true">
- <proof prover="0"><result status="valid" time="0.30" steps="1206"/></proof>
+ <proof prover="1"><result status="valid" time="0.15" steps="1206"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
