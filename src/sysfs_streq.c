@@ -5,7 +5,7 @@ bool sysfs_streq(const char *s1, const char *s2) {
 	//@ ghost const char* old_s1 = s1;
 	//@ ghost const char* old_s2 = s2;
 	//@ ghost size_t index = 0;
-	
+
 	/*@
 		loop invariant s1 == old_s1 + index;
 		loop invariant s2 == old_s2 + index;
@@ -18,9 +18,9 @@ bool sysfs_streq(const char *s1, const char *s2) {
 
 		loop invariant \forall size_t i;
 			0 <= i < index ==> old_s1[i] == old_s2[i];
-		
+
 		loop invariant strncmp(old_s1, old_s2, index);
-		
+
 		loop assigns s1;
 		loop assigns s2;
 		loop assigns index;

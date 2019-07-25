@@ -25,7 +25,7 @@
 			)
 				? 0
 				: (size_t)(1 + sysfs_strlen(string));
-			
+
 		logic bool strncmp(char* string1, char* string2, size_t n) =
 			n <= 0
 				? (bool)true
@@ -131,12 +131,12 @@
 	behavior nulls:
 		assumes sysfs_strlen(s1) == 0;
 		assumes sysfs_strlen(s2) == 0;
-		
+
 		ensures \result == true;
 
 	behavior trivial:
 		assumes sysfs_strlen(s1) == 0 ^^ sysfs_strlen(s2) == 0;
-		
+
 		ensures \result == false;
 
 	behavior not_trivial:
