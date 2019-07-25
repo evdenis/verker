@@ -98,11 +98,6 @@
           valid_strn(s, cnt) &&
           i <= cnt ==>
              strnlen(s, i) <= strnlen(s, cnt);
-
-    lemma valid_str_strn:
-       \forall char *s, size_t cnt;
-          valid_str(s) && cnt <= strlen(s) ==>
-             valid_strn(s, cnt);
     }
  */
 
