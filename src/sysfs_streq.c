@@ -1,7 +1,8 @@
 #include "sysfs_streq.h"
 
 
-bool sysfs_streq(const char *s1, const char *s2) {
+bool sysfs_streq(const char *s1, const char *s2)
+{
 	//@ ghost const char* old_s1 = s1;
 	//@ ghost const char* old_s2 = s2;
 	//@ ghost size_t index = 0;
@@ -48,14 +49,13 @@ bool sysfs_streq(const char *s1, const char *s2) {
 			0 <= i < index ==> old_s2[i] != '\0';
 	*/
 
-	if (*s1 == *s2) {
+	if (*s1 == *s2)
 		//@ assert *s1 == '\0';
 		//@ assert *s2 == '\0';
 		//@ assert sysfs_strlen(old_s1) == sysfs_strlen(old_s2);
 		return true;
-	}
 
-	if (!*s1 && *s2 == '\n' && !s2[1]) {
+	if (!*s1 && *s2 == '\n' && !s2[1])
 		//@ assert sysfs_strlen(s1) == sysfs_strlen(s2);
 		//@ assert strncmp(s1, s2, sysfs_strlen(s2)) == true;
 		//@ assert s2[0] == '\n';
@@ -65,9 +65,8 @@ bool sysfs_streq(const char *s1, const char *s2) {
 		//@ assert old_s2[index + 1] == '\0';
 		//@ assert index == sysfs_strlen(old_s2);
 		return true;
-	}
 
-	if (*s1 == '\n' && !s1[1] && !*s2) {
+	if (*s1 == '\n' && !s1[1] && !*s2)
 		//@ assert sysfs_strlen(s1) == sysfs_strlen(s2);
 		//@ assert strncmp(s1, s2, sysfs_strlen(s1)) == true;
 		//@ assert s1[0] == '\n';
@@ -77,7 +76,6 @@ bool sysfs_streq(const char *s1, const char *s2) {
 		//@ assert old_s1[index + 1] == '\0';
 		//@ assert index == sysfs_strlen(old_s1);
 		return true;
-	}
 
 	/*@
 		assert (*s1 == '\0') ==> (
