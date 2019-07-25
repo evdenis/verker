@@ -49,28 +49,22 @@
           s1[n] == '\0' &&
           s2[n] == '\0' ==>
 	  (sysfs_strlen(s1) == sysfs_strlen(s2) &&
-           strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
+           strn_eq(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
     }
  */
 
 /*@ requires valid_str(s1);
     requires valid_str(s2);
-
     assigns \nothing;
-
     behavior nulls:
        assumes sysfs_strlen(s1) == 0 && sysfs_strlen(s2) == 0;
        ensures \result;
-
     behavior trivial:
        assumes sysfs_strlen(s1) == 0 ^^ sysfs_strlen(s2) == 0;
        ensures !\result;
-
     behavior not_trivial:
        assumes sysfs_strlen(s1) != 0 && sysfs_strlen(s2) != 0;
-       ensures \result == strncmp(s1, s2,
-                             (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
-
+       ensures strn_eq(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
     complete behaviors;
     disjoint behaviors;
 */
