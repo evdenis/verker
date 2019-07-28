@@ -15,7 +15,7 @@ int strcmp(const char *cs, const char *ct)
 	    loop invariant \forall integer i; 0 <= i < cs - \at(cs,Pre) ==>
 	                   \at(cs,Pre)[i] == \at(ct,Pre)[i];
 	    loop invariant strlen(cs) == strlen(\at(cs,Pre)) - (cs - \at(cs,Pre));
-	    //loop invariant strcmp(\at(cs,Pre), \at(ct,Pre)) == strcmp(cs, ct);
+	    loop invariant strcmp(\at(cs,Pre), \at(ct,Pre)) == strcmp(cs, ct);
 	    loop assigns cs, ct;
 	    loop variant strlen(\at(cs,Pre)) - (cs - \at(cs,Pre));
 	*/

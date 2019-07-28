@@ -16,7 +16,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | ID | Function      | Status | Logic function | libfuzzer | Comment |
 |----|---------------|--------|----------------|-----------|---------|
 | 1  | check\_bytes8 | proved | proved         | yes       |         |
-| 2  | match\_string |        | not required   |           |         |
+| 2  | match\_string | proved | not required   |           |         |
 | 3  | memchr        | proved |                | yes       |         |
 | 4  | memcmp        | proved |                | yes       |         |
 | 5  | memscan       | proved | not required   | yes       |         |
@@ -25,7 +25,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 8  | strcat        | proved | not required   |           | usr strcmp in ensures |
 | 9  | strchr        | proved | proved         | yes       |         |
 | 10 | strchrnul     | proved | proved         | yes       |         |
-| 11 | strcmp        | proved |                | yes       |         |
+| 11 | strcmp        | proved | proved         | yes       |         |
 | 12 | strcpy        | proved | not required   |           | use strcmp logic function |
 | 13 | strcspn       | proved | proved         | yes       |         |
 | 14 | strim         |        | not required   | !const    |         |

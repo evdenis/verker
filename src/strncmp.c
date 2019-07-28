@@ -1,31 +1,5 @@
 #include "strncmp.h"
 
-/*@ requires valid_strn(cs, count);
-    requires valid_strn(ct, count);
-    assigns \nothing;
-    ensures \result == -1 || \result == 0 || \result == 1;
-    behavior equal:
-       assumes count == 0 ||
-               count > 0  &&
-               (\forall integer i; 0 <= i < strnlen(cs, count) ==> (cs[i] == ct[i])) &&
-               strnlen(cs, count) == strnlen(ct, count);
-       ensures \result == 0;
-    behavior len_diff:
-       assumes count > 0;
-       assumes \forall integer i; 0 <= i < strnlen(cs, count) ==> (cs[i] == ct[i]);
-       assumes strnlen(cs, count) != strnlen(ct, count);
-       ensures strnlen(cs, count) < strnlen(ct, count) ==> \result == -1;
-       ensures strnlen(cs, count) > strnlen(ct, count) ==> \result == 1;
-    behavior not_equal:
-       assumes count > 0;
-       assumes \exists integer i; 0 <= i < strnlen(cs, count) && cs[i] != ct[i];
-       ensures \exists integer i; 0 <= i < strnlen(cs, count) &&
-               (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
-               (cs[i] != ct[i]) &&
-               ((u8 AENO)cs[i] < (u8 AENO)ct[i] ? \result == -1 : \result == 1);
-    complete behaviors;
-    disjoint behaviors;
- */
 int strncmp(const char *cs, const char *ct, size_t count)
 {
 	unsigned char c1, c2;
