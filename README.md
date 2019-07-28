@@ -25,7 +25,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 8  | strcat        | proved | not required   |           | usr strcmp in ensures |
 | 9  | strchr        | proved | proved         | yes       |         |
 | 10 | strchrnul     | proved | proved         | yes       |         |
-| 11 | strcmp        | proved |                | yes       |         |
+| 11 | strcmp        | proved | proved         | yes       |         |
 | 12 | strcpy        | proved | not required   |           | use strcmp logic function |
 | 13 | strcspn       | proved | proved         | yes       |         |
 | 14 | strim         |        | not required   | !const    |         |
