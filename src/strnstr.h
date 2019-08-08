@@ -2,7 +2,7 @@
 #define __STRNSTR_H__
 
 #include "kernel_definitions.h"
-#include "memcmp.h"
+//#include "memcmp.h"
 #include "strlen.h"
 
 /**
