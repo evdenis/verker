@@ -1,0 +1,114 @@
+(* this is the prelude for Alt-Ergo, version >= 0.95.2 *)
+(* this is a prelude for Alt-Ergo integer arithmetic *)
+logic comp_div: int, int -> int
+axiom comp_div_def: forall x, y:int. x >= 0 and y > 0 -> comp_div(x,y) = x / y
+logic comp_mod: int, int -> int
+axiom comp_mod_def: forall x, y:int. x >= 0 and y > 0 -> comp_mod(x,y) = x % y
+logic match_bool : bool, 'a, 'a -> 'a
+
+axiom match_bool_True :
+  (forall z:'a. forall z1:'a. (match_bool(true, z, z1) = z))
+
+axiom match_bool_False :
+  (forall z:'a. forall z1:'a. (match_bool(false, z, z1) = z1))
+
+type 't pointer
+
+logic null : 't pointer
+
+logic sub_pointer : 't pointer, 't pointer -> int
+
+logic shift : 't pointer, int -> 't pointer
+
+logic same_block : 't pointer, 't pointer -> prop
+
+type 't tag_id
+
+logic int_of_tag : 't tag_id -> int
+
+type voidP
+
+type t
+
+logic to_int : t -> int
+
+logic of_int : int -> t
+
+predicate infix_ls(a: t, b: t) = (to_int(a) <  to_int(b))
+
+predicate infix_gt(a: t, b: t) = (to_int(b) <  to_int(a))
+
+type t1
+
+logic to_int1 : t1 -> int
+
+logic of_int1 : int -> t1
+
+type t2
+
+logic to_int2 : t2 -> int
+
+logic of_int2 : int -> t2
+
+type 't3 alloc_table
+
+logic offset_min : 't3 alloc_table, 't3 pointer -> int
+
+logic offset_max : 't3 alloc_table, 't3 pointer -> int
+
+logic strlen : voidP pointer, (voidP pointer,t2) farray -> t
+
+axiom strlen_def :
+  (forall s_0:voidP pointer.
+  forall charP_charM_s_0_3_at_L:(voidP pointer,t2) farray.
+  (((charP_charM_s_0_3_at_L[shift(s_0, 0)]) = of_int2(0)) -> (strlen(s_0,
+  charP_charM_s_0_3_at_L) = of_int(0))))
+
+axiom strlen_def1 :
+  (forall s_0:voidP pointer.
+  forall charP_charM_s_0_3_at_L:(voidP pointer,t2) farray.
+  ((not ((charP_charM_s_0_3_at_L[shift(s_0, 0)]) = of_int2(0))) ->
+  (strlen(s_0, charP_charM_s_0_3_at_L) = of_int((1 + to_int(strlen(shift(s_0,
+  1), charP_charM_s_0_3_at_L)))))))
+
+predicate valid_str(s: voidP pointer,
+  voidP_s_2_alloc_table_at_L: voidP alloc_table,
+  charP_charM_s_2_at_L: (voidP pointer,t2) farray) =
+  (exists n_1_0:t. (((charP_charM_s_2_at_L[shift(s,
+  to_int(n_1_0))]) = of_int2(0)) and ((0 <= to_int(n_1_0)) ->
+  ((offset_min(voidP_s_2_alloc_table_at_L, s) <= 0) and
+  (offset_max(voidP_s_2_alloc_table_at_L, s) >= to_int(n_1_0))))))
+
+logic parenttag : 't3 tag_id, 't3 tag_id -> prop
+
+logic subtag : 't3 tag_id, 't3 tag_id -> prop
+
+logic bottom_tag : 'a tag_id
+
+logic voidP_tag : voidP tag_id
+
+logic downcast : ('t3 pointer,'t3 tag_id) farray, 't3 pointer,
+  't3 tag_id -> 't3 pointer
+
+logic charP_tag : voidP tag_id
+
+predicate allocated(a: 't3 alloc_table, p: 't3 pointer) = (offset_min(a,
+  p) <= offset_max(a, p))
+
+goal WP_parameter_strnstr_ensures_default :
+  (forall s1:voidP pointer. forall s2:voidP pointer. forall len:t.
+  forall voidP_s1_19_alloc_table:voidP alloc_table.
+  forall voidP_s2_20_alloc_table:voidP alloc_table.
+  forall voidP_s1_19_tag_table:(voidP pointer,voidP tag_id) farray.
+  forall charP_charM_s1_19:(voidP pointer,t2) farray.
+  forall charP_charM_s2_20:(voidP pointer,t2) farray.
+  (((allocated(voidP_s1_19_alloc_table, s1) ->
+  (((voidP_s1_19_tag_table[s1]) = charP_tag) and
+  (forall i:int. (((offset_min(voidP_s1_19_alloc_table, s1) <= i) and
+  (i <  offset_max(voidP_s1_19_alloc_table, s1))) ->
+  ((voidP_s1_19_tag_table[shift(s1, i)]) = charP_tag))))) and (valid_str(s1,
+  voidP_s1_19_alloc_table, charP_charM_s1_19) and (valid_str(s2,
+  voidP_s2_20_alloc_table, charP_charM_s2_20) and (infix_ls(len,
+  of_int(18446744073709551615)) and ((strlen(s2,
+  charP_charM_s2_20) = of_int(0)) and infix_gt(strlen(s2, charP_charM_s2_20),
+  of_int(0))))))) -> (0 = 1)))
