@@ -1,32 +1,27 @@
 #include "strreplace.h"
 
-/*@ requires valid_str(s);
-    requires old != '\0';
-    requires new != '\0';
-    requires old != new;
-    assigns s[0..strlen(s)];
-    ensures \result == s + strlen{Pre}(\at(s,Pre));
- */
 char *strreplace(char *s, char old, char new)
 {
 	//@ ghost char *os = s;
+	//@ ghost size_t len = strlen(os);
+
 	/*@ loop invariant valid_str(s);
-	    loop invariant strlen(os) == strlen(s) + (os - s);
-	    loop invariant os <= s <= os + strlen(os);
-	    loop invariant \forall char *p;
-	       os <= p < s && \at(*p,Pre) == old ==>
-	          *p == new;
-	    loop invariant \forall char *p; s <= p <= os + strlen(os) ==> \at(*p,Pre) == *p;
-	    loop invariant \forall char *p;
-	       os <= p < os + strlen(os) && \at(*p,Pre) != old ==>
-	          \at(*p,Pre) == *p;
-	    loop assigns s, os[0..strlen(os)];
-	    loop variant strlen(os) - (s - os);
-	 */
+	    loop invariant valid_str(os);
+	    loop invariant os <= s <= os + len;
+	    loop invariant \forall char *k; s <= k < (os + len) ==>
+               \at(*k,Pre) == *k;
+	    loop invariant \forall char *p; os <= p < s ==>
+	       \at(*p, Pre) == old ==> *p == new;
+	    loop invariant \forall char *p; os <= p < s ==>
+	       \at(*p, Pre) != old ==> *p == \at(*p, Pre);
+	    loop assigns s, os[0..len-1];
+	    loop variant SIZE_MAX - (s - os);
+	*/
 	for (; *s; ++s)
 		if (*s == old)
 			*s = new;
-	//@ assert s == os + strlen(os);
+	//@ assert strlen(s) == 0;
+	//@ assert s - os == strlen{Pre}(os);
 	return s;
 }
 

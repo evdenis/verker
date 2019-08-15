@@ -39,7 +39,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 22 | strnstr       |        |                | yes       |         |
 | 23 | strpbrk       | proved | proved         | yes       |         |
 | 24 | strrchr       | proved |                | yes       |         |
-| 25 | strreplace    |        | not required   | !const    |         |
+| 25 | strreplace    | proved | not required   | !const    |         |
 | 26 | strsep        | proved | not required   | !const    |         |
 | 27 | strspn        | proved | proved         | yes       |         |
 | 28 | strstr        |        |                | yes       |         |
