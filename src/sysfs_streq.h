@@ -49,7 +49,7 @@
           s1[n] == '\0' ==>
           s2[n] == '\0' ==>
 	  (sysfs_strlen(s1) == sysfs_strlen(s2) &&
-           strn_eq(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
+           strnequal(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
     }
  */
 
@@ -64,7 +64,7 @@
        ensures !\result;
     behavior not_trivial:
        assumes sysfs_strlen(s1) != 0 && sysfs_strlen(s2) != 0;
-       ensures strn_eq(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
+       ensures strnequal(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
     complete behaviors;
     disjoint behaviors;
 */

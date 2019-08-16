@@ -21,7 +21,7 @@
 	     (int)(s1[0] - s2[0])
 	  );
 
-    predicate strn_eq(char *s1, char *s2, size_t n) =
+    predicate strnequal(char *s1, char *s2, size_t n) =
        strncmp(s1, s2, n) == 0;
 
     lemma strncmp_shift1:
@@ -29,15 +29,15 @@
           valid_strn(s1, n) ==>
           valid_strn(s2, n) ==>
           n > 0 ==>
-          strn_eq(s1, s2, n) ==>
-          strn_eq(s1 + 1, s2 + 1, (size_t)(n - 1));
+          strnequal(s1, s2, n) ==>
+          strnequal(s1 + 1, s2 + 1, (size_t)(n - 1));
 
     lemma strncmp_equal:
        \forall char *s1, char *s2, size_t n;
           valid_strn(s1, n) ==>
           valid_strn(s2, n) ==>
           (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
-          strn_eq(s1, s2, n);
+          strnequal(s1, s2, n);
     }
  */
 

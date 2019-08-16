@@ -13,7 +13,7 @@ bool sysfs_streq(const char *s1, const char *s2)
 	    loop invariant index <= strlen(old_s1);
 	    loop invariant index <= strlen(old_s2);
 	    loop invariant \forall size_t i; 0 <= i < index ==> old_s1[i] == old_s2[i];
-	    loop invariant strn_eq(old_s1, old_s2, index);
+	    loop invariant strnequal(old_s1, old_s2, index);
 	    loop assigns s1, s2, index;
 	    loop variant SIZE_MAX - index;
 	*/
@@ -36,7 +36,7 @@ bool sysfs_streq(const char *s1, const char *s2)
 
 	if (!*s1 && *s2 == '\n' && !s2[1])
 		//@ assert sysfs_strlen(s1) == sysfs_strlen(s2);
-		//@ assert strn_eq(s1, s2, sysfs_strlen(s2));
+		//@ assert strnequal(s1, s2, sysfs_strlen(s2));
 		//@ assert old_s2[index] == '\n';
 		//@ assert old_s2[index + 1] == '\0';
 		//@ assert index == sysfs_strlen(old_s2);
@@ -44,7 +44,7 @@ bool sysfs_streq(const char *s1, const char *s2)
 
 	if (*s1 == '\n' && !s1[1] && !*s2)
 		//@ assert sysfs_strlen(s1) == sysfs_strlen(s2);
-		//@ assert strn_eq(s1, s2, sysfs_strlen(s1));
+		//@ assert strnequal(s1, s2, sysfs_strlen(s1));
 		//@ assert old_s1[index] == '\n';
 		//@ assert old_s1[index + 1] == '\0';
 		//@ assert index == sysfs_strlen(old_s1);
