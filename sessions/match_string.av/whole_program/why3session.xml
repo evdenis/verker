@@ -2,42 +2,51 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
-<file name="../whole_program.mlw" expanded="true">
-<theory name="Function_match_string_0_safety" sum="1f8cc5c24984d52512517b21ae5a2b91" expanded="true">
+<prover id="0" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<file name="../match_string_c.mlw" expanded="true">
+<theory name="Function_match_string_0_safety" sum="3b002289067cc2e04884e4456f785076" expanded="true">
  <goal name="WP_parameter match_string_0" expl="Function match_string, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.14"/></proof>
+ <proof prover="0"><result status="valid" time="0.94" steps="224269"/></proof>
  </goal>
 </theory>
-<theory name="Function_match_string_0_behaviors" sum="2f161d4328733cc19f2abd76a447ae37" expanded="true">
- <goal name="WP_parameter match_string_ensures_default" expl="Function match_string, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
+<theory name="Function_match_string_0_behaviors" sum="e25eb01a76d367c7275a2b285cb2e34b" expanded="true">
+ <goal name="WP_parameter match_string_ensures_default" expl="Function match_string, default behavior">
+ <transf name="split_goal_wp">
   <goal name="WP_parameter match_string_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.04" steps="151"/></proof>
+  <proof prover="0"><result status="valid" time="0.19" steps="40246"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.04" steps="149"/></proof>
+  <proof prover="0"><result status="valid" time="0.19" steps="40250"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.19"/></proof>
+  <proof prover="0"><result status="valid" time="0.43" steps="113464"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.4" expl="Assertion in line 21">
-  <proof prover="1"><result status="valid" time="0.11" steps="912"/></proof>
+  <proof prover="0"><result status="valid" time="0.39" steps="68706"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.5" expl="Assertion in line 25">
-  <proof prover="1"><result status="valid" time="1.34" steps="9983"/></proof>
+  <proof prover="0"><result status="valid" time="0.31" steps="58709"/></proof>
   </goal>
   <goal name="WP_parameter match_string_ensures_default.6" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.31" steps="2523"/></proof>
+  <proof prover="0"><result status="valid" time="0.70" steps="117333"/></proof>
   </goal>
  </transf>
  </goal>
- <goal name="WP_parameter match_string_ensures_exists" expl="Function match_string, behavior exists" expanded="true">
- <proof prover="1"><result status="valid" time="1.44" steps="6473"/></proof>
+ <goal name="WP_parameter match_string_ensures_exists" expl="Function match_string, behavior exists">
+ <transf name="split_goal_wp">
+  <goal name="WP_parameter match_string_ensures_exists.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.22" steps="57428"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_exists.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="1.26" steps="206471"/></proof>
+  </goal>
+  <goal name="WP_parameter match_string_ensures_exists.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.17" steps="44607"/></proof>
+  </goal>
+ </transf>
  </goal>
- <goal name="WP_parameter match_string_ensures_missing" expl="Function match_string, behavior missing" expanded="true">
- <proof prover="1"><result status="valid" time="0.32" steps="2393"/></proof>
+ <goal name="WP_parameter match_string_ensures_missing" expl="Function match_string, behavior missing">
+ <proof prover="0"><result status="valid" time="1.25" steps="229496"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -366,17 +375,17 @@
  <goal name="At_end" expl="Lemma at_end" expanded="true">
  </goal>
 </theory>
-<theory name="Axiomatic_MatchString" sum="d8754ca9cc049dbbfef27b01ad97e44c" expanded="true">
- <goal name="Real_len_not_nulls" expl="Lemma real_len_not_nulls" expanded="true">
- </goal>
- <goal name="Real_len_terminate" expl="Lemma real_len_terminate" expanded="true">
- </goal>
- <goal name="Real_len_maximum" expl="Lemma real_len_maximum" expanded="true">
- </goal>
- <goal name="Match_string_definition" expl="Lemma match_string_definition" expanded="true">
- </goal>
- <goal name="Strcmp_corollary" expl="Lemma strcmp_corollary" expanded="true">
- </goal>
+<theory name="Axiomatic_Strchrnul" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__real_len_iteration_1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__real_len_iteration_2" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__real_len_iteration_4" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__real_len_iteration_5" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Axiomatic_LF__Axiomatic__real_len_iteration_6" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Safe_uint64_of_Safe_int32" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
@@ -877,6 +886,30 @@
 <theory name="Function_strlen_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strlen_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_1" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_1_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_2" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_2_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_4" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_4_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_srrcmp" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_srrcmp_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_5" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_5_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_6" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_real_len_iteration_6_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_match_string_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
