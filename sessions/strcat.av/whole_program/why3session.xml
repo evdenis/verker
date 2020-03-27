@@ -2,18 +2,18 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.6" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.3.0" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="2" name="CVC4" version="1.6" timelimit="2" steplimit="0" memlimit="2000"/>
-<file name="../whole_program.mlw">
+<prover id="0" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="1" name="Alt-Ergo" version="2.3.2" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="2" name="CVC4" version="1.7" timelimit="2" steplimit="0" memlimit="2000"/>
+<file name="../whole_program.mlw" expanded="true">
 <theory name="Function_strcat_safety" sum="bc7ebda18543f48bac7038a196d14637">
  <goal name="WP_parameter strcat" expl="Function strcat, safety">
  <proof prover="0"><result status="valid" time="0.27"/></proof>
  </goal>
 </theory>
-<theory name="Function_strcat_behaviors" sum="83c50bab781bdec7c4b9363548049dca">
- <goal name="WP_parameter strcat_ensures_default" expl="Function strcat, default behavior">
- <transf name="split_goal_wp">
+<theory name="Function_strcat_behaviors" sum="cecbf03ed73b7d44c409b58324a7434f" expanded="true">
+ <goal name="WP_parameter strcat_ensures_default" expl="Function strcat, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcat_ensures_default.1" expl="loop invariant init">
   <proof prover="1"><result status="valid" time="0.08" steps="216"/></proof>
   </goal>
@@ -33,31 +33,35 @@
   <proof prover="1"><result status="valid" time="0.68" steps="2082"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.7" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="1.80"/></proof>
+  <proof prover="2"><result status="valid" time="0.73" steps="115150"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.8" expl="Assertion in line 34">
-  <proof prover="0"><result status="valid" time="0.73"/></proof>
+  <proof prover="2"><result status="valid" time="0.97" steps="199041"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.9" expl="Assertion in line 35">
-  <proof prover="1"><result status="valid" time="0.68" steps="2149"/></proof>
+  <proof prover="1"><result status="valid" time="0.70" steps="2149"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.10" expl="Assertion in line 36">
-  <proof prover="1"><result status="valid" time="0.31" steps="891"/></proof>
+  <proof prover="0"><result status="valid" time="0.21"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.11" expl="Assertion in line 37">
   <proof prover="1"><result status="valid" time="0.34" steps="920"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.12" expl="Assertion in line 38">
-  <proof prover="1"><result status="valid" time="0.70" steps="2433"/></proof>
+  <proof prover="0"><result status="valid" time="0.28"/></proof>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.13" expl="Assertion in line 39">
-  <proof prover="0"><result status="valid" time="0.46"/></proof>
+  <proof prover="0"><result status="valid" time="0.22"/></proof>
   </goal>
-  <goal name="WP_parameter strcat_ensures_default.14" expl="Assertion in line 43">
-  <proof prover="2"><result status="valid" time="1.81" steps="393433"/></proof>
+  <goal name="WP_parameter strcat_ensures_default.14" expl="Assertion in line 43" expanded="true">
+  <transf name="remove_triggers" expanded="true">
+   <goal name="WP_parameter strcat_ensures_default.14.1" expl="Assertion in line 43">
+   <proof prover="2" timelimit="15" memlimit="3000"><result status="valid" time="0.78" steps="149634"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="WP_parameter strcat_ensures_default.15" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="0.28"/></proof>
+  <proof prover="0"><result status="valid" time="0.35"/></proof>
   </goal>
  </transf>
  </goal>
