@@ -10,7 +10,7 @@
  <proof prover="0"><result status="valid" time="0.10"/></proof>
  </goal>
 </theory>
-<theory name="Function_strreplace_behaviors" sum="ad5230350e165bb87ce0e15a598db254">
+<theory name="Function_strreplace_behaviors" sum="fade90fc1dbb323a342857a182bf9cb5">
  <goal name="WP_parameter strreplace_ensures_default" expl="Function strreplace, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter strreplace_ensures_default.1" expl="loop invariant init">
@@ -19,26 +19,18 @@
   <goal name="WP_parameter strreplace_ensures_default.2" expl="loop invariant preservation">
   <transf name="split_goal_wp">
    <goal name="WP_parameter strreplace_ensures_default.2.1" expl="Function strreplace, default behavior">
-   <transf name="introduce_premises">
+   <transf name="inline_all">
     <goal name="WP_parameter strreplace_ensures_default.2.1.1" expl="Function strreplace, default behavior">
-    <transf name="inline_all">
+    <transf name="eliminate_if">
      <goal name="WP_parameter strreplace_ensures_default.2.1.1.1" expl="Function strreplace, default behavior">
-     <transf name="eliminate_if">
-      <goal name="WP_parameter strreplace_ensures_default.2.1.1.1.1" expl="Function strreplace, default behavior">
-      <transf name="remove_triggers">
-       <goal name="WP_parameter strreplace_ensures_default.2.1.1.1.1.1" expl="Function strreplace, default behavior">
-       <proof prover="0" timelimit="10" memlimit="8000"><result status="valid" time="3.70"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
+     <proof prover="0" timelimit="5" memlimit="1000"><result status="valid" time="0.26"/></proof>
      </goal>
     </transf>
     </goal>
    </transf>
    </goal>
    <goal name="WP_parameter strreplace_ensures_default.2.2" expl="Function strreplace, default behavior">
-   <proof prover="1"><result status="valid" time="0.66" steps="2500"/></proof>
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.53" steps="2500"/></proof>
    </goal>
    <goal name="WP_parameter strreplace_ensures_default.2.3" expl="Function strreplace, default behavior">
    <proof prover="1"><result status="valid" time="0.02" steps="55"/></proof>
@@ -59,7 +51,7 @@
    <proof prover="1"><result status="valid" time="0.20" steps="516"/></proof>
    </goal>
    <goal name="WP_parameter strreplace_ensures_default.2.9" expl="Function strreplace, default behavior">
-   <proof prover="1"><result status="valid" time="0.62" steps="1659"/></proof>
+   <proof prover="0" timelimit="5" memlimit="1000"><result status="valid" time="0.19"/></proof>
    </goal>
    <goal name="WP_parameter strreplace_ensures_default.2.10" expl="Assigns clause">
    <proof prover="0"><result status="valid" time="0.11"/></proof>
@@ -70,7 +62,41 @@
   </transf>
   </goal>
   <goal name="WP_parameter strreplace_ensures_default.3" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.92"/></proof>
+  <transf name="split_goal_wp">
+   <goal name="WP_parameter strreplace_ensures_default.3.1" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.06" steps="315"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.2" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.01" steps="48"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.3" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.02" steps="51"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.4" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.01" steps="51"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.5" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.01" steps="51"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.6" expl="Function strreplace, default behavior">
+   <proof prover="0" timelimit="5" memlimit="1000"><result status="valid" time="0.19"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.7" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.10" steps="470"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.8" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.32" steps="1511"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.9" expl="Function strreplace, default behavior">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.30" steps="1247"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.10" expl="Assigns clause">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.01" steps="46"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.3.11" expl="Assigns clause">
+   <proof prover="1" timelimit="5" memlimit="1000"><result status="valid" time="0.01" steps="46"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="WP_parameter strreplace_ensures_default.4" expl="Assertion in line 23">
   <proof prover="1"><result status="valid" time="0.05" steps="260"/></proof>
