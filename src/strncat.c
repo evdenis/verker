@@ -37,11 +37,12 @@ char *strncat(char *dest, const char *src, size_t count)
 		/*@ loop invariant 0 <= count <= ocount;
 		    loop invariant osrc <= src <= osrc + src_len;
 		    loop invariant mdest <= dest <= mdest + src_len;
-		    loop invariant valid_str(src);
+			loop invariant valid_strn(src, count);
+		    //loop invariant valid_str(src);
 		    loop invariant src - osrc == dest - mdest == ocount - count;
 		    loop invariant \forall integer i; 0 <= i < src - osrc ==>
 		                   mdest[i] == osrc[i];
-		    loop assigns count, mdest[0..src_len];
+		    loop assigns count, src, mdest, dest, mdest[0..src_len], dest[0..src_len];
 		    loop variant count;
 		 */
 		while ((*dest++ = *src++) != 0) {
@@ -57,7 +58,7 @@ char *strncat(char *dest, const char *src, size_t count)
 		 */
 		/*@ assert (count == 0) ==>
 		              (src_len == ocount) &&
-		              (*dest == '\0');
+		              ((*dest == '\0') || *(dest - 1) == '\0');
 		 */
 		// assert count > 0 ==> dest - 1 == tmp + dest_len + strlen(osrc);
 		//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (dest_len + 	src_len);
