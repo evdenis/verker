@@ -2,50 +2,9 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.3.2" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
-<theory name="Function_check_bytes8_0_safety" sum="f214dc0feff67b31e8151b86412f139d">
- <goal name="WP_parameter check_bytes8_0" expl="Function check_bytes8, safety">
- <proof prover="0"><result status="valid" time="0.09"/></proof>
- </goal>
-</theory>
-<theory name="Function_check_bytes8_0_behaviors" sum="56f6c92a103ac54a5d98c66f41419a6d">
- <goal name="WP_parameter check_bytes8_ensures_default" expl="Function check_bytes8, default behavior">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter check_bytes8_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.01" steps="20"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.11" steps="783"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.4" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.02" steps="199"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.5" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="1.27" steps="1632"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.6" expl="Assertion in line 23">
-  <proof prover="1"><result status="valid" time="0.01" steps="36"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.7" expl="Assertion in line 24">
-  <proof prover="1"><result status="valid" time="0.01" steps="38"/></proof>
-  </goal>
-  <goal name="WP_parameter check_bytes8_ensures_default.8" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.01" steps="40"/></proof>
-  </goal>
- </transf>
- </goal>
- <goal name="WP_parameter check_bytes8_ensures_found" expl="Function check_bytes8, behavior found">
- <proof prover="0"><result status="valid" time="0.14"/></proof>
- </goal>
- <goal name="WP_parameter check_bytes8_ensures_not_exists" expl="Function check_bytes8, behavior not_exists">
- <proof prover="1"><result status="valid" time="0.04" steps="220"/></proof>
- </goal>
-</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -831,6 +790,47 @@
 <theory name="Function_check_bytes8_0_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_check_bytes8_0_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
+<theory name="Function_check_bytes8_0_safety" sum="f214dc0feff67b31e8151b86412f139d" expanded="true">
+ <goal name="WP_parameter check_bytes8_0" expl="Function check_bytes8, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.18"/></proof>
+ </goal>
+</theory>
+<theory name="Function_check_bytes8_0_behaviors" sum="56f6c92a103ac54a5d98c66f41419a6d" expanded="true">
+ <goal name="WP_parameter check_bytes8_ensures_default" expl="Function check_bytes8, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter check_bytes8_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="0"><result status="valid" time="0.02" steps="22"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.2" expl="Behavior completeness check">
+  <proof prover="0"><result status="valid" time="0.01" steps="20"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.3" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.16" steps="783"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.4" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.03" steps="199"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.5" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="1.71" steps="1632"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.6" expl="Assertion in line 23">
+  <proof prover="0"><result status="valid" time="0.02" steps="36"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.7" expl="Assertion in line 24">
+  <proof prover="0"><result status="valid" time="0.02" steps="38"/></proof>
+  </goal>
+  <goal name="WP_parameter check_bytes8_ensures_default.8" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.01" steps="40"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter check_bytes8_ensures_found" expl="Function check_bytes8, behavior found" expanded="true">
+ <proof prover="1"><result status="valid" time="0.25"/></proof>
+ </goal>
+ <goal name="WP_parameter check_bytes8_ensures_not_exists" expl="Function check_bytes8, behavior not_exists" expanded="true">
+ <proof prover="0"><result status="valid" time="0.04" steps="220"/></proof>
+ </goal>
 </theory>
 </file>
 </why3session>

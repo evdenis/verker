@@ -2,36 +2,36 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.3.2" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw">
 <theory name="Function_memcmp_safety" sum="e7499e1c0257461e76c4cc03b9ffb17d">
  <goal name="WP_parameter memcmp" expl="Function memcmp, safety">
- <proof prover="0"><result status="valid" time="0.11"/></proof>
+ <proof prover="1"><result status="valid" time="0.19"/></proof>
  </goal>
 </theory>
 <theory name="Function_memcmp_behaviors" sum="f55880b5e5b70879e6b7df035e876764">
  <goal name="WP_parameter memcmp_ensures_default" expl="Function memcmp, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memcmp_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="1"><result status="valid" time="0.01" steps="30"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
   </goal>
   <goal name="WP_parameter memcmp_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="1"><result status="valid" time="0.01" steps="28"/></proof>
+  <proof prover="0"><result status="valid" time="0.01" steps="28"/></proof>
   </goal>
   <goal name="WP_parameter memcmp_ensures_default.3" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.15" steps="992"/></proof>
+  <proof prover="0"><result status="valid" time="0.13" steps="992"/></proof>
   </goal>
   <goal name="WP_parameter memcmp_ensures_default.4" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.44" steps="3016"/></proof>
+  <proof prover="0"><result status="valid" time="0.59" steps="3146"/></proof>
   </goal>
  </transf>
  </goal>
  <goal name="WP_parameter memcmp_ensures_diff" expl="Function memcmp, behavior diff">
- <proof prover="0"><result status="valid" time="0.25"/></proof>
+ <proof prover="1"><result status="valid" time="0.43"/></proof>
  </goal>
  <goal name="WP_parameter memcmp_ensures_equal" expl="Function memcmp, behavior equal">
- <proof prover="1"><result status="valid" time="0.14" steps="668"/></proof>
+ <proof prover="0"><result status="valid" time="0.11" steps="668"/></proof>
  </goal>
 </theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e">

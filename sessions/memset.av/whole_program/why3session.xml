@@ -2,28 +2,28 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="1" name="Alt-Ergo" version="2.3.2" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw">
 <theory name="Function_memset_safety" sum="0ef47a6cc4c49eeca2e5dc4c7a082016">
  <goal name="WP_parameter memset" expl="Function memset, safety">
- <proof prover="1"><result status="valid" time="0.36" steps="839"/></proof>
+ <proof prover="0"><result status="valid" time="0.29" steps="839"/></proof>
  </goal>
 </theory>
 <theory name="Function_memset_behaviors" sum="46ff356b7e520d90866a6870aa2eba7d">
  <goal name="WP_parameter memset_ensures_default" expl="Function memset, default behavior">
  <transf name="split_goal_wp">
   <goal name="WP_parameter memset_ensures_default.1" expl="loop invariant init">
-  <proof prover="1"><result status="valid" time="0.57" steps="2069"/></proof>
+  <proof prover="0"><result status="valid" time="0.63" steps="2069"/></proof>
   </goal>
   <goal name="WP_parameter memset_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="1.07"/></proof>
+  <proof prover="1"><result status="valid" time="0.30"/></proof>
   </goal>
   <goal name="WP_parameter memset_ensures_default.3" expl="Assertion in line 17">
-  <proof prover="1"><result status="valid" time="0.05" steps="309"/></proof>
+  <proof prover="0"><result status="valid" time="0.07" steps="309"/></proof>
   </goal>
   <goal name="WP_parameter memset_ensures_default.4" expl="Postcondition">
-  <proof prover="1"><result status="valid" time="0.05" steps="437"/></proof>
+  <proof prover="0"><result status="valid" time="0.08" steps="437"/></proof>
   </goal>
  </transf>
  </goal>
