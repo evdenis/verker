@@ -23,12 +23,12 @@ before_install:
   - export PATH="${PATH}:${HOME}/bin"
   - sudo apt-get update -qq
   - which cvc4 || (
-      wget --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.7-x86_64-linux-opt
+      wget --quiet --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.7-x86_64-linux-opt
            -O $HOME/bin/cvc4 &&
       chmod +x $HOME/bin/cvc4
     )
   - which opam || (
-      wget --no-clobber https://github.com/ocaml/opam/releases/download/2.0.6/opam-2.0.6-x86_64-linux
+      wget --quiet --no-clobber https://github.com/ocaml/opam/releases/download/2.0.6/opam-2.0.7-x86_64-linux
            -O $HOME/bin/opam &&
       chmod +x $HOME/bin/opam
     )
@@ -45,7 +45,7 @@ install:
   - opam upgrade --yes
   - opam depext --yes --noninteractive --install frama-c astraver why3 alt-ergo
   - rm -fr ~/.opam/log
-  - eval $(opam config env); why3 config --detect
+  - eval $(opam env); why3 config --detect
   - sed -i -e 's/running_provers_max = [[:digit:]]/running_provers_max = 1/' $HOME/.why3.conf
 
 script:
