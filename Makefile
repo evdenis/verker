@@ -239,13 +239,11 @@ start:
   c CVC4,, 2 2000
   c Eprover,, 2 2000
   t split_goal_wp start
-  t introduce_premises next1
-next1:
-  t inline_all next2
-next2:
-  t eliminate_if next3
-next3:
   t remove_triggers start
+  t introduce_premises start
+  t eliminate_if start
+  t inline_all next
+next:
   c Alt-Ergo,, $(TIMEOUT) 8000
   c CVC4,,noBV $(TIMEOUT) 8000
   c CVC4,, $(TIMEOUT) 8000
