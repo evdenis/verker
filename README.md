@@ -27,31 +27,32 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 | 10 | strchrnul     | proved | proved         | yes       |         |
 | 11 | strcmp        | proved | proved         | yes       |         |
 | 12 | strcpy        | proved | not required   |           | use strcmp logic function |
-| 13 | strcspn       | proved | proved         | yes       |         |
-| 14 | strim         |        | not required   | !const    |         |
-| 15 | strlen        | proved | proved         | yes       |         |
-| 16 | strncasecmp   |        |                | yes       |         |
-| 17 | strncat       |        | not required   |           |         |
-| 18 | strnchr       | proved |                | yes       |         |
-| 19 | strncmp       | proved |                | yes       |         |
-| 20 | strncpy       |        | not required   |           |         |
-| 21 | strnlen       | proved | proved         | yes       |         |
-| 22 | strnstr       |        |                | yes       |         |
-| 23 | strpbrk       | proved | proved         | yes       |         |
-| 24 | strrchr       | proved |                | yes       |         |
-| 25 | strreplace    | proved | not required   | !const    |         |
-| 26 | strsep        | proved | not required   | !const    |         |
-| 27 | strspn        | proved | proved         | yes       |         |
-| 28 | strstr        |        |                | yes       |         |
-| 29 | sysfs\_streq  | proved |                | yes       |         |
-| 30 | strlcat       |        | not required   |           |         |
-| 31 | strlcpy       | proved | not required   |           | use strncmp lf in ensures |
-| 32 | memmove       | proved\*| not required   |           | use memcmp logic function at ensures |
-| 33 | memcpy        | proved | not required   |           | use memcmp logic function at ensures |
-| 34 | memset        | proved | not required   | !const    |         |
-| 35 | kstrtobool    | proved | not required   | yes       |         |
-| 36 | \_parse\_integer\_fixup\_radix | proved | not required | yes | |
-| 37 | \_parse\_integer |     |                | yes       |         |
+| 13 | stpcpy        | proved | not required   |           |         |
+| 14 | strcspn       | proved | proved         | yes       |         |
+| 15 | strim         |        | not required   | !const    |         |
+| 16 | strlen        | proved | proved         | yes       |         |
+| 17 | strncasecmp   |        |                | yes       |         |
+| 18 | strncat       |        | not required   |           |         |
+| 19 | strnchr       | proved |                | yes       |         |
+| 20 | strncmp       | proved |                | yes       |         |
+| 21 | strncpy       |        | not required   |           |         |
+| 22 | strnlen       | proved | proved         | yes       |         |
+| 23 | strnstr       |        |                | yes       |         |
+| 24 | strpbrk       | proved | proved         | yes       |         |
+| 25 | strrchr       | proved |                | yes       |         |
+| 26 | strreplace    | proved | not required   | !const    |         |
+| 27 | strsep        | proved | not required   | !const    |         |
+| 28 | strspn        | proved | proved         | yes       |         |
+| 29 | strstr        |        |                | yes       |         |
+| 30 | sysfs\_streq  | proved |                | yes       |         |
+| 31 | strlcat       |        | not required   |           |         |
+| 32 | strlcpy       | proved | not required   |           | use strncmp lf in ensures |
+| 33 | memmove       | proved\*| not required   |           | use memcmp logic function at ensures |
+| 34 | memcpy        | proved | not required   |           | use memcmp logic function at ensures |
+| 35 | memset        | proved | not required   | !const    |         |
+| 36 | kstrtobool    | proved | not required   | yes       |         |
+| 37 | \_parse\_integer\_fixup\_radix | proved | not required | yes | |
+| 38 | \_parse\_integer |     |                | yes       |         |
 
  \* memmove - except pointer difference vc fail. Model limitation.
 
