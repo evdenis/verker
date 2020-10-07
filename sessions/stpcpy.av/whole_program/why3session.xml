@@ -2,80 +2,192 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
-<prover id="2" name="Alt-Ergo" version="2.3.2" timelimit="2" steplimit="0" memlimit="2000"/>
-<file name="../whole_program.mlw">
-<theory name="Function_stpcpy_safety" sum="9b977ba9ee643141c80e10992ff9d1f0">
- <goal name="WP_parameter stpcpy" expl="Function stpcpy, safety">
- <proof prover="0"><result status="valid" time="0.11"/></proof>
- </goal>
-</theory>
-<theory name="Function_stpcpy_behaviors" sum="9d6e061c962eaf7100b74612fcf9a7aa">
- <goal name="WP_parameter stpcpy_ensures_default" expl="Function stpcpy, default behavior">
- <transf name="split_goal_wp">
-  <goal name="WP_parameter stpcpy_ensures_default.1" expl="Assertion in line 16">
-  <proof prover="2"><result status="valid" time="0.01" steps="16"/></proof>
+<prover id="1" name="Alt-Ergo" version="2.3.3" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.7" timelimit="5" steplimit="0" memlimit="1000"/>
+<file name="../whole_program.mlw" expanded="true">
+<theory name="Function_stpcpy_safety" sum="38cc9ad9a44e18364e5456be7d88e9fb" expanded="true">
+ <goal name="WP_parameter stpcpy" expl="Function stpcpy, safety" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter stpcpy.1" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="46"/></proof>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.2" expl="loop invariant init">
-  <proof prover="2"><result status="valid" time="0.18" steps="948"/></proof>
+  <goal name="WP_parameter stpcpy.2" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="49"/></proof>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.3" expl="loop invariant preservation">
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter stpcpy_ensures_default.3.1" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="70"/></proof>
+  <goal name="WP_parameter stpcpy.3" expl="Pointer dereference (Validity)" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy.3.1" expl="Function stpcpy, safety">
+   <proof prover="1"><result status="valid" time="0.03" steps="228"/></proof>
    </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.2" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="70"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.3" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="70"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.4" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.99" steps="1482"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.5" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="78"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.6" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="78"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.7" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="78"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.8" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.05" steps="499"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.9" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.14" steps="598"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.10" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.02" steps="88"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.11" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.17" steps="644"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.12" expl="Function stpcpy, default behavior">
-   <proof prover="2"><result status="valid" time="0.10" steps="698"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.13" expl="Assigns clause">
-   <proof prover="0"><result status="valid" time="0.13"/></proof>
-   </goal>
-   <goal name="WP_parameter stpcpy_ensures_default.3.14" expl="Assigns clause">
-   <proof prover="0"><result status="valid" time="0.12"/></proof>
+   <goal name="WP_parameter stpcpy.3.2" expl="Function stpcpy, safety">
+   <proof prover="1"><result status="valid" time="0.04" steps="371"/></proof>
    </goal>
   </transf>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.4" expl="Assertion in line 30">
-  <proof prover="2"><result status="valid" time="0.24" steps="1225"/></proof>
+  <goal name="WP_parameter stpcpy.4" expl="Pointer dereference (Assignment)" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy.4.1" expl="Left valid">
+   <proof prover="1"><result status="valid" time="0.11" steps="386"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy.4.2" expl="Right valid">
+   <proof prover="1"><result status="valid" time="0.10" steps="386"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.5" expl="Assertion in line 31">
-  <proof prover="2"><result status="valid" time="0.14" steps="482"/></proof>
+  <goal name="WP_parameter stpcpy.5" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.02" steps="70"/></proof>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.6" expl="Assertion in line 32">
-  <proof prover="2"><result status="valid" time="0.15" steps="575"/></proof>
+  <goal name="WP_parameter stpcpy.6" expl="loop variant decrease" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy.6.1" expl="Function stpcpy, safety">
+   <proof prover="1"><result status="valid" time="0.03" steps="262"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy.6.2" expl="Function stpcpy, safety">
+   <proof prover="1"><result status="valid" time="0.02" steps="78"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="WP_parameter stpcpy_ensures_default.7" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="0.34"/></proof>
+  <goal name="WP_parameter stpcpy.7" expl="Integer cast (integer overflow)">
+  <proof prover="1"><result status="valid" time="0.01" steps="81"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_stpcpy_behaviors" sum="0381b641608fe16be58164e7581f74ac" expanded="true">
+ <goal name="WP_parameter stpcpy_ensures_default" expl="Function stpcpy, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter stpcpy_ensures_default.1" expl="Assertion in line 7">
+  <proof prover="1"><result status="valid" time="0.01" steps="16"/></proof>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.2" expl="loop invariant init" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy_ensures_default.2.1" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.2" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.3" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.4" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="78"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.5" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="30"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.6" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="30"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.7" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="30"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.8" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.05" steps="213"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.9" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="33"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.10" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="38"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.11" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.01" steps="40"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.12" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="37"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.13" expl="Assigns clause">
+   <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.2.14" expl="Assigns clause">
+   <proof prover="1"><result status="valid" time="0.01" steps="22"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.3" expl="loop invariant preservation" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy_ensures_default.3.1" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="70"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.2" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="70"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.3" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="70"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.4" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.92" steps="1482"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.5" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="78"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.6" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="78"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.7" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="78"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.8" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.05" steps="499"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.9" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.16" steps="598"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.10" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.02" steps="88"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.11" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.16" steps="644"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.12" expl="Function stpcpy, default behavior">
+   <proof prover="1"><result status="valid" time="0.09" steps="698"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.13" expl="Assigns clause">
+   <proof prover="1"><result status="timeout" time="5.00"/></proof>
+   <proof prover="3"><result status="valid" time="0.13" steps="34195"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.3.14" expl="Assigns clause">
+   <proof prover="1"><result status="timeout" time="4.98"/></proof>
+   <proof prover="3"><result status="valid" time="0.14" steps="34175"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.4" expl="Assertion in line 21" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy_ensures_default.4.1" expl="Assertion in line 21">
+   <proof prover="1"><result status="valid" time="0.11" steps="459"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.4.2" expl="Assertion in line 21">
+   <proof prover="1"><result status="valid" time="0.11" steps="457"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.5" expl="Assertion in line 22">
+  <proof prover="1"><result status="valid" time="0.15" steps="482"/></proof>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.6" expl="Assertion in line 23">
+  <proof prover="1"><result status="valid" time="0.15" steps="575"/></proof>
+  </goal>
+  <goal name="WP_parameter stpcpy_ensures_default.7" expl="Postcondition" expanded="true">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter stpcpy_ensures_default.7.1" expl="Assigns clause">
+   <proof prover="1"><result status="timeout" time="5.00"/></proof>
+   <proof prover="3"><result status="valid" time="0.17" steps="40467"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.7.2" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.62" steps="1889"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.7.3" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.01" steps="79"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.7.4" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.19" steps="795"/></proof>
+   </goal>
+   <goal name="WP_parameter stpcpy_ensures_default.7.5" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.70" steps="2056"/></proof>
+   </goal>
+  </transf>
   </goal>
  </transf>
  </goal>
