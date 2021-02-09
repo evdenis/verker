@@ -2,9 +2,32 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_memcpy_safety" sum="0509ec78fd985bc6e247532ffc16630d" expanded="true">
+ <goal name="WP_parameter memcpy" expl="Function memcpy, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.20" steps="2920"/></proof>
+ </goal>
+</theory>
+<theory name="Function_memcpy_behaviors" sum="487a640bac9a93147f3a631a74ab740c" expanded="true">
+ <goal name="WP_parameter memcpy_ensures_default" expl="Function memcpy, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter memcpy_ensures_default.1" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.92" steps="18747"/></proof>
+  </goal>
+  <goal name="WP_parameter memcpy_ensures_default.2" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.21"/></proof>
+  </goal>
+  <goal name="WP_parameter memcpy_ensures_default.3" expl="Assertion in line 20">
+  <proof prover="0"><result status="valid" time="0.05" steps="771"/></proof>
+  </goal>
+  <goal name="WP_parameter memcpy_ensures_default.4" expl="Postcondition">
+  <proof prover="0"><result status="valid" time="0.03" steps="321"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -770,29 +793,6 @@
 <theory name="Function_memcpy" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_memcpy_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_memcpy_safety" sum="0509ec78fd985bc6e247532ffc16630d" expanded="true">
- <goal name="WP_parameter memcpy" expl="Function memcpy, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.20" steps="1134"/></proof>
- </goal>
-</theory>
-<theory name="Function_memcpy_behaviors" sum="487a640bac9a93147f3a631a74ab740c" expanded="true">
- <goal name="WP_parameter memcpy_ensures_default" expl="Function memcpy, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter memcpy_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.92" steps="3445"/></proof>
-  </goal>
-  <goal name="WP_parameter memcpy_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.21"/></proof>
-  </goal>
-  <goal name="WP_parameter memcpy_ensures_default.3" expl="Assertion in line 20">
-  <proof prover="0"><result status="valid" time="0.05" steps="383"/></proof>
-  </goal>
-  <goal name="WP_parameter memcpy_ensures_default.4" expl="Postcondition">
-  <proof prover="0"><result status="valid" time="0.03" steps="211"/></proof>
-  </goal>
- </transf>
- </goal>
 </theory>
 </file>
 </why3session>

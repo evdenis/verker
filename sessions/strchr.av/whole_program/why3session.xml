@@ -2,9 +2,100 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strchr_0_safety" sum="d1e9a70a8e43bf049511303869dc4874" expanded="true">
+ <goal name="WP_parameter strchr_0" expl="Function strchr, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.27" steps="4231"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_0_behaviors" sum="5b3da881c924fadeadae9c5bc7caea16" expanded="true">
+ <goal name="WP_parameter strchr_ensures_default" expl="Function strchr, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strchr_ensures_default.1" expl="Behavior disjointness check">
+  <proof prover="0"><result status="valid" time="0.03" steps="225"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.2" expl="Behavior completeness check">
+  <proof prover="0"><result status="valid" time="0.02" steps="225"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.3" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.07" steps="1111"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.4" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.03" steps="396"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.5" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.20"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.6" expl="Assertion in line 16">
+  <proof prover="0"><result status="valid" time="0.58" steps="7861"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.7" expl="Assertion in line 17">
+  <proof prover="0"><result status="valid" time="0.03" steps="314"/></proof>
+  </goal>
+  <goal name="WP_parameter strchr_ensures_default.8" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.03" steps="286"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter strchr_ensures_exists" expl="Function strchr, behavior exists" expanded="true">
+ <proof prover="0"><result status="valid" time="0.56" steps="7436"/></proof>
+ </goal>
+ <goal name="WP_parameter strchr_ensures_not_exists" expl="Function strchr, behavior not_exists" expanded="true">
+ <proof prover="0"><result status="valid" time="0.03" steps="306"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_mem_safety" sum="77351831fec9846c7a3b6485f6f60ac3" expanded="true">
+ <goal name="WP_parameter strchr_mem" expl="Function strchr_mem, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.16"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_mem_behaviors" sum="6af77e13dd8fa6118fe65f7a63b6d4f8" expanded="true">
+ <goal name="WP_parameter strchr_mem_ensures_default" expl="Function strchr_mem, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="1.25" steps="15255"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_res_safety" sum="7fc01d2f1cd7cc95c842473074ce9e9b" expanded="true">
+ <goal name="WP_parameter strchr_res" expl="Function strchr_res, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="1.16" steps="18599"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_res_behaviors" sum="a042d76dae0de0ae6c0a6a716d0f5908" expanded="true">
+ <goal name="WP_parameter strchr_res_ensures_default" expl="Function strchr_res, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.10" steps="1877"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_defn_safety" sum="1f1f46d40450a17ad04620a6c2f9dde2" expanded="true">
+ <goal name="WP_parameter strchr_defn" expl="Function strchr_defn, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.08"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_defn_behaviors" sum="16528efbcc1cd790ac14d53d4f89fe53" expanded="true">
+ <goal name="WP_parameter strchr_defn_ensures_default" expl="Function strchr_defn, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.15"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_not_null_safety" sum="68e86c2ee9d192e1b9a14bbadda79fcd" expanded="true">
+ <goal name="WP_parameter strchr_not_null" expl="Function strchr_not_null, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="1.11"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_not_null_behaviors" sum="c9ddf277daee28f2dfa86797ba4b9d12" expanded="true">
+ <goal name="WP_parameter strchr_not_null_ensures_default" expl="Function strchr_not_null, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.13"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_skipped_safety" sum="188a2766fb42520a2f49d284617d657e" expanded="true">
+ <goal name="WP_parameter strchr_skipped" expl="Function strchr_skipped, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.09"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strchr_skipped_behaviors" sum="b2beea5deaf866abc85f947c72664ad0" expanded="true">
+ <goal name="WP_parameter strchr_skipped_ensures_default" expl="Function strchr_skipped, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.11"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -836,97 +927,6 @@
 <theory name="Function_strchr_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strchr_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strchr_0_safety" sum="d1e9a70a8e43bf049511303869dc4874" expanded="true">
- <goal name="WP_parameter strchr_0" expl="Function strchr, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.27" steps="1254"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_0_behaviors" sum="5b3da881c924fadeadae9c5bc7caea16" expanded="true">
- <goal name="WP_parameter strchr_ensures_default" expl="Function strchr, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strchr_ensures_default.1" expl="Behavior disjointness check">
-  <proof prover="0"><result status="valid" time="0.03" steps="155"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.2" expl="Behavior completeness check">
-  <proof prover="0"><result status="valid" time="0.02" steps="153"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.3" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.07" steps="483"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.4" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.03" steps="303"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.5" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.20"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.6" expl="Assertion in line 16">
-  <proof prover="0"><result status="valid" time="0.58" steps="1060"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.7" expl="Assertion in line 17">
-  <proof prover="0"><result status="valid" time="0.03" steps="204"/></proof>
-  </goal>
-  <goal name="WP_parameter strchr_ensures_default.8" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.03" steps="174"/></proof>
-  </goal>
- </transf>
- </goal>
- <goal name="WP_parameter strchr_ensures_exists" expl="Function strchr, behavior exists" expanded="true">
- <proof prover="0"><result status="valid" time="0.29" steps="1851"/></proof>
- </goal>
- <goal name="WP_parameter strchr_ensures_not_exists" expl="Function strchr, behavior not_exists" expanded="true">
- <proof prover="0"><result status="valid" time="0.03" steps="170"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_mem_safety" sum="77351831fec9846c7a3b6485f6f60ac3" expanded="true">
- <goal name="WP_parameter strchr_mem" expl="Function strchr_mem, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.16"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_mem_behaviors" sum="6af77e13dd8fa6118fe65f7a63b6d4f8" expanded="true">
- <goal name="WP_parameter strchr_mem_ensures_default" expl="Function strchr_mem, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="1.56" steps="4944"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_res_safety" sum="7fc01d2f1cd7cc95c842473074ce9e9b" expanded="true">
- <goal name="WP_parameter strchr_res" expl="Function strchr_res, safety" expanded="true">
- <proof prover="0"><result status="valid" time="1.16" steps="1899"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_res_behaviors" sum="a042d76dae0de0ae6c0a6a716d0f5908" expanded="true">
- <goal name="WP_parameter strchr_res_ensures_default" expl="Function strchr_res, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.10" steps="983"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_defn_safety" sum="1f1f46d40450a17ad04620a6c2f9dde2" expanded="true">
- <goal name="WP_parameter strchr_defn" expl="Function strchr_defn, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.08"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_defn_behaviors" sum="16528efbcc1cd790ac14d53d4f89fe53" expanded="true">
- <goal name="WP_parameter strchr_defn_ensures_default" expl="Function strchr_defn, default behavior" expanded="true">
- <proof prover="1"><result status="valid" time="0.15"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_not_null_safety" sum="68e86c2ee9d192e1b9a14bbadda79fcd" expanded="true">
- <goal name="WP_parameter strchr_not_null" expl="Function strchr_not_null, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.76"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_not_null_behaviors" sum="c9ddf277daee28f2dfa86797ba4b9d12" expanded="true">
- <goal name="WP_parameter strchr_not_null_ensures_default" expl="Function strchr_not_null, default behavior" expanded="true">
- <proof prover="1"><result status="valid" time="0.13"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_skipped_safety" sum="188a2766fb42520a2f49d284617d657e" expanded="true">
- <goal name="WP_parameter strchr_skipped" expl="Function strchr_skipped, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.09"/></proof>
- </goal>
-</theory>
-<theory name="Function_strchr_skipped_behaviors" sum="b2beea5deaf866abc85f947c72664ad0" expanded="true">
- <goal name="WP_parameter strchr_skipped_ensures_default" expl="Function strchr_skipped, default behavior" expanded="true">
- <proof prover="1"><result status="valid" time="0.11"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>

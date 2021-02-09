@@ -2,9 +2,95 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strreplace_safety" sum="fa27af991159bf7cdc136a0ed0229a96" expanded="true">
+ <goal name="WP_parameter strreplace" expl="Function strreplace, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.09"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strreplace_behaviors" sum="a335930fbdfd31bbc4e6b9300fd5de6f" expanded="true">
+ <goal name="WP_parameter strreplace_ensures_default" expl="Function strreplace, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strreplace_ensures_default.1" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.07" steps="1527"/></proof>
+  </goal>
+  <goal name="WP_parameter strreplace_ensures_default.2" expl="loop invariant preservation">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter strreplace_ensures_default.2.1" expl="Function strreplace, default behavior">
+   <transf name="remove_triggers" expanded="true">
+    <goal name="WP_parameter strreplace_ensures_default.2.1.1" expl="Function strreplace, default behavior">
+    <proof prover="0"><result status="valid" time="1.75" steps="27743"/></proof>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.2" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.33" steps="5106"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.3" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.02" steps="108"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.4" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.02" steps="121"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.5" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.01" steps="110"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.6" expl="Function strreplace, default behavior">
+   <proof prover="1"><result status="valid" time="0.21"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.7" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.24" steps="3196"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.8" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.12" steps="1863"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.9" expl="Function strreplace, default behavior">
+   <proof prover="0"><result status="valid" time="0.44" steps="5362"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.10" expl="Assigns clause">
+   <proof prover="1"><result status="valid" time="0.09"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.2.11" expl="Assigns clause">
+   <proof prover="1"><result status="valid" time="0.09"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strreplace_ensures_default.3" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.69"/></proof>
+  </goal>
+  <goal name="WP_parameter strreplace_ensures_default.4" expl="Assertion in line 23">
+  <proof prover="0"><result status="valid" time="0.05" steps="603"/></proof>
+  </goal>
+  <goal name="WP_parameter strreplace_ensures_default.5" expl="Assertion in line 24">
+  <proof prover="0"><result status="valid" time="0.13" steps="1398"/></proof>
+  </goal>
+  <goal name="WP_parameter strreplace_ensures_default.6" expl="Postcondition">
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter strreplace_ensures_default.6.1" expl="Assigns clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="49"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.6.2" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="111"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.6.3" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.04" steps="498"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.6.4" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.03" steps="507"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.6.5" expl="Ensures clause">
+   <proof prover="0"><result status="valid" time="0.01" steps="49"/></proof>
+   </goal>
+   <goal name="WP_parameter strreplace_ensures_default.6.6" expl="Ensures clause">
+   <proof prover="1"><result status="valid" time="0.27"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -804,92 +890,6 @@
 <theory name="Function_strreplace" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strreplace_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strreplace_safety" sum="fa27af991159bf7cdc136a0ed0229a96" expanded="true">
- <goal name="WP_parameter strreplace" expl="Function strreplace, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.09"/></proof>
- </goal>
-</theory>
-<theory name="Function_strreplace_behaviors" sum="a335930fbdfd31bbc4e6b9300fd5de6f" expanded="true">
- <goal name="WP_parameter strreplace_ensures_default" expl="Function strreplace, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strreplace_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.07" steps="470"/></proof>
-  </goal>
-  <goal name="WP_parameter strreplace_ensures_default.2" expl="loop invariant preservation">
-  <transf name="split_goal_wp" expanded="true">
-   <goal name="WP_parameter strreplace_ensures_default.2.1" expl="Function strreplace, default behavior">
-   <transf name="remove_triggers" expanded="true">
-    <goal name="WP_parameter strreplace_ensures_default.2.1.1" expl="Function strreplace, default behavior">
-    <proof prover="0"><result status="valid" time="1.75" steps="4357"/></proof>
-    </goal>
-   </transf>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.2" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.48" steps="2505"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.3" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="55"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.4" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="55"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.5" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="55"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.6" expl="Function strreplace, default behavior">
-   <proof prover="1"><result status="valid" time="0.21"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.7" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.24" steps="1276"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.8" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.12" steps="510"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.9" expl="Function strreplace, default behavior">
-   <proof prover="0"><result status="valid" time="0.44" steps="1659"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.10" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.09"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.2.11" expl="Assigns clause">
-   <proof prover="1"><result status="valid" time="0.09"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strreplace_ensures_default.3" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.51"/></proof>
-  </goal>
-  <goal name="WP_parameter strreplace_ensures_default.4" expl="Assertion in line 23">
-  <proof prover="0"><result status="valid" time="0.05" steps="260"/></proof>
-  </goal>
-  <goal name="WP_parameter strreplace_ensures_default.5" expl="Assertion in line 24">
-  <proof prover="0"><result status="valid" time="0.13" steps="817"/></proof>
-  </goal>
-  <goal name="WP_parameter strreplace_ensures_default.6" expl="Postcondition">
-  <transf name="split_goal_wp" expanded="true">
-   <goal name="WP_parameter strreplace_ensures_default.6.1" expl="Assigns clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="42"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.6.2" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="45"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.6.3" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="0.04" steps="322"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.6.4" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="0.03" steps="325"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.6.5" expl="Ensures clause">
-   <proof prover="0"><result status="valid" time="0.01" steps="42"/></proof>
-   </goal>
-   <goal name="WP_parameter strreplace_ensures_default.6.6" expl="Ensures clause">
-   <proof prover="1"><result status="valid" time="0.27"/></proof>
-   </goal>
-  </transf>
-  </goal>
- </transf>
- </goal>
 </theory>
 </file>
 </why3session>

@@ -2,10 +2,70 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="2" name="CVC4" version="1.7" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strcat_safety" sum="bc7ebda18543f48bac7038a196d14637" expanded="true">
+ <goal name="WP_parameter strcat" expl="Function strcat, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.27"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strcat_behaviors" sum="cecbf03ed73b7d44c409b58324a7434f" expanded="true">
+ <goal name="WP_parameter strcat_ensures_default" expl="Function strcat, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strcat_ensures_default.1" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.06" steps="806"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.2" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="0.55" steps="7738"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.3" expl="Assertion in line 16">
+  <proof prover="0"><result status="valid" time="0.01" steps="84"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.4" expl="Assertion in line 17">
+  <proof prover="0"><result status="valid" time="0.62" steps="6758"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.5" expl="Assertion in line 18">
+  <proof prover="0"><result status="valid" time="0.01" steps="52"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.6" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.85" steps="11674"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.7" expl="loop invariant preservation">
+  <proof prover="2"><result status="valid" time="0.94" steps="115150"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.8" expl="Assertion in line 34">
+  <proof prover="1"><result status="valid" time="1.57"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.9" expl="Assertion in line 35">
+  <proof prover="0"><result status="valid" time="0.76" steps="8552"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.10" expl="Assertion in line 36">
+  <proof prover="0"><result status="valid" time="0.26" steps="3482"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.11" expl="Assertion in line 37">
+  <proof prover="0"><result status="valid" time="0.29" steps="4016"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.12" expl="Assertion in line 38">
+  <proof prover="0"><result status="valid" time="0.91" steps="9377"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.13" expl="Assertion in line 39">
+  <proof prover="1"><result status="valid" time="0.19"/></proof>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.14" expl="Assertion in line 43">
+  <transf name="remove_triggers" expanded="true">
+   <goal name="WP_parameter strcat_ensures_default.14.1" expl="Assertion in line 43">
+   <proof prover="1"><result status="valid" time="0.89"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="WP_parameter strcat_ensures_default.15" expl="Postcondition">
+  <proof prover="1"><result status="valid" time="0.26"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -805,66 +865,6 @@
 <theory name="Function_strcat" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strcat_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strcat_safety" sum="bc7ebda18543f48bac7038a196d14637" expanded="true">
- <goal name="WP_parameter strcat" expl="Function strcat, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.27"/></proof>
- </goal>
-</theory>
-<theory name="Function_strcat_behaviors" sum="cecbf03ed73b7d44c409b58324a7434f" expanded="true">
- <goal name="WP_parameter strcat_ensures_default" expl="Function strcat, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strcat_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.06" steps="216"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.2" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.38" steps="2162"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.3" expl="Assertion in line 16">
-  <proof prover="0"><result status="valid" time="0.01" steps="43"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.4" expl="Assertion in line 17">
-  <proof prover="0"><result status="valid" time="0.45" steps="1292"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.5" expl="Assertion in line 18">
-  <proof prover="0"><result status="valid" time="0.01" steps="42"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.6" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.62" steps="2082"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.7" expl="loop invariant preservation">
-  <proof prover="2"><result status="valid" time="0.51" steps="115150"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.8" expl="Assertion in line 34">
-  <proof prover="1"><result status="valid" time="0.85"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.9" expl="Assertion in line 35">
-  <proof prover="0"><result status="valid" time="0.59" steps="2149"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.10" expl="Assertion in line 36">
-  <proof prover="0"><result status="valid" time="0.26" steps="891"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.11" expl="Assertion in line 37">
-  <proof prover="0"><result status="valid" time="0.29" steps="920"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.12" expl="Assertion in line 38">
-  <proof prover="0"><result status="valid" time="0.67" steps="2433"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.13" expl="Assertion in line 39">
-  <proof prover="1"><result status="valid" time="0.19"/></proof>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.14" expl="Assertion in line 43">
-  <transf name="remove_triggers" expanded="true">
-   <goal name="WP_parameter strcat_ensures_default.14.1" expl="Assertion in line 43">
-   <proof prover="1"><result status="valid" time="0.57"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="WP_parameter strcat_ensures_default.15" expl="Postcondition">
-  <proof prover="1"><result status="valid" time="0.26"/></proof>
-  </goal>
- </transf>
- </goal>
 </theory>
 </file>
 </why3session>

@@ -2,9 +2,28 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strsep_safety" sum="c2a30bbdf6e29e928077f42d94f81e1d" expanded="true">
+ <goal name="WP_parameter strsep" expl="Function strsep, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.13" steps="593"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strsep_behaviors" sum="a1df2e10ca964865893ae448e67fce03" expanded="true">
+ <goal name="WP_parameter strsep_ensures_default" expl="Function strsep, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="6"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_null" expl="Function strsep, behavior input_null" expanded="true">
+ <proof prover="0"><result status="valid" time="0.02" steps="40"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_strpbrk_not_null" expl="Function strsep, behavior input_strpbrk_not_null" expanded="true">
+ <proof prover="1"><result status="valid" time="0.15"/></proof>
+ </goal>
+ <goal name="WP_parameter strsep_ensures_input_strpbrk_null" expl="Function strsep, behavior input_strpbrk_null" expanded="true">
+ <proof prover="0"><result status="valid" time="0.89" steps="11969"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -880,25 +899,6 @@
 <theory name="Function_strsep" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strsep_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strsep_safety" sum="c2a30bbdf6e29e928077f42d94f81e1d" expanded="true">
- <goal name="WP_parameter strsep" expl="Function strsep, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.13" steps="937"/></proof>
- </goal>
-</theory>
-<theory name="Function_strsep_behaviors" sum="a1df2e10ca964865893ae448e67fce03" expanded="true">
- <goal name="WP_parameter strsep_ensures_default" expl="Function strsep, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.01" steps="6"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_null" expl="Function strsep, behavior input_null" expanded="true">
- <proof prover="0"><result status="valid" time="0.02" steps="14"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_strpbrk_not_null" expl="Function strsep, behavior input_strpbrk_not_null" expanded="true">
- <proof prover="1"><result status="valid" time="0.15"/></proof>
- </goal>
- <goal name="WP_parameter strsep_ensures_input_strpbrk_null" expl="Function strsep, behavior input_strpbrk_null" expanded="true">
- <proof prover="0"><result status="valid" time="0.89" steps="3587"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>

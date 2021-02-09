@@ -2,9 +2,86 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function__parse_integer_fixup_radix_safety" sum="e1ecc0d015449beaa4c58a6c495172b7" expanded="true">
+ <goal name="WP_parameter _parse_integer_fixup_radix" expl="Function _parse_integer_fixup_radix, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.09"/></proof>
+ </goal>
+</theory>
+<theory name="Function__parse_integer_fixup_radix_behaviors" sum="ccccd7245da959158eb64de49ad1b74b" expanded="true">
+ <goal name="WP_parameter _parse_integer_fixup_radix_ensures_default" expl="Function _parse_integer_fixup_radix, default behavior" expanded="true">
+ <proof prover="1"><result status="valid" time="0.14"/></proof>
+ </goal>
+ <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess" expl="Function _parse_integer_fixup_radix, behavior guess" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.1" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.19" steps="3873"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.2" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.03" steps="417"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.3" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.03" steps="352"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.4" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.03" steps="309"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.5" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="175"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.6" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="175"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.7" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="175"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.8" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.04" steps="695"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.9" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="157"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.10" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="157"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.11" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="157"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.12" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.21" steps="5311"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.13" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="133"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.14" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="133"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.15" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.01" steps="133"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.16" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.22" steps="4520"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.17" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="278"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.18" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="245"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.19" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="208"/></proof>
+  </goal>
+  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.20" expl="Postcondition (Ensures clause)">
+  <proof prover="0"><result status="valid" time="0.02" steps="184"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="WP_parameter _parse_integer_fixup_radix_ensures_shift" expl="Function _parse_integer_fixup_radix, behavior shift" expanded="true">
+ <proof prover="1"><result status="valid" time="1.03"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -946,83 +1023,6 @@
 <theory name="Function__parse_integer_fixup_radix" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function__parse_integer_fixup_radix_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function__parse_integer_fixup_radix_safety" sum="e1ecc0d015449beaa4c58a6c495172b7" expanded="true">
- <goal name="WP_parameter _parse_integer_fixup_radix" expl="Function _parse_integer_fixup_radix, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.09"/></proof>
- </goal>
-</theory>
-<theory name="Function__parse_integer_fixup_radix_behaviors" sum="ccccd7245da959158eb64de49ad1b74b" expanded="true">
- <goal name="WP_parameter _parse_integer_fixup_radix_ensures_default" expl="Function _parse_integer_fixup_radix, default behavior" expanded="true">
- <proof prover="1"><result status="valid" time="0.14"/></proof>
- </goal>
- <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess" expl="Function _parse_integer_fixup_radix, behavior guess" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.1" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.19" steps="1443"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.2" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.03" steps="141"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.3" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.03" steps="129"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.4" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.03" steps="121"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.5" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="108"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.6" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="108"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.7" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="108"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.8" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.04" steps="462"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.9" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="100"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.10" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="100"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.11" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="100"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.12" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.21" steps="813"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.13" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="88"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.14" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="88"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.15" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.01" steps="88"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.16" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.22" steps="1675"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.17" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="107"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.18" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="103"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.19" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="91"/></proof>
-  </goal>
-  <goal name="WP_parameter _parse_integer_fixup_radix_ensures_guess.20" expl="Postcondition (Ensures clause)">
-  <proof prover="0"><result status="valid" time="0.02" steps="83"/></proof>
-  </goal>
- </transf>
- </goal>
- <goal name="WP_parameter _parse_integer_fixup_radix_ensures_shift" expl="Function _parse_integer_fixup_radix, behavior shift" expanded="true">
- <proof prover="1"><result status="valid" time="0.74"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>

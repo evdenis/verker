@@ -2,9 +2,126 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="2.3.3" timelimit="2" steplimit="0" memlimit="2000"/>
+<prover id="0" name="Alt-Ergo" version="2.4.0" timelimit="2" steplimit="0" memlimit="2000"/>
 <prover id="1" name="CVC4" version="1.7" alternative="noBV" timelimit="2" steplimit="0" memlimit="2000"/>
 <file name="../whole_program.mlw" expanded="true">
+<theory name="Function_strspn_0_safety" sum="0d6ddc48865e330ed59964bad65d4899" expanded="true">
+ <goal name="WP_parameter strspn_0" expl="Function strspn, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.13"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_0_behaviors" sum="648e034c9644898e4f34af05d899565a" expanded="true">
+ <goal name="WP_parameter strspn_ensures_default" expl="Function strspn, default behavior" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter strspn_ensures_default.1" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.14" steps="3509"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.2" expl="loop invariant init">
+  <proof prover="0"><result status="valid" time="0.22" steps="2921"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.3" expl="Assertion in line 32">
+  <proof prover="0"><result status="valid" time="0.02" steps="140"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.4" expl="Ensures clause (Postcondition)">
+  <proof prover="0"><result status="valid" time="0.02" steps="181"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.5" expl="Assertion in line 34">
+  <proof prover="1"><result status="valid" time="0.22"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.6" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.17"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.7" expl="loop invariant preservation">
+  <proof prover="1"><result status="valid" time="0.57"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.8" expl="Assertion in line 32">
+  <proof prover="0"><result status="valid" time="0.02" steps="133"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.9" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.13"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.10" expl="Assertion in line 34">
+  <proof prover="0"><result status="valid" time="0.02" steps="129"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.11" expl="loop invariant preservation">
+  <proof prover="0"><result status="valid" time="0.03" steps="213"/></proof>
+  </goal>
+  <goal name="WP_parameter strspn_ensures_default.12" expl="Ensures clause (Postcondition)">
+  <proof prover="1"><result status="valid" time="0.81"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Function_in_array_shift1_safety" sum="bcaf15b166cdef7e9c8d823c688c9391" expanded="true">
+ <goal name="WP_parameter in_array_shift1" expl="Function in_array_shift1, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_shift1_behaviors" sum="62e6e439ea72be88de4ff83a794b6d04" expanded="true">
+ <goal name="WP_parameter in_array_shift1_ensures_default" expl="Function in_array_shift1, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="1.28" steps="21972"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_true_safety" sum="6bc22c0e6daf4b1307fa356d6ac20ffe" expanded="true">
+ <goal name="WP_parameter in_array_true" expl="Function in_array_true, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_true_behaviors" sum="b1a3a5a085a7629eca44df17492f6048" expanded="true">
+ <goal name="WP_parameter in_array_true_ensures_default" expl="Function in_array_true, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.04" steps="593"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_false_safety" sum="3822e385b1a2d7932d139d2dc1b98362" expanded="true">
+ <goal name="WP_parameter in_array_false" expl="Function in_array_false, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_false_behaviors" sum="cac15d796c6ab1f0be568536d7a04c94" expanded="true">
+ <goal name="WP_parameter in_array_false_ensures_default" expl="Function in_array_false, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.03" steps="329"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_strend_safety" sum="7ff89f6010e576f64df436a538b050bf" expanded="true">
+ <goal name="WP_parameter strspn_strend" expl="Function strspn_strend, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_strend_behaviors" sum="83b9de9d592e21df1cb0bbb7a2139295" expanded="true">
+ <goal name="WP_parameter strspn_strend_ensures_default" expl="Function strspn_strend, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="90"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_empty_accept_safety" sum="ab75df06544053c561cc200adc61e51a" expanded="true">
+ <goal name="WP_parameter strspn_empty_accept" expl="Function strspn_empty_accept, safety" expanded="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_empty_accept_behaviors" sum="fde38110a5e697d0a46ddca1626dd67a" expanded="true">
+ <goal name="WP_parameter strspn_empty_accept_ensures_default" expl="Function strspn_empty_accept, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.22" steps="4544"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_0_safety" sum="e0d47f0c8ea2fb5ab4613759251c0627" expanded="true">
+ <goal name="WP_parameter in_array_0" expl="Function in_array, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.18"/></proof>
+ </goal>
+</theory>
+<theory name="Function_in_array_0_behaviors" sum="cddf3fd3d0b09b5dce46f0dcda741a5f" expanded="true">
+ <goal name="WP_parameter in_array_ensures_default" expl="Function in_array, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.50" steps="9251"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_range_safety" sum="bfd938b90511cd46c5b669f2b0822fe2" expanded="true">
+ <goal name="WP_parameter strspn_range" expl="Function strspn_range, safety" expanded="true">
+ <proof prover="1"><result status="valid" time="0.25"/></proof>
+ </goal>
+</theory>
+<theory name="Function_strspn_range_behaviors" sum="8ec98566cda1a16d6610d6868f2d2d67" expanded="true">
+ <goal name="WP_parameter strspn_range_ensures_default" expl="Function strspn_range, default behavior" expanded="true">
+ <proof prover="0"><result status="valid" time="0.19" steps="3142"/></proof>
+ </goal>
+</theory>
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Int32_of_Int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -846,123 +963,6 @@
 <theory name="Function_strspn_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Function_strspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
-</theory>
-<theory name="Function_strspn_0_safety" sum="0d6ddc48865e330ed59964bad65d4899" expanded="true">
- <goal name="WP_parameter strspn_0" expl="Function strspn, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.13"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_0_behaviors" sum="648e034c9644898e4f34af05d899565a" expanded="true">
- <goal name="WP_parameter strspn_ensures_default" expl="Function strspn, default behavior" expanded="true">
- <transf name="split_goal_wp" expanded="true">
-  <goal name="WP_parameter strspn_ensures_default.1" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.14" steps="996"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.2" expl="loop invariant init">
-  <proof prover="0"><result status="valid" time="0.22" steps="1116"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.3" expl="Assertion in line 32">
-  <proof prover="0"><result status="valid" time="0.02" steps="78"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.4" expl="Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.02" steps="81"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.5" expl="Assertion in line 34">
-  <proof prover="1"><result status="valid" time="0.22"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.6" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.17"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.7" expl="loop invariant preservation">
-  <proof prover="1"><result status="valid" time="0.42"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.8" expl="Assertion in line 32">
-  <proof prover="0"><result status="valid" time="0.02" steps="72"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.9" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.13"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.10" expl="Assertion in line 34">
-  <proof prover="0"><result status="valid" time="0.02" steps="70"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.11" expl="loop invariant preservation">
-  <proof prover="0"><result status="valid" time="0.03" steps="83"/></proof>
-  </goal>
-  <goal name="WP_parameter strspn_ensures_default.12" expl="Ensures clause (Postcondition)">
-  <proof prover="1"><result status="valid" time="0.59"/></proof>
-  </goal>
- </transf>
- </goal>
-</theory>
-<theory name="Function_in_array_shift1_safety" sum="bcaf15b166cdef7e9c8d823c688c9391" expanded="true">
- <goal name="WP_parameter in_array_shift1" expl="Function in_array_shift1, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_shift1_behaviors" sum="62e6e439ea72be88de4ff83a794b6d04" expanded="true">
- <goal name="WP_parameter in_array_shift1_ensures_default" expl="Function in_array_shift1, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="1.28" steps="4617"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_true_safety" sum="6bc22c0e6daf4b1307fa356d6ac20ffe" expanded="true">
- <goal name="WP_parameter in_array_true" expl="Function in_array_true, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_true_behaviors" sum="b1a3a5a085a7629eca44df17492f6048" expanded="true">
- <goal name="WP_parameter in_array_true_ensures_default" expl="Function in_array_true, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.04" steps="528"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_false_safety" sum="3822e385b1a2d7932d139d2dc1b98362" expanded="true">
- <goal name="WP_parameter in_array_false" expl="Function in_array_false, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_false_behaviors" sum="cac15d796c6ab1f0be568536d7a04c94" expanded="true">
- <goal name="WP_parameter in_array_false_ensures_default" expl="Function in_array_false, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.03" steps="206"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_strend_safety" sum="7ff89f6010e576f64df436a538b050bf" expanded="true">
- <goal name="WP_parameter strspn_strend" expl="Function strspn_strend, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_strend_behaviors" sum="83b9de9d592e21df1cb0bbb7a2139295" expanded="true">
- <goal name="WP_parameter strspn_strend_ensures_default" expl="Function strspn_strend, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.01" steps="86"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_empty_accept_safety" sum="ab75df06544053c561cc200adc61e51a" expanded="true">
- <goal name="WP_parameter strspn_empty_accept" expl="Function strspn_empty_accept, safety" expanded="true">
- <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_empty_accept_behaviors" sum="fde38110a5e697d0a46ddca1626dd67a" expanded="true">
- <goal name="WP_parameter strspn_empty_accept_ensures_default" expl="Function strspn_empty_accept, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.22" steps="1686"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_0_safety" sum="e0d47f0c8ea2fb5ab4613759251c0627" expanded="true">
- <goal name="WP_parameter in_array_0" expl="Function in_array, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.18"/></proof>
- </goal>
-</theory>
-<theory name="Function_in_array_0_behaviors" sum="cddf3fd3d0b09b5dce46f0dcda741a5f" expanded="true">
- <goal name="WP_parameter in_array_ensures_default" expl="Function in_array, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.50" steps="3564"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_range_safety" sum="bfd938b90511cd46c5b669f2b0822fe2" expanded="true">
- <goal name="WP_parameter strspn_range" expl="Function strspn_range, safety" expanded="true">
- <proof prover="1"><result status="valid" time="0.25"/></proof>
- </goal>
-</theory>
-<theory name="Function_strspn_range_behaviors" sum="8ec98566cda1a16d6610d6868f2d2d67" expanded="true">
- <goal name="WP_parameter strspn_range_ensures_default" expl="Function strspn_range, default behavior" expanded="true">
- <proof prover="0"><result status="valid" time="0.33" steps="3035"/></proof>
- </goal>
 </theory>
 </file>
 </why3session>
