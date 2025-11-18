@@ -20,7 +20,7 @@ VALDIR           := $(GENDIR)/val
 GENBINDIR        := $(BINDIR)/gen
 EACSLBINDIR      := $(GENBINDIR)/eacsl
 EACSLFUZZDIR     := $(FUZZDIR)/eacsl
-OPAM_EVAL        := eval $$(opam config env)
+OPAM_EVAL        := eval $$(opam env)
 #FRAMAC           := $(OPAM_EVAL); frama-c-gui -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC           := $(OPAM_EVAL); frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
 FRAMAC_NOHUP     := $(OPAM_EVAL); nohup frama-c -c11 -pp-annot -cpp-extra-args " -CC -E -x c $(SPEC_CFLAGS) " -machdep gcc_x86_64
@@ -235,7 +235,7 @@ running_provers_max = $(PROCESSES)
 code = "
 start:
   c Alt-Ergo,, 2 2000
-  c CVC4,,noBV 2 2000
+  c cvc5,, 2 2000
   c CVC4,, 2 2000
   c Eprover,, 2 2000
   t split_goal_wp start
@@ -245,10 +245,10 @@ start:
   t inline_all next
 next:
   c Alt-Ergo,, $(TIMEOUT) 8000
-  c CVC4,,noBV $(TIMEOUT) 8000
+  c cvc5,, $(TIMEOUT) 8000
   c CVC4,, $(TIMEOUT) 8000
   c Eprover,, $(TIMEOUT) 8000"
-desc = "Strategy for Verker examples"
+desc = "Strategy for Verker examples (updated with cvc5 support)"
 name = "verker"
 endef
 export av_why3conf

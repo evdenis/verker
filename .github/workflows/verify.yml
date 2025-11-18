@@ -1,0 +1,127 @@
+name: Formal Verification
+
+on:
+  push:
+    branches: [ master, main, 'claude/**' ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Cache OPAM
+      uses: actions/cache@v4
+      with:
+        path: ~/.opam
+        key: ${{ runner.os }}-opam-${{ hashFiles('**/*.opam') }}
+        restore-keys: |
+          ${{ runner.os }}-opam-
+
+    - name: Cache binaries
+      uses: actions/cache@v4
+      with:
+        path: ~/bin
+        key: ${{ runner.os }}-bin-v2
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y \
+          aspcud \
+          libgnomecanvas2-dev \
+          libgtk2.0-dev \
+          libgtksourceview2.0-dev \
+          libgtk-3-dev \
+          libgtksourceview-3.0-dev \
+          z3 \
+          build-essential
+
+    - name: Setup binary directory
+      run: |
+        mkdir -p $HOME/bin
+        echo "$HOME/bin" >> $GITHUB_PATH
+
+    - name: Install cvc5
+      run: |
+        if [ ! -f $HOME/bin/cvc5 ]; then
+          wget --quiet https://github.com/cvc5/cvc5/releases/download/cvc5-1.1.2/cvc5-Linux-x86_64-static.zip
+          unzip -q cvc5-Linux-x86_64-static.zip
+          mv cvc5-Linux-x86_64-static/bin/cvc5 $HOME/bin/cvc5
+          chmod +x $HOME/bin/cvc5
+          rm -rf cvc5-Linux-x86_64-static cvc5-Linux-x86_64-static.zip
+        fi
+
+    - name: Install OPAM
+      run: |
+        if [ ! -f $HOME/bin/opam ]; then
+          wget --quiet https://github.com/ocaml/opam/releases/download/2.2.1/opam-2.2.1-x86_64-linux
+          mv opam-2.2.1-x86_64-linux $HOME/bin/opam
+          chmod +x $HOME/bin/opam
+        fi
+
+    - name: Install E-Prover
+      run: |
+        if [ ! -f $HOME/bin/eprover ]; then
+          wget --quiet https://github.com/eprover/eprover/archive/refs/tags/E-3.1.tar.gz
+          tar xzf E-3.1.tar.gz
+          cd eprover-E-3.1
+          ./configure --prefix=$HOME
+          make -j$(nproc)
+          make install
+          cd ..
+          rm -rf eprover-E-3.1 E-3.1.tar.gz
+        fi
+
+    - name: Initialize OPAM
+      run: |
+        if [ ! -d ~/.opam ]; then
+          opam init --auto-setup --disable-sandboxing --compiler=4.14.2 --yes
+        fi
+        opam install --yes depext
+
+    - name: Install Frama-C and verification tools
+      run: |
+        eval $(opam env)
+        opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
+        opam update
+        opam upgrade --yes
+        opam depext --yes --noninteractive --install frama-c astraver why3 alt-ergo || true
+        rm -fr ~/.opam/log
+
+    - name: Configure Why3
+      run: |
+        eval $(opam env)
+        why3 config --detect
+
+    - name: Set Why3 max processes
+      run: |
+        sed -i -e 's/running_provers_max = [[:digit:]]/running_provers_max = 1/' $HOME/.why3.conf
+
+    - name: Run build
+      run: make run
+
+    - name: Run RTE analysis
+      run: make rte
+
+    - name: Run value analysis
+      run: make val
+
+    - name: Run sprove on proved functions
+      run: make sprove-proved-separatedly
+
+    - name: Replay proved functions
+      run: make replay-proved-separatedly
+
+    - name: Upload verification results
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: verification-sessions
+        path: sessions/
+        retention-days: 7

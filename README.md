@@ -1,9 +1,12 @@
 # VerKer
-[![Replay Status](https://travis-ci.org/evdenis/verker.svg?branch=master)](https://travis-ci.org/evdenis/verker)
+[![Formal Verification](https://github.com/evdenis/verker/actions/workflows/verify.yml/badge.svg)](https://github.com/evdenis/verker/actions/workflows/verify.yml)
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](LICENSE)
 
 To view this file in Russian, please follow the [link](README_ru.md).
 
 The repository contains ACSL specifications for the Linux kernel functions. The aim of the project is formal verification of Linux kernel library functions.
+
+**Quick Links:** [Contributing](CONTRIBUTING.md) | [Changelog](CHANGELOG.md) | [Issues](https://github.com/evdenis/verker/issues)
 
 ## Papers
 
@@ -60,8 +63,25 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 
 The specifications are developed in the [ACSL](http://frama-c.com/download/acsl-implementation-Sulfur-20171101.pdf) language. Frama-C with [AstraVer(Jessie)](https://forge.ispras.ru/projects/astraver) plugin is used as the deductive verification instrument.
 
-- A description of how to install the tools can be found [here](https://forge.ispras.ru/projects/astraver/wiki). You can run them on Linux, Windows, Mac OS X.
-- By [link](https://disk.llkl.org/f/be6ea14a2d/?dl=1) you can download the VirtualBox VM image in ova format with pre-installed and already configured tools. Image size ~ 3 gigabytes. OS: Ubuntu. Login: user. Password: 1. There are two repositories in the **workspace** directory. First one is verker, the second is [acsl-proved](https://github.com/evdenis/acsl-proved) (examples with verification protocols).
+### Installation
+
+- **Detailed installation guide**: See [CONTRIBUTING.md](CONTRIBUTING.md#development-setup) for complete setup instructions
+- **Quick start**: A description of how to install the tools can be found [here](https://forge.ispras.ru/projects/astraver/wiki). You can run them on Linux, Windows, Mac OS X.
+- **Pre-configured VM**: By [link](https://disk.llkl.org/f/be6ea14a2d/?dl=1) you can download the VirtualBox VM image in ova format with pre-installed and already configured tools. Image size ~ 3 gigabytes. OS: Ubuntu. Login: user. Password: 1. There are two repositories in the **workspace** directory. First one is verker, the second is [acsl-proved](https://github.com/evdenis/acsl-proved) (examples with verification protocols).
+
+### Recommended Tool Versions
+
+For the best experience, use these versions (as used in CI):
+- **OCaml**: 4.14.2+
+- **OPAM**: 2.2.0+
+- **SMT Solvers**:
+  - cvc5 1.1.0+ (recommended, successor to CVC4)
+  - CVC4 1.7+ (legacy support)
+  - Alt-Ergo 2.2.0+
+  - E-Prover 3.0+
+  - Z3 (latest)
+
+See [CHANGELOG.md](CHANGELOG.md) for recent toolchain updates.
 
 ### How to use the vanilla Frama-C
 
