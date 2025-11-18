@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache opam and binaries
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.opam
+          ~/bin
+        key: ${{ runner.os }}-opam-${{ hashFiles('**/*.opam') }}
+        restore-keys: |
+          ${{ runner.os }}-opam-
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y \
+          aspcud \
+          libgnomecanvas2-dev \
+          libgtk2.0-dev \
+          libgtksourceview2.0-dev \
+          libgtk-3-dev \
+          libgtksourceview-3.0-dev \
+          z3
+
+    - name: Setup PATH and directories
+      run: |
+        mkdir -p $HOME/bin
+        echo "$HOME/bin" >> $GITHUB_PATH
+
+    - name: Install CVC4
+      run: |
+        if ! which cvc4; then
+          wget --quiet --no-clobber http://cvc4.cs.stanford.edu/downloads/builds/x86_64-linux-opt/cvc4-1.7-x86_64-linux-opt \
+               -O $HOME/bin/cvc4
+          chmod +x $HOME/bin/cvc4
+        fi
+
+    - name: Install OPAM
+      run: |
+        if ! which opam; then
+          wget --quiet --no-clobber https://github.com/ocaml/opam/releases/download/2.0.8/opam-2.0.8-x86_64-linux \
+               -O $HOME/bin/opam
+          chmod +x $HOME/bin/opam
+        fi
+
+    - name: Install E-prover
+      run: |
+        if ! which eprover; then
+          wget https://github.com/eprover/eprover/archive/E-2.5.tar.gz
+          tar xzvf E-2.5.tar.gz
+          cd eprover-E-2.5
+          ./configure --prefix=$HOME
+          make -j$(nproc)
+          sudo make install
+        fi
+
+    - name: Initialize OPAM
+      run: |
+        opam init --auto-setup --disable-sandboxing --compiler=4.10.0
+        opam install --yes depext
+
+    - name: Install OPAM packages
+      run: |
+        opam repo add ispras https://forge.ispras.ru/git/astraver.opam-repository.git || true
+        opam update
+        opam upgrade --yes
+        opam depext --yes --noninteractive --install frama-c astraver why3 alt-ergo
+        rm -fr ~/.opam/log
+
+    - name: Configure Why3
+      run: |
+        eval $(opam env)
+        why3 config --detect
+        sed -i -e 's/running_provers_max = [[:digit:]]/running_provers_max = 1/' $HOME/.why3.conf
+
+    - name: Run tests
+      run: |
+        eval $(opam env)
+        make run
+        make rte
+        make val
+        make sprove-proved-separatedly
+        make replay-proved-separatedly
