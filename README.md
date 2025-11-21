@@ -58,10 +58,7 @@ The repository contains ACSL specifications for the Linux kernel functions. The 
 
 ## Toolchain
 
-The specifications are developed in the [ACSL](http://frama-c.com/download/acsl-implementation-Sulfur-20171101.pdf) language. Frama-C with [AstraVer(Jessie)](https://forge.ispras.ru/projects/astraver) plugin is used as the deductive verification instrument.
-
-- A description of how to install the tools can be found [here](https://forge.ispras.ru/projects/astraver/wiki). You can run them on Linux, Windows, Mac OS X.
-- By [link](https://disk.llkl.org/f/be6ea14a2d/?dl=1) you can download the VirtualBox VM image in ova format with pre-installed and already configured tools. Image size ~ 3 gigabytes. OS: Ubuntu. Login: user. Password: 1. There are two repositories in the **workspace** directory. First one is verker, the second is [acsl-proved](https://github.com/evdenis/acsl-proved) (examples with verification protocols).
+The specifications are developed in the [ACSL](http://frama-c.com/download/acsl-implementation-Sulfur-20171101.pdf) language. Frama-C with [AstraVer(Jessie)](https://forge.ispras.ru/projects/astraver) plugin is used as the deductive verification instrument. A description of how to install the tools can be found [here](https://forge.ispras.ru/projects/astraver/wiki). You can run them on Linux, Windows, Mac OS X.
 
 ### How to use the vanilla Frama-C
 
@@ -131,10 +128,10 @@ To run the tools on a particular file you need to type ```make verify-<function>
 
 ### How to add a function in the repository
 
-There is a tool called dismember in the [repository](https://github.com/evdenis/spec-utils/). It is used to "transfer" the function code into a separate file.
+There is a tool called extricate in the [repository](https://github.com/evdenis/spec-utils/). It is used to "transfer" the function code into a separate file.
 Example (code for the strim function):
 ```bash
-$ dismember -m ~/linux-stable/lib/string.c -k ~/linux-stable --double -f strim --output-dir .
+$ extricate -m ~/linux-stable/lib/string.c -k ~/linux-stable --double -f strim --output-dir .
 ```
 
 Two files will be created: strim.c and strim.h
