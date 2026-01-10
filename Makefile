@@ -235,7 +235,8 @@ running_provers_max = $(PROCESSES)
 code = "
 start:
   c Alt-Ergo,, 2 2000
-  c CVC5,, 2 2000
+  c CVC4,,noBV 2 2000
+  c CVC4,, 2 2000
   c Eprover,, 2 2000
   t split_goal_wp start
   t remove_triggers start
@@ -244,7 +245,8 @@ start:
   t inline_all next
 next:
   c Alt-Ergo,, $(TIMEOUT) 8000
-  c CVC5,, $(TIMEOUT) 8000
+  c CVC4,,noBV $(TIMEOUT) 8000
+  c CVC4,, $(TIMEOUT) 8000
   c Eprover,, $(TIMEOUT) 8000"
 desc = "Strategy for Verker examples"
 name = "verker"
