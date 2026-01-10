@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 4.14.x
+          opam-repositories: |
+            ispras: https://forge.ispras.ru/git/astraver.opam-repository.git
+            default: https://github.com/ocaml/opam-repository.git
+
+      - name: Install SMT solvers
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y z3 cvc4
+
+      - name: Cache Eprover
+        uses: actions/cache@v4
+        with:
+          path: ~/bin
+          key: bin-${{ runner.os }}-eprover-2.5
+
+      - name: Install Eprover
+        run: |
+          mkdir -p ~/bin
+          echo "$HOME/bin" >> $GITHUB_PATH
+          if [ ! -x ~/bin/eprover ]; then
+            wget --quiet https://github.com/eprover/eprover/archive/E-2.5.tar.gz -O /tmp/E-2.5.tar.gz
+            tar xzf /tmp/E-2.5.tar.gz -C /tmp
+            cd /tmp/eprover-E-2.5
+            ./configure --prefix=$HOME
+            make -j$(nproc)
+            make install
+          fi
+
+      - name: Install OCaml packages
+        run: |
+          opam install --depext-only frama-c astraver why3 alt-ergo
+          opam install frama-c astraver why3 alt-ergo
+
+      - name: Update Why3 prover detection config
+        run: |
+          CONF=$(opam var share)/why3/provers-detection-data.conf
+
+          # CVC4 1.8 support
+          sed -i '/^exec = "cvc4-1.7"$/a exec = "cvc4-1.8"' "$CONF"
+          sed -i '/^version_ok  = "1.7"$/a version_ok  = "1.8"' "$CONF"
+
+          # Z3 4.8.12 support (add pattern for 4.8.10+)
+          sed -i '/^version_ok  = "4.8.4"$/i version_ok  = "^4\\.8\\.1[0-9]+$"' "$CONF"
+
+          # Eprover 2.5 support
+          sed -i '/^version_ok  = "2.0"$/a version_ok  = "2.5"' "$CONF"
+
+          # Alt-Ergo 2.6.x - ensure pattern covers all 2.6.x versions
+          sed -i 's/^version_ok  = "2.6.2"$/version_ok  = "^2\\.6\\.[0-9]$"/' "$CONF"
+
+      - name: Configure Why3
+        run: |
+          opam exec -- why3 config --detect
+          sed -i -e 's/running_provers_max = [[:digit:]]/running_provers_max = 1/' ~/.why3.conf || true
+
+      - name: Run tests
+        run: opam exec -- make run
+
+      - name: Generate RTE
+        run: opam exec -- make rte
+
+      - name: Value analysis
+        run: opam exec -- make val
+
+      - name: Verify proved functions
+        run: opam exec -- make sprove-proved-separatedly
+
+      - name: Replay proofs
+        run: opam exec -- make replay-proved-separatedly
