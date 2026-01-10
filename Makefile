@@ -10,7 +10,7 @@ CLANGFLAGS       := -g -O1
 GEN_CFLAGS       := -w
 FUZZ_CFLAGS      := -fsanitize=fuzzer,address -DFUZZ_MAIN
 EXT_CFLAGS       := -DDUMMY_MAIN
-SPEC_CFLAGS      := -DSPEC
+SPEC_CFLAGS      := -DSPEC -std=c11
 BINDIR           := bin
 FUZZDIR          := fzz
 GENDIR           := gen
