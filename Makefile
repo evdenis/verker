@@ -185,7 +185,7 @@ run-%: $(BINDIR) $(BINDIR)/%
 	$(BINDIR)/$*
 
 eacsl-run: eacsl-build ## Run each E-ACSL program. You can also type eacsl-run-<target>.
-	@for i in $(GENBINFILES); do echo $$i; ./$$i; done
+	@for i in $(EACSLBINFILES); do echo $$i; ./$$i; done
 
 eacsl-run-%: $(GENDIR) $(GENBINDIR) $(GENBINDIR)/%
 	$(GENBINDIR)/$*
