@@ -69,16 +69,20 @@
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
+#if __STDC_VERSION__ < 202311L
+
 enum {
  false = 0,
  true = 1
 };
 
+typedef _Bool bool;
+
+#endif /* __STDC_VERSION__ */
+
 typedef long __kernel_long_t;
 
 typedef unsigned long __kernel_ulong_t;
-
-typedef _Bool bool;
 
 typedef unsigned int u32;
 
