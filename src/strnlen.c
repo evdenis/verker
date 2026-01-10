@@ -31,6 +31,8 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 
 #ifdef DUMMY_MAIN
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstringop-overread"
 int main(int argc, char *argv[])
 {
 	size_t l;
@@ -40,4 +42,5 @@ int main(int argc, char *argv[])
 
 	return l;
 }
+#pragma GCC diagnostic pop
 #endif
