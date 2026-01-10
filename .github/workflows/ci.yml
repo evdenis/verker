@@ -51,13 +51,22 @@ jobs:
           opam install --depext-only frama-c astraver why3 alt-ergo
           opam install frama-c astraver why3 alt-ergo
 
-      - name: Add CVC4 1.8 to Why3 prover detection
+      - name: Update Why3 prover detection config
         run: |
           CONF=$(opam var share)/why3/provers-detection-data.conf
-          # Add exec = "cvc4-1.8" after cvc4-1.7 entries
+
+          # CVC4 1.8 support
           sed -i '/^exec = "cvc4-1.7"$/a exec = "cvc4-1.8"' "$CONF"
-          # Add version_ok = "1.8" after version_ok = "1.7" entries
           sed -i '/^version_ok  = "1.7"$/a version_ok  = "1.8"' "$CONF"
+
+          # Z3 4.8.12 support (add pattern for 4.8.10+)
+          sed -i '/^version_ok  = "4.8.4"$/i version_ok  = "^4\\.8\\.1[0-9]+$"' "$CONF"
+
+          # Eprover 2.5 support
+          sed -i '/^version_ok  = "2.0"$/a version_ok  = "2.5"' "$CONF"
+
+          # Alt-Ergo 2.6.x - ensure pattern covers all 2.6.x versions
+          sed -i 's/^version_ok  = "2.6.2"$/version_ok  = "^2\\.6\\.[0-9]$"/' "$CONF"
 
       - name: Configure Why3
         run: |
