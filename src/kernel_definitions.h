@@ -31,7 +31,12 @@
 # define __visible
 #endif
 
-#define annotate_unreachable()
+#ifndef annotate_unreachable
+# define annotate_unreachable()
+#endif
+#ifndef unreachable
+# define unreachable() do { annotate_unreachable(); __builtin_unreachable(); } while (0)
+#endif
 
 #define barrier_data(ptr) __asm__ __volatile__("": :"r"(ptr) :"memory")
 
@@ -44,8 +49,6 @@
 #define _AC(X,Y) __AC(X,Y)
 
 #define __PASTE(a,b) ___PASTE(a,b)
-
-#define unreachable() do { annotate_unreachable(); __builtin_unreachable(); } while (0)
 
 #define BUG() ;/*@ assert \false;*/;
 
