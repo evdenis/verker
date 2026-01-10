@@ -255,7 +255,7 @@ export av_why3conf
 
 $(AV_WHY3_CONF):
 	@if [ -f $@ ]; then                          \
-		tfile=$(shell mktemp);               \
+		tfile=$$(mktemp);                    \
 		echo "$$av_why3conf" > $$tfile;      \
 		diff -q $@ $$tfile > /dev/null || mv $$tfile $@; \
 	else echo "$$av_why3conf" > $@; fi
