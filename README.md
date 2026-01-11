@@ -1,5 +1,5 @@
 # VerKer
-[![Replay Status](https://travis-ci.org/evdenis/verker.svg?branch=master)](https://travis-ci.org/evdenis/verker)
+[![CI Status](https://github.com/evdenis/verker/actions/workflows/ci.yml/badge.svg)](https://github.com/evdenis/verker/actions/workflows/ci.yml)
 
 To view this file in Russian, please follow the [link](README_ru.md).
 
