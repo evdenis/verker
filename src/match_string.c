@@ -6,6 +6,7 @@ int match_string(const char * const *array, size_t n, const char *string)
 	int index;
 	const char *item;
 
+	//@ ghost real_len_range((char **)array, n);
 	/*@ loop invariant 0 <= index <= real_len(array, n) <= n;
 	    loop invariant \forall size_t k;
 	       0 <= k < index ==> strcmp(array[k], string) != 0;
@@ -16,8 +17,11 @@ int match_string(const char * const *array, size_t n, const char *string)
 	 */
 	for (index = 0; index < n; index++) {
 		item = array[index];
-		if (!item)
+		if (!item) {
+			//@ ghost real_len_terminate((char **)array, n, (size_t)index);
 			break;
+		}
+		//@ ghost real_len_not_nulls((char **)array, n, (size_t)index);
 		//@ assert valid_str(array[index]);
 		if (!strcmp(item, string))
 			return index;
