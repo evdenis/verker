@@ -104,7 +104,12 @@
  */
 
 /*@ requires valid_str(s);
+    // the returned pointer difference is cast to size_t, so it has to fit in
+    // ptrdiff_t; WP's memory model does not bound object sizes on its own
+    requires strlen(s) <= LONG_MAX;
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures \result == strlen(s);
     ensures s[\result] == '\0';
     ensures \forall integer i; 0 <= i < \result ==> s[i] != '\0';
