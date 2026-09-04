@@ -52,7 +52,7 @@ has been re-proved with WP so far.
 | 32 | strlcpy       | proved |    | not required   |           | use strncmp lf in ensures |
 | 33 | memmove       | proved\*|    | not required   |           | use memcmp logic function at ensures |
 | 34 | memcpy        | proved |    | not required   |           | use memcmp logic function at ensures |
-| 35 | memset        | proved |    | not required   | !const    |         |
+| 35 | memset        | proved | proved | not required   | !const    |         |
 | 36 | kstrtobool    | proved | proved | not required   | yes       |         |
 | 37 | \_parse\_integer\_fixup\_radix | proved | proved | not required | yes | |
 | 38 | \_parse\_integer |     |    |                | yes       |         |
@@ -109,8 +109,11 @@ identities such as ```(hi << 4) | lo == hi * 16 + lo``` are the usual case.
 ```sessions/script/```. Ordinary runs replay those scripts before calling a prover, so the
 search cost is paid once.
 
-Every run enables ```-wp-rte``` together with ```-warn-unsigned-overflow``` and
-```-warn-unsigned-downcast```, so the runtime-error obligations are part of the proof.
+Every run enables ```-wp-rte``` together with ```-warn-unsigned-downcast```, so the
+runtime-error obligations are part of the proof. ```-warn-unsigned-overflow``` is
+deliberately left off: unsigned wraparound is defined behaviour in C and the kernel's
+```while (count--)``` idiom depends on it, so that check is false by construction in
+memset, memcpy, memmove and friends.
 ```make wp-smoke``` adds the vacuity check — it fails if a contract only holds because the
 code it guards is unreachable.
 

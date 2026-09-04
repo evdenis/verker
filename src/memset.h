@@ -13,9 +13,11 @@
  */
 
 /*@ requires \valid((char *)s+(0..count-1));
+    terminates \true;
     assigns ((char *)s)[0..count-1];
-    ensures \forall char *p; (char *)s <= p < (char *)s + count ==>
-            *p == (char) c;
+    assigns \result \from s;
+    exits \false;
+    ensures \forall integer i; 0 <= i < count ==> ((char *)s)[i] == (char) c;
     ensures \result == s;
  */
 void *memset(void *s, int c, size_t count);

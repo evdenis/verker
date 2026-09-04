@@ -5,11 +5,10 @@ void *memset(void *s, int c, size_t count)
 	char *xs = s;
 	//@ ghost size_t ocount = count;
 
-	/*@ loop invariant 0 <= count <= ocount;
-	    loop invariant (char *)s <= xs <= (char *)s + ocount;
-	    loop invariant xs - s == ocount - count;
-	    loop invariant \forall char *p; (char *)s <= p < xs ==> *p == (char) c;
-	    loop assigns count, ((char *)s)[0..ocount-1];
+	/*@ loop invariant bound:   0 <= count <= ocount;
+	    loop invariant offset:  xs == (char *)s + (ocount - count);
+	    loop invariant written: \forall integer i; 0 <= i < ocount - count ==> ((char *)s)[i] == (char) c;
+	    loop assigns count, xs, ((char *)s)[0..ocount-1];
 	    loop variant count;
 	 */
 	while (count--)
