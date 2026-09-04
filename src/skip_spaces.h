@@ -6,54 +6,31 @@
 #include "strlen.h"
 
 
-#ifndef LEMMA_FUNCTIONS
-
 /*@ axiomatic SkipSpaces {
     logic char *skip_spaces(char *str) =
        isspace(*str) ? skip_spaces(str + 1) : str;
-    lemma skip_spaces_defn{L}:
-       \forall char *str, size_t i;
-       valid_str(str) && i <= strlen(str) &&
-       (\forall size_t j; j < i ==> isspace(str[j])) &&
-       !isspace(str[i]) ==>
-          str + i == skip_spaces(str);
-    lemma skip_spaces_deref:
-       \forall char *str; valid_str(str) ==>
-          !isspace(*skip_spaces(str));
-    lemma skip_spaces_range:
-       \forall char *str;
-       valid_str(str) ==>
-          str <= skip_spaces(str) <= str + strlen(str);
     lemma skip_spaces_iter_one:
        \forall char *str;
-       valid_str(str) && !isspace(*str) ==>
+       valid_str(str) && isspace(*str) ==>
        skip_spaces(str) == skip_spaces(str+1);
-    lemma skip_spaces_base_addr:
-       \forall char *str;
-       valid_str(str) ==>
-          \base_addr(str) == \base_addr(skip_spaces(str));
     lemma skip_spaces_same:
        \forall char *str;
        \valid(str) && !isspace(*str) ==>
           str == skip_spaces(str);
-    lemma skipped_are_spaces:
-       \forall char *str, size_t i;
-       valid_str(str) &&
-       i < skip_spaces(str) - str ==>
-          isspace(str[i]);
     }
  */
 
-#else
-
-/*@ axiomatic SkipSpaces {
-    logic char *skip_spaces(char *str) =
-       isspace(*str) ? skip_spaces(str + 1) : str;
-    }
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas. is_space exists because ghost code is C and cannot branch on
+ * the isspace predicate directly.
  */
 
 /*@ ghost
-  @ //@ ensures \result <==> isspace(c);
+  @ /@ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   \result != 0 <==> isspace(c);
+  @  @/
   @ int is_space(char c)
   @ {
   @   return c == ' '  || c == '\f' || c == '\n'
@@ -62,53 +39,61 @@
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires  valid_str(str);
-  @  @ requires  str <= res <= str + strlen(str);
-  @  @ requires  \forall char *p; str <= p < res ==> isspace(*p);
-  @  @ requires  !isspace(*res);
+  @ /@ requires  valid_str(str);
+  @  @ terminates \true;
   @  @ decreases strlen(str);
-  @  @ ensures   skip_spaces(str) == res;
-  @  @/
-  @ void skip_spaces_defn(char *str, char* res)
-  @ {
-  @    if (isspace(*str)) {
-  @      //@ assert str <= res || str == res;
-  @      //@ assert str + strlen(str) == str + 1 + strlen(str + 1);
-  @      skip_spaces_defn(str + 1, res);
-  @    }
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires  valid_str(str);
-  @  @ decreases strlen(str);
-  @  @ ensures   str <= skip_spaces(str) <= str + strlen(str);
+  @  @ assigns   \nothing;
+  @  @ ensures   0 <= skip_spaces(str) - str <= strlen(str);
+  @  @ ensures   valid_str(skip_spaces(str));
+  @  @ ensures   !isspace(*skip_spaces(str));
   @  @/
   @ void skip_spaces_range(char *str)
   @ {
-  @    if (isspace(*str)) {
+  @    valid_str_len(str);
+  @    if (is_space(*str)) {
+  @      valid_str_shift(str);
   @      skip_spaces_range(str + 1);
   @    }
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires  valid_str(str);
-  @  @ requires  i < skip_spaces(str) - str;
+  @ /@ requires  valid_str(str);
+  @  @ requires  0 <= i <= strlen(str);
+  @  @ requires  \forall integer j; 0 <= j < i ==> isspace(str[j]);
+  @  @ requires  !isspace(str[i]);
+  @  @ terminates \true;
   @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   skip_spaces(str) == str + i;
+  @  @/
+  @ void skip_spaces_defn(char *str, size_t i)
+  @ {
+  @    if (i > 0) {
+  @      valid_str_shift(str);
+  @      skip_spaces_defn(str + 1, i - 1);
+  @    }
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  valid_str(str);
+  @  @ requires  0 <= i < skip_spaces(str) - str;
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
   @  @ ensures   isspace(str[i]);
   @  @/
   @ void skipped_are_spaces(char *str, size_t i)
   @ {
-  @   if (i > 0)
-  @    skipped_are_spaces(str + 1, i - 1);
+  @   skip_spaces_range(str);
+  @   if (i > 0) {
+  @     valid_str_shift(str);
+  @     skipped_are_spaces(str + 1, i - 1);
+  @   }
   @ }
   @*/
 
-#endif /* LEMMA_FUNCTIONS */
 
 /**
  * skip_spaces - Removes leading whitespace from @str.
@@ -118,12 +103,13 @@
  */
 
 /*@ requires valid_str(str);
-    assigns \nothing;
+    terminates \true;
+    assigns \result \from str;
+    exits \false;
     ensures \result == skip_spaces(str);
-    ensures \base_addr(\result) == \base_addr(str);
-    ensures str <= \result <= str + strlen(str);
+    ensures 0 <= \result - str <= strlen(str);
     ensures !isspace(*\result);
-    ensures \forall char *p; str <= p < \result ==> isspace(*p);
+    ensures \forall integer i; 0 <= i < \result - str ==> isspace(str[i]);
     ensures valid_str(\result);
  */
 char *skip_spaces(const char *str);
