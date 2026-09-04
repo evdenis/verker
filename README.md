@@ -37,7 +37,7 @@ has been re-proved with WP so far.
 | 17 | strncasecmp   |        |    |                | yes       |         |
 | 18 | strncat       |        |    | not required   |           |         |
 | 19 | strnchr       | proved | proved |                | yes       |         |
-| 20 | strncmp       | proved |    |                | yes       |         |
+| 20 | strncmp       | proved | proved |                | yes       | -warn-unsigned-downcast off |
 | 21 | strncpy       |        |    | not required   |           |         |
 | 22 | strnlen       | proved | proved | proved         | yes       |         |
 | 23 | strnstr       |        |    |                | yes       |         |
@@ -109,11 +109,19 @@ identities such as ```(hi << 4) | lo == hi * 16 + lo``` are the usual case.
 ```sessions/script/```. Ordinary runs replay those scripts before calling a prover, so the
 search cost is paid once.
 
-Every run enables ```-wp-rte``` together with ```-warn-unsigned-downcast```, so the
-runtime-error obligations are part of the proof. ```-warn-unsigned-overflow``` is
-deliberately left off: unsigned wraparound is defined behaviour in C and the kernel's
-```while (count--)``` idiom depends on it, so that check is false by construction in
-memset, memcpy, memmove and friends.
+Every run enables ```-wp-rte```, so the runtime-error obligations are part of the proof.
+Two RTE options are deliberately left off, both because the kernel relies on conversions
+that are well defined in C but that the checks would forbid:
+
+- ```-warn-unsigned-overflow``` — ```while (count--)``` in memset, memcpy, memmove and
+  friends steps past zero on the last iteration, and the wrapped value is never used.
+- ```-warn-unsigned-downcast``` — the byte comparison ```c = (unsigned char) *s++``` in
+  strcmp, strncmp, strcasecmp and ctype's ```__ismask``` converts a negative ```char```
+  on purpose; that conversion is how an unsigned byte comparison is obtained.
+
+Together these are what the AstraVer-era ```AENO``` and ```AENOC``` markers used to
+suppress at individual sites. Functions whose proof depends on the second are flagged in
+the Comment column of the table.
 ```make wp-smoke``` adds the vacuity check — it fails if a contract only holds because the
 code it guards is unreachable.
 

@@ -24,22 +24,41 @@
     predicate strnequal(char *s1, char *s2, size_t n) =
        strncmp(s1, s2, n) == 0;
 
-    lemma strncmp_shift1:
-       \forall char *s1, char *s2, size_t n;
-          valid_strn(s1, n) ==>
-          valid_strn(s2, n) ==>
-          n > 0 ==>
-          strnequal(s1, s2, n) ==>
-          strnequal(s1 + 1, s2 + 1, (size_t)(n - 1));
-
-    lemma strncmp_equal:
-       \forall char *s1, char *s2, size_t n;
-          valid_strn(s1, n) ==>
-          valid_strn(s2, n) ==>
-          (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
-          strnequal(s1, s2, n);
     }
  */
+
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas.
+ */
+
+/*@ ghost
+  @ /@ requires  n > 0;
+  @  @ requires  s1[0] != '\0';
+  @  @ requires  strnequal(s1, s2, n);
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnequal(s1 + 1, s2 + 1, (size_t)(n - 1));
+  @  @/
+  @ void strncmp_shift1(char *s1, char *s2, size_t n)
+  @ {
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(s1+(0..n)) && \valid(s2+(0..n));
+  @  @ requires  \forall integer i; 0 <= i < n ==> s1[i] == s2[i];
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnequal(s1, s2, n);
+  @  @/
+  @ void strncmp_equal(char *s1, char *s2, size_t n)
+  @ {
+  @   if (n > 0 && s1[0] != '\0') strncmp_equal(s1 + 1, s2 + 1, n - 1);
+  @ }
+  @*/
+
 
 /*@ requires valid_strn(cs, count);
     requires valid_strn(ct, count);

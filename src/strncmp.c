@@ -3,44 +3,44 @@
 int strncmp(const char *cs, const char *ct, size_t count)
 {
 	unsigned char c1, c2;
-	//@ ghost char *ocs = cs;
-	//@ ghost char *oct = ct;
+	//@ ghost char *ocs = (char *)cs;
+	//@ ghost char *oct = (char *)ct;
 	//@ ghost size_t ocount = count;
+	//@ ghost size_t k = 0;
+	//@ ghost valid_strn_len(ocs, ocount);
+	//@ ghost valid_strn_len(oct, ocount);
 
-	/*@ assert \forall integer i; 0 <= i < strnlen(ocs, ocount) ==>
-		((cs[i] == ct[i]) <==> (((u8)cs[i]) == ((u8)ct[i])));
-	*/
-
-	/*@ loop invariant 0 <= count <= ocount;
-	    loop invariant ocs <= cs <= ocs + strnlen(ocs, ocount);
-	    loop invariant oct <= ct <= oct + strnlen(oct, ocount);
-	    loop invariant cs - ocs == ct - oct == ocount - count;
-	    loop invariant valid_strn(cs, count) && valid_strn(ct, count);
-	    loop invariant strnlen(cs, count) == strnlen(ocs, ocount) - (cs - ocs);
-	    loop invariant strnlen(ct, count) == strnlen(oct, ocount) - (ct - oct);
-	    loop invariant \forall integer i; 0 <= i < ocount - count ==> ocs[i] == oct[i];
-	    loop assigns cs, ct, count;
+	/*@ loop invariant bound: 0 <= count <= ocount;
+	    loop invariant off:   k == ocount - count;
+	    loop invariant idx1:  cs == ocs + k;
+	    loop invariant idx2:  ct == oct + k;
+	    loop invariant valid: valid_strn(cs, count) && valid_strn(ct, count);
+	    loop invariant len1:  strnlen(ocs, ocount) == strnlen(cs, count) + k;
+	    loop invariant len2:  strnlen(oct, ocount) == strnlen(ct, count) + k;
+	    loop invariant eq:    \forall integer i; 0 <= i < k ==> ocs[i] == oct[i];
+	    loop assigns cs, ct, count, c1, c2, k;
 	    loop variant count;
 	*/
 	while (count) {
 		c1 = /*CODE_CHANGE:*/(unsigned char) *cs++;
 		c2 = /*CODE_CHANGE:*/(unsigned char) *ct++;
-		//@ assert c1 == 0 ==> valid_str(ocs) && strlen(ocs) == strnlen(ocs, ocount) == ocount - count;
-		//@ assert c2 == 0 ==> valid_str(oct) && strlen(oct) == strnlen(oct, ocount) == ocount - count;
-		if (c1 != c2)
+		if (c1 != c2) {
 			//@ ghost int res = c1 < c2 ? -1 : 1;
 			/*@ for not_equal:
-				assert \exists integer i; 0 <= i < strnlen(ocs, ocount) &&
-				(\forall integer j; 0 <= j < i ==> ocs[j] == oct[j]) &&
-				(ocs[i] != oct[i]) &&
-				((u8)ocs[i] < (u8)oct[i] ? res == -1 : res == 1) &&
-				((size_t) i) == ocount - count && i == ocount - count;
-			*/
+			    assert \exists integer i; 0 <= i < strnlen(ocs, ocount) &&
+			      (\forall integer j; 0 <= j < i ==> ocs[j] == oct[j]) &&
+			      (ocs[i] != oct[i]) &&
+			      ((u8)ocs[i] < (u8)oct[i] ? res == -1 : res == 1) &&
+			      i == k;
+			 */
 			return c1 < c2 ? -1 : 1;
+		}
 		if (!c1)
 			break;
+		//@ ghost valid_strn_shift(ocs + k, count);
+		//@ ghost valid_strn_shift(oct + k, count);
 		count--;
-		//@ assert ocs[cs - ocs - 1] == oct[cs - ocs - 1];
+		//@ ghost k++;
 	}
 
 	return 0;
