@@ -7,7 +7,9 @@
 
 /*@ requires valid_str(s1);
     requires valid_str(s2);
+    terminates \true;
     assigns \nothing;
+    exits \false;
     behavior equal:
        assumes \forall integer i; 0 <= i <= strlen(s1) ==> tolower(s1[i]) == tolower(s2[i]);
        ensures \result == 0;

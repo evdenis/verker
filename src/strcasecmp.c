@@ -3,21 +3,31 @@
 int strcasecmp(const char *s1, const char *s2)
 {
 	int c1, c2;
-	//@ ghost char *os1 = s1;
-	//@ ghost char *os2 = s2;
+	//@ ghost char *os1 = (char *)s1;
+	//@ ghost char *os2 = (char *)s2;
+	//@ ghost size_t k = 0;
+	//@ ghost valid_str_len(os1);
+	//@ ghost valid_str_len(os2);
 
-	/*@ loop invariant valid_str(s1) && valid_str(s2);
-	    loop invariant os1 <= s1 <= os1 + strlen(os1);
-	    loop invariant os2 <= s2 <= os2 + strlen(os2);
-	    loop invariant s1 - os1 == s2 - os2;
-	    loop invariant \forall integer i; 0 <= i < s1 - os1 ==>
-	                   tolower(os1[i]) == tolower(os2[i]);
-	    loop assigns s1, s2;
-	    loop variant strlen(os1) - (s1 - os1);
+	/*@ loop invariant valid: valid_str(s1) && valid_str(s2);
+	    loop invariant idx1:  s1 == os1 + k;
+	    loop invariant idx2:  s2 == os2 + k;
+	    loop invariant bound: 0 <= k <= strlen(os1);
+	    loop invariant len:   strlen(os1) == strlen(s1) + k;
+	    loop invariant lower: \forall integer i; 0 <= i < k ==>
+	                          tolower(os1[i]) == tolower(os2[i]);
+	    loop assigns s1, s2, c1, c2, k;
+	    loop variant strlen(os1) - k;
 	*/
 	do {
 		c1 = tolower(*s1++);
 		c2 = tolower(*s2++);
+		/*@ ghost if (c1 == c2 && c1 != 0) {
+		  @   valid_str_shift(os1 + k);
+		  @   valid_str_shift(os2 + k);
+		  @   k++;
+		  @ }
+		  @*/
 	} while (c1 == c2 && c1 != 0);
 	//@ ghost int res = c1 - c2;
 	//@ assert c1 == c2 ==> c1 == 0 && res == 0;
@@ -26,7 +36,7 @@ int strcasecmp(const char *s1, const char *s2)
 	            (\forall integer j; 0 <= j < i ==> tolower(os1[j]) == tolower(os2[j])) &&
 	            tolower(os1[i]) != tolower(os2[i]) &&
 	       res == tolower(os1[i]) - tolower(os2[i]) &&
-	       i == s1 - os1 - 1;
+	       i == k;
 	 */
 	return c1 - c2;
 }
