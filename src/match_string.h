@@ -34,19 +34,6 @@
        :
           (size_t)(1 + real_len(a + 1, (size_t)(n - 1)));
 
-    lemma real_len_not_nulls:
-       \forall char **a, size_t i, len;
-          0 <= i < real_len(a, len) ==> a[i] != NULL;
-
-    lemma real_len_terminate:
-       \forall char **a, size_t i, len;
-          i == real_len(a, len) ==> a[i] == NULL || i == len;
-
-    lemma real_len_maximum:
-       \forall char** array, size_t len;
-          (\forall size_t i; i < len ==> array[i] != NULL) ==>
-          real_len(array, len) == len;
-
     lemma match_string_definition:
        \forall char** array, char* string, size_t i, len;
           0 <= i < real_len(array, len) &&
@@ -65,6 +52,69 @@
     }
  */
 
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas; each inducts over the array.
+ */
+
+/*@ ghost
+  @ /@ terminates \true;
+  @  @ decreases len;
+  @  @ assigns   \nothing;
+  @  @ ensures   0 <= real_len(a, len) <= len;
+  @  @/
+  @ void real_len_range(char **a, size_t len)
+  @ {
+  @   if (len > 0) real_len_range(a + 1, len - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(a+(0..i));
+  @  @ requires  0 <= i < real_len(a, len);
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   a[i] != \null;
+  @  @/
+  @ void real_len_not_nulls(char **a, size_t len, size_t i)
+  @ {
+  @   real_len_range(a, len);
+  @   if (len > 0) real_len_range(a + 1, len - 1);
+  @   if (i > 0) real_len_not_nulls(a + 1, len - 1, i - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(a+(0..i));
+  @  @ requires  i == real_len(a, len);
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   a[i] != \null ==> i == len;
+  @  @/
+  @ void real_len_terminate(char **a, size_t len, size_t i)
+  @ {
+  @   real_len_range(a, len);
+  @   if (len > 0) real_len_range(a + 1, len - 1);
+  @   if (i > 0) real_len_terminate(a + 1, len - 1, i - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  len == 0 || \valid(a+(0..len-1));
+  @  @ requires  \forall integer i; 0 <= i < len ==> a[i] != \null;
+  @  @ terminates \true;
+  @  @ decreases len;
+  @  @ assigns   \nothing;
+  @  @ ensures   real_len(a, len) == len;
+  @  @/
+  @ void real_len_maximum(char **a, size_t len)
+  @ {
+  @   if (len > 0) real_len_maximum(a + 1, len - 1);
+  @ }
+  @*/
+
 /*@ requires n <= INT_MAX;
     requires (real_len(array, n) == n) ==> \valid(array+(0..n-1));
     requires (real_len(array, n) < n) ==> \valid(array+(0..real_len(array, n)));
@@ -72,7 +122,9 @@
     requires \forall size_t i;
        0 <= i < real_len(array, n) ==> valid_str(array[i]);
 
+    terminates \true;
     assigns \nothing;
+    exits \false;
 
     behavior exists:
        assumes \exists size_t k;
