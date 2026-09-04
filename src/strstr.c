@@ -12,12 +12,16 @@
 
 /*@ requires valid_str(s1);
     requires valid_str(s2);
-    assigns \nothing;
+    requires strlen(s1) <= LONG_MAX;
+    requires strlen(s2) <= LONG_MAX;
+    terminates \true;
+    assigns \result \from s1, s2;
+    exits \false;
     behavior exists:
-       assumes \exists char *s; s1 <= s <= s1 + strlen(s1) && strmatch(s, s2);
-       ensures s1 <= \result <= s1 + strlen(s1);
+       assumes \exists integer i; 0 <= i <= strlen(s1) && strmatch(s1 + i, s2);
+       ensures 0 <= \result - s1 <= strlen(s1);
     behavior not_exists:
-       assumes \forall char *s; s1 <= s <= s1 + strlen(s1) ==> !strmatch(s, s2);
+       assumes \forall integer i; 0 <= i <= strlen(s1) ==> !strmatch(s1 + i, s2);
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;
@@ -31,22 +35,29 @@ char *strstr(const char *s1, const char *s2)
 		return (char *)s1;
 	//@ assert strlen(s2) > 0;
 	l1 = strlen(s1);
-	//@ ghost char *os1 = s1;
+	//@ ghost char *os1 = (char *)s1;
 	//@ ghost size_t ol1 = l1;
-	/*@ loop invariant l1 <= ol1;
-	    loop invariant ol1 - l1 == s1 - os1;
-	    loop invariant os1 <= s1 <= os1 + strlen(os1);
-	    loop invariant valid_str(s1);
-	    loop invariant \forall char *s; os1 <= s < s1 ==> !strmatch(s, s2);
-	    loop assigns l1, s1;
+	//@ ghost size_t k = 0;
+	//@ ghost valid_str_len(os1);
+	/*@ loop invariant bound:   l1 <= ol1;
+	    loop invariant idx:     s1 == os1 + k;
+	    loop invariant offset:  k == ol1 - l1;
+	    loop invariant len:     ol1 == strlen(os1);
+	    loop invariant valid:   valid_str(s1);
+	    loop invariant lens1:   strlen(os1) == strlen(s1) + k;
+	    loop invariant nomatch: \forall integer i; 0 <= i < k ==> !strmatch(os1 + i, s2);
+	    loop assigns l1, s1, k;
 	    loop variant l1;
 	 */
 	while (l1 >= l2) {
 		l1--;
 		if (!memcmp(s1, s2, l2))
 			return (char *)s1;
+		//@ assert l2 == strlen(s2);
 		//@ assert !strmatch(s1, s2);
+		//@ ghost valid_str_shift((char *)s1);
 		s1++;
+		//@ ghost k++;
 	}
 	return NULL;
 }

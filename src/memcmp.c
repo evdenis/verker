@@ -30,6 +30,11 @@
     //ensures \result == 0 <==> memcmp((char *)cs, (char *)ct, count) == 0;
     //ensures \result < 0  <==> memcmp((char *)cs, (char *)ct, count) < 0;
     //ensures \result > 0  <==> memcmp((char *)cs, (char *)ct, count) > 0;
+    // the masked form is what the body computes; callers usually want the
+    // plain character comparison, which is equivalent for chars
+    ensures \result != 0 ==>
+            (\exists integer i; 0 <= i < count &&
+                                ((char *)cs)[i] != ((char *)ct)[i]);
     behavior equal:
        assumes \forall integer i; 0 <= i < count ==>
                (unsigned char)((char *)cs)[i] == (unsigned char)((char *)ct)[i];
