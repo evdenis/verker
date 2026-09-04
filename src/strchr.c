@@ -2,19 +2,25 @@
 
 char *strchr(const char *s, int c)
 {
-	//@ ghost char *os = s;
-	/*@ loop invariant valid_str(s);
-	    loop invariant os <= s <= os + strlen(os);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char) c;
-	    loop invariant strchr(s, (char) c) == strchr(os, (char) c);
-	    loop assigns s;
-	    loop variant strlen(os) - (s - os);
+	//@ ghost char *os = (char *)s;
+	//@ ghost size_t k = 0;
+	/*@ loop invariant valid:   valid_str(s);
+	    loop invariant idx:     s == os + k;
+	    loop invariant bound:   0 <= k <= strlen(os);
+	    loop invariant len:     strlen(os) == strlen(s) + k;
+	    loop invariant nomatch: \forall integer i; 0 <= i < k ==> os[i] != (char) c;
+	    loop invariant same:    strchr(s, (char) c) == strchr(os, (char) c);
+	    loop assigns s, k;
+	    loop variant strlen(os) - k;
 	 */
-	for (; *s != (char) c; ++s)
+	for (; *s != (char) c; ++s) {
 		if (*s == '\0')
 			return NULL;
-	//@ assert (char) c != '\0' <==> s < os + strlen(os);
-	//@ assert (char) c == '\0' <==> s == os + strlen(os);
+		//@ ghost valid_str_shift((char *)s);
+		//@ ghost k++;
+	}
+	//@ ghost valid_str_len(os);
+	//@ ghost strchr_defn(os, (char) c, k);
 	return (char *)s;
 }
 
