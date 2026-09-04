@@ -89,14 +89,60 @@ Each library function of the Linux kernel is located in a separate \*.c file. Th
 
 You can type ```make help``` to see the available options.
 
-Frama-C/WP targets are being added back as part of the port away from AstraVer; until then
-you can run the prover by hand:
+### Prove
 
 ```bash
-$ frama-c -pp-annot -std c11 -cpp-extra-args " -DSPEC -Isrc " -machdep gcc_x86_64 \
-      -wp -wp-rte -warn-unsigned-overflow -warn-unsigned-downcast \
-      -wp-model Typed -wp-split src/strlen.c
+$ make wp-strlen          # one function
+$ make wp                 # all of them
+$ make wp-status          # only the goals that are still unproved
+$ make wp-gui-strlen      # the same run in the Frama-C GUI
 ```
+
+```TIMEOUT``` (seconds per goal) and ```PROCESSES``` (parallel provers) are environment
+knobs: ```make TIMEOUT=30 wp-strcmp```. Raising ```TIMEOUT``` alone has no effect on a goal
+whose timeout is already cached — use ```make wp-rebuild``` to force the provers to run
+again.
+
+Some goals are out of reach for the SMT provers but fall to a WP tactic; bit-level
+identities such as ```(hi << 4) | lo == hi * 16 + lo``` are the usual case.
+```make wp-auto-<function>``` searches for such a proof and saves it under
+```sessions/script/```. Ordinary runs replay those scripts before calling a prover, so the
+search cost is paid once.
+
+Every run enables ```-wp-rte``` together with ```-warn-unsigned-overflow``` and
+```-warn-unsigned-downcast```, so the runtime-error obligations are part of the proof.
+```make wp-smoke``` adds the vacuity check — it fails if a contract only holds because the
+code it guards is unreachable.
+
+### Proofs Replay
+
+Proof artifacts are committed under ```sessions/```:
+
+| Path | Contents |
+|------|----------|
+| ```sessions/cache/``` | content-hashed prover results |
+| ```sessions/script/``` | WP tactic scripts |
+| ```sessions/interactive/``` | hand-written Coq proofs |
+| ```sessions/reports/``` | per-function ```-wp-report-json``` baselines |
+
+```make wp-replay``` replays every proved function straight from the cache and never
+invokes a solver, so it does not need Alt-Ergo, CVC5 or Z3 installed. Note that WP's cache
+is keyed on an exact hash of the goal and on the prover version — unlike Why3 session
+shapes it does not tolerate edits, so touching a function or upgrading a solver invalidates
+its entries. ```make wp-rebuild``` regenerates them; the JSON baselines in
+```sessions/reports/``` are the version-independent record.
+
+The committed cache is restricted to the functions marked proved in the WP column, and
+within those to the entries that record an actual proof. ```make wp-prune``` rebuilds it on
+exactly that basis; run it before committing session updates. Cached timeouts are never
+committed — they are stale negatives that would hide a goal a newer solver can now close.
+
+### Value analysis
+
+```make eva``` runs the Eva plug-in over the libFuzzer harnesses as an independent
+bug-finder. It is deliberately *not* chained into the WP run: a property Eva marks valid
+would be skipped by WP, and here Eva only ever sees a synthetic harness, so its verdicts
+would not generalise to all callers.
 
 ### How to add a function in the repository
 
