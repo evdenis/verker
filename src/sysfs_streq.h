@@ -24,34 +24,74 @@
 	:
 	(size_t)(1 + sysfs_strlen(s + 1));
 
-    lemma sysfs_strlen_n_equal:
-       \forall char *s1, char *s2, size_t n;
-          valid_str(s1) ==>
-          valid_str(s2) ==>
-          (\exists size_t i;
-	     (0 <= i < \min(sysfs_strlen(s1), sysfs_strlen(s2))) &&
-	     (s1[i] != s2[i])) ==>
-          !strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2)));
-
-    lemma sysfs_strlen_bsn:
-       \forall char *s, size_t n;
-          valid_str(s) ==>
-          (\forall size_t i; 0 <= i < n ==> s[i] != '\0') ==>
-          s[n] == '\n' ==>
-          s[n + 1] == '\0' ==>
-          sysfs_strlen(s) == n;
-
-    lemma sysfs_strlen_equal:
-       \forall char* s1, char* s2, size_t n;
-          valid_str(s1) ==>
-          valid_str(s2) ==>
-          (\forall size_t i; 0 <= i < n ==> s1[i] == s2[i]) ==>
-          s1[n] == '\0' ==>
-          s2[n] == '\0' ==>
-	  (sysfs_strlen(s1) == sysfs_strlen(s2) &&
-           strnequal(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))));
     }
  */
+
+/*@ ghost
+  @ /@ requires  valid_str(s1);
+  @  @ requires  valid_str(s2);
+  @  @ requires  0 <= i < \min(sysfs_strlen(s1), sysfs_strlen(s2));
+  @  @ requires  s1[i] != s2[i];
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   strncmp(s1, s2, (size_t)\min(sysfs_strlen(s1), sysfs_strlen(s2))) != 0;
+  @  @/
+  @ void sysfs_strlen_n_equal(char *s1, char *s2, size_t i)
+  @ {
+  @   if (i > 0 && s1[0] == s2[0]) {
+  @     valid_str_shift(s1);
+  @     valid_str_shift(s2);
+  @     sysfs_strlen_n_equal(s1 + 1, s2 + 1, i - 1);
+  @   }
+  @ }
+  @*/
+
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas.
+ */
+
+/*@ ghost
+  @ /@ requires  valid_str(s);
+  @  @ requires  \forall integer i; 0 <= i < n ==> s[i] != '\0';
+  @  @ requires  s[n] == '\n';
+  @  @ requires  s[n + 1] == '\0';
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns   \nothing;
+  @  @ ensures   sysfs_strlen(s) == n;
+  @  @/
+  @ void sysfs_strlen_bsn(char *s, size_t n)
+  @ {
+  @   if (n > 0) {
+  @     valid_str_shift(s);
+  @     sysfs_strlen_bsn(s + 1, n - 1);
+  @   }
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  valid_str(s1);
+  @  @ requires  valid_str(s2);
+  @  @ requires  \forall integer i; 0 <= i < n ==> s1[i] == s2[i];
+  @  @ requires  s1[n] == '\0';
+  @  @ requires  s2[n] == '\0';
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns   \nothing;
+  @  @ ensures   sysfs_strlen(s1) == sysfs_strlen(s2);
+  @  @/
+  @ void sysfs_strlen_equal(char *s1, char *s2, size_t n)
+  @ {
+  @   if (n > 0 && s1[0] != '\0') {
+  @     valid_str_shift(s1);
+  @     valid_str_shift(s2);
+  @     sysfs_strlen_equal(s1 + 1, s2 + 1, n - 1);
+  @   }
+  @ }
+  @*/
+
 
 /*@ requires valid_str(s1);
     requires valid_str(s2);
