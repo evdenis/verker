@@ -49,7 +49,7 @@ has been re-proved with WP so far.
 | 29 | strstr        |        |    |                | yes       |         |
 | 30 | sysfs\_streq  | proved |    |                | yes       |         |
 | 31 | strlcat       |        |    | not required   |           |         |
-| 32 | strlcpy       | proved |    | not required   |           | use strncmp lf in ensures |
+| 32 | strlcpy       | proved | proved | not required   |           | use strncmp lf in ensures |
 | 33 | memmove       | proved\*| proved | not required   |           | use memcmp logic function at ensures |
 | 34 | memcpy        | proved | proved | not required   |           | use memcmp logic function at ensures |
 | 35 | memset        | proved | proved | not required   | !const    |         |

@@ -19,17 +19,25 @@
 
 /*@ requires \valid(dest+(0..size - 1));
     requires valid_str(src);
-    requires \base_addr(dest) != \base_addr(src);
+    requires \separated(dest+(0..size - 1), src+(0..strlen(src)));
+    requires strlen(src) <= LONG_MAX;
+    terminates \true;
+    exits \false;
+    ensures \result == strlen{Pre}(src);
     behavior size_is_lower_src:
        assumes 0 < size <= strlen(src);
        assigns dest[0..size - 1];
-       ensures \forall integer i; 0 <= i < size - 1 ==> src[i] == dest[i];
+       ensures \forall integer i; 0 <= i < size - 1 ==>
+               \at(src[i], Pre) == dest[i];
        ensures valid_str(dest);
+       ensures strlen(dest) == size - 1;
     behavior size_is_greater_src:
        assumes size > strlen(src);
-       assigns dest[0..strlen(src)];
-       ensures \forall integer i; 0 <= i < strlen(src) ==> src[i] == dest[i];
+       assigns dest[0..strlen{Pre}(src)];
+       ensures \forall integer i; 0 <= i < strlen{Pre}(src) ==>
+               \at(src[i], Pre) == dest[i];
        ensures valid_str(dest);
+       ensures strlen(dest) == strlen{Pre}(src);
     behavior zero_size:
        assumes size == 0;
        assigns \nothing;
