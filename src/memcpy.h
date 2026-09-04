@@ -15,9 +15,14 @@
 
 /*@ requires \valid_read((char *)src+(0..count-1));
     requires \valid((char *)dest+(0..count-1));
+    requires \separated((char *)dest+(0..count-1), (char *)src+(0..count-1));
+    terminates \true;
     assigns ((char *)dest)[0..count-1];
+    assigns \result \from dest;
+    exits \false;
     ensures \forall integer i; 0 <= i < count ==>
             ((char *)dest)[i] == ((char *)src)[i];
+    ensures \result == dest;
  */
 void *memcpy(void *dest, const void *src, size_t count);
 
