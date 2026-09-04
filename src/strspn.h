@@ -7,20 +7,8 @@
 #ifndef LEMMA_FUNCTIONS
 
 /*@ axiomatic StrSpn {
-    predicate in_array(char *s, char c) = \exists char *p; s <= p < s + strlen(s) && *p == c;
-
-    lemma in_array_shift1:
-       \forall char *s, c;
-          valid_str(s) && s != '\0' && *s != c ==>
-             in_array(s, c) <==> in_array(s + 1, c);
-    lemma in_array_true:
-       \forall char *s, c;
-          valid_str(s) && s != '\0' && *s == c ==>
-             in_array(s, c);
-    lemma in_array_false:
-       \forall char *s, c;
-          valid_str(s) && s == '\0' ==>
-             !in_array(s, c);
+    predicate in_array(char *s, char c) =
+       \exists integer i; 0 <= i < strlen(s) && s[i] == c;
 
     logic integer strspn(char *s, char *accept) =
        *s == '\0' || ! in_array(accept, *s) ? 0 : 1 + strspn(s + 1, accept);
@@ -57,7 +45,8 @@
 #else
 
 /*@ axiomatic StrSpn {
-    predicate in_array(char *s, char c) = \exists char *p; s <= p < s + strlen(s) && *p == c;
+    predicate in_array(char *s, char c) =
+       \exists integer i; 0 <= i < strlen(s) && s[i] == c;
 
     logic integer strspn(char *s, char *accept) =
        *s == '\0' || ! in_array(accept, *s) ? 0 : 1 + strspn(s + 1, accept);
@@ -150,6 +139,55 @@
   @*/
 
 #endif
+
+/*
+ * Lemma functions for in_array. See strlen.h for why these are ghost functions
+ * rather than ACSL lemmas.
+ */
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires *s == '\0';
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   !in_array(s, c);
+  @  @/
+  @ void in_array_false(char *s, char c)
+  @ {
+  @   valid_str_len(s);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires *s != '\0';
+  @  @ requires *s == c;
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   in_array(s, c);
+  @  @/
+  @ void in_array_true(char *s, char c)
+  @ {
+  @   valid_str_len(s);
+  @   /@ assert 0 <= 0 < strlen(s) && s[0] == c; @/
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires *s != '\0';
+  @  @ requires *s != c;
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   in_array(s, c) <==> in_array(s + 1, c);
+  @  @/
+  @ void in_array_shift1(char *s, char c)
+  @ {
+  @   valid_str_len(s);
+  @   valid_str_shift(s);
+  @   valid_str_len(s + 1);
+  @ }
+  @*/
 
 /**
  * strspn - Calculate the length of the initial substring of @s which only contain letters in @accept
