@@ -75,13 +75,13 @@
        \forall char *s, size_t i, cnt;
           valid_strn(s, cnt) &&
           i <= strnlen(s, cnt) ==>
-             strnlen(s + i, cnt) == strnlen(s, cnt) - i;
+             strnlen(s + i, (size_t)(cnt - i)) == strnlen(s, cnt) - i;
 
     lemma strnlen_shift_ex:
        \forall char *s, size_t i, cnt;
           valid_strn(s, cnt) &&
           0 < i <= strnlen(s, cnt) ==>
-             strnlen(s + i, cnt) < strnlen(s, cnt);
+             strnlen(s + i, (size_t)(cnt - i)) < strnlen(s, cnt);
 
     lemma strnlen_shift1:
        \forall char *s, size_t cnt;
