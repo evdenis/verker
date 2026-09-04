@@ -86,6 +86,7 @@
     behavior found:
        assumes \exists integer i; 0 <= i < strlen(cs) && in_array(ct, cs[i]);
        ensures 0 <= \result - cs < strlen(cs);
+       ensures \valid(\result);
        ensures in_array(ct, *\result);
        ensures \forall integer i; 0 <= i < \result - cs ==> !in_array(ct, cs[i]);
     behavior not_found:
