@@ -3,18 +3,23 @@
 size_t strnlen(const char *s, size_t count)
 {
 	const char *sc;
-	/*@ loop invariant 0 <= count <= \at(count,Pre);
-	    loop invariant s <= sc <= s + strnlen(s,\at(count,Pre));
-	    loop invariant sc - s == (\at(count,Pre) - count);
-	    loop invariant valid_strn(sc, count);
-	    loop invariant strnlen(s,\at(count,Pre)) == strnlen(sc, count) + (sc - s);
-	    loop invariant \forall integer i; 0 <= i < sc - s ==> s[i] != '\0';
-	    loop assigns count, sc;
+	//@ ghost size_t ocount = count;
+	//@ ghost size_t k = 0;
+	/*@ loop invariant bound:  0 <= count <= ocount;
+	    loop invariant idx:    sc == s + k;
+	    loop invariant offset: k == ocount - count;
+	    loop invariant valid:  valid_strn(sc, count);
+	    loop invariant len:    strnlen(s, ocount) == strnlen(sc, count) + k;
+	    loop invariant nz:     \forall integer i; 0 <= i < k ==> s[i] != '\0';
+	    loop assigns count, sc, k;
 	    loop variant count;
 	 */
-	for (sc = s; count-- && *sc != '\0'; ++sc)
-		/* nothing */;
-
+	for (sc = s; count-- && *sc != '\0'; ++sc) {
+		//@ ghost valid_strn_shift((char *)sc, (size_t)(count + 1));
+		//@ ghost k++;
+	}
+	//@ ghost valid_strn_len((char *)s, ocount);
+	//@ assert sc - s == k;
 	return sc - s;
 }
 

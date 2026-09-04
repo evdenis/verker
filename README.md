@@ -39,7 +39,7 @@ has been re-proved with WP so far.
 | 19 | strnchr       | proved |    |                | yes       |         |
 | 20 | strncmp       | proved |    |                | yes       |         |
 | 21 | strncpy       |        |    | not required   |           |         |
-| 22 | strnlen       | proved |    | proved         | yes       |         |
+| 22 | strnlen       | proved | proved | proved         | yes       |         |
 | 23 | strnstr       |        |    |                | yes       |         |
 | 24 | strpbrk       | proved |    | proved         | yes       |         |
 | 25 | strrchr       | proved |    |                | yes       |         |
