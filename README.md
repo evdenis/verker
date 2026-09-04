@@ -33,7 +33,7 @@ has been re-proved with WP so far.
 | 13 | stpcpy        | proved |    | not required   |           |         |
 | 14 | strcspn       | proved |    | proved         | yes       |         |
 | 15 | strim         |        |    | not required   | !const    |         |
-| 16 | strlen        | proved |    | proved         | yes       |         |
+| 16 | strlen        | proved | proved | proved         | yes       |         |
 | 17 | strncasecmp   |        |    |                | yes       |         |
 | 18 | strncat       |        |    | not required   |           |         |
 | 19 | strnchr       | proved |    |                | yes       |         |
