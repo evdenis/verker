@@ -2,6 +2,7 @@
 
 size_t strlcpy(char *dest, const char *src, size_t size)
 {
+	//@ ghost valid_str_len((char *)src);
 	size_t ret = strlen(src);
 
 	if (size) {
@@ -9,6 +10,7 @@ size_t strlcpy(char *dest, const char *src, size_t size)
 		memcpy(dest, src, len);
 		//@ assert \forall integer i;  0 <= i < len ==> src[i] == dest[i];
 		dest[len] = '\0';
+		//@ ghost intro_valid_str_len(dest, len);
 		//@ assert valid_str(dest);
 		//@ assert strlen(dest) == len;
 	}
