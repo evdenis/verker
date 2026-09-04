@@ -6,11 +6,12 @@ static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 	//@ ghost u8 *ostart = start;
 	//@ ghost unsigned int obytes = bytes;
 
-	/*@ loop invariant 0 <= bytes <= obytes;
-	    loop invariant ostart <= start <= ostart + obytes;
-	    loop invariant start - ostart == obytes - bytes;
-	    loop invariant \forall u8 *i; ostart <= i < start ==> *i == value;
-	    loop invariant check_bytes8(ostart, value, obytes) == check_bytes8(start, value, bytes);
+	/*@ loop invariant bound:   0 <= bytes <= obytes;
+	    loop invariant offset:  start == ostart + (obytes - bytes);
+	    loop invariant matched: \forall integer i; 0 <= i < obytes - bytes ==>
+	                            ostart[i] == value;
+	    loop invariant same:    check_bytes8(ostart, value, obytes) ==
+	                            check_bytes8(start, value, bytes);
 	    loop assigns start, bytes;
 	    loop variant bytes;
 	 */
