@@ -31,7 +31,7 @@ has been re-proved with WP so far.
 | 11 | strcmp        | proved |    | proved         | yes       |         |
 | 12 | strcpy        | proved |    | not required   |           | use strcmp logic function |
 | 13 | stpcpy        | proved |    | not required   |           |         |
-| 14 | strcspn       | proved |    | proved         | yes       |         |
+| 14 | strcspn       | proved | proved | proved         | yes       |         |
 | 15 | strim         |        |    | not required   | !const    |         |
 | 16 | strlen        | proved | proved | proved         | yes       |         |
 | 17 | strncasecmp   |        |    |                | yes       |         |
@@ -41,7 +41,7 @@ has been re-proved with WP so far.
 | 21 | strncpy       |        |    | not required   |           |         |
 | 22 | strnlen       | proved | proved | proved         | yes       |         |
 | 23 | strnstr       |        |    |                | yes       |         |
-| 24 | strpbrk       | proved |    | proved         | yes       |         |
+| 24 | strpbrk       | proved | proved | proved         | yes       |         |
 | 25 | strrchr       | proved |    |                | yes       |         |
 | 26 | strreplace    | proved |    | not required   | !const    |         |
 | 27 | strsep        | proved |    | not required   | !const    |         |

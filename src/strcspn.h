@@ -5,8 +5,6 @@
 #include "strspn.h"
 #include "strlen.h"
 
-#ifndef LEMMA_FUNCTIONS
-
 /*@ axiomatic StrCSpn {
     logic integer strcspn(char *s, char *reject) =
       *s == '\0' || in_array(reject, *s) ? 0 : 1 + strcspn(s + 1, reject);
@@ -15,16 +13,6 @@
        \forall char *s, *reject;
           \valid(s) && *s == '\0' ==>
              strcspn(s, reject) == 0;
-
-    lemma strcspn_empty_reject:
-       \forall char *s, *reject;
-          valid_str(s) && valid_str(reject) && *reject == '\0' ==>
-             strcspn(s, reject) == strlen(s);
-
-    lemma strcspn_range:
-       \forall char *s, *reject;
-          valid_str(s) && valid_str(reject) ==>
-             0 <= strcspn(s, reject) <= strlen(s);
 
     lemma strcspn_shift1:
        \forall char *s, *reject;
@@ -40,56 +28,48 @@
     }
  */
 
-#else
-
-/*@ axiomatic StrCSpn {
-    logic integer strcspn(char *s, char *reject) =
-      *s == '\0' || in_array(reject, *s) ? 0 : 1 + strcspn(s + 1, reject);
-    }
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas. strcspn_range recurses on '*s != '\0'' alone: ghost code is C
+ * and cannot branch on in_array, and the postcondition holds either way.
  */
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires \valid(s);
-  @  @ requires *s == '\0';
-  @  @ ensures strcspn(s, reject) == 0;
-  @  @/
-  @ void strcspn_strend(char *s, char *reject)
-  @ {
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ requires \valid(reject);
-  @  @ requires *reject == '\0';
+  @ /@ requires  valid_str(s);
+  @  @ requires  valid_str(reject);
+  @  @ terminates \true;
   @  @ decreases strlen(s);
-  @  @ ensures strcspn(s, reject) == strlen(s);
-  @  @/
-  @ void strcspn_empty_accept(char *s, char *reject)
-  @ {
-  @  if (*s != '\0')
-  @    strcspn_empty_accept(s + 1, reject);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s) ;
-  @  @ requires valid_str(reject);
-  @  @ decreases strlen(s);
-  @  @ ensures 0 <= strcspn(s, reject) <= strlen(s);
+  @  @ assigns   \nothing;
+  @  @ ensures   0 <= strcspn(s, reject) <= strlen(s);
   @  @/
   @ void strcspn_range(char *s, char *reject)
   @ {
-  @   if (*s != '\0' && !in_array(reject, *s)) {
+  @   if (*s != '\0') {
+  @     valid_str_shift(s);
   @     strcspn_range(s + 1, reject);
   @   }
   @ }
   @*/
 
-#endif /* LEMMA_FUNCTIONS */
+
+/*@ ghost
+  @ /@ requires  valid_str(s);
+  @  @ requires  valid_str(reject);
+  @  @ requires  *reject == '\0';
+  @  @ terminates \true;
+  @  @ decreases strlen(s);
+  @  @ assigns   \nothing;
+  @  @ ensures   strcspn(s, reject) == strlen(s);
+  @  @/
+  @ void strcspn_empty_reject(char *s, char *reject)
+  @ {
+  @   if (*s != '\0') {
+  @     in_array_false(reject, *s);
+  @     valid_str_shift(s);
+  @     strcspn_empty_reject(s + 1, reject);
+  @   }
+  @ }
+  @*/
 
 /**
  * strcspn - Calculate the length of the initial substring of @s which does not contain letters in @reject
@@ -99,24 +79,17 @@
 
 /*@ requires valid_str(s);
     requires valid_str(reject);
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures \result == strcspn(s, reject);
     ensures 0 <= \result <= strlen(s);
-    ensures \forall char *p, *t;
-            s <= p < s + \result &&
-            reject <= t < reject + strlen(reject) ==>
-            *p != *t;
+    ensures \forall integer i; 0 <= i < \result ==> !in_array(reject, s[i]);
     behavior exists:
-       assumes \exists char *p, *t;
-               s <= p < s + strlen(s) &&
-               reject <= t < reject + strlen(reject) &&
-               *p == *t;
-       ensures \exists char *t; reject <= t < reject + strlen(reject) && s[\result] == *t;
+       assumes \exists integer i; 0 <= i < strlen(s) && in_array(reject, s[i]);
+       ensures in_array(reject, s[\result]);
     behavior not_exists:
-       assumes \forall char *p, *t;
-               s <= p < s + strlen(s) &&
-               reject <= t < reject + strlen(reject) ==>
-               *p != *t;
+       assumes \forall integer i; 0 <= i < strlen(s) ==> !in_array(reject, s[i]);
        ensures \result == strlen(s);
     complete behaviors;
     disjoint behaviors;
