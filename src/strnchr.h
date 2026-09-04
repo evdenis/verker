@@ -12,14 +12,17 @@
  */
 
 /*@ requires valid_strn(s, count);
-    assigns \nothing;
+    requires count <= LONG_MAX;
+    terminates \true;
+    assigns \result \from s, count, c;
+    exits \false;
     behavior exists:
-       assumes \exists char *p; s <= p < s + strnlen(s, count) && *p == (char) c;
-       ensures s <= \result <= s + strnlen(s, count);
+       assumes \exists integer i; 0 <= i < strnlen(s, count) && s[i] == (char) c;
+       ensures 0 <= \result - s < strnlen(s, count);
        ensures *\result == (char) c;
-       ensures \forall char *p; s <= p < \result ==> *p != (char) c;
+       ensures \forall integer i; 0 <= i < \result - s ==> s[i] != (char) c;
     behavior not_exists:
-       assumes \forall char *p; s <= p < s + strnlen(s, count) ==> *p != (char) c;
+       assumes \forall integer i; 0 <= i < strnlen(s, count) ==> s[i] != (char) c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;
