@@ -1,6 +1,8 @@
 #include "int_sqrt.h"
 
-/*@ assigns \nothing;
+/*@ terminates \true;
+    assigns \result \from x;
+    exits \false;
  */
 unsigned long int_sqrt(unsigned long x)
 {
@@ -10,7 +12,7 @@ unsigned long int_sqrt(unsigned long x)
 		return x;
 
 	m = 1UL << (BITS_PER_LONG - 2);
-	/*@
+	/*@ loop assigns b, m, x, y;
 	    loop variant m;
 	 */
 	while (m != 0) {
