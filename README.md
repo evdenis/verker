@@ -51,7 +51,7 @@ has been re-proved with WP so far.
 | 31 | strlcat       |        |    | not required   |           |         |
 | 32 | strlcpy       | proved |    | not required   |           | use strncmp lf in ensures |
 | 33 | memmove       | proved\*|    | not required   |           | use memcmp logic function at ensures |
-| 34 | memcpy        | proved |    | not required   |           | use memcmp logic function at ensures |
+| 34 | memcpy        | proved | proved | not required   |           | use memcmp logic function at ensures |
 | 35 | memset        | proved | proved | not required   | !const    |         |
 | 36 | kstrtobool    | proved | proved | not required   | yes       |         |
 | 37 | \_parse\_integer\_fixup\_radix | proved | proved | not required | yes | |
