@@ -2,20 +2,28 @@
 
 char *strnchr(const char *s, size_t count, int c)
 {
-	//@ ghost char *os = s;
+	//@ ghost char *os = (char *)s;
 	//@ ghost size_t ocount = count;
-	/*@ loop invariant 0 <= count <= ocount;
-	    loop invariant os <= s <= os + strnlen(os, ocount);
-	    loop invariant s - os == ocount - count;
-	    loop invariant valid_strn(s, count);
-	    loop invariant strnlen(os, ocount) == s - os + strnlen(s, count);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char) c;
-	    loop assigns count, s;
+	//@ ghost size_t k = 0;
+	/*@ loop invariant bound:   0 <= count <= ocount;
+	    loop invariant idx:     s == os + k;
+	    loop invariant offset:  k == ocount - count;
+	    loop invariant valid:   valid_strn(s, count);
+	    loop invariant len:     strnlen(os, ocount) == k + strnlen(s, count);
+	    loop invariant nomatch: \forall integer i; 0 <= i < k ==> os[i] != (char) c;
+	    loop assigns count, s, k;
 	    loop variant count;
 	 */
-	for (; count-- && *s != '\0'; ++s)
-		if (*s == (char) c)
+	for (; count-- && *s != '\0'; ++s) {
+		if (*s == (char) c) {
+			//@ ghost valid_strn_shift((char *)s, (size_t)(count + 1));
+			//@ assert k < strnlen(os, ocount);
 			return (char *)s;
+		}
+		//@ ghost valid_strn_shift((char *)s, (size_t)(count + 1));
+		//@ ghost k++;
+	}
+	//@ ghost valid_strn_len(os, ocount);
 	return NULL;
 }
 

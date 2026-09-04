@@ -36,7 +36,7 @@ has been re-proved with WP so far.
 | 16 | strlen        | proved | proved | proved         | yes       |         |
 | 17 | strncasecmp   |        |    |                | yes       |         |
 | 18 | strncat       |        |    | not required   |           |         |
-| 19 | strnchr       | proved |    |                | yes       |         |
+| 19 | strnchr       | proved | proved |                | yes       |         |
 | 20 | strncmp       | proved |    |                | yes       |         |
 | 21 | strncpy       |        |    | not required   |           |         |
 | 22 | strnlen       | proved | proved | proved         | yes       |         |
