@@ -14,9 +14,11 @@
 
 /*@ requires \valid((char *)dest+(0..count-1));
     requires \valid_read((char *)src+(0..count-1));
-    requires \base_addr(dest) == \base_addr(src) ^^
-             \base_addr(dest) != \base_addr(src);
+    terminates \true;
     assigns ((char *)dest)[0..count-1];
+    assigns \result \from dest;
+    exits \false;
+    ensures \result == dest;
     behavior same_addr:
       assumes \base_addr(dest) == \base_addr(src);
       ensures \forall integer i; 0 <= i < count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);

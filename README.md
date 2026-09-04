@@ -50,14 +50,14 @@ has been re-proved with WP so far.
 | 30 | sysfs\_streq  | proved |    |                | yes       |         |
 | 31 | strlcat       |        |    | not required   |           |         |
 | 32 | strlcpy       | proved |    | not required   |           | use strncmp lf in ensures |
-| 33 | memmove       | proved\*|    | not required   |           | use memcmp logic function at ensures |
+| 33 | memmove       | proved\*| proved | not required   |           | use memcmp logic function at ensures |
 | 34 | memcpy        | proved | proved | not required   |           | use memcmp logic function at ensures |
 | 35 | memset        | proved | proved | not required   | !const    |         |
 | 36 | kstrtobool    | proved | proved | not required   | yes       |         |
 | 37 | \_parse\_integer\_fixup\_radix | proved | proved | not required | yes | |
 | 38 | \_parse\_integer |     |    |                | yes       |         |
 
- \* memmove - except pointer difference vc fail. Model limitation.
+ \* Under AstraVer, memmove's pointer-difference VC failed (model limitation). It is fully proved under WP.
 
 ## Toolchain
 

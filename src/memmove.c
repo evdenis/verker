@@ -9,13 +9,12 @@ void *memmove(void *dest, const void *src, size_t count)
 	if (dest <= src) {
 		tmp = dest;
 		s = src;
-		/*@ loop invariant 0 <= count <= ocount;
-		    loop invariant tmp - dest == ocount - count == s - src;
-		    loop invariant (char *)dest <= tmp <= (char *)dest + ocount;
-		    loop invariant (char *)src <= s <= (char *)src + ocount;
-		    loop invariant \forall integer i; ocount - count <= i < ocount ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
-		    loop invariant \forall integer i; 0 <= i < ocount - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
-		    loop assigns count, s, ((char *)dest)[0..ocount-1];
+		/*@ loop invariant bound:  0 <= count <= ocount;
+		    loop invariant dstoff: tmp == (char *)dest + (ocount - count);
+		    loop invariant srcoff: s == (char *)src + (ocount - count);
+		    loop invariant unread: \forall integer i; ocount - count <= i < ocount ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
+		    loop invariant copied: \forall integer i; 0 <= i < ocount - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop assigns count, tmp, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
 		while (count--) {
 			*tmp++ = *s++;
@@ -26,13 +25,12 @@ void *memmove(void *dest, const void *src, size_t count)
 		tmp += count;
 		s = src;
 		s += count;
-		/*@ loop invariant 0 <= count <= ocount;
-		    loop invariant tmp - dest == count == s - src;
-		    loop invariant (char *)dest <= tmp <= (char *)dest + ocount;
-		    loop invariant (char *)src <= s <= (char *)src + ocount;
-		    loop invariant \forall integer i; 0 <= i < count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
-		    loop invariant \forall integer i; count <= i < ocount ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
-		    loop assigns count, s, ((char *)dest)[0..ocount-1];
+		/*@ loop invariant bound:  0 <= count <= ocount;
+		    loop invariant dstoff: tmp == (char *)dest + count;
+		    loop invariant srcoff: s == (char *)src + count;
+		    loop invariant unread: \forall integer i; 0 <= i < count ==> ((char *)src)[i] == \at(((char *)src)[i], Pre);
+		    loop invariant copied: \forall integer i; count <= i < ocount ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
+		    loop assigns count, tmp, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
 		while (count--) {
 			*--tmp = *--s;
