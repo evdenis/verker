@@ -2,16 +2,16 @@
 
 void *memchr(const void *s, int c, size_t n)
 {
-	const unsigned char *p = s;
-	/*@ loop invariant 0 <= n <= \at(n,Pre);
-	    loop invariant (u8 *)s <= p <= (u8 *)s + \at(n,Pre);
-	    loop invariant p - s == \at(n,Pre) - n;
-	    loop invariant \forall u8 *k; (u8 *)s <= k < p ==> *k != (u8) c;
+	const char *p = /*CODE_CHANGE:*/s;
+	/*@ loop invariant bound:   0 <= n <= \at(n,Pre);
+	    loop invariant offset:  p == (char *)s + (\at(n,Pre) - n);
+	    loop invariant nomatch: \forall integer i; 0 <= i < \at(n,Pre) - n ==>
+	                            ((char *)s)[i] != (char) c;
 	    loop assigns n, p;
 	    loop variant n;
 	 */
 	while (n-- != 0) {
-		if ((unsigned char) c == *p++) {
+		if (/*CODE_CHANGE:*/(char) c == *p++) {
 			return (void *)(p - 1);
 		}
 	}
