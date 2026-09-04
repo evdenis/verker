@@ -13,29 +13,6 @@
     predicate equaln(char *cs, char *ct, size_t n) = strncmp(cs, ct, n) == 0;
     predicate equal(char *cs, char *ct) = strcmp(cs, ct) == 0;
 
-    lemma range:
-       \forall char *cs, *ct, size_t n;
-       \valid(cs+(0..n)) && \valid(ct+(0..n)) ==>
-          -1 <= strncmp(cs, ct, n) <= 1;
-
-    lemma defn_equal:
-       \forall char *cs, *ct, size_t n;
-       \valid(cs+(0..n)) && \valid(ct+(0..n)) &&
-       (\forall size_t i; i <= n ==> cs[i] == ct[i]) ==>
-          strncmp(cs, ct, n) == 0;
-    lemma defn_less:
-       \forall char *cs, *ct, size_t n, k;
-       \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
-       (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
-       (u8)cs[k] < (u8)ct[k] ==>
-          strncmp(cs, ct, n) == -1;
-    lemma defn_greater:
-       \forall char *cs, *ct, size_t n, k;
-       \valid(cs+(0..n)) && \valid(ct+(0..n)) && k <= n &&
-       (\forall size_t i; i < k ==> cs[i] == ct[i]) &&
-       (u8)cs[k] > (u8)ct[k] ==>
-          strncmp(cs, ct, n) == 1;
-
     lemma iter_one:
        \forall char *cs, *ct, size_t n;
        \valid(cs+(0..n)) && \valid(ct+(0..n)) &&
@@ -47,6 +24,78 @@
        strncmp(cs, ct, 0) == cmp((u8)*cs, (u8)*ct);
     }
  */
+
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas. Each inducts on the comparison length.
+ */
+
+/*@ ghost
+  @ /@ requires  \valid(cs+(0..n));
+  @  @ requires  \valid(ct+(0..n));
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns   \nothing;
+  @  @ ensures   -1 <= strncmp(cs, ct, n) <= 1;
+  @  @/
+  @ void strncmp_range(char *cs, char *ct, size_t n)
+  @ {
+  @   if (n > 0 && cs[0] == ct[0])
+  @     strncmp_range(cs + 1, ct + 1, n - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(cs+(0..n));
+  @  @ requires  \valid(ct+(0..n));
+  @  @ requires  \forall integer i; 0 <= i <= n ==> cs[i] == ct[i];
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns   \nothing;
+  @  @ ensures   strncmp(cs, ct, n) == 0;
+  @  @/
+  @ void strncmp_defn_equal(char *cs, char *ct, size_t n)
+  @ {
+  @   if (n > 0)
+  @     strncmp_defn_equal(cs + 1, ct + 1, n - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(cs+(0..k));
+  @  @ requires  \valid(ct+(0..k));
+  @  @ requires  k <= n;
+  @  @ requires  \forall integer i; 0 <= i < k ==> cs[i] == ct[i];
+  @  @ requires  (u8)cs[k] < (u8)ct[k];
+  @  @ terminates \true;
+  @  @ decreases k;
+  @  @ assigns   \nothing;
+  @  @ ensures   strncmp(cs, ct, n) == -1;
+  @  @/
+  @ void strncmp_defn_less(char *cs, char *ct, size_t n, size_t k)
+  @ {
+  @   if (k > 0)
+  @     strncmp_defn_less(cs + 1, ct + 1, n - 1, k - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(cs+(0..k));
+  @  @ requires  \valid(ct+(0..k));
+  @  @ requires  k <= n;
+  @  @ requires  \forall integer i; 0 <= i < k ==> cs[i] == ct[i];
+  @  @ requires  (u8)cs[k] > (u8)ct[k];
+  @  @ terminates \true;
+  @  @ decreases k;
+  @  @ assigns   \nothing;
+  @  @ ensures   strncmp(cs, ct, n) == 1;
+  @  @/
+  @ void strncmp_defn_greater(char *cs, char *ct, size_t n, size_t k)
+  @ {
+  @   if (k > 0)
+  @     strncmp_defn_greater(cs + 1, ct + 1, n - 1, k - 1);
+  @ }
+  @*/
 
 /**
  * strcmp - Compare two strings
