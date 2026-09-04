@@ -22,7 +22,7 @@ has been re-proved with WP so far.
 | 2  | match\_string | proved |    | not required   |           |         |
 | 3  | memchr        | proved | proved |                | yes       |         |
 | 4  | memcmp        | proved |    |                | yes       |         |
-| 5  | memscan       | proved |    | not required   | yes       |         |
+| 5  | memscan       | proved | proved | not required   | yes       |         |
 | 6  | skip\_spaces  | proved |    | proved         | yes       | requires too strict (remove strlen) |
 | 7  | strcasecmp    | proved |    |                | yes       |         |
 | 8  | strcat        | proved |    | not required   |           | usr strcmp in ensures |
