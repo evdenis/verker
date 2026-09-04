@@ -3,14 +3,16 @@
 size_t strlen(const char *s)
 {
 	const char *sc;
-	/*@ loop invariant s <= sc <= s + strlen(s);
-	    loop invariant valid_str(sc);
-	    loop invariant strlen(s) == strlen(sc) + (sc - s);
+	/*@ loop invariant bound:  0 <= sc - s <= strlen(s);
+	    loop invariant valid:  valid_str(sc);
+	    loop invariant offset: strlen(s) == strlen(sc) + (sc - s);
 	    loop assigns sc;
 	    loop variant strlen(s) - (sc - s);
 	 */
 	for (sc = s; *sc != '\0'; ++sc)
-		/* nothing */;
+		/*@ ghost valid_str_shift((char *)sc); */ ;
+	//@ ghost valid_str_len((char *)s);
+	//@ assert 0 <= sc - s <= strlen(s);
 	return sc - s;
 }
 
