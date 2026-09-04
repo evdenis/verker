@@ -139,15 +139,15 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
-    ensures \result == strchr(s, (char AENO) c);
+    ensures \result == strchr(s, (char) c);
     behavior not_exists:
-       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char AENO) c;
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char) c;
        ensures \result == \null;
     behavior exists:
-       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char AENO) c;
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char) c;
        ensures s <= \result <= s + strlen(s);
-       ensures *\result == (char AENO) c;
-       ensures \forall char *p; s <= p < \result ==> *p != (char AENO) c;
+       ensures *\result == (char) c;
+       ensures \forall char *p; s <= p < \result ==> *p != (char) c;
     complete behaviors;
     disjoint behaviors;
  */

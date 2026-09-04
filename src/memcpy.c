@@ -15,9 +15,9 @@ void *memcpy(void *dest, const void *src, size_t count)
 	    loop assigns count, tmp, s, ((char *)dest)[0..ocount-1];
 	    loop variant count;
 	 */
-	while (count-- AENOC)
+	while (count--)
 		*tmp++ = *s++;
-	//@ assert count == (size_t AENO)(-1);
+	//@ assert count == (size_t)(-1);
 	return dest;
 }
 

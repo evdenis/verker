@@ -1,7 +1,10 @@
 #ifndef __KERNEL_DEFINITIONS_H__
 #define __KERNEL_DEFINITIONS_H__
 
-#include "acsl_syntax_extension.h"
+/* AstraVer-era lemma functions are parked until ported to vanilla ACSL ghost
+ * functions; until then the axiomatic branch assumes what they used to prove.
+ */
+#undef LEMMA_FUNCTIONS
 
 #define CONFIG_64BIT 1
 

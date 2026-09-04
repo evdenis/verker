@@ -38,7 +38,7 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 	    loop assigns count, src, src, odst[0..ocount-1];
 	    loop variant count;
 	 */
-	while (count-- AENOC) {
+	while (count--) {
 		int hi = hex_to_bin(*src++);
 		int lo = hex_to_bin(*src++);
 
@@ -52,7 +52,7 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 		//@ assert 0 <= ((hi << 4) | lo) <= 255;
 		*dst++ = (hi << 4) | lo;
 	}
-	//@ assert count == ((size_t AENO)-1);
+	//@ assert count == ((size_t)-1);
 	return 0;
 }
 

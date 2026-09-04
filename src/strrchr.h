@@ -59,15 +59,15 @@
 
 /*@ requires valid_str(s);
     assigns \nothing;
-    //ensures \result == strrchr(s, (char AENO) c);
+    //ensures \result == strrchr(s, (char) c);
     behavior found:
-       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char AENO) c;
+       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char) c;
        ensures s <= \result <= s + strlen(s);
-       ensures *\result == (char AENO) c;
+       ensures *\result == (char) c;
        ensures \forall char *p; \result < p <= s + strlen(s) ==>
-               *p != (char AENO) c;
+               *p != (char) c;
     behavior not_found:
-       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char AENO) c;
+       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char) c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;

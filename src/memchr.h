@@ -17,12 +17,12 @@
     requires \valid_read((u8 *)s+(0..n-1));
     assigns \nothing;
     behavior found:
-       assumes \exists u8 *p; (u8 *)s <= p < (u8 *)s + n && *p == (u8 AENO) c;
+       assumes \exists u8 *p; (u8 *)s <= p < (u8 *)s + n && *p == (u8) c;
        ensures s <= \result <= s + n;
-       ensures \forall u8 *p; (u8 *)s <= p < (u8 *)\result ==> *p != (u8 AENO) c;
-       ensures *((u8 *)\result) == (u8 AENO) c;
+       ensures \forall u8 *p; (u8 *)s <= p < (u8 *)\result ==> *p != (u8) c;
+       ensures *((u8 *)\result) == (u8) c;
     behavior not_exists:
-       assumes \forall u8 *p; (u8 *)s <= p < (u8 *)s + n ==> *p != (u8 AENO) c;
+       assumes \forall u8 *p; (u8 *)s <= p < (u8 *)s + n ==> *p != (u8) c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;

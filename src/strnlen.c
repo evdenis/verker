@@ -12,7 +12,7 @@ size_t strnlen(const char *s, size_t count)
 	    loop assigns count, sc;
 	    loop variant count;
 	 */
-	for (sc = s; count-- AENOC && *sc != '\0'; ++sc)
+	for (sc = s; count-- && *sc != '\0'; ++sc)
 		/* nothing */;
 
 	return sc - s;

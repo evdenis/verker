@@ -14,7 +14,7 @@
     predicate isodigit(integer c) = '0' <= c <= '7';
     predicate isalnum(integer c)  = isdigit(c) || isalpha(c);
     predicate isspace(integer c)  = c == ' '  || c == '\f' || c == '\n' ||
-                                    c == '\r' || c == '\t' FRAMAC_VTAB_BUG;
+                                    c == '\r' || c == '\t' || c == '\v';
     predicate isxdigit(integer c) = isdigit(c)        ||
                                     ('a' <= c <= 'f') ||
                                     ('A' <= c <= 'F');
