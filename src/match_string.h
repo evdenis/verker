@@ -24,13 +24,13 @@
 
     logic size_t match_string(char **a, size_t n, char *s) =
        n == 0 ?
-          0
+          (size_t)0
        :
-          (strcmp(a[0], s) == 0 ? 0 : match_string(a + 1, (size_t)(n - 1), s));
+          (strcmp(a[0], s) == 0 ? (size_t)0 : match_string(a + 1, (size_t)(n - 1), s));
 
     logic size_t real_len(char **a, size_t n) =
        ((a[0] == NULL) || (n == 0)) ?
-          0
+          (size_t)0
        :
           (size_t)(1 + real_len(a + 1, (size_t)(n - 1)));
 

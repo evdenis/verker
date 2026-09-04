@@ -19,7 +19,7 @@ size_t strlcat(char *dest, const char *src, size_t count)
 	//BUG_ON(dsize >= count);
 
 	dest += dsize;
-//@ ghost Mid:
+//@ ghost Mid: ;
 	//@ assert valid_str(dest);
 	//@ assert dest == \at(dest,Pre) + strlen(\at(dest,Pre));
 	//@ assert *dest == '\0';

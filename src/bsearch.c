@@ -1,8 +1,6 @@
 #include "bsearch.h"
 
-/*@ requires \typeof(key) <: \type(char *);
-    requires \typeof(elt) <: \type(char *);
-    requires \valid_read((char *)key) && \valid_read((char *)elt);
+/*@ requires \valid_read((char *)key) && \valid_read((char *)elt);
     assigns \nothing;
     ensures \result > 0  <==> *((char *)key) > *((char *)elt);
     ensures \result < 0  <==> *((char *)key) < *((char *)elt);
@@ -15,9 +13,7 @@ int ccmp(const void *key, const void *elt)
 
 //@ lemma Dummy: ccmp == \null || ccmp != \null;
 
-/*@ requires \typeof(key) <: \type(char *);
-    requires \typeof(base) <: \type(char *);
-    requires size == 1;
+/*@ requires size == 1;
     requires \valid_read((char *)key+(0..size));
     requires \valid_read((char *)base+(0..num*size));
     requires cmp == ccmp;

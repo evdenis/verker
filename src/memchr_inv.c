@@ -1,7 +1,6 @@
 #include "memchr_inv.h"
 
-/*@ requires \typeof(start) <: \type(char *);
-    requires \valid((char *)start + (0..bytes-1));
+/*@ requires \valid((char *)start + (0..bytes-1));
  */
 void *memchr_inv(const void *start, int c, size_t bytes)
 {

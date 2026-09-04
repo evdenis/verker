@@ -3,18 +3,17 @@
 char *strreplace(char *s, char old, char new)
 {
 	//@ ghost char *os = s;
-	//@ ghost size_t len = strlen(os);
 
 	/*@ loop invariant valid_str(s);
 	    loop invariant valid_str(os);
-	    loop invariant os <= s <= os + len;
-	    loop invariant \forall char *k; s <= k < (os + len) ==>
+	    loop invariant os <= s <= os + strlen{Pre}(os);
+	    loop invariant \forall char *k; s <= k < (os + strlen{Pre}(os)) ==>
                \at(*k,Pre) == *k;
 	    loop invariant \forall char *p; os <= p < s ==>
 	       \at(*p, Pre) == old ==> *p == new;
 	    loop invariant \forall char *p; os <= p < s ==>
 	       \at(*p, Pre) != old ==> *p == \at(*p, Pre);
-	    loop assigns s, os[0..len-1];
+	    loop assigns s, os[0..strlen{Pre}(os)-1];
 	    loop variant SIZE_MAX - (s - os);
 	*/
 	for (; *s; ++s)

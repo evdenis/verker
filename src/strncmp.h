@@ -14,9 +14,9 @@
 
 /*@ axiomatic StrnCmp {
     logic int strncmp(char *s1, char *s2, size_t n) =
-       n == 0 ? 0 :
+       n == 0 ? (int)0 :
           (s1[0] == s2[0] ?
-	     (s1[0] == '\0' ? 0 : strncmp(s1 + 1, s2 + 1, (size_t)(n - 1)))
+	     (s1[0] == '\0' ? (int)0 : strncmp(s1 + 1, s2 + 1, (size_t)(n - 1)))
           :
 	     (int)(s1[0] - s2[0])
 	  );
