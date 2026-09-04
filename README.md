@@ -32,7 +32,7 @@ has been re-proved with WP so far.
 | 12 | strcpy        | proved | proved | not required   |           | use strcmp logic function |
 | 13 | stpcpy        | proved | proved | not required   |           |         |
 | 14 | strcspn       | proved | proved | proved         | yes       |         |
-| 15 | strim         |        |    | not required   | !const    |         |
+| 15 | strim         |        | proved | not required   | !const    |         |
 | 16 | strlen        | proved | proved | proved         | yes       |         |
 | 17 | strncasecmp   |        |    |                | yes       |         |
 | 18 | strncat       |        | proved | not required   |           |         |
