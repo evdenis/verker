@@ -105,7 +105,9 @@
 
 /*@ requires valid_str(cs);
     requires valid_str(ct);
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures \result == strcmp(cs, ct);
     behavior equal:
        assumes \forall integer i; 0 <= i <= strlen(cs) ==> cs[i] == ct[i];
