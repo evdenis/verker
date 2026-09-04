@@ -70,44 +70,112 @@ extern const unsigned char _ctype[];
  */
 
 
-//@ ensures \result <==> isalnum(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isalnum(c);
+ */
 bool isalnum(char c);
-//@ ensures \result <==> isalpha(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isalpha(c);
+ */
 bool isalpha(char c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+ */
 bool iscntrl(char c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+ */
 bool isgraph(char c);
-//@ ensures \result <==> islower(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> islower(c);
+ */
 bool islower(char c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+ */
 bool isprint(char c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+ */
 bool ispunct(char c);
-//@ ensures \result <==> isspace(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isspace(c);
+ */
 bool isspace(char c);
-//@ ensures \result <==> isupper(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isupper(c);
+ */
 bool isupper(char c);
-//@ ensures \result <==> isxdigit(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isxdigit(c);
+ */
 bool isxdigit(char c);
 
-//@ ensures \result <==> (0 <= c <= 127);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> (0 <= c <= 127);
+ */
 bool isascii(char c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+ */
 bool toascii(char c);
 #endif
 
-//@ ensures \result <==> isdigit(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isdigit(c);
+ */
 int isdigit(int c);
 
-//@ ensures \result == tolower(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result == tolower(c);
+ */
 unsigned char __tolower(unsigned char c);
 
-//@ ensures \result == toupper(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result == toupper(c);
+ */
 unsigned char __toupper(unsigned char c);
 
 #ifndef SPEC
 #define tolower(c) __tolower(c)
 #define toupper(c) __toupper(c)
 #else /* SPEC */
-//@ ensures \result == tolower(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result == tolower(c);
+ */
 char tolower(const char c);
-//@ ensures \result == toupper(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result == toupper(c);
+ */
 char toupper(const char c);
 #endif
 
@@ -115,11 +183,19 @@ char toupper(const char c);
  * Fast implementation of tolower() for internal usage. Do not use in your
  * code.
  */
-//@ ensures \result == tolower(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result == tolower(c);
+ */
 char _tolower(const char c);
 
 /* Fast check for octal digit */
-//@ ensures \result <==> isodigit(c);
+/*@ terminates \true;
+    assigns \nothing;
+    exits \false;
+    ensures \result <==> isodigit(c);
+ */
 int isodigit(const char c);
 
 #endif

@@ -27,9 +27,7 @@ _L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,	/* 224-239 */
 _L,_L,_L,_L,_L,_L,_L,_P,_L,_L,_L,_L,_L,_L,_L,_L};	/* 240-255 */
 
 #ifdef SPEC
-//@ ensures \result == tolower(c);
 char tolower(const char c) { return __tolower(c); }
-//@ ensures \result == toupper(c);
 char toupper(const char c) { return __toupper(c); }
 
 #define __ismask(x) (_ctype[(int)(unsigned char)(x)])
