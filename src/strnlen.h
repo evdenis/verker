@@ -4,17 +4,11 @@
 #include "strlen.h"
 #include "kernel_definitions.h"
 
-#ifndef LEMMA_FUNCTIONS
-
 /*@ axiomatic Strnlen {
     predicate valid_strn(char *s, size_t cnt) =
        (\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ||
        \valid(s+(0..cnt));
 
-    lemma valid_strn_shift1:
-       \forall char *s, size_t cnt;
-       valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
-          valid_strn(s+1, (size_t)(cnt-1));
     lemma valid_str_to_valid_strn:
        \forall char *s, size_t cnt;
          valid_str(s) ==> valid_strn(s, cnt);
@@ -24,107 +18,33 @@
           (size_t)0 :
           (size_t)((size_t)1 + strnlen(s + 1, (size_t)(cnt-(size_t)1)));
 
-    lemma strnlen_range:
-       \forall char *s, size_t cnt;
-          valid_strn(s, cnt) ==>
-             0 <= strnlen(s, cnt) <= cnt;
-
-    lemma strnlen_null:
-       \forall char *s, size_t cnt; \valid(s) ==>
-         (strnlen(s, cnt) == 0 <==> (*s == '\0' || cnt == 0));
-
     lemma strnlen_zero_count:
        \forall char *s;
          strnlen(s, (size_t) 0) == 0;
 
-    lemma strnlen_min_len:
-      \forall char *s, size_t cnt;
-       (\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ==>
-         strnlen(s, cnt) == \min(strlen(s), cnt);
-
-    lemma strnlen_before_zero:
-       \forall char* s, size_t i, cnt;
-          valid_strn(s, cnt) &&
-          0 <= i < strnlen(s, cnt) ==> s[i] != '\0';
-
-    lemma strnlen_at_zero:
-       \forall char* s, size_t cnt;
-          valid_strn(s, cnt) && strnlen(s, cnt) < cnt ==>
-             s[strnlen(s, cnt)] == '\0';
-
-    lemma strnlen_at_cnt:
-       \forall char* s, size_t i, cnt;
-          valid_strn(s, cnt) && i == strnlen(s, cnt) ==>
-             s[i] == '\0' || i == cnt;
-
-    lemma strnlen_zero:
-       \forall char *s, size_t cnt, n;
-          valid_strn(s, cnt) &&
-          n < cnt  &&
-          s[n] == '\0' &&
-          (\forall size_t i; i < n ==> s[i] != '\0') ==>
-             strnlen(s, cnt) == n;
-
-    lemma strnlen_cnt:
-       \forall char *s, size_t cnt;
-          valid_strn(s, cnt) &&
-          (\forall size_t n; n < cnt ==> s[n] != '\0') ==>
-             strnlen(s, cnt) == cnt;
-
-    lemma strnlen_shift:
-       \forall char *s, size_t i, cnt;
-          valid_strn(s, cnt) &&
-          i <= strnlen(s, cnt) ==>
-             strnlen(s + i, (size_t)(cnt - i)) == strnlen(s, cnt) - i;
-
-    lemma strnlen_shift_ex:
-       \forall char *s, size_t i, cnt;
-          valid_strn(s, cnt) &&
-          0 < i <= strnlen(s, cnt) ==>
-             strnlen(s + i, (size_t)(cnt - i)) < strnlen(s, cnt);
-
-    lemma strnlen_shift1:
-       \forall char *s, size_t cnt;
-          valid_strn(s, cnt) && cnt > 0 && *s != '\0' ==>
-             strnlen(s, cnt) == strnlen(s+1, (size_t)(cnt-1)) + 1;
-
-    lemma strnlen_cmp:
-       \forall char *s1, *s2, size_t cnt;
-       valid_str(s1) && valid_strn(s2, cnt) && strlen(s1) < strnlen(s2, cnt) ==>
-         strnlen(s1, cnt) < strnlen(s2, cnt);
-
-    lemma strnlen_less:
-       \forall char *s, size_t i, cnt;
-          valid_strn(s, cnt) &&
-          i <= cnt ==>
-             strnlen(s, i) <= strnlen(s, cnt);
     }
  */
 
-#else
-
-/*@ axiomatic Strnlen {
-    predicate valid_strn(char *s, size_t cnt) =
-       (\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ||
-       \valid(s+(0..cnt));
-
-    logic size_t strnlen(char *s, size_t cnt) =
-       (s[0] == '\0' || cnt == 0) ?
-          0 :
-          (size_t)(1 + strnlen(s + 1, (size_t)(cnt-1)));
-    }
+/*
+ * Lemma functions. See strlen.h for why these are ghost functions rather than
+ * ACSL lemmas: the facts need induction, and vanilla ACSL has no equivalent of
+ * AstraVer's self-generalising 'lemma' contract.
  */
 
 /*@ ghost
   @ /@ requires valid_strn(s, cnt);
-  @  @ ensures  \result <= cnt;
-  @  @ ensures  \valid(s+(0..\result));
-  @  @ ensures  \forall integer j; 0 <= j < \result ==> s[j] != '\0';
-  @  @ ensures  \result < cnt ==> s[\result] == '\0';
+  @  @ terminates \true;
+  @  @ assigns \nothing;
+  @  @ ensures \result <= cnt;
+  @  @ ensures \valid(s+(0..\result));
+  @  @ ensures \forall integer j; 0 <= j < \result ==> s[j] != '\0';
+  @  @ ensures \result < cnt ==> s[\result] == '\0';
   @  @/
   @ size_t elim_valid_strn(char *s, size_t cnt)
   @ {
-  @    /@ loop invariant \forall integer j; 0 <= j < i ==> s[j] != '\0';
+  @    /@ loop invariant 0 <= i <= cnt;
+  @     @ loop invariant \forall integer j; 0 <= j < i ==> s[j] != '\0';
+  @     @ loop assigns i;
   @     @ loop variant cnt - i;
   @     @/
   @    for (size_t i = 0; i < cnt; i++) {
@@ -135,112 +55,120 @@
   @*/
 
 /*@ ghost
-  @ /@ requires valid_strn(s, cnt);
-  @  @ ensures  \result <= cnt;
-  @  @ ensures  \valid(s+(0..\result));
-  @  @ ensures  \forall integer j; 0 <= j < \result ==> s[j] != '\0';
-  @  @ ensures  \result < cnt ==> s[\result] == '\0';
-  @  @ ensures  strnlen(s, cnt) == \result;
-  @  @/
-  @ size_t elim_valid_strn_len(char *s, size_t cnt)
-  @ {
-  @    size_t size = elim_valid_strn(s, cnt);
-  @    /@ loop invariant strnlen(s + i, (size_t)(cnt - i)) + i <= size ==>
-  @     @                  strnlen(s, cnt) == strnlen(s + i, (size_t)(cnt - i)) + i;
-  @     @ loop invariant 0 <= i <= size;
-  @     @ loop variant size - i;
-  @     @/
-  @    for (size_t i = 0; i <= size; i++) {
-  @      if (s[i] == '\0' || i == cnt) return i;
-  @      //@ assert strnlen(s + i, (size_t)(cnt - i)) == (size_t)(strnlen(s + i + 1, (size_t)(cnt - i - 1)) + 1);
-  @    }
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_strn(s, cnt);
-  @  @ ensures  strnlen(s, cnt) <= cnt;
-  @  @ ensures  \valid(s+(0..strnlen(s, cnt)));
-  @  @ ensures  \forall integer j; 0 <= j < strnlen(s, cnt) ==> s[j] != '\0';
-  @  @ ensures  strnlen(s, cnt) < cnt ==> s[strnlen(s, cnt)] == '\0';
-  @  @/
-  @ void valid_strn_len(char *s, size_t cnt)
-  @ {
-  @    elim_valid_strn_len(s, cnt);
-  @ }
-  @*/
-
-/*@ ghost
   @ /@ requires n <= cnt;
   @  @ requires \valid(s+(0..n));
   @  @ requires \forall integer j; 0 <= j < n ==> s[j] != '\0';
   @  @ requires n < cnt ==> s[n] == '\0';
-  @  @ ensures  valid_strn(s, cnt);
-  @  @ ensures  strnlen(s, cnt) == n;
+  @  @ terminates \true;
+  @  @ decreases n;
+  @  @ assigns \nothing;
+  @  @ ensures valid_strn(s, cnt);
+  @  @ ensures strnlen(s, cnt) == n;
   @  @/
   @ void intro_valid_strn_len(char *s, size_t cnt, size_t n)
   @ {
+  @   if (n > 0) intro_valid_strn_len(s + 1, cnt - 1, n - 1);
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires valid_strn(s, cnt) && cnt > 0 && *s != '\0';
-  @  @ ensures  valid_strn(s+1, (size_t)(cnt-1));
-  @  @ ensures  strnlen(s + 1, (size_t)(cnt  - 1)) == strnlen(s, cnt) - 1;
+  @ /@ requires valid_strn(s, cnt);
+  @  @ terminates \true;
+  @  @ assigns \nothing;
+  @  @ ensures strnlen(s, cnt) <= cnt;
+  @  @ ensures \valid(s+(0..strnlen(s, cnt)));
+  @  @ ensures \forall integer j; 0 <= j < strnlen(s, cnt) ==> s[j] != '\0';
+  @  @ ensures strnlen(s, cnt) < cnt ==> s[strnlen(s, cnt)] == '\0';
   @  @/
-  @ void valid_strn_shift1(char *s, size_t cnt)
+  @ void valid_strn_len(char *s, size_t cnt)
   @ {
-  @    intro_valid_strn_len(s + 1, cnt - 1, elim_valid_strn(s, cnt) - 1);
+  @   size_t n = elim_valid_strn(s, cnt);
+  @   intro_valid_strn_len(s, cnt, n);
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires valid_strn(s, cnt);
-  @  @ ensures  0 <= strnlen(s, cnt) <= cnt;
+  @ /@ requires valid_strn(s, cnt);
+  @  @ requires cnt > 0;
+  @  @ requires s[0] != '\0';
+  @  @ terminates \true;
+  @  @ assigns \nothing;
+  @  @ ensures valid_strn(s + 1, (size_t)(cnt - 1));
+  @  @ ensures strnlen(s, cnt) == strnlen(s + 1, (size_t)(cnt - 1)) + 1;
   @  @/
-  @ void strnlen_range(char *s, size_t cnt)
+  @ void valid_strn_shift(char *s, size_t cnt)
   @ {
+  @   size_t n = elim_valid_strn(s, cnt);
+  @   intro_valid_strn_len(s, cnt, n);
+  @   intro_valid_strn_len(s + 1, cnt - 1, n - 1);
+  @ }
+  @*/
+
+
+
+/*@ ghost
+  @ /@ requires  valid_strn(s, cnt);
+  @  @ requires  i <= strnlen(s, cnt);
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnlen(s + i, (size_t)(cnt - i)) == strnlen(s, cnt) - i;
+  @  @/
+  @ void strnlen_shift(char *s, size_t cnt, size_t i)
+  @ {
+  @   if (i > 0) {
+  @     valid_strn_shift(s, cnt);
+  @     strnlen_shift(s + 1, cnt - 1, i - 1);
+  @   }
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ ensures  valid_strn(s, cnt);
+  @ /@ requires  valid_strn(s, cnt);
+  @  @ requires  i <= cnt;
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnlen(s, i) <= strnlen(s, cnt);
   @  @/
-  @ void valid_str_to_valid_strn(char *s, size_t cnt)
+  @ void strnlen_less(char *s, size_t i, size_t cnt)
   @ {
+  @   if (i > 0 && s[0] != '\0') {
+  @     valid_strn_shift(s, cnt);
+  @     strnlen_less(s + 1, i - 1, cnt - 1);
+  @   }
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires \exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n));
-  @  @ ensures  strnlen(s, cnt) == \min(strlen(s), cnt);
+  @ /@ requires  valid_str(s);
+  @  @ requires  strlen(s) < cnt;
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnlen(s, cnt) == strlen(s);
   @  @/
-  @ void strnlen_min_len(char *s, size_t cnt)
+  @ void strnlen_is_strlen(char *s, size_t cnt)
   @ {
-  @    //@ assert valid_str(s);
-  @    //@ assert valid_strn(s, cnt);
+  @   size_t m = elim_valid_str(s);
+  @   intro_valid_str_len(s, m);
+  @   intro_valid_strn_len(s, cnt, m);
   @ }
   @*/
 
 /*@ ghost
-  @ /@ lemma
-  @  @ requires valid_strn(s, cnt);
-  @  @ requires i == strnlen(s, cnt);
-  @  @ ensures  s[i] == '\0' || i == cnt;
+  @ /@ requires  valid_str(s1);
+  @  @ requires  valid_strn(s2, cnt);
+  @  @ requires  strlen(s1) < strnlen(s2, cnt);
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   strnlen(s1, cnt) < strnlen(s2, cnt);
   @  @/
-  @ void strnlen_at_cnt(char *s, size_t cnt, size_t i)
+  @ void strnlen_cmp(char *s1, char *s2, size_t cnt)
   @ {
+  @   valid_strn_len(s2, cnt);
+  @   strnlen_is_strlen(s1, cnt);
   @ }
   @*/
-
-#endif /* LEMMA_FUNCTIONS */
-
 
 /**
  * strnlen - Find the length of a length-limited string
