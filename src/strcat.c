@@ -3,19 +3,18 @@
 char *strcat(char *dest, const char *src)
 {
 	char *tmp = dest;
-	//@ ghost size_t dest_len = strlen(tmp);
 
-	/*@ loop invariant tmp <= dest <= tmp + dest_len;
+	/*@ loop invariant tmp <= dest <= tmp + strlen{Pre}(tmp);
 	    loop invariant valid_str(dest);
 	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
 	    loop assigns dest;
-	    loop variant dest_len - (dest - tmp);
+	    loop variant strlen{Pre}(tmp) - (dest - tmp);
 	 */
 	while (*dest)
 		dest++;
 	//@ assert *dest == '\0';
-	//@ assert dest == tmp + dest_len;
-	//@ assert strlen(tmp) == dest_len;
+	//@ assert dest == tmp + strlen{Pre}(tmp);
+	//@ assert strlen(tmp) == strlen{Pre}(tmp);
 	//@ ghost char *osrc = src;
 	//@ ghost char *mdest = dest;
 
@@ -31,16 +30,16 @@ char *strcat(char *dest, const char *src)
 	 */
 	while ((*dest++ = *src++) != '\0')
 		;
-	//@ assert \forall integer i; 0 <= i < dest_len ==> \at(dest[i],Pre) == tmp[i];
+	//@ assert \forall integer i; 0 <= i < strlen{Pre}(tmp) ==> \at(dest[i],Pre) == tmp[i];
 	//@ assert dest[-1] == '\0' && src[-1] == '\0';
-	//@ assert dest - 1 == tmp + dest_len + strlen(osrc);
+	//@ assert dest - 1 == tmp + strlen{Pre}(tmp) + strlen(osrc);
 	//@ assert strlen(osrc) == src - osrc - 1;
-	//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (dest_len + strlen(osrc));
+	//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (strlen{Pre}(tmp) + strlen(osrc));
 	/*@ assert valid_str(tmp) &&
-	    (tmp[(size_t)(dest_len + strlen(osrc))] == '\0') &&
-	    (\forall integer i; 0 <= i < (size_t)(dest_len + strlen(osrc)) ==> tmp[i] != '\0');
+	    (tmp[(size_t)(strlen{Pre}(tmp) + strlen(osrc))] == '\0') &&
+	    (\forall integer i; 0 <= i < (size_t)(strlen{Pre}(tmp) + strlen(osrc)) ==> tmp[i] != '\0');
 	 */
-	//@ assert strlen(tmp) == (size_t) (dest_len + strlen(osrc));
+	//@ assert strlen(tmp) == (size_t) (strlen{Pre}(tmp) + strlen(osrc));
 	return tmp;
 }
 

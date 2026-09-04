@@ -13,8 +13,7 @@
  * the area if @c is not found
  */
 
-/*@ requires \typeof(addr) <: \type(u8 *);
-    requires \valid_read((u8 *)addr+(0..size-1));
+/*@ requires \valid_read((u8 *)addr+(0..size-1));
     assigns \nothing;
     ensures \base_addr(addr) == \base_addr(\result);
     ensures addr <= \result <= addr + size;

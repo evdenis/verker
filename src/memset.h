@@ -12,8 +12,7 @@
  * Do not use memset() to access IO space, use memset_io() instead.
  */
 
-/*@ requires \typeof(s) <: \type(char *);
-    requires \valid((char *)s+(0..count-1));
+/*@ requires \valid((char *)s+(0..count-1));
     assigns ((char *)s)[0..count-1];
     ensures \forall char *p; (char *)s <= p < (char *)s + count ==>
             *p == (char) c;
