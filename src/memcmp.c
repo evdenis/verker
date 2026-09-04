@@ -22,39 +22,39 @@
     }
  */
 
-/*@ requires \valid_read(((u8 *)cs)+(0..count-1));
-    requires \valid_read(((u8 *)ct)+(0..count-1));
-    requires \base_addr((u8 *)cs) == \base_addr((u8 *)ct) ^^
-             \base_addr((u8 *)cs) != \base_addr((u8 *)ct);
+/*@ requires \valid_read(((char *)cs)+(0..count-1));
+    requires \valid_read(((char *)ct)+(0..count-1));
+    terminates \true;
     assigns \nothing;
+    exits \false;
     //ensures \result == 0 <==> memcmp((char *)cs, (char *)ct, count) == 0;
     //ensures \result < 0  <==> memcmp((char *)cs, (char *)ct, count) < 0;
     //ensures \result > 0  <==> memcmp((char *)cs, (char *)ct, count) > 0;
     behavior equal:
-       assumes \forall integer i; 0 <= i < count ==> ((u8 *)cs)[i] == ((u8 *)ct)[i];
+       assumes \forall integer i; 0 <= i < count ==>
+               (unsigned char)((char *)cs)[i] == (unsigned char)((char *)ct)[i];
        ensures \result == 0;
     behavior diff:
-       assumes \exists integer i; 0 <= i < count && ((u8 *)cs)[i] != ((u8 *)ct)[i];
+       assumes \exists integer i; 0 <= i < count &&
+               (unsigned char)((char *)cs)[i] != (unsigned char)((char *)ct)[i];
        ensures \exists integer i; 0 <= i < count &&
-               (\forall integer j; 0 <= j < i ==> ((u8 *)cs)[j] == ((u8 *)ct)[j]) &&
-               ((u8 *)cs)[i] != ((u8 *)ct)[i] &&
-               \result == ((u8 *)cs)[i] - ((u8 *)ct)[i];
+               (\forall integer j; 0 <= j < i ==>
+                   (unsigned char)((char *)cs)[j] == (unsigned char)((char *)ct)[j]) &&
+               (unsigned char)((char *)cs)[i] != (unsigned char)((char *)ct)[i] &&
+               \result == (unsigned char)((char *)cs)[i] - (unsigned char)((char *)ct)[i];
     complete behaviors;
     disjoint behaviors;
  */
 __visible int memcmp(const void *cs, const void *ct, size_t count)
 {
-	const unsigned char *su1, *su2;
+	const char *su1, *su2; /*CODE_CHANGE*/
 	int res = 0;
 
-	/*@ loop invariant 0 <= count <= \at(count,Pre);
-	    loop invariant (u8 *)cs <= su1 <= (u8 *)cs + \at(count,Pre);
-	    loop invariant (u8 *)ct <= su2 <= (u8 *)ct + \at(count,Pre);
-	    loop invariant su1 - (u8 *)cs ==
-	                   su2 - (u8 *)ct ==
-	                   \at(count,Pre) - count;
-	    loop invariant \forall integer i; 0 <= i < \at(count,Pre) - count ==>
-	                   ((u8 *)cs)[i] == ((u8 *)ct)[i];
+	/*@ loop invariant bound: 0 <= count <= \at(count,Pre);
+	    loop invariant off1:  su1 == (char *)cs + (\at(count,Pre) - count);
+	    loop invariant off2:  su2 == (char *)ct + (\at(count,Pre) - count);
+	    loop invariant equal: \forall integer i; 0 <= i < \at(count,Pre) - count ==>
+	                          (unsigned char)((char *)cs)[i] == (unsigned char)((char *)ct)[i];
 	    //loop invariant memcmp((char *)cs, (char *)ct, \at(count,Pre)) ==
 	    //               memcmp((char *)su1, (char *)su2, count);
 	    loop invariant res == 0;
@@ -62,7 +62,7 @@ __visible int memcmp(const void *cs, const void *ct, size_t count)
 	    loop variant count;
 	 */
 	for (su1 = cs, su2 = ct; 0 < count; ++su1, ++su2, count--)
-		if ((res = *su1 - *su2) != 0)
+		if ((res = /*CODE_CHANGE:*/(unsigned char)*su1 - (unsigned char)*su2) != 0)
 			break;
 
 	return res;
