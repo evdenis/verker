@@ -22,15 +22,18 @@
  */
 
 /*@ requires \valid_read(start+(0..bytes-1));
-    assigns \nothing;
+    terminates \true;
+    assigns \result \from start;
+    exits \false;
     ensures \result == check_bytes8(start, value, bytes);
     behavior found:
-       assumes \exists u8 *i; start <= i < start + bytes && *i != value;
-       ensures start <= (u8 *)\result < start + bytes;
-       ensures *((u8 *)\result) != value;
-       ensures \forall u8 *j; start <= j < (u8 *)\result ==> *j == value;
+       assumes \exists integer i; 0 <= i < bytes && start[i] != value;
+       ensures \exists integer i; 0 <= i < bytes &&
+               (\forall integer j; 0 <= j < i ==> start[j] == value) &&
+               start[i] != value &&
+               \result == (void *)(start + i);
     behavior not_exists:
-       assumes \forall u8 *i; start <= i < start + bytes ==> *i == value;
+       assumes \forall integer i; 0 <= i < bytes ==> start[i] == value;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;
