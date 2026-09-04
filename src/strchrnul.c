@@ -2,18 +2,25 @@
 
 char *strchrnul(const char *s, int c)
 {
-	//@ ghost char *os = s;
-	/*@ loop invariant valid_str(s);
-	    loop invariant os <= s <= os + strlen(os);
-	    loop invariant \forall char *p; os <= p < s ==> *p != (char) c;
-	    loop invariant strchrnul(os, (char) c) == strchrnul(s, (char) c);
-	    loop assigns s;
-	    loop variant strlen(os) - (s - os);
+	//@ ghost char *os = (char *)s;
+	//@ ghost size_t k = 0;
+	/*@ loop invariant valid:   valid_str(s);
+	    loop invariant idx:     s == os + k;
+	    loop invariant bound:   0 <= k <= strlen(os);
+	    loop invariant len:     strlen(os) == strlen(s) + k;
+	    loop invariant nomatch: \forall integer i; 0 <= i < k ==> os[i] != (char) c;
+	    loop invariant same:    strchrnul(os, (char) c) == strchrnul(s, (char) c);
+	    loop assigns s, k;
+	    loop variant strlen(os) - k;
 	 */
-	while (*s && *s != (char) c)
+	while (*s && *s != (char) c) {
+		//@ ghost valid_str_shift((char *)s);
 		s++;
-	//@ assert (char) c == '\0' ==> *s == '\0';
-	//@ assert *s == '\0' ==> s - os == strlen(os);
+		//@ ghost k++;
+	}
+	//@ ghost valid_str_len(os);
+	//@ ghost strchrnul_defn(os, (char) c, k);
+	//@ ghost strchrnul_strlen(os);
 	return (char *)s;
 }
 

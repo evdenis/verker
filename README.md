@@ -27,7 +27,7 @@ has been re-proved with WP so far.
 | 7  | strcasecmp    | proved |    |                | yes       |         |
 | 8  | strcat        | proved |    | not required   |           | usr strcmp in ensures |
 | 9  | strchr        | proved | proved | proved         | yes       |         |
-| 10 | strchrnul     | proved |    | proved         | yes       |         |
+| 10 | strchrnul     | proved | proved | proved         | yes       |         |
 | 11 | strcmp        | proved |    | proved         | yes       |         |
 | 12 | strcpy        | proved |    | not required   |           | use strcmp logic function |
 | 13 | stpcpy        | proved |    | not required   |           |         |
