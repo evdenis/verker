@@ -8,6 +8,7 @@ char *strsep(char **s, const char *ct)
 	if (sbegin == NULL)
 		return NULL;
 
+	//@ ghost valid_str_len(sbegin);
 	end = strpbrk(sbegin, ct);
 	//@ assert strpbrk(sbegin, ct) == end;
 	if (end)

@@ -19,14 +19,17 @@
 /*@ requires valid_str(ct);
     requires \valid(s);
     requires valid_str(*s) ^^ *s == \null;
+    terminates \true;
+    exits \false;
     behavior input_null:
        assumes *s == \null;
-       assigns \nothing;
+       assigns \result \from *s;
        ensures \result == \null;
     behavior input_strpbrk_null:
        assumes valid_str(*s);
        assumes strpbrk(*s, ct) == \null;
        assigns *s;
+       assigns \result \from *s;
        ensures \result == \old(*s);
        ensures *s == \null;
     behavior input_strpbrk_not_null:
@@ -34,6 +37,7 @@
        assumes strpbrk(*s, ct) != \null;
        assigns *strpbrk(\old(*s), ct);
        assigns *s;
+       assigns \result \from *s;
        ensures \result == \old(*s);
        ensures *s == strpbrk{Old}(\old(*s), ct) + 1;
        ensures *strpbrk{Old}(\old(*s), ct) == '\0';
