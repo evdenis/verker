@@ -4,42 +4,45 @@ char *strpbrk(const char *cs, const char *ct)
 {
 	const char *sc1, *sc2;
 
-	/*@ loop invariant cs <= sc1 <= cs + strlen(cs);
-	    loop invariant valid_str(sc1);
-	    loop invariant \forall char *p, *t;
-	                   cs <= p < sc1 &&
-	                   ct <= t < ct + strlen(ct) ==>
-	                   *p != *t;
-	    loop invariant strpbrk(cs, ct) == strpbrk(sc1, ct);
-	    loop assigns sc1, sc2;
-	    loop variant strlen(cs) - (sc1 - cs);
+	//@ ghost size_t k = 0;
+	//@ ghost size_t m = 0;
+	/*@ loop invariant idx:      sc1 == cs + k;
+	    loop invariant bound:    0 <= k <= strlen(cs);
+	    loop invariant len:      strlen(cs) == strlen(sc1) + k;
+	    loop invariant valid:    valid_str(sc1);
+	    loop invariant rejected: \forall integer i; 0 <= i < k ==> !in_array(ct, cs[i]);
+	    loop invariant same:     strpbrk(cs, ct) == strpbrk(sc1, ct);
+	    loop assigns sc1, sc2, k, m;
+	    loop variant strlen(cs) - k;
 	 */
 	for (sc1 = cs; *sc1 != '\0'; ++sc1) {
-		/*@ loop invariant ct <= sc2 <= ct + strlen(ct);
-		    loop invariant valid_str(sc2);
-		    loop invariant \forall char *t; ct <= t < sc2 ==> *sc1 != *t;
-		    loop invariant in_array(ct, *sc1) ==> in_array(sc2, *sc1);
-		    loop assigns sc2;
-		    loop variant strlen(ct) - (sc2 - ct);
+		//@ ghost m = 0;
+		/*@ loop invariant iidx:   sc2 == ct + m;
+		    loop invariant ibound: 0 <= m <= strlen(ct);
+		    loop invariant ilen:   strlen(ct) == strlen(sc2) + m;
+		    loop invariant ivalid: valid_str(sc2);
+		    loop invariant inone:  \forall integer i; 0 <= i < m ==> ct[i] != *sc1;
+		    loop assigns sc2, m;
+		    loop variant strlen(ct) - m;
 		 */
 		for (sc2 = ct; *sc2 != '\0'; ++sc2) {
-			if (*sc1 == *sc2)
-				/*@ assert \exists char *p, *t;
-				   cs <= p < cs + strlen(cs) &&
-				   ct <= t < ct + strlen(ct) &&
-				   *p == *t &&
-				   p == sc1 && t == sc2;
-				*/
-				/*@ assert \forall char *p, *t;
-				   cs <= p < sc1 &&
-				   ct <= t < ct + strlen(ct) ==>
-				   *p != *t;
-				*/
+			if (*sc1 == *sc2) {
+				//@ ghost valid_str_len((char *)sc2);
+				//@ assert m < strlen(ct);
+				//@ ghost in_array_intro((char *)ct, *sc1, m);
+				//@ ghost valid_str_len((char *)cs);
 				return (char *)sc1;
+			}
+			//@ ghost valid_str_shift((char *)sc2);
+			//@ ghost m++;
 		}
-		//@ assert \forall char *t; ct <= t < ct + strlen(ct) ==> *sc1 != *t;
-		//@ assert \forall char *p, *t; cs <= p <= sc1 && ct <= t < ct + strlen(ct) ==> *p != *t;
+		//@ assert !in_array(ct, *sc1);
+		//@ ghost valid_str_shift((char *)sc1);
+		//@ ghost k++;
 	}
+	//@ ghost valid_str_len((char *)cs);
+	//@ ghost valid_str_len((char *)ct);
+	//@ ghost strpbrk_range((char *)cs, (char *)ct);
 	return NULL;
 }
 
