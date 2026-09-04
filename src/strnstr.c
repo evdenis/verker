@@ -7,6 +7,12 @@ char *strnstr(const char *s1, const char *s2, size_t len)
 	l2 = strlen(s2);
 	if (!l2)
 		return (char *)s1;
+	/*@ loop invariant valid:  \valid_read(s1+(0..len-1));
+	    loop invariant off:    0 <= s1 - \at(s1,Pre) <= \at(len,Pre) - len;
+	    loop invariant pos:    l2 > 0;
+	    loop assigns s1, len;
+	    loop variant len;
+	 */
 	while (len >= l2) {
 		len--;
 		if (!memcmp(s1, s2, l2))

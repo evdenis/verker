@@ -12,6 +12,14 @@
  * @len: the maximum number of characters to search
  */
 
+/*@ requires \valid_read(s1+(0..len-1));
+    requires valid_str(s2);
+    requires strlen(s2) <= LONG_MAX;
+    terminates \true;
+    assigns \result \from s1, s2, len;
+    exits \false;
+    ensures \result == \null || (0 <= \result - s1 <= len);
+ */
 char *strnstr(const char *s1, const char *s2, size_t len);
 
 #endif // __STRNSTR_H__
