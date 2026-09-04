@@ -108,6 +108,9 @@
     exits \false;
     ensures \result == skip_spaces(str);
     ensures 0 <= \result - str <= strlen(str);
+    // stated here because the body carries a ghost index and can prove it;
+    // a caller cannot reconstruct the pointer from the difference on its own
+    ensures \result == str + (\result - str);
     ensures !isspace(*\result);
     ensures \forall integer i; 0 <= i < \result - str ==> isspace(str[i]);
     ensures valid_str(\result);

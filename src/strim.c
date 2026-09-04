@@ -95,19 +95,23 @@
  */
 
 /*@ requires valid_str(s);
+    requires strlen(s) <= LONG_MAX;
+    terminates \true;
+    exits \false;
     behavior zero_len:
        assumes strlen(s) == 0;
-       assigns \nothing;
+       assigns \result \from s;
        ensures \result == s;
     behavior len:
        assumes strlen(s) > 0;
-       assigns s[0..strlen(s)];
+       assigns s[0..strlen{Pre}(s)];
+       assigns \result \from s;
+       ensures 0 <= \result - s <= strlen{Pre}(s);
        ensures valid_str(\result);
-       ensures \forall char *p; s <= p < \result ==> isspace(*p);
-       ensures !isspace(*\result);
-       ensures \forall char *p;
-          \result + strlen(\result) <= p < s + strlen{Old}(s) ==> isspace(*p);
-       ensures !isspace(\result[strlen(\result)-1]);
+       ensures \forall integer i; 0 <= i < \result - s ==> isspace(\at(s[i], Pre));
+       ensures \forall integer i;
+          \result - s + strlen(\result) <= i < strlen{Pre}(s) ==>
+          isspace(\at(s[i], Pre));
     complete behaviors;
     disjoint behaviors;
  */
@@ -116,6 +120,7 @@ char *strim(char *s)
 	size_t size;
 	char *end;
 
+	//@ ghost valid_str_len(s);
 	size = strlen(s);
 	if (!size)
 		return s;
@@ -124,25 +129,35 @@ char *strim(char *s)
 
 	end = s + size - 1;
 	//@ ghost char *oend = end;
+	//@ ghost long e = (long)(size - 1);
 	//@ assert end + 1 == s + strlen(s);
 	//@ assert *(oend + 1) == '\0';
 
-	/*@ loop invariant s - 1 <= end <= oend;
-	    loop invariant \forall char *p; end < p <= oend ==> isspace(*p);
-	    loop assigns end;
-	    loop variant end - s;
+	/*@ loop invariant idx:    end == s + e;
+	    loop invariant bound:  -1 <= e <= oend - s;
+	    loop invariant spaces: \forall integer i; e < i <= oend - s ==>
+	                           isspace(\at(s[i], Pre));
+	    loop invariant kept:   \forall integer i; 0 <= i <= oend - s ==>
+	                           s[i] == \at(s[i], Pre);
+	    loop assigns end, e;
+	    loop variant e + 1;
 	 */
-	while (end >= s && isspace(*end))
+	while (end >= s && isspace(*end)) {
 		end--;
+		//@ ghost e--;
+	}
 	//@ assert !isspace(*end) || end == s - 1;
 	*(end + 1) = '\0';
-	//@ assert *(end + 1) == '\0';
-	//@ assert end > s ==> strlen(end) == 1;
-	//@ assert end == s - 1 ==> strlen(s) == 0;
-	//@ assert \forall char *p; end + 1 < p <= oend ==> isspace(*p);
-	//@ assert valid_str(s);
-
-	return skip_spaces(s);
+	//@ ghost intro_valid_str_len(s, (size_t)(e + 1));
+	char *res = skip_spaces(s);
+	//@ ghost long r = res - s;
+	//@ assert strlen(s) == e + 1;
+	//@ assert 0 <= res - s <= e + 1;
+	//@ assert \valid(s+(0..e + 1));
+	//@ assert s[e + 1] == '\0';
+	//@ assert \forall integer j; 0 <= j < e + 1 ==> s[j] != '\0';
+	//@ ghost intro_valid_str_len(s + r, (size_t)(e + 1 - r));
+	return res;
 }
 
 #ifdef DUMMY_MAIN
