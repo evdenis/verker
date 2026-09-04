@@ -23,11 +23,6 @@
           \valid(accept) && *accept == '\0' ==>
              strspn(s, accept) == 0;
 
-    lemma strspn_range:
-       \forall char* s, *accept;
-          valid_str(s) && valid_str(accept) ==>
-             0 <= strspn(s, accept) <= strlen(s);
-
     lemma strspn_shift1:
        \forall char *s, *accept;
           valid_str(s) && valid_str(accept) && *s != '\0' &&
@@ -175,17 +170,87 @@
 
 /*@ ghost
   @ /@ requires valid_str(s);
-  @  @ requires *s != '\0';
-  @  @ requires *s != c;
+  @  @ requires in_array(s, c);
   @  @ terminates \true;
   @  @ assigns   \nothing;
-  @  @ ensures   in_array(s, c) <==> in_array(s + 1, c);
+  @  @ ensures   0 <= \result < strlen(s);
+  @  @ ensures   s[\result] == c;
   @  @/
-  @ void in_array_shift1(char *s, char c)
+  @ size_t in_array_elim(char *s, char c)
   @ {
-  @   valid_str_len(s);
+  @   size_t n = elim_valid_str(s);
+  @   intro_valid_str_len(s, n);
+  @   /@ loop invariant 0 <= i <= n;
+  @    @ loop invariant \forall integer j; 0 <= j < i ==> s[j] != c;
+  @    @ loop assigns i;
+  @    @ loop variant n - i;
+  @    @/
+  @   for (size_t i = 0; i < n; i++) {
+  @     if (s[i] == c) return i;
+  @   }
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires 0 <= i < strlen(s);
+  @  @ requires s[i] == c;
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   in_array(s, c);
+  @  @/
+  @ void in_array_intro(char *s, char c, size_t i)
+  @ {
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires *s != '\0';
+  @  @ requires *s != c;
+  @  @ requires in_array(s, c);
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   in_array(s + 1, c);
+  @  @/
+  @ void in_array_shift1_fwd(char *s, char c)
+  @ {
+  @   size_t i = in_array_elim(s, c);
   @   valid_str_shift(s);
-  @   valid_str_len(s + 1);
+  @   in_array_intro(s + 1, c, i - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires valid_str(s);
+  @  @ requires *s != '\0';
+  @  @ requires in_array(s + 1, c);
+  @  @ terminates \true;
+  @  @ assigns   \nothing;
+  @  @ ensures   in_array(s, c);
+  @  @/
+  @ void in_array_shift1_bwd(char *s, char c)
+  @ {
+  @   valid_str_shift(s);
+  @   size_t j = in_array_elim(s + 1, c);
+  @   in_array_intro(s, c, j + 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  valid_str(s);
+  @  @ requires  valid_str(accept);
+  @  @ terminates \true;
+  @  @ decreases strlen(s);
+  @  @ assigns   \nothing;
+  @  @ ensures   0 <= strspn(s, accept) <= strlen(s);
+  @  @/
+  @ void strspn_range(char *s, char *accept)
+  @ {
+  @   if (*s != '\0') {
+  @     valid_str_shift(s);
+  @     strspn_range(s + 1, accept);
+  @   }
   @ }
   @*/
 
@@ -197,11 +262,12 @@
 
 /*@ requires valid_str(s);
     requires valid_str(accept);
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures 0 <= \result <= strlen(s);
-    ensures \forall char *t; accept <= t < accept + strlen(accept) ==> s[\result] != *t;
-    ensures \forall char *p; s <= p < s + \result ==>
-            (\exists char *t; accept <= t < accept + strlen(accept) && *p == *t);
+    ensures !in_array(accept, s[\result]);
+    ensures \forall integer i; 0 <= i < \result ==> in_array(accept, s[i]);
     ensures \result == strspn(s, accept);
  */
 size_t strspn(const char *s, const char *accept);

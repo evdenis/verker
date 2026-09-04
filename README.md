@@ -45,7 +45,7 @@ has been re-proved with WP so far.
 | 25 | strrchr       | proved |    |                | yes       |         |
 | 26 | strreplace    | proved |    | not required   | !const    |         |
 | 27 | strsep        | proved |    | not required   | !const    |         |
-| 28 | strspn        | proved |    | proved         | yes       |         |
+| 28 | strspn        | proved | proved | proved         | yes       |         |
 | 29 | strstr        |        |    |                | yes       |         |
 | 30 | sysfs\_streq  | proved |    |                | yes       |         |
 | 31 | strlcat       |        |    | not required   |           |         |
