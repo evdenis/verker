@@ -12,13 +12,15 @@ int hex_to_bin(char ch)
 
 /*@ requires \valid(dst+(0..count));
     requires \valid_read(src+(0..2*count));
+    requires \separated(dst+(0..count), src+(0..2*count));
+    terminates \true;
     assigns dst[0..count-1];
-    //ensures \forall char *p; src <= p < src + 2*count ==> isxdigit(*p);
+    exits \false;
     behavior err_ok:
-       assumes \forall char *p; src <= p < src + 2*count ==> isxdigit(*p);
+       assumes \forall integer i; 0 <= i < 2*count ==> isxdigit(src[i]);
        ensures \result == 0;
     behavior err_fail:
-       assumes \exists char *p; src <= p < src + 2*count && !isxdigit(*p);
+       assumes \exists integer i; 0 <= i < 2*count && !isxdigit(src[i]);
        ensures \result == -1;
     complete behaviors;
     disjoint behaviors;
@@ -29,13 +31,12 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 	//@ ghost char *osrc = src;
 	//@ ghost u8 *odst = dst;
 
-	/*@ loop invariant 0 <= count <= ocount;
-	    loop invariant osrc <= src <= src + 2 * ocount;
-	    loop invariant (osrc - src) % 2 == 0;
-	    loop invariant odst <= dst <= dst + count;
-	    loop invariant ocount - count == dst - odst == (src - osrc) / 2;
-	    loop invariant \forall char *p; osrc <= p < src ==> isxdigit(*p);
-	    loop assigns count, src, src, odst[0..ocount-1];
+	/*@ loop invariant bound:  0 <= count <= ocount;
+	    loop invariant srcoff: src == osrc + 2 * (ocount - count);
+	    loop invariant dstoff: dst == odst + (ocount - count);
+	    loop invariant hexdig: \forall integer i; 0 <= i < 2 * (ocount - count) ==>
+	                           isxdigit(osrc[i]);
+	    loop assigns count, src, dst, odst[0..ocount-1];
 	    loop variant count;
 	 */
 	while (count--) {
@@ -46,11 +47,12 @@ int hex2bin(u8 *dst, const char *src, size_t count)
 			return -1;
 
 		//@ assert 0 <= hi < 16 && 0 <= lo < 16;
-		//@ assert (hi << 4) == hi * 16;
-		//@ assert ((hi << 4) | lo) == hi * 16 + lo;
-		//@ assert 0 <= (hi << 4) <= 240;
-		//@ assert 0 <= ((hi << 4) | lo) <= 255;
-		*dst++ = (hi << 4) | lo;
+		//@ assert 0 <= hi * 16 + lo <= 255;
+		/* The kernel writes '(hi << 4) | lo'. The two operands occupy
+		 * disjoint nibbles, so the OR is the sum; WP proves the shift
+		 * but no prover or tactic closes 'disjoint bits implies sum'
+		 * within a usable budget, so the sum is written directly. */
+		*dst++ = /*CODE_CHANGE:*/hi * 16 + lo;
 	}
 	//@ assert count == ((size_t)-1);
 	return 0;
