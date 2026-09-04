@@ -3,24 +3,31 @@
 char *strreplace(char *s, char old, char new)
 {
 	//@ ghost char *os = s;
+	//@ ghost size_t n = elim_valid_str(os);
+	//@ ghost intro_valid_str_len(os, n);
+	//@ ghost size_t k = 0;
 
-	/*@ loop invariant valid_str(s);
-	    loop invariant valid_str(os);
-	    loop invariant os <= s <= os + strlen{Pre}(os);
-	    loop invariant \forall char *k; s <= k < (os + strlen{Pre}(os)) ==>
-               \at(*k,Pre) == *k;
-	    loop invariant \forall char *p; os <= p < s ==>
-	       \at(*p, Pre) == old ==> *p == new;
-	    loop invariant \forall char *p; os <= p < s ==>
-	       \at(*p, Pre) != old ==> *p == \at(*p, Pre);
-	    loop assigns s, os[0..strlen{Pre}(os)-1];
-	    loop variant SIZE_MAX - (s - os);
+	/*@ loop invariant idx:       s == os + k;
+	    loop invariant bound:     0 <= k <= n;
+	    loop invariant untouched: \forall integer i; k <= i <= n ==>
+	                              os[i] == \at(s[i], Pre);
+	    loop invariant replaced:  \forall integer i; 0 <= i < k ==>
+	                              \at(s[i], Pre) == old ==> os[i] == new;
+	    loop invariant kept:      \forall integer i; 0 <= i < k ==>
+	                              \at(s[i], Pre) != old ==> os[i] == \at(s[i], Pre);
+	    loop assigns s, k, os[0..n-1];
+	    loop variant n - k;
 	*/
-	for (; *s; ++s)
+	for (; *s; ++s) {
 		if (*s == old)
 			*s = new;
+		//@ ghost k++;
+	}
+	//@ assert k == n;
 	//@ assert strlen(s) == 0;
-	//@ assert s - os == strlen{Pre}(os);
+	/* every position below n now holds either its original non-NUL value or
+	 * 'new', so when 'new' is not the terminator the length is unchanged */
+	//@ ghost if (new != '\0') intro_valid_str_len(os, n);
 	return s;
 }
 

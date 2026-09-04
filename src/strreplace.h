@@ -13,12 +13,15 @@
  */
 
 /*@ requires valid_str(s);
+    terminates \true;
     assigns s[0..strlen{Pre}(s)-1];
+    assigns \result \from s;
+    exits \false;
     ensures \result == \at(s,Pre) + strlen{Pre}(s);
-    ensures \forall char *k; s <= k < s + strlen{Pre}(s) &&
-            (\at(*k, Pre) != old) ==> *k == \at(*k, Pre);
-    ensures \forall char *k; s <= k < s + strlen{Pre}(s) &&
-            (\at(*k, Pre) == old) ==> *k == new;
+    ensures \forall integer i; 0 <= i < strlen{Pre}(s) &&
+            \at(s[i], Pre) != old ==> s[i] == \at(s[i], Pre);
+    ensures \forall integer i; 0 <= i < strlen{Pre}(s) &&
+            \at(s[i], Pre) == old ==> s[i] == new;
     ensures valid_str(s);
     ensures new != '\0' ==> strlen{Pre}(s) == strlen(s);
 */
