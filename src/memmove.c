@@ -17,7 +17,7 @@ void *memmove(void *dest, const void *src, size_t count)
 		    loop invariant \forall integer i; 0 <= i < ocount - count ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
 		    loop assigns count, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
-		while (count-- AENOC) {
+		while (count--) {
 			*tmp++ = *s++;
 			//@ assert ((char *)dest)[ocount - count - 1] == ((char *)src)[ocount - count - 1];
 		}
@@ -34,12 +34,12 @@ void *memmove(void *dest, const void *src, size_t count)
 		    loop invariant \forall integer i; count <= i < ocount ==> ((char *)dest)[i] == \at(((char *)src)[i], Pre);
 		    loop assigns count, s, ((char *)dest)[0..ocount-1];
 		    loop variant count; */
-		while (count-- AENOC) {
+		while (count--) {
 			*--tmp = *--s;
 			//@ assert ((char *)dest)[count] == ((char *)src)[count];
 		}
 	}
-	//@ assert count == (size_t AENO)(-1);
+	//@ assert count == (size_t)(-1);
 	return dest;
 }
 

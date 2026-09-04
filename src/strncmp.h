@@ -63,7 +63,7 @@
        ensures \exists integer i; 0 <= i < strnlen(cs, count) &&
                (\forall integer j; 0 <= j < i ==> cs[j] == ct[j]) &&
                (cs[i] != ct[i]) &&
-               ((u8 AENO)cs[i] < (u8 AENO)ct[i] ? \result == -1 : \result == 1);
+               ((u8)cs[i] < (u8)ct[i] ? \result == -1 : \result == 1);
     complete behaviors;
     disjoint behaviors;
  */
