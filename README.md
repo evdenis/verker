@@ -128,6 +128,11 @@ Proof artifacts are committed under ```sessions/```:
 | ```sessions/interactive/``` | hand-written Coq proofs |
 | ```sessions/reports/``` | per-function ```-wp-report-json``` baselines |
 
+```sessions/``` is marked ```-diff linguist-generated=true``` in ```.gitattributes```, so
+these files stay out of ```git diff```, out of GitHub's PR review surface and out of its
+language stats. Use ```git diff --text -- sessions/``` to see them anyway, or
+```git log -- ':!sessions'``` to drop them from a log entirely.
+
 ```make wp-replay``` replays every proved function straight from the cache and never
 invokes a solver, so it does not need Alt-Ergo, CVC5 or Z3 installed. Note that WP's cache
 is keyed on an exact hash of the goal and on the prover version — unlike Why3 session
