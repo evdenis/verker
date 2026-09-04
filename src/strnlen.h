@@ -177,7 +177,12 @@
  */
 
 /*@ requires valid_strn(s, count);
+    // the returned pointer difference is cast to size_t, so it has to fit in
+    // ptrdiff_t; WP's memory model does not bound object sizes on its own
+    requires count <= LONG_MAX;
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures \result == strnlen(s, count);
     behavior null_byte:
        assumes \exists integer i; 0 <= i <= count && s[i] == '\0';
