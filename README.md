@@ -20,7 +20,7 @@ has been re-proved with WP so far.
 |----|---------------|----------|----|----------------|-----------|---------|
 | 1  | check\_bytes8 | proved |    | proved         | yes       |         |
 | 2  | match\_string | proved |    | not required   |           |         |
-| 3  | memchr        | proved |    |                | yes       |         |
+| 3  | memchr        | proved | proved |                | yes       |         |
 | 4  | memcmp        | proved |    |                | yes       |         |
 | 5  | memscan       | proved |    | not required   | yes       |         |
 | 6  | skip\_spaces  | proved |    | proved         | yes       | requires too strict (remove strlen) |

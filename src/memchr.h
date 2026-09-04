@@ -13,15 +13,18 @@
  * if @c is not found
  */
 
-/*@ requires \valid_read((u8 *)s+(0..n-1));
-    assigns \nothing;
+/*@ requires \valid_read((char *)s+(0..n-1));
+    terminates \true;
+    assigns \result \from s;
+    exits \false;
     behavior found:
-       assumes \exists u8 *p; (u8 *)s <= p < (u8 *)s + n && *p == (u8) c;
-       ensures s <= \result <= s + n;
-       ensures \forall u8 *p; (u8 *)s <= p < (u8 *)\result ==> *p != (u8) c;
-       ensures *((u8 *)\result) == (u8) c;
+       assumes \exists integer i; 0 <= i < n && ((char *)s)[i] == (char) c;
+       ensures 0 <= (char *)\result - (char *)s < n;
+       ensures \forall integer i; 0 <= i < (char *)\result - (char *)s ==>
+               ((char *)s)[i] != (char) c;
+       ensures *((char *)\result) == (char) c;
     behavior not_exists:
-       assumes \forall u8 *p; (u8 *)s <= p < (u8 *)s + n ==> *p != (u8) c;
+       assumes \forall integer i; 0 <= i < n ==> ((char *)s)[i] != (char) c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;
