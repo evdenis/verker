@@ -13,19 +13,23 @@
  * the area if @c is not found
  */
 
-/*@ requires \valid_read((u8 *)addr+(0..size-1));
-    assigns \nothing;
-    ensures \base_addr(addr) == \base_addr(\result);
-    ensures addr <= \result <= addr + size;
+/*@ requires \valid_read((char *)addr+(0..size-1));
+    terminates \true;
+    assigns \result \from addr;
+    exits \false;
+    ensures 0 <= (char *)\result - (char *)addr <= size;
     behavior found:
-       assumes \exists integer i; 0 <= i < size && ((u8 *)addr)[i] == c;
+       assumes \exists integer i; 0 <= i < size &&
+               (unsigned char)((char *)addr)[i] == c;
        ensures \exists integer i; 0 <= i < size &&
-               (\forall integer j; 0 <= j < i ==> ((u8 *)addr)[j] != c) &&
-               ((u8 *)addr)[i] == c &&
-               \result == addr + i;
+               (\forall integer j; 0 <= j < i ==>
+                   (unsigned char)((char *)addr)[j] != c) &&
+               (unsigned char)((char *)addr)[i] == c &&
+               (char *)\result == (char *)addr + i;
     behavior not_exists:
-       assumes \forall integer i; 0 <= i < size ==> ((u8 *)addr)[i] != c;
-       ensures \result == addr + size;
+       assumes \forall integer i; 0 <= i < size ==>
+               (unsigned char)((char *)addr)[i] != c;
+       ensures (char *)\result == (char *)addr + size;
     complete behaviors;
     disjoint behaviors;
  */
