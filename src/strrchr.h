@@ -58,16 +58,17 @@
  */
 
 /*@ requires valid_str(s);
-    assigns \nothing;
-    //ensures \result == strrchr(s, (char) c);
+    terminates \true;
+    assigns \result \from s, c;
+    exits \false;
     behavior found:
-       assumes \exists char *p; s <= p <= s + strlen(s) && *p == (char) c;
-       ensures s <= \result <= s + strlen(s);
+       assumes \exists integer i; 0 <= i <= strlen(s) && s[i] == (char) c;
+       ensures 0 <= \result - s <= strlen(s);
        ensures *\result == (char) c;
-       ensures \forall char *p; \result < p <= s + strlen(s) ==>
-               *p != (char) c;
+       ensures \forall integer i; \result - s < i <= strlen(s) ==>
+               s[i] != (char) c;
     behavior not_found:
-       assumes \forall char *p; s <= p <= s + strlen(s) ==> *p != (char) c;
+       assumes \forall integer i; 0 <= i <= strlen(s) ==> s[i] != (char) c;
        ensures \result == \null;
     complete behaviors;
     disjoint behaviors;

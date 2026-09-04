@@ -3,25 +3,31 @@
 char *strrchr(const char *s, int c)
 {
 	const char *last = NULL;
-	//@ ghost char *os = s;
+	//@ ghost char *os = (char *)s;
+	//@ ghost size_t k = 0;
+	//@ ghost size_t lastk = 0;
 
-	/*@ loop invariant os <= s <= os + strlen(os);
-	    loop invariant last == \null ^^ ((os <= last < s) && (*last == (char) c));
-	    loop invariant (last != \null) <==> (\exists char *p; os <= p < s && *p == (char) c);
-	    loop invariant (last == \null) <==> (\forall char *p; os <= p < s ==> *p != (char) c);
-	    loop invariant last != \null ==> (\forall char *p; last < p < s ==> *p != (char) c);
-	    //loop invariant strrchr(s, (char) c) == strrchr(os, (char) c);
-	    loop assigns s;
-	    loop variant strlen(os) - (s - os);
+	/*@ loop invariant idx:    s == os + k;
+	    loop invariant bound:  0 <= k <= strlen(os);
+	    loop invariant len:    strlen(os) == strlen(s) + k;
+	    loop invariant valid:  valid_str(s);
+	    loop invariant nolast: last == \null <==>
+	                           (\forall integer i; 0 <= i < k ==> os[i] != (char) c);
+	    loop invariant lastok: last != \null ==>
+	                           (last == os + lastk && lastk < k && os[lastk] == (char) c &&
+	                            (\forall integer i; lastk < i < k ==> os[i] != (char) c));
+	    loop assigns s, last, k, lastk;
+	    loop variant strlen(os) - k;
 	 */
 	do {
-		if (*s == (char) c)
+		if (*s == (char) c) {
 			last = s;
+			//@ ghost lastk = k;
+		}
+		//@ ghost if (*s != '\0') valid_str_shift((char *)s);
+		//@ ghost if (*s != '\0') k++;
 	} while (*s++);
-	//@ assert s[-1] == '\0';
-	//@ assert s == os + strlen(os) + 1;
-	//@ assert (\exists char *p; os <= p < os + strlen(os) && *p == (char) c) ==> (last != \null);
-	// assert strrchr(\at(s,Pre), (char) c) == last;
+	//@ ghost valid_str_len(os);
 	return (char *)last;
 }
 

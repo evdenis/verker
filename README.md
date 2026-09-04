@@ -42,7 +42,7 @@ has been re-proved with WP so far.
 | 22 | strnlen       | proved | proved | proved         | yes       |         |
 | 23 | strnstr       |        |    |                | yes       |         |
 | 24 | strpbrk       | proved | proved | proved         | yes       |         |
-| 25 | strrchr       | proved |    |                | yes       |         |
+| 25 | strrchr       | proved | proved |                | yes       |         |
 | 26 | strreplace    | proved |    | not required   | !const    |         |
 | 27 | strsep        | proved | proved | not required   | !const    |         |
 | 28 | strspn        | proved | proved | proved         | yes       |         |
