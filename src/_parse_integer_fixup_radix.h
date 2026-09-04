@@ -12,7 +12,10 @@
 
 /*@ requires \valid_read(s+(0..2));
     requires \valid(base);
+    terminates \true;
     assigns *base;
+    assigns \result \from s, *base;
+    exits \false;
     ensures \result == s || \result == s + 2;
     behavior guess:
        assumes *base == 0;

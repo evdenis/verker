@@ -53,8 +53,8 @@ has been re-proved with WP so far.
 | 33 | memmove       | proved\*|    | not required   |           | use memcmp logic function at ensures |
 | 34 | memcpy        | proved |    | not required   |           | use memcmp logic function at ensures |
 | 35 | memset        | proved |    | not required   | !const    |         |
-| 36 | kstrtobool    | proved |    | not required   | yes       |         |
-| 37 | \_parse\_integer\_fixup\_radix | proved |    | not required | yes | |
+| 36 | kstrtobool    | proved | proved | not required   | yes       |         |
+| 37 | \_parse\_integer\_fixup\_radix | proved | proved | not required | yes | |
 | 38 | \_parse\_integer |     |    |                | yes       |         |
 
  \* memmove - except pointer difference vc fail. Model limitation.
