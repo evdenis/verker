@@ -47,7 +47,6 @@
   @    for (size_t i = 0; i <= SIZE_MAX; i++) {
   @      if (s[i] == '\0') return i;
   @    }
-  @    return 0;
   @ }
   @*/
 
