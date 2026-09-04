@@ -145,6 +145,18 @@ within those to the entries that record an actual proof. ```make wp-prune``` reb
 exactly that basis; run it before committing session updates. Cached timeouts are never
 committed — they are stale negatives that would hide a goal a newer solver can now close.
 
+### Out of reach for WP
+
+Four functions cannot be proved with the Typed memory model as they stand, for reasons that
+are not specification problems:
+
+| Function | Obstacle |
+|----------|----------|
+| ```strscpy``` | reads and writes through ```*(unsigned long *)(src + res)```; WP's Typed model keeps each type in its own memory chunk and cannot reinterpret bytes as words |
+| ```memchr_inv``` | same word-at-a-time trick, plus ```(unsigned long)start % 8``` pointer-to-integer arithmetic |
+| ```bsearch``` | calls through a function pointer, which WP reports as ```Unknown callee, considering non-terminating call```; it would need a ```calls``` clause enumerating the possible callees |
+| ```ctype``` | relating the 256-entry ```_ctype``` table to the ```isalnum```/```isspace```/... predicates needs a case analysis over every byte value, and the deliberate ```(unsigned char)``` reinterpretation of a signed ```char``` trips ```-warn-unsigned-downcast``` |
+
 ### Value analysis
 
 ```make eva``` runs the Eva plug-in over the libFuzzer harnesses as an independent
