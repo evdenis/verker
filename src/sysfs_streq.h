@@ -16,17 +16,13 @@
  * with newlines but are compared against values without newlines.
  */
 
-/* FIXME: sysfs_strlen recurses on s rather than s + 1, so the definition is
- * ill-founded and everything derived from it is suspect. Left as-is here to
- * keep this commit purely syntactic; fixed when sysfs_streq is proved.
- */
 /*@ axiomatic SysfsStr {
     logic size_t sysfs_strlen(char *s) =
        ((s[0] == '\0') ||
         (s[0] == '\n' && s[1] == '\0')) ?
         (size_t)0
 	:
-	(size_t)(1 + sysfs_strlen(s));
+	(size_t)(1 + sysfs_strlen(s + 1));
 
     lemma sysfs_strlen_n_equal:
        \forall char *s1, char *s2, size_t n;
