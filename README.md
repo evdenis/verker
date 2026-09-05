@@ -35,7 +35,7 @@ has been re-proved with WP so far.
 | 15 | strim         |        |    | not required   | !const    |         |
 | 16 | strlen        | proved | proved | proved         | yes       |         |
 | 17 | strncasecmp   |        |    |                | yes       |         |
-| 18 | strncat       |        |    | not required   |           |         |
+| 18 | strncat       |        | proved | not required   |           |         |
 | 19 | strnchr       | proved | proved |                | yes       |         |
 | 20 | strncmp       | proved | proved |                | yes       | -warn-unsigned-downcast off |
 | 21 | strncpy       |        | proved | not required   |           |         |
