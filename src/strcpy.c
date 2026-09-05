@@ -3,22 +3,26 @@
 char *strcpy(char *dest, const char *src)
 {
 	char *tmp = dest;
-	//@ ghost char *osrc = src;
-	//@ assert valid_str(osrc);
+	//@ ghost char *osrc = (char *)src;
+	//@ ghost size_t n = elim_valid_str(osrc);
+	//@ ghost intro_valid_str_len(osrc, n);
+	//@ ghost size_t k = 0;
 
-	/*@ loop invariant osrc <= src <= osrc + strlen(osrc);
-	    loop invariant tmp <= dest <= tmp + strlen(osrc);
-	    loop invariant valid_str(src);
-	    loop invariant dest - tmp == src - osrc;
-	    loop invariant strlen(src) == strlen(osrc) - (src - osrc);
-	    loop invariant \forall integer i; 0 <= i < src - osrc ==> tmp[i] == osrc[i];
-	    loop assigns src, dest, tmp[0..strlen(osrc)];
-	    loop variant strlen(osrc) - (src - osrc);
+	/*@ loop invariant idx1:      src == osrc + k;
+	    loop invariant idx2:      dest == tmp + k;
+	    loop invariant bound:     0 <= k <= n;
+	    loop invariant untouched: \forall integer i; 0 <= i <= n ==>
+	                              osrc[i] == \at(src[i], Pre);
+	    loop invariant copied:    \forall integer i; 0 <= i < k ==>
+	                              tmp[i] == \at(src[i], Pre);
+	    loop assigns src, dest, k, tmp[0..n];
+	    loop variant n - k;
 	*/
-	while ((*dest++ = *src++) != '\0')
-		/* nothing */;
-	//@ assert dest[-1] == '\0' && src[-1] == '\0';
-	//@ assert valid_str(tmp);
+	while ((*dest++ = *src++) != '\0') {
+		//@ ghost k++;
+	}
+	//@ assert k == n;
+	//@ ghost intro_valid_str_len(tmp, n);
 	return tmp;
 }
 
