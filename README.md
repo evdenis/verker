@@ -30,7 +30,7 @@ has been re-proved with WP so far.
 | 10 | strchrnul     | proved | proved | proved         | yes       |         |
 | 11 | strcmp        | proved | proved | proved         | yes       | -warn-unsigned-downcast off |
 | 12 | strcpy        | proved | proved | not required   |           | use strcmp logic function |
-| 13 | stpcpy        | proved |    | not required   |           |         |
+| 13 | stpcpy        | proved | proved | not required   |           |         |
 | 14 | strcspn       | proved | proved | proved         | yes       |         |
 | 15 | strim         |        |    | not required   | !const    |         |
 | 16 | strlen        | proved | proved | proved         | yes       |         |
