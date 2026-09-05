@@ -4,35 +4,39 @@
     requires valid_str(src);
     requires \valid(dest+(0..count));
     requires strlen(dest) + strlen(src) <= SIZE_MAX;
+    requires strlen(dest) <= LONG_MAX && strlen(src) <= LONG_MAX;
     requires count > strlen(dest);
-    assigns dest[strlen{Old}(\old(dest))..strlen{Old}(\old(dest)) + strlen(src)];
-    ensures strlen(dest) <= \result <= strlen(dest) + strlen(src);
+    requires \separated(dest+(0..count), src+(0..strlen(src)));
+    terminates \true;
+    assigns dest[strlen{Pre}(dest)..strlen{Pre}(dest) + strlen{Pre}(src)];
+    exits \false;
+    ensures \result == strlen{Pre}(dest) + strlen{Pre}(src);
     ensures valid_str(dest);
+    ensures strlen{Pre}(dest) <= strlen(dest) <=
+            strlen{Pre}(dest) + strlen{Pre}(src);
  */
 size_t strlcat(char *dest, const char *src, size_t count)
 {
+	//@ ghost char *odest = dest;
+	//@ ghost char *osrc = (char *)src;
+	//@ ghost valid_str_len(odest);
+	//@ ghost valid_str_len(osrc);
 	size_t dsize = strlen(dest);
 	size_t len = strlen(src);
 	size_t res = dsize + len;
 
-	/* This would be a bug */
-	//BUG_ON(dsize >= count);
-
 	dest += dsize;
-//@ ghost Mid: ;
-	//@ assert valid_str(dest);
-	//@ assert dest == \at(dest,Pre) + strlen(\at(dest,Pre));
+	//@ assert dest == odest + dsize;
 	//@ assert *dest == '\0';
 	count -= dsize;
 	if (len >= count)
 		len = count-1;
 	//@ assert len < count;
-	// assert \valid(dest+(0..len-1));
 	memcpy(dest, src, len);
-	//@ assert \forall integer i; 0 <= i < len ==> \at(dest,Mid)[i] == src[i];
+	//@ assert \forall integer i; 0 <= i < len ==> odest[dsize + i] == \at(src[i], Pre);
 	dest[len] = 0;
-	//@ assert valid_str(dest);
-	//@ assert valid_str(\at(dest,Pre));
+	//@ ghost intro_valid_str_len(dest, len);
+	//@ ghost intro_valid_str_len(odest, (size_t)(dsize + len));
 	return res;
 }
 
