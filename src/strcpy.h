@@ -11,11 +11,16 @@
 
 /*@ requires valid_str(src);
     requires \valid(dest+(0..strlen(src)));
-    requires \base_addr(dest) != \base_addr(src);
-    assigns dest[0..strlen(src)];
-    ensures valid_str(\result);
+    requires \separated(dest+(0..strlen(src)), src+(0..strlen(src)));
+    terminates \true;
+    assigns dest[0..strlen{Pre}(src)];
+    assigns \result \from dest;
+    exits \false;
     ensures \result == dest;
-    ensures \forall integer i; 0 <= i <= strlen(src) ==> \result[i] == src[i];
+    ensures \forall integer i; 0 <= i <= strlen{Pre}(src) ==>
+            \result[i] == \at(src[i], Pre);
+    ensures valid_str(\result);
+    ensures strlen(\result) == strlen{Pre}(src);
  */
 char *strcpy(char *dest, const char *src);
 
