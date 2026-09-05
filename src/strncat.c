@@ -3,65 +3,80 @@
 /*@ requires valid_strn(src, count);
     requires valid_str(dest);
     requires strlen(dest) + count <= SIZE_MAX;
+    requires strlen(dest) <= LONG_MAX;
     requires \valid(dest+(0..strlen(dest)+count));
-    assigns dest[strlen(dest)..strlen(dest)+count];
+    requires \separated(dest+(0..strlen(dest)+count), src+(0..count));
+    terminates \true;
+    assigns dest[strlen{Pre}(dest)..strlen{Pre}(dest)+count];
+    assigns \result \from dest;
+    exits \false;
     ensures \result == dest;
-    ensures valid_str(\result);
-    ensures \forall integer i; 0 <= i < strlen{Old}(\old(dest)) ==>
-            \old(dest[i]) == \result[i];
+    ensures \forall integer i; 0 <= i < strlen{Pre}(dest) ==>
+            \at(dest[i], Pre) == \result[i];
     ensures \forall integer i;
-            strlen{Old}(dest) <= i < strlen{Old}(dest) + strnlen(src, count) ==>
-            src[i - strlen{Old}(dest)] == \result[i];
+            0 <= i < strnlen{Pre}(src, count) ==>
+            \at(src[i], Pre) == \result[strlen{Pre}(dest) + i];
+    ensures valid_str(\result);
+    ensures strlen(\result) == strlen{Pre}(dest) + strnlen{Pre}(src, count);
  */
 char *strncat(char *dest, const char *src, size_t count)
 {
 	char *tmp = dest;
+	//@ ghost size_t d = elim_valid_str(tmp);
+	//@ ghost intro_valid_str_len(tmp, d);
+	//@ ghost size_t j = 0;
+	//@ ghost char *osrc = (char *)src;
+	//@ ghost size_t ocount = count;
+	//@ ghost size_t n = elim_valid_strn(osrc, ocount);
+	//@ ghost intro_valid_strn_len(osrc, ocount, n);
+	//@ ghost valid_strn_len(osrc, ocount);
 
 	if (count) {
-		//@ ghost size_t ocount = count;
-		//@ ghost char *osrc = src;
-
-		/*@ loop invariant tmp <= dest <= tmp + strlen{Pre}(tmp);
-		    loop invariant valid_str(dest);
-		    loop assigns dest;
-		    loop variant strlen{Pre}(tmp) - (dest - tmp);
+		/*@ loop invariant idx:   dest == tmp + j;
+		    loop invariant bound: 0 <= j <= d;
+		    loop invariant kept:  \forall integer i; 0 <= i <= d ==>
+		                          tmp[i] == \at(dest[i], Pre);
+		    loop assigns dest, j;
+		    loop variant d - j;
 		 */
-		while (*dest)
+		while (*dest) {
 			dest++;
-		//@ assert *dest == '\0';
-		//@ assert dest == tmp + strlen{Pre}(tmp);
+			//@ ghost j++;
+		}
+		//@ assert j == d;
 		//@ ghost char *mdest = dest;
+		//@ ghost size_t k = 0;
 
-		/*@ loop invariant 0 <= count <= ocount;
-		    loop invariant osrc <= src <= osrc + strnlen{Pre}(osrc, ocount);
-		    loop invariant mdest <= dest <= mdest + strnlen{Pre}(osrc, ocount);
-		    loop invariant valid_str(src);
-		    loop invariant src - osrc == dest - mdest == ocount - count;
-		    loop invariant \forall integer i; 0 <= i < src - osrc ==>
-		                   mdest[i] == osrc[i];
-		    loop assigns count, mdest[0..strnlen{Pre}(osrc, ocount)];
+		/*@ loop invariant idx1:      src == osrc + k;
+		    loop invariant idx2:      dest == mdest + k;
+		    loop invariant bound:     0 <= k <= n;
+		    loop invariant left:      count == ocount - k;
+		    loop invariant pos:       count > 0;
+		    loop invariant untouched: \forall integer i; 0 <= i <= n ==>
+		                              osrc[i] == \at(src[i], Pre);
+		    loop invariant prefix:    \forall integer i; 0 <= i < d ==>
+		                              tmp[i] == \at(dest[i], Pre);
+		    loop invariant copied:    \forall integer i; 0 <= i < k ==>
+		                              mdest[i] == \at(src[i], Pre);
+		    loop assigns count, src, dest, k, mdest[0..ocount];
 		    loop variant count;
 		 */
 		while ((*dest++ = *src++) != 0) {
+			/* the copied character was not the terminator, so k is still
+			 * inside the source's strnlen */
+			//@ assert osrc[k] != '\0';
+			//@ assert nul: n < ocount ==> osrc[n] == '\0';
+			//@ assert pos: count > 0 && k < ocount;
+			//@ assert k < n;
+			//@ ghost k++;
 			if (--count == 0) {
 				*dest = '\0';
 				break;
 			}
 		}
-		//@ assert \forall integer i; 0 <= i < strlen{Pre}(tmp) ==> \at(dest[i],Pre) == tmp[i];
-		/*@ assert (count > 0) ==>
-		              (dest[-1] == '\0' && src[-1] == '\0') &&
-		              (strnlen{Pre}(osrc, ocount) == src - osrc - 1);
-		 */
-		/*@ assert (count == 0) ==>
-		              (strnlen{Pre}(osrc, ocount) == ocount) &&
-		              (*dest == '\0');
-		 */
-		// assert count > 0 ==> dest - 1 == tmp + strlen{Pre}(tmp) + strlen(osrc);
-		//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (strlen{Pre}(tmp) + 	strnlen{Pre}(osrc, ocount));
-		//(\exists size_t n; (n < cnt) && s[n] == '\0' && \valid(s+(0..n))) ||
-		//\valid(s+(0..cnt));
-		//@ assert valid_str(tmp);
+		//@ assert k == n;
+		//@ assert mdest == tmp + d;
+		//@ ghost intro_valid_str_len(tmp, (size_t)(d + n));
 	}
 	return tmp;
 }
