@@ -3,43 +3,47 @@
 char *strcat(char *dest, const char *src)
 {
 	char *tmp = dest;
+	//@ ghost size_t d = elim_valid_str(tmp);
+	//@ ghost intro_valid_str_len(tmp, d);
+	//@ ghost size_t j = 0;
 
-	/*@ loop invariant tmp <= dest <= tmp + strlen{Pre}(tmp);
-	    loop invariant valid_str(dest);
-	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
-	    loop assigns dest;
-	    loop variant strlen{Pre}(tmp) - (dest - tmp);
+	/*@ loop invariant idx:   dest == tmp + j;
+	    loop invariant bound: 0 <= j <= d;
+	    loop invariant kept:  \forall integer i; 0 <= i <= d ==>
+	                          tmp[i] == \at(dest[i], Pre);
+	    loop assigns dest, j;
+	    loop variant d - j;
 	 */
-	while (*dest)
+	while (*dest) {
 		dest++;
-	//@ assert *dest == '\0';
-	//@ assert dest == tmp + strlen{Pre}(tmp);
-	//@ assert strlen(tmp) == strlen{Pre}(tmp);
-	//@ ghost char *osrc = src;
-	//@ ghost char *mdest = dest;
+		//@ ghost j++;
+	}
+	//@ assert j == d;
 
-	/*@ loop invariant osrc <= src <= osrc + strlen(osrc);
-	    loop invariant mdest <= dest <= mdest + strlen(osrc);
-	    loop invariant src - osrc == dest - mdest;
-	    loop invariant valid_str(src);
-	    loop invariant \forall integer i; 0 <= i < src - osrc ==>
-	                   mdest[i] == osrc[i];
-	    loop invariant \forall integer i; 0 <= i < dest - tmp ==> tmp[i] != '\0';
-	    loop assigns mdest[0..strlen(osrc)];
-	    loop variant strlen(osrc) - (src - osrc);
+	//@ ghost char *osrc = (char *)src;
+	//@ ghost char *mdest = dest;
+	//@ ghost size_t n = elim_valid_str(osrc);
+	//@ ghost intro_valid_str_len(osrc, n);
+	//@ ghost size_t k = 0;
+
+	/*@ loop invariant idx1:      src == osrc + k;
+	    loop invariant idx2:      dest == mdest + k;
+	    loop invariant bound:     0 <= k <= n;
+	    loop invariant untouched: \forall integer i; 0 <= i <= n ==>
+	                              osrc[i] == \at(src[i], Pre);
+	    loop invariant prefix:    \forall integer i; 0 <= i < d ==>
+	                              tmp[i] == \at(dest[i], Pre);
+	    loop invariant copied:    \forall integer i; 0 <= i < k ==>
+	                              mdest[i] == \at(src[i], Pre);
+	    loop assigns src, dest, k, mdest[0..n];
+	    loop variant n - k;
 	 */
-	while ((*dest++ = *src++) != '\0')
-		;
-	//@ assert \forall integer i; 0 <= i < strlen{Pre}(tmp) ==> \at(dest[i],Pre) == tmp[i];
-	//@ assert dest[-1] == '\0' && src[-1] == '\0';
-	//@ assert dest - 1 == tmp + strlen{Pre}(tmp) + strlen(osrc);
-	//@ assert strlen(osrc) == src - osrc - 1;
-	//@ assert \exists size_t n; tmp[n] == '\0' && \valid(tmp+(0..n)) && n == (size_t) (strlen{Pre}(tmp) + strlen(osrc));
-	/*@ assert valid_str(tmp) &&
-	    (tmp[(size_t)(strlen{Pre}(tmp) + strlen(osrc))] == '\0') &&
-	    (\forall integer i; 0 <= i < (size_t)(strlen{Pre}(tmp) + strlen(osrc)) ==> tmp[i] != '\0');
-	 */
-	//@ assert strlen(tmp) == (size_t) (strlen{Pre}(tmp) + strlen(osrc));
+	while ((*dest++ = *src++) != '\0') {
+		//@ ghost k++;
+	}
+	//@ assert k == n;
+	//@ assert mdest == tmp + d;
+	//@ ghost intro_valid_str_len(tmp, (size_t)(d + n));
 	return tmp;
 }
 
