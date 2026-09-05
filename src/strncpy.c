@@ -17,37 +17,48 @@
 #include "strlen.h"
 
 /*@ requires valid_str(src);
-    requires \valid(dest+(0..strnlen(src, count)));
-    requires \base_addr(dest) != \base_addr(src);
-    assigns dest[0..strnlen(src, count)];
+    requires \valid(dest+(0..count-1));
+    requires \separated(dest+(0..count-1), src+(0..strlen(src)));
+    requires strlen(src) <= LONG_MAX;
+    terminates \true;
+    assigns dest[0..count-1];
+    assigns \result \from dest;
+    exits \false;
     ensures \result == dest;
     behavior exceed:
-       assumes count >= strlen(src);
-       ensures \forall integer i; 0 <= i <= strlen(src) ==> \result[i] == src[i];
-       ensures valid_str(\result);
-       ensures \forall integer i; strlen(src) <= i <= count - strlen(src) ==> \result[i] == '\0';
+       assumes count > strlen{Pre}(src);
+       ensures \forall integer i; 0 <= i <= strlen{Pre}(src) ==>
+               dest[i] == \at(src[i], Pre);
+       ensures \forall integer i; strlen{Pre}(src) <= i < count ==>
+               dest[i] == '\0';
+       ensures valid_str(dest);
+       ensures strlen(dest) == strlen{Pre}(src);
     behavior not_exceed:
-       assumes count < strlen(src);
-       ensures \forall integer i; 0 <= i <= count ==> \result[i] == src[i];
-       ensures valid_strn(\result, count);
+       assumes count <= strlen{Pre}(src);
+       ensures \forall integer i; 0 <= i < count ==>
+               dest[i] == \at(src[i], Pre);
     complete behaviors;
     disjoint behaviors;
  */
 char *strncpy(char *dest, const char *src, size_t count)
 {
 	char *tmp = dest;
-	//@ ghost char *osrc = src;
+	//@ ghost char *osrc = (char *)src;
 	//@ ghost size_t ocount = count;
-	//@ assert valid_strn(osrc, ocount);
+	//@ ghost size_t n = elim_valid_str(osrc);
+	//@ ghost intro_valid_str_len(osrc, n);
+	//@ ghost size_t k = 0;
 
-	/*@ loop invariant osrc <= src <= osrc + strnlen(osrc, ocount);
-	    loop invariant dest <= tmp <= dest + ocount;
-	    loop invariant 0 <= count <= ocount;
-	    loop invariant tmp - dest == ocount - count;
-	    loop invariant valid_str(src);
-	    //loop invariant strnlen(src, count) == strnlen(osrc, ocount) - (src - osrc);
-	    loop invariant \forall integer i; 0 <= i < src - osrc ==> dest[i] == osrc[i];
-	    loop assigns count, src, tmp, dest[0..strnlen(osrc, count)];
+	/*@ loop invariant idx:       tmp == dest + k;
+	    loop invariant bound:     0 <= k <= ocount;
+	    loop invariant left:      count == ocount - k;
+	    loop invariant srcpos:    src == osrc + (k < n ? k : n);
+	    loop invariant untouched: \forall integer i; 0 <= i <= n ==>
+	                              osrc[i] == \at(src[i], Pre);
+	    loop invariant copied:    \forall integer i; 0 <= i < k && i <= n ==>
+	                              dest[i] == \at(src[i], Pre);
+	    loop invariant padded:    \forall integer i; n < i < k ==> dest[i] == '\0';
+	    loop assigns count, src, tmp, k, dest[0..ocount-1];
 	    loop variant count;
 	*/
 	while (count) {
@@ -55,9 +66,10 @@ char *strncpy(char *dest, const char *src, size_t count)
 			src++;
 		tmp++;
 		count--;
+		//@ ghost k++;
 	}
-	// assert dest[-1] == '\0' && src[-1] == '\0';
-	//@ assert valid_strn(tmp, ocount);
+	//@ assert k == ocount;
+	//@ ghost if (ocount > n) intro_valid_str_len(dest, n);
 	return dest;
 }
 

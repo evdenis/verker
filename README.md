@@ -38,7 +38,7 @@ has been re-proved with WP so far.
 | 18 | strncat       |        |    | not required   |           |         |
 | 19 | strnchr       | proved | proved |                | yes       |         |
 | 20 | strncmp       | proved | proved |                | yes       | -warn-unsigned-downcast off |
-| 21 | strncpy       |        |    | not required   |           |         |
+| 21 | strncpy       |        | proved | not required   |           |         |
 | 22 | strnlen       | proved | proved | proved         | yes       |         |
 | 23 | strnstr       |        |    |                | yes       | memory safety and termination only; no functional postcondition yet |
 | 24 | strpbrk       | proved | proved | proved         | yes       |         |
