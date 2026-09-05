@@ -26,20 +26,16 @@
        n == 0 ?
           (size_t)0
        :
-          (strcmp(a[0], s) == 0 ? (size_t)0 : match_string(a + 1, (size_t)(n - 1), s));
+          (strcmp(a[0], s) == 0 ?
+              (size_t)0
+           :
+              (size_t)(1 + match_string(a + 1, (size_t)(n - 1), s)));
 
     logic size_t real_len(char **a, size_t n) =
        ((a[0] == NULL) || (n == 0)) ?
           (size_t)0
        :
           (size_t)(1 + real_len(a + 1, (size_t)(n - 1)));
-
-    lemma match_string_definition:
-       \forall char** array, char* string, size_t i, len;
-          0 <= i < real_len(array, len) &&
-          (\forall size_t j; 0 <= j < i ==> strcmp(array[j], string) != 0) &&
-          strcmp(array[i], string) == 0 ==>
-          match_string(array, real_len(array, len), string) == i;
 
     lemma strcmp_corollary:
        \forall char* string1, char* string2;
@@ -66,6 +62,24 @@
   @ void real_len_range(char **a, size_t len)
   @ {
   @   if (len > 0) real_len_range(a + 1, len - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(a+(0..i));
+  @  @ requires  i <= real_len(a, len);
+  @  @ requires  i < len;
+  @  @ requires  a[i] != \null;
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   i < real_len(a, len);
+  @  @/
+  @ void real_len_lower(char **a, size_t len, size_t i)
+  @ {
+  @   real_len_range(a, len);
+  @   if (len > 0) real_len_range(a + 1, len - 1);
+  @   if (i > 0) real_len_lower(a + 1, len - 1, i - 1);
   @ }
   @*/
 
@@ -112,6 +126,26 @@
   @ void real_len_maximum(char **a, size_t len)
   @ {
   @   if (len > 0) real_len_maximum(a + 1, len - 1);
+  @ }
+  @*/
+
+/*@ ghost
+  @ /@ requires  \valid(a+(0..i));
+  @  @ requires  0 <= i < real_len(a, len);
+  @  @ requires  \forall integer j; 0 <= j < i ==> strcmp(a[j], string) != 0;
+  @  @ requires  strcmp(a[i], string) == 0;
+  @  @ terminates \true;
+  @  @ decreases i;
+  @  @ assigns   \nothing;
+  @  @ ensures   match_string(a, real_len(a, len), string) == i;
+  @  @/
+  @ void match_string_definition(char **a, char *string, size_t i, size_t len)
+  @ {
+  @   real_len_range(a, len);
+  @   if (len > 0) real_len_range(a + 1, len - 1);
+  @   real_len_not_nulls(a, len, i);
+  @   real_len_not_nulls(a, len, 0);
+  @   if (i > 0) match_string_definition(a + 1, string, i - 1, len - 1);
   @ }
   @*/
 
