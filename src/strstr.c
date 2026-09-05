@@ -3,6 +3,8 @@
 /*@ axiomatic StrStr {
     logic char *strstr(char *s1, char *s2);
 
+    // plain character equality: the same relation memcmp's postcondition
+    // gives on (unsigned char) values
     predicate strmatch(char *s1, char *s2) =
        \forall integer i;
           0 <= i < strlen(s2) ==>
@@ -51,9 +53,16 @@ char *strstr(const char *s1, const char *s2)
 	 */
 	while (l1 >= l2) {
 		l1--;
-		if (!memcmp(s1, s2, l2))
+		int c = /*CODE_CHANGE:*/memcmp(s1, s2, l2);
+		if (!c) {
+			//@ assert \forall integer i; 0 <= i < l2 ==> s1[i] == s2[i];
+			//@ assert strmatch(s1, s2);
+			//@ assert \exists integer i; 0 <= i <= strlen(os1) && strmatch(os1 + i, s2);
 			return (char *)s1;
+		}
+		//@ assert c != 0;
 		//@ assert l2 == strlen(s2);
+		//@ assert exists_diff: \exists integer i; 0 <= i < l2 && s1[i] != s2[i];
 		//@ assert !strmatch(s1, s2);
 		//@ ghost valid_str_shift((char *)s1);
 		s1++;
