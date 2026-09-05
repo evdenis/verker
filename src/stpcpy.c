@@ -2,25 +2,27 @@
 
 char *stpcpy(char *__restrict__ dest, const char *__restrict__ src)
 {
-	//@ ghost char *osrc = src;
+	//@ ghost char *osrc = (char *)src;
 	//@ ghost char *odest = dest;
-	//@ assert valid_str(osrc);
+	//@ ghost size_t n = elim_valid_str(osrc);
+	//@ ghost intro_valid_str_len(osrc, n);
+	//@ ghost size_t k = 0;
 
-	/*@ loop invariant osrc <= src <= osrc + strlen(osrc);
-	    loop invariant odest <= dest <= odest + strlen(osrc);
-	    loop invariant valid_str(src);
-	    loop invariant dest - odest == src - osrc;
-	    loop invariant strlen(src) == strlen(osrc) - (src - osrc);
-	    loop invariant \forall integer i; 0 <= i < src - osrc ==> odest[i] == osrc[i];
-	    loop assigns src, dest, odest[0..strlen(osrc)];
-	    loop variant strlen(osrc) - (src - osrc);
+	/*@ loop invariant idx1:      src == osrc + k;
+	    loop invariant idx2:      dest == odest + k;
+	    loop invariant bound:     0 <= k <= n;
+	    loop invariant untouched: \forall integer i; 0 <= i <= n ==>
+	                              osrc[i] == \at(src[i], Pre);
+	    loop invariant copied:    \forall integer i; 0 <= i < k ==>
+	                              odest[i] == \at(src[i], Pre);
+	    loop assigns src, dest, k, odest[0..n];
+	    loop variant n - k;
 	*/
-	while ((*dest++ = *src++) != '\0')
-		/* nothing */;
-
-	//@ assert dest[-1] == '\0' && src[-1] == '\0';
-	//@ assert valid_str(odest);
-	//@ assert (dest - 1) - odest == strlen(osrc);
+	while ((*dest++ = *src++) != '\0') {
+		//@ ghost k++;
+	}
+	//@ assert k == n;
+	//@ ghost intro_valid_str_len(odest, n);
 
 	return --dest;
 }

@@ -24,12 +24,17 @@
 
 /*@ requires valid_str(src);
     requires \valid(dest+(0..strlen(src)));
-    requires \base_addr(dest) != \base_addr(src);
-    assigns dest[0..strlen(src)];
-    ensures valid_str(\result);
+    requires \separated(dest+(0..strlen(src)), src+(0..strlen(src)));
+    terminates \true;
+    assigns dest[0..strlen{Pre}(src)];
+    assigns \result \from dest;
+    exits \false;
+    ensures \result == dest + strlen{Pre}(src);
     ensures *\result == '\0';
-    ensures \result == dest + strlen(src);
-    ensures \forall integer i; 0 <= i <= strlen(src) ==> dest[i] == src[i];
+    ensures \forall integer i; 0 <= i <= strlen{Pre}(src) ==>
+            dest[i] == \at(src[i], Pre);
+    ensures valid_str(dest);
+    ensures strlen(dest) == strlen{Pre}(src);
  */
 char *stpcpy(char *__restrict__ dest, const char *__restrict__ src);
 
