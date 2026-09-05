@@ -21,10 +21,13 @@ int match_string(const char * const *array, size_t n, const char *string)
 			//@ ghost real_len_terminate((char **)array, n, (size_t)index);
 			break;
 		}
+		//@ ghost real_len_lower((char **)array, n, (size_t)index);
 		//@ ghost real_len_not_nulls((char **)array, n, (size_t)index);
 		//@ assert valid_str(array[index]);
-		if (!strcmp(item, string))
+		if (!strcmp(item, string)) {
+			//@ ghost match_string_definition((char **)array, (char *)string, (size_t)index, n);
 			return index;
+		}
 
 		/*@ assert \exists size_t i;
 		       0 <= i <= \min(strlen(item), strlen(string)) &&
