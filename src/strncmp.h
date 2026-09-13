@@ -62,7 +62,9 @@
 
 /*@ requires valid_strn(cs, count);
     requires valid_strn(ct, count);
+    terminates \true;
     assigns \nothing;
+    exits \false;
     ensures \result == -1 || \result == 0 || \result == 1;
     behavior equal:
        assumes count == 0 ||
