@@ -215,11 +215,24 @@ wp: $(SESSIONDIR) ## Run WP on every function. You can also type wp-<function>.
 wp-proved: $(SESSIONDIR) ## Run WP on the functions marked proved in the README WP column.
 	@$(FRAMAC) $(WPFLAGS) -wp-cache update $(PROVEDFILES)
 
+# Frama-C exits 0 even when goals are left unproved, so its exit status carries no
+# information. Match the whole "Proved goals: n / m" line once and let a back-reference
+# decide equality. UNSOUND is checked first: a full count must not outvote a finding from
+# the tier that can lie (see the same list in .claude/skills/_scripts/wp.sh).
+WP_UNSOUND := might be unsound|not yet supported \(skipped\)|Missing RTE guards|annot:missing-spec
+WP_UNSOUND := $(WP_UNSOUND)|interpreted as reads nothing|using unguarded behavior assigns
+WP_UNSOUND := $(WP_UNSOUND)|using complete behaviors assigns|Memory model hypotheses for function
+
 wp-replay: $(SESSIONDIR) ## Replay every proof from the committed cache; never runs a prover.
 	@FAIL=0; for i in $(PROVEDFILES); do i=$$(basename $$i .c); \
-		$(FRAMAC) $(WPFLAGS) -wp-cache offline src/$$i.c > /dev/null 2>&1 \
-		&& echo "OK:   $$i" || { echo "FAIL: $$i"; FAIL=1; }; done; \
-	exit $$FAIL
+		out=$$($(FRAMAC) $(WPFLAGS) -wp-cache offline src/$$i.c 2>&1); \
+		g=$$(printf '%s\n' "$$out" | grep -oE 'Proved goals: +[0-9]+ */ *[0-9]+' | tail -1); \
+		if [ -z "$$g" ]; then echo "ERROR:   $$i (no goal count; WP aborted?)"; FAIL=1; \
+		elif printf '%s\n' "$$out" | grep -qE '$(WP_UNSOUND)'; then \
+			echo "UNSOUND: $$i ($$g)"; FAIL=1; \
+		elif printf '%s' "$$g" | grep -qE '([0-9]+) */ *\1$$'; then echo "OK:      $$i ($$g)"; \
+		else echo "FAIL:    $$i ($$g)"; FAIL=1; fi; \
+	done; exit $$FAIL
 
 wp-rebuild: $(SESSIONDIR) ## Re-prove from scratch and overwrite the cache (after a toolchain upgrade).
 	@$(FRAMAC) $(WPFLAGS) -wp-cache rebuild $(SRCFILES)
