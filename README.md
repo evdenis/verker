@@ -56,6 +56,8 @@ has been re-proved with WP so far.
 | 36 | kstrtobool    | proved | proved | not required   | yes       |         |
 | 37 | \_parse\_integer\_fixup\_radix | proved | proved | not required | yes | |
 | 38 | \_parse\_integer |     |    |                | yes       |         |
+| 39 | hex2bin       |        | proved | not required   |           | the packed byte is written as ```hi * 16 + lo```; see the RTE note above |
+| 40 | int\_sqrt     |        |        | not required   |           | memory safety and termination only; no functional postcondition yet |
 
  \* Under AstraVer, memmove's pointer-difference VC failed (model limitation). It is fully proved under WP.
 
@@ -69,8 +71,8 @@ Developed against Frama-C 33.0 (Arsenic) with Why3 1.8.2 and the Alt-Ergo, CVC4,
 Z3 solvers. Install it with [opam](https://opam.ocaml.org/):
 
 ```bash
-$ opam install frama-c why3 alt-ergo
-$ frama-c -wp-list-provers
+$ opam install frama-c why3 alt-ergo z3
+$ frama-c -wp-list-provers   # cvc5 is not in opam; install it separately and put it on PATH
 ```
 
 Earlier releases of this repository targeted the
@@ -103,11 +105,14 @@ knobs: ```make TIMEOUT=30 wp-strcmp```. Raising ```TIMEOUT``` alone has no effec
 whose timeout is already cached — use ```make wp-rebuild``` to force the provers to run
 again.
 
-Some goals are out of reach for the SMT provers but fall to a WP tactic; bit-level
-identities such as ```(hi << 4) | lo == hi * 16 + lo``` are the usual case.
-```make wp-auto-<function>``` searches for such a proof and saves it under
-```sessions/script/```. Ordinary runs replay those scripts before calling a prover, so the
-search cost is paid once.
+Some goals are out of reach for the SMT provers but fall to a WP tactic — nibble ranges
+and shift equalities are the usual case. ```make wp-auto-<function>``` searches for such a
+proof and saves it under ```sessions/script/```; ordinary runs replay those scripts before
+calling a prover, so the search cost is paid once. No function currently needs one, so
+```sessions/script/``` is empty. The tactics do *not* close "disjoint bits implies sum":
+```(hi << 4) | lo == hi * 16 + lo``` stalls at ```wp:bitwised``` even with both operands
+proved below 16, which is why hex2bin writes the arithmetic form and marks it
+```CODE_CHANGE```.
 
 Every run enables ```-wp-rte```, so the runtime-error obligations are part of the proof.
 Two RTE options are deliberately left off, both because the kernel relies on conversions
