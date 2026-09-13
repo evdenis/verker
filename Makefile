@@ -129,6 +129,9 @@ $(BINDIR)/_parse_integer_fixup_radix: $(BINDIR)/ctype.o src/_parse_integer_fixup
 $(BINDIR)/strcasecmp: $(BINDIR)/ctype.o src/strcasecmp.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
+$(BINDIR)/hex2bin: $(BINDIR)/ctype.o src/hex2bin.c
+	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
+
 $(BINDIR)/strncasecmp: $(BINDIR)/ctype.o src/strncasecmp.c
 	$(CC) $(CFLAGS) $(EXT_CFLAGS) $^ -o $@
 
