@@ -62,12 +62,15 @@
 
 #define INT_MAX 2147483647
 
-#define LONG_MAX 9223372036854775807L
-
+/* CONFIG_64BIT is defined unconditionally above and -machdep pins the ABI, so the 32-bit
+ * arm is unreachable today; it keeps LONG_MAX tied to the same switch as BITS_PER_LONG.
+ */
 #ifdef CONFIG_64BIT
 #define BITS_PER_LONG 64
+#define LONG_MAX 9223372036854775807L
 #else
 #define BITS_PER_LONG 32
+#define LONG_MAX 2147483647L
 #endif /* CONFIG_64BIT */
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
