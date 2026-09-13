@@ -4,8 +4,6 @@
 #include "kernel_definitions.h"
 #include "strlen.h"
 
-#ifndef LEMMA_FUNCTIONS
-
 /*@ axiomatic StrSpn {
     predicate in_array(char *s, char c) =
        \exists integer i; 0 <= i < strlen(s) && s[i] == c;
@@ -36,104 +34,6 @@
              strspn(s, accept) == 0;
     }
  */
-
-#else
-
-/*@ axiomatic StrSpn {
-    predicate in_array(char *s, char c) =
-       \exists integer i; 0 <= i < strlen(s) && s[i] == c;
-
-    logic integer strspn(char *s, char *accept) =
-       *s == '\0' || ! in_array(accept, *s) ? 0 : 1 + strspn(s + 1, accept);
-    }
- */
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ requires *s != '\0';
-  @  @ requires *s != c;
-  @  @ ensures  in_array(s, c) <==> in_array(s + 1, c);
-  @  @/
-  @  void in_array_shift1(char *s, char c)
-  @  {
-  @  }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ requires *s != '\0';
-  @  @ requires *s == c;
-  @  @ ensures  in_array(s, c);
-  @  @/
-  @  void in_array_true(char *s, char c)
-  @  {
-  @  }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s);
-  @  @ requires *s == '\0';
-  @  @ ensures  !in_array(s, c);
-  @  @/
-  @  void in_array_false(char *s, char c)
-  @  {
-  @  }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires \valid(s);
-  @  @ requires *s == '\0';
-  @  @ ensures strspn(s, accept) == 0;
-  @  @/
-  @ void strspn_strend(char *s, char *accept)
-  @ {
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires \valid(accept);
-  @  @ requires *accept == '\0';
-  @  @ ensures strspn(s, accept) == 0;
-  @  @/
-  @ void strspn_empty_accept(char *s, char *accept)
-  @ {
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires valid_str(s);
-  @  @ decreases strlen(s);
-  @  @ ensures \result != 0 <==> in_array(s, c);
-  @  @/
-  @ int in_array(char *s, char c)
-  @ {
-  @   if (*s == '\0') return 0;
-  @   if (*s == c) return 1;
-  @   return in_array(s + 1, c);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ lemma
-  @  @ requires valid_str(s) ;
-  @  @ requires valid_str(accept);
-  @  @ decreases strlen(s);
-  @  @ ensures 0 <= strspn(s, accept) <= strlen(s);
-  @  @/
-  @ void strspn_range(char *s, char *accept)
-  @ {
-  @   if (*s != '\0' && in_array(accept, *s)) {
-  @     strspn_range(s + 1, accept);
-  @   }
-  @ }
-  @*/
-
-#endif
 
 /*
  * Lemma functions for in_array. See strlen.h for why these are ghost functions

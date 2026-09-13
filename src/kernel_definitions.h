@@ -1,11 +1,6 @@
 #ifndef __KERNEL_DEFINITIONS_H__
 #define __KERNEL_DEFINITIONS_H__
 
-/* AstraVer-era lemma functions are parked until ported to vanilla ACSL ghost
- * functions; until then the axiomatic branch assumes what they used to prove.
- */
-#undef LEMMA_FUNCTIONS
-
 #define CONFIG_64BIT 1
 
 #define E2BIG 7
