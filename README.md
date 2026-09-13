@@ -203,17 +203,29 @@ For some functions, specifications are redundant. In fact, they describe functio
 
 What is the reason for a such "redundancy"?
 
-The logical function strlen is convenient to use in the other function's specification. For example, strcmp function (and strcmp logical function in the strcpy contract). All the basic properties of a logical functions are expressed in lemmas (lemmas are not proved at this stage). Such specifications can't be translated in the run-time assertions with E-ACSL plugin. Therefore, for those functions with a correspondent logical function, there are additionally exists a "usual" specification.
+The logical function strlen is convenient to use in the other function's specification. For example, strcmp function (and strcmp logical function in the strcpy contract). All the basic properties of a logical functions are expressed in lemmas (each lemma is a proof obligation — see below). Such specifications can't be translated in the run-time assertions with E-ACSL plugin. Therefore, for those functions with a correspondent logical function, there are additionally exists a "usual" specification.
 
 Criteria to develop a logical function:
 
 1. It is possible to write a logical function only for a pure C function;
 2. It is rational to write logical functions if they are useful for developing specifications of other functions. For example, in the memcpy contract, you can express the equality of src and dest by calling the memcmp logical function.
 
-The lemmas in the axiomatics are currently assumed rather than proved, so they can contain
-contradictions. Under AstraVer they were discharged by lemma functions; those lemma
-functions are still in the headers but are parked behind ```#undef LEMMA_FUNCTIONS``` in
-**kernel_definitions.h** until they are ported to vanilla ACSL ghost functions.
+A ```lemma``` in an active axiomatic is a proof obligation, not an assumption: WP generates
+a goal for it like any other. The corpus has 27 such goals and discharges 26; the exception
+is ```strcmp_corollary```, which times out. Under AstraVer the inductive ones were discharged
+by the plugin's ```lemma``` functions; they now live in the headers as ordinary ACSL ghost
+functions whose contract WP proves and which a caller instantiates from ghost code — see the
+block after each axiomatic in **strlen.h**, **strnlen.h** and friends.
+
+What *is* assumed rather than proved are the 76 ```axiom```s in **ctype.h**,
+**strncasecmp.h** and **hex2bin.h**, which tabulate ```tolower```/```toupper``` and
+```hex_to_bin``` over the character set. Nothing checks them, and an inconsistency there
+would make every goal that depends on them vacuously provable; ```make wp-smoke``` is the
+only thing that would notice.
+
+Three files — **strrchr.h**, **strim.c** and **memcmp.c** — still carry an older axiomatic
+inside a plain ```/* */``` comment rather than an ACSL ```/*@ */``` one. That text is inert:
+it is not parsed, not proved and not used by anything.
 
 ## LibFuzzer integration
 
