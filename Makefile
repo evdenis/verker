@@ -275,12 +275,17 @@ wp-clean: ## Drop cache entries that no goal refers to any more.
 # the README WP column, and only the entries that record a proof. Rebuilding it
 # from scratch is the only exact way to do that: a cache entry is keyed by a hash
 # of the goal and carries no back-reference to the function it came from.
-wp-prune: ## Rebuild the committed cache from the proved functions only.
+# One file at a time: a goal's cache key depends on the analysis context, so a cache built
+# by a single multi-file run does not serve a per-file replay. Each run also writes its JSON
+# baseline, so wp-report is only needed for the functions not listed as proved.
+wp-prune: $(REPORTDIR) ## Rebuild the committed cache from the proved functions only.
 	@rm -rf $(SESSIONDIR)/cache
 	@if [ -n "$(strip $(PROVEDFILES))" ]; then \
-		$(FRAMAC) $(WPFLAGS) -wp-cache update $(PROVEDFILES) > /dev/null 2>&1; \
-		for f in $(SESSIONDIR)/cache/*.json; do \
-			grep -q '"verdict": "valid"' $$f || rm -f $$f; done; \
+		for f in $(PROVEDFILES); do i=$$(basename $$f .c); \
+			$(FRAMAC) $(WPFLAGS) -wp-cache update \
+				-wp-report-json $(REPORTDIR)/$$i.json $$f > /dev/null 2>&1; \
+			sed -i -e 's!"$(CURDIR)/!"!g' $(REPORTDIR)/$$i.json; done; \
+		grep -L '"verdict": "valid"' $(SESSIONDIR)/cache/*.json | xargs -r rm -f; \
 	fi
 	@echo "cache: $$(find $(SESSIONDIR)/cache -type f 2>/dev/null | wc -l) entries"
 
