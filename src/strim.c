@@ -112,6 +112,11 @@
        ensures \forall integer i;
           \result - s + strlen(\result) <= i < strlen{Pre}(s) ==>
           isspace(\at(s[i], Pre));
+       // without these the two \forall clauses above are vacuous and `return s;`
+       // satisfies the behaviour
+       ensures !isspace(*\result);
+       ensures strlen(\result) > 0 ==>
+               !isspace(\result[strlen(\result) - 1]);
     complete behaviors;
     disjoint behaviors;
  */
