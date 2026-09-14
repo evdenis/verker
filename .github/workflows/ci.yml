@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# `make wp-replay` re-checks every proved function with `-wp-cache offline`, which
+# resolves each goal from sessions/cache. It does not re-prove anything: verified with an
+# Alt-Ergo that answers --version but refuses to solve, under which memchr still replays
+# 35/35 and the solver is never executed.
+#
+# The provers are installed anyway, because why3 has to *resolve* the names WP is asked
+# for. With them absent WP aborts with `Unknown prover alt-ergo` before it ever consults
+# the cache. They are registration, not work.
+#
+# Everything is pinned. A cache entry records the goal hash together with the prover and
+# version that discharged it - sessions/cache is 852 Alt-Ergo 2.6.3, 634 CVC5 1.3.4 and
+# 613 Z3 5.1.0 - and Frama-C's goal generation changes between releases. An unpinned
+# upgrade would miss every entry and fail for a reason that has nothing to do with the
+# specifications. On a deliberate upgrade: bump the versions below, then `make wp-rebuild`,
+# `make wp-prune`, and commit the regenerated session.
+
+env:
+  FRAMAC_VERSION: "33.0"
+  ALTERGO_VERSION: "2.6.3"
+  CVC5_VERSION: "1.3.4"
+  Z3_VERSION: "5.1.0"
+
+jobs:
+  replay:
+    name: Replay committed proofs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 4.14.x
+
+      - name: Install Frama-C and Alt-Ergo
+        run: |
+          opam install --depext-only frama-c.${FRAMAC_VERSION} alt-ergo.${ALTERGO_VERSION}
+          opam install frama-c.${FRAMAC_VERSION} alt-ergo.${ALTERGO_VERSION}
+
+      # Install and register in one step: why3 has to see the binaries on PATH when it
+      # detects, and a PATH exported through GITHUB_PATH only reaches *later* steps.
+      - name: Install CVC5 and Z3, and register the provers
+        run: |
+          mkdir -p "$HOME/bin"
+          echo "$HOME/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/bin:$PATH"
+
+          curl -fsSL -o /tmp/cvc5.zip \
+            "https://github.com/cvc5/cvc5/releases/download/cvc5-${CVC5_VERSION}/cvc5-Linux-x86_64-static.zip"
+          unzip -q /tmp/cvc5.zip -d /tmp
+          install -m755 /tmp/cvc5-Linux-x86_64-static/bin/cvc5 "$HOME/bin/cvc5"
+
+          curl -fsSL -o /tmp/z3.zip \
+            "https://github.com/Z3Prover/z3/releases/download/z3-${Z3_VERSION}/z3-${Z3_VERSION}-x64-glibc-2.39.zip"
+          unzip -q /tmp/z3.zip -d /tmp
+          install -m755 "/tmp/z3-${Z3_VERSION}-x64-glibc-2.39/bin/z3" "$HOME/bin/z3"
+
+          # Why3 1.8.2 recognises Z3 only up to 4.13.x and rejects 5.1.0 outright, so the
+          # goals the cache attributes to Z3 would never be looked up. Teach its detection
+          # data the 5.x series before detecting -- the same kind of patch the AstraVer-era
+          # workflow carried for CVC4 and Eprover.
+          python3 - "$(opam exec -- opam var share)/why3/provers-detection-data.conf" <<'PY'
+          import sys
+          path = sys.argv[1]
+          conf = open(path).read()
+          anchor = 'version_ok  = "^4\\.13\\.[0-9]+$"'
+          added  = 'version_ok  = "^5\\.[0-9]+\\.[0-9]+$"'
+          assert anchor in conf, "Z3 4.13 anchor missing -- why3 layout changed"
+          if added not in conf:
+              conf = conf.replace(anchor, added + "\n" + anchor)
+              open(path, "w").write(conf)
+          print("Z3 5.x accepted in %d section(s)" % conf.count(added))
+          PY
+
+          opam exec -- why3 config detect
+
+          # Every prover the cache refers to must have registered, or the goals it proved
+          # are silently missing and the replay fails for the wrong reason.
+          for p in "Alt-Ergo" "CVC5" "Z3"; do
+            opam exec -- why3 config list-provers | grep -qi "$p" \
+              || { echo "::error::$p did not register with why3"; exit 1; }
+          done
+
+      - name: Report the toolchain
+        run: |
+          opam exec -- frama-c -version
+          opam exec -- alt-ergo --version
+          cvc5 --version | head -1
+          z3 --version
+
+      - name: Build the fuzz harnesses
+        run: opam exec -- make build
+
+      - name: Run the fuzz harnesses
+        run: opam exec -- make run
+
+      # Fails if a proved function does not replay at 100%, if a run reports a soundness
+      # finding, or if WP reports no goal count at all.
+      - name: Replay committed proofs
+        run: opam exec -- make wp-replay

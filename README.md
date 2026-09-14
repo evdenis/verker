@@ -1,4 +1,6 @@
 # VerKer
+[![CI](https://github.com/evdenis/verker/actions/workflows/ci.yml/badge.svg)](https://github.com/evdenis/verker/actions/workflows/ci.yml)
+
 To view this file in Russian, please follow the [link](README_ru.md).
 
 The repository contains ACSL specifications for the Linux kernel functions. The aim of the project is formal verification of Linux kernel library functions.
