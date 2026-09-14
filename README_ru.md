@@ -1,4 +1,6 @@
 # VerKer
+[![CI](https://github.com/evdenis/verker/actions/workflows/ci.yml/badge.svg)](https://github.com/evdenis/verker/actions/workflows/ci.yml)
+
 ACSL cпецификации к библиотечным функциям ядра Linux
 
 Проект по разработке спецификаций и формальному доказательству корректности библиотечных функций ядра Linux.
