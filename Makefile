@@ -230,11 +230,15 @@ wp-replay: $(SESSIONDIR) ## Replay every proof from the committed cache; never r
 	@FAIL=0; for i in $(PROVEDFILES); do i=$$(basename $$i .c); \
 		out=$$($(FRAMAC) $(WPFLAGS) -wp-cache offline src/$$i.c 2>&1); \
 		g=$$(printf '%s\n' "$$out" | grep -oE 'Proved goals: +[0-9]+ */ *[0-9]+' | tail -1); \
-		if [ -z "$$g" ]; then echo "ERROR:   $$i (no goal count; WP aborted?)"; FAIL=1; \
+		if [ -z "$$g" ]; then echo "ERROR:   $$i (no goal count -- WP aborted)"; \
+			printf '%s\n' "$$out" | grep -E 'User Error|Unknown prover|aborted' \
+				| sort -u | head -3 | sed 's/^/           /'; FAIL=1; \
 		elif printf '%s\n' "$$out" | grep -qE '$(WP_UNSOUND)'; then \
 			echo "UNSOUND: $$i ($$g)"; FAIL=1; \
 		elif printf '%s' "$$g" | grep -qE '([0-9]+) */ *\1$$'; then echo "OK:      $$i ($$g)"; \
-		else echo "FAIL:    $$i ($$g)"; FAIL=1; fi; \
+		else echo "FAIL:    $$i ($$g)"; \
+			printf '%s\n' "$$out" | grep -E '^\[wp\] \[Cache\]|^ +Missing:' \
+				| sed 's/^ *//;s/^/           /'; FAIL=1; fi; \
 	done; exit $$FAIL
 
 wp-rebuild: $(SESSIONDIR) ## Re-prove from scratch and overwrite the cache (after a toolchain upgrade).
