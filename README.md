@@ -21,7 +21,7 @@ has been re-proved with WP so far.
 | ID | Function      | AstraVer | WP | Logic function | libfuzzer | Comment |
 |----|---------------|----------|----|----------------|-----------|---------|
 | 1  | check\_bytes8 | proved |    | proved         | yes       |         |
-| 2  | match\_string | proved |    | not required   |           |         |
+| 2  | match\_string | proved | proved | not required   |           |         |
 | 3  | memchr        | proved | proved |                | yes       |         |
 | 4  | memcmp        | proved | proved |                | yes       |         |
 | 5  | memscan       | proved | proved | not required   | yes       |         |
@@ -212,10 +212,11 @@ Criteria to develop a logical function:
 1. It is possible to write a logical function only for a pure C function;
 2. It is rational to write logical functions if they are useful for developing specifications of other functions. For example, in the memcpy contract, you can express the equality of src and dest by calling the memcmp logical function.
 
-A ```lemma``` in an active axiomatic is a proof obligation, not an assumption: WP generates
-a goal for it like any other. The corpus has 27 such goals and discharges 26; the exception
-is ```strcmp_corollary```, which times out. Under AstraVer the inductive ones were discharged
-by the plugin's ```lemma``` functions; they now live in the headers as ordinary ACSL ghost
+A ```lemma``` has its own proof obligation. WP can also use it as a hypothesis for other
+goals before it has been proved, so those dependent goals are not sufficient evidence.
+The previously unresolved ```strcmp_corollary``` is now a proved ghost function in
+**match_string.h**. Under AstraVer the inductive lemmas were discharged by the plugin's
+```lemma``` functions; they now live in the headers as ordinary ACSL ghost
 functions whose contract WP proves and which a caller instantiates from ghost code — see the
 block after each axiomatic in **strlen.h**, **strnlen.h** and friends.
 

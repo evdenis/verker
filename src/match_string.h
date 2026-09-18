@@ -14,170 +14,65 @@
  * index of a @string in the @array if matches, or %-EINVAL otherwise.
  */
 
-/*
- * In fact this function searches in a subarray ending NULL
- * If n > INT_MAX and in array[0..INT_MAX] there are not NULL int index will
- * be overflowed
- */
-
-/*@ axiomatic MatchString {
-
-    logic size_t match_string(char **a, size_t n, char *s) =
-       n == 0 ?
-          (size_t)0
-       :
-          (strcmp(a[0], s) == 0 ?
-              (size_t)0
-           :
-              (size_t)(1 + match_string(a + 1, (size_t)(n - 1), s)));
-
-    logic size_t real_len(char **a, size_t n) =
-       ((a[0] == NULL) || (n == 0)) ?
-          (size_t)0
-       :
-          (size_t)(1 + real_len(a + 1, (size_t)(n - 1)));
-
-    lemma strcmp_corollary:
-       \forall char* string1, char* string2;
-          valid_str(string1) &&
-          valid_str(string2) &&
-          strcmp(string1, string2) != 0 ==>
-	  (\exists size_t i;
-             0 <= i <= \min(strlen(string1), strlen(string2)) &&
-             string1[i] != string2[i]);
-    }
+/*@ predicate match_string_array{L}(char **array, integer n, integer length) =
+       0 <= length <= n && length <= INT_MAX &&
+       \valid_read(array + (0..length-1)) &&
+       (length < n ==> \valid_read(array + length) && array[length] == \null) &&
+       (\forall integer i; 0 <= i < length ==>
+                           array[i] != \null && valid_str(array[i]));
  */
 
 /*
- * Lemma functions. See strlen.h for why these are ghost functions rather than
- * ACSL lemmas; each inducts over the array.
+ * A proved version of PR #14's comparison lemma. Its postcondition is
+ * conditional so the equality branch is also checked with reachable inputs.
  */
-
 /*@ ghost
-  @ /@ terminates \true;
-  @  @ decreases len;
-  @  @ assigns   \nothing;
-  @  @ ensures   0 <= real_len(a, len) <= len;
-  @  @/
-  @ void real_len_range(char **a, size_t len)
-  @ {
-  @   if (len > 0) real_len_range(a + 1, len - 1);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires  \valid(a+(0..i));
-  @  @ requires  i <= real_len(a, len);
-  @  @ requires  i < len;
-  @  @ requires  a[i] != \null;
+  @ /@ requires valid_s1: valid_str(s1);
+  @  @ requires valid_s2: valid_str(s2);
   @  @ terminates \true;
-  @  @ decreases i;
-  @  @ assigns   \nothing;
-  @  @ ensures   i < real_len(a, len);
+  @  @ exits \false;
+  @  @ assigns \nothing;
+  @  @ ensures differs: strcmp(s1, s2) != 0 ==>
+  @  @    (\exists integer i; 0 <= i <= \min(strlen(s1), strlen(s2)) &&
+  @  @                        s1[i] != s2[i]);
   @  @/
-  @ void real_len_lower(char **a, size_t len, size_t i)
+  @ void strcmp_corollary(char *s1, char *s2)
   @ {
-  @   real_len_range(a, len);
-  @   if (len > 0) real_len_range(a + 1, len - 1);
-  @   if (i > 0) real_len_lower(a + 1, len - 1, i - 1);
+  @   valid_str_len(s1);
+  @   valid_str_len(s2);
+  @   size_t i = 0;
+  @   /@ loop invariant bounds: 0 <= i <= strlen(s1) && i <= strlen(s2);
+  @    @ loop invariant prefix: \forall integer j; 0 <= j < i ==>
+  @    @                       s1[j] == s2[j] && s1[j] != '\0';
+  @    @ loop assigns i;
+  @    @ loop variant strlen(s1) - i;
+  @    @/
+  @   while (s1[i] == s2[i] && s1[i] != '\0')
+  @     i++;
+  @   if (s1[i] == s2[i]) {
+  @     /@ assert end: i == strlen(s1) && i == strlen(s2); @/
+  @     strncmp_defn_equal(s1, s2, i);
+  @   }
   @ }
   @*/
 
-/*@ ghost
-  @ /@ requires  \valid(a+(0..i));
-  @  @ requires  0 <= i < real_len(a, len);
-  @  @ terminates \true;
-  @  @ decreases i;
-  @  @ assigns   \nothing;
-  @  @ ensures   a[i] != \null;
-  @  @/
-  @ void real_len_not_nulls(char **a, size_t len, size_t i)
-  @ {
-  @   real_len_range(a, len);
-  @   if (len > 0) real_len_range(a + 1, len - 1);
-  @   if (i > 0) real_len_not_nulls(a + 1, len - 1, i - 1);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires  \valid(a+(0..i));
-  @  @ requires  i == real_len(a, len);
-  @  @ terminates \true;
-  @  @ decreases i;
-  @  @ assigns   \nothing;
-  @  @ ensures   a[i] != \null ==> i == len;
-  @  @/
-  @ void real_len_terminate(char **a, size_t len, size_t i)
-  @ {
-  @   real_len_range(a, len);
-  @   if (len > 0) real_len_range(a + 1, len - 1);
-  @   if (i > 0) real_len_terminate(a + 1, len - 1, i - 1);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires  len == 0 || \valid(a+(0..len-1));
-  @  @ requires  \forall integer i; 0 <= i < len ==> a[i] != \null;
-  @  @ terminates \true;
-  @  @ decreases len;
-  @  @ assigns   \nothing;
-  @  @ ensures   real_len(a, len) == len;
-  @  @/
-  @ void real_len_maximum(char **a, size_t len)
-  @ {
-  @   if (len > 0) real_len_maximum(a + 1, len - 1);
-  @ }
-  @*/
-
-/*@ ghost
-  @ /@ requires  \valid(a+(0..i));
-  @  @ requires  0 <= i < real_len(a, len);
-  @  @ requires  \forall integer j; 0 <= j < i ==> strcmp(a[j], string) != 0;
-  @  @ requires  strcmp(a[i], string) == 0;
-  @  @ terminates \true;
-  @  @ decreases i;
-  @  @ assigns   \nothing;
-  @  @ ensures   match_string(a, real_len(a, len), string) == i;
-  @  @/
-  @ void match_string_definition(char **a, char *string, size_t i, size_t len)
-  @ {
-  @   real_len_range(a, len);
-  @   if (len > 0) real_len_range(a + 1, len - 1);
-  @   real_len_not_nulls(a, len, i);
-  @   real_len_not_nulls(a, len, 0);
-  @   if (i > 0) match_string_definition(a + 1, string, i - 1, len - 1);
-  @ }
-  @*/
-
-/*@ requires n <= INT_MAX;
-    requires (real_len(array, n) == n) ==> \valid(array+(0..n-1));
-    requires (real_len(array, n) < n) ==> \valid(array+(0..real_len(array, n)));
-    requires valid_str(string);
-    requires \forall size_t i;
-       0 <= i < real_len(array, n) ==> valid_str(array[i]);
-
+/*@ requires valid_array: \exists integer length;
+                           match_string_array(array, n, length);
+    requires valid_string: valid_str(string);
     terminates \true;
-    assigns \nothing;
     exits \false;
-
-    behavior exists:
-       assumes \exists size_t k;
-          (0 <= k < real_len(array, n)) &&
-          strcmp(array[k], string) == 0;
-       ensures \result == match_string(array, real_len(array, n), string);
-       ensures 0 <= \result < real_len(array, n);
-       ensures strcmp(array[\result], string) == 0;
-       ensures \forall size_t k;
-          0 <= k < \result ==> strcmp(array[k], string) != 0;
-
-    behavior missing:
-       assumes \forall size_t k;
-          0 <= k < real_len(array, n) ==> strcmp(array[k], string) != 0;
-       ensures \result == -EINVAL;
-
-    complete behaviors;
-    disjoint behaviors;
-*/
+    assigns \nothing;
+    ensures result: \result == -EINVAL || 0 <= \result < n;
+    ensures found: \result >= 0 ==>
+       (\exists integer length; match_string_array(array, n, length) &&
+          \result < length && strcmp(array[\result], string) == 0);
+    ensures first: \result >= 0 ==>
+       (\forall integer i; 0 <= i < \result ==>
+                           array[i] != \null && strcmp(array[i], string) != 0);
+    ensures missing: (\result == -EINVAL) <==>
+       (\forall integer length; match_string_array(array, n, length) ==>
+          (\forall integer i; 0 <= i < length ==> strcmp(array[i], string) != 0));
+ */
 int match_string(const char * const *array, size_t n, const char *string);
 
 #endif // __MATCH_STRING_H__
