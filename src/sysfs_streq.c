@@ -49,17 +49,22 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 #endif
 
 #ifdef DUMMY_MAIN
-int main(int argc, char *argv[])
+#include <assert.h>
+
+int main(void)
 {
-	const char *s1 = "asbcd\n";
-	const char *s2 = "asbcd";
-	const char *s3 = "asd";
-
-	sysfs_streq(s1, s2);
-	sysfs_streq(s2, s1);
-	sysfs_streq(s1, s1);
-	sysfs_streq(s1, s3);
-
+	assert(sysfs_streq("", ""));
+	assert(sysfs_streq("", "\n"));
+	assert(sysfs_streq("\n", ""));
+	assert(!sysfs_streq("", "\n\n"));
+	assert(sysfs_streq("x", "x\n"));
+	assert(sysfs_streq("x\n", "x"));
+	assert(sysfs_streq("x\n", "x\n\n"));
+	assert(sysfs_streq("x\n\n", "x\n"));
+	assert(sysfs_streq("x\ny", "x\ny"));
+	assert(!sysfs_streq("x", "xy"));
+	assert(!sysfs_streq("x", "y"));
+	assert(!sysfs_streq("x", "x\ny"));
 	return 0;
 }
 #endif

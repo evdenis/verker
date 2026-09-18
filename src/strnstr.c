@@ -46,19 +46,21 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 
-#include <string.h>
-
-int main(int argc, char *argv[])
+int main(void)
 {
-	const char *s1 = "1234567890";
-	char *ptr;
+	char haystack[] = {'a', 'a', 'a', 0, 'b', 'b', 0};
 
-	ptr = strnstr(s1, "789", strlen(s1));
-	ptr = strnstr(s1, "789", strlen(s1) / 2);
-	ptr = strnstr(s1, "000", strlen(s1));
-	ptr = ptr;
-
+	assert(strnstr(haystack, "", 0) == haystack);
+	assert(strnstr(NULL, "", 0) == NULL);
+	assert(strnstr(NULL, "a", 0) == NULL);
+	assert(strnstr(haystack, "aa", 3) == haystack);
+	assert(strnstr(haystack, "aaa", 3) == haystack);
+	assert(strnstr(haystack, "aaaa", 3) == NULL);
+	assert(strnstr(haystack, "bb", 6) == haystack + 4);
+	assert(strnstr(haystack, "bb", 5) == NULL);
+	assert(strnstr(haystack, "ab", 6) == NULL);
 	return 0;
 }
 #endif

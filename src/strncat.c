@@ -63,17 +63,23 @@ char *strncat(char *dest, const char *src, size_t count)
 }
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	const char *s = "12345";
-	char d[strlen(s) + 4];
+	char bounded[8] = "a";
+	char short_src[8] = "a";
+	char raw_src[] = {'b', 'c', 'd', 'X'};
 
-	d[0] = '1'; d[1] = '1'; d[2] = '1'; d[3] = '\0';
-	strncat(d, s, strlen(s));
-	strncat(d, s, strlen(s) - 3);
-
+	assert(strncat(bounded, raw_src, 3) == bounded);
+	assert(strcmp(bounded, "abcd") == 0);
+	assert(strncat(bounded, "ignored", 0) == bounded);
+	assert(strcmp(bounded, "abcd") == 0);
+	assert(strncat(short_src, "b", 5) == short_src);
+	assert(strcmp(short_src, "ab") == 0);
+	assert(strncat(short_src, "", 3) == short_src);
+	assert(strcmp(short_src, "ab") == 0);
 	return 0;
 }
 #endif

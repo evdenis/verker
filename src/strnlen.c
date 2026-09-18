@@ -35,17 +35,12 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 #endif
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstringop-overread"
-int main(int argc, char *argv[])
+int main(void)
 {
-	size_t l;
-
-	l  = strnlen("123456789", 5);
-	l += strnlen("123456789", 20);
-
-	return l;
+	assert(strnlen("123456789", 5) == 5);
+	assert(strnlen("123456789", 20) == 9);
+	return 0;
 }
-#pragma GCC diagnostic pop
 #endif

@@ -29,9 +29,11 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,
 #endif
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	return strlen("123456789");
+	assert(strlen("123456789") == 9);
+	return 0;
 }
 #endif
