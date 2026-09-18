@@ -6,30 +6,32 @@ int match_string(const char * const *array, size_t n, const char *string)
 	int index;
 	const char *item;
 
-	//@ ghost real_len_range((char **)array, n);
-	/*@ loop invariant 0 <= index <= real_len(array, n) <= n;
-	    loop invariant \forall size_t k;
-	       0 <= k < index ==> strcmp(array[k], string) != 0;
-	    loop invariant \forall size_t k;
-	       0 <= k < index ==> valid_str(array[k]);
+	/*@ loop invariant bounds: 0 <= index <= n && index <= INT_MAX;
+	    loop invariant limit: \forall integer length;
+	       match_string_array(array, n, length) ==> index <= length;
+	    loop invariant skipped: \forall integer i; 0 <= i < index ==>
+	       array[i] != \null && valid_str(array[i]) && strcmp(array[i], string) != 0;
 	    loop assigns index, item;
 	    loop variant INT_MAX - index;
 	 */
 	for (index = 0; index < n; index++) {
 		item = array[index];
 		if (!item) {
-			//@ ghost real_len_terminate((char **)array, n, (size_t)index);
+			/*@ assert end: \forall integer length;
+			       match_string_array(array, n, length) ==> index == length;
+			 */
 			break;
 		}
-		//@ ghost real_len_lower((char **)array, n, (size_t)index);
-		//@ ghost real_len_not_nulls((char **)array, n, (size_t)index);
-		//@ assert valid_str(array[index]);
+		/*@ assert next: \forall integer length;
+		       match_string_array(array, n, length) ==> index < length;
+		 */
+		//@ assert valid_item: valid_str(item);
 		if (!strcmp(item, string)) {
-			//@ ghost match_string_definition((char **)array, (char *)string, (size_t)index, n);
 			return index;
 		}
 
-		/*@ assert \exists size_t i;
+		//@ ghost strcmp_corollary((char *)item, (char *)string);
+		/*@ assert differs: \exists integer i;
 		       0 <= i <= \min(strlen(item), strlen(string)) &&
 		       item[i] != string[i];
 		 */
