@@ -1,24 +1,5 @@
 #include "strncat.h"
 
-/*@ requires valid_strn(src, count);
-    requires valid_str(dest);
-    requires strlen(dest) + count <= SIZE_MAX;
-    requires strlen(dest) <= LONG_MAX;
-    requires \valid(dest+(0..strlen(dest)+count));
-    requires \separated(dest+(0..strlen(dest)+count), src+(0..count));
-    terminates \true;
-    assigns dest[strlen{Pre}(dest)..strlen{Pre}(dest)+count];
-    assigns \result \from dest;
-    exits \false;
-    ensures \result == dest;
-    ensures \forall integer i; 0 <= i < strlen{Pre}(dest) ==>
-            \at(dest[i], Pre) == \result[i];
-    ensures \forall integer i;
-            0 <= i < strnlen{Pre}(src, count) ==>
-            \at(src[i], Pre) == \result[strlen{Pre}(dest) + i];
-    ensures valid_str(\result);
-    ensures strlen(\result) == strlen{Pre}(dest) + strnlen{Pre}(src, count);
- */
 char *strncat(char *dest, const char *src, size_t count)
 {
 	char *tmp = dest;
@@ -43,7 +24,7 @@ char *strncat(char *dest, const char *src, size_t count)
 			dest++;
 			//@ ghost j++;
 		}
-		//@ assert j == d;
+		//@ assert scanned: j == d;
 		//@ ghost char *mdest = dest;
 		//@ ghost size_t k = 0;
 
@@ -58,24 +39,24 @@ char *strncat(char *dest, const char *src, size_t count)
 		                              tmp[i] == \at(dest[i], Pre);
 		    loop invariant copied:    \forall integer i; 0 <= i < k ==>
 		                              mdest[i] == \at(src[i], Pre);
-		    loop assigns count, src, dest, k, mdest[0..ocount];
+		    loop assigns count, src, dest, k, mdest[0..n];
 		    loop variant count;
 		 */
 		while ((*dest++ = *src++) != 0) {
 			/* the copied character was not the terminator, so k is still
 			 * inside the source's strnlen */
-			//@ assert osrc[k] != '\0';
+			//@ assert nonzero: osrc[k] != '\0';
 			//@ assert nul: n < ocount ==> osrc[n] == '\0';
 			//@ assert pos: count > 0 && k < ocount;
-			//@ assert k < n;
+			//@ assert copied_bound: k < n;
 			//@ ghost k++;
 			if (--count == 0) {
 				*dest = '\0';
 				break;
 			}
 		}
-		//@ assert k == n;
-		//@ assert mdest == tmp + d;
+		//@ assert copied_all: k == n;
+		//@ assert suffix: mdest == tmp + d;
 		//@ ghost intro_valid_str_len(tmp, (size_t)(d + n));
 	}
 	return tmp;
