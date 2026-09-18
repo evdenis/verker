@@ -42,22 +42,21 @@ int match_string(const char * const *array, size_t n, const char *string)
 
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	const char *str = "12345";
-	const char *list[] = {
-		"TEST",
-		"TST",
-		"TS",
-		"T",
-		"12345",
-		NULL
-	};
+	const char *items[] = {"first", "match", "match", NULL, "late"};
+	const char *empty[] = {NULL};
 
-	match_string(list, -1, str);
-	match_string(list, 3, str);
-
+	assert(match_string(NULL, 0, "match") == -EINVAL);
+	assert(match_string(empty, (size_t)-1, "match") == -EINVAL);
+	assert(match_string(items, 1, "first") == 0);
+	assert(match_string(items, 1, "match") == -EINVAL);
+	assert(match_string(items, 3, "match") == 1);
+	assert(match_string(items, (size_t)-1, "match") == 1);
+	assert(match_string(items, 5, "late") == -EINVAL);
+	assert(match_string(items, (size_t)-1, "missing") == -EINVAL);
 	return 0;
 }
 #endif

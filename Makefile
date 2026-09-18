@@ -2,7 +2,7 @@ export TIMEOUT   ?= 10
 export PROCESSES ?= 4
 
 CC               := gcc
-CFLAGS           := -Wall -Werror
+CFLAGS           := -Wall -Werror -fno-builtin
 CLANG            := clang
 CLANGFLAGS       := -g -O1
 GEN_CFLAGS       := -w
@@ -187,7 +187,7 @@ fuzz-%: $(FUZZDIR) $(FUZZDIR)/%
 	$(FUZZDIR)/$*
 
 run: build ## Run each program. You can also type run-<target>.
-	@for i in $(BINFILES); do echo $$i; ./$$i; done
+	@for i in $(BINFILES); do echo $$i; ./$$i || exit $$?; done
 
 run-%: $(BINDIR) $(BINDIR)/%
 	$(BINDIR)/$*

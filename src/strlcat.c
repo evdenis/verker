@@ -26,17 +26,23 @@ size_t strlcat(char *dest, const char *src, size_t count)
 }
 
 #ifdef DUMMY_MAIN
+#include <assert.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	const char *s = "12345";
-	char d[strlen(s) + 4];
+	char full[8] = "ab";
+	char truncated[6] = {'a', 'b', 0, 'X', 'Y', 'Z'};
+	char no_room[4] = {'a', 'b', 0, 'X'};
 
-	d[0] = '1'; d[1] = '1'; d[2] = '1'; d[3] = '\0';
-	strlcat(d, s, strlen(s));
-	strlcat(d, s, strlen(s) - 3);
-
+	assert(strlcat(full, "cd", sizeof(full)) == 4);
+	assert(strcmp(full, "abcd") == 0);
+	assert(strlcat(truncated, "cde", 4) == 5);
+	assert(strcmp(truncated, "abc") == 0);
+	assert(truncated[4] == 'Y' && truncated[5] == 'Z');
+	assert(strlcat(no_room, "cd", 3) == 4);
+	assert(strcmp(no_room, "ab") == 0 && no_room[3] == 'X');
+	assert(strlcat(full, "", sizeof(full)) == 4);
 	return 0;
 }
 #endif

@@ -102,6 +102,10 @@ $ make wp-status          # only the goals that are still unproved
 $ make wp-gui-strlen      # the same run in the Frama-C GUI
 ```
 
+```make run``` also runs boundary assertions in the algorithms' existing main functions:
+truncation, first matches, embedded NULs, trailing newlines and NULL-terminated arrays.
+CI runs these examples alongside the committed proof replay.
+
 ```TIMEOUT``` (seconds per goal) and ```PROCESSES``` (parallel provers) are environment
 knobs: ```make TIMEOUT=30 wp-strcmp```. Raising ```TIMEOUT``` alone has no effect on a goal
 whose timeout is already cached — use ```make wp-rebuild``` to force the provers to run
